@@ -1,0 +1,13 @@
+{
+    "stage": "create",
+    "substage": "runTask",
+    "app-name": "todoSampleReactTabMsGraph",
+    "solution": "mods-toolkit-solution-azure",
+    "capabilities": [
+        "Tab"
+    ],
+    "tab-scopes": "personal",
+    "host-type": "Azure",
+    "azure-resources": [],
+    "folder": ""
+}
