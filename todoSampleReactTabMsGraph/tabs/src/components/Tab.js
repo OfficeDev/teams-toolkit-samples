@@ -3,8 +3,16 @@
 
 import React from 'react';
 import './App.css';
-import { MODS } from 'mods-client';
-import { Button } from '@fluentui/react-northstar'
+import Profile from "./Profile";
+import { StorageClient } from './StorageClient';
+import { Checkbox, Dropdown, getContext, Input, PrimaryButton, TeamsThemeContext, ThemeStyle } from 'msteams-ui-components-react';
+import noItemimage from '../images/no-item.png'
+import {
+  TeamsUserCredential,
+  createMicrosoftGraphClient,
+  loadConfiguration,
+  ResourceType
+} from "@microsoft/teamsfx";
 
 /**
  * The 'PersonalTab' component renders the main tab content
@@ -32,24 +40,36 @@ class Tab extends React.Component {
   }
 
   async initMODS() {
-    var modsEndpoint = process.env.REACT_APP_MODS_ENDPOINT;
-    var startLoginPageUrl = process.env.REACT_APP_START_LOGIN_PAGE_URL;
-    await MODS.init(modsEndpoint, startLoginPageUrl);
-    var userInfo = MODS.getUserInfo();
+    loadConfiguration({
+      authentication: {
+        initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
+        simpleAuthEndpoint: process.env.REACT_APP_MODS_ENDPOINT,
+        clientId: "b3805604-4c33-48ce-adce-ff8336676409"
+      },
+      resources: [
+        {
+          type: ResourceType.API,
+          name: "default",
+          properties: {
+            endpoint: process.env.REACT_API_ENDPOINT || "http://localhost:7071/"
+          }
+        }
+      ]
+    });
+    const credential = new TeamsUserCredential();
+    const userInfo = await credential.getUserInfo();
+
     this.setState({
       userInfo: userInfo
     });
+
+    this.credential = credential;
+    this.scope = ["User.Read"];
   }
 
   async callGraphSilent() {
     try {
-      var graphClient = await MODS.getMicrosoftGraphClient();
-      var profile = await graphClient.api('/me').get();
-
-      this.setState({
-        profile: profile,
-        showGraphMessage: true,
-      })
+      var graphClient = await createMicrosoftGraphClient(this.credential, this.scope);
 
       try {
         var photoBlob = await graphClient.api('/me/photo/$value').get();
@@ -61,6 +81,12 @@ class Tab extends React.Component {
           fetchPhotoErrorMessage: 'Could not fetch photo from your profile, you need to add photo in the profile settings first: ' + error.message
         });
       }
+      this.storageClient = new StorageClient(graphClient);
+      this.setState({
+        items: await this.storageClient.getItems(),
+        profile: await graphClient.api("/me").get(),
+        showLoginPage: false
+      });
     }
     catch (err) {
       this.setState({
@@ -72,7 +98,7 @@ class Tab extends React.Component {
 
   async loginBtnClick() {
     try {
-      await MODS.popupLoginPage();
+      await this.credential.login(this.scope);
     }
     catch (err) {
       alert('Login failed: ' + err);
@@ -84,34 +110,170 @@ class Tab extends React.Component {
     await this.callGraphSilent();
   }
 
+  async onAddItem() {
+    const newItems = JSON.parse(JSON.stringify(this.state.items));
+    newItems.push({
+      description: this.state.newItemDescription
+    })
+    this.setState({
+      newItemDescription: "",
+      items: newItems
+    });
+    await this.storageClient.addItem(this.state.newItemDescription);
+    this.refresh();
+  }
+
+  async onUpdateItem(id, description) {
+    await this.storageClient.updateItemDescription(id, description);
+  }
+
+  async onDeleteItem(id) {
+    await this.storageClient.deleteItem(id);
+    this.refresh();
+  }
+
+  async onCompletionStatusChange(id, index, isCompleted) {
+    this.handleInputChange(index, "isCompleted", isCompleted);
+    await this.storageClient.updateItemCompletionStatus(id, isCompleted);
+  }
+
+  handleInputChange(index, property, value) {
+    const newItems = JSON.parse(JSON.stringify(this.state.items))
+    newItems[index][property] = value;
+    this.setState({
+      items: newItems
+    })
+  }
+
+  async refresh() {
+    this.setState({
+      items: await this.storageClient.getItems(),
+    });
+  }
+
   render() {
-    return (
-      <div>
-        <h2>Basic info from SSO</h2>
-        <p><b>Name:</b> {this.state.userInfo.userName}</p>
-        <p><b>E-mail:</b> {this.state.userInfo.preferredUserName}</p>
+    const context = getContext({
+      baseFontSize: 16,
+      style: ThemeStyle.Light
+    });
 
-        {this.state.showLoginBtn && <Button content='Grant permission & get information' onClick={() => this.loginBtnClick()} primary />}
-
-        {
-          this.state.showGraphMessage &&
-          <p>
-            <h2>Profile from Microsoft Graph</h2>
-            <div>
-              <div><b>Name:</b> {this.state.profile.displayName}</div>
-              <div><b>Job title:</b> {this.state.profile.jobTitle}</div>
-              <div><b>E-mail:</b> {this.state.profile.mail}</div>
-              <div><b>UPN:</b> {this.state.profile.userPrincipalName}</div>
-              <div><b>Object id:</b> {this.state.profile.id}</div>
-            </div>
-            <h2>User Photo from Microsoft Graph</h2>
-            <div >
-              {this.state.photoObjectURL && <img src={this.state.photoObjectURL} alt='Profile Avatar' />}
-              {this.state.fetchPhotoErrorMessage && <div>{this.state.fetchPhotoErrorMessage}</div>}
-            </div>
-          </p>
-        }
+    const items = this.state.items?.map((item, index) =>
+      <div key={item.id} className="item">
+        <div className="is-completed">
+          <Checkbox
+            checked={this.state.items[index].isCompleted}
+            onChecked={(checked) => this.onCompletionStatusChange(item.id, index, checked)}
+            className="is-completed-input"
+          />
+        </div>
+        <div className="description">
+          <Input
+            value={this.state.items[index].description}
+            onChange={(e) => this.handleInputChange(index, "description", e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                this.onUpdateItem(item.id, this.state.items[index].description);
+                e.target.blur();
+              }
+            }}
+            onBlur={() => this.onUpdateItem(item.id, this.state.items[index].description)}
+            className={"text" + (this.state.items[index].isCompleted ? " is-completed" : "")}
+          />
+        </div>
+        <div className="action">
+          <Dropdown
+            mainButtonText="..."
+            items={[
+              {
+                text: 'Delete',
+                onClick: () => this.onDeleteItem(item.id)
+              }
+            ]}
+            className="action-dropdown"
+          />
+        </div>
       </div>
+    );
+
+    return (
+      <TeamsThemeContext.Provider value={context}>
+        {!this.state.showLoginPage && <div className="flex-container">
+          <div className="profile-col">
+            <Profile userInfo={this.state.userInfo} profile={this.state.profile} photoObjectURL={this.state.photoObjectURL} />
+          </div>
+
+          <div className="todo-col">
+            <div className="todo">
+              <div className="header">
+                <div className="title">
+                  <h2>To Do List</h2>
+                  <span>{this.state.items.length} item{this.state.items.length === 1 ? "" : "s"}</span>
+                </div>
+
+                <div className="add-button">
+                  <PrimaryButton onClick={() => this.setState({ isAddingItem: true })}>+ Add task</PrimaryButton>
+                </div>
+              </div>
+
+              {items}
+
+              {this.state.isAddingItem && <div className="item add">
+                <div className="is-completed">
+                  <Checkbox
+                    disabled
+                    className="is-completed-input"
+                  />
+                </div>
+                <div className="description">
+                  <Input
+                    autoFocus
+                    type="text"
+                    value={this.state.newItemDescription}
+                    onChange={(e) => this.setState({ newItemDescription: e.target.value })}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        this.onAddItem();
+                      }
+                    }}
+                    onBlur={() => {
+                      if (this.state.newItemDescription) {
+                        this.onAddItem();
+                      }
+                      this.setState({
+                        isAddingItem: false,
+                      });
+                    }}
+                    className="text"
+                  />
+                </div>
+                <div className="action">
+                  <Dropdown
+                    mainButtonText="..."
+                    disabled
+                    items={[]}
+                  />
+                </div>
+              </div>}
+
+              {this.state.initialized && !this.state.items.length && !this.state.isAddingItem && <div className="no-item">
+                <div>
+                  <img src={noItemimage} alt="no item" />
+                </div>
+                <div>
+                  <h2>No tasks</h2>
+                  <p>Add more tasks to make you day productive.</p>
+                </div>
+              </div>}
+            </div>
+          </div>
+        </div>}
+
+        {this.state.showLoginPage && <div className="auth">
+          <Profile userInfo={this.state.userInfo} profile={this.state.profile} photoObjectURL={this.state.photoObjectURL} />
+          <h2>Welcome to To Do List App!</h2>
+          <PrimaryButton onClick={() => this.loginBtnClick()}>Start</PrimaryButton>
+        </div>}
+      </TeamsThemeContext.Provider>
     );
   }
 }
