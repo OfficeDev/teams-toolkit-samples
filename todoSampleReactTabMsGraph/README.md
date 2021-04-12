@@ -35,7 +35,7 @@
 1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [TeamsFx Toolkit](https://mods-landingpage-web.azurewebsites.net/md/install/index.md).
 1. Open the project in Visual Studio Code.
-1. [Optional] Navigate to the [answer.json](.mods/answer.json) file under `.mods` folder, change the app-name as what you want. It will be the name of your Teams app.
+1. [Optional] Navigate to the [answers.json](.mods/answers.json) file under `.mods` folder, change the app-name as what you want. It will be the name of your Teams app.
 1. Open Command Palette (Ctrl+Shift+P), type `TeamsFx - Provision Resource` in VS Code and choose the subscription to provision the environment required to run the app. Notice that this step will provision Azure resources under your Azure subscription and will cause charges. After provision, you can navigate to the [env.default.json](.mods/env.default.json) file to check the environment information for your app.
 
 1. Navigate to the [StorageClient.js](tabs/src/components/StorageClient.js) file, set the value for `siteId` and `listId` on line 4 and 5.
@@ -52,6 +52,10 @@
 
 1. Press "F5" to open a Chrome window and then select your package to view todo list manager sample app.
     * For remote debug, you can choose the profile "Launch Remote (Edge)" or "Launch Remote(Chrome)" and press "F5".
+
+1. If you met the error that app cannot be added. You can go to [Teams admin center](https://admin.teams.microsoft.com/policies/app-setup/) and setup a new policy that enables "Upload custom apps".
+
+    ![CustomApp](images/CustomApp.jpg)
 
 ### How to use this Sample App:
 1. The app should be running like this, and you could click the start button:
@@ -71,6 +75,6 @@
 
 ### Code structure:
 
-- You can check app configuration in: [answer.json](.mods/answer.json)
+- You can check app configuration in: [answers.json](.mods/answers.json)
 - You can check the environment information in [env.default.json](.mods/env.default.json)
-- You will find frontend code in: [tabs](tabs/src/components)
+- You will find frontend code in: [tabs](tabs)
