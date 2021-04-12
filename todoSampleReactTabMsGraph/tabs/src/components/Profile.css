@@ -1,0 +1,35 @@
+.profile {
+    display: flex;
+    max-width: 430px;
+    margin: 20px;
+    background-color: #FFF;
+}
+
+.photo {
+    padding: 24px;
+}
+
+.photo img {
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+}
+
+.info {
+    margin-top: 24px;
+    margin-right: 24px;
+}
+
+.name {
+    font-weight: bold;
+    color: #252423;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.email,
+.phone {
+    color: #484644;
+    font-size: 12px;
+    line-height: 18px;
+}

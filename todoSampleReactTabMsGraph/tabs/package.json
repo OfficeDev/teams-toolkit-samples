@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@microsoft/teams-js": "^1.6.0",
     "@fluentui/react-northstar": "^0.51.0",
+    "@microsoft/teams-js": "^1.6.0",
+    "@microsoft/teamsfx": "0.0.4",
+    "axios": "^0.21.1",
+    "msteams-ui-components-react": "^0.8.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.3",
-    "mods-client": "github:OfficeDev/mods-client-sdk-private-preview"
+    "typestyle": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
