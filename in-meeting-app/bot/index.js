@@ -1,33 +1,33 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-//Import base server modules
+// Import base server modules
 const fetch = require('node-fetch');
 const express = require('express');
 const jwt_decode = require('jwt-decode');
 const app = express();
 require('dotenv').config()
 
-//Import BotFramework modules 
+// Import BotFramework modules 
 const { MessageFactory, TeamsInfo, BotFrameworkAdapter } = require('botbuilder');
 
-//Import local modules
+// Import local modules
 const { BotActivityHandler } = require('./teamsBot');
 const botActivityHandler = new BotActivityHandler();
 let meetingInfoRepository = require('./meetingInfoRepository');
 
-//SSO constants
+// SSO constants
 const graphScopes = 'https://graph.microsoft.com/' + process.env.GRAPH_SCOPES;
 
-//In-meeting dialog constants
+// In-meeting dialog constants
 const dialogWidth = 280;
 const dialogHeight = 180;
 const dialogTitle = "Test in-meeting dialog"
-const dialogUrl = process.env.REACT_APP_BASE_URL + "/dialog"; //The view for your in-meeting dialog ( see Dialog.js in tabs/src/components )
+const dialogUrl = process.env.REACT_APP_BASE_URL + "/dialog"; // The view for your in-meeting dialog ( see Dialog.js in tabs/src/components )
 
-const externalResourceUrl = `https://teams.microsoft.com/l/bubble/${process.env.TEAMS_APP_ID}?url=${dialogUrl}&height=${dialogHeight}&width=${dialogWidth}&title=${dialogTitle}&completionBotId=${process.env.BotId}`;
+const externalResourceUrl = `https://teams.microsoft.com/l/bubble/${process.env.TEAMS_APP_ID}?url=${dialogUrl}&height=${dialogHeight}&width=${dialogWidth}&title=${dialogTitle}&completionBotId=${process.env.BOT_ID}`;
 
-//Generic error handler for fetch() calls
+// Generic error handler for fetch() calls
 let handleQueryError = function (err) {
     console.log("handleQueryError called: ", err);
     return new Response(JSON.stringify({
@@ -41,8 +41,8 @@ let handleQueryError = function (err) {
  * See https://aka.ms/about-bot-adapter to learn more about adapters.
  */
 const adapter = new BotFrameworkAdapter({
-    appId: process.env.BotId,
-    appPassword: process.env.BotPassword
+    appId: process.env.BOT_ID,
+    appPassword: process.env.BOT_PASSWORD
 });
 adapter.onTurnError = async (context, error) => {
     // This check writes out errors to console log .vs. app insights.
@@ -68,9 +68,9 @@ adapter.onTurnError = async (context, error) => {
  */
 app.get('/getGraphAccessToken', async (req, res) => {
 
-    let participantId = jwt_decode(req.query.ssoToken)['oid']; //Get the participant ID from the decoded token
+    let participantId = jwt_decode(req.query.ssoToken)['oid']; // Get the participant ID from the decoded token
 
-    let tenantId = jwt_decode(req.query.ssoToken)['tid']; //Get the tenant ID from the decoded token
+    let tenantId = jwt_decode(req.query.ssoToken)['tid']; // Get the tenant ID from the decoded token
     let accessTokenEndpoint = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`;
 
     /** 
@@ -102,16 +102,16 @@ app.get('/getGraphAccessToken', async (req, res) => {
     let data = await response.json();
     if (!response.ok) {
         if ((data.error === 'invalid_grant') || (data.error === 'interaction_required')) {
-            //This is expected if it's the user's first time running the app ( user must consent ) or the admin requires MFA
+            // This is expected if it's the user's first time running the app ( user must consent ) or the admin requires MFA
             console.log("User must consent or perform MFA. You may also encouter this error if your client ID or secret is incorrect.");
-            res.status(403).json({ error: 'consent_required' }); //This error triggers the consent flow in the client.
+            res.status(403).json({ error: 'consent_required' }); // This error triggers the consent flow in the client.
         } else {
-            //Unknown error
+            // Unknown error
             console.log('Could not exchange access token for unknown reasons.');
             res.status(500).json({ error: 'Could not exchange access token' });
         }
     } else {
-        //The on behalf of token exchange worked. Return the token (data object) to the client.
+        // The on behalf of token exchange worked. Return the token (data object) to the client.
         res.send(data);
     }
 });
@@ -131,10 +131,10 @@ app.post('/api/messages', (req, res) => {
  */
 app.get('/getParticipantInfo', async (req, res) => {
 
-    let participantId = jwt_decode(req.query.ssoToken)['oid']; //Get the participant ID from the decoded token
-    let tenantId = jwt_decode(req.query.ssoToken)['tid']; //Get the tenant ID from the decoded token
+    let participantId = jwt_decode(req.query.ssoToken)['oid']; // Get the participant ID from the decoded token
+    let tenantId = jwt_decode(req.query.ssoToken)['tid']; // Get the tenant ID from the decoded token
     let meetingId = req.query.meetingId;
-    let conversationReference = meetingInfoRepository.getConversationReference(req.query.conversationId); //Look up the conversation reference object by conversation Id
+    let conversationReference = meetingInfoRepository.getConversationReference(req.query.conversationId); // Look up the conversation reference object by conversation Id
 
     adapter.continueConversation(conversationReference, async (context) => {
         /**
@@ -155,7 +155,7 @@ app.get('/inMeetingDialog', (req, res) => {
     let conversationReference = meetingInfoRepository.getConversationReference(req.query.conversationId);
 
     adapter.continueConversation(conversationReference, async (context) => {
-        const replyActivity = MessageFactory.text("In-meeting dialog sent"); // this could be an adaptive card instead
+        const replyActivity = MessageFactory.text("In-meeting dialog sent"); // This could be an adaptive card instead
         replyActivity.channelData = {
             notification: {
                 alertInMeeting: true,

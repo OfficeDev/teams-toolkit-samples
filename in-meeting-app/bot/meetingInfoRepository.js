@@ -29,5 +29,5 @@ class MeetingInfoRepository {
     }
 }
 
-//Export singleton
+// Export singleton
 module.exports = new MeetingInfoRepository();

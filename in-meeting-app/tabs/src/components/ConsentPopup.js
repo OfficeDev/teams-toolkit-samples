@@ -20,7 +20,7 @@ class ConsentPopup extends React.Component {
     microsoftTeams.getContext((context, error) => {
 
       let tenant = context['tid']; //Tenant ID of the logged in user
-      let client_id = process.env.REACT_APP_AZURE_APP_REGISTRATION_ID; //Client ID of the Azure AD app registration ( may be from different tenant for multitenant apps)
+      let client_id = process.env.REACT_APP_AZURE_APP_REGISTRATION_ID; // Client ID of the Azure AD app registration ( may be from different tenant for multitenant apps)
       let graph_scopes = process.env.REACT_APP_GRAPH_SCOPES;
 
       /**
@@ -30,7 +30,7 @@ class ConsentPopup extends React.Component {
       let queryParams = {
         tenant: `${tenant}`,
         client_id: `${client_id}`,
-        response_type: "token", //token_id in other samples is only needed if using open ID
+        response_type: "token", // token_id in other samples is only needed if using open ID
         scope: `https://graph.microsoft.com/${graph_scopes}`,
         redirect_uri: window.location.origin + "/auth-end",
         nonce: crypto.randomBytes(16).toString('base64')
@@ -40,8 +40,8 @@ class ConsentPopup extends React.Component {
       queryParams = new URLSearchParams(queryParams).toString();
       let authorizeEndpoint = url + queryParams;
 
-      //Redirect to the Azure authorization endpoint. When that flow completes, the user will be directed to auth-end
-      //Go to ClosePopup.js
+      // Redirect to the Azure authorization endpoint. When that flow completes, the user will be directed to auth-end
+      // Go to ClosePopup.js
       window.location.assign(authorizeEndpoint);
 
     });

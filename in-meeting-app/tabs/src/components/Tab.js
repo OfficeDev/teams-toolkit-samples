@@ -24,7 +24,7 @@ class Tab extends React.Component {
       error: false
     }
 
-    //Bind any functions that need to be passed as callbacks or used to React components.
+    // Bind any functions that need to be passed as callbacks or used to React components.
     this.ssoLoginSuccess = this.ssoLoginSuccess.bind(this);
     this.ssoLoginFailure = this.ssoLoginFailure.bind(this);
     this.consentSuccess = this.consentSuccess.bind(this);
@@ -49,9 +49,9 @@ class Tab extends React.Component {
       this.setState({ context: context });
     });
 
-    //Perform single sign-on authentication
+    // Perform single sign-on authentication
     let authTokenRequestOptions = {
-      successCallback: (result) => { this.ssoLoginSuccess(result) }, //The result variable is the SSO token.
+      successCallback: (result) => { this.ssoLoginSuccess(result) }, // The result variable is the SSO token.
       failureCallback: (error) => { this.ssoLoginFailure(error) }
     };
 
@@ -76,20 +76,20 @@ class Tab extends React.Component {
   exchangeClientTokenForServerToken = async (token) => {
 
     let serverURL = `${process.env.REACT_APP_BASE_URL}/getGraphAccessToken?ssoToken=${token}`;
-    let response = await fetch(serverURL).catch(this.unhandledFetchError); //This calls getGraphAccessToken route in /bot/index.js
+    let response = await fetch(serverURL).catch(this.unhandledFetchError); // This calls getGraphAccessToken route in /bot/index.js
     let data = await response.json().catch(this.unhandledFetchError);
 
     if (!response.ok && data.error === 'consent_required') {
-      //A consent_required error means it's the first time a user is logging into to the app, so they must consent to sharing their Graph data with the app.
-      //They may also see this error if MFA is required.
-      this.setState({ consentRequired: true }); //This displays the consent required message.
-      this.showConsentDialog(); //Proceed to show the consent dialogue.
+      // A consent_required error means it's the first time a user is logging into to the app, so they must consent to sharing their Graph data with the app.
+      // They may also see this error if MFA is required.
+      this.setState({ consentRequired: true }); // This displays the consent required message.
+      this.showConsentDialog(); // Proceed to show the consent dialogue.
     } else if (!response.ok) {
-      //Unknown error
+      // Unknown error
       console.error(data);
       this.setState({ error: true });
     } else {
-      //Server side token exchange worked. Save the access_token to state, so that it can be picked up and used by the componentDidMount lifecycle method.
+      // Server side token exchange worked. Save the access_token to state, so that it can be picked up and used by the componentDidMount lifecycle method.
       this.setState({ graphAccessToken: data['access_token'] });
     }
   }
@@ -113,7 +113,7 @@ class Tab extends React.Component {
    * Callback function for a successful authorization 
    */
   consentSuccess(result) {
-    //Save the Graph access token in state
+    // Save the Graph access token in state
     this.setState({
       graphAccessToken: result,
       consentProvided: true
@@ -131,11 +131,11 @@ class Tab extends React.Component {
    */
   componentDidUpdate = async (prevProps, prevState) => {
 
-    //Check to see if a Graph access token is now in state AND that it didn't exist previously
+    // Check to see if a Graph access token is now in state AND that it didn't exist previously
     if ((prevState.graphAccessToken === "") && (this.state.graphAccessToken !== "")) {
       this.callGraphFromClient();
 
-      //Check to see if this app is running in the context of a meeting, and get the user's meeting role information.
+      // Check to see if this app is running in the context of a meeting, and get the user's meeting role information.
       if (this.state.context['meetingId']) {
         this.getParticipantInfo();
       }
@@ -163,10 +163,10 @@ class Tab extends React.Component {
       this.setState({ error: true });
     }
 
-    let imageBlog = await response.blob().catch(this.unhandledFetchError); //Get image data as raw binary data
+    let imageBlog = await response.blob().catch(this.unhandledFetchError); // Get image data as raw binary data
 
     this.setState({
-      photo: URL.createObjectURL(imageBlog) //Convert binary data to an image URL and set the url in state
+      photo: URL.createObjectURL(imageBlog) // Convert binary data to an image URL and set the url in state
     })
   }
 
@@ -179,10 +179,10 @@ class Tab extends React.Component {
     let meetingId = this.state.context['meetingId'];
     let userObjectId = this.state.context['userObjectId'];
 
-    //Request must be sent from the BotFramework service, so send it to the bot to make the Bot Framework REST request
+    // Request must be sent from the BotFramework service, so send it to the bot to make the Bot Framework REST request
     let serverURL = `${process.env.REACT_APP_BASE_URL}/getParticipantInfo?ssoToken=${ssoToken}&conversationId=${chatId}&aadObjectId=${userObjectId}&meetingId=${meetingId}`;
 
-    let response = await fetch(serverURL).catch(this.unhandledFetchError); //This calls getGraphAccessToken route in /bot/index.js
+    let response = await fetch(serverURL).catch(this.unhandledFetchError); // This calls getGraphAccessToken route in /bot/index.js
     let data = await response.json().catch(this.unhandledFetchError);
 
     if (!response.ok) {
@@ -198,7 +198,7 @@ class Tab extends React.Component {
    * Display an in-meeting dialog (popup).
    */
   displayInMeetingDialog() {
-    //In-meeting dialogs are triggered via the BotFramework SDK. Send the requst to the api-server.
+    // In-meeting dialogs are triggered via the BotFramework SDK. Send the requst to the api-server.
     let serverURL = `${process.env.REACT_APP_BASE_URL}/inMeetingDialog?conversationId=${this.state.context.chatId}`;
     fetch(serverURL).catch(this.unhandledFetchError);
   }
