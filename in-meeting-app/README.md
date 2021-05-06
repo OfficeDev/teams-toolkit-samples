@@ -53,7 +53,7 @@ Note: It may be worth purchasing a basic subscription to ngrok so you can get a 
 - Edit the scheduled meeting.
 - Press the '+' button, then select 'Manage apps'.
 - Select the 'Upload custom app' from the bottom right corner.
-- Choose the zip package ( zip the three files in manifest/local folder ).
+- Go to manifest/local folder and zip the three files under local folder. Ensure the zip file contains only three files, no extra folder layers in the zip file.
 - Once you see it in a meeting's list of managed apps, press the '+' again to add it to meeting.
 - Join the meeting and open the app to see it in action. 
 
