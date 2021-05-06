@@ -4,7 +4,11 @@
 import { default as axios } from 'axios';
 import * as querystring from 'querystring';
 import { TeamsActivityHandler, CardFactory, TurnContext } from 'botbuilder';
-
+import {
+    loadConfiguration,
+    DefaultTediousConnectionConfiguration
+} from "teamsdev-client";
+import * as tedious from "tedious";
 export class MessageExtensionBot extends TeamsActivityHandler {
 
     // Action.
@@ -21,14 +25,39 @@ export class MessageExtensionBot extends TeamsActivityHandler {
 
     // Search.
     public async handleTeamsMessagingExtensionQuery(context: TurnContext, query: any): Promise<any> {
+        loadConfiguration();
+
+        const sqlConnectConfig = new DefaultTediousConnectionConfiguration();
+        const config = await sqlConnectConfig.getConfig();
+        const conn = new tedious.Connection(config);
+        await connectSQL(conn);
+
         const searchQuery = query.parameters[0].value;
-        const response = await axios.get(`http://registry.npmjs.com/-/v1/search?${querystring.stringify({ text: searchQuery, size: 8 })}`);
+        let sqlQuery:string
+        console.log(query.commandId);
+        
+        if (query.commandId === "allItems") {
+            sqlQuery = `SELECT * FROM [dbo].[TeamPostEntity] where Title like '%${searchQuery}%' ORDER BY PostID DESC OFFSET 0 ROWS FETCH NEXT 8 ROWS ONLY;`;
+        } else {
+            const userID = context.activity.from.aadObjectId
+            sqlQuery = `SELECT * FROM [dbo].[TeamPostEntity] where Title like '%${searchQuery}%' and UserID = '${userID}' ORDER BY PostID DESC OFFSET 0 ROWS FETCH NEXT 8 ROWS ONLY;`;
+        }
+
+        var result = await executeQuery(sqlQuery, conn);
+        conn.close();
+
+        // console.log(result);
 
         const attachments = [];
-        response.data.objects.forEach(obj => {
-            const heroCard = CardFactory.heroCard(obj.package.name);
-            const preview = CardFactory.heroCard(obj.package.name);
-            preview.content.tap = { type: 'invoke', value: { description: obj.package.description } };
+        result.forEach(post => {
+            const heroCard = CardFactory.heroCard(post.Title, post.Description);
+            const preview = CardFactory.heroCard(post.Title);
+            preview.content.tap = {
+                type: 'result', value: {
+                    description: post.Description,
+                    contentUrl: post.ContentUrl
+                }
+            };
             const attachment = { ...heroCard, preview };
             attachments.push(attachment);
         });
@@ -137,4 +166,34 @@ async function shareMessageCommand(context: TurnContext, action: any): Promise<a
             attachments: [attachment]
         },
     };
+}
+
+async function connectSQL(connection) {
+    return new Promise((resolve) => {
+        connection.on("connect", (error) => {
+            resolve(connection);
+        });
+    });
+}
+
+async function executeQuery(query, connection): Promise<any[]> {
+    return new Promise((resolve) => {
+        var res = [];
+        const request = new tedious.Request(query, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        });
+        request.on("row", (columns) => {
+            var row = {};
+            columns.forEach((column) => {
+                row[column.metadata.colName] = column.value;
+            });
+            res.push(row);
+        });
+        request.on("requestCompleted", () => {
+            resolve(res);
+        });
+        connection.execSql(request);
+    });
 }

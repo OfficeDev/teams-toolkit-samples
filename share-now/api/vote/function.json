@@ -9,7 +9,7 @@
         "get",
         "post"
       ],
-      "route": "getUserProfile"
+      "route": "vote/{id:int}"
     },
     {
       "type": "http",
@@ -22,5 +22,5 @@
       "type": "TeamsFx"
     }
   ],
-  "scriptFile": "../dist/getUserProfile/index.js"
+  "scriptFile": "../dist/vote/index.js"
 }

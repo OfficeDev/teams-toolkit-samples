@@ -10,6 +10,8 @@ import { TeamsUserCredential } from "teamsdev-client";
 import { useData } from "./lib/useData";
 import { Deploy } from "./Deploy";
 import { Publish } from "./Publish";
+import { CreateFunctions } from "./CreateFunctions";
+import { VoteFunctions } from "./VoteFunctions";
 
 export function Welcome(props: {
   showFunction?: boolean;
@@ -50,21 +52,23 @@ export function Welcome(props: {
   return (
     <div className="welcome page">
       <div className="narrow page-padding">
-        <Image src="hello.png" />
+        {/* <Image src="hello.png" /> */}
         <h1 className="center">
           Congratulations{userName ? ", " + userName : ""}!
         </h1>
         <p className="center">
           Your app is running in your {friendlyEnvironmentName}
         </p>
-        <Menu defaultActiveIndex={0} items={items} underlined secondary />
+        {/* <Menu defaultActiveIndex={0} items={items} underlined secondary /> */}
         <div className="sections">
           {selectedMenuItem === "local" && (
             <div>
-              <EditCode showFunction={showFunction} />
-              {isInTeams && <CurrentUser userName={userName} />}
+              {/* <EditCode showFunction={showFunction} /> */}
+              {/* {isInTeams && <CurrentUser userName={userName} />} */}
               <Graph />
               {showFunction && <AzureFunctions />}
+              {showFunction && <CreateFunctions />}
+              {showFunction && <VoteFunctions />}
             </div>
           )}
           {selectedMenuItem === "azure" && (

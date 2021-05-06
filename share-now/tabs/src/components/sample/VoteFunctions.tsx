@@ -1,21 +1,21 @@
 import React from "react";
-import { Button, Loader } from "@fluentui/react-northstar";
+import { Button, Input, Loader } from "@fluentui/react-northstar";
 import { useData } from "./lib/useData";
 import * as axios from "axios";
 import {
   TeamsUserCredential,
   getResourceConfiguration,
   ResourceType,
-} from "teamsdev-client"
+} from "teamsdev-client";
 
-var functionName = process.env.REACT_APP_FUNC_NAME || "myFunc";
+var functionName = "vote";
 
 async function callFunction() {
   try {
     const credential = new TeamsUserCredential();
     const accessToken = await credential.getToken("");
     const apiConfig = getResourceConfiguration(ResourceType.API);
-    const response = await axios.default.get(apiConfig.endpoint + "/api/" + functionName, {
+    const response = await axios.default.post(apiConfig.endpoint + "/api/" + functionName + "/3", {}, {
       headers: {
         authorization: "Bearer " + accessToken?.token || "",
       },
@@ -43,27 +43,19 @@ async function callFunction() {
   }
 }
 
-export function AzureFunctions(props: { codePath?: string; docsUrl?: string; }) {
-  const { codePath, docsUrl } = {
-    codePath: `api/${functionName}/index.js`,
-    docsUrl: "https://aka.ms/teamsfx-azure-functions",
-    ...props,
-  };
+export function VoteFunctions(props: { codePath?: string; docsUrl?: string; }) {
   const { loading, data, error, reload } = useData(callFunction, {
     auto: false,
   });
   return (
     <div>
-      <h2>List posts</h2>
+      <h2>Vote for post</h2>
       {!loading && (
-        <Button primary content="List Posts" onClick={reload} />
+        <Button primary content="Vote" onClick={reload} />
       )}
       {loading && <Loader />}
       {!loading && !!data && !error && (
         <pre>{JSON.stringify(data, null, 2)}</pre>
-      )}
-      {!loading && !data && !error && (
-        <pre>posts will be displayed here</pre>
       )}
       {!loading && !!error && <div className="error">{error.toString()}</div>}
     </div>

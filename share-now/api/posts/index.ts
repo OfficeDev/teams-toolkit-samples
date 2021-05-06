@@ -11,8 +11,10 @@ import {
   createMicrosoftGraphClient,
   loadConfiguration,
   OnBehalfOfUserCredential,
-  UserInfo
+  UserInfo,
+  DefaultTediousConnectionConfiguration
 } from "teamsdev-client";
+import * as tedious from "tedious";
 
 interface Response {
   status: number;
@@ -53,20 +55,17 @@ export default async function run(
     body: {}
   };
 
-  // Put an echo into response body.
-  res.body.receivedHTTPRequestBody = req.body || "";
-
   // Set default configuration for teamsfx SDK.
   try {
     loadConfiguration();
-  } catch(e) {
+  } catch (e) {
     context.log.error(e);
     return {
       status: 500,
       body: {
         error: 'Failed to load app configuration.'
       }
-    }
+    };
   }
 
   // Prepare access token.
@@ -77,14 +76,14 @@ export default async function run(
       body: {
         error: "No access token was found in request header."
       }
-    }
+    };
   }
 
   // Construct credential.
   let credential: OnBehalfOfUserCredential;
   try {
     credential = new OnBehalfOfUserCredential(accessToken);
-  } catch(e) {
+  } catch (e) {
     context.log.error(e);
     return {
       status: 500,
@@ -93,41 +92,88 @@ export default async function run(
           'Failed to obtain on-behalf-of credential using your accessToken. ' +
           'Ensure your function app is configured with the right Azure AD App registration.'
       }
-    }
+    };
   }
 
-  // Query user's information from the access token.
-  try {
-    const currentUser: UserInfo = await credential.getUserInfo();
-    if (currentUser && currentUser.displayName) {
-      res.body.userInfoMessage = `User display name is ${currentUser.displayName}.`;
-    } else {
-      res.body.userInfoMessage = `No user information was found in access token.`;
+  const currentUser = await credential.getUserInfo();
+
+  const method = req.method.toLowerCase();
+  if (method === "get") {
+    const pageCount = req.query.pageCount ? Number(req.query.pageCount) : 0;
+    const pageSize = req.query.pageSize ? Number(req.query.pageSize) : 2;
+    context.log(`pageCount ${pageCount} pageSize ${pageSize}`);
+
+    try {
+      const sqlConnectConfig = new DefaultTediousConnectionConfiguration();
+      const config = await sqlConnectConfig.getConfig();
+      const conn = new tedious.Connection(config);
+      await connectSQL(conn);
+
+      let query = `SELECT * FROM [dbo].[TeamPostEntity] ORDER BY PostID DESC OFFSET ${pageSize * pageCount} ROWS FETCH NEXT ${pageSize} ROWS ONLY;`;
+
+      var result = await executeQuery(query, conn);
+      res.body["data"] = result;
+
+      conn.close();
+    } catch (e) {
+      res.status = 500;
+      res.body = {
+        error: "sql error:" + e.message
+      };
+      return res;
     }
-  } catch(e) {
-    context.log.error(e);
-    return {
-      status: 400,
-      body: {
-        error: "Access token is invalid."
+    return res;
+  } else if (method === "post") {
+    try {
+      const sqlConnectConfig = new DefaultTediousConnectionConfiguration();
+      const config = await sqlConnectConfig.getConfig();
+      const conn = new tedious.Connection(config);
+      await connectSQL(conn);
+
+      let query = `INSERT TeamPostEntity (ContentUrl, CreatedByName, CreatedDate, Description, IsRemoved, Tags, Title, TotalVote, Type, UpdatedDate, UserID) VALUES ('https://bing.com','zhaofeng xu', CURRENT_TIMESTAMP, 'hello', 0, 'red', 'manual post', 0,1, CURRENT_TIMESTAMP, '${currentUser.objectId}');`;
+
+      var result = await executeQuery(query, conn);
+      res.body["data"] = "create post successfully";
+
+      conn.close();
+    } catch (e) {
+      res.status = 500;
+      res.body = {
+        error: "sql error:" + e.message
+      };
+      return res;
+    }
+    return res;
+  }
+}
+
+
+function connectSQL(connection) {
+  return new Promise((resolve) => {
+    connection.on("connect", (error) => {
+      resolve(connection);
+    });
+  });
+}
+
+function executeQuery(query, connection) {
+  return new Promise((resolve) => {
+    var res = [];
+    const request = new tedious.Request(query, (err) => {
+      if (err) {
+        console.log(err);
       }
-    }
-  }
-
-  // Create a graph client to access user's Microsoft 365 data after user has consented.
-  try {
-    const graphClient: Client = createMicrosoftGraphClient(credential, [".default"]);
-    const profile: any = await graphClient.api("/me").get();
-    res.body.graphClientMessage = profile;
-  } catch (e) {
-    context.log.error(e);
-    return {
-      status: 500,
-      body: {
-        error: 'Failed to retrieve user profile from Microsoft Graph. The application may not be authorized.'
-      }
-    }
-  }
-
-  return res;
+    });
+    request.on("row", (columns) => {
+      var row = {};
+      columns.forEach((column) => {
+        row[column.metadata.colName] = column.value;
+      });
+      res.push(row);
+    });
+    request.on("requestCompleted", () => {
+      resolve(res);
+    });
+    connection.execSql(request);
+  });
 }
