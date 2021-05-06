@@ -31,16 +31,16 @@ export class MessageExtensionBot extends TeamsActivityHandler {
         const config = await sqlConnectConfig.getConfig();
         const conn = new tedious.Connection(config);
         await connectSQL(conn);
-
+        console.log(query);
         const searchQuery = query.parameters[0].value;
         let sqlQuery:string
         console.log(query.commandId);
         
         if (query.commandId === "allItems") {
-            sqlQuery = `SELECT * FROM [dbo].[TeamPostEntity] where Title like '%${searchQuery}%' ORDER BY PostID DESC OFFSET 0 ROWS FETCH NEXT 8 ROWS ONLY;`;
+            sqlQuery = `SELECT * FROM [dbo].[TeamPostEntity] where Title like '%${searchQuery}%' ORDER BY PostID DESC OFFSET ${query.queryOptions.skip} ROWS FETCH NEXT ${query.queryOptions.count} ROWS ONLY;`;
         } else {
             const userID = context.activity.from.aadObjectId
-            sqlQuery = `SELECT * FROM [dbo].[TeamPostEntity] where Title like '%${searchQuery}%' and UserID = '${userID}' ORDER BY PostID DESC OFFSET 0 ROWS FETCH NEXT 8 ROWS ONLY;`;
+            sqlQuery = `SELECT * FROM [dbo].[TeamPostEntity] where Title like '%${searchQuery}%' and UserID = '${userID}' ORDER BY PostID DESC OFFSET ${query.queryOptions.skip} ROWS FETCH NEXT ${query.queryOptions.count} ROWS ONLY;`;
         }
 
         var result = await executeQuery(sqlQuery, conn);
