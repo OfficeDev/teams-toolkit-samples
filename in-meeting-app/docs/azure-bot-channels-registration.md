@@ -34,19 +34,19 @@ The bot channels registration registers your web service as a bot with the Bot F
 1. Enter the name of the bot application you are registering, we used *BotTeamsAuth* (you need to select your own unique name).
 1. For the **Supported account types** select *Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)*.
 1. Click the **Register** button. Once completed, Azure displays the *Overview* page for the application.
-1. Copy and save to a file the **Application (client) ID** value.
+1. Copy and save the **Application (client) ID** value to a file.
 1. In the left panel, click **Certificate and secrets**.
     1. Under *Client secrets*, click **New client secret**.
     1. Add a description to identify this secret from others you might need to create for this app.
     1. Set *Expires* to your selection.
     1. Click **Add**.
     1. Copy the client secret and save it to a file.
-1. Go back to the **Bot Channel Registration** window and copy the *App ID* and the *Client secret* in the **Microsoft App ID** and **Password** boxes, respectively.
+1. Go back to the **Bot Channel Registration -> Create Microsoft App ID** window and copy the *App ID* and the *Client secret* in the **Microsoft App ID** and **Password** boxes, respectively.
 1. Click **OK**.
 1. Finally, click **Create**.
 
-After Azure has created the registration resource it will be included in the resource group list.  
-
+After 2-3 mins, the new Bot Channel Registration resource you just created will be added to your resource group.
+  
 Once your bot channels registration is created, you'll need to enable the Teams channel.
 
 1. In the [Azure portal](https://portal.azure.com/), under Azure services, select the **Bot Channel Registration** you just created.
