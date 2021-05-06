@@ -1,0 +1,125 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Stop All Services",
+            "type": "shell",
+            "command": "echo ${input:terminate}"
+        },
+        {
+            "label": "Pre Debug Check",
+            "dependsOn": [
+                "dependency check",
+                "start ngrok",
+                "prepare dev env"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Start Frontend",
+            "dependsOn": [
+                "teamsfx: frontend start",
+                "teamsfx: auth start"
+            ],
+            "dependsOrder": "parallel"
+        },
+        {
+            "label": "Start Bot",
+            "dependsOn": "teamsfx: bot start"
+        },
+        {
+            "label": "dependency check",
+            "type": "shell",
+            "command": "echo ${command:fx-extension.validate-dependencies}"
+        },
+        {
+            "label": "start ngrok",
+            "type": "teamsfx",
+            "command": "ngrok start",
+            "isBackground": true,
+            "presentation": {
+                "panel": "new"
+            },
+            "dependsOn": [
+                "bot npm install"
+            ]
+        },
+        {
+            "label": "prepare dev env",
+            "dependsOn": [
+                "prepare local environment",
+                "backend npm install",
+                "frontend npm install",
+                "bot npm install"
+            ],
+            "dependsOrder": "parallel"
+        },
+        {
+            "label": "bot npm install",
+            "type": "shell",
+            "command": "npm install",
+            "options": {
+                "cwd": "${workspaceFolder}/bot"
+            }
+        },
+        {
+            "label": "prepare local environment",
+            "type": "shell",
+            "command": "echo ${command:fx-extension.pre-debug-check}"
+        },
+        {
+            "label": "frontend npm install",
+            "type": "shell",
+            "command": "npm install",
+            "options": {
+                "cwd": "${workspaceFolder}/tabs"
+            }
+        },
+        {
+            "label": "Start Backend",
+            "dependsOn": [
+                "backend tsc watch",
+                "teamsfx: backend start"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "backend tsc watch",
+            "type": "shell",
+            "command": "npx tsc --watch",
+            "options": {
+                "cwd": "${workspaceFolder}/api"
+            },
+            "isBackground": true,
+            "problemMatcher": "$tsc-watch",
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "backend npm install",
+            "type": "shell",
+            "command": "npm install",
+            "options": {
+                "cwd": "${workspaceFolder}/api"
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "dependsOn": "backend extensions install"
+        },
+        {
+            "label": "backend extensions install",
+            "type": "shell",
+            "command": "echo ${command:fx-extension.backend-extensions-install}"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "terminate",
+            "type": "command",
+            "command": "workbench.action.tasks.terminate",
+            "args": "terminateAll"
+        }
+    ]
+}
