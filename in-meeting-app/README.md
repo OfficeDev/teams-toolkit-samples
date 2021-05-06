@@ -26,13 +26,13 @@ Note: It may be worth purchasing a basic subscription to ngrok so you can get a 
 
 ### Step 2: Register Azure AD applications
 1. Update the AAD app registration for tab SSO, following the instructions [here](docs/auth-aad-sso.md). The "fully qualified domain name" in the instructions will be your ngrok domain (Example: `f631****.ngrok.io`).
-1. Set up the tabs/.env and bot/.env files with the following keys:
+1. Replace the placeholders of the following keys with their acutal value, if there is any in the tabs/.env and bot/.env files:
     - `"appid"`: Application (client) ID of the bot's Azure AD application
     - `"clientSecret"`: client secret of the bot's Azure AD application
     - `"baseUrl "`: The ngrok endpoint (Example: `https://f631****.ngrok.io`)
 
 ### Step 3: Add the following entry to the manifest/local/manifest.json ([schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema))
-1. Set up the manifest file with the following keys:
+1. Replace the placeholders of the following keys with their acutal value in manifest file:
     - `"appid"`: Application (client) ID of the bot's Azure AD application
     - `"baseUrl "`: The ngrok endpoint (Example: `https://f631****.ngrok.io`)
     - `"baseUrlDomain "`: The ngrok domain (Example: `f631****.ngrok.io`)
@@ -63,3 +63,9 @@ Note: It may be worth purchasing a basic subscription to ngrok so you can get a 
 - Run `npm install` then `npm start`
 - Open a Terminal in Visual studio code, navigate to the `tabs` folder and run `npm install` `npm start`
 - Follow the steps in `Deploy to Teams` (if already installed the app please unistall it first). Then in action, it will hit the break point.
+
+
+## Code of Conduct
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
