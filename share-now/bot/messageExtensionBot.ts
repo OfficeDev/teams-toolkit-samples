@@ -31,23 +31,16 @@ export class MessageExtensionBot extends TeamsActivityHandler {
         conn.close();
         console.log(123);
 
-
         const attachments = [];
         result.forEach(post => {
-            const heroCard = CardFactory.heroCard(post.Title, post.Description);
             const card = CardFactory.adaptiveCard(buildCardContent(post.Title, post.Description, post.ContentUrl));
-
-            const preview = CardFactory.heroCard(post.Title);
-            preview.content.tap = {
-                type: 'result',
-                value: {
-                    description: post.Description,
-                    contentUrl: post.ContentUrl
-                }
-            };
+            const icon = voteIcon();
+            const nameString = post.CreatedByName.length < 25 ? htmlEscape(post.CreatedByName) : htmlEscape(post.CreatedByName.substr(0,24)) + " ..."
+            const preview = CardFactory.thumbnailCard(
+                `<p style='font-weight: 600;'>${post.Title}</p>`,
+                `${nameString} | ${post.Type} | ${post.TotalVote} ${icon}`
+            );
             const attachment = { ...card, preview };
-            // const content = buildCardContent(post.Title, post.Description, post.ContentUrl);
-            // const attachment = card;
 
             attachments.push(attachment);
         });
@@ -130,3 +123,18 @@ function buildCardContent(title, description, contentUrl) {
         ]
     };
 }
+
+function htmlEscape(str) {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+function voteIcon() {
+    const src = "https://user-images.githubusercontent.com/16380704/117462230-04235b00-af81-11eb-8419-1565ebbdab36.png";
+    return `<img src='${src}' alt='vote logo' width='15' height='16'`;
+}
+
