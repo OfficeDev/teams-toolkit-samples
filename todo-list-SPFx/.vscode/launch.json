@@ -1,0 +1,99 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Local workbench (Edge)",
+            "type": "pwa-msedge",
+            "request": "launch",
+            "url": "https://localhost:5432/workbench",
+            "webRoot": "${workspaceRoot}/SPFx",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///.././src/*": "${webRoot}/src/*",
+                "webpack:///../../../src/*": "${webRoot}/src/*",
+                "webpack:///../../../../src/*": "${webRoot}/src/*",
+                "webpack:///../../../../../src/*": "${webRoot}/src/*"
+            },
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ],
+            "preLaunchTask": "gulp serve",
+            "postDebugTask": "Terminate All Tasks",
+            "presentation": {
+                "group": "all",
+                "order": 1
+            }
+        },
+        {
+            "name": "Local workbench (Chrome)",
+            "type": "pwa-chrome",
+            "request": "launch",
+            "url": "https://localhost:5432/workbench",
+            "webRoot": "${workspaceRoot}/SPFx",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///.././src/*": "${webRoot}/src/*",
+                "webpack:///../../../src/*": "${webRoot}/src/*",
+                "webpack:///../../../../src/*": "${webRoot}/src/*",
+                "webpack:///../../../../../src/*": "${webRoot}/src/*"
+            },
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ],
+            "preLaunchTask": "gulp serve",
+            "postDebugTask": "Terminate All Tasks",
+            "presentation": {
+                "group": "all",
+                "order": 2
+            }
+        },
+        {
+            "name": "Hosted workbench (Edge)",
+            "type": "pwa-msedge",
+            "request": "launch",
+            "url": "https://enter-your-SharePoint-site/_layouts/workbench.aspx",
+            "webRoot": "${workspaceRoot}/SPFx",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///.././src/*": "${webRoot}/src/*",
+                "webpack:///../../../src/*": "${webRoot}/src/*",
+                "webpack:///../../../../src/*": "${webRoot}/src/*",
+                "webpack:///../../../../../src/*": "${webRoot}/src/*"
+            },
+            "runtimeArgs": [
+                "--remote-debugging-port=9222",
+                "-incognito"
+            ],
+            "preLaunchTask": "gulp serve",
+            "postDebugTask": "Terminate All Tasks",
+            "presentation": {
+                "group": "remote",
+                "order": 1
+            }
+        },
+        {
+            "name": "Hosted workbench (Chrome)",
+            "type": "pwa-chrome",
+            "request": "launch",
+            "url": "https://enter-your-SharePoint-site/_layouts/workbench.aspx",
+            "webRoot": "${workspaceRoot}/SPFx",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///.././src/*": "${webRoot}/src/*",
+                "webpack:///../../../src/*": "${webRoot}/src/*",
+                "webpack:///../../../../src/*": "${webRoot}/src/*",
+                "webpack:///../../../../../src/*": "${webRoot}/src/*"
+            },
+            "runtimeArgs": [
+                "--remote-debugging-port=9222",
+                "-incognito"
+            ],
+            "preLaunchTask": "gulp serve",
+            "postDebugTask": "Terminate All Tasks",
+            "presentation": {
+                "group": "remote",
+                "order": 2
+            }
+        }
+    ]
+}
