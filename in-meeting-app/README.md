@@ -2,6 +2,12 @@
 
 Meeting apps are Teams-aware webpages embedded in Microsoft Teams. They are scoped to group and teams. Add a meeting to an app from its installation page.
 
+## What you will learn in this sample
+1.How to build tab app for your Meeting App. 
+1.How to build a bot for your Meeting App. 
+1.How to use Microsoft Teams sdk to get Teams user login information. 
+1.How to use MS graph client to get access to M365 data. 
+
 ## Prerequisites
 -  [NodeJS](https://nodejs.org/en/)
 
