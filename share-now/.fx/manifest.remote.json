@@ -16,11 +16,11 @@
     },
     "name": {
         "short": "shareNow",
-        "full": "This field is not used"
+        "full": "shareNow"
     },
     "description": {
-        "short": "Short description for shareNow.",
-        "full": "Full description of shareNow."
+        "short": "Encourage co-workers to knowledge-based sharing of posts, videos, or topics.",
+        "full": "Encourage and introduce your co-workers to a widespread knowledge-based sharing of posts, videos, or topics with a bite-sized information on how it influenced them and learn together in Teams."
     },
     "accentColor": "#FFFFFF",
     "bots": [],

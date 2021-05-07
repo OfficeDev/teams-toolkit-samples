@@ -1,3 +1,5 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 import React from "react";
 import { Button, Input, Loader } from "@fluentui/react-northstar";
 import { useData } from "./lib/useData";

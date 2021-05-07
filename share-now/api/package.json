@@ -1,5 +1,5 @@
 {
-  "name": "teamsfx-template-api",
+  "name": "teamsfx-sample-share-now-function",
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",
@@ -11,7 +11,7 @@
     "@azure/functions": "^1.2.2",
     "@microsoft/microsoft-graph-client": "^2.2.1",
     "isomorphic-fetch": "^3.0.0",
-    "teamsdev-client": "^1.1.0",
+    "teamsdev-client": "^1.1.1",
     "tedious": "^9.2.3"
   },
   "devDependencies": {

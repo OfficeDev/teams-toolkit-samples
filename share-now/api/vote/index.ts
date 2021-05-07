@@ -1,9 +1,5 @@
-/* This code sample provides a starter kit to implement server side logic for your Teams App in TypeScript,
- * refer to https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference for complete Azure Functions
- * developer guide.
- */
-
-// Import polyfills for fetch required by msgraph-sdk-javascript.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import {

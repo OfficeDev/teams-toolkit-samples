@@ -1,15 +1,12 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 import { useState } from "react";
 import { Image, Menu } from "@fluentui/react-northstar";
 import "./Welcome.css";
-import { EditCode } from "./EditCode";
-import { AzureFunctions } from "./AzureFunctions";
-import { Graph } from "./Graph";
-import { CurrentUser } from "./CurrentUser";
+import { PostFunctions } from "./PostFunctions";
 import { useTeamsFx } from "./lib/useTeamsFx";
 import { TeamsUserCredential } from "teamsdev-client";
 import { useData } from "./lib/useData";
-import { Deploy } from "./Deploy";
-import { Publish } from "./Publish";
 import { CreateFunctions } from "./CreateFunctions";
 import { VoteFunctions } from "./VoteFunctions";
 
@@ -29,7 +26,7 @@ export function Welcome(props: {
     }[environment] || "local environment";
 
   const steps = ["local", "azure", "publish"];
-  const friendlyStepsName: { [key: string]: string } = {
+  const friendlyStepsName: { [key: string]: string; } = {
     local: "Build your app locally",
     azure: "Deploy to the Cloud",
     publish: "Publish to Teams",
@@ -52,35 +49,18 @@ export function Welcome(props: {
   return (
     <div className="welcome page">
       <div className="narrow page-padding">
-        {/* <Image src="hello.png" /> */}
         <h1 className="center">
           Congratulations{userName ? ", " + userName : ""}!
         </h1>
         <p className="center">
           Your app is running in your {friendlyEnvironmentName}
         </p>
-        {/* <Menu defaultActiveIndex={0} items={items} underlined secondary /> */}
         <div className="sections">
-          {selectedMenuItem === "local" && (
-            <div>
-              {/* <EditCode showFunction={showFunction} /> */}
-              {/* {isInTeams && <CurrentUser userName={userName} />} */}
-              <Graph />
-              {showFunction && <AzureFunctions />}
-              {showFunction && <CreateFunctions />}
-              {showFunction && <VoteFunctions />}
-            </div>
-          )}
-          {selectedMenuItem === "azure" && (
-            <div>
-              <Deploy />
-            </div>
-          )}
-          {selectedMenuItem === "publish" && (
-            <div>
-              <Publish />
-            </div>
-          )}
+          <div>
+            {showFunction && <PostFunctions />}
+            {showFunction && <CreateFunctions />}
+            {showFunction && <VoteFunctions />}
+          </div>
         </div>
       </div>
     </div>

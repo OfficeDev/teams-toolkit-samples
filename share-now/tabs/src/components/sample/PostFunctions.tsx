@@ -1,3 +1,5 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 import React from "react";
 import { Button, Loader } from "@fluentui/react-northstar";
 import { useData } from "./lib/useData";
@@ -43,7 +45,7 @@ async function callFunction() {
   }
 }
 
-export function AzureFunctions(props: { codePath?: string; docsUrl?: string; }) {
+export function PostFunctions(props: { codePath?: string; docsUrl?: string; }) {
   const { codePath, docsUrl } = {
     codePath: `api/${functionName}/index.js`,
     docsUrl: "https://aka.ms/teamsfx-azure-functions",
