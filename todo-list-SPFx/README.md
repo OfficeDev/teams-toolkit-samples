@@ -21,8 +21,10 @@
 1. Set up SharePoint Environment
    Set up M365 tenant and crate SharePoint App Catalog site follow the guide [here](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
    > *Note - only create App Catalog site, do not create site collection.*
-1. Use the root site in SharePoint to create a List. 
-    > *Note:The Teams App automatically detect only SharePoint root site(site URL end with xx.sharepoint.com. eg. `https://{your-tenant-name}.sharepoint.com/`), please make sure your list created in the SharePoint root site. If you want to create a List in other subsite, manual steps to change the site url in [./src/webparts/TodoList/components/SharePointListManager.ts](./src/webparts/TodoList/components/SharePointListManager.ts) are required. *
+1. Use the root site in SharePoint to create a List.
+    - Navigate to the SharePoint root site, in `Home` tab, click `New` and select `List`. 
+    > *Note: You must nagivate to root site instead of any other subsite. Root site URL ends with xx.sharepoint.com.* eg. `https://{your-tenant-name}.sharepoint.com/`. 
+    > *This is because Teams App automatically detect SharePoint root site only. If you want to create a List in other subsite, manual steps to change the site url in* *[./src/webparts/TodoList/components/SharePointListManager.ts](./src/webparts/TodoList/components/SharePointListManager.ts) are required.*
     - Name the List 'To Do List'
     - Click `Add Column`, select `Single line of text`, name the column 'description'
     - Click `Add Column`, select `Yes/No`, name the column 'isCompleted'
