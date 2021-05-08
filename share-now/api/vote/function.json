@@ -6,8 +6,8 @@
       "direction": "in",
       "name": "req",
       "methods": [
-        "get",
-        "post"
+        "post",
+        "delete"
       ],
       "route": "vote/{id:int}"
     },
