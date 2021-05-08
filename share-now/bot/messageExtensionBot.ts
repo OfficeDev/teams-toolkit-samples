@@ -1,13 +1,11 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
-import * as querystring from 'querystring';
 import { TeamsActivityHandler, CardFactory, TurnContext } from 'botbuilder';
 import {
     loadConfiguration,
     DefaultTediousConnectionConfiguration
 } from "teamsdev-client";
 import * as tedious from "tedious";
-import * as cards from "adaptivecards";
 export class MessageExtensionBot extends TeamsActivityHandler {
     // Search.
     public async handleTeamsMessagingExtensionQuery(context: TurnContext, query: any): Promise<any> {
@@ -29,16 +27,16 @@ export class MessageExtensionBot extends TeamsActivityHandler {
 
         var result = await executeQuery(sqlQuery, conn);
         conn.close();
-        console.log(123);
 
         const attachments = [];
         result.forEach(post => {
-            const card = CardFactory.adaptiveCard(buildCardContent(post.Title, post.Description, post.ContentUrl));
+            const card = CardFactory.adaptiveCard(buildCardContent(post));
+
             const icon = voteIcon();
-            const nameString = post.CreatedByName.length < 25 ? htmlEscape(post.CreatedByName) : htmlEscape(post.CreatedByName.substr(0,24)) + " ..."
+            const nameString = post.CreatedByName.length < 25 ? htmlEscape(post.CreatedByName) : htmlEscape(post.CreatedByName.substr(0, 24)) + " ...";
             const preview = CardFactory.thumbnailCard(
                 `<p style='font-weight: 600;'>${post.Title}</p>`,
-                `${nameString} | ${post.Type} | ${post.TotalVote} ${icon}`
+                `${nameString} | ${postName(post.Type)} | ${post.TotalVote} ${icon}`
             );
             const attachment = { ...card, preview };
 
@@ -95,7 +93,8 @@ async function executeQuery(query, connection): Promise<any[]> {
     });
 }
 
-function buildCardContent(title, description, contentUrl) {
+function buildCardContent(post) {
+
     return {
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
         "type": "AdaptiveCard",
@@ -103,22 +102,91 @@ function buildCardContent(title, description, contentUrl) {
         "body": [
             {
                 "type": "TextBlock",
-                "text": `"${title}"`,
+                "text": post.Title,
                 "weight": "Bolder",
                 "wrap": true
             },
             {
                 "type": "TextBlock",
-                "text": `"${description}"`,
+                "text": post.Description,
                 "size": "Small",
                 "wrap": true
-            }
+            },
+            {
+                "type": "TextBlock",
+                "text": `**Created By**: ${post.CreatedByName}`,
+                "size": "Small",
+                "wrap": true
+            },
+            {
+                "type": "ColumnSet",
+                "columns": [
+                    {
+                        "type": "Column",
+                        "space": "small",
+                        "width": "auto",
+                        "items": [
+                            {
+                                "type": "Image",
+                                "url": postDotSrc(post.Type),
+                                "width": "10px",
+                                "height": "10px",
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Column",
+                        "width": "auto",
+                        "items": [
+                            {
+                                "type": "TextBlock",
+                                "text": postName(post.Type),
+                                "weight": "Bolder"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "ColumnSet",
+                "columns": [
+                    {
+                        "type": "Column",
+                        "width": "auto",
+                        "items": [
+                            {
+                                "type": "TextBlock",
+                                "text": post.TotalVote
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Column",
+                        "space": "small",
+                        "width": "auto",
+                        "items": [
+                            {
+                                "type": "Image",
+                                "url": voteSrc(),
+                                "width": "15px",
+                                "height": "16px",
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "TextBlock",
+                "text": `**Tags**: ${post.Tags.replace(/;/g, ',')}`,
+                "size": "Small",
+                "wrap": true
+            },
         ],
         "actions": [
             {
                 "type": "Action.OpenUrl",
                 "title": "OpenItem",
-                "url": contentUrl
+                "url": post.ContentUrl
             }
         ]
     };
@@ -133,8 +201,33 @@ function htmlEscape(str) {
         .replace(/>/g, '&gt;');
 }
 
+function voteSrc() {
+    return "https://user-images.githubusercontent.com/16380704/117462230-04235b00-af81-11eb-8419-1565ebbdab36.png";
+}
+
 function voteIcon() {
-    const src = "https://user-images.githubusercontent.com/16380704/117462230-04235b00-af81-11eb-8419-1565ebbdab36.png";
+    const src = voteSrc();
     return `<img src='${src}' alt='vote logo' width='15' height='16'`;
 }
 
+function postName(postType) {
+    const postTypeNames = {
+        1: "Article / blog",
+        2: "Other",
+        3: "Podcast",
+        4: "Video",
+        5: "Book"
+    };
+    return postTypeNames[postType];
+}
+
+function postDotSrc(postType) {
+    const postDotSrcs = {
+        1: "https://user-images.githubusercontent.com/16380704/117462298-1a311b80-af81-11eb-81a2-eb0c2843937c.png",
+        2: "https://user-images.githubusercontent.com/16380704/117462456-477dc980-af81-11eb-8b9c-7a363e2b73c1.png",
+        3: "https://user-images.githubusercontent.com/16380704/117462509-549ab880-af81-11eb-8201-113582a544f3.png",
+        4: "https://user-images.githubusercontent.com/16380704/117462575-61b7a780-af81-11eb-8c8c-8f4cb33ed327.png",
+        5: "https://user-images.githubusercontent.com/16380704/117462417-3cc33480-af81-11eb-9ac2-0f009eb2d194.png"
+    };
+    return postDotSrcs[postType];
+}
