@@ -15,12 +15,12 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "To Do List",
-        "full": "To Do List"
+        "short": "toDoList",
+        "full": "toDoList"
     },
     "description": {
-        "short": "To Do List",
-        "full": "To Do List"
+        "short": "toDoList",
+        "full": "toDoList"
     },
     "accentColor": "#FFFFFF",
     "bots": [],
