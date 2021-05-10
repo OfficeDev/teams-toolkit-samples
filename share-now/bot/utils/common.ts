@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
-import "isomorphic-fetch";
 import {
     DefaultTediousConnectionConfiguration
 } from "teamsdev-client";

@@ -3,94 +3,57 @@
 import { TeamsActivityHandler, CardFactory, TurnContext } from 'botbuilder';
 import {
     loadConfiguration,
-    DefaultTediousConnectionConfiguration
 } from "teamsdev-client";
-import * as tedious from "tedious";
+import { executeQuery, getSQLConnection } from './utils/common';
 export class MessageExtensionBot extends TeamsActivityHandler {
+    constructor() {
+        super();
+        loadConfiguration();
+    }
     // Search.
     public async handleTeamsMessagingExtensionQuery(context: TurnContext, query: any): Promise<any> {
-        loadConfiguration();
-
-        const sqlConnectConfig = new DefaultTediousConnectionConfiguration();
-        const config = await sqlConnectConfig.getConfig();
-        const conn = new tedious.Connection(config);
-        await connectSQL(conn);
-        const searchQuery = query.parameters[0].value;
-        let sqlQuery: string;
-
-        if (query.commandId === "allItems") {
-            sqlQuery = `SELECT * FROM [dbo].[TeamPostEntity] where Title like '%${searchQuery}%' ORDER BY PostID DESC OFFSET ${query.queryOptions.skip} ROWS FETCH NEXT ${query.queryOptions.count} ROWS ONLY;`;
-        } else {
-            const userID = context.activity.from.aadObjectId;
-            sqlQuery = `SELECT * FROM [dbo].[TeamPostEntity] where Title like '%${searchQuery}%' and UserID = '${userID}' ORDER BY PostID DESC OFFSET ${query.queryOptions.skip} ROWS FETCH NEXT ${query.queryOptions.count} ROWS ONLY;`;
-        }
-
-        var result = await executeQuery(sqlQuery, conn);
-        conn.close();
-
-        const attachments = [];
-        result.forEach(post => {
-            const card = CardFactory.adaptiveCard(buildCardContent(post));
-
-            const icon = voteIcon();
-            const nameString = post.CreatedByName.length < 25 ? htmlEscape(post.CreatedByName) : htmlEscape(post.CreatedByName.substr(0, 24)) + " ...";
-            const preview = CardFactory.thumbnailCard(
-                `<p style='font-weight: 600;'>${post.Title}</p>`,
-                `${nameString} | ${postName(post.Type)} | ${post.TotalVote} ${icon}`
-            );
-            const attachment = { ...card, preview };
-
-            attachments.push(attachment);
-        });
-
-        return {
-            composeExtension: {
-                type: 'result',
-                attachmentLayout: 'list',
-                attachments: attachments
+        let connection;
+        try {
+            connection = await getSQLConnection();
+            const searchQuery = query.parameters[0].value;
+            let sqlQuery: string;
+            if (query.commandId === "allItems") {
+                sqlQuery = buildQuery(searchQuery, query.queryOptions.skip, query.queryOptions.count);
+            } else {
+                sqlQuery = buildQuery(searchQuery, query.queryOptions.skip, query.queryOptions.count, context.activity.from.aadObjectId);
             }
-        };
-    }
+            var result = await executeQuery(sqlQuery, connection);
+            const attachments = [];
+            result.forEach(post => {
+                const card = CardFactory.adaptiveCard(buildCardContent(post));
 
-    public async handleTeamsMessagingExtensionSelectItem(context: TurnContext, obj: any): Promise<any> {
-        return {
-            composeExtension: {
-                type: 'result',
-                attachmentLayout: 'list',
-                attachments: [CardFactory.thumbnailCard(obj.description)]
-            }
-        };
-    }
-}
+                const icon = voteIcon();
+                const nameString = post.CreatedByName.length < 25 ? htmlEscape(post.CreatedByName) : htmlEscape(post.CreatedByName.substr(0, 24)) + " ...";
+                const preview = CardFactory.thumbnailCard(
+                    `<p style='font-weight: 600;'>${post.Title}</p>`,
+                    `${nameString} | ${postName[post.Type]} | ${post.TotalVote} ${icon}`
+                );
+                const attachment = { ...card, preview };
 
-async function connectSQL(connection) {
-    return new Promise((resolve) => {
-        connection.on("connect", (error) => {
-            resolve(connection);
-        });
-    });
-}
-
-async function executeQuery(query, connection): Promise<any[]> {
-    return new Promise((resolve) => {
-        var res = [];
-        const request = new tedious.Request(query, (err) => {
-            if (err) {
-                console.log(err);
-            }
-        });
-        request.on("row", (columns) => {
-            var row = {};
-            columns.forEach((column) => {
-                row[column.metadata.colName] = column.value;
+                attachments.push(attachment);
             });
-            res.push(row);
-        });
-        request.on("requestCompleted", () => {
-            resolve(res);
-        });
-        connection.execSql(request);
-    });
+
+            return {
+                composeExtension: {
+                    type: 'result',
+                    attachmentLayout: 'list',
+                    attachments: attachments
+                }
+            };
+        } catch (error) {
+            console.log(error);
+            throw error;
+        } finally {
+            if (connection) {
+                connection.close();
+            }
+        }
+    }
 }
 
 function buildCardContent(post) {
@@ -128,7 +91,7 @@ function buildCardContent(post) {
                         "items": [
                             {
                                 "type": "Image",
-                                "url": postDotSrc(post.Type),
+                                "url": postDotSrc[post.Type],
                                 "width": "10px",
                                 "height": "10px",
                             }
@@ -140,7 +103,7 @@ function buildCardContent(post) {
                         "items": [
                             {
                                 "type": "TextBlock",
-                                "text": postName(post.Type),
+                                "text": postName[post.Type],
                                 "weight": "Bolder"
                             }
                         ]
@@ -210,24 +173,24 @@ function voteIcon() {
     return `<img src='${src}' alt='vote logo' width='15' height='16'`;
 }
 
-function postName(postType) {
-    const postTypeNames = {
-        1: "Article / blog",
-        2: "Other",
-        3: "Podcast",
-        4: "Video",
-        5: "Book"
-    };
-    return postTypeNames[postType];
+function buildQuery(search, skip, count, userID = "") {
+    let userFilter = userID ? `and UserID = '${userID}'` : "";
+    let sqlQuery = `SELECT * FROM [dbo].[TeamPostEntity] where Title like '%${search}%' ${userFilter} ORDER BY PostID DESC OFFSET ${skip} ROWS FETCH NEXT ${count} ROWS ONLY;`;
+    return sqlQuery;
 }
 
-function postDotSrc(postType) {
-    const postDotSrcs = {
-        1: "https://user-images.githubusercontent.com/16380704/117462298-1a311b80-af81-11eb-81a2-eb0c2843937c.png",
-        2: "https://user-images.githubusercontent.com/16380704/117462456-477dc980-af81-11eb-8b9c-7a363e2b73c1.png",
-        3: "https://user-images.githubusercontent.com/16380704/117462509-549ab880-af81-11eb-8201-113582a544f3.png",
-        4: "https://user-images.githubusercontent.com/16380704/117462575-61b7a780-af81-11eb-8c8c-8f4cb33ed327.png",
-        5: "https://user-images.githubusercontent.com/16380704/117462417-3cc33480-af81-11eb-9ac2-0f009eb2d194.png"
-    };
-    return postDotSrcs[postType];
+enum postName {
+    "Article / blog" = 1,
+    Other = 2,
+    Podcast = 3,
+    Video = 4,
+    Book = 5,
+}
+
+enum postDotSrc {
+    "https://user-images.githubusercontent.com/16380704/117462298-1a311b80-af81-11eb-81a2-eb0c2843937c.png" = 1,
+    "https://user-images.githubusercontent.com/16380704/117462456-477dc980-af81-11eb-8b9c-7a363e2b73c1.png" = 2,
+    "https://user-images.githubusercontent.com/16380704/117462509-549ab880-af81-11eb-8201-113582a544f3.png" = 3,
+    "https://user-images.githubusercontent.com/16380704/117462575-61b7a780-af81-11eb-8c8c-8f4cb33ed327.png" = 4,
+    "https://user-images.githubusercontent.com/16380704/117462417-3cc33480-af81-11eb-9ac2-0f009eb2d194.png" = 5,
 }

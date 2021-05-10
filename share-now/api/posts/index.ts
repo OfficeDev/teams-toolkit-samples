@@ -36,6 +36,7 @@ export default async function run(
     const accessToken: string = teamsfxContext["AccessToken"];
     const credential = new OnBehalfOfUserCredential(accessToken);
     const currentUser = await credential.getUserInfo();
+    
     let query;
 
     switch (method) {

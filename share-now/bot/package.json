@@ -1,7 +1,7 @@
 {
     "name": "teamsfx-sample-share-now-bot",
     "version": "1.0.0",
-    "description": "Bot Builder v4 echo bot sample",
+    "description": "teamsfx-sample share now bot sample",
     "author": "Microsoft",
     "license": "MIT",
     "main": "./lib/index.js",
@@ -13,7 +13,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com"
+        "url": "https://github.com/OfficeDev/TeamsFx-Samples.git"
     },
     "dependencies": {
         "adaptivecards": "^2.9.0",

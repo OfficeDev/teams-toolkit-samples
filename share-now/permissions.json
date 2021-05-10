@@ -1,8 +1,9 @@
 [
     {
         "resource": "Microsoft Graph",
-        "scopes": [
+        "delegated": [
             "User.Read"
-        ]
+        ],
+        "application": []
     }
 ]
