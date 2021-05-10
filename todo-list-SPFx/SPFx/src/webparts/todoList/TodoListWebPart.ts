@@ -13,6 +13,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'TodoListWebPartStrings';
 import TodoList from './components/TodoList';
 import { ITodoListProps } from './components/ITodoListProps';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 
 export interface ITodoListWebPartProps {
   description: string;
@@ -29,6 +30,7 @@ export default class TodoListWebPart extends BaseClientSideWebPart<ITodoListWebP
       }
     );
 
+    initializeIcons();
     ReactDom.render(element, this.domElement);
   }
 
