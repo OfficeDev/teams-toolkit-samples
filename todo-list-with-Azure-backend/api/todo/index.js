@@ -87,7 +87,7 @@ async function getSQLConnection() {
     const sqlConnectConfig = new DefaultTediousConnectionConfiguration();
     const config = await sqlConnectConfig.getConfig();
     const connection = new Connection(config);
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         connection.on('connect', err => {
             if (err) {
                 reject(err);
