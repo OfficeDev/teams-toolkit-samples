@@ -99,7 +99,13 @@ class Tab extends React.Component {
   async getChannelOrChatId() {
     return new Promise((resolve) => {
       microsoftTeams.getContext((context) => {
-        resolve(context.channelId ?? context.chatId ?? this.state.userInfo.objectId);
+        if (context.channelId) {
+          resolve(context.channelId);
+        } else if (context.chatId) {
+          resolve(context.chatId);
+        } else {
+          resolve(this.state.userInfo.objectId);
+        }
       });
     });
   }
