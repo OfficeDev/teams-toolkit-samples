@@ -5,10 +5,9 @@ import { Context, HttpRequest } from "@azure/functions";
 import {
   loadConfiguration,
   OnBehalfOfUserCredential,
-  UserInfo,
-  DefaultTediousConnectionConfiguration
 } from "teamsdev-client";
-import * as tedious from "tedious";
+import { executeQuery, getSQLConnection } from "../utils/common";
+import { checkPost } from "../utils/query";
 
 interface Response {
   status: number;
@@ -22,167 +21,76 @@ export default async function run(
   req: HttpRequest,
   teamsfxContext: TeamsfxContext
 ): Promise<Response> {
-  context.log("HTTP trigger function processed a request.");
+  context.log("HTTP trigger function processed a vote request.");
 
   // Initialize response.
   const res: Response = {
     status: 200,
     body: {}
   };
-
-  // Set default configuration for teamsfx SDK.
+  
+  let connection;
+  loadConfiguration();
   try {
-    loadConfiguration();
-  } catch (e) {
-    context.log.error(e);
-    return {
-      status: 500,
-      body: {
-        error: 'Failed to load app configuration.'
-      }
-    };
-  }
+    connection = await getSQLConnection();
+    const method = req.method.toLowerCase();
+    const accessToken = teamsfxContext["AccessToken"];
+    const credential = new OnBehalfOfUserCredential(accessToken);
+    const currentUser = await credential.getUserInfo();
 
-  // Prepare access token.
-  const accessToken: string = teamsfxContext["AccessToken"];
-  if (!accessToken) {
-    return {
-      status: 400,
-      body: {
-        error: "No access token was found in request header."
-      }
-    };
-  }
+    const postID = context.bindingData.id as number;
+    const checkRes = await checkPost(postID, connection);
+    if (!checkRes) {
+      throw new Error(`invalid postID ${postID}`);
+    }
 
-  // Construct credential.
-  let credential: OnBehalfOfUserCredential;
-  try {
-    credential = new OnBehalfOfUserCredential(accessToken);
-  } catch (e) {
-    context.log.error(e);
-    return {
-      status: 500,
-      body: {
-        error:
-          'Failed to obtain on-behalf-of credential using your accessToken. ' +
-          'Ensure your function app is configured with the right Azure AD App registration.'
-      }
-    };
-  }
-
-  const currentUser = await credential.getUserInfo();
-  const postID = context.bindingData.id as number;
-
-  const method = req.method.toLowerCase();
-  if (method === "post") {
-    try {
-      const sqlConnectConfig = new DefaultTediousConnectionConfiguration();
-      const config = await sqlConnectConfig.getConfig();
-      const conn = new tedious.Connection(config);
-      await connectSQL(conn);
-      let query = `select count(*) as count from [dbo].[TeamPostEntity] where PostID = ${postID};`;
-      var result = await executeQuery(query, conn);
-      if (result.length === 0 || result[0].count === 0) {
-        conn.close();
-        res.status = 500;
-        res.body = {
-          error: `PostID ${postID} is invalid`
-        };
-        return res;
-      }
-      query = `select count(*) as count from [dbo].[UserVoteEntity] where UserID = '${currentUser.objectId}' and PostID = ${postID};`;
-      var result = await executeQuery(query, conn);
-      if (result.length && result[0].count !== 0) {
-        conn.close();
+    let query;
+    if (method === "post") {
+      const voted = await checkVoted(postID, currentUser.objectId, connection);
+      if (voted) {
         res.body["data"] = "already voted";
         return res;
       }
       query = `INSERT [dbo].[UserVoteEntity] (PostID, UserID) VALUES (${postID},'${currentUser.objectId}');`;
-      context.log(query);
-      await executeQuery(query, conn);
-      query = `update [dbo].[TeamPostEntity] set totalVote = totalVote + 1 where PostID = ${postID};`;
-      context.log(query);
-      await executeQuery(query, conn);
-      conn.close();
+      await executeQuery(query, connection);
+      await updateVoteCount(postID, true, connection)
       res.body["data"] = "vote successfully";
       return res;
-    } catch (e) {
-      res.status = 500;
-      res.body = {
-        error: "sql error:" + e.message
-      };
-      return res;
-    }
-  } else if (method === "delete") {
-    try {
-      const sqlConnectConfig = new DefaultTediousConnectionConfiguration();
-      const config = await sqlConnectConfig.getConfig();
-      const conn = new tedious.Connection(config);
-      await connectSQL(conn);
-      let query = `select count(*) as count from [dbo].[TeamPostEntity] where PostID = ${postID};`;
-      var result = await executeQuery(query, conn);
-      if (result.length === 0 || result[0].count === 0) {
-        conn.close();
-        res.status = 500;
-        res.body = {
-          error: `PostID ${postID} is invalid`
-        };
-        return res;
-      }
-      query = `select count(*) as count from [dbo].[UserVoteEntity] where UserID = '${currentUser.objectId}' and PostID = ${postID};`;
-      var result = await executeQuery(query, conn);
-      if (result.length && result[0].count === 0) {
-        conn.close();
+    } else if (method === "delete") {
+      const voted = await checkVoted(postID, currentUser.objectId, connection);
+      if (!voted) {
+        res.body["data"] = "haven't voted";
         return res;
       }
       query = `delete [dbo].[UserVoteEntity] where UserID = '${currentUser.objectId}' and PostID = ${postID};`;
-      await executeQuery(query, conn);
-      query = `update [dbo].[TeamPostEntity] set totalVote = totalVote - 1 where PostID = ${postID};`;
-      await executeQuery(query, conn);
-      conn.close();
-      return res;
-    } catch (e) {
-      res.status = 500;
-      res.body = {
-        error: "sql error:" + e.message
-      };
+      await executeQuery(query, connection);
+      await updateVoteCount(postID, false, connection)
       return res;
     }
-  } else {
-    res.status = 500;
-    res.body = {
-      error: "invalid method"
+  } catch (error) {
+    return {
+      status: 500,
+      body: error.message
     };
-    return res;
+  } finally {
+    if (connection) {
+      connection.close();
+    }
   }
 }
 
-async function connectSQL(connection) {
-  return new Promise((resolve) => {
-    connection.on("connect", (error) => {
-      resolve(connection);
-    });
-  });
+async function checkVoted(postID, userID, conn): Promise<boolean> {
+  let query = `select count(*) as count from [dbo].[UserVoteEntity] where UserID = '${userID}' and PostID = ${postID};`;
+  var result = await executeQuery(query, conn);
+  if (result.length === 0 || result[0].count === 0) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
-async function executeQuery(query, connection):Promise<any[]> {
-  return new Promise((resolve) => {
-    var res = [];
-    const request = new tedious.Request(query, (err) => {
-      if (err) {
-        console.log(err);
-      }
-    });
-    request.on("row", (columns) => {
-      var row = {};
-      columns.forEach((column) => {
-        row[column.metadata.colName] = column.value;
-      });
-      res.push(row);
-    });
-    request.on("requestCompleted", () => {
-      resolve(res);
-    });
-    connection.execSql(request);
-  });
+async function updateVoteCount(postID, isAdd, conn) {
+  let flag = isAdd ? '+' : '-';
+  let query = `update [dbo].[TeamPostEntity] set totalVote = totalVote ${flag} 1 where PostID = ${postID};`;
+  await executeQuery(query, conn);
 }

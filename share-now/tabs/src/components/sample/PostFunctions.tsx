@@ -19,7 +19,7 @@ async function callFunction() {
     const apiConfig = getResourceConfiguration(ResourceType.API);
     const response = await axios.default.get(apiConfig.endpoint + "/api/" + functionName, {
       headers: {
-        authorization: "Bearer " + accessToken?.token || "",
+        authorization: "Bearer " + accessToken!.token,
       },
     });
     return response.data;
