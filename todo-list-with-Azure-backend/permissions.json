@@ -1,0 +1,9 @@
+[
+    {
+        "resource": "Microsoft Graph",
+        "scopes": [
+            "User.Read",
+            "User.ReadBasic.All"
+        ]
+    }
+]
