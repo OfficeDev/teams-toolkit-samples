@@ -88,8 +88,11 @@ async function getSQLConnection() {
     const config = await sqlConnectConfig.getConfig();
     const connection = new Connection(config);
     return new Promise(resolve => {
-        connection.on('connect', error => {
-            resolve(connection)
+        connection.on('connect', err => {
+            if (err) {
+                reject(err);
+            }
+            resolve(connection);
         })
         connection.on('debug', function (err) {
             console.log('debug:', err);
