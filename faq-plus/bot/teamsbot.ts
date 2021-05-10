@@ -1,14 +1,23 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { TeamsActivityHandler, SigninStateVerificationQuery, ActionTypes, CardFactory, BotState, TurnContext, tokenExchangeOperationName } from "botbuilder";
+import { TeamsActivityHandler, SigninStateVerificationQuery, ActionTypes, CardFactory, BotState, TurnContext, tokenExchangeOperationName, Activity, MessageFactory } from "botbuilder";
 import { MainDialog } from "./dialogs/mainDialog";
+import { ActivityTypes } from "botframework-schema";
+import { QnADTO, QnASearchResultList } from "@azure/cognitiveservices-qnamaker-runtime/esm/models";
+import { ResponseCardPayload } from "./models/responseCardPayload";
+import { AnswerModel } from "./models/answerModel";
+import { QnaServiceProvider } from "./providers/qnaServiceProvider";
+import { getResponseCard } from "./cards/responseCard";
 
 export class TeamsBot extends TeamsActivityHandler {
     conversationState: BotState;
     userState: BotState;
     dialog: MainDialog;
     dialogState: any;
+
+    private readonly ConversationTypePersonal: string = "personal";
+    private readonly QnaServiceProvider: QnaServiceProvider;
 
     /**
      *
@@ -62,6 +71,104 @@ export class TeamsBot extends TeamsActivityHandler {
             }
             await next();
         });
+    }
+
+    async onMessageActivity(turnContext: TurnContext): Promise<void> {
+        try {
+            const message = turnContext.activity;
+            console.log(`from: ${message.from?.id}, conversation: ${message.conversation.id}, replyToId: ${message.replyToId}`);
+            await this.sendTypingIndicatorAsync(turnContext);
+
+            switch (message.conversation.conversationType.toLowerCase()) {
+                case this.ConversationTypePersonal:
+                    await this.onMessageActivityInPersonalChatAsync(message, turnContext);
+                    break;
+                default:
+                    console.log(`Received unexpected conversationType ${message.conversation.conversationType}`);
+                    break;
+            }
+        } catch (error) {
+            await turnContext.sendActivity("");
+            console.log(`Error processing message: ${error.message}`);
+            throw error;
+        }
+    }
+
+    private async onMessageActivityInPersonalChatAsync(message: Activity, turnContext: TurnContext): Promise<void> {
+        const text = message.text?.toLowerCase()?.trim() ?? "";
+
+        console.log("Sending input to QnAMaker");
+    }
+
+    private async getQuestionAnswerReplyAsync(turnContext: TurnContext, message: Activity): Promise<void> {
+        const text = message.text?.toLowerCase()?.trim() ?? "";
+
+        try {
+            let queryResult: QnASearchResultList;
+            let payload: ResponseCardPayload;
+
+            if (message?.replyToId && message?.value) {
+                payload = message.value as ResponseCardPayload;
+            }
+
+            let previousQuestion: QnADTO;
+            if (payload?.PreviousQuestions?.length > 0) {
+                previousQuestion = payload.PreviousQuestions[0];
+            }
+
+            queryResult = await this.QnaServiceProvider.GenerateAnswer(
+                text, false, previousQuestion?.id.toString(), previousQuestion?.questions[0]);
+
+            if (queryResult?.answers[0].id != -1) {
+                const answerData = queryResult.answers[0];
+                let answerModel: AnswerModel;
+                try {
+                    answerModel = JSON.parse(answerData.answer) as AnswerModel;
+                } catch {
+                    // do nothing if result is not json format
+                }
+
+                await turnContext.sendActivity(MessageFactory.attachment(getResponseCard(answerData, text, payload)));
+
+            } else {
+                // show ask expert card
+            }
+        } catch (error) {
+
+        }
+    }
+
+    private async sendTypingIndicatorAsync(turnContext: TurnContext): Promise<void> {
+        try {
+            const typingActivity = this.createReply(turnContext.activity)
+            typingActivity.type = ActivityTypes.Typing;
+            await turnContext.sendActivity(typingActivity);
+        } catch (error) {
+            console.log(`Failed to send a typing indicator: ${error.message}`);
+        }
+    }
+
+    private createReply(source: Activity, text?: string, locale?: string): Activity {
+        const reply: string = text || '';
+
+        return {
+            channelId: source.channelId,
+            conversation: source.conversation,
+            from: source.recipient,
+            label: source.label,
+            locale: locale,
+            callerId: source.callerId,
+            recipient: source.from,
+            replyToId: source.id,
+            serviceUrl: source.serviceUrl,
+            text: reply,
+            timestamp: new Date(),
+            type: ActivityTypes.Message,
+            valueType: source.valueType,
+            localTimezone: source.localTimezone,
+            listenFor: source.listenFor,
+            semanticAction: source.semanticAction
+        };
     }
 
     async run(context: TurnContext) {
