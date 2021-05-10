@@ -101,11 +101,11 @@ async function getSQLConnection() {
 }
 
 async function execQuery(query, connection) {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         const res = [];
         const request = new Request(query, (err) => {
             if (err) {
-                throw err
+                reject(err);
             }
         });
 
@@ -119,6 +119,10 @@ async function execQuery(query, connection) {
 
         request.on('requestCompleted', () => {
             resolve(res)
+        });
+
+        request.on("error", err => {
+            reject(err);
         });
 
         connection.execSql(request);
