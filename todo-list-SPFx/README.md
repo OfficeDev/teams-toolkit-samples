@@ -17,14 +17,16 @@
 
 ### Prerequist
 1. Install the latest version of [Node.js LTS 14.x](https://nodejs.org/en/download/releases/)
-    > *Note: SPFx v1.12.1 only support Node.js v10.x/12.x/14.x*
+    >  The SharePoint Framework v1.12.1 is supported on the following Node.js versions:
+    >- Node.js v10.13.0+ (Dubnium)
+    >- Node.js v12.13.0+ (Erbium)
+    >- Node.js v14.15.0+ (Fermium) 
 1. Set up SharePoint Environment
    Set up M365 tenant and crate SharePoint App Catalog site follow the guide [here](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
-   > *Note - only create App Catalog site, do not create site collection.*
 1. Use the root site in SharePoint to create a List.
     - Navigate to the SharePoint root site, in `Home` tab, click `New` and select `List`. 
     > *Note: You must nagivate to root site instead of any other subsite. Root site URL ends with xx.sharepoint.com.* eg. `https://{your-tenant-name}.sharepoint.com/`. 
-    > *This is because Teams App automatically detect SharePoint root site only. If you want to create a List in other subsite, manual steps to change the site url in* *[./src/webparts/TodoList/components/SharePointListManager.ts](./src/webparts/TodoList/components/SharePointListManager.ts) are required.*
+    > *This is because Teams App automatically detect SharePoint root site only. If you want to create a List in other subsite, manual steps to change the site url in* *[./SPFx/src/webparts/TodoList/components/SharePointListManager.ts](./SPFx/src/webparts/TodoList/components/SharePointListManager.ts) are required.*
     - Name the List 'To Do List'
     - Click `Add Column`, select `Single line of text`, name the column 'description'
     - Click `Add Column`, select `Yes/No`, name the column 'isCompleted'
@@ -43,7 +45,7 @@
     - or select `Teams: Provision in the Cloud` from command palette (invoke command palette by pressing `ctrl + shift + p`). 
     - you can also use TeamsFx CLI, running cmd `teamsfx provision` under your project path.
     This step will create an app in Teams App Studio.
-    > **!important** This step may require you to login Microsoft Teams Toolkit extension first. **Make sure you are using your M365 tenant admin account.** 
+    > **!Important** This step may require you to login Microsoft Teams Toolkit extension first. **Make sure you are using your M365 tenant admin account.** 
     > If it does not ask you to login, the toolkit may cache account information for you. Check your login account and make sure you are using the right account.
 
 1. Go back to Microsoft Teams Toolkit extension, click `Deploy to the Cloud` in PROJECT panel.
@@ -58,7 +60,7 @@
 
 1. Check pubilshed app in [Microsoft Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps) by searching "todoList" in the search box.
 ![TeamsAppAdminCenter](images/TeamsAppAdminCenter.png)
-1.Click the 'todoList' app you just published and select `Publish` in the Publishing status.
+1. Click the 'todoList' app you just published and select `Publish` in the Publishing status.
 ![Publish](images/Publish.png)
 It may take a few minutes to publish the Teams app.
 1. Login to Teams using your M365 tenant admin account, same account you are using to create SharePoint environment and logging to VS Code extension. You will see your app in the `Apps - Built for your org`. Add the app to your Teams client.
