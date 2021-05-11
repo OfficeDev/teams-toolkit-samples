@@ -4,9 +4,7 @@
 const {
     loadConfiguration,
     OnBehalfOfUserCredential,
-    ResourceType,
     DefaultTediousConnectionConfiguration,
-    UserInfo,
 } = require("teamsdev-client");
 const { Connection, Request } = require('tedious');
 

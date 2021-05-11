@@ -216,7 +216,7 @@ class Tab extends React.Component {
 
   render() {
     const items = this.state.items?.map((item, index) =>
-      <div key={item.id} className="item">
+      <div key={index} className="item">
         <div className="complete">
           <Checkbox
             checked={this.state.items[index].isCompleted}
