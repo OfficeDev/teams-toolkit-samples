@@ -19,8 +19,8 @@ class ConsentPopup extends React.Component {
     // Get the user context in order to extract the tenant ID
     microsoftTeams.getContext((context, error) => {
 
-      let tenant = context['tid']; //Tenant ID of the logged in user
-      let client_id = process.env.REACT_APP_AZURE_APP_REGISTRATION_ID; // Client ID of the Azure AD app registration ( may be from different tenant for multitenant apps)
+      let tenant = context['tid']; // Tenant ID of the logged in user
+      let client_id = process.env.REACT_APP_CLIENT_ID; // Client ID of the Azure AD app registration ( may be from different tenant for multitenant apps)
       let graph_scopes = process.env.REACT_APP_GRAPH_SCOPES;
 
       /**

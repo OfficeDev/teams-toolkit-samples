@@ -1,0 +1,20 @@
+{
+    "appName": "in-meetingapp",
+    "solutionSettings": {
+        "name": "fx-solution-azure",
+        "version": "1.0.0",
+        "capabilities": [
+            "Tab",
+            "Bot"
+        ],
+        "hostType": "Azure",
+        "azureResources": [],
+        "activeResourcePlugins": [
+            "fx-resource-local-debug",
+            "fx-resource-frontend-hosting",
+            "fx-resource-aad-app-for-teams",
+            "fx-resource-simple-auth",
+            "fx-resource-bot"
+        ]
+    }
+}

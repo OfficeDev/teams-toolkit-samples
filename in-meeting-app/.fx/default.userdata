@@ -1,0 +1,3 @@
+fx-resource-local-debug.trustDevCert=true
+fx-resource-local-debug.skipNgrok=false
+fx-resource-local-debug.localBotEndpoint=

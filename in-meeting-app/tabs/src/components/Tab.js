@@ -75,7 +75,7 @@ class Tab extends React.Component {
    */
   exchangeClientTokenForServerToken = async (token) => {
 
-    let serverURL = `${process.env.REACT_APP_BASE_URL}/getGraphAccessToken?ssoToken=${token}`;
+    let serverURL = `${process.env.REACT_APP_TEAMSFX_ENDPOINT}/getGraphAccessToken?ssoToken=${token}`;
     let response = await fetch(serverURL).catch(this.unhandledFetchError); // This calls getGraphAccessToken route in /bot/index.js
     let data = await response.json().catch(this.unhandledFetchError);
 
@@ -180,7 +180,7 @@ class Tab extends React.Component {
     let userObjectId = this.state.context['userObjectId'];
 
     // Request must be sent from the BotFramework service, so send it to the bot to make the Bot Framework REST request
-    let serverURL = `${process.env.REACT_APP_BASE_URL}/getParticipantInfo?ssoToken=${ssoToken}&conversationId=${chatId}&aadObjectId=${userObjectId}&meetingId=${meetingId}`;
+    let serverURL = `${process.env.REACT_APP_TEAMSFX_ENDPOINT}/getParticipantInfo?ssoToken=${ssoToken}&conversationId=${chatId}&aadObjectId=${userObjectId}&meetingId=${meetingId}`;
 
     let response = await fetch(serverURL).catch(this.unhandledFetchError); // This calls getGraphAccessToken route in /bot/index.js
     let data = await response.json().catch(this.unhandledFetchError);
@@ -199,7 +199,7 @@ class Tab extends React.Component {
    */
   displayInMeetingDialog() {
     // In-meeting dialogs are triggered via the BotFramework SDK. Send the requst to the api-server.
-    let serverURL = `${process.env.REACT_APP_BASE_URL}/inMeetingDialog?conversationId=${this.state.context.chatId}`;
+    let serverURL = `${process.env.REACT_APP_TEAMSFX_ENDPOINT}/inMeetingDialog?conversationId=${this.state.context.chatId}`;
     fetch(serverURL).catch(this.unhandledFetchError);
   }
 
