@@ -31,7 +31,7 @@ export class MessageExtensionBot extends TeamsActivityHandler {
                 const nameString = post.CreatedByName.length < 25 ? htmlEscape(post.CreatedByName) : htmlEscape(post.CreatedByName.substr(0, 24)) + " ...";
                 const preview = CardFactory.thumbnailCard(
                     `<p style='font-weight: 600;'>${post.Title}</p>`,
-                    `${nameString} | ${postName[post.Type]} | ${post.TotalVote} ${icon}`
+                    `${nameString} | ${postName[post.Type]} | ${post.TotalVotes} ${icon}`
                 );
                 const attachment = { ...card, preview };
 
@@ -119,7 +119,7 @@ function buildCardContent(post) {
                         "items": [
                             {
                                 "type": "TextBlock",
-                                "text": post.TotalVote
+                                "text": post.TotalVotes
                             }
                         ]
                     },

@@ -28,7 +28,7 @@ export async function executeQuery(query, connection): Promise<any[]> {
         const request = new tedious.Request(query, (err) => {
             if (err) {
                 console.log(err);
-                reject(err)
+                reject(err);
             }
         });
         request.on("row", (columns) => {
@@ -47,4 +47,35 @@ export async function executeQuery(query, connection): Promise<any[]> {
         });
         connection.execSql(request);
     });
+}
+
+export class ResponsePost {
+    postId: number;
+    type: number;
+    title: string;
+    description: string;
+    contentUrl: string;
+    tags: string;
+    createdDate: Date;
+    createdByName: string;
+    userId: string;
+    updatedDate: Date;
+    totalVotes: number;
+    isRemoved: boolean;
+    isVotedByUser: boolean;
+    isCurrentUserPost: boolean;
+    constructor(post) {
+        this.postId = post.PostID;
+        this.type = post.Type;
+        this.title = post.Title;
+        this.description = post.Description
+        this.contentUrl = post.ContentUrl
+        this.tags = post.tags
+        this.createdDate = post.CreatedDate
+        this.createdByName = post.CreatedByName
+        this.userId = post.UserID
+        this.updatedDate = post.UpdatedDate
+        this.totalVotes = post.TotalVotes;
+        this.isRemoved = post.IsRemoved
+    }
 }

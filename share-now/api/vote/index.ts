@@ -91,6 +91,6 @@ async function checkVoted(postID, userID, conn): Promise<boolean> {
 
 async function updateVoteCount(postID, isAdd, conn) {
   let flag = isAdd ? '+' : '-';
-  let query = `update [dbo].[TeamPostEntity] set totalVote = totalVote ${flag} 1 where PostID = ${postID};`;
+  let query = `update [dbo].[TeamPostEntity] set totalVotes = totalVotes ${flag} 1 where PostID = ${postID};`;
   await executeQuery(query, conn);
 }
