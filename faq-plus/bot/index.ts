@@ -100,4 +100,6 @@ async function main() {
     );
 }
 
-main();
+main().catch((reason) => {
+    console.log(`Failed to start bot server. Reason: ${reason}`);
+});
