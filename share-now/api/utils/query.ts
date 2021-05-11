@@ -1,3 +1,5 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 import { executeQuery } from "./common";
 
 export async function checkPost(postID, conn, userID = ""): Promise<boolean> {
