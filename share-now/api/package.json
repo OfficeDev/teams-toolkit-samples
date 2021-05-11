@@ -1,0 +1,22 @@
+{
+  "name": "teamsfx-sample-share-now-function",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prestart": "npm run build",
+    "start": "npx func start"
+  },
+  "dependencies": {
+    "@azure/functions": "^1.2.2",
+    "@microsoft/microsoft-graph-client": "^2.2.1",
+    "isomorphic-fetch": "^3.0.0",
+    "teamsdev-client": "^1.1.1",
+    "tedious": "^9.2.3"
+  },
+  "devDependencies": {
+    "@types/tedious": "^4.0.3",
+    "azure-functions-core-tools": "^3.0.0",
+    "typescript": "^3.3.3"
+  }
+}
