@@ -1,7 +1,7 @@
-import { Action, AdaptiveCard, CardElement, TextWeight, Version, ICardElement, TextBlock, Spacing, Container, ColumnSet, Column, ColumnWidth, VerticalAlignment, Image, Size, ImageStyle, SubmitAction } from "adaptivecards";
+import { Action, AdaptiveCard, CardElement, TextWeight, Version, TextBlock, Spacing, Container, ColumnSet, Column, VerticalAlignment, Image, Size, ImageStyle, SubmitAction } from "adaptivecards";
 import { CardFactory } from "botbuilder-core";
 import { ActionTypes, Attachment } from "botframework-schema";
-import { QnADTO, QnASearchResult, QnASearchResultList } from '@azure/cognitiveservices-qnamaker-runtime/esm/models';
+import { QnADTO, QnASearchResult } from '@azure/cognitiveservices-qnamaker-runtime/esm/models';
 import { ResponseCardPayload } from "../models/responseCardPayload";
 
 export function getResponseCard(response: QnASearchResult, userQuestion: string, payload: ResponseCardPayload): Attachment {

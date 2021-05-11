@@ -2,16 +2,22 @@ import { QnAMakerRuntimeClient } from '@azure/cognitiveservices-qnamaker-runtime
 import { ConfigurationDataProvider } from './configurationProvider';
 import { ConfigurationEntityTypes } from '../models/configurationEntityTypes';
 import { QnASearchResultList, QueryDTO } from '@azure/cognitiveservices-qnamaker-runtime/esm/models';
+import { CognitiveServicesCredentials } from "@azure/ms-rest-azure-js";
 
 export class QnaServiceProvider {
-    private readonly EnvironmentType: string = "Prod";
+    private readonly environmentType: string = "Prod";
 
     private readonly qnaMakerRuntimeClient: QnAMakerRuntimeClient;
     private readonly configurationProvider: ConfigurationDataProvider;
+    private readonly endpointKey: string;
 
-    constructor(configurationProvider: ConfigurationDataProvider, qnaMakerClient: QnAMakerRuntimeClient) {
+    constructor(configurationProvider: ConfigurationDataProvider, qnaMakerEndpointKey: string, qnaMakerHostUrl: string) {
         this.configurationProvider = configurationProvider;
-        this.qnaMakerRuntimeClient = qnaMakerClient;
+        this.qnaMakerRuntimeClient = new QnAMakerRuntimeClient(
+            new CognitiveServicesCredentials(qnaMakerEndpointKey),
+            qnaMakerHostUrl
+        );
+        this.endpointKey = qnaMakerEndpointKey;
     }
 
     public async GenerateAnswer(question: string, isTestKnowledgeBase, previousQnAId: string = null, previousUserQuery: string = null): Promise<QnASearchResultList> {
@@ -23,13 +29,15 @@ export class QnaServiceProvider {
             scoreThreshold: parseFloat(process.env.SCORETHRESHOLD)
         }
 
-        if(previousQnAId && previousUserQuery) {
+        if (previousQnAId && previousUserQuery) {
             queryDTO.context = {
                 previousQnaId: previousQnAId,
                 previousUserQuery: previousUserQuery
             };
         }
 
-        return await this.qnaMakerRuntimeClient.runtime.generateAnswer(knowledgeBaseId, queryDTO);
+        const customHeaders = { Authorization: `EndpointKey ${this.endpointKey}` };
+
+        return await this.qnaMakerRuntimeClient.runtime.generateAnswer(knowledgeBaseId, queryDTO, { customHeaders });
     }
 }

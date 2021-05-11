@@ -16,8 +16,8 @@ export class TeamsBot extends TeamsActivityHandler {
     dialog: MainDialog;
     dialogState: any;
 
-    private readonly ConversationTypePersonal: string = "personal";
-    private readonly QnaServiceProvider: QnaServiceProvider;
+    private readonly conversationTypePersonal: string = "personal";
+    private readonly qnaServiceProvider: QnaServiceProvider;
 
     /**
      *
@@ -25,8 +25,12 @@ export class TeamsBot extends TeamsActivityHandler {
      * @param {UserState} userState
      * @param {Dialog} dialog
      */
-    constructor(conversationState: BotState, userState: BotState, dialog: MainDialog) {
+    constructor(conversationState: BotState, userState: BotState, dialog: MainDialog,
+        qnaServiceProvider: QnaServiceProvider) {
         super();
+
+        this.qnaServiceProvider = qnaServiceProvider;
+
         if (!conversationState) {
             throw new Error('[TeamsBot]: Missing parameter. conversationState is required');
         }
@@ -40,16 +44,6 @@ export class TeamsBot extends TeamsActivityHandler {
         this.userState = userState;
         this.dialog = dialog;
         this.dialogState = this.conversationState.createProperty('DialogState');
-
-        this.onMessage(async (context, next) => {
-            console.log('Running dialog with Message Activity.');
-
-            // Run the Dialog with the new message Activity.
-            await this.dialog.run(context, this.dialogState);
-
-            // By calling next() you ensure that the next BotHandler is run.
-            await next();
-        });
 
         this.onMembersAdded(async (context, next) => {
             const membersAdded = context.activity.membersAdded;
@@ -80,8 +74,8 @@ export class TeamsBot extends TeamsActivityHandler {
             await this.sendTypingIndicatorAsync(turnContext);
 
             switch (message.conversation.conversationType.toLowerCase()) {
-                case this.ConversationTypePersonal:
-                    await this.onMessageActivityInPersonalChatAsync(message, turnContext);
+                case this.conversationTypePersonal:
+                    await this.onMessageActivityInPersonalChat(message, turnContext);
                     break;
                 default:
                     console.log(`Received unexpected conversationType ${message.conversation.conversationType}`);
@@ -94,13 +88,12 @@ export class TeamsBot extends TeamsActivityHandler {
         }
     }
 
-    private async onMessageActivityInPersonalChatAsync(message: Activity, turnContext: TurnContext): Promise<void> {
-        const text = message.text?.toLowerCase()?.trim() ?? "";
-
+    private async onMessageActivityInPersonalChat(message: Activity, turnContext: TurnContext): Promise<void> {
         console.log("Sending input to QnAMaker");
+        await this.getQuestionAnswerReply(turnContext, message);
     }
 
-    private async getQuestionAnswerReplyAsync(turnContext: TurnContext, message: Activity): Promise<void> {
+    private async getQuestionAnswerReply(turnContext: TurnContext, message: Activity): Promise<void> {
         const text = message.text?.toLowerCase()?.trim() ?? "";
 
         try {
@@ -116,7 +109,7 @@ export class TeamsBot extends TeamsActivityHandler {
                 previousQuestion = payload.PreviousQuestions[0];
             }
 
-            queryResult = await this.QnaServiceProvider.GenerateAnswer(
+            queryResult = await this.qnaServiceProvider.GenerateAnswer(
                 text, false, previousQuestion?.id.toString(), previousQuestion?.questions[0]);
 
             if (queryResult?.answers[0].id != -1) {
@@ -131,10 +124,11 @@ export class TeamsBot extends TeamsActivityHandler {
                 await turnContext.sendActivity(MessageFactory.attachment(getResponseCard(answerData, text, payload)));
 
             } else {
-                // show ask expert card
+                // nothing found
+                await turnContext.sendActivity("TODO: show ask expert card");
             }
         } catch (error) {
-
+            console.log(error);
         }
     }
 

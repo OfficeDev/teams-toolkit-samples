@@ -1,26 +1,24 @@
 import { TableService, createTableService } from 'azure-storage';
 
 export class ConfigurationDataProvider {
-    private readonly ConfigurationTableName: string = "ConfigurationInfo";
+    private readonly configurationTableName: string = "ConfigurationInfo";
+    private readonly configurationPartitionKey: string = "ConfigurationInfo";
 
-    private readonly ConfigurationPartitionKey: string = "ConfigurationInfo";
-
-    private readonly ConnectionString: string;
+    private readonly connectionString: string;
     private tableService: TableService;
 
     constructor(connectionString: string) {
-        this.ConnectionString = connectionString;
-
+        this.connectionString = connectionString;
     }
 
     public async GetSavedEntityDetailAsync(entityType: string): Promise<string> {
         await this.EnsureInitialize();
         return new Promise((resolve, reject) => {
-            this.tableService.retrieveEntity(this.ConfigurationTableName,
-                this.ConfigurationPartitionKey, entityType,
+            this.tableService.retrieveEntity(this.configurationTableName,
+                this.configurationPartitionKey, entityType,
                 (error, result: any, response) => {
                     if (!error) {
-                        resolve(result?.Data ?? "");
+                        resolve(result?.Data._ ?? "");
                     }
                     reject(error);
                 }
@@ -33,8 +31,8 @@ export class ConfigurationDataProvider {
             if (this.tableService) {
                 resolve();
             } else {
-                this.tableService = createTableService(this.ConnectionString);
-                this.tableService.createTableIfNotExists(this.ConfigurationTableName, (error, result, response) => {
+                this.tableService = createTableService(this.connectionString);
+                this.tableService.createTableIfNotExists(this.configurationTableName, (error, result, response) => {
                     if (!error) {
                         resolve();
                     }
