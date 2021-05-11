@@ -18,6 +18,7 @@ class Creator extends React.Component {
 
   async componentDidMount() {
     try {
+      // Get Microsoft graph client
       const graphClient = await createMicrosoftGraphClient(this.props.credential, this.props.scope);
       const displayName = (await graphClient.api(`/users/${this.props.objectId}`).get()).displayName;
       let photoObjectURL;

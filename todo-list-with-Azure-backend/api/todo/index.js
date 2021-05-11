@@ -35,7 +35,6 @@ module.exports = async function (context, req, config) {
         const method = req.method.toLowerCase();
         // Use TeamsFx server SDK to get user object id from user SSO token
         const accessToken = config.AccessToken;
-
         const credential = new OnBehalfOfUserCredential(accessToken);
         const currentUser = await credential.getUserInfo();
         const objectId = currentUser.objectId;
