@@ -7,6 +7,7 @@ import {
   OnBehalfOfUserCredential,
 } from "teamsdev-client";
 import { executeQuery, getSQLConnection, PostRequest, ResponsePost } from "../utils/common";
+import { checkPost } from "../utils/query";
 
 interface Response {
   status: number;
@@ -38,6 +39,7 @@ export default async function run(
     const currentUser = await credential.getUserInfo();
     let query;
     let postID;
+    let check;
 
     switch (method) {
       case "get":
@@ -56,12 +58,20 @@ export default async function run(
         return res;
       case "delete":
         postID = context.bindingData.id as number;
+        check = await checkPost(postID, connection, currentUser.objectId)
+        if (!check) {
+          throw new Error("invalid postID")
+        }
         query = `update TeamPostEntity set IsRemoved = 1 where PostID = ${postID}`;
         await executeQuery(query, connection);
         res.body["data"] = "delete post successfully";
         return res;
       case "put":
         postID = context.bindingData.id as number;
+        check = await checkPost(postID, connection, currentUser.objectId)
+        if (!check) {
+          throw new Error("invalid postID")
+        }
         const updateRequest = getPostRequest(req);
         query = `update TeamPostEntity set ContentUrl = '${updateRequest.contentUrl}', Description = '${updateRequest.description}', Tags = '${updateRequest.tags}', Title = '${updateRequest.title}', Type = ${updateRequest.type}, UpdatedDate = CURRENT_TIMESTAMP where PostID = ${postID};`;
         await executeQuery(query, connection);
