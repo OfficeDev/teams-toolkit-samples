@@ -79,3 +79,12 @@ export class ResponsePost {
         this.isRemoved = post.IsRemoved
     }
 }
+
+export class PostRequest {
+    type: number;
+    title: string;
+    description: string;
+    contentUrl: string;
+    tags: string;
+}
+
