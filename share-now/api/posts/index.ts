@@ -52,8 +52,6 @@ export default async function run(
         await executeQuery(query, connection);
         res.body["data"] = "create post successfully";
         return res;
-      case "delete":
-      case "put":
     }
   } catch (error) {
     return {
