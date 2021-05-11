@@ -104,5 +104,9 @@ function getPostRequest(req: HttpRequest) {
   res.description = req.body.description ?? "hello";
   res.contentUrl = req.body.contentUrl ?? "https://bing.com";
   res.tags = req.body.tags ?? "";
+  
+  if (res.type in [1,2,3,4,5] === false) {
+    throw new Error("invalid input for type")
+  }
   return res;
 }

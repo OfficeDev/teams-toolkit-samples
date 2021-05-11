@@ -15,12 +15,12 @@ export class MessageExtensionBot extends TeamsActivityHandler {
         let connection;
         try {
             connection = await getSQLConnection();
-            const searchQuery = query.parameters[0].value;
+            const searchItem = query.parameters[0].value;
             let sqlQuery: string;
             if (query.commandId === "allItems") {
-                sqlQuery = buildQuery(searchQuery, query.queryOptions.skip, query.queryOptions.count);
+                sqlQuery = buildQuery(searchItem, query.queryOptions.skip, query.queryOptions.count);
             } else {
-                sqlQuery = buildQuery(searchQuery, query.queryOptions.skip, query.queryOptions.count, context.activity.from.aadObjectId);
+                sqlQuery = buildQuery(searchItem, query.queryOptions.skip, query.queryOptions.count, context.activity.from.aadObjectId);
             }
             var result = await executeQuery(sqlQuery, connection);
             const attachments = [];
@@ -175,7 +175,7 @@ function voteIcon() {
 
 function buildQuery(search, skip, count, userID = "") {
     let userFilter = userID ? `and UserID = '${userID}'` : "";
-    let sqlQuery = `SELECT * FROM [dbo].[TeamPostEntity] where Title like '%${search}%' ${userFilter} ORDER BY PostID DESC OFFSET ${skip} ROWS FETCH NEXT ${count} ROWS ONLY;`;
+    let sqlQuery = `SELECT * FROM [dbo].[TeamPostEntity] where IsRemoved = 0 and (Title like '%${search}%' or Tags like '%${search}%') ${userFilter} ORDER BY PostID DESC OFFSET ${skip} ROWS FETCH NEXT ${count} ROWS ONLY;`;
     return sqlQuery;
 }
 
