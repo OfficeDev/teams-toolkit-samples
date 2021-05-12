@@ -75,6 +75,7 @@ class Tab extends React.Component {
 
   async loginBtnClick() {
     try {
+      // Popup login page to get user's access token
       await this.credential.login(this.scope);
     } catch (err) {
       alert("Login failed: " + err);

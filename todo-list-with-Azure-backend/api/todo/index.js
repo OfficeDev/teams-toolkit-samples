@@ -29,13 +29,14 @@ const { Connection, Request } = require('tedious');
  */
 module.exports = async function (context, req, config) {
     let connection;
+    // Initialize configuration from environment variables and set the global instance
     loadConfiguration()
     try {
         connection = await getSQLConnection();
         const method = req.method.toLowerCase();
-        // Use TeamsFx server SDK to get user object id from user SSO token
         const accessToken = config.AccessToken;
         const credential = new OnBehalfOfUserCredential(accessToken);
+        // Get the user info from access token
         const currentUser = await credential.getUserInfo();
         const objectId = currentUser.objectId;
         var query;
