@@ -23,8 +23,8 @@
 1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install 'TeamsFx Toolkit'.
 1. Open the project in Visual Studio Code.
-1. Open Command Palette (`Ctrl+Shift+P`) and type `Teams: Provision in the Cloud`
-1. Once provisioning is complete, open Command Palette (`Ctrl+Shift+P`) and type `Teams: Deploy to the Cloud`
+1. Open Command Palette (`Ctrl+Shift+P`) and type `Teams: Provision in the Cloud`.
+1. Once provisioning is complete, open Command Palette (`Ctrl+Shift+P`) and type `Teams: Deploy to the Cloud`.
 1. Open [.fx/env.default.json](.fx/env.default.json) file, you could get the database name in `databaseName` setting. In Azure portal, find the database and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
     ```sql
     CREATE TABLE Todo
@@ -36,7 +36,7 @@
         isCompleted TinyInt NOT NULL default 0,
     )
     ```
-1. Once deployment is complete, open Debug View (`Ctrl+Shift+D`) and select "Launch Remote (Edge)" or "Launch Remote (Chrome)" in dropdown list
+1. Once deployment is complete, open Debug View (`Ctrl+Shift+D`) and select "Launch Remote (Edge)" or "Launch Remote (Chrome)" in dropdown list.
 1. Press "F5" to open a browser window and then select your package to view todo list sample app. 
 
 ### Debug [Optional]
@@ -60,7 +60,8 @@
     BACKEND_SQL_USER_NAME=
     BACKEND_SQL_PASSWORD=
     ```
-1. aa
+1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
+1. Press "F5" to open a browser window and then select your package to view todo list sample app. 
 
 ### How to use this Sample App:
 
