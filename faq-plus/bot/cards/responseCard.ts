@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import { Action, AdaptiveCard, CardElement, TextWeight, Version, TextBlock, Spacing, Container, ColumnSet, Column, VerticalAlignment, Image, Size, ImageStyle, SubmitAction } from "adaptivecards";
 import { CardFactory } from "botbuilder-core";
 import { ActionTypes, Attachment } from "botframework-schema";

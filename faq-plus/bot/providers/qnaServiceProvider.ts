@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import { QnAMakerRuntimeClient } from '@azure/cognitiveservices-qnamaker-runtime';
 import { ConfigurationDataProvider } from './configurationProvider';
 import { ConfigurationEntityTypes } from '../models/configurationEntityTypes';

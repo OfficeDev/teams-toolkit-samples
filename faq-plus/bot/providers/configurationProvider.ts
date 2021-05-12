@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import { TableService, createTableService } from 'azure-storage';
 
 export class ConfigurationDataProvider {

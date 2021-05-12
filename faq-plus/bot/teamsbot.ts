@@ -1,8 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { TeamsActivityHandler, SigninStateVerificationQuery, ActionTypes, Attachment, CardFactory, BotState, TurnContext, tokenExchangeOperationName, Activity, MessageFactory } from "botbuilder";
-import { MainDialog } from "./dialogs/mainDialog";
+import { TeamsActivityHandler, ActionTypes, CardFactory, BotState, TurnContext, Attachment, Activity, MessageFactory } from "botbuilder";
 import { ActivityTypes } from "botframework-schema";
 import { QnADTO, QnASearchResultList } from "@azure/cognitiveservices-qnamaker-runtime/esm/models";
 import { ResponseCardPayload } from "./models/responseCardPayload";
@@ -16,39 +15,17 @@ import { getUnrecognizedInputCard } from "./cards/unrecognizedInputCard";
 import { AskAnExpertCardPayload } from "./models/askAnExpertCardPayload";
 
 export class TeamsBot extends TeamsActivityHandler {
-    conversationState: BotState;
-    userState: BotState;
-    dialog: MainDialog;
-    dialogState: any;
-
     private readonly conversationTypePersonal: string = "personal";
     private readonly qnaServiceProvider: QnaServiceProvider;
 
     /**
      *
-     * @param {ConversationState} conversationState
-     * @param {UserState} userState
-     * @param {Dialog} dialog
+     * @param {QnaServiceProvider} qnaServiceProvider
      */
-    constructor(conversationState: BotState, userState: BotState, dialog: MainDialog,
-        qnaServiceProvider: QnaServiceProvider) {
+    constructor(qnaServiceProvider: QnaServiceProvider) {
         super();
 
         this.qnaServiceProvider = qnaServiceProvider;
-
-        if (!conversationState) {
-            throw new Error('[TeamsBot]: Missing parameter. conversationState is required');
-        }
-        if (!userState) {
-            throw new Error('[TeamsBot]: Missing parameter. userState is required');
-        }
-        if (!dialog) {
-            throw new Error('[TeamsBot]: Missing parameter. dialog is required');
-        }
-        this.conversationState = conversationState;
-        this.userState = userState;
-        this.dialog = dialog;
-        this.dialogState = this.conversationState.createProperty('DialogState');
 
         this.onMembersAdded(async (context, next) => {
             const membersAdded = context.activity.membersAdded;
@@ -216,34 +193,5 @@ export class TeamsBot extends TeamsActivityHandler {
             listenFor: source.listenFor,
             semanticAction: source.semanticAction
         };
-    }
-
-    async run(context: TurnContext) {
-        await super.run(context);
-
-        // Save any state changes. The load happened during the execution of the Dialog.
-        await this.conversationState.saveChanges(context, false);
-        await this.userState.saveChanges(context, false);
-    }
-
-    async handleTeamsSigninVerifyState(context: TurnContext, query: SigninStateVerificationQuery) {
-        console.log('Running dialog with signin/verifystate from an Invoke Activity.');
-        await this.dialog.run(context, this.dialogState);
-    }
-
-    async handleTeamsSigninTokenExchange(context: TurnContext, query: SigninStateVerificationQuery) {
-        await this.dialog.run(context, this.dialogState);
-    }
-
-    async onSignInInvoke(context: TurnContext) {
-        if (
-            context.activity &&
-            context.activity.name === tokenExchangeOperationName
-        ) {
-            if (await this.dialog.shouldDedup(context)) {
-                return;
-            }
-        }
-        await this.dialog.run(context, this.dialogState);
     }
 }

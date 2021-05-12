@@ -1,24 +1,20 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 // Import required packages
-import * as path from 'path';
 import * as restify from "restify";
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 import {
     BotFrameworkAdapter,
-    ConversationState,
-    MemoryStorage,
-    UserState,
     TurnContext
 } from "botbuilder";
 
-// This bot's main dialog.
+// This is the activity handler of this bot.
 import { TeamsBot } from "./teamsBot";
-import { MainDialog } from "./dialogs/mainDialog";
 
+// Import required QnA Maker components
 import { QnaServiceProvider } from "./providers/qnaServiceProvider";
 import { ConfigurationDataProvider } from "./providers/configurationProvider";
 import { QnAMakerClient } from "@azure/cognitiveservices-qnamaker";
@@ -61,23 +57,8 @@ async function main() {
     // Set the onTurnError for the singleton BotFrameworkAdapter.
     adapter.onTurnError = onTurnErrorHandler;
 
-    // Define the state store for your bot.
-    // See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
-    // A bot requires a state storage system to persist the dialog and user state between messages.
-    const memoryStorage = new MemoryStorage();
-
-    // For a distributed bot in production,
-    // this requires a distributed storage to ensure only one token exchange is processed.
-    const dedupMemory = new MemoryStorage();
-
-    // Create conversation and user state with in-memory storage provider.
-    const conversationState = new ConversationState(memoryStorage);
-    const userState = new UserState(memoryStorage);
-
-    // Create the main dialog.
-    const dialog = new MainDialog(dedupMemory);
     // Create the bot that will handle incoming messages.
-    const bot = new TeamsBot(conversationState, userState, dialog, qnaServiceProvider);
+    const bot = new TeamsBot(qnaServiceProvider);
 
     // Create HTTP server.
     const server = restify.createServer();
@@ -91,13 +72,6 @@ async function main() {
             await bot.run(context);
         });
     });
-
-    server.get(
-        "/*",
-        restify.plugins.serveStatic({
-            directory: path.join(__dirname, "public")
-        })
-    );
 }
 
 main().catch((reason) => {
