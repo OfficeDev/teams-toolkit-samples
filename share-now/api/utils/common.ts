@@ -70,7 +70,7 @@ export class ResponsePost {
         this.title = post.Title;
         this.description = post.Description
         this.contentUrl = post.ContentUrl
-        this.tags = post.tags
+        this.tags = post.Tags
         this.createdDate = post.CreatedDate
         this.createdByName = post.CreatedByName
         this.userId = post.UserID
