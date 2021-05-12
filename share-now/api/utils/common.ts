@@ -88,3 +88,10 @@ export class PostRequest {
     tags: string;
 }
 
+export enum PostTypes {
+    "Article / blog" = 1,
+    Other = 2,
+    Podcast = 3,
+    Video = 4,
+    Book = 5,
+}

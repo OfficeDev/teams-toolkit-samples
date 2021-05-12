@@ -6,7 +6,7 @@ import {
   loadConfiguration,
   OnBehalfOfUserCredential,
 } from "teamsdev-client";
-import { executeQuery, getSQLConnection, PostRequest, ResponsePost } from "../utils/common";
+import { executeQuery, getSQLConnection, PostRequest, PostTypes, ResponsePost } from "../utils/common";
 import { checkPost } from "../utils/query";
 
 interface Response {
@@ -115,7 +115,7 @@ function getPostRequest(req: HttpRequest) {
   res.contentUrl = req.body.contentUrl ?? "https://bing.com";
   res.tags = req.body.tags ?? "";
   
-  if (res.type in [1,2,3,4,5] === false) {
+  if (!Object.values(PostTypes).includes(res.type)) {
     throw new Error("invalid input for type")
   }
   return res;
