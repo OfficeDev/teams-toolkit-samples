@@ -70,7 +70,7 @@ export class ResponsePost {
         this.title = post.Title;
         this.description = post.Description
         this.contentUrl = post.ContentUrl
-        this.tags = post.tags
+        this.tags = post.Tags
         this.createdDate = post.CreatedDate
         this.createdByName = post.CreatedByName
         this.userId = post.UserID
@@ -78,4 +78,20 @@ export class ResponsePost {
         this.totalVotes = post.TotalVotes;
         this.isRemoved = post.IsRemoved
     }
+}
+
+export class PostRequest {
+    type: number;
+    title: string;
+    description: string;
+    contentUrl: string;
+    tags: string;
+}
+
+export enum PostTypes {
+    "Article / blog" = 1,
+    Other = 2,
+    Podcast = 3,
+    Video = 4,
+    Book = 5,
 }
