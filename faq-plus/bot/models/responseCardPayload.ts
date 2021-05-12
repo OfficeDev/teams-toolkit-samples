@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import { QnADTO } from "@azure/cognitiveservices-qnamaker-runtime/esm/models";
 import { TeamsAdaptiveSubmitActionData } from "./teamsAdaptiveSubmitActionData";
 
