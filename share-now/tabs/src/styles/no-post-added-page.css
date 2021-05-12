@@ -1,0 +1,27 @@
+﻿.no-post-added-container {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.no-data-preview {
+    width: 100%;
+    font-weight: bold;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.add-new-post {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.add-new-post-btn{
+    margin-top:2rem;
+}

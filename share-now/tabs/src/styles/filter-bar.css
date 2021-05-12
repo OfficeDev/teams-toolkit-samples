@@ -1,0 +1,69 @@
+.dark-container .filter-bar-wrapper {
+    padding: 0.5rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    border-radius: 0.3rem;
+    background-color: #2D2C2C;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.default-container .filter-bar-wrapper {
+    padding: 0.5rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    border-radius: 0.3rem;
+    background-color: white;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.high-contrast-container .filter-bar-wrapper {
+    padding: 0.5rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    border-radius: 0.3rem;
+    background-color: black;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.close-icon {
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.searchbar-wrapper {
+    width:auto;
+}
+
+.searchbar-input {
+    padding-left: 1rem !important;
+}
+
+.filter-bar-item {
+    flex: 0 0 10rem !important;
+    width: 13.6rem !important;
+    margin-left: -2.6rem !important;
+    text-align: center;
+}
+
+.filter-bar-item-container {
+    justify-content: flex-end;
+    margin-right: 1rem !important;
+}
+
+.mobile-filterbar-wrapper {
+    width: 98vw !important;
+    margin-left: -1rem !important;
+    overflow: auto !important;
+}
+
+@media only screen and (max-width: 750px) {
+    .searchbar-wrapper-mobile {
+        width: 95vw !important;
+    }
+}

@@ -1,0 +1,8 @@
+﻿.more-menu-icon {
+    cursor: pointer;
+    float: right;
+}
+
+    .more-menu-icon:hover {
+        color: #6264A7;
+    }

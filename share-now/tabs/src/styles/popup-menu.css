@@ -1,0 +1,63 @@
+.content-items-wrapper {
+    width: 25rem;
+    margin: 1.5rem;
+}
+
+.radio-popup-content {
+    width: 19rem !important;
+}
+
+.content-items-body {
+    width: 25rem;
+    max-height: 18rem;
+    margin-top: 1.5rem;
+    overflow-y: auto;
+}
+
+.checkbox-content-width {
+    width: auto;
+    vertical-align: "center";
+}
+
+.content-items-headerfooter {
+    width: 25rem;
+    height: 3rem;
+}
+
+.filter-popup-menu-divider{
+    margin-top:1rem;
+}
+
+.clear-button {
+    margin-top: 0.5rem;
+}
+
+    .clear-button div {
+        margin-right: 0.5rem;
+        margin-top: 0.09rem;
+    }
+
+.dark-container .gray-background {
+    background-color: #3b3a39 !important;
+    color: white !important;
+}
+
+.high-contrast-container .gray-background {
+    background-color: black !important;
+    color: yellow !important;
+}
+
+.default-container .gray-background {
+    background-color: #F3F2F1 !important;
+    color: #6264A7 !important;
+}
+
+.no-background{
+    background-color:none;
+}
+@media only screen and (max-width: 750px) {
+    .ui-button__content {
+        display: contents;
+        padding:1rem !important;
+    }
+}
