@@ -71,7 +71,6 @@ export class TeamsBot extends TeamsActivityHandler {
     }
 
     private async onMessageActivityInPersonalChat(message: Activity, turnContext: TurnContext): Promise<void> {
-        console.log("[debug] onMessageActivityInPersonalChat");
         if (message.replyToId && (message.value != null))
         {
             console.log("Card submit in 1:1 chat");
@@ -94,7 +93,6 @@ export class TeamsBot extends TeamsActivityHandler {
     }
 
     private async OnAdaptiveCardSubmitInPersonalChatAsync(message: Activity, turnContext: TurnContext): Promise<void> {
-        console.log("[debug] OnAdaptiveCardSubmitInPersonalChatAsync");
         let smeTeamCard: Attachment;      // Notification to SME team
         let userCard: Attachment;         // Acknowledgement to the user
         let newTicket: TicketEntity;      // New ticket

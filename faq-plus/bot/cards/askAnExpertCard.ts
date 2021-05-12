@@ -3,7 +3,7 @@ import { AskAnExpertCardPayload } from "../models/askAnExpertCardPayload";
 import { ActionTypes, Attachment, CardFactory, TurnContext, Activity } from "botbuilder";
 import { TicketEntity } from "../models/ticketEntity";
 import { CreateTicketAsync, GetUserDetailsInPersonalChatAsync } from "../common/adaptiveHelper";
-import { TeamsChannelAccount } from "botframework-schema";
+import { ActivityTypes, TeamsChannelAccount } from "botframework-schema";
 import { TextString, Constants } from "../common/constants";
 
 export function getAskAnExpertCard(payload?: AskAnExpertCardPayload): Attachment {
@@ -84,8 +84,8 @@ export async function AskAnExpertSubmitText(message: Activity, turnContext: Turn
     // Validate required fields.
     if (!askAnExpertSubmitTextPayload?.Title)
     {
-        var updateCardActivity: Activity = message;
-        updateCardActivity.type = ActionTypes.MessageBack;
+        var updateCardActivity: Activity = turnContext.activity;
+        updateCardActivity.type = ActivityTypes.Message;
         updateCardActivity.id = turnContext.activity.replyToId;
         updateCardActivity.conversation = turnContext.activity.conversation;
         updateCardActivity.attachments = [getAskAnExpertCard(askAnExpertSubmitTextPayload)];

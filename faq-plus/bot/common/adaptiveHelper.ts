@@ -11,23 +11,21 @@ export async function GetUserDetailsInPersonalChatAsync(turnContext: TurnContext
 }
 
 export async function CreateTicketAsync(message: Activity, data: AskAnExpertCardPayload, member: TeamsChannelAccount): Promise<TicketEntity> {
-    let ticketEntity: TicketEntity = {
-        TicketId: uuidv4(),
-        Status: TicketState.Open as number,
-        DateCreated: new Date(),
-        Title: data.Title,
-        Description: data.Description,
-        RequesterName: member.name,
-        RequesterUserPrincipalName: member.userPrincipalName,
-        RequesterGivenName: member.givenName,
-        RequesterConversationId: message.conversation.id,
-        LastModifiedByName: message.from.name,
-        LastModifiedByObjectId: message.from.aadObjectId,
-        UserQuestion: data.UserQuestion,
-        KnowledgeBaseAnswer: data.KnowledgeBaseAnswer,
-        SmeCardActivityId: message.id,
-        SmeThreadConversationId: message.conversation.id,
-    }
+    let ticketEntity: TicketEntity = new TicketEntity();
+    ticketEntity.TicketId = uuidv4();
+    ticketEntity.Status = TicketState.Open;
+    ticketEntity.DateCreated = new Date();
+    ticketEntity.Title = data.Title;
+    ticketEntity.Description = data.Description;
+    ticketEntity.RequesterName = member.name;
+    ticketEntity.RequesterGivenName = member.givenName;
+    ticketEntity.RequesterUserPrincipalName = member.userPrincipalName;
+    ticketEntity.RequesterConversationId = message.conversation.id;
+    ticketEntity.LastModifiedByName = message.from.name;
+    ticketEntity.LastModifiedByObjectId = message.from.aadObjectId;
+    ticketEntity.UserQuestion = data.UserQuestion;
+    ticketEntity.KnowledgeBaseAnswer = data.KnowledgeBaseAnswer;
+
     console.log("todo: upsert ticket");
 
     return ticketEntity;
