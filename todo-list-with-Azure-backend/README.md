@@ -21,7 +21,7 @@
 ### Running this Sample App:
 
 1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install 'TeamsFx Toolkit'.
+1. Download [Visual Studio Code](https://code.visualstudio.com) and install 'Teams Toolkit' extension.
 1. Open the project in Visual Studio Code.
 1. Open Command Palette (`Ctrl+Shift+P`) and type `Teams: Provision in the Cloud`.
 1. Once provisioning is complete, open Command Palette (`Ctrl+Shift+P`) and type `Teams: Deploy to the Cloud`.
