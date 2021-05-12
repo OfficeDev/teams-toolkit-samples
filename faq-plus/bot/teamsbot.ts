@@ -11,7 +11,6 @@ import { getResponseCard } from "./cards/responseCard";
 
 export class TeamsBot extends TeamsActivityHandler {
     private readonly conversationTypePersonal: string = "personal";
-    private readonly changeStatus: string = "change status";
     private readonly qnaServiceProvider: QnaServiceProvider;
 
     /**
@@ -71,33 +70,6 @@ export class TeamsBot extends TeamsActivityHandler {
         await this.getQuestionAnswerReply(turnContext, message);
     }
 
-    private async onMessageActivityInChannel(message: Activity, turnContext: TurnContext): Promise<void> {
-        let text: string;
-
-        // Check if the incoming request is for updating the ticket status
-        if (message.replyToId && message.value
-            && message.value.ticketId) {
-            text = this.changeStatus
-        } else {
-            text = message.text?.toLowerCase()?.trim() ?? "";
-        }
-
-        try {
-            switch (text) {
-                case this.changeStatus:
-                    console.log(`Card submit in channel ${JSON.stringify(message.value)}`)
-                    // TODO: implement
-                    return;
-                default:
-                    console.log("Unrecognized input in channel");
-                    break;
-            }
-        } catch (error) {
-            console.log(error);
-            throw error;
-        }
-    }
-
     private async getQuestionAnswerReply(turnContext: TurnContext, message: Activity): Promise<void> {
         const text = message.text?.toLowerCase()?.trim() ?? "";
 
@@ -135,10 +107,6 @@ export class TeamsBot extends TeamsActivityHandler {
         } catch (error) {
             console.log(error);
         }
-    }
-
-    private async onAdaptiveCardSubmitInChannelAsync(message: Activity, turnContext: TurnContext): Promise<void> {
-        
     }
 
     private async sendTypingIndicatorAsync(turnContext: TurnContext): Promise<void> {
