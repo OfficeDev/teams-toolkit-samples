@@ -84,18 +84,6 @@ export const updatePostContent = async (postContent: any): Promise<any> => {
 * @param postContent Post details object to be added
 */
 export const addNewPostContent = async (postContent: any): Promise<any> => {
-    // const credential = new TeamsUserCredential();
-    // const accessToken = await credential.getToken("");
-    // const apiConfig = getResourceConfiguration(ResourceType.API);
-    // const response = await axiosDefault.default.get(
-    //     apiConfig.endpoint + "/api/" + "posts",
-    //     {
-    //       headers: {
-    //         authorization: "Bearer " + accessToken?.token,
-    //       },
-    //     }
-    // );
-    // return response;
     let url = `${baseAxiosUrl}/posts`;
     return await axios.post(url);
 }

@@ -3,5 +3,5 @@
 // </copyright>
 
 export const getBaseUrl = (): string => {
-    return "http://localhost:7071";
+    return "https://sharenowbeef3d96.azurewebsites.net";
 }

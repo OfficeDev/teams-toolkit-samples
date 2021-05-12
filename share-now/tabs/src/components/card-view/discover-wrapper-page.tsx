@@ -124,16 +124,24 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     * Used to initialize Microsoft Teams sdk
     */
     async componentDidMount() {
-        // this.initTeamsFx();
+        this.initTeamsFx();
+        alert(1);
         microsoftTeams.initialize();
         microsoftTeams.getContext((context: microsoftTeams.Context) => {
             this.loggedInUserObjectId = context.userObjectId!;
         });
 
+        alert(this.loggedInUserObjectId);
         await this.initDiscoverPosts();
 
-        // const userInfo = await this.credential?.getUserInfo();
-        // this.loggedInUserObjectId = userInfo?.objectId as string;
+        // alert(2);
+        // try {
+        //     const userInfo = await this.credential?.getUserInfo();
+        //     this.loggedInUserObjectId = userInfo?.objectId as string;
+        // } catch (error) {
+        //     alert(error);
+        // }
+        // alert(this.loggedInUserObjectId);
     }
 
     /**

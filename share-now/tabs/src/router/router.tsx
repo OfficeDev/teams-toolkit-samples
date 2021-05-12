@@ -36,7 +36,7 @@ export const AppRoute: React.FunctionComponent<{}> = () => {
                     <Route exact path="/signin-simple-end" component={SignInSimpleEnd} />
                     <Route exact path="/user-private-list" component={PrivateListWrapperPage} />
                     <Route exact path="/configurepreferences" component={configurepreference} />
-                    <Route exact path="/error" component={ErrorPage} />
+                    <Route exact path="/errorpage" component={ErrorPage} />
                     <Route component={Redirect} />
                 </Switch>
             </BrowserRouter>
