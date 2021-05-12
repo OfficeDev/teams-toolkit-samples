@@ -11,7 +11,7 @@ import { checkPost } from "../utils/query";
 
 interface Response {
   status: number;
-  body: { [key: string]: any; };
+  body: any;
 }
 
 type TeamsfxContext = { [key: string]: any; };
@@ -48,34 +48,34 @@ export default async function run(
         query = `SELECT * FROM [dbo].[TeamPostEntity] where IsRemoved = 0 ORDER BY PostID DESC OFFSET ${pageSize * pageCount} ROWS FETCH NEXT ${pageSize} ROWS ONLY;`;
         const posts = await executeQuery(query, connection);
         const data = await decoratePosts(posts, currentUser.objectId, connection);
-        res.body["data"] = data;
+        res.body = data;
         return res;
       case "post":
         const createRequest = getPostRequest(req);
         query = `INSERT TeamPostEntity (ContentUrl, CreatedByName, CreatedDate, Description, IsRemoved, Tags, Title, TotalVotes, Type, UpdatedDate, UserID) VALUES ('${createRequest.contentUrl}','${currentUser.displayName}', CURRENT_TIMESTAMP, '${createRequest.description}', 0, '${createRequest.tags}', '${createRequest.title}', 0,${createRequest.type}, CURRENT_TIMESTAMP, '${currentUser.objectId}');`;
         await executeQuery(query, connection);
-        res.body["data"] = "create post successfully";
+        res.body = "create post successfully";
         return res;
       case "delete":
         postID = context.bindingData.id as number;
-        check = await checkPost(postID, connection, currentUser.objectId)
+        check = await checkPost(postID, connection, currentUser.objectId);
         if (!check) {
-          throw new Error("invalid postID")
+          throw new Error("invalid postID");
         }
         query = `update TeamPostEntity set IsRemoved = 1 where PostID = ${postID}`;
         await executeQuery(query, connection);
-        res.body["data"] = "delete post successfully";
+        res.body = "delete post successfully";
         return res;
       case "put":
         postID = context.bindingData.id as number;
-        check = await checkPost(postID, connection, currentUser.objectId)
+        check = await checkPost(postID, connection, currentUser.objectId);
         if (!check) {
-          throw new Error("invalid postID")
+          throw new Error("invalid postID");
         }
         const updateRequest = getPostRequest(req);
         query = `update TeamPostEntity set ContentUrl = '${updateRequest.contentUrl}', Description = '${updateRequest.description}', Tags = '${updateRequest.tags}', Title = '${updateRequest.title}', Type = ${updateRequest.type}, UpdatedDate = CURRENT_TIMESTAMP where PostID = ${postID};`;
         await executeQuery(query, connection);
-        res.body["data"] = "update post successfully";
+        res.body = "update post successfully";
         return res;
     }
   } catch (error) {
@@ -114,9 +114,9 @@ function getPostRequest(req: HttpRequest) {
   res.description = req.body.description ?? "hello";
   res.contentUrl = req.body.contentUrl ?? "https://bing.com";
   res.tags = req.body.tags ?? "";
-  
+
   if (!Object.values(PostTypes).includes(res.type)) {
-    throw new Error("invalid input for type")
+    throw new Error("invalid input for type");
   }
   return res;
 }
