@@ -6,7 +6,7 @@ import {
   loadConfiguration,
   OnBehalfOfUserCredential,
 } from "teamsdev-client";
-import { executeQuery, getSQLConnection, PostRequest, PostTypes, ResponsePost } from "../utils/common";
+import { executeQuery, getSQLConnection, PostRequest, PostTypes, ResponsePost, LengthLimit } from "../utils/common";
 import { checkPost } from "../utils/query";
 
 interface Response {
@@ -52,9 +52,11 @@ export default async function run(
         return res;
       case "post":
         const createRequest = getPostRequest(req);
-        query = `INSERT TeamPostEntity (ContentUrl, CreatedByName, CreatedDate, Description, IsRemoved, Tags, Title, TotalVotes, Type, UpdatedDate, UserID) VALUES ('${createRequest.contentUrl}','${currentUser.displayName}', CURRENT_TIMESTAMP, '${createRequest.description}', 0, '${createRequest.tags}', '${createRequest.title}', 0,${createRequest.type}, CURRENT_TIMESTAMP, '${currentUser.objectId}');`;
-        await executeQuery(query, connection);
-        res.body = "create post successfully";
+        query = `INSERT TeamPostEntity (ContentUrl, CreatedByName, CreatedDate, Description, IsRemoved, Tags, Title, TotalVotes, Type, UpdatedDate, UserID) OUTPUT Inserted.PostID VALUES (N'${createRequest.contentUrl}',N'${currentUser.displayName}', CURRENT_TIMESTAMP, N'${createRequest.description}', 0, N'${createRequest.tags}', N'${createRequest.title}', 0,${createRequest.type}, CURRENT_TIMESTAMP, '${currentUser.objectId}');`;
+        const created = await executeQuery(query, connection);
+        const createdId = created[0].PostID;
+        const detail = await postDetail(createdId, currentUser.objectId, connection);
+        res.body = detail;
         return res;
       case "delete":
         postID = context.bindingData.id as number;
@@ -73,9 +75,10 @@ export default async function run(
           throw new Error("invalid postID");
         }
         const updateRequest = getPostRequest(req);
-        query = `update TeamPostEntity set ContentUrl = '${updateRequest.contentUrl}', Description = '${updateRequest.description}', Tags = '${updateRequest.tags}', Title = '${updateRequest.title}', Type = ${updateRequest.type}, UpdatedDate = CURRENT_TIMESTAMP where PostID = ${postID};`;
+        query = `update TeamPostEntity set ContentUrl = N'${updateRequest.contentUrl}', Description = N'${updateRequest.description}', Tags = N'${updateRequest.tags}', Title = N'${updateRequest.title}', Type = ${updateRequest.type}, UpdatedDate = CURRENT_TIMESTAMP where PostID = ${postID};`;
         await executeQuery(query, connection);
-        res.body = "update post successfully";
+        const updatedDetail = await postDetail(postID, currentUser.objectId, connection);
+        res.body = updatedDetail;
         return res;
     }
   } catch (error) {
@@ -107,16 +110,35 @@ async function decoratePosts(posts, userID, connection) {
   return elements;
 }
 
+async function postDetail(postID, userID, connection) {
+  const query = `SELECT * FROM [dbo].[TeamPostEntity] where PostID = ${postID};`;
+  const posts = await executeQuery(query, connection);
+  const data = await decoratePosts(posts, userID, connection);
+  return data[0];
+}
+
 function getPostRequest(req: HttpRequest) {
   let res = new PostRequest();
   res.type = req.body.type ?? 1;
   res.title = req.body.title ?? "automatic post";
   res.description = req.body.description ?? "hello";
   res.contentUrl = req.body.contentUrl ?? "https://bing.com";
-  res.tags = req.body.tags ?? "";
+  res.tags = req.body.tags ?? "red;blue";
 
   if (!Object.values(PostTypes).includes(res.type)) {
     throw new Error("invalid input for type");
+  }
+  if (res.title.length > LengthLimit.title) {
+    throw new Error(`the input of title is too long, max length is ${LengthLimit.title}`);
+  }
+  if (res.contentUrl.length > LengthLimit.contentUrl) {
+    throw new Error(`the input of contentUrl is too long, max length is ${LengthLimit.contentUrl}`);
+  }
+  if (res.description.length > LengthLimit.description) {
+    throw new Error(`the input of description is too long, max length is ${LengthLimit.description}`);
+  }
+  if (res.tags.length > LengthLimit.tags) {
+    throw new Error(`the input of tags is too long, max length is ${LengthLimit.tags}`);
   }
   return res;
 }
