@@ -3,10 +3,7 @@
 
 import { Action, AdaptiveCard, CardElement, TextWeight, Version, TextBlock, TextSize, Spacing, TextInput, SubmitAction } from "adaptivecards";
 import { AskAnExpertCardPayload } from "../models/askAnExpertCardPayload";
-import { ActionTypes, Attachment, CardFactory, TurnContext, Activity } from "botbuilder";
-import { TicketEntity } from "../models/ticketEntity";
-import { createTicketAsync, getUserDetailsInPersonalChatAsync } from "../common/adaptiveHelper";
-import { ActivityTypes, TeamsChannelAccount } from "botframework-schema";
+import { ActionTypes, Attachment, CardFactory } from "botbuilder";
 import { TextString, Constants } from "../common/constants";
 
 export function getAskAnExpertCard(payload?: AskAnExpertCardPayload): Attachment {
@@ -78,25 +75,4 @@ function buildListOfActions(userQuestion: string, answer: string): Action[] {
     } as AskAnExpertCardPayload;
 
     return [action];
-}
-
-export async function askAnExpertSubmitText(message: Activity, turnContext: TurnContext): Promise<TicketEntity>
-{
-    let askAnExpertSubmitTextPayload = message.value as AskAnExpertCardPayload;
-
-    // Validate required fields.
-    if (!askAnExpertSubmitTextPayload?.Title)
-    {
-        var updateCardActivity: Activity = turnContext.activity;
-        updateCardActivity.type = ActivityTypes.Message;
-        updateCardActivity.id = turnContext.activity.replyToId;
-        updateCardActivity.conversation = turnContext.activity.conversation;
-        updateCardActivity.attachments = [getAskAnExpertCard(askAnExpertSubmitTextPayload)];
-
-        await turnContext.updateActivity(updateCardActivity);
-        return null;
-    }
-
-    var userDetails: TeamsChannelAccount = await getUserDetailsInPersonalChatAsync(turnContext);
-    return await createTicketAsync(message, askAnExpertSubmitTextPayload, userDetails);
 }

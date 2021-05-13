@@ -19,6 +19,7 @@ import { QnaServiceProvider } from "./providers/qnaServiceProvider";
 import { ConfigurationDataProvider } from "./providers/configurationProvider";
 import { QnAMakerClient } from "@azure/cognitiveservices-qnamaker";
 import { CognitiveServicesCredentials } from "@azure/ms-rest-azure-js";
+import { TicketsProvider } from "./providers/ticketsProvider";
 
 async function main() {
     const configProvider = new ConfigurationDataProvider(process.env.STORAGECONNECTIONSTRING);
@@ -26,6 +27,7 @@ async function main() {
         process.env.QNAMAKERAPIENDPOINTURL);
     const endpointKeys = await qnaMakerClient.endpointKeys.getKeys();
     const qnaServiceProvider = new QnaServiceProvider(configProvider, endpointKeys.primaryEndpointKey, process.env.QNAMAKERHOSTURL);
+    const ticketsProvider = new TicketsProvider(process.env.STORAGECONNECTIONSTRING);
 
     // Create adapter.
     // See https://aka.ms/about-bot-adapter to learn more about adapters.
@@ -58,7 +60,7 @@ async function main() {
     adapter.onTurnError = onTurnErrorHandler;
 
     // Create the bot that will handle incoming messages.
-    const bot = new TeamsBot(qnaServiceProvider);
+    const bot = new TeamsBot(configProvider, qnaServiceProvider, ticketsProvider);
 
     // Create HTTP server.
     const server = restify.createServer();

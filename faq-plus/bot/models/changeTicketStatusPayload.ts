@@ -7,5 +7,5 @@ export class ChangeTicketStatusPayload {
     public static readonly assignToSelfAction: string = "AssignToSelf";
 
     public ticketId: string;
-    public action: string;
+    public action?: string;
 }
