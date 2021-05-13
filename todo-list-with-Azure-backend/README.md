@@ -1,5 +1,8 @@
 # Getting Started with Todo List Sample - React Tab and Azure backend with Azure SQL DB
 
+> ## WARNING: This repository is under active development and the samples are not guaranteed to work!
+> This warning will be removed when the samples are ready for consumption
+
 ### This sample app is a group tab used to manage To-do List.
 
 - The frontend is a react tab hosting on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
