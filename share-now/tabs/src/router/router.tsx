@@ -18,7 +18,6 @@ import Redirect from "../components/redirect";
 import ErrorPage from "../components/error-page";
 
 export const AppRoute: React.FunctionComponent<{}> = () => {
-
     return (
         <Suspense fallback={<div className="container-div"><div className="container-subdiv"></div></div>}>
             <BrowserRouter>

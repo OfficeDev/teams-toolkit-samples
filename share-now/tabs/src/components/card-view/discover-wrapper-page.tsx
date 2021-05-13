@@ -124,43 +124,11 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     * Used to initialize Microsoft Teams sdk
     */
     async componentDidMount() {
-        alert(1);
-        this.initTeamsFx();
-        alert(2);
         const credential = new TeamsUserCredential();
-        alert(3);
         const userInfo = await credential.getUserInfo();
-        alert(4);
         this.loggedInUserObjectId = userInfo.objectId;
-        alert(this.loggedInUserObjectId);
-        const token = await credential.getToken("");
-        alert(token?.token);
-        const apiConfig = getResourceConfiguration(ResourceType.API);
-        alert(apiConfig.endpoint);
-        this.initDiscoverPosts();
-        // microsoftTeams.initialize();
-        // microsoftTeams.getContext((context: microsoftTeams.Context) => {
-        //     this.loggedInUserObjectId = context.userObjectId!;
-        // });
-    }
 
-    initTeamsFx = async () => {
-        loadConfiguration({
-            authentication: {
-              initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
-              simpleAuthEndpoint: process.env.REACT_APP_TEAMSFX_ENDPOINT,
-              clientId: process.env.REACT_APP_CLIENT_ID
-            },
-            resources: [
-              {
-                type: ResourceType.API,
-                name: "default",
-                properties: {
-                  endpoint: process.env.REACT_APP_FUNC_ENDPOINT
-                }
-              }
-            ]
-        });
+        this.initDiscoverPosts();
     }
 
     /**
