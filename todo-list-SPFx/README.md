@@ -1,5 +1,8 @@
 # Getting Started with Todo List Sample - React Tab on SPFx
 
+> ## WARNING: This repository is under active development and the samples are not guaranteed to work!
+> This warning will be removed when the samples are ready for consumption
+
 ### Todo List is a personal tab used to manage To-do List
 
 - The frontend is a React Tab hosted on [SharePoint](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview).

@@ -1,5 +1,8 @@
 # Meeting Apps
 
+> ## WARNING: This repository is under active development and the samples are not guaranteed to work!
+> This warning will be removed when the samples are ready for consumption
+
 Meeting apps are Teams-aware webpages embedded in Microsoft Teams. They are scoped to group and teams. Add a meeting to an app from its installation page.
 
 ## What you will learn in this sample
