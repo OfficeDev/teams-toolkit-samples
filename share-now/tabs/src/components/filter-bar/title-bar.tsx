@@ -3,10 +3,8 @@
 // </copyright>
 
 import * as React from "react";
-import FilterBar from "./filter-bar";
 import CommandBar from "./command-bar";
 import { ICheckBoxItem } from "./filter-bar"
-import { getAuthors, getTags } from "../../api/discover-api";
 import { IDiscoverPost } from "../card-view/discover-wrapper-page";
 
 interface IFilterBarProps {
@@ -42,42 +40,11 @@ class TitleBar extends React.Component<IFilterBarProps, IFilterBarState> {
         }
     }
 
-    componentDidMount() {
-        this.getAuthors();
-        this.getTags();
-    }
-
     componentWillReceiveProps(nextProps: IFilterBarProps) {
         if (nextProps.hideFilterbar !== this.props.hideFilterbar) {
             if (nextProps.hideFilterbar === true) {
                 this.setState({ isOpen: false });
-                this.getAuthors();
-                this.getTags();
             }
-        }
-    }
-
-	/**
-    * Fetch list of authors from API
-    */
-    getAuthors = async () => {
-        let response = await getAuthors();
-        if (response.status === 200 && response.data) {
-            this.setState({
-                sharedByAuthorList: response.data.map((author: string) => { return author.trim() })
-            });
-        }
-    }
-
-	/**
-    * Fetch list of tags from API
-    */
-    getTags = async () => {
-        let response = await getTags();
-        if (response.status === 200 && response.data) {
-            this.setState({
-                tagsList: response.data
-            });
         }
     }
 
@@ -104,16 +71,6 @@ class TitleBar extends React.Component<IFilterBarProps, IFilterBarState> {
                     commandBarSearchText={this.props.commandBarSearchText}
                     displayForTeam={false}
                 />
-                <FilterBar
-                    tagsList={this.state.tagsList}
-                    onFilterSearchChange={this.props.onFilterSearchChange}
-                    onSortByStateChange={this.props.onSortByChange}
-                    sharedByAuthorList={this.state.sharedByAuthorList}
-                    isVisible={this.state.isOpen}
-                    onFilterBarCloseClick={this.onOpenStateChange}
-                    onSharedByCheckboxStateChange={this.props.onSharedByCheckboxStateChange}
-                    onTypeCheckboxStateChange={this.props.onTypeCheckboxStateChange}
-                    onTagsStateChange={this.props.onTagsStateChange} />
             </>
         )
     }

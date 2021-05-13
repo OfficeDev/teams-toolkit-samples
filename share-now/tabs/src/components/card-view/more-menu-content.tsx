@@ -52,9 +52,6 @@ class MoreMenuContent extends React.Component<IMoreMenuContentProps, IAppState> 
         return (
             <Provider>
                 <Container fluid className="popup-menu-content-wrapper">
-                    <Flex vAlign="center" className={className} onClick={(event: any) => this.props.onMenuItemClick(1)}>
-                        <AddIcon outline /> <Text className="popup-menu-item-text" content={this.localize("addToPrivateList")} />
-                    </Flex>
                     {this.props.cardDetails.isCurrentUserPost && <><EditItemDialog
                         index={1}
                         cardDetails={this.props.cardDetails}

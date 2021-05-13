@@ -9,8 +9,7 @@ import NoPostAddedPage from "./no-post-added-page";
 import FilterNoPostContentPage from "./filter-no-post-content-page";
 import TitleBar from "../filter-bar/title-bar";
 import { Container, Col, Row } from "react-bootstrap";
-import * as microsoftTeams from "@microsoft/teams-js";
-import { getDiscoverPosts, getUserVotes, getFilteredPosts, filterTitleAndTags } from "../../api/discover-api";
+import { getDiscoverPosts } from "../../api/discover-api";
 import { generateColor } from "../../helpers/helper";
 import NotificationMessage from "../notification-message/notification-message";
 import { WithTranslation, withTranslation } from "react-i18next";
@@ -84,6 +83,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     authorAvatarBackground: Array<any>;
     hasmorePost: boolean;
     clearSearchText: boolean;
+    credential: TeamsUserCredential;
 
     constructor(props: any) {
         super(props);
@@ -100,6 +100,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
         this.authorAvatarBackground = colors === null ? [] : JSON.parse(colors!);
         this.hasmorePost = true;
         this.clearSearchText = false;
+        this.credential = new TeamsUserCredential();
 
         this.state = {
             loader: true,
@@ -124,9 +125,9 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     * Used to initialize Microsoft Teams sdk
     */
     async componentDidMount() {
-        const credential = new TeamsUserCredential();
-        const userInfo = await credential.getUserInfo();
+        const userInfo = await this.credential.getUserInfo();
         this.loggedInUserObjectId = userInfo.objectId;
+        alert(this.loggedInUserObjectId);
 
         this.initDiscoverPosts();
     }
@@ -152,65 +153,6 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
         return filterEntity.length > 1 ? filterEntity.join(";") : filterEntity.length == 1 ? filterEntity.join(";") + ";" : "";
     }
 
-    /**
-    * Get filtered posts based on selected checkboxes.
-    * @param pageCount Page count for which next set of posts needs to be fetched
-    */
-    getFilteredDiscoverPosts = async (pageCount: number) => {
-        let postTypes = this.selectedPostType.map((postType: ICheckBoxItem) => { return postType.key.toString() });
-        let postTypesString = encodeURI(this.getFilterString(postTypes));
-        let authors = this.selectedSharedBy.map((authors: ICheckBoxItem) => { return authors.title.trim() });
-        let authorsString = encodeURI(this.getFilterString(authors));
-        let tags = this.selectedTags.map((tag: ICheckBoxItem) => { return tag.title.trim() });
-        let tagsString = encodeURI(this.getFilterString(tags));
-
-        let response = await getFilteredPosts(postTypesString, authorsString, tagsString, this.selectedSortBy, pageCount);
-        if (response.status === 200 && response.data) {
-            if (response.data.length < 50) {
-                this.hasmorePost = false;
-            } else {
-                this.hasmorePost = true;
-            }
-
-            response.data.map((post: IDiscoverPost) => {
-                let searchedAuthor = this.authorAvatarBackground.find((author) => author.id === post.userId);
-                if (searchedAuthor) {
-                    post.avatarBackgroundColor = searchedAuthor.color;
-                }
-                else {
-                    let color = generateColor();
-                    this.authorAvatarBackground.push({ id: post.userId, color: color });
-                    post.avatarBackgroundColor = color;
-
-                    localStorage.setItem("avatar-colors", JSON.stringify(this.authorAvatarBackground));
-                }
-
-                if (post.userId === this.loggedInUserObjectId) {
-                    post.isCurrentUserPost = true;
-                }
-                else {
-                    post.isCurrentUserPost = false;
-                }
-
-                this.allPosts.push(post);
-            });
-
-            if (response.data.count !== 0) {
-                this.setState({
-                    isPageInitialLoad: false,
-                });
-            }
-            else {
-                this.setState({
-                    showNoPostPage: true,
-                    isPageInitialLoad: false
-                })
-            }
-
-            this.clearSearchText = true;
-            this.getUserVotes();
-        }
-    }
 
     /**
     * Reset app user selected filters
@@ -230,13 +172,13 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     getDiscoverPosts = async (pageCount: number) => {
         this.resetAllFilters();
         let response = await getDiscoverPosts(pageCount);
-        if (response.status === 200 && response.data) {
-            if (response.data.length < 50) {
+        if (response.status === 200 && response.data.data) {
+            if (response.data.data.length < 50) {
                 this.hasmorePost = false;
             } else {
                 this.hasmorePost = true;
             }
-            response.data.map((post: IDiscoverPost) => {
+            response.data.data.map((post: IDiscoverPost) => {
                 let searchedAuthor = this.authorAvatarBackground.find((author) => author.id === post.userId);
                 if (searchedAuthor) {
                     post.avatarBackgroundColor = searchedAuthor.color;
@@ -256,17 +198,18 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
                     post.isCurrentUserPost = false;
                 }
 
+                post.tags = "red";
                 this.allPosts.push(post);
             });
 
-            if (response.data.count === 0) {
+            if (response.data.data.count === 0) {
                 this.setState({
                     showNoPostPage: true
                 })
             }
 
             this.clearSearchText = true;
-            this.getUserVotes();
+            this.onFilterSearchTextChange(this.filterSearchText);
         }
     }
 
@@ -288,28 +231,6 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     */
     hideAlert = () => {
         this.setState({ showAlert: false })
-    }
-
-    /**
-    * Fetch user votes from API
-    */
-    getUserVotes = async () => {
-        let response = await getUserVotes();
-        if (response.status === 200 && response.data) {
-            for (let i = 0; i < response.data.length; i++) {
-                this.allPosts.map((post: IDiscoverPost) => {
-                    if (post.postId === response.data[i].postId) {
-                        post.isVotedByUser = true;
-
-                        if (post.totalVotes === 0) {
-                            post.totalVotes = 1;
-                        }
-                    }
-                })
-            }
-        }
-
-        this.onFilterSearchTextChange(this.filterSearchText);
     }
 
     /**
@@ -357,15 +278,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     */
     loadMorePosts = (pageCount: number) => {
         if (!this.filterSearchText.trim().length) {
-            if (this.state.searchText.trim().length) {
-                this.searchFilterPostUsingAPI(pageCount);
-            }
-            else if (this.state.isFilterApplied) {
-                this.getFilteredDiscoverPosts(pageCount);
-            }
-            else {
-                this.getDiscoverPosts(pageCount);
-            }
+            this.getDiscoverPosts(pageCount);
         }
     }
 
@@ -387,49 +300,6 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
                 hasMorePosts: true
             });
             this.allPosts = [];
-        }
-    }
-
-    /**
-    *Filter cards based on user input after clicking search icon in search bar.
-    */
-    searchFilterPostUsingAPI = async (pageCount: number) => {
-        this.resetAllFilters();
-        if (this.state.searchText.trim().length) {
-            let response = await filterTitleAndTags(this.state.searchText, pageCount);
-
-            if (response.status === 200 && response.data) {
-                if (response.data.length < 50) {
-                    this.hasmorePost = false;
-                } else {
-                    this.hasmorePost = true;
-                }
-                response.data.map((post: IDiscoverPost) => {
-                    let searchedAuthor = this.authorAvatarBackground.find((author) => author.id === post.userId);
-                    if (searchedAuthor) {
-                        post.avatarBackgroundColor = searchedAuthor.color;
-                    }
-                    else {
-                        let color = generateColor();
-                        this.authorAvatarBackground.push({ id: post.userId, color: color });
-                        post.avatarBackgroundColor = color;
-
-                        localStorage.setItem("avatar-colors", JSON.stringify(this.authorAvatarBackground));
-                    }
-
-                    if (post.userId === this.loggedInUserObjectId) {
-                        post.isCurrentUserPost = true;
-                    }
-                    else {
-                        post.isCurrentUserPost = false;
-                    }
-
-                    this.allPosts.push(post)
-                });
-
-                this.clearSearchText = false;
-                this.getUserVotes();
-            }
         }
     }
 

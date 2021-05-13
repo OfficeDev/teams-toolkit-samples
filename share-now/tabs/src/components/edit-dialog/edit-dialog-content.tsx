@@ -13,6 +13,7 @@ import { TFunction } from "i18next";
 import { ITagValidationParameters } from "../add-new-dialog/add-new-dialog-content";
 import Resources, { IPostType } from "../../constants/resources";
 import { getLocalizedPostTypes } from "../../helpers/helper";
+import applicationLogo from "../../artifacts/applicationLogo.png";
 
 import "../../styles/edit-dialog.css";
 
@@ -356,7 +357,7 @@ class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEd
                     <Flex.Item grow>
                         <ItemLayout
                             className="app-name-container"
-                            media={<Image className="app-logo-container" src="/Artifacts/applicationLogo.png" />}
+                            media={<Image className="app-logo-container" src={applicationLogo} />}
                             header={<Text content={this.localize("dialogTitleAppName")} weight="bold" />}
                             content={<Text content={this.localize("editPostDialogHeader")} weight="semibold" size="small" />}
                         />

@@ -81,18 +81,3 @@ export const getInitials = (userPostName: string) => {
     }
     return initials;
 }
-
-/**
-* Get all the saved tags which user selected previously
-*/
-export const getTags = async (teamId: string) => {
-    let response = await getPreferencesTags(teamId);
-    let result: any;
-    if (response.status === 200 && response.data) {
-        result = {
-            tags: response.data.tags.split(";"),
-            Frequency: response.data.digestFrequency
-        }
-        return result;
-    }
-}

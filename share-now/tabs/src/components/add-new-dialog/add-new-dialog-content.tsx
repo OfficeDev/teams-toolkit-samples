@@ -13,6 +13,7 @@ import { TFunction } from "i18next";
 import { getLocalizedPostTypes } from "../../helpers/helper";
 import { IPostType } from "../../constants/resources";
 import Resources from "../../constants/resources";
+import applicationLogo from "../../artifacts/applicationLogo.png";
 
 import "../../styles/edit-dialog.css";
 import "../../styles/card.css";
@@ -381,7 +382,7 @@ class AddNewItemDialogContent extends React.Component<IAddNewDialogContentProps,
                     <Flex.Item grow>
                         <ItemLayout
                             className="app-name-container"
-                            media={<Image className="app-logo-container" src="/Artifacts/applicationLogo.png" />}
+                            media={<Image className="app-logo-container" src={applicationLogo} />}
                             header={<Text content={this.localize("dialogTitleAppName")} weight="bold" />}
                             content={<Text content={this.localize("addNewPostDialogHeader")} weight="semibold" size="small" />}
                         />
