@@ -5,7 +5,7 @@ const {
     loadConfiguration,
     OnBehalfOfUserCredential,
     DefaultTediousConnectionConfiguration,
-} = require("teamsdev-client");
+} = require("@microsoft/teamsfx");
 const { Connection, Request } = require('tedious');
 
 /**

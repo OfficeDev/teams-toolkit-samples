@@ -10,7 +10,7 @@ import {
   loadConfiguration,
   getResourceConfiguration,
   ResourceType
-} from "teamsdev-client";
+} from "@microsoft/teamsfx";
 import Profile from "./Profile";
 import Creator from "./Creator";
 import { Checkbox, Button, Input, MenuButton } from "@fluentui/react-northstar"
