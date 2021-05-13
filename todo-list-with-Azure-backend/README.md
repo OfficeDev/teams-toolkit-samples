@@ -6,7 +6,7 @@
 - Backend server is hosting on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) and define the logic to manage todo list. 
 - And there is a [SQL DB](https://docs.microsoft.com/en-us/azure/azure-sql/) on Azure to persist data so that each time user open the tab can retrieve the same data.
 
-## Architecture
+### Architecture
 
 ![Tab App Flow](images/TabAppFlow.jpg)
 
