@@ -93,10 +93,8 @@ class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEd
 
             let response = await updatePostContent(cardDetails);
             if (response.status === 200 && response.data) {
-                if (response.data === true) {
-                    this.props.onSubmit(cardDetails, true);
-                    this.props.changeDialogOpenState(false);
-                }
+                this.props.onSubmit(cardDetails, true);
+                this.props.changeDialogOpenState(false);
             }
             else {
                 this.props.onSubmit(cardDetails, false);
