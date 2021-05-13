@@ -11,7 +11,7 @@ import { checkPost } from "../utils/query";
 
 interface Response {
   status: number;
-  body: { [key: string]: any; };
+  body: any;
 }
 
 type TeamsfxContext = { [key: string]: any; };
@@ -48,18 +48,18 @@ export default async function run(
     if (method === "post") {
       const voted = await checkVoted(postID, currentUser.objectId, connection);
       if (voted) {
-        res.body["data"] = "already voted";
+        res.body = "already voted";
         return res;
       }
       query = `INSERT [dbo].[UserVoteEntity] (PostID, UserID) VALUES (${postID},'${currentUser.objectId}');`;
       await executeQuery(query, connection);
       await updateVoteCount(postID, true, connection)
-      res.body["data"] = "vote successfully";
+      res.body = "vote successfully";
       return res;
     } else if (method === "delete") {
       const voted = await checkVoted(postID, currentUser.objectId, connection);
       if (!voted) {
-        res.body["data"] = "haven't voted";
+        res.body = "haven't voted";
         return res;
       }
       query = `delete [dbo].[UserVoteEntity] where UserID = '${currentUser.objectId}' and PostID = ${postID};`;

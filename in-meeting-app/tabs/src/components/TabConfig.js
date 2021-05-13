@@ -13,42 +13,41 @@ import * as microsoftTeams from "@microsoft/teams-js";
  */
 class TabConfig extends React.Component {
 
-    render() {
-      /**
-       * When the user clicks "Save", save the url for your configured tab.
-       * This allows for the addition of query string parameters based on
-       * the settings selected by the user.
-       */
-      microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
+  render() {
+    /**
+     * When the user clicks "Save", save the url for your configured tab.
+     * This allows for the addition of query string parameters based on
+     * the settings selected by the user.
+     */
+    microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
+      const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
+      microsoftTeams.settings.setSettings({
+        "suggestedDisplayName": "Meeting app",
+        "entityId": "Test",
+        "contentUrl": baseUrl + "/tab",
+        "websiteUrl": baseUrl + "/tab"
+      });
+      saveEvent.notifySuccess();
+    });
 
-        const baseUrl = process.env.REACT_APP_BASE_URL;
-        microsoftTeams.settings.setSettings({
-          "suggestedDisplayName": "Meeting app",
-          "entityId": "Test",
-          "contentUrl": baseUrl + "/tab",
-          "websiteUrl": baseUrl + "/tab"
-        });
-        saveEvent.notifySuccess();
-       });
-  
-      /**
-       * After verifying that the settings for your tab are correctly
-       * filled in by the user you need to set the state of the dialog
-       * to be valid.  This will enable the save button in the configuration
-       * dialog.
-       */
-      microsoftTeams.settings.setValidityState(true);
-  
-      return (
+    /**
+     * After verifying that the settings for your tab are correctly
+     * filled in by the user you need to set the state of the dialog
+     * to be valid.  This will enable the save button in the configuration
+     * dialog.
+     */
+    microsoftTeams.settings.setValidityState(true);
+
+    return (
+      <div>
+        <h1>Meeting App</h1>
         <div>
-          <h1>Meeting App</h1>
-          <div>
-            This is where you will add your meeting configuration options the organizer
-            can choose when the app is added to a meeting.            
+          This is where you will add your meeting configuration options the organizer
+          can choose when the app is added to a meeting.
           </div>
-        </div>
-      );
-    }
+      </div>
+    );
   }
+}
 
-  export default TabConfig;
+export default TabConfig;

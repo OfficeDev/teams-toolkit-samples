@@ -1,5 +1,8 @@
 # Getting Started with Todo List Sample - React Tab on SPFx
 
+> ## WARNING: This repository is under active development and the samples are not guaranteed to work!
+> This warning will be removed when the samples are ready for consumption
+
 ### Todo List is a personal tab used to manage To-do List
 
 - The frontend is a React Tab hosted on [SharePoint](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview).
@@ -76,12 +79,11 @@ Debug the app with SharePoint WorkBench in VSCode.
 
 ### How to use this Sample App:
 1. Since SharePoint can get the context so app user doesn't need to do consent/login operation.
-2. You could try to add new todo item by typing item and click "Add" button.
-3. You could try to complete todo item by choosing the checkbox before the item.
-4. You could try to update todo item by typing text in todo item list.
-5. You could try to delete todo item by clicking "..." and then choose "delete" button.
+2. You could add new todo item by clicking "Add Task" button.
+3. You could complete todo item by choosing the checkbox before the item.
+4. You could update todo item by typing text in todo item list.
+5. You could delete todo item by clicking "..." and then choose "Delete" button.
     ![TodoList](images/ToDoListCRUD.gif)
-    [*Note: The SPFx APP UI is a bit different from teams UI(see known issue)]
 
 
 ### References

@@ -10,7 +10,7 @@ import {
   loadConfiguration,
   getResourceConfiguration,
   ResourceType
-} from "teamsdev-client";
+} from "@microsoft/teamsfx";
 import Profile from "./Profile";
 import Creator from "./Creator";
 import { Checkbox, Button, Input, MenuButton } from "@fluentui/react-northstar"
@@ -37,6 +37,7 @@ class Tab extends React.Component {
   }
 
   async initTeamsFx() {
+    // Initialize configuration from environment variables and set the global instance
     loadConfiguration({
       authentication: {
         initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
@@ -54,6 +55,7 @@ class Tab extends React.Component {
       ]
     });
     const credential = new TeamsUserCredential();
+    // Get the user info from access token
     const userInfo = await credential.getUserInfo();
 
     this.setState({
@@ -73,6 +75,7 @@ class Tab extends React.Component {
 
   async loginBtnClick() {
     try {
+      // Popup login page to get user's access token
       await this.credential.login(this.scope);
     } catch (err) {
       alert("Login failed: " + err);
@@ -114,7 +117,9 @@ class Tab extends React.Component {
     var message = [];
     var funcErrorMsg = "";
     try {
-      const accessToken = await this.credential.getToken(""); // Get SSO token for the user
+      // Get SSO token for the user
+      const accessToken = await this.credential.getToken("");
+      // Gets configuration for API
       const apiConfig = getResourceConfiguration(ResourceType.API);
       const response = await axios.default.request({
         method: method,

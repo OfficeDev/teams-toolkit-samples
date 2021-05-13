@@ -3,7 +3,7 @@
 
 import React from 'react';
 import './Creator.css';
-import { createMicrosoftGraphClient } from "teamsdev-client";
+import { createMicrosoftGraphClient } from "@microsoft/teamsfx";
 import defaultPhoto from '../images/default-photo.png'
 
 class Creator extends React.Component {
@@ -18,6 +18,7 @@ class Creator extends React.Component {
 
   async componentDidMount() {
     try {
+      // Get Microsoft graph client
       const graphClient = await createMicrosoftGraphClient(this.props.credential, this.props.scope);
       const displayName = (await graphClient.api(`/users/${this.props.objectId}`).get()).displayName;
       let photoObjectURL;
