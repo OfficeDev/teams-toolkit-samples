@@ -6,7 +6,7 @@ import {
   loadConfiguration,
   OnBehalfOfUserCredential,
 } from "teamsdev-client";
-import { executeQuery, getSQLConnection, PostRequest, PostTypes, ResponsePost, SizeLimit as LengthLimit } from "../utils/common";
+import { executeQuery, getSQLConnection, PostRequest, PostTypes, ResponsePost, LengthLimit } from "../utils/common";
 import { checkPost } from "../utils/query";
 
 interface Response {

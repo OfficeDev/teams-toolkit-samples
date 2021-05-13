@@ -96,7 +96,7 @@ export enum PostTypes {
     Book = 5,
 }
 
-export enum SizeLimit {
+export enum LengthLimit {
     title = 100,
     description = 500,
     contentUrl = 400,
