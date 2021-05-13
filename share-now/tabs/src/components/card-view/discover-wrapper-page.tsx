@@ -22,6 +22,7 @@ import {
     loadConfiguration,
     ResourceType,
     TeamsUserCredential,
+    getResourceConfiguration,
 } from "teamsdev-client";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -83,7 +84,6 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     authorAvatarBackground: Array<any>;
     hasmorePost: boolean;
     clearSearchText: boolean;
-    credential?: TeamsUserCredential;
 
     constructor(props: any) {
         super(props);
@@ -124,29 +124,26 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     * Used to initialize Microsoft Teams sdk
     */
     async componentDidMount() {
-        this.initTeamsFx();
         alert(1);
-        microsoftTeams.initialize();
-        microsoftTeams.getContext((context: microsoftTeams.Context) => {
-            this.loggedInUserObjectId = context.userObjectId!;
-        });
-
+        this.initTeamsFx();
+        alert(2);
+        const credential = new TeamsUserCredential();
+        alert(3);
+        const userInfo = await credential.getUserInfo();
+        alert(4);
+        this.loggedInUserObjectId = userInfo.objectId;
         alert(this.loggedInUserObjectId);
-        await this.initDiscoverPosts();
-
-        // alert(2);
-        // try {
-        //     const userInfo = await this.credential?.getUserInfo();
-        //     this.loggedInUserObjectId = userInfo?.objectId as string;
-        // } catch (error) {
-        //     alert(error);
-        // }
-        // alert(this.loggedInUserObjectId);
+        const token = await credential.getToken("");
+        alert(token?.token);
+        const apiConfig = getResourceConfiguration(ResourceType.API);
+        alert(apiConfig.endpoint);
+        this.initDiscoverPosts();
+        // microsoftTeams.initialize();
+        // microsoftTeams.getContext((context: microsoftTeams.Context) => {
+        //     this.loggedInUserObjectId = context.userObjectId!;
+        // });
     }
 
-    /**
-    * Fetch posts for initializing grid
-    */
     initTeamsFx = async () => {
         loadConfiguration({
             authentication: {
@@ -164,8 +161,6 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
               }
             ]
         });
-
-        this.credential = new TeamsUserCredential();
     }
 
     /**

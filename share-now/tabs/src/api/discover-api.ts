@@ -5,12 +5,6 @@
 import axios from "./axios-decorator";
 import { getBaseUrl } from '../configVariables';
 import { IDiscoverPost } from "../components/card-view/discover-wrapper-page";
-import { 
-    TeamsUserCredential,
-    getResourceConfiguration,
-    ResourceType,
-} from "teamsdev-client";
-import * as axiosDefault from "axios";
 
 let baseAxiosUrl = getBaseUrl() + '/api';
 
@@ -19,6 +13,7 @@ let baseAxiosUrl = getBaseUrl() + '/api';
 * @param pageCount Current page count for which posts needs to be fetched
 */
 export const getDiscoverPosts = async (pageCount: number): Promise<any> => {
+
     let url = `${baseAxiosUrl}/posts?pageCount=${pageCount}`;
     return await axios.get(url);
 }
@@ -76,7 +71,9 @@ export const getTags = async (): Promise<any> => {
 * @param postContent Post details object to be updated
 */
 export const updatePostContent = async (postContent: any): Promise<any> => {
-    return undefined;
+
+    let url = `${baseAxiosUrl}/userposts`;
+    return await axios.patch(url, postContent);
 }
 
 /**
@@ -84,8 +81,9 @@ export const updatePostContent = async (postContent: any): Promise<any> => {
 * @param postContent Post details object to be added
 */
 export const addNewPostContent = async (postContent: any): Promise<any> => {
+
     let url = `${baseAxiosUrl}/posts`;
-    return await axios.post(url);
+    return await axios.post(url, postContent);
 }
 
 /**
@@ -93,7 +91,9 @@ export const addNewPostContent = async (postContent: any): Promise<any> => {
 * @param post Id of post to be deleted
 */
 export const deletePost = async (post: any): Promise<any> => {
-    return undefined
+
+    let url = `${baseAxiosUrl}/userposts?postId=${post.postId}&userId=${post.userId}`;
+    return await axios.delete(url);
 }
 
 /**

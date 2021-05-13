@@ -30,7 +30,7 @@ export const AppRoute: React.FunctionComponent<{}> = () => {
                     <Route exact path="/tab" component={DiscoverWrapperPage} />
                     <Route exact path="/discover" component={DiscoverWrapperPage} />
                     <Route exact path="/discover-team" component={DiscoverTeamWrapperPage} />
-                    <Route exact path="/configtab" component={TeamsConfigPage} />
+                    {/* <Route exact path="/configtab" component={TeamsConfigPage} /> */}
                     <Route exact path="/signin" component={SignInPage} />
                     <Route exact path="/signin-simple-start" component={SignInSimpleStart} />
                     <Route exact path="/signin-simple-end" component={SignInSimpleEnd} />
