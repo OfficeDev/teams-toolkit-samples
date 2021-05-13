@@ -1,13 +1,18 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { TeamsActivityHandler, ActionTypes, CardFactory, BotState, TurnContext, Activity, MessageFactory } from "botbuilder";
+import { TeamsActivityHandler, ActionTypes, CardFactory, BotState, TurnContext, Attachment, Activity, MessageFactory } from "botbuilder";
 import { ActivityTypes } from "botframework-schema";
 import { QnADTO, QnASearchResultList } from "@azure/cognitiveservices-qnamaker-runtime/esm/models";
 import { ResponseCardPayload } from "./models/responseCardPayload";
 import { AnswerModel } from "./models/answerModel";
 import { QnaServiceProvider } from "./providers/qnaServiceProvider";
 import { getResponseCard } from "./cards/responseCard";
+import { askAnExpertSubmitText, getAskAnExpertCard } from "./cards/askAnExpertCard";
+import { TicketEntity } from "./models/ticketEntity";
+import { Constants } from "./common/constants";
+import { getUnrecognizedInputCard } from "./cards/unrecognizedInputCard";
+import { AskAnExpertCardPayload } from "./models/askAnExpertCardPayload";
 
 export class TeamsBot extends TeamsActivityHandler {
     private readonly conversationTypePersonal: string = "personal";
@@ -66,8 +71,54 @@ export class TeamsBot extends TeamsActivityHandler {
     }
 
     private async onMessageActivityInPersonalChat(message: Activity, turnContext: TurnContext): Promise<void> {
-        console.log("Sending input to QnAMaker");
-        await this.getQuestionAnswerReply(turnContext, message);
+        if (message.replyToId && (message.value != null))
+        {
+            console.log("Card submit in 1:1 chat");
+            await this.OnAdaptiveCardSubmitInPersonalChatAsync(message, turnContext);
+            return;
+        }
+
+        const text = message.text?.toLowerCase()?.trim() ?? "";
+
+        switch (text) {
+            case Constants.AskAnExpert:
+                console.log("Sending user ask an expert card");
+                await turnContext.sendActivity(MessageFactory.attachment(getAskAnExpertCard()));
+                break;
+
+            default:
+                console.log("Sending input to QnAMaker");
+                await this.getQuestionAnswerReply(turnContext, message);
+        }
+    }
+
+    private async OnAdaptiveCardSubmitInPersonalChatAsync(message: Activity, turnContext: TurnContext): Promise<void> {
+        let smeTeamCard: Attachment;      // Notification to SME team
+        let userCard: Attachment;         // Acknowledgement to the user
+        let newTicket: TicketEntity;      // New ticket
+
+        switch(message?.text) {
+            case Constants.AskAnExpert:
+                console.log("Sending user ask an expert card (from answer)");
+                let askAnExpertCardPayload: AskAnExpertCardPayload = message.value as AskAnExpertCardPayload;
+                await turnContext.sendActivity(MessageFactory.attachment(getAskAnExpertCard(askAnExpertCardPayload)));
+                break;
+
+            case Constants.AskAnExpertSubmitText:
+                console.log("Received question for expert");
+                newTicket = await askAnExpertSubmitText(message, turnContext);
+                await turnContext.sendActivity("TODO: init sme team card and send to sme team. Notify acknowledgement to user.");
+                break;
+
+            default:
+                let payload = message.value as ResponseCardPayload;
+                if (payload.IsPrompt) {
+                    console.log("Sending input to QnAMaker for prompt");
+                    await this.getQuestionAnswerReply(turnContext, message);
+                } else {
+                    console.log("Unexpected text in submit payload: " + message.text);
+                }
+        }
     }
 
     private async getQuestionAnswerReply(turnContext: TurnContext, message: Activity): Promise<void> {
@@ -86,7 +137,7 @@ export class TeamsBot extends TeamsActivityHandler {
                 previousQuestion = payload.PreviousQuestions[0];
             }
 
-            queryResult = await this.qnaServiceProvider.GenerateAnswer(
+            queryResult = await this.qnaServiceProvider.gGenerateAnswer(
                 text, false, previousQuestion?.id.toString(), previousQuestion?.questions[0]);
 
             if (queryResult?.answers[0].id != -1) {
@@ -101,8 +152,8 @@ export class TeamsBot extends TeamsActivityHandler {
                 await turnContext.sendActivity(MessageFactory.attachment(getResponseCard(answerData, text, payload)));
 
             } else {
-                // nothing found
-                await turnContext.sendActivity("TODO: show ask expert card");
+                console.log("Answer not found. Sending user ask an expert card");
+                await turnContext.sendActivity(MessageFactory.attachment(getUnrecognizedInputCard(text)));
             }
         } catch (error) {
             console.log(error);
