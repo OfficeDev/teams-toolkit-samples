@@ -23,8 +23,8 @@ export class QnaServiceProvider {
         this.endpointKey = qnaMakerEndpointKey;
     }
 
-    public async GenerateAnswer(question: string, isTestKnowledgeBase, previousQnAId: string = null, previousUserQuery: string = null): Promise<QnASearchResultList> {
-        const knowledgeBaseId = await this.configurationProvider.GetSavedEntityDetailAsync(ConfigurationEntityTypes.KnowledgeBaseId);
+    public async gGenerateAnswer(question: string, isTestKnowledgeBase, previousQnAId: string = null, previousUserQuery: string = null): Promise<QnASearchResultList> {
+        const knowledgeBaseId = await this.configurationProvider.getSavedEntityDetailAsync(ConfigurationEntityTypes.KnowledgeBaseId);
 
         const queryDTO: QueryDTO = {
             isTest: isTestKnowledgeBase,

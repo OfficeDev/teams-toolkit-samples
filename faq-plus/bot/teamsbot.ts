@@ -8,7 +8,7 @@ import { ResponseCardPayload } from "./models/responseCardPayload";
 import { AnswerModel } from "./models/answerModel";
 import { QnaServiceProvider } from "./providers/qnaServiceProvider";
 import { getResponseCard } from "./cards/responseCard";
-import { AskAnExpertSubmitText, getAskAnExpertCard } from "./cards/askAnExpertCard";
+import { askAnExpertSubmitText, getAskAnExpertCard } from "./cards/askAnExpertCard";
 import { TicketEntity } from "./models/ticketEntity";
 import { Constants } from "./common/constants";
 import { getUnrecognizedInputCard } from "./cards/unrecognizedInputCard";
@@ -106,7 +106,7 @@ export class TeamsBot extends TeamsActivityHandler {
 
             case Constants.AskAnExpertSubmitText:
                 console.log("Received question for expert");
-                newTicket = await AskAnExpertSubmitText(message, turnContext);
+                newTicket = await askAnExpertSubmitText(message, turnContext);
                 await turnContext.sendActivity("TODO: init sme team card and send to sme team. Notify acknowledgement to user.");
                 break;
 
@@ -137,7 +137,7 @@ export class TeamsBot extends TeamsActivityHandler {
                 previousQuestion = payload.PreviousQuestions[0];
             }
 
-            queryResult = await this.qnaServiceProvider.GenerateAnswer(
+            queryResult = await this.qnaServiceProvider.gGenerateAnswer(
                 text, false, previousQuestion?.id.toString(), previousQuestion?.questions[0]);
 
             if (queryResult?.answers[0].id != -1) {

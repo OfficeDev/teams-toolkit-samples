@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import { AdaptiveCard, Version, TextBlock, SubmitAction } from "adaptivecards";
 import { CardFactory } from "botbuilder-core";
 import { ActionTypes, Attachment } from "botframework-schema";

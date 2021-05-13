@@ -1,8 +1,11 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import { Action, AdaptiveCard, CardElement, TextWeight, Version, TextBlock, TextSize, Spacing, TextInput, SubmitAction } from "adaptivecards";
 import { AskAnExpertCardPayload } from "../models/askAnExpertCardPayload";
 import { ActionTypes, Attachment, CardFactory, TurnContext, Activity } from "botbuilder";
 import { TicketEntity } from "../models/ticketEntity";
-import { CreateTicketAsync, GetUserDetailsInPersonalChatAsync } from "../common/adaptiveHelper";
+import { createTicketAsync, getUserDetailsInPersonalChatAsync } from "../common/adaptiveHelper";
 import { ActivityTypes, TeamsChannelAccount } from "botframework-schema";
 import { TextString, Constants } from "../common/constants";
 
@@ -77,7 +80,7 @@ function buildListOfActions(userQuestion: string, answer: string): Action[] {
     return [action];
 }
 
-export async function AskAnExpertSubmitText(message: Activity, turnContext: TurnContext): Promise<TicketEntity>
+export async function askAnExpertSubmitText(message: Activity, turnContext: TurnContext): Promise<TicketEntity>
 {
     let askAnExpertSubmitTextPayload = message.value as AskAnExpertCardPayload;
 
@@ -94,6 +97,6 @@ export async function AskAnExpertSubmitText(message: Activity, turnContext: Turn
         return null;
     }
 
-    var userDetails: TeamsChannelAccount = await GetUserDetailsInPersonalChatAsync(turnContext);
-    return await CreateTicketAsync(message, askAnExpertSubmitTextPayload, userDetails);
+    var userDetails: TeamsChannelAccount = await getUserDetailsInPersonalChatAsync(turnContext);
+    return await createTicketAsync(message, askAnExpertSubmitTextPayload, userDetails);
 }

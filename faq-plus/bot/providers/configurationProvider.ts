@@ -14,8 +14,8 @@ export class ConfigurationDataProvider {
         this.connectionString = connectionString;
     }
 
-    public async GetSavedEntityDetailAsync(entityType: string): Promise<string> {
-        await this.EnsureInitialize();
+    public async getSavedEntityDetailAsync(entityType: string): Promise<string> {
+        await this.ensureInitialize();
         return new Promise((resolve, reject) => {
             this.tableService.retrieveEntity(this.configurationTableName,
                 this.configurationPartitionKey, entityType,
@@ -29,7 +29,7 @@ export class ConfigurationDataProvider {
         });
     }
 
-    public async EnsureInitialize(): Promise<void> {
+    public async ensureInitialize(): Promise<void> {
         return new Promise((resolve, reject) => {
             if (this.tableService) {
                 resolve();
