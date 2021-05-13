@@ -127,7 +127,6 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     async componentDidMount() {
         const userInfo = await this.credential.getUserInfo();
         this.loggedInUserObjectId = userInfo.objectId;
-        alert(this.loggedInUserObjectId);
 
         this.initDiscoverPosts();
     }
@@ -172,13 +171,13 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     getDiscoverPosts = async (pageCount: number) => {
         this.resetAllFilters();
         let response = await getDiscoverPosts(pageCount);
-        if (response.status === 200 && response.data.data) {
-            if (response.data.data.length < 50) {
+        if (response.status === 200 && response.data) {
+            if (response.data.length < 50) {
                 this.hasmorePost = false;
             } else {
                 this.hasmorePost = true;
             }
-            response.data.data.map((post: IDiscoverPost) => {
+            response.data.map((post: IDiscoverPost) => {
                 let searchedAuthor = this.authorAvatarBackground.find((author) => author.id === post.userId);
                 if (searchedAuthor) {
                     post.avatarBackgroundColor = searchedAuthor.color;
@@ -191,18 +190,17 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
                     localStorage.setItem("avatar-colors", JSON.stringify(this.authorAvatarBackground));
                 }
 
-                if (post.userId === this.loggedInUserObjectId) {
+                if (post.userId.toLowerCase() === this.loggedInUserObjectId.toLowerCase()) {
                     post.isCurrentUserPost = true;
                 }
                 else {
                     post.isCurrentUserPost = false;
                 }
 
-                post.tags = "red";
                 this.allPosts.push(post);
             });
 
-            if (response.data.data.count === 0) {
+            if (response.data.count === 0) {
                 this.setState({
                     showNoPostPage: true
                 })
@@ -440,7 +438,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
             }
 
             let submittedPost = this.state.discoverPosts;
-            if (getSubmittedPost.userId === this.loggedInUserObjectId) {
+            if (getSubmittedPost.userId.toLowerCase() === this.loggedInUserObjectId.toLowerCase()) {
                 getSubmittedPost.isCurrentUserPost = true;
             }
             else {

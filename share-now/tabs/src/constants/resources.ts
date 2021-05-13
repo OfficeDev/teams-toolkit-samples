@@ -38,8 +38,8 @@ export default class Resources {
     public static readonly lazyLoadPerPagePostCount: number = 50;
     public static readonly maxPrivateListPostCount: number = 50;
     public static readonly postTitleMaxLength: number = 100;
-    public static readonly postDesriptionMaxLength: number = 300;
-    public static readonly postDesriptionMinLength: number = 150;
+    public static readonly postDesriptionMaxLength: number = 500;
+    public static readonly postDesriptionMinLength: number = 20;
     public static readonly postContentUrlMaxLength: number = 400;
     public static readonly tagMaxLength: number = 20;
     public static readonly tagsMaxCount: number = 3;

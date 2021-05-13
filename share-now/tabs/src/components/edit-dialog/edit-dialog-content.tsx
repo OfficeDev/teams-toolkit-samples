@@ -231,7 +231,7 @@ class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEd
                 return (<Text content={this.localize("emptyDescriptionError")} className="field-error-message" error size="medium" />);
             }
 
-            if (this.state.postDetails.description.length < 150) {
+            if (this.state.postDetails.description.length < 20) {
                 return (<Text content={this.localize("minLengthDescriptionError")} className="field-error-message" error size="medium" />);
             }
 

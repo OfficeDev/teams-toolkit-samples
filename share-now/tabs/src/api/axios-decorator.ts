@@ -48,14 +48,14 @@ export class AxiosJWTDecorator {
 	* @param  {String} url Resource URI
 	* @param  {Object} data Request body data
 	*/
-	public async patch<T = any, R = AxiosResponse<T>>(
+	public async put<T = any, R = AxiosResponse<T>>(
 		url: string,
 		data?: any,
 		config?: AxiosRequestConfig
 	): Promise<R> {
 		try {
 			config = await this.setupAuthorizationHeader(config);
-			return await axios.patch(url, data, config);
+			return await axios.put(url, data, config);
 		} catch (error) {
 			this.handleError(error);
 			throw error;

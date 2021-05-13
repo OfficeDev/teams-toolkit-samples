@@ -64,7 +64,7 @@
   "emptyTitleError": "Title is required",
   "maxCharactersTitleError": "Exceeds limit of 100 characters. Please revise.",
   "emptyDescriptionError": "Description is required.",
-  "minLengthDescriptionError": "Minimum length must be 150.",
+  "minLengthDescriptionError": "Minimum length must be 20.",
   "maxCharactersDescriptionError": "Exceeds limit of 250 characters. Please revise",
   "emptyLinkError": "Link is required",
   "maxCharacterLinkError": "Exceeds limit of 200 characters. Please revise.",
