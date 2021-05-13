@@ -68,15 +68,15 @@ export class ResponsePost {
         this.postId = post.PostID;
         this.type = post.Type;
         this.title = post.Title;
-        this.description = post.Description
-        this.contentUrl = post.ContentUrl
-        this.tags = post.Tags
-        this.createdDate = post.CreatedDate
-        this.createdByName = post.CreatedByName
-        this.userId = post.UserID
-        this.updatedDate = post.UpdatedDate
+        this.description = post.Description;
+        this.contentUrl = post.ContentUrl;
+        this.tags = post.Tags;
+        this.createdDate = post.CreatedDate;
+        this.createdByName = post.CreatedByName;
+        this.userId = post.UserID;
+        this.updatedDate = post.UpdatedDate;
         this.totalVotes = post.TotalVotes;
-        this.isRemoved = post.IsRemoved
+        this.isRemoved = post.IsRemoved;
     }
 }
 
@@ -94,4 +94,11 @@ export enum PostTypes {
     Podcast = 3,
     Video = 4,
     Book = 5,
+}
+
+export enum LengthLimit {
+    title = 100,
+    description = 500,
+    contentUrl = 400,
+    tags = 100,
 }
