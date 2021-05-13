@@ -1,6 +1,7 @@
 # Microsoft Teams Framework (TeamsFx) Sample Gallery
 
 > ## WARNING: This repository is under active development and the samples are not guaranteed to work!
+> This warning will be removed when the samples are ready for consumption
 
 > Please be advised that this project is currently in **Public Preview**, with a lot of bugs, and work left to do before it's ready for production. **Please expect breaking changes** as we continue to iterate. We really appreciate your [feedback](https://aka.ms/teamsfx-feedback), and [recordings](https://aka.ms/teamsfx-record), they really make the product better. Thank you!
 
