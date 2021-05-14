@@ -1,6 +1,5 @@
-﻿// <copyright file="configVariables.ts" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 import { getResourceConfiguration, loadConfiguration, ResourceType } from "@microsoft/teamsfx";
 

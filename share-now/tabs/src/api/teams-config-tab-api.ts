@@ -1,6 +1,5 @@
-﻿// <copyright file="teams-config-tab-api.ts" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 import axios from "./axios-decorator";
 import { getBaseUrl } from '../configVariables';

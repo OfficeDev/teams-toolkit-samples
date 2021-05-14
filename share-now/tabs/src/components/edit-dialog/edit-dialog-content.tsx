@@ -1,6 +1,5 @@
-﻿// <copyright file="edit-dialog-content.tsx" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 import * as React from "react";
 import { Button, Flex, Text, Input, Tooltip, TextArea, ItemLayout, Label, Image, Provider, Dropdown } from "@fluentui/react-northstar";

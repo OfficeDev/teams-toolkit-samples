@@ -1,6 +1,5 @@
-﻿// <copyright file="axios-decorator.ts" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 import { TeamsUserCredential } from "@microsoft/teamsfx";

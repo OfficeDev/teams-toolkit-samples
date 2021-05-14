@@ -1,6 +1,5 @@
-﻿// <copyright file="popup-menu-checkboxes-content.tsx" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 import * as React from "react";
 import { Flex, Input, Button, Provider, Divider } from "@fluentui/react-northstar";

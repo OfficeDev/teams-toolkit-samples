@@ -1,6 +1,5 @@
-﻿// <copyright file="helper.ts" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 import { IPostType } from "../constants/resources";
 import Resources from "../constants/resources";
