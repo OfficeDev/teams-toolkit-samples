@@ -4,7 +4,8 @@
 > This warning will be removed when the samples are ready for consumption
 
 ## Basic sample for Tab app:
-![Tab App Flow](images/TabAppFlow.jpg)
+
+![Tab App Flow](images/app.png)
 
 ### This sample app is a personal tab and message extension bot used to manage , search and share posts.
 
@@ -99,7 +100,7 @@
 
 1. The app should be running like this:
 
-    ![Share Now](images/StartPage.jpg)
+    ![Share Now](images/StartPage.png)
 
 1. You could try to add new content by clicking "Suggest content" button, inputing information and submitting it.
 1. You could try to update content created by you by clicking "..." and then choose "update" button.
@@ -107,7 +108,7 @@
 1. You could try to add/delete your vote for the content by click the icon ![vote icon](images/voteIconME.png) in the content.
 1. You could try to search all/posted-by-me contents in compose box or command box by filtering based on title or tags of content and share with your colleagues.
 
-    ![Share Now](images/share.gif)
+    ![Share Now](images/shareNow.gif)
 
 ### Code structure:
 
