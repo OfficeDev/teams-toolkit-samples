@@ -52,7 +52,7 @@
     GO
     ```
 1. Once deployment is complete, open Debug View (`Ctrl+Shift+D`) and select "Launch Remote (Edge)" or "Launch Remote (Chrome)" in dropdown list.
-1. Press "F5" to open a browser window and then select your package to view todo list sample app. 
+1. Press "F5" to open a browser window and then select your package to view share now sample app. 
 
 ### Debug [Optional]
 
@@ -94,7 +94,7 @@
     BOT_SQL_PASSWORD=
     ```
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
-1. Press "F5" to open a browser window and then select your package to view todo list sample app. 
+1. Press "F5" to open a browser window and then select your package to view share now sample app. 
 
 ### How to use this Sample App:
 
