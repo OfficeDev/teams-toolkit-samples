@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // </copyright>
 
-import { getResourceConfiguration, loadConfiguration, ResourceType } from "teamsdev-client";
+import { getResourceConfiguration, loadConfiguration, ResourceType } from "@microsoft/teamsfx";
 
 export const getBaseUrl = (): string => {
     initTeamsFx();

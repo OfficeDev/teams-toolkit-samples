@@ -18,11 +18,8 @@ import { ICheckBoxItem } from "../filter-bar/filter-bar";
 import Resources from "../../constants/resources";
 import InfiniteScroll from 'react-infinite-scroller';
 import {
-    loadConfiguration,
-    ResourceType,
     TeamsUserCredential,
-    getResourceConfiguration,
-} from "teamsdev-client";
+} from "@microsoft/teamsfx";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../styles/site.css";

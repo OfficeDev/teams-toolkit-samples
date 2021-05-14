@@ -3,7 +3,7 @@
 // </copyright>
 
 import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
-import { TeamsUserCredential } from "teamsdev-client";
+import { TeamsUserCredential } from "@microsoft/teamsfx";
 
 export class AxiosJWTDecorator {
 
