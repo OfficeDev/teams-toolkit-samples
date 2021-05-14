@@ -25,7 +25,7 @@ class TabConfig extends React.Component {
     microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
       const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
       microsoftTeams.settings.setSettings({
-        "suggestedDisplayName": "My Tab",
+        "suggestedDisplayName": "Todo List",
         "entityId": "Test",
         "contentUrl": baseUrl + "/index.html#/tab",
         "websiteUrl": baseUrl + "/index.html#/tab"
@@ -44,10 +44,6 @@ class TabConfig extends React.Component {
     return (
     <div>
       <h1>Tab Configuration</h1>
-      <div>
-        This is where you will add your tab configuration options the user
-        can choose when the tab is added to your team/group chat.
-      </div>
     </div>
     );
   }

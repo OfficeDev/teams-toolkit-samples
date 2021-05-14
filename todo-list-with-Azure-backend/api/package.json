@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "func start",
+    "start": "npx func start",
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
@@ -13,6 +13,6 @@
     "tedious": "^9.2.1"
   },
   "devDependencies": {
-    "typescript": "^3.3.3"
+    "azure-functions-core-tools": "^3.0.3442"
   }
 }
