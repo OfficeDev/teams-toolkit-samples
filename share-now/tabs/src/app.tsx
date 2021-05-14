@@ -3,12 +3,16 @@
 // </copyright>
 
 import * as React from "react";
-import { AppRoute } from "./router/router";
 import Resources from "./constants/resources";
 import * as microsoftTeams from "@microsoft/teams-js";
 import { Provider, themes } from "@fluentui/react-northstar";
+import DiscoverWrapperPage from "./components/card-view/discover-wrapper-page";
+import ErrorPage from "./components/error-page";
 
 import "./styles/site.css";
+import { HashRouter as Router, Route } from "react-router-dom";
+import Redirect from "./components/redirect";
+import { AppRoute } from "./router/router";
 
 export interface IAppState {
     theme: string;
@@ -73,7 +77,12 @@ export default class App extends React.Component<{}, IAppState> {
     public getAppDom = () => {
         return (
             <div className="appContainer">
-                <AppRoute />
+                <Router>
+                    <Route exact path="/" component={DiscoverWrapperPage} />
+                    <Route exact path="/tab" component={DiscoverWrapperPage} />
+                    <Route exact path="/discover" component={DiscoverWrapperPage} />
+                    <Route exact path="/errorpage" component={ErrorPage} />
+               </Router>
             </div>);
     }
 

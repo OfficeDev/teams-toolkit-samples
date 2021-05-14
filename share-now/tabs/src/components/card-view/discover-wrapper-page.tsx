@@ -448,6 +448,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
             this.setState({ discoverPosts: submittedPost, initialPosts: submittedPost });
             this.allPosts = this.state.discoverPosts;
             this.showAlert(this.localize("addNewPostSuccess"), 1)
+            window.location.href = "/tab";
         }
         else {
             this.showAlert(this.localize("addNewPostError"), 2)

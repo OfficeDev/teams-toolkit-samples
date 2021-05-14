@@ -4,7 +4,7 @@
 
 import * as React from "react";
 import { Suspense } from "react";
-import { BrowserRouter, Route, Switch, Redirect as RedirctOrigin } from "react-router-dom";
+import { HashRouter as Router, Route, Switch, Redirect as RedirctOrigin } from "react-router-dom";
 import DiscoverWrapperPage from "../components/card-view/discover-wrapper-page";
 import SignInPage from "../components/signin/signin";
 import SignInSimpleStart from "../components/signin/signin-start";
@@ -16,21 +16,12 @@ import ErrorPage from "../components/error-page";
 export const AppRoute: React.FunctionComponent<{}> = () => {
     return (
         <Suspense fallback={<div className="container-div"><div className="container-subdiv"></div></div>}>
-            <BrowserRouter>
-                <Route exact path="/">
-                    <RedirctOrigin to="/tab" />
-                </Route>
-                <Switch>
-                    <Route exact path="/" component={DiscoverWrapperPage} />
-                    <Route exact path="/tab" component={DiscoverWrapperPage} />
-                    <Route exact path="/discover" component={DiscoverWrapperPage} />
-                    <Route exact path="/signin" component={SignInPage} />
-                    <Route exact path="/signin-simple-start" component={SignInSimpleStart} />
-                    <Route exact path="/signin-simple-end" component={SignInSimpleEnd} />
-                    <Route exact path="/errorpage" component={ErrorPage} />
-                    <Route component={Redirect} />
-                </Switch>
-            </BrowserRouter>
+            <Router>
+                <Route exact path="/" component={DiscoverWrapperPage} />
+                <Route exact path="/tab" component={DiscoverWrapperPage} />
+                <Route exact path="/discover" component={DiscoverWrapperPage} />
+                <Route exact path="/errorpage" component={ErrorPage} />
+            </Router>
         </Suspense>
     );
 }
