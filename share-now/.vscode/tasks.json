@@ -2,11 +2,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Stop All Services",
-            "type": "shell",
-            "command": "echo ${input:terminate}"
-        },
-        {
             "label": "Pre Debug Check",
             "dependsOn": [
                 "dependency check",
@@ -37,9 +32,6 @@
             "type": "teamsfx",
             "command": "ngrok start",
             "isBackground": true,
-            "presentation": {
-                "panel": "new"
-            },
             "dependsOn": [
                 "bot npm install"
             ]
@@ -49,8 +41,7 @@
             "dependsOn": [
                 "prepare local environment",
                 "backend npm install",
-                "frontend npm install",
-                "bot npm install"
+                "frontend npm install"
             ],
             "dependsOrder": "parallel"
         },
@@ -78,23 +69,10 @@
         {
             "label": "Start Backend",
             "dependsOn": [
-                "backend tsc watch",
+                "teamsfx: backend watch",
                 "teamsfx: backend start"
             ],
             "dependsOrder": "sequence"
-        },
-        {
-            "label": "backend tsc watch",
-            "type": "shell",
-            "command": "npx tsc --watch",
-            "options": {
-                "cwd": "${workspaceFolder}/api"
-            },
-            "isBackground": true,
-            "problemMatcher": "$tsc-watch",
-            "presentation": {
-                "reveal": "silent"
-            }
         },
         {
             "label": "backend npm install",
@@ -112,14 +90,6 @@
             "label": "backend extensions install",
             "type": "shell",
             "command": "echo ${command:fx-extension.backend-extensions-install}"
-        }
-    ],
-    "inputs": [
-        {
-            "id": "terminate",
-            "type": "command",
-            "command": "workbench.action.tasks.terminate",
-            "args": "terminateAll"
         }
     ]
 }

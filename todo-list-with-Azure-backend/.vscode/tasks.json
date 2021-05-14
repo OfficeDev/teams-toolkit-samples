@@ -2,11 +2,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Stop All Services",
-            "type": "shell",
-            "command": "echo ${input:terminate}"
-        },
-        {
             "label": "Pre Debug Check",
             "dependsOn": [
                 "dependency check",
@@ -50,6 +45,10 @@
             }
         },
         {
+            "label": "Start Backend",
+            "dependsOn": "teamsfx: backend start"
+        },
+        {
             "label": "backend npm install",
             "type": "shell",
             "command": "npm install",
@@ -65,14 +64,6 @@
             "label": "backend extensions install",
             "type": "shell",
             "command": "echo ${command:fx-extension.backend-extensions-install}"
-        }
-    ],
-    "inputs": [
-        {
-            "id": "terminate",
-            "type": "command",
-            "command": "workbench.action.tasks.terminate",
-            "args": "terminateAll"
         }
     ]
 }

@@ -1,3 +1,5 @@
 {
-    "azureFunctions.stopFuncTaskPostDebug": false
+    "azureFunctions.stopFuncTaskPostDebug": false,
+    "azureFunctions.showProjectWarning": false,
+    "csharp.suppressDotnetRestoreNotification": true
 }
