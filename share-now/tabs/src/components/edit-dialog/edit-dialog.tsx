@@ -39,13 +39,6 @@ class EditItemDialog extends React.Component<IEditItemProps, IEditDialogStateSta
         }
     }
 
-    componentDidMount() {
-        microsoftTeams.initialize();
-        microsoftTeams.getContext((context: microsoftTeams.Context) => {
-            this.setState({ theme: context.theme! });
-        });
-    }
-
 	/**
 	*Changes dialog open state to show and hide dialog.
 	*@param isOpen Boolean indication whether to show dialog

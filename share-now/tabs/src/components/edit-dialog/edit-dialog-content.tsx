@@ -64,11 +64,6 @@ class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEd
     }
 
     componentDidMount() {
-        microsoftTeams.initialize();
-        microsoftTeams.getContext((context: microsoftTeams.Context) => {
-            this.setState({ theme: context.theme! });
-        });
-
         window.addEventListener("resize", function () {
             if (this.document) {
                 if (document!.activeElement!.tagName == "INPUT") {

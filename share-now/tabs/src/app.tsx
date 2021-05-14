@@ -32,9 +32,6 @@ export default class App extends React.Component<{}, IAppState> {
 
     componentDidMount() {
         microsoftTeams.initialize();
-        microsoftTeams.getContext((context: microsoftTeams.Context) => {
-            this.setState({ theme: context.theme! });
-        });
 
         microsoftTeams.registerOnThemeChangeHandler((theme: string) => {
             this.setState({ theme: theme! }, () => {

@@ -87,12 +87,6 @@ class AddNewItemDialogContent extends React.Component<IAddNewDialogContentProps,
     }
 
     componentDidMount() {
-        microsoftTeams.initialize();
-        microsoftTeams.getContext((context: microsoftTeams.Context) => {
-            this.teamId = context.teamId!;
-            this.setState({ theme: context.theme! });
-        });
-
         window.addEventListener("resize", function () {
             if (this.document) {
                 if (document!.activeElement!.tagName == "INPUT") {

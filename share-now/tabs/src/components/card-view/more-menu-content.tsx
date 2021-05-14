@@ -37,13 +37,6 @@ class MoreMenuContent extends React.Component<IMoreMenuContentProps, IAppState> 
         }
     }
 
-    componentDidMount() {
-        microsoftTeams.initialize();
-        microsoftTeams.getContext((context: microsoftTeams.Context) => {
-            this.setState({ theme: context.theme! });
-        });
-    }
-
     /**
 	* Renders the component
 	*/
