@@ -11,8 +11,6 @@ import ErrorPage from "./components/error-page";
 
 import "./styles/site.css";
 import { HashRouter as Router, Route } from "react-router-dom";
-import Redirect from "./components/redirect";
-import { AppRoute } from "./router/router";
 
 export interface IAppState {
     theme: string;

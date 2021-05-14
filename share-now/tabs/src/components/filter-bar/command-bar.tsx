@@ -3,9 +3,7 @@
 // </copyright>
 
 import * as React from "react";
-import { Flex, Input, Button, Text } from "@fluentui/react-northstar";
-import { SearchIcon } from "@fluentui/react-icons-northstar";
-import { Icon } from "@fluentui/react/lib/Icon";
+import { Flex } from "@fluentui/react-northstar";
 import { initializeIcons } from "@uifabric/icons";
 import { useTranslation } from 'react-i18next';
 import AddNewPostDialog from "../add-new-dialog/add-new-dialog";
