@@ -1,0 +1,169 @@
+.trigger-text-wrapper {
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.trigger-text {
+    margin-left: 1rem;
+}
+
+.type-dropdown-wrapper {
+    width: 100%;
+}
+
+.type-dropdown-margin {
+    margin-bottom: 1rem;
+}
+
+.input-fields-margin-between-add-post {
+    margin-top: 1rem;
+}
+
+    .input-fields-margin-between-add-post button:first-child {
+        width: 11.8rem;
+    }
+
+.text-area {
+    height: 10rem;
+}
+
+.add-icon {
+    margin-left: -5rem;
+    padding: 0.5rem;
+}
+
+.form-label {
+font-size:12px;
+}
+
+.icon-hover {
+    cursor: pointer;
+}
+
+.close-icon-dialog{
+    margin-right:0;
+    margin-top:0.5rem;
+}
+
+.input-label-space-between {
+    margin-top: 0.3rem;
+}
+
+
+.app-name-container {
+    padding-left: 0 !important;
+    margin-bottom: 1rem;
+}
+
+.app-logo-container {
+    width: 4rem;
+    height: 4rem;
+    border-radius:0.3rem;
+}
+
+.dialog-container {
+    width: 60rem !important;
+    height: 57rem !important;
+}
+
+.dialog-body {
+    height: 42rem !important;
+    overflow: auto !important;
+    width: 100%;
+}
+
+.info-icon {
+    padding-top: 0.3rem;
+    color: #6264A7;
+}
+
+.dialog-footer {
+    width: 100%;
+}
+
+.tags-label-wrapper {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    margin-top: 1rem !important;
+    height: 2.67rem !important;
+    margin-right: 0.33rem !important;
+}
+.tags-label-wrapper-dark {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    margin-top: 1rem !important;
+    height: 2.67rem !important;
+    margin-right: 0.33rem !important;
+    background-color: #484644 !important;
+    color: #ffffff !important;
+}
+
+.default-menu-items-wrapper {
+    padding: 1rem;
+}
+
+    .default-menu-items-wrapper:hover {
+        background-color: #F3F2F1;
+        color: black;
+        cursor: pointer;
+    }
+
+.dark-menu-items-wrapper {
+    padding: 1rem;
+}
+
+    .dark-menu-items-wrapper:hover {
+        background-color: #3b3a39;
+        color: white;
+        cursor: pointer;
+    }
+
+.contrast-menu-items-wrapper {
+    padding: 1rem;
+}
+
+    .contrast-menu-items-wrapper:hover {
+        background-color: yellow;
+        color: black;
+        cursor: pointer;
+    }
+
+@media only screen and (max-width: 650px) {
+    .dialog-container {
+        position: relative !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 1rem !important;
+        overflow:hidden !important;
+    }
+
+    .app-name-container {
+        padding: 0.5rem !important;
+        margin-bottom: 1rem;
+    }
+
+    .ui-box {
+        margin-bottom: 0 !important;
+    }
+
+    .dialog-body {
+        padding: 5px !important;
+        height: 70vh !important;
+        overflow: auto !important;
+    }
+
+    .dialog-footer-wrapper {
+        position: absolute;
+        width: 91vw;
+        bottom: 1rem;
+    }
+
+    .dialog-provider-wrapper {
+        height: 95vh;
+        padding:1rem;
+    }
+}

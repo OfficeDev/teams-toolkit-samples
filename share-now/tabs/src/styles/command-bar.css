@@ -1,0 +1,28 @@
+.command-bar-wrapper {
+    margin-top: 0.5rem;
+    border-radius: 3px;
+}
+
+.filter-button {
+    padding-bottom: 0.5rem !important;
+    margin-right: 0rem !important;
+}
+
+.search-bar-wrapper {
+    width: 17.5rem;
+    display: inherit;
+}
+
+.discover-search-icon {
+    cursor: pointer !important;
+    margin-left: -2rem;
+    margin-top: 0.6rem;
+}
+
+.filter-icon-filled {
+    color: #6264A7;
+}
+
+.filter-icon:hover {
+    color: #6264A7;
+}
