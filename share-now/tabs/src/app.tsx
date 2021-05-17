@@ -9,7 +9,9 @@ import DiscoverWrapperPage from "./components/card-view/discover-wrapper-page";
 import ErrorPage from "./components/error-page";
 
 import "./styles/site.css";
+import "./i18n";
 import { HashRouter as Router, Route } from "react-router-dom";
+import { Suspense } from "react";
 
 export interface IAppState {
     theme: string;
@@ -71,12 +73,14 @@ export default class App extends React.Component<{}, IAppState> {
     public getAppDom = () => {
         return (
             <div className="appContainer">
-                <Router>
-                    <Route exact path="/" component={DiscoverWrapperPage} />
-                    <Route exact path="/tab" component={DiscoverWrapperPage} />
-                    <Route exact path="/discover" component={DiscoverWrapperPage} />
-                    <Route exact path="/errorpage" component={ErrorPage} />
-               </Router>
+                <Suspense fallback={<div className="container-div"><div className="container-subdiv"></div></div>}>
+                    <Router>
+                        <Route exact path="/" component={DiscoverWrapperPage} />
+                        <Route exact path="/tab" component={DiscoverWrapperPage} />
+                        <Route exact path="/discover" component={DiscoverWrapperPage} />
+                        <Route exact path="/errorpage" component={ErrorPage} />
+                </Router>
+               </Suspense>
             </div>);
     }
 
