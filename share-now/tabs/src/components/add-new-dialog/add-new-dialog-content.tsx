@@ -4,7 +4,6 @@
 import * as React from "react";
 import { Button, Flex, Text, Input, Tooltip, TextArea, Dropdown, ItemLayout, Image, Provider, Label } from "@fluentui/react-northstar";
 import { CloseIcon, AddIcon, InfoIcon } from "@fluentui/react-icons-northstar";
-import * as microsoftTeams from "@microsoft/teams-js";
 import { IDiscoverPost } from "../card-view/discover-wrapper-page";
 import { addNewPostContent } from "../../api/discover-api";
 import { WithTranslation, withTranslation } from "react-i18next";

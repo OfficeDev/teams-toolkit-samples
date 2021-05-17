@@ -13,8 +13,6 @@ import { generateColor } from "../../helpers/helper";
 import NotificationMessage from "../notification-message/notification-message";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
-import { ICheckBoxItem } from "../filter-bar/filter-bar";
-import Resources from "../../constants/resources";
 import InfiniteScroll from 'react-infinite-scroller';
 import {
     TeamsUserCredential,
@@ -68,11 +66,6 @@ interface ICardViewState {
 class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewState> {
 
     localize: TFunction;
-    selectedSharedBy: Array<ICheckBoxItem>;
-    selectedPostType: Array<ICheckBoxItem>;
-    selectedTags: Array<ICheckBoxItem>;
-    selectedSortBy: number;
-    filterSearchText: string;
     allPosts: Array<IDiscoverPost>;
     loggedInUserObjectId: string;
     teamId: string;
@@ -85,11 +78,6 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
         super(props);
         let colors = localStorage.getItem("avatar-colors");
         this.localize = this.props.t;
-        this.selectedSharedBy = [];
-        this.selectedPostType = [];
-        this.selectedTags = [];
-        this.selectedSortBy = 0;
-        this.filterSearchText = "";
         this.allPosts = [];
         this.loggedInUserObjectId = "";
         this.teamId = "";
@@ -148,24 +136,11 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
         return filterEntity.length > 1 ? filterEntity.join(";") : filterEntity.length == 1 ? filterEntity.join(";") + ";" : "";
     }
 
-
-    /**
-    * Reset app user selected filters
-    */
-    resetAllFilters = () => {
-        this.selectedSortBy = Resources.sortBy[0].id;
-        this.selectedSharedBy = [];
-        this.selectedPostType = [];
-        this.selectedTags = [];
-        this.filterSearchText = "";
-    }
-
     /**
     * Fetch posts for Team tab from API
     * @param pageCount Page count for which next set of posts needs to be fetched
     */
     getDiscoverPosts = async (pageCount: number) => {
-        this.resetAllFilters();
         let response = await getDiscoverPosts(pageCount);
         if (response.status === 200 && response.data) {
             if (response.data.length < 50) {
@@ -203,7 +178,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
             }
 
             this.clearSearchText = true;
-            this.onFilterSearchTextChange(this.filterSearchText);
+            this.onFilterSearchTextChange();
         }
     }
 
@@ -240,7 +215,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
                 }
             });
             this.showAlert(this.localize("postDeletedSuccess"), 1);
-            this.onFilterSearchTextChange(this.filterSearchText);
+            this.onFilterSearchTextChange();
         }
         else {
             this.showAlert(this.localize("postDeletedError"), 2);
@@ -271,103 +246,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     *@param pageCount Page count for which next set of posts needs to be fetched
     */
     loadMorePosts = (pageCount: number) => {
-        if (!this.filterSearchText.trim().length) {
-            this.getDiscoverPosts(pageCount);
-        }
-    }
-
-    /**
-    *Set state of search text as per user input change
-    *@param searchText Search text entered by user
-    */
-    handleSearchInputChange = async (searchText: string) => {
-        this.setState({
-            searchText: searchText
-        });
-
-        if (searchText.length === 0) {
-            this.setState({
-                isPageInitialLoad: true,
-                pageLoadStart: -1,
-                infiniteScrollParentKey: this.state.infiniteScrollParentKey + 1,
-                discoverPosts: [],
-                hasMorePosts: true
-            });
-            this.allPosts = [];
-        }
-    }
-
-
-    /**
-    *Filter cards based on 'shared by' checkbox selection.
-    *@param selectedCheckboxes User selected checkbox array
-    */
-    onSharedByCheckboxStateChange = (selectedCheckboxes: Array<ICheckBoxItem>) => {
-        this.selectedSharedBy = selectedCheckboxes.filter((value) => { return value.isChecked });
-        this.setState({
-            isPageInitialLoad: true,
-            pageLoadStart: -1,
-            infiniteScrollParentKey: this.state.infiniteScrollParentKey + 1,
-            discoverPosts: [],
-            searchText: "",
-            hasMorePosts: true
-        });
-
-        this.allPosts = [];
-    }
-
-    /**
-    *Filter cards based on post type checkbox selection.
-    *@param selectedCheckboxes User selected checkbox array
-    */
-    onTypeCheckboxStateChange = (selectedCheckboxes: Array<ICheckBoxItem>) => {
-        this.selectedPostType = selectedCheckboxes.filter((value) => { return value.isChecked });
-        this.setState({
-            isPageInitialLoad: true,
-            pageLoadStart: -1,
-            infiniteScrollParentKey: this.state.infiniteScrollParentKey + 1,
-            discoverPosts: [],
-            searchText: "",
-            hasMorePosts: true
-        });
-
-        this.allPosts = [];
-    }
-
-    /**
-    *Filter cards based on tags checkbox selection.
-    *@param selectedCheckboxes User selected checkbox array
-    */
-    onTagsStateChange = (selectedCheckboxes: Array<ICheckBoxItem>) => {
-        this.selectedTags = selectedCheckboxes.filter((value) => { return value.isChecked });
-        this.setState({
-            isPageInitialLoad: true,
-            pageLoadStart: -1,
-            infiniteScrollParentKey: this.state.infiniteScrollParentKey + 1,
-            discoverPosts: [],
-            searchText: "",
-            hasMorePosts: true
-        });
-
-        this.allPosts = [];
-    }
-
-    /**
-    *Filter cards based sort by value.
-    *@param selectedValue Selected value for 'sort by'
-    */
-    onSortByChange = (selectedValue: number) => {
-        this.selectedSortBy = selectedValue;
-        this.setState({
-            isPageInitialLoad: true,
-            pageLoadStart: -1,
-            infiniteScrollParentKey: this.state.infiniteScrollParentKey + 1,
-            discoverPosts: [],
-            searchText: "",
-            hasMorePosts: true
-        });
-
-        this.allPosts = [];
+        this.getDiscoverPosts(pageCount);
     }
 
     /**
@@ -405,7 +284,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
                 }
             });
 
-            this.onFilterSearchTextChange(this.filterSearchText);
+            this.onFilterSearchTextChange();
             this.showAlert(this.localize("postUpdateSuccess"), 1)
         }
         else {
@@ -455,61 +334,10 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     * Filters posts inline by user search text
     * @param searchText Search text entered by user.
     */
-    onFilterSearchTextChange = (searchText: string) => {
-        this.filterSearchText = searchText;
-        if (searchText.trim().length) {
-            let filteredPosts = this.allPosts.filter((post: IDiscoverPost) => post.title.toLowerCase().includes(searchText.toLowerCase()) === true);
-
-            this.setState({
-                discoverPosts: filteredPosts, loader: false, hasMorePosts: this.hasmorePost, isPageInitialLoad: false, searchText: this.clearSearchText ? "" : this.state.searchText
-            });
-        }
-        else {
-            this.setState({
-                discoverPosts: [...this.allPosts], loader: false, hasMorePosts: this.hasmorePost, isPageInitialLoad: false, searchText: this.clearSearchText ? "" : this.state.searchText
-            });
-        }
-    }
-
-    /**
-    * Invoked when either filter bar is displayed or closed
-    * @param isOpen Boolean indicating whether filter bar is displayed or closed.
-    */
-    handleFilterClear = (isOpen: boolean) => {
-        if (!isOpen && (this.selectedPostType.length > 0 || this.selectedSharedBy.length > 0 || this.selectedTags.length > 0 || this.selectedSortBy !== Resources.sortBy[0].id)) {
-            this.setState({
-                isPageInitialLoad: true,
-                pageLoadStart: -1,
-                infiniteScrollParentKey: this.state.infiniteScrollParentKey + 1,
-                discoverPosts: [],
-                searchText: "",
-                hasMorePosts: true
-            });
-            this.allPosts = [];
-        }
+    onFilterSearchTextChange = () => {
         this.setState({
-            isFilterApplied: isOpen
+            discoverPosts: [...this.allPosts], loader: false, hasMorePosts: this.hasmorePost, isPageInitialLoad: false, searchText: this.clearSearchText ? "" : this.state.searchText
         });
-        this.resetAllFilters();
-    }
-
-    /**
-    * Invoked when user hits enter or clicks on search icon for searching post through command bar
-    */
-    invokeApiSearch = () => {
-        this.setState({
-            isPageInitialLoad: true,
-            pageLoadStart: -1,
-            infiniteScrollParentKey: this.state.infiniteScrollParentKey + 1,
-            discoverPosts: [],
-            isFilterApplied: false,
-            hasMorePosts: true
-        });
-        this.allPosts = [];
-    }
-
-    hideFilterbar = () => {
-        return true;
     }
 
     /**
@@ -573,22 +401,14 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
                             />
                             <TitleBar
                                 commandBarSearchText={this.state.searchText}
-                                searchFilterPostsUsingAPI={this.invokeApiSearch}
-                                onFilterClear={this.handleFilterClear}
                                 hideFilterbar={!this.state.isFilterApplied}
-                                onSortByChange={this.onSortByChange}
-                                onFilterSearchChange={this.onFilterSearchTextChange}
-                                onSearchInputChange={this.handleSearchInputChange}
                                 onNewPostSubmit={this.onNewPost}
-                                onSharedByCheckboxStateChange={this.onSharedByCheckboxStateChange}
-                                onTypeCheckboxStateChange={this.onTypeCheckboxStateChange}
-                                onTagsStateChange={this.onTagsStateChange}
                             />
                             <div key={this.state.infiniteScrollParentKey} className="scroll-view scroll-view-mobile" style={scrollViewStyle}>
                                 <InfiniteScroll
                                     pageStart={this.state.pageLoadStart}
                                     loadMore={this.loadMorePosts}
-                                    hasMore={this.state.hasMorePosts && !this.filterSearchText.trim().length}
+                                    hasMore={this.state.hasMorePosts}
                                     initialLoad={this.state.isPageInitialLoad}
                                     useWindow={false}
                                     loader={<div className="loader"><Loader /></div>}>

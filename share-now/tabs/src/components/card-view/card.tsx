@@ -9,12 +9,10 @@ import { IDiscoverPost } from "./discover-wrapper-page";
 import TypeLabel from "./type-label";
 import Thumbnail from "./thumbnail";
 import Upvotes from "./upvotes";
-import Resources from "../../constants/resources";
 import { getInitials } from "../../helpers/helper";
 import { deletePost, addUserVote, deleteUserVote } from "../../api/discover-api";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
-import { addNewPostContent, getUserPrivateListPosts } from "../../api/private-list-api";
 
 import "../../styles/card.css";
 
@@ -103,53 +101,10 @@ class Card extends React.Component<ICardProps, ICardState> {
     }
 
 	/**
-    * Fetch user's private list posts from API
-    */
-    getPrivateListPosts = async () => {
-        let response = await getUserPrivateListPosts();
-        if (response.status === 200 && response.data) {
-            return response.data;
-        }
-    }
-
-    handleAddToPrivateListButtonClick = async () => {
-        this.setState({
-            isMoreMenuLoading: true
-        });
-
-        let privateListPosts = await this.getPrivateListPosts();
-        let blogPost = this.state.cardDetails;
-
-        if (privateListPosts && privateListPosts.find((post: any) => { return post.postId === blogPost.postId })) {
-            this.props.onAddPrivatePostClick(false, this.localize("privatePostExistError"));
-        }
-        else if (privateListPosts && privateListPosts.length >= Resources.maxPrivateListPostCount) {
-            this.props.onAddPrivatePostClick(false, this.localize("privatePostMaxCountError"));
-        }
-        else {
-            let postContent = { postId: blogPost.postId };
-            let response = await addNewPostContent(postContent);
-
-            if (response.status === 200 && response.data) {
-                this.props.onAddPrivatePostClick(true);
-            }
-            else {
-                this.props.onAddPrivatePostClick(false);
-            }
-        }
-
-        this.setState({ isMoreMenuLoading: false });
-    }
-
-	/**
 	*Invoked when item from more menu is clicked.
 	*@param key Selected menu key
 	*/
     onMenuItemClick = (key: number) => {
-        if (key === 1) // add to user private list
-        {
-            this.handleAddToPrivateListButtonClick();
-        }
         if (key === 3) // delete
         {
             this.handleDeleteButtonClick();
