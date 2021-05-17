@@ -43,6 +43,7 @@ class TabConfig extends React.Component {
 
     return (
       <div style={{ backgroundColor: "#FFF", height: "100%" }}>
+        <div>Click 'Save' button to continue.</div>
       </div>
     );
   }
