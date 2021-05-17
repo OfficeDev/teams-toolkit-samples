@@ -42,8 +42,8 @@ class TabConfig extends React.Component {
     microsoftTeams.settings.setValidityState(true);
 
     return (
-      <div style={{ backgroundColor: "#FFF", height: "100%" }}>
-        <div>Click 'Save' button to continue.</div>
+      <div>
+        <h1>Tab Configuration</h1>
       </div>
     );
   }
