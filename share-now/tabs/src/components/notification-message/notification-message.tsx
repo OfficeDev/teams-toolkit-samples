@@ -19,49 +19,49 @@ interface INotificationMessageState {
 }
 
 export default class NotificationMessage extends React.Component<INotificationMessageProps, INotificationMessageState> {
-    constructor(props: any) {
-        super(props);
+  constructor(props: any) {
+    super(props);
 
-        this.state = {
-            showAlert: false
-        }
+    this.state = {
+      showAlert: false
     }
+  }
 
-    componentWillReceiveProps(nextProps: INotificationMessageProps) {
-        if (nextProps.showAlert !== this.props.showAlert) {
-            this.setState({ showAlert: nextProps.showAlert })
-        }
+  componentWillReceiveProps(nextProps: INotificationMessageProps) {
+    if (nextProps.showAlert !== this.props.showAlert) {
+      this.setState({ showAlert: nextProps.showAlert })
     }
+  }
 
-	/**
+  /**
     * Renders the component
     */
-    public render(): JSX.Element {
+  public render(): JSX.Element {
 
-        if (this.props.showAlert) {
-            return (
-                <div className="notification-container">
-                    <div className={`notification-${this.props.notificationType === 1 ? 'success' : 'error'}`}>
-                        <Flex gap="gap.smaller" vAlign="center">
-                            <Flex.Item>
-                                {
-                                    this.props.notificationType === 1 ? <PresenceAvailableIcon color="green" /> : <ErrorIcon color="red" />
-                                }
-                            </Flex.Item>
-                            <Flex.Item>
-                                <Text content={this.props.content} size="medium" />
-                            </Flex.Item>
-                            <Flex.Item push>
-                                <div></div>
-                            </Flex.Item>
-                            <CloseIcon className="close-button" onClick={this.props.onClose} />
-                        </Flex>
-                    </div>
-                </div>
-            );
-        }
-        else {
-            return (<></>);
-        }
+    if (this.props.showAlert) {
+      return (
+        <div className="notification-container">
+          <div className={`notification-${this.props.notificationType === 1 ? 'success' : 'error'}`}>
+            <Flex gap="gap.smaller" vAlign="center">
+              <Flex.Item>
+                {
+                  this.props.notificationType === 1 ? <PresenceAvailableIcon color="green" /> : <ErrorIcon color="red" />
+                }
+              </Flex.Item>
+              <Flex.Item>
+                <Text content={this.props.content} size="medium" />
+              </Flex.Item>
+              <Flex.Item push>
+                <div></div>
+              </Flex.Item>
+              <CloseIcon className="close-button" onClick={this.props.onClose} />
+            </Flex>
+          </div>
+        </div>
+      );
     }
+    else {
+      return (<></>);
+    }
+  }
 }

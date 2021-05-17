@@ -28,40 +28,40 @@ class MoreMenuContent extends React.Component<IMoreMenuContentProps, IAppState> 
     localize: TFunction;
 
     constructor(props: any) {
-        super(props);
-        this.localize = this.props.t;
-        this.state = {
-            theme: Resources.default,
-        }
+      super(props);
+      this.localize = this.props.t;
+      this.state = {
+        theme: Resources.default,
+      }
     }
 
     /**
 	* Renders the component
 	*/
     public render(): JSX.Element {
-        let className = this.state.theme === Resources.dark ? "dark-menu-items-wrapper" : this.state.theme === Resources.contrast ? "contrast-menu-items-wrapper" : "default-menu-items-wrapper";
-        return (
-            <Provider>
-                <Container fluid className="popup-menu-content-wrapper">
-                    {this.props.cardDetails.isCurrentUserPost && <><EditItemDialog
-                        index={1}
-                        cardDetails={this.props.cardDetails}
-                        onSubmit={this.props.onEditSubmit}
-                        onCancel={this.props.onCancel}
-                    />
-                        <Divider />
-                        <Dialog
-                            className="dialog-container-discover-posts"
-                            cancelButton={this.localize("cancel")}
-                            confirmButton={this.localize("Confirm")}
-                            content={this.localize("deleteConfirmBodyText")}
-                            header={this.localize("deleteConfirmTitleText")}
-                            trigger={<Flex vAlign="center" className={className}><TrashCanIcon outline /> <Text className="popup-menu-item-text" content={this.localize("delete")} /></Flex>}
-                            onConfirm={() => this.props.onMenuItemClick(3)}
-                        /></>}
-                </Container>
-            </Provider>
-        );
+      const className = this.state.theme === Resources.dark ? "dark-menu-items-wrapper" : this.state.theme === Resources.contrast ? "contrast-menu-items-wrapper" : "default-menu-items-wrapper";
+      return (
+        <Provider>
+          <Container fluid className="popup-menu-content-wrapper">
+            {this.props.cardDetails.isCurrentUserPost && <><EditItemDialog
+              index={1}
+              cardDetails={this.props.cardDetails}
+              onSubmit={this.props.onEditSubmit}
+              onCancel={this.props.onCancel}
+            />
+            <Divider />
+            <Dialog
+              className="dialog-container-discover-posts"
+              cancelButton={this.localize("cancel")}
+              confirmButton={this.localize("Confirm")}
+              content={this.localize("deleteConfirmBodyText")}
+              header={this.localize("deleteConfirmTitleText")}
+              trigger={<Flex vAlign="center" className={className}><TrashCanIcon outline /> <Text className="popup-menu-item-text" content={this.localize("delete")} /></Flex>}
+              onConfirm={() => this.props.onMenuItemClick(3)}
+            /></>}
+          </Container>
+        </Provider>
+      );
     }
 }
 export default withTranslation()(MoreMenuContent)

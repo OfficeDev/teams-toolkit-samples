@@ -13,19 +13,19 @@ interface ITypeLabelProps {
 }
 
 const TypeLabel: React.FunctionComponent<ITypeLabelProps> = props => {
-    const localize = useTranslation().t;
-    const postTypes: Array<IPostType> = getLocalizedPostTypes(localize);
+  const localize = useTranslation().t;
+  const postTypes: Array<IPostType> = getLocalizedPostTypes(localize);
 
-    const postType = postTypes.filter((value) => {
-        if (value.id === props.postType) {
-            return value;
-        }
-    });
-    return (
-        <Flex vAlign="center">
-            <Status styles={{ backgroundColor: postType[0].color }} />&nbsp;<Text content={postType[0].name} title={postType[0].name} size={props.size} />
-        </Flex>
-    );
+  const postType = postTypes.filter((value) => {
+    if (value.id === props.postType) {
+      return value;
+    }
+  });
+  return (
+    <Flex vAlign="center">
+      <Status styles={{ backgroundColor: postType[0].color }} />&nbsp;<Text content={postType[0].name} title={postType[0].name} size={props.size} />
+    </Flex>
+  );
 }
 
 export default React.memo(TypeLabel);

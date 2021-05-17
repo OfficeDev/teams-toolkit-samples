@@ -16,34 +16,34 @@ interface ITagProps {
 
 const Tag: React.FunctionComponent<ITagProps> = props => {
 
-	/**
+  /**
     *Invoked when 'X' icon is clicked of the label and passes control back to parent component.
     */
-    const onRemoveClick = () => {
+  const onRemoveClick = () => {
         props.onRemoveClick!(props.index);
-    }
+  }
 
-    // Check whether remove icon is to be displayed or not
-    if (props.showRemoveIcon) {
-        return (
-            <Label
-                circular
-                content={<Text className="tag-text-form" content={props.tagContent} title={props.tagContent} size="small" />}
-                className="tags-label-wrapper"
-                icon={<CloseIcon key={props.index} onClick={onRemoveClick} />}
-            />
-        );
-    }
-    else {
-        return (
-            <Label
-                key={props.index}
-                circular
-                content={<div className="tag-text-card"><Text className="tag-text-card" content={props.tagContent} title={props.tagContent} size="small" /></div>}
-                className="tags-label-wrapper"
-            />
-        );
-    }
+  // Check whether remove icon is to be displayed or not
+  if (props.showRemoveIcon) {
+    return (
+      <Label
+        circular
+        content={<Text className="tag-text-form" content={props.tagContent} title={props.tagContent} size="small" />}
+        className="tags-label-wrapper"
+        icon={<CloseIcon key={props.index} onClick={onRemoveClick} />}
+      />
+    );
+  }
+  else {
+    return (
+      <Label
+        key={props.index}
+        circular
+        content={<div className="tag-text-card"><Text className="tag-text-card" content={props.tagContent} title={props.tagContent} size="small" /></div>}
+        className="tags-label-wrapper"
+      />
+    );
+  }
 }
 
 export default React.memo(Tag);
