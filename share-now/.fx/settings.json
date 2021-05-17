@@ -5,7 +5,7 @@
         "version": "1.0.0",
         "capabilities": [
             "Tab",
-            "MessageExtension"
+            "MessagingExtension"
         ],
         "hostType": "Azure",
         "azureResources": [
