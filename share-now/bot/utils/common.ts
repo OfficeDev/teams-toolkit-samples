@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 import {
     DefaultTediousConnectionConfiguration
-} from "teamsdev-client";
+} from "@microsoft/teamsfx";
 import * as tedious from "tedious";
 export async function getSQLConnection() {
     const sqlConnectConfig = new DefaultTediousConnectionConfiguration();

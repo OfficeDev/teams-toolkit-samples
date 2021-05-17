@@ -5,7 +5,7 @@ import { Context, HttpRequest } from "@azure/functions";
 import {
   loadConfiguration,
   OnBehalfOfUserCredential,
-} from "teamsdev-client";
+} from "@microsoft/teamsfx";
 import { executeQuery, getSQLConnection, PostRequest, PostTypes, ResponsePost, LengthLimit } from "../utils/common";
 import { checkPost } from "../utils/query";
 

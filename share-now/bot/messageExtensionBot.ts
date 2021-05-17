@@ -3,7 +3,7 @@
 import { TeamsActivityHandler, CardFactory, TurnContext } from 'botbuilder';
 import {
     loadConfiguration,
-} from "teamsdev-client";
+} from "@microsoft/teamsfx";
 import { executeQuery, getSQLConnection } from './utils/common';
 export class MessageExtensionBot extends TeamsActivityHandler {
     constructor() {
