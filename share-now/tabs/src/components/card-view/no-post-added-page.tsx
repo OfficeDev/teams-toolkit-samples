@@ -19,24 +19,24 @@ interface INoPostAddedProps extends WithTranslation {
 class TeamsConfigPage extends React.Component<INoPostAddedProps> {
     localize: TFunction;
     constructor(props: any) {
-        super(props);
-        this.localize = this.props.t;
+      super(props);
+      this.localize = this.props.t;
     }
 
     public render(): JSX.Element {
-        return (
-            <div className="no-post-added-container">
-                <div className="app-logo">
-                    <EyeIcon size="largest" />
-                </div>
-                <div className="add-new-post">
-                    <Text content={this.localize("addNewPostNote")} />
-                </div>
-                {this.props.showAddButton && <div className="add-new-post-btn">
-                    <AddNewPostDialog onSubmit={this.props.onNewPostSubmit} />
-                </div>}
-            </div>
-        )
+      return (
+        <div className="no-post-added-container">
+          <div className="app-logo">
+            <EyeIcon size="largest" />
+          </div>
+          <div className="add-new-post">
+            <Text content={this.localize("addNewPostNote")} />
+          </div>
+          {this.props.showAddButton && <div className="add-new-post-btn">
+            <AddNewPostDialog onSubmit={this.props.onNewPostSubmit} />
+          </div>}
+        </div>
+      )
     }
 }
 

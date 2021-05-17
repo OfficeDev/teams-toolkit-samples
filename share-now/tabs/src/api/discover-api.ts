@@ -5,7 +5,7 @@ import axios from "./axios-decorator";
 import { getBaseUrl } from '../configVariables';
 import { IDiscoverPost } from "../components/card-view/discover-wrapper-page";
 
-let baseAxiosUrl = getBaseUrl() + '/api';
+const baseAxiosUrl = getBaseUrl() + '/api';
 
 /**
 * Get discover posts for tab
@@ -13,8 +13,8 @@ let baseAxiosUrl = getBaseUrl() + '/api';
 */
 export const getDiscoverPosts = async (pageCount: number): Promise<any> => {
 
-    let url = `${baseAxiosUrl}/posts?pageCount=${pageCount}`;
-    return await axios.get(url);
+  const url = `${baseAxiosUrl}/posts?pageCount=${pageCount}`;
+  return await axios.get(url);
 }
 
 /**
@@ -23,8 +23,8 @@ export const getDiscoverPosts = async (pageCount: number): Promise<any> => {
 */
 export const updatePostContent = async (postContent: any): Promise<any> => {
 
-    let url = `${baseAxiosUrl}/posts/${postContent.postId}`;
-    return await axios.put(url, postContent);
+  const url = `${baseAxiosUrl}/posts/${postContent.postId}`;
+  return await axios.put(url, postContent);
 }
 
 /**
@@ -33,8 +33,8 @@ export const updatePostContent = async (postContent: any): Promise<any> => {
 */
 export const addNewPostContent = async (postContent: any): Promise<any> => {
 
-    let url = `${baseAxiosUrl}/posts`;
-    return await axios.post(url, postContent);
+  const url = `${baseAxiosUrl}/posts`;
+  return await axios.post(url, postContent);
 }
 
 /**
@@ -43,8 +43,8 @@ export const addNewPostContent = async (postContent: any): Promise<any> => {
 */
 export const deletePost = async (post: any): Promise<any> => {
 
-    let url = `${baseAxiosUrl}/posts/${post.postId}`;
-    return await axios.delete(url);
+  const url = `${baseAxiosUrl}/posts/${post.postId}`;
+  return await axios.delete(url);
 }
 
 /**
@@ -53,8 +53,8 @@ export const deletePost = async (post: any): Promise<any> => {
 */
 export const addUserVote = async (postDetails: any): Promise<any> => {
 
-    let url = `${baseAxiosUrl}/vote/${postDetails.postId}`;
-    return await axios.post(url);
+  const url = `${baseAxiosUrl}/vote/${postDetails.postId}`;
+  return await axios.post(url);
 }
 
 /**
@@ -63,6 +63,6 @@ export const addUserVote = async (postDetails: any): Promise<any> => {
 */
 export const deleteUserVote = async (postDetails: IDiscoverPost): Promise<any> => {
 
-    let url = `${baseAxiosUrl}/vote/${postDetails.postId}`;
-    return await axios.delete(url);
+  const url = `${baseAxiosUrl}/vote/${postDetails.postId}`;
+  return await axios.delete(url);
 }

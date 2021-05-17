@@ -22,40 +22,40 @@ class AddNewPostDialog extends React.Component<IAddNewPostProps, IAddNewDialogSt
     localize: TFunction;
 
     constructor(props: any) {
-        super(props);
+      super(props);
 
-        this.localize = this.props.t;
-        this.state = {
-            editDialogOpen: false
-        }
+      this.localize = this.props.t;
+      this.state = {
+        editDialogOpen: false
+      }
     }
 
-	/**
+    /**
 	*Changes dialog open state to show and hide dialog.
 	*@param isOpen Boolean indication whether to show dialog
 	*/
     changeDialogOpenState = (isOpen: boolean) => {
-        this.setState({ editDialogOpen: isOpen })
+      this.setState({ editDialogOpen: isOpen })
     }
 
-	/**
+    /**
     * Renders the component
     */
     public render(): JSX.Element {
-        return (
-            <Dialog
-                className="dialog-container"
-                content={
-                    <AddNewItemDialogContent
-                        onSubmit={this.props.onSubmit}
-                        changeDialogOpenState={this.changeDialogOpenState}
-                    />
-                }
-                open={this.state.editDialogOpen}
-                onOpen={() => this.setState({ editDialogOpen: true })}
-                trigger={<Button className="mobile-button" content={this.localize("addNew")} onClick={() => this.changeDialogOpenState(true)} primary />}
+      return (
+        <Dialog
+          className="dialog-container"
+          content={
+            <AddNewItemDialogContent
+              onSubmit={this.props.onSubmit}
+              changeDialogOpenState={this.changeDialogOpenState}
             />
-        );
+          }
+          open={this.state.editDialogOpen}
+          onOpen={() => this.setState({ editDialogOpen: true })}
+          trigger={<Button className="mobile-button" content={this.localize("addNew")} onClick={() => this.changeDialogOpenState(true)} primary />}
+        />
+      );
     }
 }
 export default withTranslation()(AddNewPostDialog)

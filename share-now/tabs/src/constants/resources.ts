@@ -44,23 +44,23 @@ export default class Resources {
     public static readonly tagsMaxCount: number = 3;
     public static readonly tagsMaxCountPreferences: number = 5;
 
-    public static readonly urlValidationRegEx: RegExp = /^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+    public static readonly urlValidationRegEx: RegExp = /^http(s)?:\/\/(www\.)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
 
     public static readonly postTypes: Array<IPostType> = [
-        { name: "Blog post", id: 1, color: "#E4A512" },
-        { name: "Other", id: 2, color: "#1E53A3" },
-        { name: "Podcast", id: 3, color: "#2B9B62" },
-        { name: "Video", id: 4, color: "#CA4A55" },
-        { name: "Book", id: 5, color: "#7F7F86" }
+      { name: "Blog post", id: 1, color: "#E4A512" },
+      { name: "Other", id: 2, color: "#1E53A3" },
+      { name: "Podcast", id: 3, color: "#2B9B62" },
+      { name: "Video", id: 4, color: "#CA4A55" },
+      { name: "Book", id: 5, color: "#7F7F86" }
     ];
 
     public static readonly sortBy: Array<IPostType> = [
-        { name: "Newest", id: 0, color: "" },
-        { name: "Popularity", id: 1, color: "" }
+      { name: "Newest", id: 0, color: "" },
+      { name: "Popularity", id: 1, color: "" }
     ];
 
     public static readonly avatarColors: Array<string> = [
-        "#B3DBF2", "#A7CFE8", "#92E0EA", "#ABDDD3", "#F7B189",
-        "#EE9889", "#EEC7C2", "#FAC1B4", "#FFB8C6", "#D8A3D8",
-        "#BBB0D6", "#B4A0FF", "#AAE5AA", "#E6EDC0"];
+      "#B3DBF2", "#A7CFE8", "#92E0EA", "#ABDDD3", "#F7B189",
+      "#EE9889", "#EEC7C2", "#FAC1B4", "#FFB8C6", "#D8A3D8",
+      "#BBB0D6", "#B4A0FF", "#AAE5AA", "#E6EDC0"];
 }
