@@ -42,9 +42,9 @@ class TabConfig extends React.Component {
     microsoftTeams.settings.setValidityState(true);
 
     return (
-    <div>
-      <h1>Tab Configuration</h1>
-    </div>
+      <div>
+        <h1>Tab Configuration</h1>
+      </div>
     );
   }
 }
