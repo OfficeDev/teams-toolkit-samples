@@ -4,7 +4,6 @@
 import { IPostType } from "../constants/resources";
 import Resources from "../constants/resources";
 import { TFunction } from "i18next";
-import { getPreferencesTags } from "../api/preferences-api";
 
 /**
 * Get localized post types.
@@ -31,27 +30,6 @@ export const getLocalizedPostTypes = (localize: TFunction): Array<IPostType> => 
 
             case 5:
                 value.name = localize("bookPostType");
-                return value;
-
-            default:
-                return value;
-        }
-    });
-}
-
-/**
-* Get localized sort by filters.
-* @param localize i18n TFunction received from props.
-*/
-export const getLocalizedSortBy = (localize: TFunction): Array<IPostType> => {
-    return Resources.sortBy.map((value: IPostType) => {
-        switch (value.id) {
-            case 0:
-                value.name = localize("sortByNewest");
-                return value;
-
-            case 1:
-                value.name = localize("sortByPopularity");
                 return value;
 
             default:

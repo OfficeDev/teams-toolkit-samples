@@ -9,7 +9,6 @@ import { Container } from "react-bootstrap";
 import { IDiscoverPost } from "./discover-wrapper-page";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
-import * as microsoftTeams from "@microsoft/teams-js";
 
 import "../../styles/more-menu-content.css";
 import Resources from "../../constants/resources";
