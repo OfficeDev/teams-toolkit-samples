@@ -45,6 +45,7 @@
 ### Debug [Optional]
 
 1. [Create an Azure SQL Database](https://docs.microsoft.com/en-us/azure/azure-sql/database/single-database-create-quickstart?tabs=azure-portal)
+1. [Add IP address of your computer into allowlist of firewall of Azure SQL Database](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page)
 1. Use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
     ```sql
     CREATE TABLE Todo
@@ -76,7 +77,7 @@
 
     ![Todo List](images/Consent.jpg)
 
-3. You could try to add new todo item by typing item and click "Add" button.
+3. You could try to add new todo item by clicking "Add task" button.
 4. You could try to complete todo item by choosing the checkbox before the item.
 5. You could try to update todo item by typing text in todo item list.
 6. You could try to delete todo item by clicking "..." and then choose "delete" button.

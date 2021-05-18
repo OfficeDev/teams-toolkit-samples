@@ -29,55 +29,55 @@ class EditItemDialog extends React.Component<IEditItemProps, IEditDialogStateSta
     localize: TFunction;
 
     constructor(props: any) {
-        super(props);
+      super(props);
 
-        this.localize = this.props.t;
-        this.state = {
-            editDialogOpen: false,
-            theme: Resources.default
-        }
+      this.localize = this.props.t;
+      this.state = {
+        editDialogOpen: false,
+        theme: Resources.default
+      }
     }
 
-	/**
+    /**
 	*Changes dialog open state to show and hide dialog.
 	*@param isOpen Boolean indication whether to show dialog
 	*/
     changeDialogOpenState = (isOpen: boolean) => {
-        this.setState({ editDialogOpen: isOpen })
+      this.setState({ editDialogOpen: isOpen })
     }
 
-	/**
+    /**
 	*Invoked while closing dialog. Set state to original values.
 	*/
     onCancel = () => {
-        this.props.onCancel();
-        this.changeDialogOpenState(false);
+      this.props.onCancel();
+      this.changeDialogOpenState(false);
     }
 
-	/**
+    /**
     * Renders the component
     */
     public render(): JSX.Element {
-        let className = this.state.theme === Resources.dark ? "dark-menu-items-wrapper" : this.state.theme === Resources.contrast ? "contrast-menu-items-wrapper" : "default-menu-items-wrapper";
-        return (
-            <Dialog
-                className="dialog-container"
-                content={
-                    <EditItemDialogContent
-                        onSubmit={this.props.onSubmit}
-                        onCancel={this.onCancel}
-                        cardDetails={this.props.cardDetails}
-                        changeDialogOpenState={this.changeDialogOpenState}
-                    />
-                }
-                open={this.state.editDialogOpen}
-                onOpen={() => this.setState({ editDialogOpen: true })}
-                trigger={
-                    <Flex vAlign="center" className={className} onClick={() => this.changeDialogOpenState(true)}>
-                        <EditIcon outline /> <Text className="trigger-text" content={this.localize("edit")} />
-                    </Flex>}
+      const className = this.state.theme === Resources.dark ? "dark-menu-items-wrapper" : this.state.theme === Resources.contrast ? "contrast-menu-items-wrapper" : "default-menu-items-wrapper";
+      return (
+        <Dialog
+          className="dialog-container"
+          content={
+            <EditItemDialogContent
+              onSubmit={this.props.onSubmit}
+              onCancel={this.onCancel}
+              cardDetails={this.props.cardDetails}
+              changeDialogOpenState={this.changeDialogOpenState}
             />
-        );
+          }
+          open={this.state.editDialogOpen}
+          onOpen={() => this.setState({ editDialogOpen: true })}
+          trigger={
+            <Flex vAlign="center" className={className} onClick={() => this.changeDialogOpenState(true)}>
+              <EditIcon outline /> <Text className="trigger-text" content={this.localize("edit")} />
+            </Flex>}
+        />
+      );
     }
 }
 export default withTranslation()(EditItemDialog)

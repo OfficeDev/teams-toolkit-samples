@@ -13,12 +13,12 @@ interface IUpvotesProps {
 
 const Upvotes: React.FunctionComponent<IUpvotesProps> = props => {
 
-    return (
-        <div className="like-count-wrapper" onClick={() => props.onVoteClick()}>
-            <Text className="like-count-text" content={props.upvoteCount} title={props.upvoteCount} size="small" />
-            {!props.isSelected ? <LikeIcon outline={true} className="vote-icon" /> : <LikeIcon outline={false} className=" vote-icon-filled" />}
-        </div>
-    );
+  return (
+    <div className="like-count-wrapper" onClick={() => props.onVoteClick()}>
+      <Text className="like-count-text" content={props.upvoteCount} title={props.upvoteCount} size="small" />
+      {!props.isSelected ? <LikeIcon outline={true} className="vote-icon" /> : <LikeIcon outline={false} className=" vote-icon-filled" />}
+    </div>
+  );
 }
 
 export default React.memo(Upvotes);

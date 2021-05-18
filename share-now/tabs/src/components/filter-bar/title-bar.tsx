@@ -19,40 +19,40 @@ interface IFilterBarState {
 }
 
 class TitleBar extends React.Component<IFilterBarProps, IFilterBarState> {
-    constructor(props: IFilterBarProps) {
-        super(props);
+  constructor(props: IFilterBarProps) {
+    super(props);
 
-        this.state = {
-            isOpen: false,
-            sharedByAuthorList: [],
-            tagsList: [],
-            showSolidFilter: false
-        }
+    this.state = {
+      isOpen: false,
+      sharedByAuthorList: [],
+      tagsList: [],
+      showSolidFilter: false
     }
+  }
 
-    componentWillReceiveProps(nextProps: IFilterBarProps) {
-        if (nextProps.hideFilterbar !== this.props.hideFilterbar) {
-            if (nextProps.hideFilterbar === true) {
-                this.setState({ isOpen: false });
-            }
-        }
+  componentWillReceiveProps(nextProps: IFilterBarProps) {
+    if (nextProps.hideFilterbar !== this.props.hideFilterbar) {
+      if (nextProps.hideFilterbar === true) {
+        this.setState({ isOpen: false });
+      }
     }
+  }
 
-	/**
+  /**
 	* Renders the component
 	*/
-    public render(): JSX.Element {
-        return (
-            <>
-                <CommandBar
-                    onNewPostSubmit={this.props.onNewPostSubmit}
-                    showSolidFilterIcon={this.state.showSolidFilter}
-                    commandBarSearchText={this.props.commandBarSearchText}
-                    displayForTeam={false}
-                />
-            </>
-        )
-    }
+  public render(): JSX.Element {
+    return (
+      <>
+        <CommandBar
+          onNewPostSubmit={this.props.onNewPostSubmit}
+          showSolidFilterIcon={this.state.showSolidFilter}
+          commandBarSearchText={this.props.commandBarSearchText}
+          displayForTeam={false}
+        />
+      </>
+    )
+  }
 }
 
 export default TitleBar;

@@ -18,14 +18,14 @@ interface ICommandBarProps {
 }
 
 const CommandBar: React.FunctionComponent<ICommandBarProps> = props => {
-    const localize = useTranslation().t;
-    initializeIcons();
+  const localize = useTranslation().t;
+  initializeIcons();
 
-    return (
-        <Flex gap="gap.small" vAlign="center" hAlign="end" className="command-bar-wrapper">
-            {!props.displayForTeam && <AddNewPostDialog onSubmit={props.onNewPostSubmit} />}
-        </Flex>
-    );
+  return (
+    <Flex gap="gap.small" vAlign="center" hAlign="end" className="command-bar-wrapper">
+      {!props.displayForTeam && <AddNewPostDialog onSubmit={props.onNewPostSubmit} />}
+    </Flex>
+  );
 }
 
 export default CommandBar;

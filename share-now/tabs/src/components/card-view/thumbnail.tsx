@@ -11,22 +11,22 @@ interface IThumbnailProps {
 }
 
 const Thumbnail: React.FunctionComponent<IThumbnailProps> = props => {
-    const localize = useTranslation().t;
+  const localize = useTranslation().t;
 
-    if (props.isVisible) {
-        return (
-            <Image
-                className="card-thumbnail"
-                alt={localize("cardThumbnail")}
-                src={props.imageUrl}
-            />
-        );
-    }
-    else {
-        return (
-            <></>
-        );
-    }
+  if (props.isVisible) {
+    return (
+      <Image
+        className="card-thumbnail"
+        alt={localize("cardThumbnail")}
+        src={props.imageUrl}
+      />
+    );
+  }
+  else {
+    return (
+      <></>
+    );
+  }
 }
 
 export default React.memo(Thumbnail);
