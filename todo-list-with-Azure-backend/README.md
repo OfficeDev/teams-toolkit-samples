@@ -77,7 +77,7 @@
 
     ![Todo List](images/Consent.jpg)
 
-3. You could try to add new todo item by typing item and click "Add" button.
+3. You could try to add new todo item by clicking "Add task" button.
 4. You could try to complete todo item by choosing the checkbox before the item.
 5. You could try to update todo item by typing text in todo item list.
 6. You could try to delete todo item by clicking "..." and then choose "delete" button.
