@@ -20,7 +20,7 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
     >- Node.js v12.13.0+ (Erbium)
     >- Node.js v14.15.0+ (Fermium) 
 * Setup SharePoint Environment by following the [instructions](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
-* Use the root site in SharePoint to create a List.
+* Use the communication root site in SharePoint to create a List.
     - Navigate to the SharePoint root site, in `Home` tab, click `New` and select `List`. 
     > *Note: You must nagivate to root site instead of any other subsite. Root site URL ends with xx.sharepoint.com.* eg. `https://{your-tenant-name}.sharepoint.com/`. 
     > *This is because Teams App automatically detect SharePoint root site only. If you want to create a List in other subsite, manual steps to change the site url in* *[./SPFx/src/webparts/TodoList/components/SharePointListManager.ts](./SPFx/src/webparts/TodoList/components/SharePointListManager.ts) are required.*
@@ -43,8 +43,9 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
 1. Go back to Microsoft Teams Toolkit extension, click `Deploy to the Cloud` in PROJECT panel or open the command palette and select `Teams: Deploy to the Cloud`. 
     > This step will generate a SharePoint package (*.sppkg) under `sharepoint/solution` folder.
 1. Upload or drag-and-drop the *.sppkg file under `sharepoint/solution` folder to the SharePoint App Catalog site, follow the instruction [Deploy the HelloWorld package to App Catalog](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#deploy-the-helloworld-package-to-app-catalog)
-1. Go back to Microsoft Teams Toolkit extension, in in PROJECT panel, click `Publish to Teams` or open the command palette and select `Teams: Publish to Teams`.
-1. Check the published app in [Microsoft Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps) by searching "todoList" in the search box.
+    > Note: Tick the "Make this solution available to all sites in the organization" option to make the solution available in Teams.
+3. Go back to Microsoft Teams Toolkit extension, in in PROJECT panel, click `Publish to Teams` or open the command palette and select `Teams: Publish to Teams`.
+4. Check the published app in [Microsoft Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps) by searching "todoList" in the search box.
 ![TeamsAppAdminCenter](images/TeamsAppAdminCenter.png)
 1. Click the 'todoList' app you just published and select `Publish` in the Publishing status.
 ![Publish](images/Publish.png)
