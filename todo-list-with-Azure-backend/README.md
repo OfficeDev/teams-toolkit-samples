@@ -1,19 +1,19 @@
-# Getting Started with Todo List Sample - React Tab and Azure backend with Azure SQL DB
+# Getting Started with Todo List Sample (Azure)
 
 > ## WARNING: This repository is under active development and the samples are not guaranteed to work!
 > This warning will be removed when the samples are ready for consumption
 
-### This sample app is a group tab used to manage To-do List.
+Todo List provides an easy way to manage to-do items in Teams Client. This app helps enabling task collaboration and management for your team. The frontend is a React app and the backend is hosted on Azure. You will need an Azure subscription to run the app.
 
-- The frontend is a react tab hosting on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
-- Backend server is hosting on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) and define the logic to manage todo list. 
-- And there is a [SQL DB](https://docs.microsoft.com/en-us/azure/azure-sql/) on Azure to persist data so that each time user open the tab can retrieve the same data.
+![Todo Item List](images/ToDoListCRUD.gif)
 
-### Architecture
+## Prerequisite
+- [NodeJS](https://nodejs.org/en/)
+- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
-![Tab App Flow](images/TabAppFlow.jpg)
-
-### What you will learn in this sample:
+## What you will learn in this sample:
 
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
 - How to use TeamsFx to build backend hosting on Azure for your tab app.
@@ -21,13 +21,13 @@
 - How to use MS graph client in TeamsFx to get access to M365 data.
 - How to use TeamsFx simple auth capability to get Teams user login information.
 
-### Running this Sample App:
+## Try the Sample with Visual Code Extension:
 
 1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install 'Teams Toolkit' extension.
+1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
-1. Open Command Palette (`Ctrl+Shift+P`) and type `Teams: Provision in the Cloud`.
-1. Once provisioning is complete, open Command Palette (`Ctrl+Shift+P`) and type `Teams: Deploy to the Cloud`.
+1. Open the command palette and select `Teams: Provision in the Cloud`.
+1. Once provision is completed, open the command palette and select `Teams: Deploy to the Cloud`.
 1. Open [.fx/env.default.json](.fx/env.default.json) file, you could get the database name in `databaseName` setting. In Azure portal, find the database and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
     ```sql
     CREATE TABLE Todo
@@ -39,11 +39,11 @@
         isCompleted TinyInt NOT NULL default 0,
     )
     ```
-1. Once deployment is complete, open Debug View (`Ctrl+Shift+D`) and select "Launch Remote (Edge)" or "Launch Remote (Chrome)" in dropdown list.
-1. Press "F5" to open a browser window and then select your package to view todo list sample app. 
+1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
 
-### Debug [Optional]
+## (Optional) Debug
 
+To debug the project, you will need to configure an Azure SQL Database to be used locally:
 1. [Create an Azure SQL Database](https://docs.microsoft.com/en-us/azure/azure-sql/database/single-database-create-quickstart?tabs=azure-portal)
 1. [Add IP address of your computer into allowlist of firewall of Azure SQL Database](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page)
 1. Use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
@@ -67,23 +67,23 @@
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
 1. Press "F5" to open a browser window and then select your package to view todo list sample app. 
 
-### How to use this Sample App:
+## Use the App in Teams
 
-1. The app should be running like this, and you could click the start button:
+1. The app will look like this when it runs for the first time.
 
     ![Todo List](images/StartPage.jpg)
-
-2. For the first time to run the app, you need to consent the app to get your profile information like your avatar. Click on "Accept" button to accept the Authorization.
+1. For the first time to run the app, you need to consent the app to get your profile information like your avatar. Click on "Accept" button to accept the Authorization.
 
     ![Todo List](images/Consent.jpg)
+1. You could try to add new todo item by typing item by clicking "Add task" button.
+1. You could try to complete todo item by choosing the checkbox before the item.
+1. You could try to update todo item by typing text in todo item list.
+1. You could try to delete todo item by clicking "..." and then choose "delete" button.
 
-3. You could try to add new todo item by clicking "Add task" button.
-4. You could try to complete todo item by choosing the checkbox before the item.
-5. You could try to update todo item by typing text in todo item list.
-6. You could try to delete todo item by clicking "..." and then choose "delete" button.
-
-    ![Todo Item List](images/ToDoListCRUD.gif)
-
+![Tab App Flow](images/TabAppFlow.jpg)
+- The frontend is a react tab app hosted on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
+- The Backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for managing posts in the tab app.
+- The [Azure SQL DB](https://docs.microsoft.com/en-us/azure/azure-sql/) used to persist data.
 ### Code structure:
 
 - You can check app configuration and environment information in: [.fx](.fx)
@@ -91,3 +91,9 @@
 - You will find backend code in: [api/todo](api/todo)
 - You will find DB Connection code in: [api/todo/index.js](api/todo/index.js)
 - You will find MS graph client code in: [tabs/src/components/Creator.js](tabs/src/components/Creator.js)
+
+## Code of Conduct
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.

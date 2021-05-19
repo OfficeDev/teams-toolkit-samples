@@ -1,32 +1,30 @@
-# Getting Started with Share Now Sample - React Tab , Azure backend and message extension bot with Azure SQL DB
+# Getting Started With Share Now Sample
 
 > ## WARNING: This repository is under active development and the samples are not guaranteed to work!
 > This warning will be removed when the samples are ready for consumption
 
-## Basic sample for Tab app:
+Share Now promotes the exchange of information between colleagues by enabling users to share content within the Teams environment. Users engage the app to share items of interest, discover new shared content, set preferences, and bookmark favorites for later reading.
 
-![Tab App Flow](images/app.png)
+![Share Now](images/shareNow.gif)
 
-### This sample app is a personal tab and message extension bot used to manage , search and share posts.
+## Prerequisite
+- [NodeJS](https://nodejs.org/en/)
+- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
-- The frontend is a react tab hosting on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
-- Backend server is hosting on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) and define the logic to manage posts.
-- The message extension bot is hosting on [Azure Function](https://docs.microsoft.com/en-us/azure/bot-service/) and define the logic to search and share posts. 
-- And there is a [SQL DB](https://docs.microsoft.com/en-us/azure/azure-sql/) on Azure to persist data so that each time user open the tab can retrieve the same data.
-
-### What you will learn in this sample:
+## What you will learn in this sample
 - How to build frontend hosting on Azure for your tab app.
 - How to build backend hosting on Azure for your tab app.
 - How to build message extension bot on Azure for your app.
 - How to connect to Azure SQL DB and how to do CRUD operations in DB.
 
-### Running this Sample App:
-
+## Try the Sample
 1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install 'Teams Toolkit' extension.
 1. Open the project in Visual Studio Code.
-1. Open Command Palette (`Ctrl+Shift+P`) and type `Teams: Provision in the Cloud`.
-1. Once provisioning is complete, open Command Palette (`Ctrl+Shift+P`) and type `Teams: Deploy to the Cloud`.
+1. Open the command palette and select: `Teams: Provision in the Cloud`.
+1. Once provision is completed, open the command palette and select: `Teams: Deploy to the Cloud`.
 1. Open [.fx/env.default.json](.fx/env.default.json) file, you could get the database name in `databaseName` setting. In Azure portal, find the database and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create tables:
     ```sql
     CREATE TABLE [TeamPostEntity](
@@ -51,11 +49,10 @@
     )
     GO
     ```
-1. Once deployment is complete, open Debug View (`Ctrl+Shift+D`) and select "Launch Remote (Edge)" or "Launch Remote (Chrome)" in dropdown list.
-1. Press "F5" to open a browser window and then select your package to view share now sample app. 
+1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
 
-### Debug [Optional]
-
+## (Optional) Debug
+To debug the project, you will need to configure an Azure SQL Database to be used locally:
 1. [Create an Azure SQL Database](https://docs.microsoft.com/en-us/azure/azure-sql/database/single-database-create-quickstart?tabs=azure-portal)
 1. [Add IP address of your computer into allowlist of firewall of Azure SQL Database](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page)
 1. Use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create tables:
@@ -97,24 +94,36 @@
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
 1. Press "F5" to open a browser window and then select your package to view share now sample app. 
 
-### How to use this Sample App:
+## Use the App in Teams
 
-1. The app should be running like this:
-
+1. The app will look like this when it runs for the first time:
     ![Share Now](images/StartPage.png)
+1. You can add new content by clicking "Suggest content" button.
+1. You can update content created by you by clicking "..." and then choose "update" button.
+1. You can delete content created by you by clicking "..." and then choose "delete" button.
+1. You can add/delete your vote for the content by click the icon ![vote icon](images/voteIconME.png) in the content.
+1. You can search all/posted-by-me contents in compose box or command box by filtering based on title or tags of content and share with your colleagues.
 
-1. You could try to add new content by clicking "Suggest content" button, inputing information and submitting it.
-1. You could try to update content created by you by clicking "..." and then choose "update" button.
-1. You could try to delete content created by you by clicking "..." and then choose "delete" button.
-1. You could try to add/delete your vote for the content by click the icon ![vote icon](images/voteIconME.png) in the content.
-1. You could try to search all/posted-by-me contents in compose box or command box by filtering based on title or tags of content and share with your colleagues.
+## Architecture
 
-    ![Share Now](images/shareNow.gif)
+![Tab App Flow](images/app.png)
 
-### Code structure:
+This sample app consists of a personal tab and a messaging extension used to manage, search and share posts.
+- The frontend is a react tab app hosted on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
+- The Backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for managing posts in the tab app.
+- The messaging extension is hosted on [Azure Web App](https://docs.microsoft.com/en-us/azure/app-service/overview) for searching and sharing posts.
+- The [Azure SQL DB](https://docs.microsoft.com/en-us/azure/azure-sql/) used to persist data.
+
+### Code structure
 
 - You can check app configuration and environment information in: [.fx](.fx)
 - You will find frontend code in: [tabs/src/components](tabs/src/components)
 - You will find backend code in: [api/posts](api/posts), [api/vote](api/vote)
 - You will find bot code in: [bot](bot)
 - You will find DB Connection code in: [api/utils/common.ts](api/utils/common.ts)
+
+## Code of Conduct
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
