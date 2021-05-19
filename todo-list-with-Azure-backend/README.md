@@ -75,12 +75,10 @@ To debug the project, you will need to configure an Azure SQL Database to be use
 1. For the first time to run the app, you need to consent the app to get your profile information like your avatar. Click on "Accept" button to accept the Authorization.
 
     ![Todo List](images/Consent.jpg)
-1. You could try to add new todo item by typing item and click "Add" button.
+1. You could try to add new todo item by typing item by clicking "Add task" button.
 1. You could try to complete todo item by choosing the checkbox before the item.
 1. You could try to update todo item by typing text in todo item list.
 1. You could try to delete todo item by clicking "..." and then choose "delete" button.
-
-## Architecture
 
 ![Tab App Flow](images/TabAppFlow.jpg)
 - The frontend is a react tab app hosted on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
