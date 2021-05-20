@@ -80,11 +80,14 @@ To debug the project, you will need to configure an Azure SQL Database to be use
 1. You could try to update todo item by typing text in todo item list.
 1. You could try to delete todo item by clicking "..." and then choose "delete" button.
 
+## Architecture
+
 ![Tab App Flow](images/TabAppFlow.jpg)
 - The frontend is a react tab app hosted on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
 - The Backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for managing posts in the tab app.
 - The [Azure SQL DB](https://docs.microsoft.com/en-us/azure/azure-sql/) used to persist data.
-### Code structure:
+
+### Code structure
 
 - You can check app configuration and environment information in: [.fx](.fx)
 - You will find frontend code in: [tabs/src/components](tabs/src/components)

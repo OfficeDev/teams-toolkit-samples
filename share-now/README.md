@@ -3,7 +3,7 @@
 > ## WARNING: This repository is under active development and the samples are not guaranteed to work!
 > This warning will be removed when the samples are ready for consumption
 
-Share Now promotes the exchange of information between colleagues by enabling users to share content within the Teams environment. Users engage the app to share items of interest, discover new shared content, set preferences, and bookmark favorites for later reading.
+Share Now promotes the exchange of information between colleagues by enabling users to share content within the Teams environment. Users engage the app to share items of interest and discover new shared content.
 
 ![Share Now](images/shareNow.gif)
 
@@ -97,7 +97,8 @@ To debug the project, you will need to configure an Azure SQL Database to be use
 ## Use the App in Teams
 
 1. The app will look like this when it runs for the first time:
-    ![Share Now](images/StartPage.png)
+![Share Now](images/StartPage.png)
+
 1. You can add new content by clicking "Suggest content" button.
 1. You can update content created by you by clicking "..." and then choose "update" button.
 1. You can delete content created by you by clicking "..." and then choose "delete" button.
