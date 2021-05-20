@@ -21,7 +21,7 @@ Todo List provides an easy way to manage to-do items in Teams Client. This app h
 - How to use MS graph client in TeamsFx to get access to M365 data.
 - How to use TeamsFx simple auth capability to get Teams user login information.
 
-## Try the Sample with Visual Code Extension:
+## Try the Sample with Visual Studio Code Extension:
 
 1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
