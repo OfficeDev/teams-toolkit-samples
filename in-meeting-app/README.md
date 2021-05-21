@@ -63,7 +63,7 @@ Keep a note of the ngrok endpoint (Example: `https://f631****.ngrok.io`), as you
 
 ## (Optional) Debug
 - Open a JavaScript Debug Terminal in Visual studio code and navigate to the `bot` folder
-- Add a breakpoint (like line 134 in bot/index.js)
+- Add a breakpoint
 - Run `npm install` then `npm run start:local`
 - Open a Terminal in Visual studio code, navigate to the `tabs` folder and run `npm install` and `npm start`
 - In order to debug the app, you'll have to add it to an existing meeting. If that meeting already had the app added, you'll have to remove it first. Breakpoints should start working once you do this.
@@ -95,7 +95,7 @@ In Visual Studio Code, open the command palette and select: `Teams: Provision in
 1. Navigate to **Configuration** for your resource. Copy the value of key `remoteTeamsAppId` from the file `.fx/env.default.json`. Click **New application setting**. Add two settings, one is named `TEAMS_APP_ID`, its value is `remoteTeamsAppId` we just copied. Add another named `TEAMSFX_ENDPOINT`, and set its value to the endpoint URL we copied in the previous step. Then click **Save**.
 
 ### Step 4: Update env file in project
-1. In `tabs/.env`, change the value of `REACT_APP_TEAMSFX_ENDPOINT` to the value of the `siteEndpoint` key in file `.fx/env.default.json`. 
+1. In `tabs/.env`, change the value of `REACT_APP_TEAMSFX_ENDPOINT` to the value of the `endpoint` key in file `.fx/env.default.json`. 
 1. Add a new line `REACT_APP_GRAPH_SCOPES=User.Read`
 
 ### Step 5: Deploy the resource
