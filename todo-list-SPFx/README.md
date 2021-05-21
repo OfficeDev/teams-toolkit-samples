@@ -3,7 +3,7 @@
 > ## WARNING: This repository is under active development and the samples are not guaranteed to work!
 > This warning will be removed when the samples are ready for consumption
 
-Todo List with SPFx is a Todo List for individuals to manage his/her personal to-do items. This app is hosted on Sharepoint. There is no requirements to deploy Azure resources.
+Todo List with SPFx is a Todo List for individuals to manage his/her personal to-do items. This app is hosted on SharePoint. There is no requirements to deploy Azure resources.
 
 ![TodoList](images/ToDoListCRUD.gif)
 
@@ -27,7 +27,7 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
     - Name the List 'To Do List'
     - Click `Add Column`, select `Single line of text`, name the column 'description'
     - Click `Add Column`, select `Yes/No`, name the column 'isCompleted'
-* [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+* [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 * [Optional] If you want your users see only the items created by themselves, add access control to your List.
     - In List Page, click `setting` button and then choose `list setting`.
     ![ListSetting1](images/ListSetting1.png)

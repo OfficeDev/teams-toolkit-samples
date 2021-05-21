@@ -18,7 +18,7 @@ This is a hello-world template which shows how to build an app in the context of
 -  [NodeJS](https://nodejs.org/en/)
 -  [ngrok](https://ngrok.com/)
 -  An M365 account, if you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
--  [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+-  [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 -  An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
 ## Try this sample
@@ -95,7 +95,7 @@ In Visual Studio Code, open the command palette and select: `Teams: Provision in
 1. Navigate to **Configuration** for your resource. Copy the value of key `remoteTeamsAppId` from the file `.fx/env.default.json`. Click **New application setting**. Add two settings, one is named `TEAMS_APP_ID`, its value is `remoteTeamsAppId` we just copied. Add another named `TEAMSFX_ENDPOINT`, and set its value to the endpoint URL we copied in the previous step. Then click **Save**.
 
 ### Step 4: Update env file in project
-1. In `tabs/.env`, change the value of `REACT_APP_TEAMSFX_ENDPOINT` to the value of the `endpoint` key in file `.fx/env.default.json`. 
+1. In `tabs/.env`, change the value of `REACT_APP_TEAMSFX_ENDPOINT` to the value of the `SiteEndpoint` key in file `.fx/env.default.json`. 
 1. Add a new line `REACT_APP_GRAPH_SCOPES=User.Read`
 
 ### Step 5: Deploy the resource
