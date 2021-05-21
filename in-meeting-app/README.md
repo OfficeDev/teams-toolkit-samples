@@ -104,6 +104,8 @@ In Visual Studio Code, open the command palette and select: `Teams: Provision in
 
 ## Use the app in Teams
 To use the meeting app, you can schedule a meeting and manually upload your app package.
+>Please use the Teams desktop client to load the app.
+
 - Schedule a meeting with at least one other participant.
 - Edit the scheduled meeting in the Teams app.
 - Press the '+' button in the tabs area of the meeting, then select 'Manage apps'.
