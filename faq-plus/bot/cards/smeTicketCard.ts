@@ -29,6 +29,13 @@ import {
 import { TicketState } from "../models/ticketState";
 import { ChangeTicketStatusPayload } from "../models/changeTicketStatusPayload";
 
+/**
+ * Gets the SME ticket card used fot both in place card update activity within SME channel
+ * when changing the ticket status and notification card when bot posts user question to SME channel.
+ * @param ticket The ticket model with the latest details.
+ * @param localTimestamp Local timestamp of the user activity.
+ * @returns Returns the attachment that will be sent in a message.
+ */
 export function getSmeTicketCard(
   ticket: TicketEntity,
   localTimestamp?: Date

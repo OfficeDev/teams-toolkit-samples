@@ -6,6 +6,13 @@ import { ActionTypes, CardFactory, Attachment } from "botbuilder";
 import { QnADTO, QnASearchResult } from '@azure/cognitiveservices-qnamaker-runtime/esm/models';
 import { ResponseCardPayload } from "../models/responseCardPayload";
 
+/**
+ * Construct the response card - when user asks a question to the QnA Maker through the bot.
+ * @param response The response model.
+ * @param userQuestion Actual question that the user has asked the bot.
+ * @param payload The response card payload.
+ * @returns The response card to append to a message as an attachment.
+ */
 export function getResponseCard(response: QnASearchResult, userQuestion: string, payload: ResponseCardPayload): Attachment {
     const responseCard = new AdaptiveCard();
     responseCard.version = new Version(1, 2);

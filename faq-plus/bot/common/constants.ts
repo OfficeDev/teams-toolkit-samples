@@ -3,7 +3,7 @@
 
 export enum Constants {
     AskAnExpert = "ask an expert",
-    AskAnExpertSubmitText = "QuestionForExpert"
+    AskAnExpertSubmitText = "QuestionForExpert",
 }
 
 export enum TextString {
@@ -40,4 +40,10 @@ export enum TextString {
     SMETicketClosedStatus = "Closed",    // This value represents the SME Ticket in the Closed status
     TitleFact = "Title:",   // Title fact is used to show the title entered by the user for his inquiry.
     DateCreatedDisplayFactTitle = "Created: ",  // Created: one of the available fact set in notification cards- created is the title for created date value.
+
+    // User notification card
+    NotificationCardContent = "I've shared your question with the team. An expert will reach out to you soon in a separate chat.",  // Confirmation message to the user upon asking question to the expert.
+
+    // Unrecognized team input card
+    TeamCustomMessage = "I'm unable to respond to commands in channels. Take a quick tour to learn what I can do.", // When SME team member asks bot a questions- a message appears saying that team member is supposed to install the bot in personal scope.
 }

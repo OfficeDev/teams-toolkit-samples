@@ -7,6 +7,11 @@ import { ActionTypes, Attachment } from "botframework-schema";
 import { ResponseCardPayload } from "../models/responseCardPayload";
 import { TextString, Constants } from "../common/constants";
 
+/**
+ * Gets the card when unrecognized input is sent by the user.
+ * @param userQuestion Actual question asked by the user to the bot.
+ * @returns UnrecognizedInput Card.
+ */
 export function getUnrecognizedInputCard(userQuestion: string): Attachment {
     const responseCard = new AdaptiveCard();
     responseCard.version = new Version(1, 0);
