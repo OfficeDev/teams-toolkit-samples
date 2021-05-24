@@ -27,7 +27,7 @@ import { QnaServiceProvider } from "./providers/qnaServiceProvider";
 import { getResponseCard } from "./cards/responseCard";
 import { getAskAnExpertCard } from "./cards/askAnExpertCard";
 import { TicketEntity } from "./models/ticketEntity";
-import { Constants } from "./common/constants";
+import { Constants, TextString } from "./common/constants";
 import { getUnrecognizedInputCard } from "./cards/unrecognizedInputCard";
 import { AskAnExpertCardPayload } from "./models/askAnExpertCardPayload";
 import { TicketsProvider } from "./providers/ticketsProvider";
@@ -35,16 +35,22 @@ import { askAnExpertSubmitText } from "./common/adaptiveHelper";
 import { getSmeTicketCard } from "./cards/smeTicketCard";
 import { ConfigurationDataProvider } from "./providers/configurationProvider";
 import { ConfigurationEntityTypes } from "./models/configurationEntityTypes";
+import { getUserNotificationCard } from "./cards/userNotificationCard";
 
 export class TeamsBot extends TeamsActivityHandler {
   private readonly conversationTypePersonal: string = "personal";
+  private readonly ConversationTypeChannel: string = "channel";
+  private readonly ChangeStatus: string = "change status";
+
   private readonly qnaServiceProvider: QnaServiceProvider;
   private readonly ticketsProvider: TicketsProvider;
   private readonly configurationProvider: ConfigurationDataProvider;
 
   /**
    *
+   * @param {ConfigurationDataProvider} configurationProvider
    * @param {QnaServiceProvider} qnaServiceProvider
+   * @param {TicketsProvider} ticketsProvider
    */
   constructor(
     configurationProvider: ConfigurationDataProvider,
@@ -81,6 +87,10 @@ export class TeamsBot extends TeamsActivityHandler {
     });
   }
 
+  /**
+   * Invoked when a message activity is received from the user.
+   * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+   */
   async onMessageActivity(turnContext: TurnContext): Promise<void> {
     try {
       const message = turnContext.activity;
@@ -93,6 +103,11 @@ export class TeamsBot extends TeamsActivityHandler {
         case this.conversationTypePersonal:
           await this.onMessageActivityInPersonalChat(message, turnContext);
           break;
+
+        case this.ConversationTypeChannel:
+          await this.OnMessageActivityInChannel(message, turnContext);
+          break;
+
         default:
           console.log(
             `Received unexpected conversationType ${message.conversation.conversationType}`
@@ -106,6 +121,50 @@ export class TeamsBot extends TeamsActivityHandler {
     }
   }
 
+  /**
+   * Handle message activity in channel.
+   * @param message A message in a conversation.
+   * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+   */
+  private async OnMessageActivityInChannel(
+    message: Activity,
+    turnContext: TurnContext
+  ): Promise<void> {
+    let text: string = "";
+
+    if (message.replyToId && message.value != null) {
+      text = this.ChangeStatus;
+    } else {
+      text = message.text?.toLowerCase()?.trim() ?? "";
+    }
+
+    try {
+      switch (text) {
+        case this.ChangeStatus:
+          console.log("Card submit in channel " + message.value);
+          await this.OnAdaptiveCardSubmitInChannelAsync(message, turnContext);
+          return;
+
+        default:
+          console.log("Unrecognized input in channel");
+          await turnContext.sendActivity(
+            "todo: Unrecognized input in channel."
+          );
+          break;
+      }
+    } catch (error) {
+      // todo: Check if expert user is trying to delete the question and knowledge base has not published yet.
+      await turnContext.sendActivity("");
+      console.log(`Error processing message: ${error.message}`);
+      throw error;
+    }
+  }
+
+  /**
+   * Handle message activity in 1:1 chat.
+   * @param message A message in a conversation.
+   * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+   */
   private async onMessageActivityInPersonalChat(
     message: Activity,
     turnContext: TurnContext
@@ -132,6 +191,12 @@ export class TeamsBot extends TeamsActivityHandler {
     }
   }
 
+  /**
+   * Handle adaptive card submit in 1:1 chat.
+   * Submits the question or feedback to the SME team.
+   * @param message A message in a conversation.
+   * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+   */
   private async OnAdaptiveCardSubmitInPersonalChatAsync(
     message: Activity,
     turnContext: TurnContext
@@ -158,8 +223,38 @@ export class TeamsBot extends TeamsActivityHandler {
         );
         if (newTicket) {
           smeTeamCard = getSmeTicketCard(newTicket, message.localTimestamp);
-          userCard = getSmeTicketCard(newTicket, message.localTimestamp);
+          userCard = getUserNotificationCard(
+            newTicket,
+            TextString.NotificationCardContent,
+            message.localTimestamp
+          );
         }
+
+        // Send message to SME team.
+        const expertTeamId: string = await this.configurationProvider.getSavedEntityDetailAsync(
+          ConfigurationEntityTypes.TeamId
+        );
+
+        if (smeTeamCard) {
+          let resourceResponse = await this.sendCardToTeamAsync(
+            turnContext,
+            smeTeamCard,
+            expertTeamId
+          );
+
+          // If a ticket was created, update the ticket with the conversation info.
+          if (newTicket) {
+            newTicket.SmeCardActivityId = resourceResponse?.activityId;
+            newTicket.SmeThreadConversationId = resourceResponse.id;
+            await this.ticketsProvider.upsertTicket(newTicket);
+          }
+        }
+
+        // Send acknowledgment to the user
+        if (userCard) {
+          await turnContext.sendActivity(MessageFactory.attachment(userCard));
+        }
+
         break;
 
       default:
@@ -171,76 +266,68 @@ export class TeamsBot extends TeamsActivityHandler {
           console.log("Unexpected text in submit payload: " + message.text);
         }
     }
-
-    // Send message to SME team.
-    const expertTeamId: string = await this.configurationProvider.getSavedEntityDetailAsync(
-      ConfigurationEntityTypes.TeamId
-    );
-
-    if (smeTeamCard) {
-      let resourceResponse = await this.sendCardToTeamAsync(
-        turnContext,
-        smeTeamCard,
-        expertTeamId
-      );
-
-      // If a ticket was created, update the ticket with the conversation info.
-      if (newTicket) {
-        newTicket.SmeCardActivityId = resourceResponse?.activityId;
-        newTicket.SmeThreadConversationId = resourceResponse.id;
-        await this.ticketsProvider.upsertTicket(newTicket);
-      }
-    }
-
-    // Send acknowledgment to the user
-    if (userCard) {
-      await turnContext.sendActivity(MessageFactory.attachment(userCard));
-    }
   }
 
+  private async OnAdaptiveCardSubmitInChannelAsync(
+    message: Activity,
+    turnContext: TurnContext
+  ): Promise<void> {}
+
+  /**
+   * Send the given attachment to the specified team.
+   * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+   * @param cardToSend The card to send.
+   * @param teamId Team id to which the message is being sent.
+   * @returns conversation resource response from sending the attachment
+   */
   private async sendCardToTeamAsync(
     turnContext: TurnContext,
     cardToSend: Attachment,
     teamId: string
   ): Promise<ConversationResourceResponse> {
-    const conversationParameter = {
+    const conversationParameter: ConversationParameters = {
       activity: MessageFactory.attachment(cardToSend) as Activity,
       channelData: {
-        channel: teamId as ChannelInfo,
+        channel: {
+          id: teamId,
+        } as ChannelInfo,
       } as TeamsChannelData,
     } as ConversationParameters;
 
     const conversationReference = {
+      conversation: turnContext.activity.conversation,
+      user: turnContext.activity.from,
       channelId: null, // If we set channel = "msteams", there is an error as preinstalled middleware expects ChannelData to be present.
       serviceUrl: turnContext.activity.serviceUrl,
     } as ConversationReference;
 
     return new Promise<ConversationResourceResponse>(async (resolve) => {
-      try {
-        await (turnContext.adapter as BotFrameworkAdapter)
-          .createConversation(
-            conversationReference,
-            conversationParameter,
-            (turnContext) => {
-              let activity = turnContext.activity;
-              const conversationResourceResponse: ConversationResourceResponse = {
-                id: activity.conversation.id,
-                activityId: activity.id,
-                serviceUrl: activity.serviceUrl,
-              };
-              resolve(conversationResourceResponse);
-              return Promise.resolve();
-            }
-          )
-          .catch((e) => {
-            console.log("[debug]err: " + e);
-          });
-      } catch (e) {
-        console.log("[debug] e: " + e);
-      }
+      await (turnContext.adapter as BotFrameworkAdapter)
+        .createConversation(
+          conversationReference,
+          conversationParameter,
+          async (turnContext) => {
+            let activity = turnContext.activity;
+            const conversationResourceResponse: ConversationResourceResponse = {
+              id: activity.conversation.id,
+              activityId: activity.id,
+              serviceUrl: activity.serviceUrl,
+            };
+            resolve(conversationResourceResponse);
+            return Promise.resolve();
+          }
+        )
+        .catch((e) => {
+          console.log("Fail to create conversation when sending card to team id :" + teamId + ". Error: " + e);
+        });
     });
   }
 
+  /**
+   * Get the reply to a question asked by end user.
+   * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+   * @param message A message in a conversation.
+   */
   private async getQuestionAnswerReply(
     turnContext: TurnContext,
     message: Activity

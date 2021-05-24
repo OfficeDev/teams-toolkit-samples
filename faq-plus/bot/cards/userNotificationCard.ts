@@ -24,6 +24,13 @@ import {
 } from "../common/adaptiveHelper";
 import { TicketState } from "../models/ticketState";
 
+/**
+ * Gets a user notification card for the ticket.
+ * @param ticket The ticket to create a card from.
+ * @param message The status message to add to the card.
+ * @param activityLocalTimestamp Local time stamp of user activity.
+ * @returns An adaptive card as an attachment.
+ */
 export function getUserNotificationCard(
   ticket: TicketEntity,
   message: string,
@@ -121,5 +128,5 @@ function buildListOfActions(ticket: TicketEntity): Action[] {
         return [action];
     }
 
-    return null;
+    return [];
 }

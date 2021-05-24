@@ -6,6 +6,11 @@ import { AskAnExpertCardPayload } from "../models/askAnExpertCardPayload";
 import { ActionTypes, Attachment, CardFactory } from "botbuilder";
 import { TextString, Constants } from "../common/constants";
 
+
+/**
+ * This method will construct the card for ask an expert, when invoked from the bot menu.
+ * @param payload Payload from the ask an expert card.
+ */
 export function getAskAnExpertCard(payload?: AskAnExpertCardPayload): Attachment {
     const askAnExpertCard = new AdaptiveCard();
     askAnExpertCard.version = new Version(1, 0);

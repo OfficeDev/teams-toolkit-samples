@@ -11,6 +11,13 @@ import { ActivityTypes, TeamsChannelAccount } from "botframework-schema";
 import { getAskAnExpertCard } from "../cards/askAnExpertCard";
 import { TextString } from "./constants";
 
+/**
+ * Helps to get the expert submit card.
+ * @param message A message in a conversation.
+ * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+ * @param ticketsProvider Tickets Provider.
+ * @returns Ticket entity promise
+ */
 export async function askAnExpertSubmitText(
   message: Activity,
   turnContext: TurnContext,
@@ -27,11 +34,7 @@ export async function askAnExpertSubmitText(
       attachments: [getAskAnExpertCard(askAnExpertSubmitTextPayload)],
     } as Activity;
 
-    try {
-      await turnContext.updateActivity(updateCardActivity);
-    } catch (e) {
-      console.log("[debug]" + e);
-    }
+    await turnContext.updateActivity(updateCardActivity);
     return null;
   }
 
@@ -46,6 +49,11 @@ export async function askAnExpertSubmitText(
   );
 }
 
+/**
+ * Get the account details of the user in a 1:1 chat with the bot.
+ * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+ * @returns The user account promise
+ */
 export async function getUserDetailsInPersonalChatAsync(
   turnContext: TurnContext
 ): Promise<TeamsChannelAccount> {
@@ -55,6 +63,14 @@ export async function getUserDetailsInPersonalChatAsync(
   return members[0] as TeamsChannelAccount;
 }
 
+/**
+ * Create a new ticket from the input.
+ * @param message A message in a conversation.
+ * @param data Represents the submit data associated with the Ask An Expert card.
+ * @param member Teams channel account detailing user Azure Active Directory details.
+ * @param ticketsProvider Tickets Provider.
+ * @returns Ticket entity promise
+ */
 export async function createTicketAsync(
   message: Activity,
   data: AskAnExpertCardPayload,
@@ -81,7 +97,12 @@ export async function createTicketAsync(
   return ticketEntity;
 }
 
-export function getTicketDisplayStatusForSme(ticket: TicketEntity) {
+/**
+ * Gets the current status of the ticket to display in the SME team.
+ * @param ticket The current ticket information.
+ * @returns A status string.
+ */
+export function getTicketDisplayStatusForSme(ticket: TicketEntity): string {
   if (ticket?.Status == TicketState.Open) {
     return ticket.isAssigned
       ? TextString.SMETicketAssignedStatus + ticket?.AssignedToName
@@ -91,6 +112,12 @@ export function getTicketDisplayStatusForSme(ticket: TicketEntity) {
   }
 }
 
+/**
+ * Returns a string that will display the given date and time in the user's local time zone, when placed in an adaptive card.
+ * @param dateTime The date and time to format.
+ * @param userLocalTime The sender's local time, as determined by the local timestamp of the activity.
+ * @returns A datetime string.
+ */
 export function getFormattedDateInUserTimeZone(
   dateTime: Date,
   userLocalTime?: Date
@@ -103,14 +130,29 @@ export const TitleMaxDisplayLength: number = 50;
 export const DescriptionMaxDisplayLength: number = 500;
 export const KnowledgeBaseAnswerMaxDisplayLength: number = 500;
 const Ellipsis: string = "...";
-export function truncateStringIfLonger(text: string, maxLength: number) {
+
+/**
+ * Truncate the provided string to a given maximum length.
+ * @param text Text to be truncated.
+ * @param maxLength The maximum length in characters of the text.
+ * @returns Truncated string.
+ */
+export function truncateStringIfLonger(
+  text: string,
+  maxLength: number
+): string {
   if (text && text.length > maxLength) {
     text = text.substr(0, maxLength) + Ellipsis;
   }
   return text;
 }
 
-export function getUserTicketDisplayStatus(ticket: TicketEntity) {
+/**
+ * Gets the ticket status for the user notifications.
+ * @param ticket The current ticket information.
+ * @returns A status string.
+ */
+export function getUserTicketDisplayStatus(ticket: TicketEntity): string {
   if (ticket?.Status == TicketState.Open) {
     return ticket.isAssigned
       ? TextString.AssignedUserNotificationStatus
