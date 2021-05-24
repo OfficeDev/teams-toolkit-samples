@@ -287,7 +287,9 @@ export class TeamsBot extends TeamsActivityHandler {
   ): Promise<ConversationResourceResponse> {
     const conversationParameter: ConversationParameters = {
       activity: MessageFactory.attachment(cardToSend) as Activity,
+      tenantId: turnContext.activity.conversation.tenantId,
       channelData: {
+        tenant: { id: turnContext.activity.conversation.tenantId },
         channel: {
           id: teamId,
         } as ChannelInfo,
@@ -295,7 +297,9 @@ export class TeamsBot extends TeamsActivityHandler {
     } as ConversationParameters;
 
     const conversationReference = {
-      conversation: turnContext.activity.conversation,
+      conversation: {
+        id: teamId
+      },
       user: turnContext.activity.from,
       channelId: null, // If we set channel = "msteams", there is an error as preinstalled middleware expects ChannelData to be present.
       serviceUrl: turnContext.activity.serviceUrl,
@@ -314,7 +318,6 @@ export class TeamsBot extends TeamsActivityHandler {
               serviceUrl: activity.serviceUrl,
             };
             resolve(conversationResourceResponse);
-            return Promise.resolve();
           }
         )
         .catch((e) => {
