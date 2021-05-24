@@ -85,19 +85,8 @@ export class AxiosJWTDecorator {
 	* @param  {Object} error Error response object
 	*/
   private handleError(error: any): void {
-    // eslint-disable-next-line no-prototype-builtins
-    if (error.hasOwnProperty("response")) {
-      const errorStatus = error.response!.status;
-      if (errorStatus === 403) {
-        window.location.href = "/errorpage/403";
-      } else if (errorStatus === 401) {
-        window.location.href = "/errorpage/401";
-      } else {
-        window.location.href = "/errorpage";
-      }
-    } else {
-      window.location.href = "/errorpage";
-    }
+    const message = encodeURIComponent(error.response!.data);
+    window.location.href = `/index.html#/errorpage/${message}`;
   }
 
   private async setupAuthorizationHeader(

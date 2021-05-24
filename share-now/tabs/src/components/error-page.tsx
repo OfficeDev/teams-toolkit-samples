@@ -30,16 +30,8 @@ class ErrorPage extends React.Component<IErrorPageProps, {}> {
       const params = this.props.match.params;
       let message = this.localize("generalErrorMessage");
 
-      if ("id" in params) {
-        const id = params["id"];
-        if (id === "401") {
-          message = this.localize("unauthorizedErrorMessage");
-        } else if (id === "403") {
-          message = this.localize("forbiddenErrorMessage");
-        }
-        else {
-          message = this.localize("generalErrorMessage");
-        }
+      if ("message" in params) {
+        message = decodeURIComponent(params["message"]);
       }
 
       return (

@@ -81,7 +81,7 @@ export default class App extends React.Component<{}, IAppState> {
               <Route exact path="/" component={DiscoverWrapperPage} />
               <Route exact path="/tab" component={DiscoverWrapperPage} />
               <Route exact path="/discover" component={DiscoverWrapperPage} />
-              <Route exact path="/errorpage" component={ErrorPage} />
+              <Route exact path="/errorpage/:message?" component={ErrorPage} />
               <Route exact path="/privacy" component={Privacy} />
               <Route exact path="/termsofuse" component={TermsOfUse} />
             </Router>
