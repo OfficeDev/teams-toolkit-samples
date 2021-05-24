@@ -1,6 +1,5 @@
-﻿// <copyright file="IKnowledgeBaseSearchService.cs" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 namespace Microsoft.Teams.Apps.FAQPlusPlus.Common.Providers
 {

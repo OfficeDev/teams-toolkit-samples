@@ -1,6 +1,6 @@
-﻿// <copyright file="TicketEntity.cs" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 namespace Microsoft.Teams.Apps.FAQPlusPlus.Common.Models
 {
     using System;
