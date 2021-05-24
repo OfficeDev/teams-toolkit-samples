@@ -153,8 +153,6 @@ export class TeamsBot extends TeamsActivityHandler {
           break;
       }
     } catch (error) {
-      // todo: Check if expert user is trying to delete the question and knowledge base has not published yet.
-      await turnContext.sendActivity("");
       console.log(`Error processing message: ${error.message}`);
       throw error;
     }
