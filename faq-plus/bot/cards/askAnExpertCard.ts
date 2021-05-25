@@ -65,10 +65,6 @@ function buildAskAnExpertCardBody(
   subTitleTextBlock.wrap = true;
   cardBodyToConstruct.push(subTitleTextBlock);
 
-  // const titleRequiredTextBlock = new TextBlock(TextString.TitleRequiredText);
-  // titleRequiredTextBlock.wrap = true;
-  // cardBodyToConstruct.push(titleRequiredTextBlock);
-
   const titleColumn = new ColumnSet();
   const titleRequiredColumn = new Column();
   titleRequiredColumn.width = "auto" as ColumnWidth;
