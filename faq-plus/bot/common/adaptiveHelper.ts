@@ -154,7 +154,7 @@ export function truncateStringIfLonger(
  */
 export function getUserTicketDisplayStatus(ticket: TicketEntity): string {
   if (ticket?.Status == TicketState.Open) {
-    return ticket.isAssigned
+    return ticket.isAssigned()
       ? TextString.AssignedUserNotificationStatus
       : TextString.UnassignedUserNotificationStatus;
   } else {
