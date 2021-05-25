@@ -31,7 +31,7 @@ export async function askAnExpertSubmitText(
       type: ActivityTypes.Message,
       id: turnContext.activity.replyToId,
       conversation: turnContext.activity.conversation,
-      attachments: [getAskAnExpertCard(askAnExpertSubmitTextPayload)],
+      attachments: [getAskAnExpertCard(askAnExpertSubmitTextPayload, true)],
     } as Activity;
 
     await turnContext.updateActivity(updateCardActivity);

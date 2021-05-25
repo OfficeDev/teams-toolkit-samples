@@ -14,6 +14,7 @@ export enum TextString {
     AskAnExpertSubheaderText = "One of our experts will reach out to you soon.",    // Ask en expert card subtitle text:lets the user know that SME team member can directly chat with the requester.
     TitleRequiredText = "Title (Required)", // Title(Required): label of the title text box.
     ShowCardTitleText = "Type a short title (50 characters max)",   // Label text where users enters title for his question or feedback.
+    MandatoryTitleFieldText = "Title field is mandatory.", // Text that suggest users to fill mandatory fields.
 
     // unrecognized input card
     UnrecognizedInputText = "I didn't find a matching answer for this question. Do you want me to ask an expert?",

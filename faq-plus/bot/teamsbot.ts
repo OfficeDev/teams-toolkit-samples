@@ -207,6 +207,8 @@ export class TeamsBot extends TeamsActivityHandler {
       case Constants.AskAnExpert:
         console.log("Sending user ask an expert card (from answer)");
         let askAnExpertCardPayload: AskAnExpertCardPayload = message.value as AskAnExpertCardPayload;
+        askAnExpertCardPayload.Description = askAnExpertCardPayload.UserQuestion;
+        askAnExpertCardPayload.KnowledgeBaseAnswer = askAnExpertCardPayload.KnowledgeBaseAnswer;
         await turnContext.sendActivity(
           MessageFactory.attachment(getAskAnExpertCard(askAnExpertCardPayload))
         );
