@@ -104,7 +104,7 @@ export async function createTicketAsync(
  */
 export function getTicketDisplayStatusForSme(ticket: TicketEntity): string {
   if (ticket?.Status == TicketState.Open) {
-    return ticket.isAssigned
+    return ticket.isAssigned()
       ? TextString.SMETicketAssignedStatus + ticket?.AssignedToName
       : TextString.SMETicketUnassignedStatus;
   } else {
