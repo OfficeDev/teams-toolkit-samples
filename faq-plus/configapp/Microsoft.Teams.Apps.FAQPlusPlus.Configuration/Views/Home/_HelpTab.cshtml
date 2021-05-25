@@ -1,0 +1,29 @@
+﻿@model Microsoft.Teams.Apps.FAQPlusPlus.Configuration.Models.HelpTabViewModel
+
+@using (Ajax.BeginForm("SaveHelpTabTextAsync", "Home", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onSaveSuccess", OnFailure = "onSaveFailure" }, htmlAttributes: new { @class = "formToSubmit" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group" data-form-name="helpTabText">
+        <div class="col-lg-3">
+            @Html.LabelFor(model => model.HelpTabText, htmlAttributes: new { @class = "font-bold" })
+            <span class="mandatoryField">*</span>
+            <div class="helpTabTextNote">
+                (Please note that this text will be accessible to anyone having access to the URL of the tab)
+            </div>
+        </div>
+        <div class="col-lg-5">
+            @Html.TextAreaFor(model => model.HelpTabText, htmlAttributes: new { @class = "form-control helpTabTextIdTextBox toggleTextBox", @placeholder = "Enter help tab text, up to 3000 characters. Markdown is supported." })
+            @Html.ValidationMessageFor(model => model.HelpTabText, "", htmlAttributes: new { @class = "error-message" })
+        </div>
+        <div class="col-lg-1">
+            <span id="helpTabTextStorageStatusIcon"></span>
+        </div>
+        <div class="col-lg-3">
+            <input type="button" value="OK" class="btn btn-primary toggleToEditButton" id="helpTabTextSubmitButton" />
+            <span class="glyphicon glyphicon-info-sign infoSignMargin" data-toggle="tooltip" title="@Strings.HelpTabTextToolTipHoverMessage"></span>
+        </div>
+        <div class="col-lg-offset-3 col-lg-5">
+            <div id="helpTabTextStorageStatusMessage" class="error-message"></div>
+        </div>
+    </div>
+}

@@ -1,0 +1,26 @@
+﻿@model Microsoft.Teams.Apps.FAQPlusPlus.Configuration.Models.KnowledgeBaseViewModel
+
+@using (Ajax.BeginForm("ValidateAndSaveKnowledgeBaseIdAsync", "Home", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onSaveSuccess", OnFailure = "onSaveFailure" }, htmlAttributes: new { @class = "formToSubmit" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group" data-form-name="knowledgeBase">
+        <div class="col-lg-3">
+            @Html.LabelFor(model => model.KnowledgeBaseId, htmlAttributes: new { @class = "font-bold" })
+            <span class="mandatoryField">*</span>
+        </div>
+        <div class="col-lg-5">
+            @Html.TextBoxFor(model => model.KnowledgeBaseId, htmlAttributes: new { @class = "form-control knowledgeBaseIdTextBox toggleTextBox", @placeholder = "Enter knowledge base ID." })
+            @Html.ValidationMessageFor(model => model.KnowledgeBaseId, "", htmlAttributes: new { @class = "error-message" })
+        </div>
+        <div class="col-lg-1">
+            <span id="knowledgeBaseStorageStatusIcon"></span>
+        </div>
+        <div class="col-lg-3">
+            <input type="button" value="OK" class="btn btn-primary toggleToEditButton" id="knowledgeBaseSubmitButton" />
+            <span class="glyphicon glyphicon-info-sign infoSignMargin" data-toggle="tooltip" title="@Strings.KnowledgeBaseToolTipHoverMessage"></span>
+        </div>
+        <div class="col-lg-offset-3 col-lg-5">
+            <div id="knowledgeBaseStorageStatusMessage" class="error-message"></div>
+        </div>
+    </div>
+}
