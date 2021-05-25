@@ -207,8 +207,10 @@ export class TeamsBot extends TeamsActivityHandler {
       case Constants.AskAnExpert:
         console.log("Sending user ask an expert card (from answer)");
         let askAnExpertCardPayload: AskAnExpertCardPayload = message.value as AskAnExpertCardPayload;
-        askAnExpertCardPayload.Description = askAnExpertCardPayload.UserQuestion;
-        askAnExpertCardPayload.KnowledgeBaseAnswer = askAnExpertCardPayload.KnowledgeBaseAnswer;
+        askAnExpertCardPayload.Description =
+          askAnExpertCardPayload.UserQuestion;
+        askAnExpertCardPayload.KnowledgeBaseAnswer =
+          askAnExpertCardPayload.KnowledgeBaseAnswer;
         await turnContext.sendActivity(
           MessageFactory.attachment(getAskAnExpertCard(askAnExpertCardPayload))
         );
@@ -222,11 +224,10 @@ export class TeamsBot extends TeamsActivityHandler {
           this.ticketsProvider
         );
         if (newTicket) {
-          smeTeamCard = getSmeTicketCard(newTicket, message.localTimestamp);
+          smeTeamCard = getSmeTicketCard(newTicket);
           userCard = getUserNotificationCard(
             newTicket,
-            TextString.NotificationCardContent,
-            message.localTimestamp
+            TextString.NotificationCardContent
           );
         }
 
@@ -298,7 +299,7 @@ export class TeamsBot extends TeamsActivityHandler {
 
     const conversationReference = {
       conversation: {
-        id: teamId
+        id: teamId,
       },
       user: turnContext.activity.from,
       channelId: null, // If we set channel = "msteams", there is an error as preinstalled middleware expects ChannelData to be present.
@@ -321,7 +322,12 @@ export class TeamsBot extends TeamsActivityHandler {
           }
         )
         .catch((e) => {
-          console.log("Fail to create conversation when sending card to team id :" + teamId + ". Error: " + e);
+          console.log(
+            "Fail to create conversation when sending card to team id :" +
+              teamId +
+              ". Error: " +
+              e
+          );
         });
     });
   }

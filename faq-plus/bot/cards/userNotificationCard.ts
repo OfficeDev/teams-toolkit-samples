@@ -33,13 +33,12 @@ import { TicketState } from "../models/ticketState";
  */
 export function getUserNotificationCard(
   ticket: TicketEntity,
-  message: string,
-  activityLocalTimestamp: Date
+  message: string
 ): Attachment {
   const card = new AdaptiveCard();
   card.version = new Version(1, 0);
 
-  const cardBody = buildCardBody(ticket, message, activityLocalTimestamp);
+  const cardBody = buildCardBody(ticket, message);
   for (let i = 0; i < cardBody.length; i++) {
     card.addItem(cardBody[i]);
   }
@@ -52,11 +51,7 @@ export function getUserNotificationCard(
   return CardFactory.adaptiveCard(card);
 }
 
-function buildCardBody(
-  ticket: TicketEntity,
-  message: string,
-  activityLocalTimestamp: Date
-): CardElement[] {
+function buildCardBody(ticket: TicketEntity, message: string): CardElement[] {
   const cardBodyToConstruct: CardElement[] = [];
 
   const textBlock = new TextBlock(message);
@@ -64,16 +59,13 @@ function buildCardBody(
   cardBodyToConstruct.push(textBlock);
 
   const factSet = new FactSet();
-  factSet.facts = buildFactSet(ticket, activityLocalTimestamp);
+  factSet.facts = buildFactSet(ticket);
   cardBodyToConstruct.push(factSet);
 
   return cardBodyToConstruct;
 }
 
-function buildFactSet(
-  ticket: TicketEntity,
-  activityLocalTimestamp?: Date
-): Fact[] {
+function buildFactSet(ticket: TicketEntity): Fact[] {
   let factList: Fact[] = [];
   factList.push(
     new Fact(TextString.StatusFactTitle, getUserTicketDisplayStatus(ticket))
@@ -97,7 +89,7 @@ function buildFactSet(
   factList.push(
     new Fact(
       TextString.DateCreatedDisplayFactTitle,
-      getFormattedDateInUserTimeZone(ticket.DateCreated, activityLocalTimestamp)
+      getFormattedDateInUserTimeZone(ticket.DateCreated)
     )
   );
 
@@ -105,7 +97,7 @@ function buildFactSet(
     factList.push(
       new Fact(
         TextString.ClosedFactTitle,
-        getFormattedDateInUserTimeZone(ticket.DateClosed, activityLocalTimestamp)
+        getFormattedDateInUserTimeZone(ticket.DateClosed)
       )
     );
   }
@@ -114,19 +106,19 @@ function buildFactSet(
 }
 
 function buildListOfActions(ticket: TicketEntity): Action[] {
-    if (ticket.Status === TicketState.Closed) {
-        const action = new SubmitAction();
-        action.title = TextString.AskAnExpertButtonText;
-        action.data = {
-          msteams: {
-            type: ActionTypes.MessageBack,
-            displayText: TextString.AskAnExpertDisplayText,
-            text: Constants.AskAnExpertSubmitText,
-          }
-        } as AskAnExpertCardPayload;
-      
-        return [action];
-    }
+  if (ticket.Status === TicketState.Closed) {
+    const action = new SubmitAction();
+    action.title = TextString.AskAnExpertButtonText;
+    action.data = {
+      msteams: {
+        type: ActionTypes.MessageBack,
+        displayText: TextString.AskAnExpertDisplayText,
+        text: Constants.AskAnExpertSubmitText,
+      },
+    } as AskAnExpertCardPayload;
 
-    return [];
+    return [action];
+  }
+
+  return [];
 }

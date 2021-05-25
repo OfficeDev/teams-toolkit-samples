@@ -36,14 +36,11 @@ import { ChangeTicketStatusPayload } from "../models/changeTicketStatusPayload";
  * @param localTimestamp Local timestamp of the user activity.
  * @returns Returns the attachment that will be sent in a message.
  */
-export function getSmeTicketCard(
-  ticket: TicketEntity,
-  localTimestamp?: Date
-): Attachment {
+export function getSmeTicketCard(ticket: TicketEntity): Attachment {
   const card = new AdaptiveCard();
   card.version = new Version(1, 0);
 
-  const cardBody = buildCardBody(ticket, localTimestamp);
+  const cardBody = buildCardBody(ticket);
   for (let i = 0; i < cardBody.length; i++) {
     card.addItem(cardBody[i]);
   }
@@ -56,10 +53,7 @@ export function getSmeTicketCard(
   return CardFactory.adaptiveCard(card);
 }
 
-function buildCardBody(
-  ticket: TicketEntity,
-  localTimestamp?: Date
-): CardElement[] {
+function buildCardBody(ticket: TicketEntity): CardElement[] {
   const cardBodyToConstruct: CardElement[] = [];
 
   const titleTextBlock = new TextBlock(ticket.Title);
@@ -75,13 +69,13 @@ function buildCardBody(
   cardBodyToConstruct.push(subHeaderBlock);
 
   const factSet = new FactSet();
-  factSet.facts = buildFactSet(ticket, localTimestamp);
+  factSet.facts = buildFactSet(ticket);
   cardBodyToConstruct.push(factSet);
 
   return cardBodyToConstruct;
 }
 
-function buildFactSet(ticket: TicketEntity, localTimestamp?: Date): Fact[] {
+function buildFactSet(ticket: TicketEntity): Fact[] {
   let factList: Fact[] = [];
 
   if (ticket.Description) {
@@ -102,7 +96,7 @@ function buildFactSet(ticket: TicketEntity, localTimestamp?: Date): Fact[] {
     factList.push(
       new Fact(
         TextString.ClosedFactTitle,
-        getFormattedDateInUserTimeZone(ticket.DateClosed, localTimestamp)
+        getFormattedDateInUserTimeZone(ticket.DateClosed)
       )
     );
   }
@@ -114,7 +108,8 @@ function buildListOfActions(ticket: TicketEntity): Action[] {
   let actionList: Action[] = [];
 
   const chatWithUserAction = new OpenUrlAction();
-  chatWithUserAction.title = TextString.ChatTextButton + ticket.RequesterGivenName;
+  chatWithUserAction.title =
+    TextString.ChatTextButton + ticket.RequesterGivenName;
   const encodedMessage = encodeURIComponent(
     TextString.SMEUserChatMessage + ticket.Title
   );
