@@ -36,6 +36,9 @@ import { getSmeTicketCard } from "./cards/smeTicketCard";
 import { ConfigurationDataProvider } from "./providers/configurationProvider";
 import { ConfigurationEntityTypes } from "./models/configurationEntityTypes";
 import { getUserNotificationCard } from "./cards/userNotificationCard";
+import { ChangeTicketStatusPayload } from "./models/changeTicketStatusPayload";
+import { TicketState } from "./models/ticketState";
+import { ResourceResponse, ActivityEx, ConversationAccount } from "botframework-schema";
 
 export class TeamsBot extends TeamsActivityHandler {
   private readonly conversationTypePersonal: string = "personal";
@@ -266,10 +269,110 @@ export class TeamsBot extends TeamsActivityHandler {
     }
   }
 
+  /**
+   * Handle adaptive card submit in channel.
+   * Updates the ticket status based on the user submission.
+   * @param message A message in a conversation.
+   * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+   */
   private async OnAdaptiveCardSubmitInChannelAsync(
     message: Activity,
     turnContext: TurnContext
-  ): Promise<void> {}
+  ): Promise<void> {
+    const payload = message.value as ChangeTicketStatusPayload;
+    console.log(`Received submit: ticketId=${payload.ticketId} action=${payload.action}`);
+
+    // Get the ticket from the data store.
+    let ticket = await this.ticketsProvider.getTicket(payload.ticketId);
+    if (!ticket) {
+      await turnContext.sendActivity(`Ticket ${payload.ticketId} was not found in the data store`);
+      console.log(`Ticket ${payload.ticketId} was not found in the data store`);
+      return;
+    }
+
+    switch (payload.action) {
+      case ChangeTicketStatusPayload.reopenAction:
+        ticket.Status = TicketState.Open;
+        ticket.DateAssigned = null;
+        ticket.AssignedToName = null;
+        ticket.AssignedToObjectId = null;
+        ticket.DateClosed = null;
+        break;
+
+      case ChangeTicketStatusPayload.closeAction:
+        ticket.Status = TicketState.Closed;
+        ticket.DateClosed = new Date();
+        break;
+
+      case ChangeTicketStatusPayload.assignToSelfAction:
+        ticket.Status = TicketState.Open;
+        ticket.DateAssigned = new Date();
+        ticket.AssignedToName = message.from.name;
+        ticket.AssignedToObjectId = message.from.aadObjectId;
+        ticket.DateClosed = null;
+        break;
+
+      default:
+        console.log(`Unknown status command ${payload.action}`);
+        return;
+    }
+
+    ticket.LastModifiedByName = message.from.name;
+    ticket.LastModifiedByObjectId = message.from.aadObjectId;
+    await this.ticketsProvider.upsertTicket(ticket);
+    console.log(`Ticket ${ticket.TicketId} updated to status (${ticket.Status}, ${ticket.AssignedToObjectId}) in store`);
+
+    // Update the card in the SME team.
+    let updateCardActivity = ActivityEx.createMessageActivity();
+    updateCardActivity.id = ticket.SmeCardActivityId;
+    updateCardActivity.conversation = {
+      id: ticket.SmeThreadConversationId
+    } as ConversationAccount;
+    updateCardActivity.attachments = [
+      getSmeTicketCard(ticket, message.localTimestamp)
+    ];
+
+    const updateResponse = await turnContext.updateActivity(updateCardActivity) as ResourceResponse;
+    console.log(`Card for ticket ${ticket.TicketId} updated to status (${ticket.Status}, ${ticket.AssignedToObjectId}), activityId = ${updateResponse.id}`);
+
+    // Post update to user and SME team thread.
+    let smeNotification: string = null;
+    let userNotification: Partial<Activity> = null;
+    switch (payload.action) {
+      case ChangeTicketStatusPayload.reopenAction:
+        smeNotification = `This request is now unassigned. Last updated by ${message.from.name}.`;
+
+        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.ReopenedTicketUserNotification, message.localTimestamp));
+        userNotification.summary = TextString.ReopenedTicketUserNotification;
+        break;
+      case ChangeTicketStatusPayload.closeAction:
+        smeNotification = `This request is now closed. Closed by ${ticket.LastModifiedByName}.`;
+
+        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.ClosedTicketUserNotification, message.localTimestamp));
+        userNotification.summary = TextString.ClosedTicketUserNotification;
+        break;
+      case ChangeTicketStatusPayload.assignToSelfAction:
+        smeNotification = `This request is now assigned. Assigned to ${ticket.AssignedToName}.`;
+
+        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.AssignedTicketUserNotification, message.localTimestamp));
+        userNotification.summary = TextString.AssignedTicketUserNotification;
+        break;
+    }
+
+    if (smeNotification) {
+      const smeResponse = await turnContext.sendActivity(smeNotification);
+      console.log(`SME team notified of update to ticket ${ticket.TicketId}, activityId = ${smeResponse.id}`);
+    }
+
+    if (userNotification) {
+      userNotification.conversation = {
+        id: ticket.RequesterConversationId
+      } as ConversationAccount;
+      userNotification.serviceUrl = turnContext.activity.serviceUrl;
+      const userResponse = await turnContext.adapter.sendActivities(turnContext, [userNotification]);
+      console.log(`User notified of update to ticket ${ticket.TicketId}, activityId = ${userResponse[0].id}`);
+    }
+  }
 
   /**
    * Send the given attachment to the specified team.
@@ -310,9 +413,17 @@ export class TeamsBot extends TeamsActivityHandler {
           conversationParameter,
           async (turnContext) => {
             let activity = turnContext.activity;
+            let activityId = activity.id;
+            if (!activityId) {
+              // If bot sdk does not return activity id, try to extract activity id from conversation id
+              let messageIdMatches = activity.conversation.id.match(/messageid=(\d+)$/);
+              if (messageIdMatches.length === 2) {
+                activityId = messageIdMatches[1];
+              }
+            }
             const conversationResourceResponse: ConversationResourceResponse = {
               id: activity.conversation.id,
-              activityId: activity.id,
+              activityId: activityId,
               serviceUrl: activity.serviceUrl,
             };
             resolve(conversationResourceResponse);
