@@ -6,7 +6,7 @@ You use a resource group to create individual resources for the Bot Framework. F
 
 1. In your browser, sign into the [Azure portal](https://portal.azure.com/).
 1. In the left navigation panel, select **Resource groups**.
-1. In the upper left of the displayed window, select **Add** tab to create a new resource group. You'll be prompted to provide the following:
+1. In the upper left of the displayed window, select **Create** tab to create a new resource group. You'll be prompted to provide the following:
     1. **Subscription**. Use your existing subscription.
     1. **Resource group**. Enter the name for the resource group. An example could be  *TeamsResourceGroup*. Remember that the name must be unique.
     1. From the **Region** drop-down menu, select *West US*, or a region close to your applications.
@@ -49,7 +49,7 @@ After 2-3 mins, the new Bot Channel Registration resource you just created will 
   
 Once your bot channels registration is created, you'll need to enable the Teams channel.
 
-1. In the [Azure portal](https://portal.azure.com/), under Azure services, select the **Bot Channel Registration** you just created.
+1. In the [Azure portal](https://portal.azure.com/), in the resource group you just created, find your **Bot Channel Registration** instance.
 1. In the left panel, click **Channels**.
 1. Click the Microsoft Teams icon, then choose **Save**.
 
