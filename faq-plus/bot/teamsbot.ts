@@ -130,6 +130,11 @@ export class TeamsBot extends TeamsActivityHandler {
     }
   }
 
+  /**
+   * Handle 1:1 chat with members who started chat for the first time.
+   * @param membersAdded Channel account information needed to route a message.
+   * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+   */
   private async onMembersAddedToPersonalChat(membersAdded: ChannelAccount[], turnContext: TurnContext) {
     const activity = turnContext.activity;
     if (membersAdded.some((channelAccount) => channelAccount.id === activity.recipient.id)) {
