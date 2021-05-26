@@ -227,7 +227,8 @@ export class TeamsBot extends TeamsActivityHandler {
           smeTeamCard = getSmeTicketCard(newTicket);
           userCard = getUserNotificationCard(
             newTicket,
-            TextString.NotificationCardContent
+            TextString.NotificationCardContent,
+            message.localTimestamp
           );
         }
 

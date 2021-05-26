@@ -34,7 +34,7 @@ import { TicketState } from "../models/ticketState";
 export function getUserNotificationCard(
   ticket: TicketEntity,
   message: string,
-  activityLocalTimestamp?: Date
+  activityLocalTimestamp: Date
 ): Attachment {
   const card = new AdaptiveCard();
   card.version = new Version(1, 0);
@@ -55,7 +55,7 @@ export function getUserNotificationCard(
 function buildCardBody(
   ticket: TicketEntity,
   message: string,
-  activityLocalTimestamp?: Date
+  activityLocalTimestamp: Date
 ): CardElement[] {
   const cardBodyToConstruct: CardElement[] = [];
 
@@ -72,7 +72,7 @@ function buildCardBody(
 
 function buildFactSet(
   ticket: TicketEntity,
-  activityLocalTimestamp?: Date
+  activityLocalTimestamp: Date
 ): Fact[] {
   let factList: Fact[] = [];
   factList.push(
@@ -105,7 +105,7 @@ function buildFactSet(
     factList.push(
       new Fact(
         TextString.ClosedFactTitle,
-        getFormattedDateInUserTimeZone(ticket.DateClosed)
+        getFormattedDateInUserTimeZone(ticket.DateClosed, activityLocalTimestamp)
       )
     );
   }
