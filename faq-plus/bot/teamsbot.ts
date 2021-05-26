@@ -38,7 +38,7 @@ import { ConfigurationEntityTypes } from "./models/configurationEntityTypes";
 import { getUserNotificationCard } from "./cards/userNotificationCard";
 import { ChangeTicketStatusPayload } from "./models/changeTicketStatusPayload";
 import { TicketState } from "./models/ticketState";
-import { ResourceResponse, ActivityEx, ConversationAccount } from "botframework-schema";
+import { ResourceResponse, ActivityEx, ConversationAccount, ChannelAccount } from "botframework-schema";
 
 export class TeamsBot extends TeamsActivityHandler {
   private readonly conversationTypePersonal: string = "personal";
@@ -65,29 +65,6 @@ export class TeamsBot extends TeamsActivityHandler {
     this.qnaServiceProvider = qnaServiceProvider;
     this.ticketsProvider = ticketsProvider;
     this.configurationProvider = configurationProvider;
-
-    this.onMembersAdded(async (context, next) => {
-      const membersAdded = context.activity.membersAdded;
-      for (let cnt = 0; cnt < membersAdded.length; cnt++) {
-        if (membersAdded[cnt].id) {
-          const cardButtons = [
-            {
-              type: ActionTypes.ImBack,
-              title: "Show introduction card",
-              value: "intro",
-            },
-          ];
-          const card = CardFactory.heroCard("Welcome", null, cardButtons, {
-            text: `Congratulations! Your hello world Bot 
-                            template is running. This bot will introduce you how to build bot using Microsoft Teams App Framework(TeamsFx). 
-                            You can reply <strong>intro</strong> to see the introduction card. TeamsFx helps you build Bot using <a href=\"https://dev.botframework.com/\">Bot Framework SDK</a>`,
-          });
-          await context.sendActivity({ attachments: [card] });
-          break;
-        }
-      }
-      await next();
-    });
   }
 
   /**
@@ -121,6 +98,51 @@ export class TeamsBot extends TeamsActivityHandler {
       await turnContext.sendActivity("");
       console.log(`Error processing message: ${error.message}`);
       throw error;
+    }
+  }
+
+  /**
+   * Invoked when a message activity is received from the user.
+   * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+   */
+  async onConversationUpdateActivity(turnContext: TurnContext): Promise<void> {
+    try {
+      const activity = turnContext.activity;
+      console.log("Received conversationUpdate activity");
+      console.log(`conversationType: ${activity.conversation.conversationType}, membersAdded: ${activity.membersAdded?.length}, membersRemoved: ${activity.membersRemoved?.length}`);
+
+      if (activity?.membersAdded?.length === 0) {
+        console.log("Ignoring conversationUpdate that was not a membersAdded event");
+        return;
+      }
+
+      switch (activity.conversation.conversationType.toLowerCase()) {
+        case this.conversationTypePersonal:
+          await this.onMembersAddedToPersonalChat(activity.membersAdded, turnContext);
+          return;
+
+        default:
+          console.log(`Ignoring event from conversation type ${activity.conversation.conversationType}`);
+          return;
+      }
+    } catch (error) {
+      console.log(`Error processing conversationUpdate: ${error.message}`)
+    }
+  }
+
+  /**
+   * Handle 1:1 chat with members who started chat for the first time.
+   * @param membersAdded Channel account information needed to route a message.
+   * @param turnContext Context object containing information cached for a single turn of conversation with a user.
+   */
+  private async onMembersAddedToPersonalChat(membersAdded: ChannelAccount[], turnContext: TurnContext) {
+    const activity = turnContext.activity;
+    if (membersAdded.some((channelAccount) => channelAccount.id === activity.recipient.id)) {
+      console.log(`Bot added to 1:1 chat ${activity.conversation.id}`);
+      const card = CardFactory.heroCard("Welcome", null, null, {
+        text: TextString.MemberAddedWelcomeMessage,
+      });
+      await turnContext.sendActivity(MessageFactory.attachment(card));
     }
   }
 
@@ -332,7 +354,7 @@ export class TeamsBot extends TeamsActivityHandler {
         ticket.AssignedToName = message.from.name;
         ticket.AssignedToObjectId = message.from.aadObjectId;
         ticket.DateClosed = null;
-        
+
         // Generate notification
         smeNotification = `This request is now assigned. Assigned to ${ticket.AssignedToName}.`;
 
