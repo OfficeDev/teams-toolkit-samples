@@ -285,31 +285,59 @@ export class TeamsBot extends TeamsActivityHandler {
     // Get the ticket from the data store.
     let ticket = await this.ticketsProvider.getTicket(payload.ticketId);
     if (!ticket) {
-      await turnContext.sendActivity(`Ticket ${payload.ticketId} was not found in the data store`);
       console.log(`Ticket ${payload.ticketId} was not found in the data store`);
+      await turnContext.sendActivity(`Ticket ${payload.ticketId} was not found in the data store`);
       return;
     }
 
+    // Notifications to send
+    let smeNotification: string = null;
+    let userNotification: Partial<Activity> = null;
+
+    ticket.LastModifiedByName = message.from.name;
+    ticket.LastModifiedByObjectId = message.from.aadObjectId;
+
     switch (payload.action) {
       case ChangeTicketStatusPayload.reopenAction:
+        // Update ticket
         ticket.Status = TicketState.Open;
         ticket.DateAssigned = null;
         ticket.AssignedToName = null;
         ticket.AssignedToObjectId = null;
         ticket.DateClosed = null;
+
+        // Generate notification
+        smeNotification = `This request is now unassigned. Last updated by ${message.from.name}.`;
+
+        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.ReopenedTicketUserNotification, message.localTimestamp));
+        userNotification.summary = TextString.ReopenedTicketUserNotification;
         break;
 
       case ChangeTicketStatusPayload.closeAction:
+        // Update ticket
         ticket.Status = TicketState.Closed;
         ticket.DateClosed = new Date();
+
+        // Generate notification
+        smeNotification = `This request is now closed. Closed by ${ticket.LastModifiedByName}.`;
+
+        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.ClosedTicketUserNotification, message.localTimestamp));
+        userNotification.summary = TextString.ClosedTicketUserNotification;
         break;
 
       case ChangeTicketStatusPayload.assignToSelfAction:
+        // Update ticket
         ticket.Status = TicketState.Open;
         ticket.DateAssigned = new Date();
         ticket.AssignedToName = message.from.name;
         ticket.AssignedToObjectId = message.from.aadObjectId;
         ticket.DateClosed = null;
+        
+        // Generate notification
+        smeNotification = `This request is now assigned. Assigned to ${ticket.AssignedToName}.`;
+
+        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.AssignedTicketUserNotification, message.localTimestamp));
+        userNotification.summary = TextString.AssignedTicketUserNotification;
         break;
 
       default:
@@ -317,8 +345,6 @@ export class TeamsBot extends TeamsActivityHandler {
         return;
     }
 
-    ticket.LastModifiedByName = message.from.name;
-    ticket.LastModifiedByObjectId = message.from.aadObjectId;
     await this.ticketsProvider.upsertTicket(ticket);
     console.log(`Ticket ${ticket.TicketId} updated to status (${ticket.Status}, ${ticket.AssignedToObjectId}) in store`);
 
@@ -336,29 +362,6 @@ export class TeamsBot extends TeamsActivityHandler {
     console.log(`Card for ticket ${ticket.TicketId} updated to status (${ticket.Status}, ${ticket.AssignedToObjectId}), activityId = ${updateResponse.id}`);
 
     // Post update to user and SME team thread.
-    let smeNotification: string = null;
-    let userNotification: Partial<Activity> = null;
-    switch (payload.action) {
-      case ChangeTicketStatusPayload.reopenAction:
-        smeNotification = `This request is now unassigned. Last updated by ${message.from.name}.`;
-
-        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.ReopenedTicketUserNotification, message.localTimestamp));
-        userNotification.summary = TextString.ReopenedTicketUserNotification;
-        break;
-      case ChangeTicketStatusPayload.closeAction:
-        smeNotification = `This request is now closed. Closed by ${ticket.LastModifiedByName}.`;
-
-        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.ClosedTicketUserNotification, message.localTimestamp));
-        userNotification.summary = TextString.ClosedTicketUserNotification;
-        break;
-      case ChangeTicketStatusPayload.assignToSelfAction:
-        smeNotification = `This request is now assigned. Assigned to ${ticket.AssignedToName}.`;
-
-        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.AssignedTicketUserNotification, message.localTimestamp));
-        userNotification.summary = TextString.AssignedTicketUserNotification;
-        break;
-    }
-
     if (smeNotification) {
       const smeResponse = await turnContext.sendActivity(smeNotification);
       console.log(`SME team notified of update to ticket ${ticket.TicketId}, activityId = ${smeResponse.id}`);
