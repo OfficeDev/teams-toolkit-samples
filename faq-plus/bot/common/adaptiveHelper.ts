@@ -120,7 +120,7 @@ export function getTicketDisplayStatusForSme(ticket: TicketEntity): string {
  */
 export function getFormattedDateInUserTimeZone(dateTime: Date, userLocalTime?: Date): string {
   if (userLocalTime) {
-    let offset = userLocalTime.getTimezoneOffset();
+    const offset = userLocalTime.getTimezoneOffset();
     dateTime= new Date(dateTime.getTime() + offset);
   }
   return dateTime.toLocaleDateString();
