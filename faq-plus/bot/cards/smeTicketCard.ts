@@ -36,11 +36,14 @@ import { ChangeTicketStatusPayload } from "../models/changeTicketStatusPayload";
  * @param localTimestamp Local timestamp of the user activity.
  * @returns Returns the attachment that will be sent in a message.
  */
-export function getSmeTicketCard(ticket: TicketEntity): Attachment {
+export function getSmeTicketCard(
+  ticket: TicketEntity,
+  localTimestamp?: Date
+): Attachment {
   const card = new AdaptiveCard();
   card.version = new Version(1, 0);
 
-  const cardBody = buildCardBody(ticket);
+  const cardBody = buildCardBody(ticket, localTimestamp);
   for (let i = 0; i < cardBody.length; i++) {
     card.addItem(cardBody[i]);
   }
@@ -53,7 +56,10 @@ export function getSmeTicketCard(ticket: TicketEntity): Attachment {
   return CardFactory.adaptiveCard(card);
 }
 
-function buildCardBody(ticket: TicketEntity): CardElement[] {
+function buildCardBody(
+  ticket: TicketEntity,
+  localTimestamp?: Date
+): CardElement[] {
   const cardBodyToConstruct: CardElement[] = [];
 
   const titleTextBlock = new TextBlock(ticket.Title);
@@ -69,13 +75,13 @@ function buildCardBody(ticket: TicketEntity): CardElement[] {
   cardBodyToConstruct.push(subHeaderBlock);
 
   const factSet = new FactSet();
-  factSet.facts = buildFactSet(ticket);
+  factSet.facts = buildFactSet(ticket, localTimestamp);
   cardBodyToConstruct.push(factSet);
 
   return cardBodyToConstruct;
 }
 
-function buildFactSet(ticket: TicketEntity): Fact[] {
+function buildFactSet(ticket: TicketEntity, localTimestamp?: Date): Fact[] {
   let factList: Fact[] = [];
 
   if (ticket.Description) {
@@ -96,7 +102,7 @@ function buildFactSet(ticket: TicketEntity): Fact[] {
     factList.push(
       new Fact(
         TextString.ClosedFactTitle,
-        getFormattedDateInUserTimeZone(ticket.DateClosed)
+        getFormattedDateInUserTimeZone(ticket.DateClosed, localTimestamp)
       )
     );
   }

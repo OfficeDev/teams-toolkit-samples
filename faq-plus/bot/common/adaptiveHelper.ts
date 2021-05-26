@@ -115,9 +115,14 @@ export function getTicketDisplayStatusForSme(ticket: TicketEntity): string {
 /**
  * Returns a string that will display the given date and time in the user's local time zone, when placed in an adaptive card.
  * @param dateTime The date and time to format.
+ * @param userLocalTime The sender's local time, as determined by the local timestamp of the activity.
  * @returns A datetime string.
  */
-export function getFormattedDateInUserTimeZone(dateTime: Date): string {
+export function getFormattedDateInUserTimeZone(dateTime: Date, userLocalTime?: Date): string {
+  if (userLocalTime) {
+    let offset = userLocalTime.getTimezoneOffset();
+    dateTime= new Date(dateTime.getTime() + offset);
+  }
   return dateTime.toLocaleDateString();
 }
 
