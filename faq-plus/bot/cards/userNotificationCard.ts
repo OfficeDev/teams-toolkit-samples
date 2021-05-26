@@ -72,7 +72,7 @@ function buildCardBody(
 
 function buildFactSet(
   ticket: TicketEntity,
-  activityLocalTimestamp: Date
+  activityLocalTimestamp?: Date
 ): Fact[] {
   let factList: Fact[] = [];
   factList.push(
