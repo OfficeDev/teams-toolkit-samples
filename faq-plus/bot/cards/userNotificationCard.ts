@@ -34,7 +34,7 @@ import { TicketState } from "../models/ticketState";
 export function getUserNotificationCard(
   ticket: TicketEntity,
   message: string,
-  activityLocalTimestamp: Date
+  activityLocalTimestamp?: Date
 ): Attachment {
   const card = new AdaptiveCard();
   card.version = new Version(1, 0);
@@ -55,7 +55,7 @@ export function getUserNotificationCard(
 function buildCardBody(
   ticket: TicketEntity,
   message: string,
-  activityLocalTimestamp: Date
+  activityLocalTimestamp?: Date
 ): CardElement[] {
   const cardBodyToConstruct: CardElement[] = [];
 
@@ -114,19 +114,19 @@ function buildFactSet(
 }
 
 function buildListOfActions(ticket: TicketEntity): Action[] {
-    if (ticket.Status === TicketState.Closed) {
-        const action = new SubmitAction();
-        action.title = TextString.AskAnExpertButtonText;
-        action.data = {
-          msteams: {
-            type: ActionTypes.MessageBack,
-            displayText: TextString.AskAnExpertDisplayText,
-            text: Constants.AskAnExpertSubmitText,
-          }
-        } as AskAnExpertCardPayload;
-      
-        return [action];
-    }
+  if (ticket.Status === TicketState.Closed) {
+    const action = new SubmitAction();
+    action.title = TextString.AskAnExpertButtonText;
+    action.data = {
+      msteams: {
+        type: ActionTypes.MessageBack,
+        displayText: TextString.AskAnExpertDisplayText,
+        text: Constants.AskAnExpertSubmitText,
+      },
+    } as AskAnExpertCardPayload;
 
-    return [];
+    return [action];
+  }
+
+  return [];
 }

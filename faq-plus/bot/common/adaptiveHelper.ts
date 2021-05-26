@@ -31,7 +31,7 @@ export async function askAnExpertSubmitText(
       type: ActivityTypes.Message,
       id: turnContext.activity.replyToId,
       conversation: turnContext.activity.conversation,
-      attachments: [getAskAnExpertCard(askAnExpertSubmitTextPayload)],
+      attachments: [getAskAnExpertCard(askAnExpertSubmitTextPayload, true)],
     } as Activity;
 
     await turnContext.updateActivity(updateCardActivity);
@@ -104,7 +104,7 @@ export async function createTicketAsync(
  */
 export function getTicketDisplayStatusForSme(ticket: TicketEntity): string {
   if (ticket?.Status == TicketState.Open) {
-    return ticket.isAssigned
+    return ticket.isAssigned()
       ? TextString.SMETicketAssignedStatus + ticket?.AssignedToName
       : TextString.SMETicketUnassignedStatus;
   } else {
@@ -118,12 +118,12 @@ export function getTicketDisplayStatusForSme(ticket: TicketEntity): string {
  * @param userLocalTime The sender's local time, as determined by the local timestamp of the activity.
  * @returns A datetime string.
  */
-export function getFormattedDateInUserTimeZone(
-  dateTime: Date,
-  userLocalTime?: Date
-): string {
-  // todo
-  return dateTime.toString();
+export function getFormattedDateInUserTimeZone(dateTime: Date, userLocalTime?: Date): string {
+  if (userLocalTime) {
+    const offset = userLocalTime.getTimezoneOffset();
+    dateTime= new Date(dateTime.getTime() + offset);
+  }
+  return dateTime.toLocaleDateString();
 }
 
 export const TitleMaxDisplayLength: number = 50;
@@ -154,7 +154,7 @@ export function truncateStringIfLonger(
  */
 export function getUserTicketDisplayStatus(ticket: TicketEntity): string {
   if (ticket?.Status == TicketState.Open) {
-    return ticket.isAssigned
+    return ticket.isAssigned()
       ? TextString.AssignedUserNotificationStatus
       : TextString.UnassignedUserNotificationStatus;
   } else {

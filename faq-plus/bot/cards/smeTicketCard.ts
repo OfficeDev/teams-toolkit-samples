@@ -114,7 +114,8 @@ function buildListOfActions(ticket: TicketEntity): Action[] {
   let actionList: Action[] = [];
 
   const chatWithUserAction = new OpenUrlAction();
-  chatWithUserAction.title = TextString.ChatTextButton + ticket.Title;
+  chatWithUserAction.title =
+    TextString.ChatTextButton + ticket.RequesterGivenName;
   const encodedMessage = encodeURIComponent(
     TextString.SMEUserChatMessage + ticket.Title
   );
