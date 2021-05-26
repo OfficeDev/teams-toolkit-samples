@@ -135,7 +135,7 @@ export class TeamsBot extends TeamsActivityHandler {
     if (membersAdded.some((channelAccount) => channelAccount.id === activity.recipient.id)) {
       console.log(`Bot added to 1:1 chat ${activity.conversation.id}`);
       const card = CardFactory.heroCard("Welcome", null, null, {
-        text: `Hi, I'm your friendly Q&amp;A bot. You can ask me questions, and I'll do my best to answer. If I can't help, I'll connect you to an expert.`,
+        text: TextString.MemberAddedWelcomeMessage,
       });
       await turnContext.sendActivity(MessageFactory.attachment(card));
     }

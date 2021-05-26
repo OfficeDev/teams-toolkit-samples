@@ -54,5 +54,8 @@ export enum TextString {
     ClosedTicketUserNotification = "This request has been closed. Ask an expert again if you still need more assistance.",
 
     // Message to user when ticket assigned
-    AssignedTicketUserNotification = "Your question has been assigned to an expert. They'll respond to you directly with a chat message."
+    AssignedTicketUserNotification = "Your question has been assigned to an expert. They'll respond to you directly with a chat message.",
+
+    // Welcome message
+    MemberAddedWelcomeMessage = `Hi, I'm your friendly Q&amp;A bot. You can ask me questions, and I'll do my best to answer. If I can't help, I'll connect you to an expert.`
 }
