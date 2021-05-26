@@ -37,7 +37,7 @@ We recommend that you copy these values into a text file, using an application l
 
 1. Click on the "Deploy to Azure" button below.
 
-[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FOfficeDev%2Fmicrosoft-teams-apps-faqplus%2Fmaster%2FDeployment%2Fazuredeploy.json)
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FOfficeDev%2FTeamsFx-Samples%2Ffeature%2Ffaq-plus%2Ffaq-plus%2Fdeployment%2Fazuredeploy.json)
 
 2. When prompted, log in to your Azure subscription.
 
@@ -152,12 +152,30 @@ Click on "Copy" to copy the link to the clipboard.
 
 5. Enter the QnA Maker knowledge base ID into the "Knowledge base ID" field, then press "OK".
 
-6. Customize the "Welcome message" that's sent to your End-users when they install the app. This message supports basic markdown, such as bold, italics, bulleted lists, numbered lists, and hyperlinks. See [here](https://docs.microsoft.com/en-us/adaptive-cards/authoring-cards/text-features#markdown) for complete details on what Markdown features are supported.
-
 ### Notes
 
 Remember to click on "OK" after changing a setting. To edit the setting later, click on "Edit" to make the text box editable.
 
 ## Step 6: Get required information for the Teams bot app
 
-TODO: add how to collect storage connection string, qna key, etc.
+1. Go to the resource group created during provision
+
+2. Click the Azure Storage instance in the resource group, then click **Access keys** in left panel.
+
+3. Click **Show keys** button, then copy the connection string for either key1 or key2. Record it somewhere.
+
+4. Go back to the resource group and click the Cognitive Service instance. The service name is same as the "Base resource name" you inputted during provision.
+
+5. Click **Keys and Endpoint** in left panel, then click **Show Keys" button.
+
+6. Copy either KEY 1 or KEY 2, as well as the endpoint. Record them somewhere.
+
+7. Figure out the QnA Maker host url, which is `https://[BaseResourceName]-qnamaker.azurewebsites.net`. For example, if you chose "contosofaqplus" as the base name, the QnA Maker host url will be at `https://contosofaqplus-qnamaker.azurewebsites.net`
+
+7. Now you have following configurations which will be configured to your bot app
+	| Name | Example |
+    | ---- | ---- |
+    | StorageConnectionString | DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
+    | QnAMakerApiEndpointUrl | https://[Location].api.cognitive.microsoft.com |
+    | QnAMakerHostUrl | https://[BaseResourceName]-qnamaker.azurewebsites.net |
+    | QnAMakerSubscriptionKey | 32 alphanumeric characters string |
