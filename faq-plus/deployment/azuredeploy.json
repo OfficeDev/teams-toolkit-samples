@@ -93,14 +93,14 @@
       "metadata": {
         "description": "The URL to the GitHub repository to deploy."
       },
-      "defaultValue": "https://github.com/OfficeDev/microsoft-teams-apps-faqplus.git"
+      "defaultValue": "https://github.com/OfficeDev/TeamsFx-Samples"
     },
     "gitBranch": {
       "type": "string",
       "metadata": {
         "description": "The branch of the GitHub repository to deploy."
       },
-      "defaultValue": "master"
+      "defaultValue": "main"
     }
   },
   "variables": {
@@ -185,6 +185,10 @@
         "siteConfig": {
           "alwaysOn": false,
           "appSettings": [
+            {
+              "name": "SAMPLE_NAME",
+              "value": "faq-plus"
+            },
             {
               "name": "SITE_ROLE",
               "value": "configuration"
