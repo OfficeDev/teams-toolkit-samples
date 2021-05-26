@@ -155,7 +155,7 @@ function buildListOfActions(ticket: TicketEntity): Action[] {
 
 function getAdaptiveChoiceSetInput(ticket: TicketEntity): ChoiceSetInput {
   let choiceSet = new ChoiceSetInput();
-  choiceSet.id = "Action";
+  choiceSet.id = "action";
   choiceSet.isMultiSelect = false;
   choiceSet.style = "compact";
 

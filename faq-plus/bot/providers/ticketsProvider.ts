@@ -40,9 +40,10 @@ export class TicketsProvider {
                         reject(error);
                     }
                     let ticket = new TicketEntity();
-                    ticket.PartitionKey = result.PartitionKey._;
-                    ticket.RowKey = result.RowKey._;
-                    // TODO: assign other fields
+                    const props = Object.keys(result);
+                    props.forEach((key)=>{
+                        ticket[key] = result[key]._;
+                    })
                     resolve(ticket);
                 });
         })

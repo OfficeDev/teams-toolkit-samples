@@ -46,4 +46,13 @@ export enum TextString {
 
     // Unrecognized team input card
     TeamCustomMessage = "I'm unable to respond to commands in channels. Take a quick tour to learn what I can do.", // When SME team member asks bot a questions- a message appears saying that team member is supposed to install the bot in personal scope.
+
+    // Message to user when ticket reopened
+    ReopenedTicketUserNotification = "Your request is open again. An expert will directly send you a chat message.",
+
+    // Message to user when ticket closed
+    ClosedTicketUserNotification = "This request has been closed. Ask an expert again if you still need more assistance.",
+
+    // Message to user when ticket assigned
+    AssignedTicketUserNotification = "Your question has been assigned to an expert. They'll respond to you directly with a chat message."
 }
