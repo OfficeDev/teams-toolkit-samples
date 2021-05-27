@@ -5,13 +5,13 @@
  * Configuration entity type names.
  */
 export class ConfigurationEntityTypes {
-    /**
-     * Team entity.
-     */
-    public static TeamId: string = "TeamId";
+  /**
+   * Team entity.
+   */
+  public static TeamId = "TeamId";
 
-    /**
-     * Knowledge base entity.
-     */
-    public static KnowledgeBaseId: string = "KnowledgeBaseId";
+  /**
+   * Knowledge base entity.
+   */
+  public static KnowledgeBaseId = "KnowledgeBaseId";
 }

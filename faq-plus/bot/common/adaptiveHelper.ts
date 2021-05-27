@@ -16,18 +16,18 @@ import { TextString } from "./constants";
  * @param message A message in a conversation.
  * @param turnContext Context object containing information cached for a single turn of conversation with a user.
  * @param ticketsProvider Tickets Provider.
- * @returns Ticket entity promise
+ * @return Ticket entity promise
  */
 export async function askAnExpertSubmitText(
   message: Activity,
   turnContext: TurnContext,
   ticketsProvider: TicketsProvider
 ): Promise<TicketEntity> {
-  let askAnExpertSubmitTextPayload = message.value as AskAnExpertCardPayload;
+  const askAnExpertSubmitTextPayload = message.value as AskAnExpertCardPayload;
 
   // Validate required fields.
   if (!askAnExpertSubmitTextPayload?.Title) {
-    var updateCardActivity = {
+    const updateCardActivity = {
       type: ActivityTypes.Message,
       id: turnContext.activity.replyToId,
       conversation: turnContext.activity.conversation,
@@ -38,9 +38,7 @@ export async function askAnExpertSubmitText(
     return null;
   }
 
-  var userDetails: TeamsChannelAccount = await getUserDetailsInPersonalChatAsync(
-    turnContext
-  );
+  const userDetails: TeamsChannelAccount = await getUserDetailsInPersonalChatAsync(turnContext);
   return await createTicketAsync(
     message,
     askAnExpertSubmitTextPayload,
@@ -52,12 +50,12 @@ export async function askAnExpertSubmitText(
 /**
  * Get the account details of the user in a 1:1 chat with the bot.
  * @param turnContext Context object containing information cached for a single turn of conversation with a user.
- * @returns The user account promise
+ * @return The user account promise
  */
 export async function getUserDetailsInPersonalChatAsync(
   turnContext: TurnContext
 ): Promise<TeamsChannelAccount> {
-  let members = await (turnContext.adapter as BotFrameworkAdapter).getConversationMembers(
+  const members = await (turnContext.adapter as BotFrameworkAdapter).getConversationMembers(
     turnContext
   );
   return members[0] as TeamsChannelAccount;
@@ -69,7 +67,7 @@ export async function getUserDetailsInPersonalChatAsync(
  * @param data Represents the submit data associated with the Ask An Expert card.
  * @param member Teams channel account detailing user Azure Active Directory details.
  * @param ticketsProvider Tickets Provider.
- * @returns Ticket entity promise
+ * @return Ticket entity promise
  */
 export async function createTicketAsync(
   message: Activity,
@@ -77,7 +75,7 @@ export async function createTicketAsync(
   member: TeamsChannelAccount,
   ticketsProvider: TicketsProvider
 ): Promise<TicketEntity> {
-  let ticketEntity: TicketEntity = new TicketEntity();
+  const ticketEntity: TicketEntity = new TicketEntity();
   ticketEntity.TicketId = uuidv4();
   ticketEntity.Status = TicketState.Open;
   ticketEntity.DateCreated = new Date();
@@ -100,7 +98,7 @@ export async function createTicketAsync(
 /**
  * Gets the current status of the ticket to display in the SME team.
  * @param ticket The current ticket information.
- * @returns A status string.
+ * @return A status string.
  */
 export function getTicketDisplayStatusForSme(ticket: TicketEntity): string {
   if (ticket?.Status == TicketState.Open) {
@@ -116,31 +114,28 @@ export function getTicketDisplayStatusForSme(ticket: TicketEntity): string {
  * Returns a string that will display the given date and time in the user's local time zone, when placed in an adaptive card.
  * @param dateTime The date and time to format.
  * @param userLocalTime The sender's local time, as determined by the local timestamp of the activity.
- * @returns A datetime string.
+ * @return A datetime string.
  */
 export function getFormattedDateInUserTimeZone(dateTime: Date, userLocalTime?: Date): string {
   if (userLocalTime) {
     const offset = userLocalTime.getTimezoneOffset();
-    dateTime= new Date(dateTime.getTime() + offset);
+    dateTime = new Date(dateTime.getTime() + offset);
   }
   return dateTime.toLocaleDateString();
 }
 
-export const TitleMaxDisplayLength: number = 50;
-export const DescriptionMaxDisplayLength: number = 500;
-export const KnowledgeBaseAnswerMaxDisplayLength: number = 500;
-const Ellipsis: string = "...";
+export const TitleMaxDisplayLength = 50;
+export const DescriptionMaxDisplayLength = 500;
+export const KnowledgeBaseAnswerMaxDisplayLength = 500;
+const Ellipsis = "...";
 
 /**
  * Truncate the provided string to a given maximum length.
  * @param text Text to be truncated.
  * @param maxLength The maximum length in characters of the text.
- * @returns Truncated string.
+ * @return Truncated string.
  */
-export function truncateStringIfLonger(
-  text: string,
-  maxLength: number
-): string {
+export function truncateStringIfLonger(text: string, maxLength: number): string {
   if (text && text.length > maxLength) {
     text = text.substr(0, maxLength) + Ellipsis;
   }
@@ -150,7 +145,7 @@ export function truncateStringIfLonger(
 /**
  * Gets the ticket status for the user notifications.
  * @param ticket The current ticket information.
- * @returns A status string.
+ * @return A status string.
  */
 export function getUserTicketDisplayStatus(ticket: TicketEntity): string {
   if (ticket?.Status == TicketState.Open) {

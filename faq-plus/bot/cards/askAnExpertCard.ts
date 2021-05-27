@@ -28,7 +28,7 @@ import { TextString, Constants } from "../common/constants";
  */
 export function getAskAnExpertCard(
   payload?: AskAnExpertCardPayload,
-  showValidationErrors: boolean = false
+  showValidationErrors = false
 ): Attachment {
   const askAnExpertCard = new AdaptiveCard();
   askAnExpertCard.version = new Version(1, 0);
@@ -38,10 +38,7 @@ export function getAskAnExpertCard(
     askAnExpertCard.addItem(cardBody[i]);
   }
 
-  const cardAction = buildListOfActions(
-    payload?.UserQuestion,
-    payload?.KnowledgeBaseAnswer
-  );
+  const cardAction = buildListOfActions(payload?.UserQuestion, payload?.KnowledgeBaseAnswer);
   for (let i = 0; i < cardAction.length; i++) {
     askAnExpertCard.addAction(cardAction[i]);
   }
@@ -75,16 +72,13 @@ function buildAskAnExpertCardBody(
   const validateTitleColumn = new Column();
   const validateTitleTextBlock = new TextBlock();
   validateTitleTextBlock.text =
-    showValidationErrors && !payload.Title
-      ? TextString.MandatoryTitleFieldText
-      : "";
+    showValidationErrors && !payload.Title ? TextString.MandatoryTitleFieldText : "";
   validateTitleTextBlock.color = TextColor.Attention;
   validateTitleTextBlock.horizontalAlignment = HorizontalAlignment.Right;
   validateTitleTextBlock.wrap = true;
   validateTitleColumn.addItem(validateTitleTextBlock);
   titleColumn.addColumn(validateTitleColumn);
   cardBodyToConstruct.push(titleColumn);
-
 
   const titleTextInput = new TextInput();
   titleTextInput.id = "Title";
