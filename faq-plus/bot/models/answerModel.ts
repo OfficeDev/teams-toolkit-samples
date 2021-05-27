@@ -5,9 +5,9 @@
  * Represents the FAQPlus QnA Maker answer response model.
  */
 export class AnswerModel {
-    Description: string;
-    Title: string;
-    Subtitle: string;
-    ImageUrl: string;
-    RedirectionUrl: string;
+  Description: string;
+  Title: string;
+  Subtitle: string;
+  ImageUrl: string;
+  RedirectionUrl: string;
 }
