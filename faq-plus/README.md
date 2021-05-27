@@ -35,7 +35,7 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 
 ### Try the Sample
 
-1. Follow the instructions [here](docs/deploy-qna-maker-services) to deploy QnA Maker to Azure and get corresponding endpoints and credentials for provisioned services.
+1. Follow the instructions [here](docs/deploy-qna-maker-services.md) to deploy QnA Maker to Azure and get corresponding endpoints and credentials for provisioned services.
 2. Open the project in [Visual Studio Code](https://code.visualstudio.com/), ensure you have installed [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 3. Open the command palette and select: `Teams: Provision in the Cloud`.
 4. Once provision is completed, open `.fx/env.default.json` file. Find the name of Azure Web App service for bot provisioned by Teams Toolkit in `siteName` of `fx-resource-bot` property.
@@ -44,24 +44,24 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
     | Application Setting Name | Expected Value | Note |
     | ---- | ---- | ---- |
     | SCORETHRESHOLD | 0.5 | The expected value works fine for the sample. You can adjust this threshold per your requirement. |
-    | STORAGECONNECTIONSTRING | `StorageConnectionString` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services) step | Example: DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
-    | QNAMAKERAPIENDPOINTURL | `QnAMakerApiEndpointUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services) step | Example: https://[Location].api.cognitive.microsoft.com |
-    | QNAMAKERHOSTURL | `QnAMakerHostUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services) step | Example: https://[BaseResourceName]-qnamaker.azurewebsites.net |
-    | QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services) step | Usually a 32 alphanumeric characters string |
+    | STORAGECONNECTIONSTRING | `StorageConnectionString` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
+    | QNAMAKERAPIENDPOINTURL | `QnAMakerApiEndpointUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[Location].api.cognitive.microsoft.com |
+    | QNAMAKERHOSTURL | `QnAMakerHostUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[BaseResourceName]-qnamaker.azurewebsites.net |
+    | QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Usually a 32 alphanumeric characters string |
 7. Open the command palette and select: `Teams: Deploy to the Cloud`.
 8. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to open the app in Teams web client.
 
 ### (Optional) Debug
 
-1. Follow the instructions [here](docs/deploy-qna-maker-services) to deploy QnA Maker to Azure and get corresponding endpoints and credentials for provisioned services.
+1. Follow the instructions [here](docs/deploy-qna-maker-services.md) to deploy QnA Maker to Azure and get corresponding endpoints and credentials for provisioned services.
 2. Open `.fx/local.env` file. Fill values for following environment variables.
     | Application Setting Name | Expected Value | Note |
     | ---- | ---- | ---- |
-    | SCORETHRESHOLD | 0.5 | The expected value works fine for the sample. You can adjust this threshold per your requirement. |
-    | STORAGECONNECTIONSTRING | `StorageConnectionString` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services) step | Example: DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
-    | QNAMAKERAPIENDPOINTURL | `QnAMakerApiEndpointUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services) step | Example: https://[Location].api.cognitive.microsoft.com |
-    | QNAMAKERHOSTURL | `QnAMakerHostUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services) step | Example: https://[BaseResourceName]-qnamaker.azurewebsites.net |
-    | QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services) step | Usually a 32 alphanumeric characters string |
+    | BOT_SCORETHRESHOLD | 0.5 | The expected value works fine for the sample. You can adjust this threshold per your requirement. |
+    | BOT_STORAGECONNECTIONSTRING | `StorageConnectionString` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
+    | BOT_QNAMAKERAPIENDPOINTURL | `QnAMakerApiEndpointUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[Location].api.cognitive.microsoft.com |
+    | BOT_QNAMAKERHOSTURL | `QnAMakerHostUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[BaseResourceName]-qnamaker.azurewebsites.net |
+    | BOT_QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Usually a 32 alphanumeric characters string |
 3. In Visual Studio Code, open `Run and Debug` and select `Debug (Edge)` or `Debug (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to start local debug and open the app in Teams web client.
 
 ### Use the App in Teams
@@ -76,7 +76,7 @@ The bot will search the QnA knowledge base to answer user's questions. And users
 #### Expert using FAQ Plus in Teams channel:
 
 Experts can receive notifications when a user asks an expert for help. An expert can assign the question to themself, chat with the user to gain more context.
-1. Add the bot to personal chat, then add the bot to a Teams Channel (references as experts channel below). The Teams Channel must under the Team configured in [this](docs/deploy-qna-maker-services) doc.
+1. Add the bot to personal chat, then add the bot to a Teams Channel (references as experts channel below). The Teams Channel must under the Team configured in [this](docs/deploy-qna-maker-services.md) doc.
 2. "Ask an expert" in personal chat, you will see the support ticket is posted to experts channel.
 3. Click "Chat with xxx" to chat with the user who asked for help. Note: if the support ticket is created by yourself, you cannot use this feature to chat with yourself.
 4. Click "Change status" button to change the status of the support ticket. The user who created the ticket will receive status change notification from the bot.
