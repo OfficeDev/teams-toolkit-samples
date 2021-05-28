@@ -72,6 +72,7 @@ The bot will search the QnA knowledge base to answer user's questions. And users
 1. Add the bot to personal chat.
 2. Input your question and send to the bot.
 3. Click "Ask an expert" button to ask an expert, fill required information and click "Ask an expert" again to create a ticket to experts.
+    > The app also needs to be installed to a Teams Channel in order to use "Ask an expert" feature. The Teams Channel must under the Team configured in [this](docs/deploy-qna-maker-services.md) doc.
 
 #### Expert using FAQ Plus in Teams channel:
 
