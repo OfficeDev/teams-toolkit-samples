@@ -7,7 +7,7 @@ declare interface ITodoListWebPartStrings {
   DescriptionFieldLabel: string;
 }
 
-declare module 'TodoListWebPartStrings' {
+declare module "TodoListWebPartStrings" {
   const strings: ITodoListWebPartStrings;
   export = strings;
 }
