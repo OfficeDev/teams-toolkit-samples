@@ -1,8 +1,0 @@
-[
-    {
-        "resource": "Microsoft Graph",
-        "scopes": [
-            "User.Read"
-        ]
-    }
-]
