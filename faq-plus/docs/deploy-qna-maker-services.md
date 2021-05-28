@@ -172,10 +172,11 @@ Remember to click on "OK" after changing a setting. To edit the setting later, c
 
 7. Figure out the QnA Maker host url, which is `https://[BaseResourceName]-qnamaker.azurewebsites.net`. For example, if you chose "contosofaqplus" as the base name, the QnA Maker host url will be at `https://contosofaqplus-qnamaker.azurewebsites.net`
 
-7. Now you have following configurations which will be configured to your bot app
-	| Name | Example |
-    | ---- | ---- |
-    | StorageConnectionString | DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
-    | QnAMakerApiEndpointUrl | https://[Location].api.cognitive.microsoft.com |
-    | QnAMakerHostUrl | https://[BaseResourceName]-qnamaker.azurewebsites.net |
-    | QnAMakerSubscriptionKey | 32 alphanumeric characters string |
+
+After above steps, you will have following configurations recorded somewhere. Now you can go back to [readme](../README.md) and follow the instructions to config and run your app.
+| Name | Example |
+| ---- | ---- |
+| StorageConnectionString | DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
+| QnAMakerApiEndpointUrl | https://[Location].api.cognitive.microsoft.com |
+| QnAMakerHostUrl | https://[BaseResourceName]-qnamaker.azurewebsites.net |
+| QnAMakerSubscriptionKey | 32 alphanumeric characters string |
