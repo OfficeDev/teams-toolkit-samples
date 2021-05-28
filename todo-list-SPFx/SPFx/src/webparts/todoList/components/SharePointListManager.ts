@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 import {
+    HttpClientResponse,
     SPHttpClient,
     SPHttpClientResponse,
     ISPHttpClientOptions,
@@ -14,12 +15,23 @@ export class SharePointListManager{
     private spContext: WebPartContext;
     private siteURL: string;
     private listname:string = "To%20Do%20List";
+    private previousUpdateItem = null;
+    private previousUpdateId: number = -1;
 
     constructor(spContext: WebPartContext) {
         this.spContext = spContext;
         this.siteURL = spContext.pageContext.web.absoluteUrl;
     }
 
+    public static async processResponseError(response: HttpClientResponse) {
+      const resdata = await response.json();
+      if(resdata.error?.message){
+        alert(resdata.error?.message);
+      }
+      else{
+        alert(await response.text());
+      }
+    }
     /**
      * Returns SharePoint list items with REST.
      *
@@ -37,7 +49,7 @@ export class SharePointListManager{
           const items: ISPItem[] = responsejson.value;
           return items;
         } else {
-          alert(await response.text());
+          SharePointListManager.processResponseError(response);
         }
     }
 
@@ -48,27 +60,33 @@ export class SharePointListManager{
      * @param item the object({columnname:columnvalue}) that need to be updated.
      *
      */
-    public async updateSPItem(id: number, item: object) {
-        const options: ISPHttpClientOptions = {
-          body: JSON.stringify(item),
-          headers: {
-            accept: 'application/json',
-            'content-type': 'application/json',
-            'X-HTTP-Method': 'MERGE',
-            'IF-MATCH': '*',
-          },
-        };
-        const response: SPHttpClientResponse = await this.spContext.spHttpClient.post(
-          `${this.siteURL}/_api/web/lists/GetByTitle('${this.listname}')/Items(${id})`,
-          SPHttpClient.configurations.v1,
-          options,
-        );
-    
-        if (response.ok) {
-          console.log(`Update Succeed for item${id}`);
-        } else {
-          alert(await response.text());
-        }
+    public async updateSPItem(id: number, item: any) {
+      // If the update one is the same as previous, just return to prevent duplicate call
+      if(this.previousUpdateId === id && this.previousUpdateItem?.description === item.description){
+        return;
+      }
+      this.previousUpdateId = id;
+      this.previousUpdateItem = item;
+      const options: ISPHttpClientOptions = {
+        body: JSON.stringify(item),
+        headers: {
+          accept: 'application/json',
+          'content-type': 'application/json',
+          'X-HTTP-Method': 'MERGE',
+          'IF-MATCH': '*',
+        },
+      };
+      const response: SPHttpClientResponse = await this.spContext.spHttpClient.post(
+        `${this.siteURL}/_api/web/lists/GetByTitle('${this.listname}')/Items(${id})`,
+        SPHttpClient.configurations.v1,
+        options,
+      );
+  
+      if (response.ok) {
+        console.log(`Update Succeed for item${id}`);
+      } else {
+        SharePointListManager.processResponseError(response);
+      }
     }
 
     /**
@@ -94,7 +112,7 @@ export class SharePointListManager{
         if (response.ok) {
           console.log(`Insertion Succeed for item:${description}`);
         } else {
-          alert(await response.text());
+          SharePointListManager.processResponseError(response);
         }
     }
 
@@ -122,7 +140,7 @@ export class SharePointListManager{
         if (response.ok) {
           console.log(`Deletion Succeed for item${id}`);
         } else {
-          alert(await response.text());
+          SharePointListManager.processResponseError(response);
         }
       }
 }
