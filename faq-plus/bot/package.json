@@ -1,20 +1,21 @@
 {
-    "name": "echobot",
+    "name": "faqplus",
     "version": "1.0.0",
-    "description": "Bot Builder v4 echo bot sample",
+    "description": "TeamsFx FAQ Plus sample",
     "author": "Microsoft",
     "license": "MIT",
     "main": "./lib/index.js",
     "scripts": {
-        "build": "tsc --build && shx cp -r ./public ./lib/",
+        "build": "tsc --build",
         "start": "node ./lib/index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "watch": "nodemon --watch ./src -e ts --exec \"npm run start\"",
-        "lint": "eslint  **/*.ts --fix"
+        "lint": "eslint **/*.ts",
+        "lint:fix": "eslint **/*.ts --fix"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com"
+        "url": "https://github.com/OfficeDev/TeamsFx-Samples"
     },
     "dependencies": {
         "@azure/cognitiveservices-qnamaker": "^3.2.0",
@@ -40,7 +41,6 @@
         "ngrok": "^3.4.0",
         "nodemon": "^2.0.7",
         "prettier": "^2.3.0",
-        "shx": "^0.3.3",
         "ts-node": "~9.1.1",
         "typescript": "^3.9.9"
     }

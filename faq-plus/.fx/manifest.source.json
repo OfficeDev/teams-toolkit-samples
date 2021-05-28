@@ -1,9 +1,9 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.7",
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.9",
     "version": "1.0.0",
     "id": "{appid}",
-    "packageName": "com.microsoft.teams.extension",
+    "packageName": "com.microsoft.teams.faqplus",
     "developer": {
         "name": "Teams App, Inc.",
         "websiteUrl": "{baseUrl}",
@@ -15,12 +15,11 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "FaqPlus",
-        "full": "This field is not used"
+        "short": "FaqPlus"
     },
     "description": {
-        "short": "Short description of FaqPlus.",
-        "full": "Full description of FaqPlus."
+        "short": "A friendly FAQ bot that answers questions and connects you to experts.",
+        "full": "A friendly question and answer bot that answers commonly asked questions. If it can't answer, it will put you in touch with an expert as soon as they are available."
     },
     "accentColor": "#FFFFFF",
     "bots": [
@@ -28,30 +27,10 @@
             "botId": "{botId}",
             "scopes": [
                 "personal",
-                "team",
-                "groupchat"
+                "team"
             ],
             "supportsFiles": false,
-            "isNotificationOnly": false,
-            "commandLists": [
-                {
-                    "scopes": [
-                        "personal",
-                        "team",
-                        "groupchat"
-                    ],
-                    "commands": [
-                        {
-                            "title": "intro",
-                            "description": "Send introduction card of this Bot"
-                        },
-                        {
-                            "title": "show",
-                            "description": "Show user profile by calling Microsoft Graph API with SSO"
-                        }
-                    ]
-                }
-            ]
+            "isNotificationOnly": false
         }
     ],
     "composeExtensions": [],
