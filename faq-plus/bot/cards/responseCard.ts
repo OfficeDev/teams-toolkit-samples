@@ -21,6 +21,7 @@ import {
 import { ActionTypes, CardFactory, Attachment } from "botbuilder";
 import { QnADTO, QnASearchResult } from "@azure/cognitiveservices-qnamaker-runtime/esm/models";
 import { ResponseCardPayload } from "../models/responseCardPayload";
+import { Constants, TextString } from "../common/constants";
 
 /**
  * Construct the response card - when user asks a question to the QnA Maker through the bot.
@@ -127,12 +128,12 @@ function buildResponseCardBody(
 
 function buildListOfActions(userQuestion: string, answer: string): Action[] {
   const action = new SubmitAction();
-  action.title = "Ask an expert";
+  action.title = TextString.AskAnExpertButtonText;
   action.data = {
     msteams: {
       type: ActionTypes.MessageBack,
-      displayText: "Ask an expert",
-      text: "Ask an expert",
+      displayText: TextString.AskAnExpertDisplayText,
+      text: Constants.AskAnExpert,
     },
     UserQuestion: userQuestion,
     KnowledgeBaseAnswer: answer,
