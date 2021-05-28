@@ -9,7 +9,8 @@
         "build": "tsc --build",
         "start": "node ./lib/index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "watch": "nodemon --watch ./src -e ts --exec \"npm run start\""
+        "watch": "nodemon --watch ./src -e ts --exec \"npm run start\"",
+        "lint": "eslint  **/*.ts --fix"
     },
     "repository": {
         "type": "git",
@@ -28,9 +29,18 @@
     },
     "devDependencies": {
         "@types/restify": "8.4.2",
+        "@typescript-eslint/eslint-plugin": "^4.25.0",
+        "@typescript-eslint/parser": "^4.25.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.27.0",
+        "eslint-config-google": "^0.14.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.23.3",
+        "eslint-plugin-prettier": "^3.4.0",
         "ngrok": "^3.4.0",
         "nodemon": "^2.0.7",
+        "prettier": "^2.3.0",
         "ts-node": "~9.1.1",
-        "typescript": "~3.9.2"
+        "typescript": "^3.9.9"
     }
 }

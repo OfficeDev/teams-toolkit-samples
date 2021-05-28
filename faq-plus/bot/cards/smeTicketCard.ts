@@ -34,12 +34,9 @@ import { ChangeTicketStatusPayload } from "../models/changeTicketStatusPayload";
  * when changing the ticket status and notification card when bot posts user question to SME channel.
  * @param ticket The ticket model with the latest details.
  * @param localTimestamp Local timestamp of the user activity.
- * @returns Returns the attachment that will be sent in a message.
+ * @return Returns the attachment that will be sent in a message.
  */
-export function getSmeTicketCard(
-  ticket: TicketEntity,
-  localTimestamp?: Date
-): Attachment {
+export function getSmeTicketCard(ticket: TicketEntity, localTimestamp?: Date): Attachment {
   const card = new AdaptiveCard();
   card.version = new Version(1, 0);
 
@@ -56,10 +53,7 @@ export function getSmeTicketCard(
   return CardFactory.adaptiveCard(card);
 }
 
-function buildCardBody(
-  ticket: TicketEntity,
-  localTimestamp?: Date
-): CardElement[] {
+function buildCardBody(ticket: TicketEntity, localTimestamp?: Date): CardElement[] {
   const cardBodyToConstruct: CardElement[] = [];
 
   const titleTextBlock = new TextBlock(ticket.Title);
@@ -68,9 +62,7 @@ function buildCardBody(
   titleTextBlock.wrap = true;
   cardBodyToConstruct.push(titleTextBlock);
 
-  const subHeaderBlock = new TextBlock(
-    ticket.RequesterName + " is requesting support."
-  );
+  const subHeaderBlock = new TextBlock(ticket.RequesterName + " is requesting support.");
   subHeaderBlock.wrap = true;
   cardBodyToConstruct.push(subHeaderBlock);
 
@@ -82,21 +74,17 @@ function buildCardBody(
 }
 
 function buildFactSet(ticket: TicketEntity, localTimestamp?: Date): Fact[] {
-  let factList: Fact[] = [];
+  const factList: Fact[] = [];
 
   if (ticket.Description) {
     factList.push(new Fact(TextString.DescriptionFact, ticket.Description));
   }
 
   if (ticket.UserQuestion) {
-    factList.push(
-      new Fact(TextString.QuestionAskedFactTitle, ticket.UserQuestion)
-    );
+    factList.push(new Fact(TextString.QuestionAskedFactTitle, ticket.UserQuestion));
   }
 
-  factList.push(
-    new Fact(TextString.StatusFactTitle, getTicketDisplayStatusForSme(ticket))
-  );
+  factList.push(new Fact(TextString.StatusFactTitle, getTicketDisplayStatusForSme(ticket)));
 
   if (ticket.Status == TicketState.Closed) {
     factList.push(
@@ -111,14 +99,11 @@ function buildFactSet(ticket: TicketEntity, localTimestamp?: Date): Fact[] {
 }
 
 function buildListOfActions(ticket: TicketEntity): Action[] {
-  let actionList: Action[] = [];
+  const actionList: Action[] = [];
 
   const chatWithUserAction = new OpenUrlAction();
-  chatWithUserAction.title =
-    TextString.ChatTextButton + ticket.RequesterGivenName;
-  const encodedMessage = encodeURIComponent(
-    TextString.SMEUserChatMessage + ticket.Title
-  );
+  chatWithUserAction.title = TextString.ChatTextButton + ticket.RequesterGivenName;
+  const encodedMessage = encodeURIComponent(TextString.SMEUserChatMessage + ticket.Title);
   chatWithUserAction.url = `https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(
     ticket.RequesterUserPrincipalName
   )}&message=${encodedMessage}`;
@@ -141,10 +126,7 @@ function buildListOfActions(ticket: TicketEntity): Action[] {
     viewArticleAction.title = TextString.ViewArticleButtonText;
     viewArticleAction.card.version = new Version(1, 0);
     const answerTextBlock = new TextBlock(
-      truncateStringIfLonger(
-        ticket.KnowledgeBaseAnswer,
-        KnowledgeBaseAnswerMaxDisplayLength
-      )
+      truncateStringIfLonger(ticket.KnowledgeBaseAnswer, KnowledgeBaseAnswerMaxDisplayLength)
     );
     answerTextBlock.wrap = true;
     viewArticleAction.card.addItem(answerTextBlock);
@@ -155,7 +137,7 @@ function buildListOfActions(ticket: TicketEntity): Action[] {
 }
 
 function getAdaptiveChoiceSetInput(ticket: TicketEntity): ChoiceSetInput {
-  let choiceSet = new ChoiceSetInput();
+  const choiceSet = new ChoiceSetInput();
   choiceSet.id = "action";
   choiceSet.isMultiSelect = false;
   choiceSet.style = "compact";
@@ -171,20 +153,14 @@ function getAdaptiveChoiceSetInput(ticket: TicketEntity): ChoiceSetInput {
         )
       );
       choices.push(
-        new Choice(
-          TextString.CloseActionChoiceTitle,
-          ChangeTicketStatusPayload.closeAction
-        )
+        new Choice(TextString.CloseActionChoiceTitle, ChangeTicketStatusPayload.closeAction)
       );
       choiceSet.choices = choices;
     } else {
       choiceSet.defaultValue = ChangeTicketStatusPayload.closeAction;
       const choices: Choice[] = [];
       choices.push(
-        new Choice(
-          TextString.UnassignActionChoiceTitle,
-          ChangeTicketStatusPayload.reopenAction
-        )
+        new Choice(TextString.UnassignActionChoiceTitle, ChangeTicketStatusPayload.reopenAction)
       );
       choices.push(
         new Choice(
@@ -193,10 +169,7 @@ function getAdaptiveChoiceSetInput(ticket: TicketEntity): ChoiceSetInput {
         )
       );
       choices.push(
-        new Choice(
-          TextString.CloseActionChoiceTitle,
-          ChangeTicketStatusPayload.closeAction
-        )
+        new Choice(TextString.CloseActionChoiceTitle, ChangeTicketStatusPayload.closeAction)
       );
       choiceSet.choices = choices;
     }
@@ -204,10 +177,7 @@ function getAdaptiveChoiceSetInput(ticket: TicketEntity): ChoiceSetInput {
     choiceSet.defaultValue = ChangeTicketStatusPayload.reopenAction;
     const choices: Choice[] = [];
     choices.push(
-      new Choice(
-        TextString.ReopenActionChoiceTitle,
-        ChangeTicketStatusPayload.reopenAction
-      )
+      new Choice(TextString.ReopenActionChoiceTitle, ChangeTicketStatusPayload.reopenAction)
     );
     choices.push(
       new Choice(

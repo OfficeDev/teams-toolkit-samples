@@ -29,7 +29,7 @@ import { TicketState } from "../models/ticketState";
  * @param ticket The ticket to create a card from.
  * @param message The status message to add to the card.
  * @param activityLocalTimestamp Local time stamp of user activity.
- * @returns An adaptive card as an attachment.
+ * @return An adaptive card as an attachment.
  */
 export function getUserNotificationCard(
   ticket: TicketEntity,
@@ -70,19 +70,11 @@ function buildCardBody(
   return cardBodyToConstruct;
 }
 
-function buildFactSet(
-  ticket: TicketEntity,
-  activityLocalTimestamp?: Date
-): Fact[] {
-  let factList: Fact[] = [];
+function buildFactSet(ticket: TicketEntity, activityLocalTimestamp?: Date): Fact[] {
+  const factList: Fact[] = [];
+  factList.push(new Fact(TextString.StatusFactTitle, getUserTicketDisplayStatus(ticket)));
   factList.push(
-    new Fact(TextString.StatusFactTitle, getUserTicketDisplayStatus(ticket))
-  );
-  factList.push(
-    new Fact(
-      TextString.TitleFact,
-      truncateStringIfLonger(ticket.Title, TitleMaxDisplayLength)
-    )
+    new Fact(TextString.TitleFact, truncateStringIfLonger(ticket.Title, TitleMaxDisplayLength))
   );
 
   if (ticket.Description) {

@@ -3,7 +3,6 @@
 
 import {
   TeamsActivityHandler,
-  ActionTypes,
   CardFactory,
   TurnContext,
   ActivityTypes,
@@ -17,10 +16,7 @@ import {
   ChannelInfo,
   BotFrameworkAdapter,
 } from "botbuilder";
-import {
-  QnADTO,
-  QnASearchResultList,
-} from "@azure/cognitiveservices-qnamaker-runtime/esm/models";
+import { QnADTO, QnASearchResultList } from "@azure/cognitiveservices-qnamaker-runtime/esm/models";
 import { ResponseCardPayload } from "./models/responseCardPayload";
 import { AnswerModel } from "./models/answerModel";
 import { QnaServiceProvider } from "./providers/qnaServiceProvider";
@@ -38,7 +34,12 @@ import { ConfigurationEntityTypes } from "./models/configurationEntityTypes";
 import { getUserNotificationCard } from "./cards/userNotificationCard";
 import { ChangeTicketStatusPayload } from "./models/changeTicketStatusPayload";
 import { TicketState } from "./models/ticketState";
-import { ResourceResponse, ActivityEx, ConversationAccount, ChannelAccount } from "botframework-schema";
+import {
+  ResourceResponse,
+  ActivityEx,
+  ConversationAccount,
+  ChannelAccount,
+} from "botframework-schema";
 
 export class TeamsBot extends TeamsActivityHandler {
   private readonly conversationTypePersonal: string = "personal";
@@ -109,7 +110,9 @@ export class TeamsBot extends TeamsActivityHandler {
     try {
       const activity = turnContext.activity;
       console.log("Received conversationUpdate activity");
-      console.log(`conversationType: ${activity.conversation.conversationType}, membersAdded: ${activity.membersAdded?.length}, membersRemoved: ${activity.membersRemoved?.length}`);
+      console.log(
+        `conversationType: ${activity.conversation.conversationType}, membersAdded: ${activity.membersAdded?.length}, membersRemoved: ${activity.membersRemoved?.length}`
+      );
 
       if (activity?.membersAdded?.length === 0) {
         console.log("Ignoring conversationUpdate that was not a membersAdded event");
@@ -122,11 +125,13 @@ export class TeamsBot extends TeamsActivityHandler {
           return;
 
         default:
-          console.log(`Ignoring event from conversation type ${activity.conversation.conversationType}`);
+          console.log(
+            `Ignoring event from conversation type ${activity.conversation.conversationType}`
+          );
           return;
       }
     } catch (error) {
-      console.log(`Error processing conversationUpdate: ${error.message}`)
+      console.log(`Error processing conversationUpdate: ${error.message}`);
     }
   }
 
@@ -135,7 +140,10 @@ export class TeamsBot extends TeamsActivityHandler {
    * @param membersAdded Channel account information needed to route a message.
    * @param turnContext Context object containing information cached for a single turn of conversation with a user.
    */
-  private async onMembersAddedToPersonalChat(membersAdded: ChannelAccount[], turnContext: TurnContext) {
+  private async onMembersAddedToPersonalChat(
+    membersAdded: ChannelAccount[],
+    turnContext: TurnContext
+  ) {
     const activity = turnContext.activity;
     if (membersAdded.some((channelAccount) => channelAccount.id === activity.recipient.id)) {
       console.log(`Bot added to 1:1 chat ${activity.conversation.id}`);
@@ -155,7 +163,7 @@ export class TeamsBot extends TeamsActivityHandler {
     message: Activity,
     turnContext: TurnContext
   ): Promise<void> {
-    let text: string = "";
+    let text = "";
 
     if (message.replyToId && message.value != null) {
       text = this.ChangeStatus;
@@ -172,9 +180,7 @@ export class TeamsBot extends TeamsActivityHandler {
 
         default:
           console.log("Unrecognized input in channel");
-          await turnContext.sendActivity(
-            "todo: Unrecognized input in channel."
-          );
+          await turnContext.sendActivity("todo: Unrecognized input in channel.");
           break;
       }
     } catch (error) {
@@ -203,9 +209,7 @@ export class TeamsBot extends TeamsActivityHandler {
     switch (text) {
       case Constants.AskAnExpert:
         console.log("Sending user ask an expert card");
-        await turnContext.sendActivity(
-          MessageFactory.attachment(getAskAnExpertCard())
-        );
+        await turnContext.sendActivity(MessageFactory.attachment(getAskAnExpertCard()));
         break;
 
       default:
@@ -231,11 +235,10 @@ export class TeamsBot extends TeamsActivityHandler {
     switch (message?.text) {
       case Constants.AskAnExpert:
         console.log("Sending user ask an expert card (from answer)");
-        let askAnExpertCardPayload: AskAnExpertCardPayload = message.value as AskAnExpertCardPayload;
-        askAnExpertCardPayload.Description =
-          askAnExpertCardPayload.UserQuestion;
-        askAnExpertCardPayload.KnowledgeBaseAnswer =
-          askAnExpertCardPayload.KnowledgeBaseAnswer;
+        const askAnExpertCardPayload: AskAnExpertCardPayload =
+          message.value as AskAnExpertCardPayload;
+        askAnExpertCardPayload.Description = askAnExpertCardPayload.UserQuestion;
+        askAnExpertCardPayload.KnowledgeBaseAnswer = askAnExpertCardPayload.KnowledgeBaseAnswer;
         await turnContext.sendActivity(
           MessageFactory.attachment(getAskAnExpertCard(askAnExpertCardPayload))
         );
@@ -243,11 +246,7 @@ export class TeamsBot extends TeamsActivityHandler {
 
       case Constants.AskAnExpertSubmitText:
         console.log("Received question for expert");
-        newTicket = await askAnExpertSubmitText(
-          message,
-          turnContext,
-          this.ticketsProvider
-        );
+        newTicket = await askAnExpertSubmitText(message, turnContext, this.ticketsProvider);
         if (newTicket) {
           smeTeamCard = getSmeTicketCard(newTicket);
           userCard = getUserNotificationCard(
@@ -263,7 +262,7 @@ export class TeamsBot extends TeamsActivityHandler {
         );
 
         if (smeTeamCard) {
-          let resourceResponse = await this.sendCardToTeamAsync(
+          const resourceResponse = await this.sendCardToTeamAsync(
             turnContext,
             smeTeamCard,
             expertTeamId
@@ -285,7 +284,7 @@ export class TeamsBot extends TeamsActivityHandler {
         break;
 
       default:
-        let payload = message.value as ResponseCardPayload;
+        const payload = message.value as ResponseCardPayload;
         if (payload.IsPrompt) {
           console.log("Sending input to QnAMaker for prompt");
           await this.getQuestionAnswerReply(turnContext, message);
@@ -309,7 +308,7 @@ export class TeamsBot extends TeamsActivityHandler {
     console.log(`Received submit: ticketId=${payload.ticketId} action=${payload.action}`);
 
     // Get the ticket from the data store.
-    let ticket = await this.ticketsProvider.getTicket(payload.ticketId);
+    const ticket = await this.ticketsProvider.getTicket(payload.ticketId);
     if (!ticket) {
       console.log(`Ticket ${payload.ticketId} was not found in the data store`);
       await turnContext.sendActivity(`Ticket ${payload.ticketId} was not found in the data store`);
@@ -335,7 +334,13 @@ export class TeamsBot extends TeamsActivityHandler {
         // Generate notification
         smeNotification = `This request is now unassigned. Last updated by ${message.from.name}.`;
 
-        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.ReopenedTicketUserNotification, message.localTimestamp));
+        userNotification = MessageFactory.attachment(
+          getUserNotificationCard(
+            ticket,
+            TextString.ReopenedTicketUserNotification,
+            message.localTimestamp
+          )
+        );
         userNotification.summary = TextString.ReopenedTicketUserNotification;
         break;
 
@@ -347,7 +352,13 @@ export class TeamsBot extends TeamsActivityHandler {
         // Generate notification
         smeNotification = `This request is now closed. Closed by ${ticket.LastModifiedByName}.`;
 
-        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.ClosedTicketUserNotification, message.localTimestamp));
+        userNotification = MessageFactory.attachment(
+          getUserNotificationCard(
+            ticket,
+            TextString.ClosedTicketUserNotification,
+            message.localTimestamp
+          )
+        );
         userNotification.summary = TextString.ClosedTicketUserNotification;
         break;
 
@@ -362,7 +373,13 @@ export class TeamsBot extends TeamsActivityHandler {
         // Generate notification
         smeNotification = `This request is now assigned. Assigned to ${ticket.AssignedToName}.`;
 
-        userNotification = MessageFactory.attachment(getUserNotificationCard(ticket, TextString.AssignedTicketUserNotification, message.localTimestamp));
+        userNotification = MessageFactory.attachment(
+          getUserNotificationCard(
+            ticket,
+            TextString.AssignedTicketUserNotification,
+            message.localTimestamp
+          )
+        );
         userNotification.summary = TextString.AssignedTicketUserNotification;
         break;
 
@@ -372,34 +389,44 @@ export class TeamsBot extends TeamsActivityHandler {
     }
 
     await this.ticketsProvider.upsertTicket(ticket);
-    console.log(`Ticket ${ticket.TicketId} updated to status (${ticket.Status}, ${ticket.AssignedToObjectId}) in store`);
+    console.log(
+      `Ticket ${ticket.TicketId} updated to status (${ticket.Status}, ${ticket.AssignedToObjectId}) in store`
+    );
 
     // Update the card in the SME team.
-    let updateCardActivity = ActivityEx.createMessageActivity();
+    const updateCardActivity = ActivityEx.createMessageActivity();
     updateCardActivity.id = ticket.SmeCardActivityId;
     updateCardActivity.conversation = {
-      id: ticket.SmeThreadConversationId
+      id: ticket.SmeThreadConversationId,
     } as ConversationAccount;
-    updateCardActivity.attachments = [
-      getSmeTicketCard(ticket, message.localTimestamp)
-    ];
+    updateCardActivity.attachments = [getSmeTicketCard(ticket, message.localTimestamp)];
 
-    const updateResponse = await turnContext.updateActivity(updateCardActivity) as ResourceResponse;
-    console.log(`Card for ticket ${ticket.TicketId} updated to status (${ticket.Status}, ${ticket.AssignedToObjectId}), activityId = ${updateResponse.id}`);
+    const updateResponse = (await turnContext.updateActivity(
+      updateCardActivity
+    )) as ResourceResponse;
+    console.log(
+      `Card for ticket ${ticket.TicketId} updated to status (${ticket.Status}, ${ticket.AssignedToObjectId}), activityId = ${updateResponse.id}`
+    );
 
     // Post update to user and SME team thread.
     if (smeNotification) {
       const smeResponse = await turnContext.sendActivity(smeNotification);
-      console.log(`SME team notified of update to ticket ${ticket.TicketId}, activityId = ${smeResponse.id}`);
+      console.log(
+        `SME team notified of update to ticket ${ticket.TicketId}, activityId = ${smeResponse.id}`
+      );
     }
 
     if (userNotification) {
       userNotification.conversation = {
-        id: ticket.RequesterConversationId
+        id: ticket.RequesterConversationId,
       } as ConversationAccount;
       userNotification.serviceUrl = turnContext.activity.serviceUrl;
-      const userResponse = await turnContext.adapter.sendActivities(turnContext, [userNotification]);
-      console.log(`User notified of update to ticket ${ticket.TicketId}, activityId = ${userResponse[0].id}`);
+      const userResponse = await turnContext.adapter.sendActivities(turnContext, [
+        userNotification,
+      ]);
+      console.log(
+        `User notified of update to ticket ${ticket.TicketId}, activityId = ${userResponse[0].id}`
+      );
     }
   }
 
@@ -408,7 +435,7 @@ export class TeamsBot extends TeamsActivityHandler {
    * @param turnContext Context object containing information cached for a single turn of conversation with a user.
    * @param cardToSend The card to send.
    * @param teamId Team id to which the message is being sent.
-   * @returns conversation resource response from sending the attachment
+   * @return conversation resource response from sending the attachment
    */
   private async sendCardToTeamAsync(
     turnContext: TurnContext,
@@ -437,33 +464,26 @@ export class TeamsBot extends TeamsActivityHandler {
 
     return new Promise<ConversationResourceResponse>(async (resolve) => {
       await (turnContext.adapter as BotFrameworkAdapter)
-        .createConversation(
-          conversationReference,
-          conversationParameter,
-          async (turnContext) => {
-            let activity = turnContext.activity;
-            let activityId = activity.id;
-            if (!activityId) {
-              // If bot sdk does not return activity id, try to extract activity id from conversation id
-              let messageIdMatches = activity.conversation.id.match(/messageid=(\d+)$/);
-              if (messageIdMatches.length === 2) {
-                activityId = messageIdMatches[1];
-              }
+        .createConversation(conversationReference, conversationParameter, async (turnContext) => {
+          const activity = turnContext.activity;
+          let activityId = activity.id;
+          if (!activityId) {
+            // If bot sdk does not return activity id, try to extract activity id from conversation id
+            const messageIdMatches = activity.conversation.id.match(/messageid=(\d+)$/);
+            if (messageIdMatches.length === 2) {
+              activityId = messageIdMatches[1];
             }
-            const conversationResourceResponse: ConversationResourceResponse = {
-              id: activity.conversation.id,
-              activityId: activityId,
-              serviceUrl: activity.serviceUrl,
-            };
-            resolve(conversationResourceResponse);
           }
-        )
+          const conversationResourceResponse: ConversationResourceResponse = {
+            id: activity.conversation.id,
+            activityId: activityId,
+            serviceUrl: activity.serviceUrl,
+          };
+          resolve(conversationResourceResponse);
+        })
         .catch((e) => {
           console.log(
-            "Fail to create conversation when sending card to team id :" +
-              teamId +
-              ". Error: " +
-              e
+            "Fail to create conversation when sending card to team id :" + teamId + ". Error: " + e
           );
         });
     });
@@ -474,14 +494,10 @@ export class TeamsBot extends TeamsActivityHandler {
    * @param turnContext Context object containing information cached for a single turn of conversation with a user.
    * @param message A message in a conversation.
    */
-  private async getQuestionAnswerReply(
-    turnContext: TurnContext,
-    message: Activity
-  ): Promise<void> {
+  private async getQuestionAnswerReply(turnContext: TurnContext, message: Activity): Promise<void> {
     const text = message.text?.toLowerCase()?.trim() ?? "";
 
     try {
-      let queryResult: QnASearchResultList;
       let payload: ResponseCardPayload;
 
       if (message?.replyToId && message?.value) {
@@ -493,7 +509,7 @@ export class TeamsBot extends TeamsActivityHandler {
         previousQuestion = payload.PreviousQuestions[0];
       }
 
-      queryResult = await this.qnaServiceProvider.gGenerateAnswer(
+      const queryResult: QnASearchResultList = await this.qnaServiceProvider.gGenerateAnswer(
         text,
         false,
         previousQuestion?.id.toString(),
@@ -514,18 +530,14 @@ export class TeamsBot extends TeamsActivityHandler {
         );
       } else {
         console.log("Answer not found. Sending user ask an expert card");
-        await turnContext.sendActivity(
-          MessageFactory.attachment(getUnrecognizedInputCard(text))
-        );
+        await turnContext.sendActivity(MessageFactory.attachment(getUnrecognizedInputCard(text)));
       }
     } catch (error) {
       console.log(error);
     }
   }
 
-  private async sendTypingIndicatorAsync(
-    turnContext: TurnContext
-  ): Promise<void> {
+  private async sendTypingIndicatorAsync(turnContext: TurnContext): Promise<void> {
     try {
       const typingActivity = this.createReply(turnContext.activity);
       typingActivity.type = ActivityTypes.Typing;
@@ -535,11 +547,7 @@ export class TeamsBot extends TeamsActivityHandler {
     }
   }
 
-  private createReply(
-    source: Activity,
-    text?: string,
-    locale?: string
-  ): Activity {
+  private createReply(source: Activity, text?: string, locale?: string): Activity {
     const reply: string = text || "";
 
     return {
