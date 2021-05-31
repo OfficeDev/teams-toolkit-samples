@@ -6,5 +6,4 @@ export interface ProfileProps {
   userName: string;
   userEmail: string;
   userPhoneNumber: string;
-  }
-  
+}
