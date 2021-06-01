@@ -55,7 +55,7 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
         });
       }
       else {
-        alert(await response.text());
+        SharePointListManager.processResponseError(response);
       }
     } else {
       alert('Could not get client');
@@ -124,8 +124,8 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
             onChange={(e, v) => this.handleInputChange(index, "description", v)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
-                this.onUpdateItem(item.Id, this.state.items[index].description);
                 (e.target as HTMLInputElement).blur();
+                this.onUpdateItem(item.Id, this.state.items[index].description);
               }
             }}
             onBlur={() => this.onUpdateItem(item.Id, this.state.items[index].description)}

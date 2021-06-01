@@ -1,0 +1,57 @@
+{
+	"name": "share-now",
+	"version": "1.0.0",
+	"private": true,
+	"dependencies": {
+		"@fluentui/react": "^7.115.4",
+		"@fluentui/react-icons-northstar": "^0.49.0",
+		"@fluentui/react-northstar": "^0.49.0",
+		"@microsoft/teams-js": "^1.10.0",
+		"@microsoft/teamsfx": "^0.1.0",
+		"@uifabric/icons": "^7.5.23",
+		"axios": "^0.21.1",
+		"bootstrap": "5.0.1",
+		"i18next": "^20.2.4",
+		"i18next-xhr-backend": "^3.2.2",
+		"react": "^17.0.2",
+		"react-bootstrap": "^1.6.0",
+		"react-dom": "^17.0.2",
+		"react-i18next": "^11.8.15",
+		"react-infinite-scroller": "^1.2.4",
+		"react-router-dom": "^5.2.0",
+		"react-scripts": "^4.0.3",
+		"tslib": "^2.0.0",
+		"typescript": "^4.2.4"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@testing-library/jest-dom": "^4.2.4",
+		"@testing-library/react": "^9.4.0",
+		"@testing-library/user-event": "^7.2.1",
+		"@types/jest": "^24.0.24",
+		"@types/node": "^12.12.21",
+		"@types/react": "^16.9.17",
+		"@types/react-dom": "^16.9.4",
+		"@types/react-router-dom": "^4.3.3"
+	}
+}

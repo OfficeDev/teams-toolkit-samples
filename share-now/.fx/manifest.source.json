@@ -1,0 +1,100 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.9",
+    "version": "1.0.0",
+    "id": "{appid}",
+    "packageName": "com.microsoft.teams.extension",
+    "developer": {
+        "name": "Teams App, Inc.",
+        "websiteUrl": "{baseUrl}",
+        "privacyUrl": "{baseUrl}/index.html#/privacy",
+        "termsOfUseUrl": "{baseUrl}/index.html#/termsofuse"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "ShareNow",
+        "full": "ShareNow"
+    },
+    "description": {
+        "short": "Encourage co-workers to knowledge-based sharing of posts, videos, or topics.",
+        "full": "Encourage and introduce your co-workers to a widespread knowledge-based sharing of posts, videos, or topics with a bite-sized information on how it influenced them and learn together in Teams."
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [],
+    "composeExtensions": [
+        {
+            "botId": "{botId}",
+            "commands": [
+                {
+                    "id": "allItems",
+                    "title": "All",
+                    "description": "Show all created posts.",
+                    "context": [
+                        "compose",
+                        "commandBox"
+                    ],
+                    "type": "query",
+                    "parameters": [
+                        {
+                            "name": "searchText",
+                            "title": "allItems",
+                            "description": "Enter a keyword"
+                        }
+                    ],
+                    "initialRun": true
+                },
+                {
+                    "id": "postedByMe",
+                    "title": "Posted by me",
+                    "description": "Show all posts created by me.",
+                    "context": [
+                        "compose",
+                        "commandBox"
+                    ],
+                    "type": "query",
+                    "parameters": [
+                        {
+                            "name": "searchText",
+                            "title": "postedByMe",
+                            "description": "Enter a keyword"
+                        }
+                    ],
+                    "initialRun": true
+                }
+            ],
+            "messageHandlers": [
+                {
+                    "type": "link",
+                    "value": {
+                        "domains": [
+                            "*.botframework.com"
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "staticTabs": [
+        {
+            "entityId": "index",
+            "name": "Personal Tab",
+            "contentUrl": "{baseUrl}/index.html#/tab",
+            "websiteUrl": "{baseUrl}/index.html#/tab",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [],
+    "webApplicationInfo": {
+        "id": "{appClientId}",
+        "resource": "{webApplicationInfoResource}"
+    }
+}

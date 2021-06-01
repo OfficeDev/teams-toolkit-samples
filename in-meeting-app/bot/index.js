@@ -6,7 +6,12 @@ const fetch = require('node-fetch');
 const express = require('express');
 const jwt_decode = require('jwt-decode');
 const app = express();
-require('dotenv').config()
+if (process.env.NODE_ENV === 'development.local') {
+    require('dotenv').config({ path: './.env.development.local' });
+}
+else {
+    require('dotenv').config()
+}
 
 // Import BotFramework modules 
 const { MessageFactory, TeamsInfo, BotFrameworkAdapter } = require('botbuilder');
@@ -23,7 +28,7 @@ const graphScopes = 'https://graph.microsoft.com/' + process.env.GRAPH_SCOPES;
 const dialogWidth = 280;
 const dialogHeight = 180;
 const dialogTitle = "Test in-meeting dialog"
-const dialogUrl = process.env.REACT_APP_BASE_URL + "/dialog"; // The view for your in-meeting dialog ( see Dialog.js in tabs/src/components )
+const dialogUrl = process.env.TEAMSFX_ENDPOINT + "/dialog"; //The view for your in-meeting dialog ( see Dialog.js in tabs/src/components )
 
 const externalResourceUrl = `https://teams.microsoft.com/l/bubble/${process.env.TEAMS_APP_ID}?url=${dialogUrl}&height=${dialogHeight}&width=${dialogWidth}&title=${dialogTitle}&completionBotId=${process.env.BOT_ID}`;
 
@@ -79,8 +84,8 @@ app.get('/getGraphAccessToken', async (req, res) => {
      */
     let accessTokenQueryParams = {
         grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-        client_id: process.env.CLIENT_ID,
-        client_secret: process.env.CLIENT_SECRET,
+        client_id: process.env.M365_CLIENT_ID,
+        client_secret: process.env.M365_CLIENT_SECRET,
         assertion: req.query.ssoToken,
         scope: graphScopes,
         requested_token_use: "on_behalf_of",

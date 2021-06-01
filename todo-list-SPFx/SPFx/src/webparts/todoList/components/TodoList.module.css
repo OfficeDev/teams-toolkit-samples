@@ -55,7 +55,6 @@
 
 span {
   display: inline-block;
-  margin: 5px;
 }
 
 .is-completed-input {
@@ -64,6 +63,7 @@ span {
 
 .is-completed-input>label>div {
   border-radius: 50%;
+  margin-top: 5px;
 }
 
 .description {
