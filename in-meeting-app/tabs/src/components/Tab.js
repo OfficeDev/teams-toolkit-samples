@@ -236,7 +236,7 @@ class Tab extends React.Component {
 
     let content;
     if (this.state.error) {
-      content = <h1>ERROR: Please ensure pop-ups are allowed for this website and retry</h1>
+      content = <h1>An error has occurred. This application may no longer respond until reloaded.</h1>
     } else {
       content =
         <div>
