@@ -1,0 +1,120 @@
+﻿@-webkit-keyframes translate-small {
+    to {
+        -webkit-transform: translate3d(0, -144rem, 0);
+        transform: translate3d(0, -144rem, 0);
+    }
+}
+
+@keyframes translate-small {
+    to {
+        -webkit-transform: translate3d(0, -144rem, 0);
+        transform: translate3d(0, -144rem, 0);
+    }
+}
+
+@-webkit-keyframes translate-medium {
+    to {
+        -webkit-transform: translate3d(0, -216rem, 0);
+        transform: translate3d(0, -216rem, 0);
+    }
+}
+
+@keyframes translate-medium {
+    to {
+        -webkit-transform: translate3d(0, -216rem, 0);
+        transform: translate3d(0, -216rem, 0);
+    }
+}
+
+@-webkit-keyframes translate-large {
+    to {
+        -webkit-transform: translate3d(0, -432rem, 0);
+        transform: translate3d(0, -432rem, 0);
+    }
+}
+
+@keyframes translate-large {
+    to {
+        -webkit-transform: translate3d(0, -432rem, 0);
+        transform: translate3d(0, -432rem, 0);
+    }
+}
+
+@-webkit-keyframes fade-spinner-in {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-spinner-in {
+    to {
+        opacity: 1;
+    }
+}
+
+busy-animation {
+    display: inline-block;
+}
+
+.ts-spinner-internal {
+    overflow: hidden;
+}
+
+.ts-spinner-internal.size-1x {
+    height: 2.4rem;
+    width: 2.4rem;
+    margin-top: 25%;
+}
+
+.ts-spinner-internal.size-1x .spinner-animate {
+    width: 2.4rem;
+    height: 146.4rem;
+    -webkit-animation: 2s steps(60) both infinite translate-small;
+    animation: 2s steps(60) both infinite translate-small;
+}
+
+.ts-spinner-internal.size-2x {
+    height: 3.6rem;
+    width: 3.6rem;
+    margin: auto;
+    margin-top: 25%;
+    opacity: 1;
+}
+
+.ts-spinner-internal.size-2x .spinner-animate {
+    width: 3.6rem;
+    height: 219.6rem;
+    -webkit-animation: 2s steps(60) both infinite translate-medium;
+    animation: 2s steps(60) both infinite translate-medium;
+}
+
+.ts-spinner-internal.size-3x {
+    height: 7.2rem;
+    width: 7.2rem;
+    margin-top: 25%;
+}
+
+.ts-spinner-internal.size-3x .spinner-animate {
+    width: 7.2rem;
+    height: 439.2rem;
+    -webkit-animation: 2s steps(60) both infinite translate-large;
+    animation: 2s steps(60) both infinite translate-large;
+}
+
+.ts-spinner-container {
+    overflow: hidden;
+    position: relative;
+}
+
+#spinner {
+    position: absolute;
+    background: #e9e9e9;
+    opacity: 0.7;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
