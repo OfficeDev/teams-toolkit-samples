@@ -11,11 +11,11 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 
 *	A user interacting with FAQ Plus through chat:
 
-![FAQ Plus in action (user view)](https://github.com/OfficeDev/microsoft-teams-faqplusplus-app/wiki/images/FAQPlusEndUser.gif)
+![FAQ Plus in action (user view)](docs/images/FAQPlusEndUser.gif)
 
 *	Expert using FAQ Plus:
 
-![FAQ Plus in action (experts view)](https://github.com/OfficeDev/microsoft-teams-faqplusplus-app/wiki/images/FAQPlusExperts.gif)
+![FAQ Plus in action (experts view)](docs/images/FAQPlusExperts.gif)
 
 ## Getting Started
 
