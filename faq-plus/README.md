@@ -36,10 +36,10 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 ### Try the Sample
 
 1. FAQ Plus Bot replies on an Azure services named 'QnA Maker'. Before you start, you will need to deply an QnA Maker service first. Follow the [instructions](docs/deploy-qna-maker-services.md) to deploy QnA Maker to Azure and get corresponding endpoints and credentials for provisioned services.
-2. Clone the project to a folder or directly download and open source code in [Visual Studio Code](https://code.visualstudio.com/), ensure you have installed [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
-3. Open the command palette by pressing `ctrl+shif+P` and select: `Teams: Provision in the Cloud`. You will be prompt to select an subscription you want to use to provision resources for this Bot.
-4. Once provision is completed, open `.fx/env.default.json` file. Check parameter `siteName` of `fx-resource-bot` property, this is the name of Azure Web App service provisioned by Teams Toolkit.
-5. From [Azure Portal](https://ms.portal.azure.com/#home), navigate to resource group named `FaqPlus-rg`. This resource group is created by Teams Toolkit during provision. You will find the Azure Web App service named by the value of 'siteName' parameter in this resource group. Open that Azure Web App service.
+2. Open project in [Visual Studio Code](https://code.visualstudio.com/), ensure you have installed [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
+3. Open the command palette by pressing `ctrl+shif+P` and select: `Teams: Provision in the Cloud`. If you havem't logged in with your Azure Account, You will be asked to login and select an subscription you want to use to provision resources for this Bot.
+4. Once provision is completed, open `.fx/env.default.json` file. Check parameter `siteName` of `fx-resource-bot` property, this is the name of Azure Web App service provisioned by Teams Toolkit. You will need this value in step 5.
+5. From [Azure Portal](https://ms.portal.azure.com/#home), navigate to resource group named `FaqPlus-rg`. This resource group is created by Teams Toolkit during provision. You will find the Azure Web App service named by the value of 'siteName' parameter you got from step 4. Open that Azure Web App service.
 6. Click `Configuration` in left panel. Add following application settings with values previously prepared in your notebook. After added the settings, click `Save` button on the top.
     | Application Setting Name | Expected Value | Note |
     | ---- | ---- | ---- |
