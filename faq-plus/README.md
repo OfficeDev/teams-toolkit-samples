@@ -35,12 +35,12 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 
 ### Try the Sample
 
-1. Follow the instructions [here](docs/deploy-qna-maker-services.md) to deploy QnA Maker to Azure and get corresponding endpoints and credentials for provisioned services.
-2. Open the project in [Visual Studio Code](https://code.visualstudio.com/), ensure you have installed [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
-3. Open the command palette and select: `Teams: Provision in the Cloud`.
-4. Once provision is completed, open `.fx/env.default.json` file. Find the name of Azure Web App service for bot provisioned by Teams Toolkit in `siteName` of `fx-resource-bot` property.
-5. Go to [Azure Portal](https://ms.portal.azure.com/#home), and navigate to the Azure Web App instance provisioned for bot.
-6. Click `Configuration` in left panel. Add following application settings. After added the settings, click `Save` button on the top.
+1. FAQ Plus Bot replies on an Azure services named 'QnA Maker'. Before you start, you will need to deply an QnA Maker service first. Follow the [instructions](docs/deploy-qna-maker-services.md) to deploy QnA Maker to Azure and get corresponding endpoints and credentials for provisioned services.
+2. Clone the project to a folder or directly download and open source code in [Visual Studio Code](https://code.visualstudio.com/), ensure you have installed [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
+3. Open the command palette by pressing `ctrl+shif+P` and select: `Teams: Provision in the Cloud`. You will be prompt to select an subscription you want to use to provision resources for this Bot.
+4. Once provision is completed, open `.fx/env.default.json` file. Check parameter `siteName` of `fx-resource-bot` property, this is the name of Azure Web App service provisioned by Teams Toolkit.
+5. From [Azure Portal](https://ms.portal.azure.com/#home), navigate to resource group named `FaqPlus-rg`. This resource group is created by Teams Toolkit during provision. You will find the Azure Web App service named by the value of 'siteName' parameter in this resource group. Open that Azure Web App service.
+6. Click `Configuration` in left panel. Add following application settings with values previously prepared in your notebook. After added the settings, click `Save` button on the top.
     | Application Setting Name | Expected Value | Note |
     | ---- | ---- | ---- |
     | SCORETHRESHOLD | 0.5 | The expected value works fine for the sample. You can adjust this threshold per your requirement. |
@@ -49,7 +49,8 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
     | QNAMAKERHOSTURL | `QnAMakerHostUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[BaseResourceName]-qnamaker.azurewebsites.net |
     | QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Usually a 32 alphanumeric characters string |
 7. Open the command palette and select: `Teams: Deploy to the Cloud`.
-8. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to open the app in Teams web client.
+8. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list. Then press `F5` or click green arrow button. Your browser will be launched automatically and you will be asked to log in to Teams. Once logged in, FAQ Plus app will be prompt and you can click `Add` button to install the app to your Teams client.
+9. Your app is successfully running in your Teams client now, refer to 'Use the App' section below to interact with the app.
 
 ### (Optional) Debug
 
@@ -64,39 +65,28 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
     | BOT_QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Usually a 32 alphanumeric characters string |
 3. In Visual Studio Code, open `Run and Debug` and select `Debug (Edge)` or `Debug (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to start local debug and open the app in Teams web client.
 
-### Use the App in Teams
+### Use the App
 
-#### User interacting with FAQ Plus through chat:
+#### User interacting with FAQ Plus:
 
-The bot will search the QnA knowledge base to answer user's questions. And users can ask an expert if the answer doesn't solve their questions well.
-1. Add the bot to personal chat.
-2. Input your question and send to the bot.
-3. Click "Ask an expert" button to ask an expert, fill required information and click "Ask an expert" again to create a ticket to experts.
-    > The app also needs to be installed to a Teams Channel in order to use "Ask an expert" feature. The Teams Channel must under the Team configured in [this](docs/deploy-qna-maker-services.md) doc.
+1. The Bot will send out Welcome Message to kick off the conversation.
+2. You can say hi or just ask questions.
+3. Once receive questions, the Bot wil search the QnA knowledge base to find answers. You can click 'Ask an expert' if Bot doesn't solve your questions well.
+4. Click "Ask an expert" button to escalate your question to an expert, fill in required information and click "Ask an expert" again to create a ticket.
+    > #### WARNING: To enable "Ask an expert" feature, you will need to install the app to a Teams Channel for expert to receive ticket creation notification. Note that this Teams Channel must be a Channel of the Team configured in your FAQ Plus configuration app in [this](docs/deploy-qna-maker-services.md) doc.
+    > To install the FAQ Plus app to Teams Channel, you can terminate the current F5 session (just close the web browser), and launch a new F5 session to install app to Teams Channel. 
+    >  ![addToTeam](docs/images/addToTeam.png)
 
-#### Expert using FAQ Plus in Teams channel:
+#### Expert interacting with FAQ Plus in Teams channel:
 
-Experts can receive notifications when a user asks an expert for help. An expert can assign the question to themself, chat with the user to gain more context.
-1. Add the bot to personal chat, then add the bot to a Teams Channel (references as experts channel below). The Teams Channel must under the Team configured in [this](docs/deploy-qna-maker-services.md) doc.
-2. "Ask an expert" in personal chat, you will see the support ticket is posted to experts channel.
-3. Click "Chat with xxx" to chat with the user who asked for help. Note: if the support ticket is created by yourself, you cannot use this feature to chat with yourself.
-4. Click "Change status" button to change the status of the support ticket. The user who created the ticket will receive status change notification from the bot.
+Experts can receive Bot notifications from Teams Channel. An expert can assign the questions to himself, initiate chat with the user to gain more context.
+1. To enable the feature for expert, add the Bot to a Teams Channel for expert group.
+2. When user 'Ask an expert', a support ticket is created and posted to experts Teams Channel.
+    ![notification](docs/images/notificationCard.png)
+4. Click "Chat with xxx" to initiate a chat with the user who asked for help. Note: if the support ticket is created by yourself, you cannot use this feature to chat with yourself.
+5. Click "Change status" button to change the status of the support ticket. The user who created the ticket will receive status change notification from the bot.
+6. Click 'View artical' to search related answers from Knowledge base for some reference.
 
-## Legal Notice
-
-This app template is provided under the [MIT License](https://github.com/OfficeDev/TeamsFx-Samples/blob/main/LICENSE) terms.  In addition to these terms, by using this app template you agree to the following:
-
-- You, not Microsoft, will license the use of your app to users or organization. 
-
-- This app template is not intended to substitute your own regulatory due diligence or make you or your app compliant with respect to any applicable regulations, including but not limited to privacy, healthcare, employment, or financial regulations.
-
-- You are responsible for complying with all applicable privacy and security regulations including those related to use, collection and handling of any personal data by your app. This includes complying with all internal privacy and security policies of your organization if your app is developed to be sideloaded internally within your organization. Where applicable, you may be responsible for data related incidents or data subject requests for data collected through your app.
-
-- Any trademarks or registered trademarks of Microsoft in the United States and/or other countries and logos included in this repository are the property of Microsoft, and the license for this project does not grant you rights to use any Microsoft names, logos or trademarks outside of this repository. Microsoft’s general trademark guidelines can be found [here](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).
-
-- If the app template enables access to any Microsoft Internet-based services (e.g., Office365), use of those services will be subject to the separately-provided terms of use. In such cases, Microsoft may collect telemetry data related to app template usage and operation. Use and handling of telemetry data will be performed in accordance with such terms of use.
-
-- Use of this template does not guarantee acceptance of your app to the Teams app store. To make this app available in the Teams app store, you will have to comply with the [submission and validation process](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/publish), and all associated requirements such as including your own privacy statement and terms of use for your app.
 
 ## Feedback
 
