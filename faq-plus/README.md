@@ -72,7 +72,7 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 #### User interacting with FAQ Plus:
 
 1. The Bot will send out Welcome Message to kick off the conversation.
-2. You can say hi or just ask questions.
+2. You can just ask any question.
 3. Once receive questions, the Bot wil search the QnA knowledge base to find answers. You can click 'Ask an expert' if Bot doesn't solve your questions well.
 4. Click "Ask an expert" button to escalate your question to an expert, fill in required information and click "Ask an expert" again to create a ticket.
     > #### WARNING: To enable "Ask an expert" feature, you will need to install the app to a Teams Channel for expert to receive ticket creation notification. Note that this Teams Channel must be a Channel of the Team configured in your FAQ Plus configuration app in [this](docs/deploy-qna-maker-services.md) doc.
