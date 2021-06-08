@@ -18,7 +18,7 @@ To begin, you will need:
 
 Register one Azure AD applications in your tenant's directory for the configuration app.
 
-1. Log in to the Azure Portal for your subscription, and go to the "App registrations" blade [here](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
+1. Log in to the Azure Portal for your subscription, and go to the ["App registrations" blade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 
 2. Click on "New registration", and create an Azure AD application.
 	1. **Name**: The name of your configuration app. We advise appending “Configuration” to the name of this app; for example, “FAQ Plus Configuration”.
@@ -37,23 +37,20 @@ We recommend that you copy these values into a text file, using an application l
 
 1. Click on the "Deploy to Azure" button below.
 
-[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FOfficeDev%2FTeamsFx-Samples%2Fdev%2Ffaq-plus%2Fdeployment%2Fazuredeploy.json)
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FOfficeDev%2FTeamsFx-Samples%2Ffeature%2Ffaq-plus%2Ffaq-plus%2Fdeployment%2Fazuredeploy.json)
 
 2. When prompted, log in to your Azure subscription.
 
 3. Azure will create a "Custom deployment" based on the ARM template and ask you to fill in the template parameters.
 
-4. Select a subscription and resource group.
-* We recommend creating a new resource group.
+4. Select a subscription and resource group. We recommend creating a new resource group.
 * The resource group location MUST be in a data center that supports:
 	* Application Insights
 	* Azure Search
-	* QnA Maker.
-* For an up-to-date list, click [here](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=logic-apps,cognitive-services,search,monitor), and select a region where the following services are available:
-	* Application Insights
 	* QnA Maker
-	* Azure Search
 
+ Click [here](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=logic-apps,cognitive-services,search,monitor) to check up-to-date list.
+	
 5. Enter a "Base Resource Name", which the template uses to generate names for the other resources.
 * The app service names `[Base Resource Name]-config`, and `[Base Resource Name]-qnamaker` must be available. For example, if you select `contosofaqplus` as the base name, the names `contosofaqplus-config`, and `contosofaqplus-qnamaker` must be available (not taken); otherwise, the deployment will fail with a conflict error.
 * Remember the base resource name that you selected. We will need it later.
@@ -81,9 +78,9 @@ Make sure that the values are copied as-is, with no extra spaces. The template c
 
 ## Step 3: Set up authentication for the configuration app
 
-1. Note the location of the configuration app that you deployed, which is `https://[BaseResourceName]-config.azurewebsites.net`. For example, if you chose "contosofaqplus" as the base name, the configuration app will be at `https://contosofaqplus-config.azurewebsites.net`
+1. Note the location of the configuration app that you deployed is "https://[BaseResourceName]-config.azurewebsites.net". For example, if you chose "contosofaqplus" as the base name, the configuration app will be at "https://contosofaqplus-config.azurewebsites.net".
 
-2. Go back to the "App Registrations" page [here](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview).
+2. Go back to the [App Registrations page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview).
 
 3. Click on the configuration app in the application list. Under "Manage", click on "Authentication" to bring up authentication settings.
 
@@ -92,7 +89,7 @@ Make sure that the values are copied as-is, with no extra spaces. The template c
 ![Adding Redirect URI1](images/authentication-image-1.png)
 
 5. Add new entry to "Redirect URIs":
-	If your configuration app's URL is https://contosofaqplus-config.azurewebsites.net, then add the following entry as the Redirect URIs:
+	If your configuration app URL is https://contosofaqplus-config.azurewebsites.net, then add the following entry as the Redirect URIs:
 	- https://contosofaqplus-config.azurewebsites.net
 
 	Note: Please refer to Step 3.1 for more details about the URL. 
@@ -114,7 +111,7 @@ Make sure that the values are copied as-is, with no extra spaces. The template c
 
 Create a knowledge base on the [QnA Maker portal](https://www.qnamaker.ai/Create), following the instructions in the QnA Maker documentation [QnA Maker documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal#create-a-knowledge-base).
 
-Skip the step, "Create a QnA service in Microsoft Azure", because the ARM template that you deployed in Step 2 "Deploy to your Azure subscription" already created the QnA service. Proceed directly to the next step, "Connect your QnA service to your KB".
+Skip the step 1 "Create a QnA service in Microsoft Azure", because the ARM template that you deployed in Step 2 "Deploy to your Azure subscription" already created the QnA service. Proceed directly to the next step, "Connect your QnA service to your KB".
 
 Use the following values when connecting to the QnA service:
 
@@ -132,7 +129,7 @@ Remember the knowledge base ID: we will need it in the next step.
 
 ## Step 5: Finish configuring the FAQ Plus app
 
-1. Go to the configuration app, which is at `https://[BaseResourceName]-config.azurewebsites.net`. For example, if you chose “contosofaqplus” as the base name, the configuration app will be at `https://contosofaqplus-config.azurewebsites.net`.
+1. Open the configuration app by typing your confirguration app url "https://[BaseResourceName]-config.azurewebsites.net" in browser. For example, if you chose "contosofaqplus" as the base name, the configuration app url will be "https://contosofaqplus-config.azurewebsites.net".
 
 2. You will be prompted to log in with your credentials. Make sure that you log in with an account that is in the list of users allowed to access the configuration app.
 
@@ -156,24 +153,26 @@ Click on "Copy" to copy the link to the clipboard.
 
 Remember to click on "OK" after changing a setting. To edit the setting later, click on "Edit" to make the text box editable.
 
-## Step 6: Get required information for the Teams bot app
+## Step 6: Prepare required parameters for Teams Bot app
 
-1. Go to the resource group created during provision
+1. Go to Azure portal, open the resource group you created during deployment in step 2.4 on this page.
 
-2. Click the Azure Storage instance in the resource group, then click **Access keys** in left panel.
+2. Click and open the Azure Storage instance in the resource group, then click **Access keys** in left panel.
 
-3. Click **Show keys** button, then copy the connection string for either key1 or key2. Record it somewhere.
+3. Click **Show keys** button, then copy the connection string of either key1 or key2. Record the value to your notebook and name it `StorageConnectionString`.
 
-4. Go back to the resource group and click the Cognitive Service instance. The service name is same as the "Base resource name" you inputted during provision.
+4. Go to the resource group again and click to open the Cognitive Service instance. The service name is the same as the "Base resource name" you specified during provision.
 
-5. Click **Keys and Endpoint** in left panel, then click **Show Keys" button.
+5. Click **Keys and Endpoint** in left panel, then click **Show Keys** button.
 
-6. Copy either KEY 1 or KEY 2, as well as the endpoint. Record them somewhere.
+6. Copy the value of either KEY 1 or KEY 2. Record it to your notebook and name it `QnAMakerSubscriptionKey`
 
-7. Figure out the QnA Maker host url, which is `https://[BaseResourceName]-qnamaker.azurewebsites.net`. For example, if you chose "contosofaqplus" as the base name, the QnA Maker host url will be at `https://contosofaqplus-qnamaker.azurewebsites.net`
+7. Copy the value of endpoint URL. Record it to your notebook and name it `QnAMakerApiEndpointUrl`.
 
-
-After above steps, you will have following configurations recorded somewhere. Now you can go back to [readme](../README.md) and follow the instructions to config and run your app.
+8. The last parameter you will use is `QnAMakerHostUrl`. It should be "https://[BaseResourceName]-qnamaker.azurewebsites.net". 
+Remember to replace the BaseResourceName, for example, if you chose "contosofaqplus" as the base name, your url will be "https://contosofaqplus-qnamaker.azurewebsites.net".
+ 
+Now you will have following parameters ready on your notebook. You can go back to [readme](../README.md) and follow the instructions to config and run your app.
 | Name | Example |
 | ---- | ---- |
 | StorageConnectionString | DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
