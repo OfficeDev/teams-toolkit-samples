@@ -35,12 +35,12 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 
 ### Try the Sample
 
-1. FAQ Plus Bot replies on an Azure services named 'QnA Maker'. Before you start, you will need to deply an QnA Maker service first. Follow the [instructions](docs/deploy-qna-maker-services.md) to deploy QnA Maker to Azure and get corresponding endpoints and credentials for provisioned services.
+1. FAQ Plus Bot relies on the 'QnA Maker' Azure services. Before you start, follow the [instructions](docs/deploy-qna-maker-services.md) to deploy QnA Maker to Azure. You will get configurations of QnA Maker service on completion. Make sure to record them down and you will need this later. 
 2. Open project in [Visual Studio Code](https://code.visualstudio.com/), ensure you have installed [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
-3. Open the command palette by pressing `ctrl+shif+P` and select: `Teams: Provision in the Cloud`. If you havem't logged in with your Azure Account, You will be asked to login and select an subscription you want to use to provision resources for this Bot.
-4. Once provision is completed, open `.fx/env.default.json` file. Check parameter `siteName` of `fx-resource-bot` property, this is the name of Azure Web App service provisioned by Teams Toolkit. You will need this value in step 5.
-5. From [Azure Portal](https://ms.portal.azure.com/#home), navigate to resource group named `FaqPlus-rg`. This resource group is created by Teams Toolkit during provision. You will find the Azure Web App service named by the value of 'siteName' parameter you got from step 4. Open that Azure Web App service.
-6. Click `Configuration` in left panel. Add following application settings with values previously prepared in your notebook. After added the settings, click `Save` button on the top.
+3. Open the command palette by pressing `(Ctrl+Shift+P / ⌘⇧-P or View -> Command - Palette)` and select: `Teams: Provision in the Cloud`. If you have not logged in with your Azure Account, you will be asked to login and select an subscription to provision resources for this Bot.
+4. Once provision is completed, open `.fx/env.default.json` file. Notice the value of `siteName` in `fx-resource-bot` section, this is the name of Azure Web App service provisioned by Teams Toolkit. You will need this value in step 5.
+5. From [Azure Portal](https://ms.portal.azure.com/#home), navigate to resource group named `FaqPlus-rg`. This resource group is created by Teams Toolkit during provision. Find the Azure Web App service named after the value of 'siteName' parameter you got from step 4 and open this Azure Web App service.
+6. Click `Configuration` in left panel. Add the following application settings with configuration values you got from step 1 and click `Save` button.
     | Application Setting Name | Expected Value | Note |
     | ---- | ---- | ---- |
     | SCORETHRESHOLD | 0.5 | The expected value works fine for the sample. You can adjust this threshold per your requirement. |
@@ -49,8 +49,8 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
     | QNAMAKERHOSTURL | `QnAMakerHostUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[BaseResourceName]-qnamaker.azurewebsites.net |
     | QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Usually a 32 alphanumeric characters string |
 7. Open the command palette and select: `Teams: Deploy to the Cloud`.
-8. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list. Then press `F5` or click green arrow button. Your browser will be launched automatically and you will be asked to log in to Teams. Once logged in, FAQ Plus app will be prompt and you can click `Add` button to install the app to your Teams client.
-9. Your app is successfully running in your Teams client now, refer to 'Use the App' section below to interact with the app.
+8. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list.   Then press `F5` or click green arrow button to launch Teams client in browser. Log in to Teams and click `Add` button to install the app to your Teams client.
+9. Your app is successfully running in your Teams client now, refer to ['Use the App' section](./README#use-the-app) below to interact with the app.
 
 ### (Optional) Debug
 
@@ -63,7 +63,7 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
     | BOT_QNAMAKERAPIENDPOINTURL | `QnAMakerApiEndpointUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[Location].api.cognitive.microsoft.com |
     | BOT_QNAMAKERHOSTURL | `QnAMakerHostUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[BaseResourceName]-qnamaker.azurewebsites.net |
     | BOT_QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Usually a 32 alphanumeric characters string |
-3. In Visual Studio Code, open `Run and Debug` and select `Debug (Edge)` or `Debug (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to start local debug and open the app in Teams web client.
+3. In Visual Studio Code, open `Run and Debug` tab and select `Debug (Edge)` or `Debug (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to start local debug and open the app in Teams web client.
 
 ### Use the App
 
@@ -74,18 +74,18 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 3. Once receive questions, the Bot wil search the QnA knowledge base to find answers. You can click 'Ask an expert' if Bot doesn't solve your questions well.
 4. Click "Ask an expert" button to escalate your question to an expert, fill in required information and click "Ask an expert" again to create a ticket.
     > #### WARNING: To enable "Ask an expert" feature, you will need to install the app to a Teams Channel for expert to receive ticket creation notification. Note that this Teams Channel must be a Channel of the Team configured in your FAQ Plus configuration app in [this](docs/deploy-qna-maker-services.md) doc.
-    > To install the FAQ Plus app to Teams Channel, you can terminate the current F5 session (just close the web browser), and launch a new F5 session to install app to Teams Channel. 
+    > To install the FAQ Plus app to Teams Channel, you can terminate the current F5 session (just close the web browser), and launch a new F5 session to install app to Teams Channel by clicking "Add to a team".. 
     >  ![addToTeam](docs/images/addToTeam.png)
 
 #### Expert interacting with FAQ Plus in Teams channel:
 
-Experts can receive Bot notifications from Teams Channel. An expert can assign the questions to himself, initiate chat with the user to gain more context.
+Experts can receive Bot notifications from Teams Channel. An expert can assign the questions to themselves, initiate chat with the user to gain more context.
 1. To enable the feature for expert, add the Bot to a Teams Channel for expert group.
 2. When user 'Ask an expert', a support ticket is created and posted to experts Teams Channel.
     ![notification](docs/images/notificationCard.png)
 4. Click "Chat with xxx" to initiate a chat with the user who asked for help. Note: if the support ticket is created by yourself, you cannot use this feature to chat with yourself.
 5. Click "Change status" button to change the status of the support ticket. The user who created the ticket will receive status change notification from the bot.
-6. Click 'View artical' to search related answers from Knowledge base for some reference.
+6. Click 'View article' to search related answers from Knowledge base for some reference.
 
 
 ## Feedback
