@@ -50,7 +50,7 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
     | QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Usually a 32 alphanumeric characters string |
 7. Open the command palette and select: `Teams: Deploy to the Cloud`.
 8. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to launch Teams client in browser. Log in to Teams and click `Add` button to install the app to your Teams client.
-9. Your app is successfully running in your Teams client now, refer to ['Use the App' section](./README#use-the-app) below to interact with the app.
+9. Your app is successfully running in your Teams client now, refer to ['Use the App' section](#use-the-app) below to interact with the app.
 
 ### (Optional) Debug
 
