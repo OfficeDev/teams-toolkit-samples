@@ -49,7 +49,7 @@ We recommend that you copy these values into a text file, using an application l
 	* Azure Search
 	* QnA Maker
 
- Click [here](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=logic-apps,cognitive-services,search,monitor) o check up-to-date list.
+ Click [here](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=logic-apps,cognitive-services,search,monitor) to check up-to-date list.
 	
 5. Enter a "Base Resource Name", which the template uses to generate names for the other resources.
 * The app service names `[Base Resource Name]-config`, and `[Base Resource Name]-qnamaker` must be available. For example, if you select `contosofaqplus` as the base name, the names `contosofaqplus-config`, and `contosofaqplus-qnamaker` must be available (not taken); otherwise, the deployment will fail with a conflict error.
@@ -78,9 +78,9 @@ Make sure that the values are copied as-is, with no extra spaces. The template c
 
 ## Step 3: Set up authentication for the configuration app
 
-1. Note the location of the configuration app that you deployed is 'https://[BaseResourceName]-config.azurewebsites.net'. For example, if you chose 'contosofaqplus' as the base name, the configuration app will be at 'https://contosofaqplus-config.azurewebsites.net'.
+1. Note the location of the configuration app that you deployed is "https://[BaseResourceName]-config.azurewebsites.net". For example, if you chose "contosofaqplus" as the base name, the configuration app will be at "https://contosofaqplus-config.azurewebsites.net".
 
-2. Go back to the [App Registrations" page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview).
+2. Go back to the [App Registrations page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview).
 
 3. Click on the configuration app in the application list. Under "Manage", click on "Authentication" to bring up authentication settings.
 
@@ -89,7 +89,7 @@ Make sure that the values are copied as-is, with no extra spaces. The template c
 ![Adding Redirect URI1](images/authentication-image-1.png)
 
 5. Add new entry to "Redirect URIs":
-	If your configuration app's URL is https://contosofaqplus-config.azurewebsites.net, then add the following entry as the Redirect URIs:
+	If your configuration app URL is https://contosofaqplus-config.azurewebsites.net, then add the following entry as the Redirect URIs:
 	- https://contosofaqplus-config.azurewebsites.net
 
 	Note: Please refer to Step 3.1 for more details about the URL. 
@@ -129,7 +129,7 @@ Remember the knowledge base ID: we will need it in the next step.
 
 ## Step 5: Finish configuring the FAQ Plus app
 
-1. Open the configuration app by typing your confirguration app url 'https://[BaseResourceName]-config.azurewebsites.net' in browser. For example, if you chose 'contosofaqplus' as the base name, the configuration app url will be 'https://contosofaqplus-config.azurewebsites.net'.
+1. Open the configuration app by typing your confirguration app url "https://[BaseResourceName]-config.azurewebsites.net" in browser. For example, if you chose "contosofaqplus" as the base name, the configuration app url will be "https://contosofaqplus-config.azurewebsites.net".
 
 2. You will be prompted to log in with your credentials. Make sure that you log in with an account that is in the list of users allowed to access the configuration app.
 
@@ -169,8 +169,8 @@ Remember to click on "OK" after changing a setting. To edit the setting later, c
 
 7. Copy the value of endpoint URL. Record it to your notebook and name it `QnAMakerApiEndpointUrl`.
 
-8. The last parameter you will use is `QnAMakerHostUrl`. It should be 'https://[BaseResourceName]-qnamaker.azurewebsites.net'. 
-Remember to replace the BaseResourceName, for example, if you chose "contosofaqplus" as the base name, your url will be 'https://contosofaqplus-qnamaker.azurewebsites.net'.
+8. The last parameter you will use is `QnAMakerHostUrl`. It should be "https://[BaseResourceName]-qnamaker.azurewebsites.net". 
+Remember to replace the BaseResourceName, for example, if you chose "contosofaqplus" as the base name, your url will be "https://contosofaqplus-qnamaker.azurewebsites.net".
  
 Now you will have following parameters ready on your notebook. You can go back to [readme](../README.md) and follow the instructions to config and run your app.
 | Name | Example |
