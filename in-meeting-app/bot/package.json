@@ -4,7 +4,7 @@
     "description": "The API server for a Teams tab app",
     "main": "app.js",
     "scripts": {
-        "start:local": "CROSS-ENV NODE_ENV=development.local node ./index.js",
+        "start:local": "cross-env NODE_ENV=development.local node ./index.js",
         "start": "node ./index.js",
         "watch": "nodemon ./index.js"
     },
