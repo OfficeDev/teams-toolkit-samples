@@ -7,7 +7,7 @@ To begin, you will need:
 	* App service plan
 	* Bot channels registration
 	* Azure storage account
-	* Azure search
+	* Azure cognitive search
 	* Azure function
 	* QnA Maker cognitive service
 	* Application Insights  
@@ -37,7 +37,7 @@ We recommend that you copy these values into a text file, using an application l
 
 1. Click on the "Deploy to Azure" button below.
 
-[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FOfficeDev%2FTeamsFx-Samples%2Fdev%2Ffaq-plus%2Fdeployment%2Fazuredeploy.json)
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FOfficeDev%2FTeamsFx-Samples%2Fmain%2Ffaq-plus%2Fdeployment%2Fazuredeploy.json)
 
 2. When prompted, log in to your Azure subscription.
 
@@ -46,7 +46,7 @@ We recommend that you copy these values into a text file, using an application l
 4. Select a subscription and resource group. We recommend creating a new resource group.
 * The resource group location MUST be in a data center that supports:
 	* Application Insights
-	* Azure Search
+	* Azure cognitive search
 	* QnA Maker
 
  Click [here](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=logic-apps,cognitive-services,search,monitor) to check up-to-date list.
