@@ -2,10 +2,10 @@
 // Licensed under the MIT License.
 
 export interface ISPItem {
-    Id: number;
-    description: string;
-    isCompleted: boolean;
-  }
+  Id: number;
+  description: string;
+  isCompleted: boolean;
+}
 
 export interface ITodoListState {
     selectItemID: number;
@@ -14,7 +14,7 @@ export interface ITodoListState {
     isAddingItem: boolean;
     siteURL: string;
     photoObjectURL: string;
-    userPhoneNumber: string;
+    userDisplayName: string;
     items: ISPItem[];
     newItemDescription: string;
   }

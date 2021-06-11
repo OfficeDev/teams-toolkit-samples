@@ -1,35 +1,28 @@
 .profile {
     display: flex;
-    max-width: 430px;
-    margin: 20px;
-    background-color: #FFF;
+    width: 180px;
 }
 
-.photo {
-    padding: 24px;
-}
-
-.photo img {
+.profile img {
     border-radius: 50%;
-    width: 72px;
-    height: 72px;
+    width: 32px;
+    height: 32px;
 }
 
-.info {
-    margin-top: 24px;
-    margin-right: 24px;
-}
-
-.name {
-    font-weight: bold;
+.profile .name {
     color: #252423;
     font-size: 14px;
     line-height: 20px;
+    margin-left: 10px;
+    margin-top: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.email,
-.phone {
-    color: #484644;
-    font-size: 12px;
-    line-height: 18px;
+
+@media only screen and (max-width: 820px) {
+    .profile {
+        width: 100px;
+    }
 }
