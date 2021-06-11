@@ -64,7 +64,7 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
     | BOT_QNAMAKERAPIENDPOINTURL | `QnAMakerApiEndpointUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[Location].api.cognitive.microsoft.com |
     | BOT_QNAMAKERHOSTURL | `QnAMakerHostUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[BaseResourceName]-qnamaker.azurewebsites.net |
     | BOT_QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Usually a 32 alphanumeric characters string |
-3. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to launch Teams client in browser. Log in to Teams and click `Add` button to install the app to your Te
+3. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to launch Teams client in browser. Log in to Teams and click `Add` button to install the app to your Teams client.
 4. Your app is successfully running in your Teams client now, refer to ['Use the App' section](#use-the-app) below to interact with the app.
 
 ### Use the App
@@ -73,7 +73,7 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 
 1. The Bot will send out Welcome Message to kick off the conversation.
 2. You can just ask any question.
-3. Once receive questions, the Bot wil search the QnA knowledge base to find answers. You can click 'Ask an expert' if Bot doesn't solve your questions well.
+3. Once receive questions, the Bot will search the QnA knowledge base to find answers. You can click 'Ask an expert' if Bot doesn't solve your questions well.
 4. Click "Ask an expert" button to escalate your question to an expert, fill in required information and click "Ask an expert" again to create a ticket.
     > #### WARNING: To enable "Ask an expert" feature, you will need to install the app to a Teams Channel for expert to receive ticket creation notification. Note that this Teams Channel must be a Channel of the Team configured in your FAQ Plus configuration app in [this](docs/deploy-qna-maker-services.md) doc.
     > To install the FAQ Plus app to Teams Channel, you can terminate the current F5 session (just close the web browser), and launch a new F5 session to install app to Teams Channel by clicking "Add to a team".. 
