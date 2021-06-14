@@ -39,7 +39,7 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 2. Open project in [Visual Studio Code](https://code.visualstudio.com/), ensure you have installed [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 3. Open the command palette by pressing `Ctrl+Shift+P / ⌘⇧-P or View -> Command - Palette` and select: `Teams: Provision in the Cloud`. If you have not logged in with your Azure Account, you will be asked to login and select a subscription to provision resources for this Bot.
 4. Once provision is completed, open `.fx/env.default.json` file. Notice the value of `siteName` in `fx-resource-bot` section, this is the name of Azure Web App service provisioned by Teams Toolkit. You will need this value in step 5.
-5. From [Azure Portal](https://ms.portal.azure.com/#home), navigate to resource group named `FaqPlus-rg`. This resource group is created by Teams Toolkit during provision. Find the Azure Web App service named after the value of `siteName` parameter you got from step 4 and open this Azure Web App service.
+5. From [Azure Portal](https://portal.azure.com/#home), navigate to resource group named `FaqPlus-rg`. This resource group is created by Teams Toolkit during provision. Find the Azure Web App service named after the value of `siteName` parameter you got from step 4 and open this Azure Web App service.
 6. Click `Configuration` in left panel. Add the following application settings with configuration values you got from step 1 and click `Save` button.
     | Application Setting Name | Expected Value | Note |
     | ---- | ---- | ---- |
