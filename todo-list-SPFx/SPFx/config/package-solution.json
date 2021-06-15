@@ -13,13 +13,7 @@
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "mpnId": ""
-    },
-    "webApiPermissionRequests": [
-      {
-        "resource": "Microsoft Graph",
-        "scope": "User.Read"
-      }
-    ]
+    }
   },
   "paths": {
     "zippedPackage": "solution/todo-list-sp-fx.sppkg"

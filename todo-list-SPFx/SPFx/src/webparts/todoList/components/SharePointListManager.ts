@@ -44,6 +44,29 @@ export class SharePointListManager{
       if (response.ok) {
         const responsejson = await response.json();
         const items: ISPItem[] = responsejson.value;
+        for (var i in items) {
+          console.log(items[i].AuthorId);
+          const AuthorId: number = items[i].AuthorId;
+          const userinfo: SPHttpClientResponse = await this.spContext.spHttpClient.get(
+            `${this.siteURL}/_api/web/GetUserById(`+ AuthorId.toString() + `)`,
+            SPHttpClient.configurations.v1
+          );
+
+          if (userinfo.ok) {
+            const userinfojson = await userinfo.json();
+            const username: string = userinfojson.UserPrincipalName;
+
+            items[i].userDisplayName = userinfojson.Title;
+            console.log(items[i].userDisplayName);
+
+            items[i].photoObjectURL = `${this.siteURL}/_layouts/15/userphoto.aspx?size=S&username=${username}`;
+            console.log(items[i].photoObjectURL);
+          }
+          else {
+            alert(await userinfo.text());
+          }
+        }   
+
         return items;
       } else {
         alert(await response.text());

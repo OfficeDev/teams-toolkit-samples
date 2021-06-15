@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 import * as React from 'react';
-import { AadHttpClient } from '@microsoft/sp-http';
 import { ITodoListProps } from './ITodoListProps';
 import { ISPItem, ITodoListState } from './ITodoListState';
 import { SharePointListManager } from './SharePointListManager';
@@ -20,8 +19,6 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
     this.state = {
       selectItemID: -1,    // unique select item id passing to delete function in ContextualMenu.
       isAddingItem: false, // if user is adding item.
-      photoObjectURL: '',  // user photo icon url
-      userPhoneNumber: '', // user photo description
       items: [],           // contains SharePoint List items
       newItemDescription: '', // user input text
       siteURL: this.props.context.pageContext.web.absoluteUrl, // the absolute url for your sharepoint website.
@@ -29,37 +26,6 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
 
     // Initialize SharePoint List Manager
     this.sharePointListManager = new SharePointListManager(this.props.context);
-  }
-
-  private async getUserData() {
-    // Call Microsoft Graph API to get user photo and user profile with the SharePoint context
-    const graphclient: AadHttpClient = await this.props.context.aadHttpClientFactory.getClient('https://graph.microsoft.com');
-    if (graphclient) {
-      try {
-        const photoResponse = await graphclient.get("https://graph.microsoft.com/v1.0/me/photo/$value", AadHttpClient.configurations.v1);
-        if (photoResponse.ok) {
-          const responsedata = await photoResponse.blob();
-          const photoURL = URL.createObjectURL(responsedata);
-          this.setState({
-            photoObjectURL: photoURL,
-          });
-        }
-      } catch (error) {
-      }
-
-      const response = await graphclient.get("https://graph.microsoft.com/v1.0/me", AadHttpClient.configurations.v1);
-      if (response.ok) {
-        const responsedata = await response.json();
-        this.setState({
-          userPhoneNumber: responsedata.mobilePhone,
-        });
-      }
-      else {
-        alert(await response.text());
-      }
-    } else {
-      alert('Could not get client');
-    }
   }
 
   private async getItems() {
@@ -71,7 +37,7 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
 
   public async componentDidMount() {
     // Get user photo and get to-do list items after the component is mounted.
-    Promise.all([this.getUserData(), this.getItems()]);
+    Promise.all([this.getItems()]);
   }
 
   private handleInputChange(index: number, property: string, value: string | boolean) {
@@ -133,10 +99,10 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
           />
         </div>
         <Profile
-          photoObjectURL={this.state.photoObjectURL}
-          userName={this.state.userDisplayName} 
+          photoObjectURL={this.state.items[index].photoObjectURL}
+          userName={this.state.items[index].userDisplayName}
         />
-        <div className="action">
+        <div className="action"> 
           <DefaultButton onClick={(event) => {
             this.setState({ target: { x: event.clientX, y: event.clientY }, selectItemID: item.Id });
           }}
@@ -179,7 +145,7 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
                 <PrimaryButton onClick={() => this.setState({ isAddingItem: true })}>+ Add task</PrimaryButton>
               </div>
             </div>
-
+            
             {this.state.items.length > 0 && <div className="header-container">
               <div className="note">
                 <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
