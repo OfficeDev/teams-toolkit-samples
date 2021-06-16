@@ -34,6 +34,11 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
     - In `Advanced Settings`, Set the `Read Access` to `Read items that were created by the user`, and Set the `Create and Edit access` to `Create items and edit items that were created by the user`.
     ![ListSetting2](images/ListSetting2.png)
     - Click 'Ok' to save your setting.
+* [Optional] If you want your guest users use the To-Do-list when using Teams Desktop app, add access permission to your app catlog.
+    - In the App Catlog page, click `setting` button, and then choose `shared with`.
+    ![AppCatlogSetting1](images/AppCatlogSetting1.png)
+    - Invite the guest user and click `Share` button.
+    ![invitepeople](images/invitepeople.png)
 
 ## Try the Sample
 1. Clone the repo to your local workspace or directly download the source code. 
@@ -86,7 +91,7 @@ Debug the app with SharePoint WorkBench in VSCode.
 Importing [msteams-ui-components-react](https://www.npmjs.com/package/msteams-ui-components-react) package will cause issues during package build:
 ![Issue](images/knownissue.png)
 
-When using Teams desktop app, the To-Do-List will be unable to load the profile picture of the creator.
+When using Teams desktop app, guest users may be unable to load the profile picture of the creator in the To-Do-List.
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
