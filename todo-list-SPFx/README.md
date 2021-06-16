@@ -20,14 +20,13 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
     >- Node.js v12.13.0+ (Erbium)
     >- Node.js v14.15.0+ (Fermium) 
 * Setup SharePoint Environment by following the [instructions](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
-* Use the communication root site in SharePoint to create a List.
-    - Navigate to the SharePoint root site, in `Home` tab, click `New` and select `List`. 
-    > *Note: You must nagivate to root site instead of any other subsite. Root site URL ends with xx.sharepoint.com.* eg. `https://{your-tenant-name}.sharepoint.com/`. 
-    > *This is because Teams App automatically detect SharePoint root site only. If you want to create a List in other subsite, manual steps to change the site url in* *[./SPFx/src/webparts/TodoList/components/SharePointListManager.ts](./SPFx/src/webparts/TodoList/components/SharePointListManager.ts) are required.*
+* Use the team site in SharePoint to create a List.
+    - Navigate to the [SharePoint team site](https://support.microsoft.com/en-us/office/create-a-team-site-in-sharepoint-ef10c1e7-15f3-42a3-98aa-b5972711777d), in `Home` tab, click `New` and select `List`.
+    > *Note: You must nagivate to team site instead of any other subsite. Team site URL ends with xx.sharepoint.com/sites/xx* eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-site-name}`. 
+    > *This is because Teams Group Tab automatically detect SharePoint team site only. If you want to create a List in other subsite, manual steps to change the site url in* *[./SPFx/src/webparts/TodoList/components/SharePointListManager.ts](./SPFx/src/webparts/TodoList/components/SharePointListManager.ts) are required.*
     - Name the List 'To Do List'
     - Click `Add Column`, select `Single line of text`, name the column 'description'
     - Click `Add Column`, select `Yes/No`, name the column 'isCompleted'
-* Use the teams site in SharePoint to create a List. (TBC)
 * [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 * [Optional] If you want your users see only the items created by themselves, add access control to your List.
     - In List Page, click `setting` button and then choose `list setting`.
@@ -57,7 +56,7 @@ It may take a few minutes to publish the Teams app.
 
 ## (Optional) Debug
 Debug the app with SharePoint WorkBench in VSCode.
-1. Navigate to [launch.json](.vscode/launch.json), replace `enter-your-SharePoint-site` with your SharePoint site.
+1. Navigate to [launch.json](.vscode/launch.json), replace `enter-your-SharePoint-site` with your SharePoint site, eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-site-name}/_layouts/workbench.aspx`.
 1. In Debug mode, select "Hosted workbench" and press start button. The Hosted Workbench will be opened and you may need to sign in with your M365 account.
 1. Click the plus button in the middle, and select `TodoList`, the webpart will show up in the workbench.
 - ![HostedWokbench](images/Workbench.png)
@@ -86,6 +85,8 @@ Debug the app with SharePoint WorkBench in VSCode.
 ## Known Issue:
 Importing [msteams-ui-components-react](https://www.npmjs.com/package/msteams-ui-components-react) package will cause issues during package build:
 ![Issue](images/knownissue.png)
+
+When using Teams desktop app, the To-Do-List will be unable to load the profile picture of the creator.
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
