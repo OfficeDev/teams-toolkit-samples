@@ -1,0 +1,11 @@
+# dependencies
+node_modules/
+
+# misc
+.env
+
+# build
+lib/
+
+# deploy
+.deployment/

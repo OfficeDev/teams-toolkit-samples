@@ -8,8 +8,8 @@ import {
   ISPHttpClientOptions,
 } from '@microsoft/sp-http';
 
-import { WebPartContext } from '@microsoft/sp-webpart-base';
-import { ISPItem } from './ITodoListState';
+import { WebPartContext } from "@microsoft/sp-webpart-base";
+import { ISPItem } from "./ITodoListState";
 
 export class SharePointListManager{
   private spContext: WebPartContext;

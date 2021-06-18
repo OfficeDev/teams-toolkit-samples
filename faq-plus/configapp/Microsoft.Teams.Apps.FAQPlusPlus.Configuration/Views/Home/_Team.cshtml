@@ -1,0 +1,26 @@
+﻿@model Microsoft.Teams.Apps.FAQPlusPlus.Configuration.Models.TeamViewModel
+
+@using (Ajax.BeginForm("ParseAndSaveTeamIdAsync", "Home", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onSaveSuccess", OnFailure = "onSaveFailure" }, htmlAttributes: new { @class = "formToSubmit" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group" data-form-name="team">
+        <div class="col-lg-3">
+            @Html.LabelFor(model => model.TeamId, htmlAttributes: new { @class = "font-bold" })
+            <span class="mandatoryField">*</span>
+        </div>
+        <div class="col-lg-5">
+            @Html.TextBoxFor(model => model.TeamId, htmlAttributes: new { @class = "form-control teamIdTextBox toggleTextBox", @placeholder = "Enter team ID." })
+            @Html.ValidationMessageFor(model => model.TeamId, "", htmlAttributes: new { @class = "error-message" })
+        </div>
+        <div class="col-lg-1">
+            <span id="teamStorageStatusIcon"></span>
+        </div>
+        <div class="col-lg-3">
+            <input type="button" value="OK" class="btn btn-primary toggleToEditButton" id="teamSubmitButton" />
+            <span class="glyphicon glyphicon-info-sign infoSignMargin" data-toggle="tooltip" title="@Strings.TeamIdToolTipHoverMessage"></span>
+        </div>
+        <div class="col-lg-offset-3 col-lg-5">
+            <div id="teamStorageStatusMessage" class="error-message"></div>
+        </div>
+    </div>
+}
