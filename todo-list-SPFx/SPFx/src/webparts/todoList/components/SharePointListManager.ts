@@ -6,15 +6,17 @@ import {
   SPHttpClient,
   SPHttpClientResponse,
   ISPHttpClientOptions,
-} from '@microsoft/sp-http';
+} from "@microsoft/sp-http";
 
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { ISPItem } from "./ITodoListState";
 
-export class SharePointListManager{
+export class SharePointListManager {
   private spContext: WebPartContext;
   private siteURL: string;
   private listname:string = "To%20Do%20List";
+  private previousUpdateItem = null;
+  private previousUpdateId: number = -1;
   private UserInfoMap = new Map();
 
   constructor(spContext: WebPartContext) {
@@ -89,7 +91,16 @@ export class SharePointListManager{
    * @param item the object({columnname:columnvalue}) that need to be updated.
    *
    */
-  public async updateSPItem(id: number, item: object) {
+  public async updateSPItem(id: number, item: any) {
+      // If the update one is the same as previous, just return to prevent duplicate call
+      if (
+        this.previousUpdateId === id &&
+        this.previousUpdateItem?.description === item.description
+      ) {
+        return;
+      }
+      this.previousUpdateId = id;
+      this.previousUpdateItem = item;
       const options: ISPHttpClientOptions = {
         body: JSON.stringify(item),
         headers: {
