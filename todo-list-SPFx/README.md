@@ -49,21 +49,19 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
     > This step will generate a SharePoint package (*.sppkg) under `sharepoint/solution` folder.
 1. Upload or drag-and-drop the *.sppkg file under `sharepoint/solution` folder to the SharePoint App Catalog site, follow the instruction [Deploy the HelloWorld package to App Catalog](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#deploy-the-helloworld-package-to-app-catalog)
     > Note: Tick the "Make this solution available to all sites in the organization" option to make the solution available in Teams.
-1. After Deploy, you may need to go to the SharePoint Admin Site. In Advanced - API Access, approve you API request.
-![APIAccess](images/APIAccess.png)
 1. Go back to Microsoft Teams Toolkit extension, in in PROJECT panel, click `Publish to Teams` or open the command palette and select `Teams: Publish to Teams`.
 1. Check the published app in [Microsoft Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps) by searching "todoList" in the search box.
 ![TeamsAppAdminCenter](images/TeamsAppAdminCenter.png)
 1. Click the 'todoList' app you just published and select `Publish` in the Publishing status.
 ![Publish](images/Publish.png)
 It may take a few minutes to publish the Teams app.
-1. Login to Teams using your M365 tenant admin account, same account you are using to create SharePoint environment and logging to VS Code extension. You will see your app in the `Apps - Built for your org`. Add the app to your Teams client.
+1. Login to Teams using your M365 tenant admin account, same account you are using to create SharePoint environment and logging to VS Code extension. You will see your app in the `Apps - Built for your org`. Add the app to your Teams.
 ![addapp](images/addapp.png)
 1. You should see the app running in your Teams.
 
 ## (Optional) Debug
 Debug the app with SharePoint WorkBench in VSCode.
-1. Navigate to [launch.json](.vscode/launch.json), replace `enter-your-SharePoint-site` with your SharePoint site, eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-site-name}/_layouts/workbench.aspx`.
+1. Navigate to [launch.json](.vscode/launch.json), replace `enter-your-SharePoint-site` with your SharePoint site, eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}/_layouts/workbench.aspx`.
 1. In Debug mode, select "Hosted workbench" and press start button. The Hosted Workbench will be opened and you may need to sign in with your M365 account.
 1. Click the plus button in the middle, and select `TodoList`, the webpart will show up in the workbench.
 - ![HostedWokbench](images/Workbench.png)
@@ -85,7 +83,6 @@ Debug the app with SharePoint WorkBench in VSCode.
 
 - [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 - [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
 
@@ -94,8 +91,6 @@ Importing [msteams-ui-components-react](https://www.npmjs.com/package/msteams-ui
 ![Issue](images/knownissue.png)
 
 Guest users may be unable to load the profile picture of the creator when using the To-Do-List.
-
-When a guest user and a member user both login to the Sharepoint website, Teams web app might get 
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
