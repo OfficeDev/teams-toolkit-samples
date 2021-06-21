@@ -43,7 +43,7 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
 ## Try the Sample
 1. Clone the repo to your local workspace or directly download the source code. 
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
-1. Open [./SPFx/src/webparts/TodoList/components/SharePointListManager.ts](./SPFx/src/webparts/TodoList/components/SharePointListManager.ts), navigate to line:16, set the `listname` variable to your SharePoint List name.
+1. Open [./SPFx/src/webparts/todoList/components/SharePointListManager.ts](./SPFx/src/webparts/todoList/components/SharePointListManager.ts), navigate to line:16, set the `listname` variable to your SharePoint List name.
 1. Open the project in Visual Studio Code, click `Provision in the Cloud` in PROJECT panel of Microsoft Teams Toolkit extension or open the command palette and select `Teams: Provision in the Cloud`. This step will create an app in Teams App Studio.
 1. Go back to Microsoft Teams Toolkit extension, click `Deploy to the Cloud` in PROJECT panel or open the command palette and select `Teams: Deploy to the Cloud`. 
     > This step will generate a SharePoint package (*.sppkg) under `sharepoint/solution` folder.
