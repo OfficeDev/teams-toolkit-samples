@@ -93,6 +93,11 @@ span {
   margin-top: 7px;
 }
 
+.is-checked>label>div {
+  background-color: #464775;
+  border: #464775;
+}
+
 .is-completed-input>label>div {
   border-radius: 50%;
 }
