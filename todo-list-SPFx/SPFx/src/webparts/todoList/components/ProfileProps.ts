@@ -5,4 +5,3 @@ export interface ProfileProps {
   photoObjectURL: string;
   userName: string;
 }
-  

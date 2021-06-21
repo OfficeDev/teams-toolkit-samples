@@ -14,37 +14,36 @@ import { ISPItem } from "./ITodoListState";
 export class SharePointListManager {
   private spContext: WebPartContext;
   private siteURL: string;
-  private listname:string = "To%20Do%20List";
+  private listname: string = "To%20Do%20List";
   private previousUpdateItem = null;
   private previousUpdateId: number = -1;
   private UserInfoMap = new Map();
 
   constructor(spContext: WebPartContext) {
-      this.spContext = spContext;
-      this.siteURL = spContext.pageContext.web.absoluteUrl;
+    this.spContext = spContext;
+    this.siteURL = spContext.pageContext.web.absoluteUrl;
   }
 
   private async getUserInfo(AuthorId: number) {
-      if (this.UserInfoMap.has(AuthorId)) {
-        return this.UserInfoMap.get(AuthorId);
-      }
-      const userinfo: SPHttpClientResponse = await this.spContext.spHttpClient.get(
-        `${this.siteURL}/_api/web/GetUserById(`+ AuthorId.toString() + `)`,
+    if (this.UserInfoMap.has(AuthorId)) {
+      return this.UserInfoMap.get(AuthorId);
+    }
+    const userinfo: SPHttpClientResponse =
+      await this.spContext.spHttpClient.get(
+        `${this.siteURL}/_api/web/GetUserById(` + AuthorId.toString() + `)`,
         SPHttpClient.configurations.v1
       );
 
-      if (userinfo.ok) {
-        const userinfojson = await userinfo.json();
-        const username: string = userinfojson.UserPrincipalName;
-        const userDisplayName: string = userinfojson.Title;
-        const photoObjectURL: string = `${this.siteURL}/_layouts/15/userphoto.aspx?size=S&username=${username}`;
-        this.UserInfoMap.set(AuthorId, [userDisplayName, photoObjectURL]);
-        return this.UserInfoMap.get(AuthorId);
-      }
-      else {
-        alert(await userinfo.text());
-      }
-
+    if (userinfo.ok) {
+      const userinfojson = await userinfo.json();
+      const username: string = userinfojson.UserPrincipalName;
+      const userDisplayName: string = userinfojson.Title;
+      const photoObjectURL: string = `${this.siteURL}/_layouts/15/userphoto.aspx?size=S&username=${username}`;
+      this.UserInfoMap.set(AuthorId, [userDisplayName, photoObjectURL]);
+      return this.UserInfoMap.get(AuthorId);
+    } else {
+      alert(await userinfo.text());
+    }
   }
 
   public static async processResponseError(response: HttpClientResponse) {
@@ -62,26 +61,27 @@ export class SharePointListManager {
    *
    */
   public async getItems(): Promise<ISPItem[]> {
-      const response: SPHttpClientResponse = await this.spContext.spHttpClient.get(
+    const response: SPHttpClientResponse =
+      await this.spContext.spHttpClient.get(
         `${this.siteURL}/_api/web/lists/GetByTitle('${this.listname}')/Items`,
-        SPHttpClient.configurations.v1,
+        SPHttpClient.configurations.v1
       );
-  
-      if (response.ok) {
-        const responsejson = await response.json();
-        const items: ISPItem[] = responsejson.value;
-        for (var i in items) {
-          const AuthorId: number = items[i].AuthorId;
 
-          var userinfo = await this.getUserInfo(AuthorId);
-          items[i].userDisplayName =  userinfo[0];
-          items[i].photoObjectURL = userinfo[1];
-        }   
+    if (response.ok) {
+      const responsejson = await response.json();
+      const items: ISPItem[] = responsejson.value;
+      for (var i in items) {
+        const AuthorId: number = items[i].AuthorId;
 
-        return items;
-      } else {
-        SharePointListManager.processResponseError(response);
+        var userinfo = await this.getUserInfo(AuthorId);
+        items[i].userDisplayName = userinfo[0];
+        items[i].photoObjectURL = userinfo[1];
       }
+
+      return items;
+    } else {
+      SharePointListManager.processResponseError(response);
+    }
   }
 
   /**
@@ -92,35 +92,36 @@ export class SharePointListManager {
    *
    */
   public async updateSPItem(id: number, item: any) {
-      // If the update one is the same as previous, just return to prevent duplicate call
-      if (
-        this.previousUpdateId === id &&
-        this.previousUpdateItem?.description === item.description
-      ) {
-        return;
-      }
-      this.previousUpdateId = id;
-      this.previousUpdateItem = item;
-      const options: ISPHttpClientOptions = {
-        body: JSON.stringify(item),
-        headers: {
-          accept: 'application/json',
-          'content-type': 'application/json',
-          'X-HTTP-Method': 'MERGE',
-          'IF-MATCH': '*',
-        },
-      };
-      const response: SPHttpClientResponse = await this.spContext.spHttpClient.post(
+    // If the update one is the same as previous, just return to prevent duplicate call
+    if (
+      this.previousUpdateId === id &&
+      this.previousUpdateItem?.description === item.description
+    ) {
+      return;
+    }
+    this.previousUpdateId = id;
+    this.previousUpdateItem = item;
+    const options: ISPHttpClientOptions = {
+      body: JSON.stringify(item),
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+        "X-HTTP-Method": "MERGE",
+        "IF-MATCH": "*",
+      },
+    };
+    const response: SPHttpClientResponse =
+      await this.spContext.spHttpClient.post(
         `${this.siteURL}/_api/web/lists/GetByTitle('${this.listname}')/Items(${id})`,
         SPHttpClient.configurations.v1,
-        options,
+        options
       );
-  
-      if (response.ok) {
-        console.log(`Update Succeed for item${id}`);
-      } else {
-        SharePointListManager.processResponseError(response);
-      }
+
+    if (response.ok) {
+      console.log(`Update Succeed for item${id}`);
+    } else {
+      SharePointListManager.processResponseError(response);
+    }
   }
 
   /**
@@ -130,24 +131,25 @@ export class SharePointListManager {
    *
    */
   public async AddItem(description: string) {
-      const options: ISPHttpClientOptions = {
-        body: JSON.stringify({ description: description, isCompleted: false }),
-        headers: {
-          accept: 'application/json',
-          'content-type': 'application/json',
-        },
-      };
-      const response: SPHttpClientResponse = await this.spContext.spHttpClient.post(
+    const options: ISPHttpClientOptions = {
+      body: JSON.stringify({ description: description, isCompleted: false }),
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+    };
+    const response: SPHttpClientResponse =
+      await this.spContext.spHttpClient.post(
         `${this.siteURL}/_api/web/lists/GetByTitle('${this.listname}')/Items`,
         SPHttpClient.configurations.v1,
-        options,
+        options
       );
-  
-      if (response.ok) {
-        console.log(`Insertion Succeed for item:${description}`);
-      } else {
-        SharePointListManager.processResponseError(response);
-      }
+
+    if (response.ok) {
+      console.log(`Insertion Succeed for item:${description}`);
+    } else {
+      SharePointListManager.processResponseError(response);
+    }
   }
 
   /**
@@ -157,24 +159,25 @@ export class SharePointListManager {
    *
    */
   public async DeleteItem(id: number) {
-      const options: ISPHttpClientOptions = {
-        headers: {
-          accept: 'application/json',
-          'content-type': 'application/json',
-          'X-HTTP-Method': 'DELETE',
-          'IF-MATCH': '*',
-        },
-      };
-      const response: SPHttpClientResponse = await this.spContext.spHttpClient.post(
+    const options: ISPHttpClientOptions = {
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+        "X-HTTP-Method": "DELETE",
+        "IF-MATCH": "*",
+      },
+    };
+    const response: SPHttpClientResponse =
+      await this.spContext.spHttpClient.post(
         `${this.siteURL}/_api/web/lists/GetByTitle('${this.listname}')/Items(${id})`,
         SPHttpClient.configurations.v1,
-        options,
+        options
       );
-  
-      if (response.ok) {
-        console.log(`Deletion Succeed for item${id}`);
-      } else {
-        SharePointListManager.processResponseError(response);
-      }
+
+    if (response.ok) {
+      console.log(`Deletion Succeed for item${id}`);
+    } else {
+      SharePointListManager.processResponseError(response);
     }
+  }
 }

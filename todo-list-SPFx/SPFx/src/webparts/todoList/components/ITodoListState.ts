@@ -11,11 +11,11 @@ export interface ISPItem {
 }
 
 export interface ITodoListState {
-    selectItemID: number;
-    selection?: { [ key: string]: boolean };
-    target?: {x: number, y: number};
-    isAddingItem: boolean;
-    siteURL: string;
-    items: ISPItem[];
-    newItemDescription: string;
-  }
+  selectItemID: number;
+  selection?: { [key: string]: boolean };
+  target?: { x: number; y: number };
+  isAddingItem: boolean;
+  siteURL: string;
+  items: ISPItem[];
+  newItemDescription: string;
+}
