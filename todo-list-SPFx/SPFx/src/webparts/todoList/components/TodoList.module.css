@@ -48,6 +48,10 @@
   margin: 24px 24px auto auto;
 }
 
+.add-button .ms-Button {
+  background: #464775;
+}
+
 .header-container {
   display: flex;
 }
