@@ -23,7 +23,7 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
 * Use the team site in SharePoint to create a List.
     - Navigate to the [SharePoint team site](https://support.microsoft.com/en-us/office/create-a-team-site-in-sharepoint-ef10c1e7-15f3-42a3-98aa-b5972711777d), in `Home` tab, click `New` and select `List`.
     > *Note: You must nagivate to the team site of the target Team in which you want to use the To-Do-List. Team site URL ends with xx.sharepoint.com/sites/xx* eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}`. 
-    > *This is because each Microsoft Teams has a corresponding team site and Teams Group Tab can automatically detect the target SharePoint team site. If you want to create a List in other subsite, manual steps to change the site url in* *[./SPFx/src/webparts/TodoList/components/SharePointListManager.ts](./SPFx/src/webparts/TodoList/components/SharePointListManager.ts) are required.*
+    > *This is because each Microsoft Teams has a corresponding team site and Teams Group Tab can automatically detect the target SharePoint team site. If you want to create a List in other subsite, manual steps to change the site url in* *[./SPFx/src/webparts/TodoList/components/SharePointListManager.ts](https://github.com/OfficeDev/TeamsFx-Samples/blob/t-yiqingzhao/todo-list-SPFx-group/todo-list-SPFx/SPFx/src/webparts/todoList/components/SharePointListManager.ts) are required.*
     - Name the List 'To Do List'
     - Click `Add Column`, select `Single line of text`, name the column 'description'
     - Click `Add Column`, select `Yes/No`, name the column 'isCompleted'
