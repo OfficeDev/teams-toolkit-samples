@@ -49,7 +49,7 @@
 }
 
 .add-button .ms-Button {
-  background: #464775;
+  background: #6462a7;
 }
 
 .header-container {
@@ -94,7 +94,12 @@ span {
 }
 
 .is-checked>label>div {
-  background-color: #464775;
+  background-color: #6462a7;
+  border: #6462a7;
+}
+
+.is-checked .ms-Checkbox-checkbox:hover {
+  background: #464775;
   border: #464775;
 }
 
