@@ -53,11 +53,16 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
 1. Check the published app in [Microsoft Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps) by searching "todoList" in the search box.
 ![TeamsAppAdminCenter](images/TeamsAppAdminCenter.png)
 1. Click the 'todoList' app you just published and select `Publish` in the Publishing status.
-![Publish](images/Publish.png)
-It may take a few minutes to publish the Teams app.
-1. Login to Teams using your M365 tenant admin account, same account you are using to create SharePoint environment and logging to VS Code extension. You will see your app in the `Apps - Built for your org`. Add the app to your Teams.
+
+    ![Publish](images/Publish.png)
+
+    It may take a few minutes to publish the Teams app.
+1. Login to Teams using your M365 tenant admin account, same account you are using to create SharePoint environment and logging to VS Code extension. You will see your app in the `Apps - Built for your org`. 
 ![addapp](images/addapp.png)
+1. Add the app to your Teams.
+![addtoateam](images/addtoateam.png)
 1. You should see the app running in your Teams.
+![appdisplay](images/appdisplay.png)
 
 ## (Optional) Debug
 Debug the app with SharePoint WorkBench in VSCode.
