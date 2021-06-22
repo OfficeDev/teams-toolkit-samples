@@ -3,14 +3,13 @@
 > ## WARNING: This repository is under active development and the samples are not guaranteed to work!
 > This warning will be removed when the samples are ready for consumption
 
-Todo List with SPFx is a Todo List for individuals to manage his/her personal to-do items. This app is hosted on SharePoint. There is no requirements to deploy Azure resources.
+Todo List with SPFx is a Todo List Manage tool for a group of people. This app is installed in Teams Team or Channel and hosted on SharePoint, members in the Team/Channel can collaborate on the same Todo List, manipulate the same set of Todo items. There is no requirement asking for an Azure account to deploy Azure resouces to run this sample app.
 
 ![TodoList](images/ToDoListCRUD.gif)
 
 ### What you will learn in this sample
 
-- How to call Microsoft Graph client in SPFx context to get access to M365 data.
-- How to create SharePoint List in the team site and how to do CRUD operations on SharePoint List in SPFx context.
+- How to create SharePoint List in the SharePoint team site and how to do CRUD operations on SharePoint List in SPFx context.
 - How to deploy your app to SharePoint App Catalog and sync the solution to Teams App Catalog.
 
 ## Prerequisites
@@ -22,8 +21,8 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
 * Setup SharePoint Environment by following the [instructions](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
 * Use the team site in SharePoint to create a List.
     - Navigate to the [SharePoint team site](https://support.microsoft.com/en-us/office/create-a-team-site-in-sharepoint-ef10c1e7-15f3-42a3-98aa-b5972711777d), in `Home` tab, click `New` and select `List`.
-    > *Note: You must nagivate to the team site of the target Team in which you want to use the To-Do-List. Team site URL ends with xx.sharepoint.com/sites/xx* eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}`. 
-    > *This is because each Microsoft Teams has a corresponding team site and Teams Group Tab can automatically detect the target SharePoint team site. A "To Do List" Sharepoint List is required in each team site if the Teams group tab is added to the corresponding channel. If you want to create a List in other subsite, manual steps to change the site url in* *[./SPFx/src/webparts/todoList/components/SharePointListManager.ts](./SPFx/src/webparts/todoList/components/SharePointListManager.ts) are required.*
+    > *Note: Each Team/Channel in Teams has a corresponding team site in SharePoint. You must nagivate to the target SharePoint team site of the Team/Channel in which you want to add the "Todo List" app. The team site URL ends with xx.sharepoint.com/sites/xx*. eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}`. 
+    > In case you want to create a List in subsite of the team site, you will need manual steps to change the site url in *[./SPFx/src/webparts/todoList/components/SharePointListManager.ts](./SPFx/src/webparts/todoList/components/SharePointListManager.ts).*
     - Name the List 'To Do List'
     - Click `Add Column`, select `Single line of text`, name the column 'description'
     - Click `Add Column`, select `Yes/No`, name the column 'isCompleted'
@@ -94,8 +93,6 @@ Debug the app with SharePoint WorkBench in VSCode.
 ## Known Issue:
 Importing [msteams-ui-components-react](https://www.npmjs.com/package/msteams-ui-components-react) package will cause issues during package build:
 ![Issue](images/knownissue.png)
-
-Guest users may be unable to load the profile picture of the creator when using the To-Do-List.
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
