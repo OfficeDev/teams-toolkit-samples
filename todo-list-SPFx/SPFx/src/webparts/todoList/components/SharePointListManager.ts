@@ -24,6 +24,15 @@ export class SharePointListManager {
     this.siteURL = spContext.pageContext.web.absoluteUrl;
   }
 
+  public static async processResponseError(response: HttpClientResponse) {
+    const resdata = await response.json();
+    if (resdata.error?.message) {
+      alert(resdata.error?.message);
+    } else {
+      alert(await response.text());
+    }
+  }
+
   private async getUserInfo(AuthorId: number) {
     if (this.UserInfoMap.has(AuthorId)) {
       return this.UserInfoMap.get(AuthorId);
@@ -40,18 +49,10 @@ export class SharePointListManager {
       const userDisplayName: string = userinfojson.Title;
       const photoObjectURL: string = `${this.siteURL}/_layouts/15/userphoto.aspx?size=S&username=${username}`;
       this.UserInfoMap.set(AuthorId, [userDisplayName, photoObjectURL]);
+
       return this.UserInfoMap.get(AuthorId);
     } else {
-      alert(await userinfo.text());
-    }
-  }
-
-  public static async processResponseError(response: HttpClientResponse) {
-    const resdata = await response.json();
-    if (resdata.error?.message) {
-      alert(resdata.error?.message);
-    } else {
-      alert(await response.text());
+      SharePointListManager.processResponseError(userinfo);
     }
   }
   /**
