@@ -22,16 +22,19 @@
         "color": "color.png"
     },
     "accentColor": "#004578",
-    "staticTabs": [
+    "configurableTabs": [
         {
-            "entityId": "c314487b-f51c-474d-823e-a2c3ec82b1ff",
-            "name": "todoList",
-            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=c314487b-f51c-474d-823e-a2c3ec82b1ff%26forceLocale={locale}",
-            "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+            "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3Fteams%26componentId=c314487b-f51c-474d-823e-a2c3ec82b1ff%26forceLocale={locale}",
+            "canUpdateConfiguration": true,
             "scopes": [
-                "personal"
+                "team",
+                "groupchat"
             ]
         }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
     ],
     "validDomains": [
         "*.login.microsoftonline.com",

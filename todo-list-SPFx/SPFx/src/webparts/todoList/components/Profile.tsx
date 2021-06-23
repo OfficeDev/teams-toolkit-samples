@@ -10,14 +10,10 @@ class Profile extends React.Component<ProfileProps> {
     const defaultPhoto:string = require('../images/default-photo.png');
     return (
       <div className="profile">
-        <div className="photo">
-        <img src={this.props.photoObjectURL ? this.props.photoObjectURL : defaultPhoto } alt="avatar"/>
+        <div>
+          <img src={this.props.photoObjectURL ? this.props.photoObjectURL : defaultPhoto } alt="avatar"/>
         </div>
-        <div className="info">
-          <div className="name">{this.props.userName}</div>
-          <div className="email">{this.props.userEmail}</div>
-          <div className="phone">{this.props.userPhoneNumber}</div>
-        </div>
+        <div className="name">{this.props.userName}</div>
       </div>
     );
   }
