@@ -20,7 +20,7 @@ Share Now promotes the exchange of information between colleagues by enabling us
 - How to connect to Azure SQL DB and how to do CRUD operations in DB.
 
 ## Try the Sample
->Here is the steps to try the sample **in Visual Studio Code**. If you want to try it in command line, please refer to [Command Line](cli.md)
+>Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try sample with TeamsFx CLI](cli.md)
 1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install 'Teams Toolkit' extension.
 1. Open the project in Visual Studio Code.
