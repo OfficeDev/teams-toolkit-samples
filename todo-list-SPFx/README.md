@@ -40,6 +40,7 @@ Todo List with SPFx is a Todo List Manage tool for a group of people. This app i
     ![invitepeople](images/invitepeople.png)
 
 ## Try the Sample
+>Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try sample with TeamsFx CLI](cli.md)
 1. Clone the repo to your local workspace or directly download the source code. 
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open [./SPFx/src/webparts/todoList/components/SharePointListManager.ts](./SPFx/src/webparts/todoList/components/SharePointListManager.ts), navigate to line:16, set the `listname` variable to your SharePoint List name.
@@ -51,7 +52,7 @@ Todo List with SPFx is a Todo List Manage tool for a group of people. This app i
 1. Go back to Microsoft Teams Toolkit extension, in in PROJECT panel, click `Publish to Teams` or open the command palette and select `Teams: Publish to Teams`.
 1. Check the published app in [Microsoft Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps) by searching "todoList" in the search box.
 ![TeamsAppAdminCenter](images/TeamsAppAdminCenter.png)
-1. Click the 'todoList' app you just published and select `Publish` in the Publishing status.
+1. Click the 'TodoList' app you just published and select `Publish` in the Publishing status.
 
     ![Publish](images/Publish.png)
 
