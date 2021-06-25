@@ -1,18 +1,18 @@
-## Try the Sample in Command Line
+## Try the Sample with TeamsFx CLI
 1. Install [Node.js](https://nodejs.org/en/download/) (use the latest v14 LTS release)
 1. To install the TeamsFx CLI, use the npm package manager:
     ```
     npm install -g @microsoft/teamsfx-cli
     ```
-1. create share-now project.
+1. Create share-now project.
     ```
     teamsfx new template share-now
     ```
-1. provision the project to azure. Replace the admin-name and password by your own.
+1. Provision the project to azure. Replace the admin-name and password by your own.
     ```
     teamsfx provision --sql-admin-name [admin-name] --sql-password [password] --sql-confirm-password [passowrd]
     ```
-1. deploy.
+1. Deploy.
     ```
     teamsfx deploy
     ```
