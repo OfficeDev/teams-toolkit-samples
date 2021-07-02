@@ -8,9 +8,9 @@
     ```
     teamsfx new template todo-list-with-Azure-backend
     ```
-1. Provision the project to azure. Replace the admin-name and password by your own.
+1. Provision the project to azure. You will be asked to input admin name and password of SQL.
     ```
-    teamsfx provision --sql-admin-name [admin-name] --sql-password [password] --sql-confirm-password [passowrd]
+    teamsfx provision
     ```
 1. Deploy.
     ```
