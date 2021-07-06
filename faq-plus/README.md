@@ -64,7 +64,7 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
     | BOT_QNAMAKERAPIENDPOINTURL | `QnAMakerApiEndpointUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[Location].api.cognitive.microsoft.com |
     | BOT_QNAMAKERHOSTURL | `QnAMakerHostUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[BaseResourceName]-qnamaker.azurewebsites.net |
     | BOT_QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Usually a 32 alphanumeric characters string |
-3. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to launch Teams client in browser. Log in to Teams and click `Add` button to install the app to your Teams client.
+3. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Debug (Edge)` or `Debug (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to launch Teams client in browser. Log in to Teams and click `Add` button to install the app to your Teams client.
 4. Your app is successfully running in your Teams client now, refer to ['Use the App' section](#use-the-app) below to interact with the app.
 
 ### Use the App
