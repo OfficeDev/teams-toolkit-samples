@@ -2,9 +2,8 @@
 
 > Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate. 
 > 
-> We really appreciate your [feedback](https://aka.ms/teamsfx-feedback), and [recordings](https://aka.ms/teamsfx-record), they really make the product better. Thank you!
->  If you encounter any issue or error, please report issues to us following the [Supporting Guide](SUPPORT.md).
->  
+>We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+>
 > This warning will be removed when the samples are ready for production.
 
 Chatbots on Microsoft Teams are an easy way to provide answers to frequently asked questions by users. However, most chatbots fail to engage with users in a meaningful way because there is no human in the loop when the chatbot fails to answer a question well.
