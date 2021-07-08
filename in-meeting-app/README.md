@@ -1,7 +1,10 @@
 # Getting Started With In-meeting Apps
 
-> ## WARNING: This repository is under active development and the samples are not guaranteed to work!
-> This warning will be removed when the samples are ready for consumption
+> Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate. 
+> 
+> We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+>  
+> This warning will be removed when the samples are ready for production.
 
 This is a hello-world template which shows how to build an app in the context of a Teams meeting. This app contains a side panel and a Bot which shows the user's profile and can be added to a Teams meeting.
 

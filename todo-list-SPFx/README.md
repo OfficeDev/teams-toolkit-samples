@@ -1,16 +1,18 @@
 # Getting Started With Todo List Sample (SPFx)
 
-> ## WARNING: This repository is under active development and the samples are not guaranteed to work!
-> This warning will be removed when the samples are ready for consumption
+> Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate. 
+> 
+> We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+>  
+> This warning will be removed when the samples are ready for production.
 
-Todo List with SPFx is a Todo List for individuals to manage his/her personal to-do items. This app is hosted on SharePoint. There is no requirements to deploy Azure resources.
+Todo List with SPFx is a Todo List Manage tool for a group of people. This app is installed in Teams Team or Channel and hosted on SharePoint, members in the Team/Channel can collaborate on the same Todo List, manipulate the same set of Todo items. There is no requirement asking for an Azure account to deploy Azure resouces to run this sample app.
 
 ![TodoList](images/ToDoListCRUD.gif)
 
 ### What you will learn in this sample
 
-- How to call Microsoft Graph client in SPFx context to get access to M365 data.
-- How to create SharePoint List in the website and how to do CRUD operations on SharePoint List in SPFx context.
+- How to create SharePoint List in the SharePoint team site and how to do CRUD operations on SharePoint List in SPFx context.
 - How to deploy your app to SharePoint App Catalog and sync the solution to Teams App Catalog.
 
 ## Prerequisites
@@ -20,10 +22,10 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
     >- Node.js v12.13.0+ (Erbium)
     >- Node.js v14.15.0+ (Fermium) 
 * Setup SharePoint Environment by following the [instructions](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
-* Use the communication root site in SharePoint to create a List.
-    - Navigate to the SharePoint root site, in `Home` tab, click `New` and select `List`. 
-    > *Note: You must nagivate to root site instead of any other subsite. Root site URL ends with xx.sharepoint.com.* eg. `https://{your-tenant-name}.sharepoint.com/`. 
-    > *This is because Teams App automatically detect SharePoint root site only. If you want to create a List in other subsite, manual steps to change the site url in* *[./SPFx/src/webparts/TodoList/components/SharePointListManager.ts](./SPFx/src/webparts/TodoList/components/SharePointListManager.ts) are required.*
+* Use the team site in SharePoint to create a List.
+    - Navigate to the [SharePoint team site](https://support.microsoft.com/en-us/office/create-a-team-site-in-sharepoint-ef10c1e7-15f3-42a3-98aa-b5972711777d), in `Home` tab, click `New` and select `List`.
+    > *Note: Each Team/Channel in Teams has a corresponding team site in SharePoint. You must nagivate to the target SharePoint team site of the Team/Channel in which you want to add the "Todo List" app. The team site URL ends with xx.sharepoint.com/sites/xx*. eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}`. 
+    > In case you want to create a List in subsite of the team site, you will need manual steps to change the site url in *[./SPFx/src/webparts/todoList/components/SharePointListManager.ts](./SPFx/src/webparts/todoList/components/SharePointListManager.ts).*
     - Name the List 'To Do List'
     - Click `Add Column`, select `Single line of text`, name the column 'description'
     - Click `Add Column`, select `Yes/No`, name the column 'isCompleted'
@@ -34,31 +36,40 @@ Todo List with SPFx is a Todo List for individuals to manage his/her personal to
     - In `Advanced Settings`, Set the `Read Access` to `Read items that were created by the user`, and Set the `Create and Edit access` to `Create items and edit items that were created by the user`.
     ![ListSetting2](images/ListSetting2.png)
     - Click 'Ok' to save your setting.
+* [Optional] If you want your guest users use the To-Do-list when using Teams Desktop app, add access permission to your app catlog.
+    - In the App Catlog page, click `setting` button, and then choose `shared with`.
+    ![AppCatlogSetting1](images/AppCatlogSetting1.png)
+    - Invite the guest user and click `Share` button.
+    ![invitepeople](images/invitepeople.png)
 
 ## Try the Sample
+>Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try sample with TeamsFx CLI](cli.md)
 1. Clone the repo to your local workspace or directly download the source code. 
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
-1. Open [./SPFx/src/webparts/TodoList/components/SharePointListManager.ts](./SPFx/src/webparts/TodoList/components/SharePointListManager.ts), navigate to line:16, set the `listname` variable to your SharePoint List name.
+1. Open [./SPFx/src/webparts/todoList/components/SharePointListManager.ts](./SPFx/src/webparts/todoList/components/SharePointListManager.ts), navigate to line:16, set the `listname` variable to your SharePoint List name.
 1. Open the project in Visual Studio Code, click `Provision in the Cloud` in PROJECT panel of Microsoft Teams Toolkit extension or open the command palette and select `Teams: Provision in the Cloud`. This step will create an app in Teams App Studio.
 1. Go back to Microsoft Teams Toolkit extension, click `Deploy to the Cloud` in PROJECT panel or open the command palette and select `Teams: Deploy to the Cloud`. 
     > This step will generate a SharePoint package (*.sppkg) under `sharepoint/solution` folder.
 1. Upload or drag-and-drop the *.sppkg file under `sharepoint/solution` folder to the SharePoint App Catalog site, follow the instruction [Deploy the HelloWorld package to App Catalog](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#deploy-the-helloworld-package-to-app-catalog)
     > Note: Tick the "Make this solution available to all sites in the organization" option to make the solution available in Teams.
-1. After Deploy, you may need to go to the SharePoint Admin Site. In Advanced - API Access, approve you API request.
-![APIAccess](images/APIAccess.png)
 1. Go back to Microsoft Teams Toolkit extension, in in PROJECT panel, click `Publish to Teams` or open the command palette and select `Teams: Publish to Teams`.
 1. Check the published app in [Microsoft Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps) by searching "todoList" in the search box.
 ![TeamsAppAdminCenter](images/TeamsAppAdminCenter.png)
-1. Click the 'todoList' app you just published and select `Publish` in the Publishing status.
-![Publish](images/Publish.png)
-It may take a few minutes to publish the Teams app.
-1. Login to Teams using your M365 tenant admin account, same account you are using to create SharePoint environment and logging to VS Code extension. You will see your app in the `Apps - Built for your org`. Add the app to your Teams client.
+1. Click the 'TodoList' app you just published and select `Publish` in the Publishing status.
+
+    ![Publish](images/Publish.png)
+
+    It may take a few minutes to publish the Teams app.
+1. Login to Teams using your M365 tenant admin account, same account you are using to create SharePoint environment and logging to VS Code extension. You will see your app in the `Apps - Built for your org`. 
 ![addapp](images/addapp.png)
+1. Add the app to your Teams.
+![addtoateam](images/addtoateam.png)
 1. You should see the app running in your Teams.
+![appdisplay](images/appdisplay.png)
 
 ## (Optional) Debug
 Debug the app with SharePoint WorkBench in VSCode.
-1. Navigate to [launch.json](.vscode/launch.json), replace `enter-your-SharePoint-site` with your SharePoint site.
+1. Navigate to [launch.json](.vscode/launch.json), replace `enter-your-SharePoint-site` with your SharePoint site, eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}/_layouts/workbench.aspx`.
 1. In Debug mode, select "Hosted workbench" and press start button. The Hosted Workbench will be opened and you may need to sign in with your M365 account.
 1. Click the plus button in the middle, and select `TodoList`, the webpart will show up in the workbench.
 - ![HostedWokbench](images/Workbench.png)
@@ -80,13 +91,13 @@ Debug the app with SharePoint WorkBench in VSCode.
 
 - [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 - [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
 
 ## Known Issue:
-Importing [msteams-ui-components-react](https://www.npmjs.com/package/msteams-ui-components-react) package will cause issues during package build:
+1. Importing [msteams-ui-components-react](https://www.npmjs.com/package/msteams-ui-components-react) package will cause issues during package build:
 ![Issue](images/knownissue.png)
+2. When using the TodoList app, switching Teams accounts <b>in the same browser</b> may cause errors(the app still uses the previous account instead of the current one). To avoid this, we suggest you to open a new browser or switch your profile in the browser settings instead of simply switching in the website.
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).

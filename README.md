@@ -1,10 +1,11 @@
 # Microsoft Teams Framework (TeamsFx) Sample Gallery
 
-> ## WARNING: This repository is under active development and the samples are not guaranteed to work!
-> This warning will be removed when the samples are ready for consumption
-
-> Please be advised that this project is currently in **Public Preview**, with a lot of bugs, and work left to do before it's ready for production. **Please expect breaking changes** as we continue to iterate. We really appreciate your [feedback](https://aka.ms/teamsfx-feedback), and [recordings](https://aka.ms/teamsfx-record), they really make the product better. Thank you!
-
+> Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate. 
+> 
+> We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+>  
+> This warning will be removed when the samples are ready for production.
+> 
 This repository contains the sample applications for Microsoft Teams that appear in the Visual Studio Code and Visual Studio sample galleries within the Teams Toolkit extension.
 
 ## Contributing

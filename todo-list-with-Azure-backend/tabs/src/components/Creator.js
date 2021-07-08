@@ -17,6 +17,16 @@ class Creator extends React.Component {
   }
 
   async componentDidMount() {
+    this.fetchData();
+  }
+
+  async componentDidUpdate(prevProps) {
+    if (prevProps.objectId !== this.props.objectId) {
+      this.fetchData();
+    }
+  }
+
+  async fetchData() {
     try {
       // Get Microsoft graph client
       const graphClient = await createMicrosoftGraphClient(this.props.credential, this.props.scope);

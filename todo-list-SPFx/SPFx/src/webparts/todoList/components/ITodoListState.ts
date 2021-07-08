@@ -3,6 +3,9 @@
 
 export interface ISPItem {
   Id: number;
+  AuthorId: number;
+  userDisplayName: string;
+  photoObjectURL: string;
   description: string;
   isCompleted: boolean;
 }
@@ -13,8 +16,6 @@ export interface ITodoListState {
   target?: { x: number; y: number };
   isAddingItem: boolean;
   siteURL: string;
-  photoObjectURL: string;
-  userPhoneNumber: string;
   items: ISPItem[];
   newItemDescription: string;
 }

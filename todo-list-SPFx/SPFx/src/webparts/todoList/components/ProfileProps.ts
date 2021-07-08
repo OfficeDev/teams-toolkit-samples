@@ -4,6 +4,4 @@
 export interface ProfileProps {
   photoObjectURL: string;
   userName: string;
-  userEmail: string;
-  userPhoneNumber: string;
 }
