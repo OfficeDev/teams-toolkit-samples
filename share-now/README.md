@@ -1,7 +1,10 @@
 # Getting Started With Share Now Sample
 
-> ## WARNING: This repository is under active development and the samples are not guaranteed to work!
-> This warning will be removed when the samples are ready for consumption
+> Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate. 
+> 
+> We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+>  
+> This warning will be removed when the samples are ready for production.
 
 Share Now promotes the exchange of information between colleagues by enabling users to share content within the Teams environment. Users engage the app to share items of interest and discover new shared content.
 
