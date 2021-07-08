@@ -95,8 +95,9 @@ Debug the app with SharePoint WorkBench in VSCode.
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
 
 ## Known Issue:
-Importing [msteams-ui-components-react](https://www.npmjs.com/package/msteams-ui-components-react) package will cause issues during package build:
+1. Importing [msteams-ui-components-react](https://www.npmjs.com/package/msteams-ui-components-react) package will cause issues during package build:
 ![Issue](images/knownissue.png)
+2. When using the TodoList app, switching Teams accounts <b>in the same browser</b> may cause errors(the app still uses the previous account instead of the current one). To avoid this, we suggest you to open a new browser or switch your profile in the browser settings instead of simply switching in the website.
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
