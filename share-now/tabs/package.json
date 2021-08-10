@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"dependencies": {
+		"@azure/core-tracing": "1.0.0-preview.13",
 		"@fluentui/react": "^7.115.4",
 		"@fluentui/react-icons-northstar": "^0.49.0",
 		"@fluentui/react-northstar": "^0.49.0",
