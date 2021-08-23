@@ -98,6 +98,10 @@ Debug the app with SharePoint WorkBench in VSCode.
 1. Importing [msteams-ui-components-react](https://www.npmjs.com/package/msteams-ui-components-react) package will cause issues during package build:
 ![Issue](images/knownissue.png)
 2. When using the TodoList app, switching Teams accounts <b>in the same browser</b> may cause errors(the app still uses the previous account instead of the current one). This is because switching in Teams web doesn't log people out of the other M365 endpoints(SharePoint). To avoid this, we suggest you to open a new browser or switch your profile in the browser settings instead of simply switching in the website.
+3. In provision stage, you may encounter error "[AppStudio.RemoteAppIdCreatedFailed]:Failed to create teams app id in app studio, due to 409". This is because the teams app id(which is the provision resource) has been already created in your tenant.(It may be created by other users/accounts in your tenant). To solve this, you can update the id(both in line 5 and line 27) in your [manifest file](./appPackage/manifest.source.json).
+![Manifest Line 5](images/manifest1.png)
+![Manifest Line 27](images/manifest2.png)
+Note: The toolkit will help keep the teams app id(on dev portal) consistent with the spfx component id for clearness, but it is also ok to make this two ids different since they present different meanings and won't cause any trouble in the following deployment.
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
