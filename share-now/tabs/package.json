@@ -3,7 +3,6 @@
 	"version": "1.0.0",
 	"private": true,
 	"dependencies": {
-		"@azure/core-tracing": "1.0.0-preview.13",
 		"@fluentui/react": "^7.115.4",
 		"@fluentui/react-icons-northstar": "^0.49.0",
 		"@fluentui/react-northstar": "^0.49.0",
@@ -21,7 +20,6 @@
 		"react-infinite-scroller": "^1.2.4",
 		"react-router-dom": "^5.2.0",
 		"react-scripts": "^4.0.3",
-		"tslib": "^2.0.0",
 		"typescript": "^4.2.4"
 	},
 	"scripts": {
