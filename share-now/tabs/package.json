@@ -20,7 +20,8 @@
 		"react-infinite-scroller": "^1.2.4",
 		"react-router-dom": "^5.2.0",
 		"react-scripts": "^4.0.3",
-		"typescript": "^4.2.4"
+		"typescript": "^4.2.4",
+		"tslib": "^2.0.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
