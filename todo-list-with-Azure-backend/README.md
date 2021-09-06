@@ -83,6 +83,18 @@ To debug the project, you will need to configure an Azure SQL Database to be use
 1. You could try to update todo item by typing text in todo item list.
 1. You could try to delete todo item by clicking "..." and then choose "delete" button.
 
+## CI/CD Support
+CI/CD support for this sample is provided under folder `.github/workflows`. 
+
+There're three workflows provided:
+|File Name|Description|
+|---|---|
+|`ci.yml`|It is an example workflow for continuous integration which can be customized to meet your own requirements.|
+|`provision.yml`|It is an example workflow for provisioning resources which can be customized to meet your own requirements.|
+|`cd.yml`|It is an example workflow for continuous deployment which can be customized to meet your own requirements.|
+
+The detailed instructions can be found by clicking [teamsfx-cicd-guide](https://aka.ms/teamsfx-cicd-guide).
+
 ## Architecture
 
 ![Tab App Flow](images/TabAppFlow.jpg)

@@ -1,0 +1,87 @@
+# This is just an example workflow for provisioning resources.
+# You should customize it to meet your own requirements.
+name: 'Provision Resources'
+on:
+  workflow_dispatch:
+
+jobs:
+  provisionResources:
+    runs-on: ubuntu-latest
+    # You can uncomment the line below to use environments (refer to https://docs.github.com/en/actions/reference/environments). 
+    # environment: test_environment
+    env:
+      AZURE_ACCOUNT_NAME: ${{secrets.AZURE_ACCOUNT_NAME}}
+      AZURE_ACCOUNT_PASSWORD: ${{secrets.AZURE_ACCOUNT_PASSWORD}}
+      AZURE_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      AZURE_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
+      M365_ACCOUNT_NAME: ${{secrets.M365_ACCOUNT_NAME}}
+      M365_ACCOUNT_PASSWORD: ${{secrets.M365_ACCOUNT_PASSWORD}}
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+        
+      # We suggest to do the `teamsfx provision` step manually or in a separate workflow. The following steps are for your reference.
+      # After provisioning, you should commit .fx/env.default.json into the repository.
+      # You should pick required secrets from .fx/default.userdata, and save them in the repository secrets (https://docs.github.com/en/actions/reference/encrypted-secrets) which can be refered by the step with name 'Generate default.userdata'. 
+      - name: Provision hosting environment
+        uses: OfficeDev/teamsfx-cli-action@v1
+        env:
+          SQL_ADMIN_NAME: ${{secrets.SQL_ADMIN_NAME}}
+          SQL_PASSWORD: ${{secrets.SQL_PASSWORD}}
+        with:
+          commands: provision
+          subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
+          sql-admin-name: ${{env.SQL_ADMIN_NAME}}
+          sql-password: ${{env.SQL_PASSWORD}}
+
+      # Create Todo Table if not existing
+      # Install sqlcmd
+      - name: Install a SQL Server suite of tools
+        uses: potatoqualitee/mssqlsuite@v1
+        with:
+          install: sqlclient
+
+      - name: Set SQL_ENDPOINT and DB_NAME
+        id: set-sql
+        run: |
+          sqlEndpoint=`node ./extract.js fx-resource-azure-sql sqlEndpoint`
+          echo "::set-output name=SQL_ENDPOINT::${sqlEndpoint}"
+          databaseName=`node ./extract.js fx-resource-azure-sql databaseName`
+          echo "::set-output name=DB_NAME::${databaseName}"
+ 
+      - name: Create Todo Table
+        env:
+          SQL_ADMIN_NAME: ${{ secrets.SQL_ADMIN_NAME }}
+          SQL_PASSWORD: ${{ secrets.SQL_PASSWORD }}
+          SQL_ENDPOINT: ${{ steps.set-sql.outputs.SQL_ENDPOINT}}
+          DB_NAME: ${{ steps.set-sql.outputs.DB_NAME}}
+        run: |
+           sqlcmd -S ${SQL_ENDPOINT} -d ${DB_NAME} -U ${SQL_ADMIN_NAME} -P ${SQL_PASSWORD} -i ./create_table.sql
+      # Set default.userdata as outputs
+      - name: Set Outputs for default.userdata
+        id: set-userdata
+        run: |
+          userdata_tenant_id=`awk -F'=' '{print $2}' .fx/default.userdata | head -n 1`
+          echo "::set-output name=USERDATA_TENANT_ID::${userdata_tenant_id}"
+          userdata_client_secret=`awk -F'=' '{print $2}' .fx/default.userdata | tail -n 1` 
+          echo "::set-output name=USERDATA_CLIENT_SECRET::${userdata_client_secret}"
+      # Set USERDATA_TENANT_ID as GitHub Secret
+      - uses: jon-grey/github-actions-secrets-creator@v1
+        with:
+          name: USERDATA_TENANT_ID 
+          value: ${{steps.set-userdata.outputs.USERDATA_TENANT_ID}}
+          pa_token: ${{ secrets.PA_TOKEN }} 
+
+      # Set USERDATA_CLIENT_SECRET as GitHub Secret
+      - uses: jon-grey/github-actions-secrets-creator@v1
+        with:
+          name: USERDATA_CLIENT_SECRET
+          value: ${{steps.set-userdata.outputs.USERDATA_CLIENT_SECRET}}
+          pa_token: ${{ secrets.PA_TOKEN }} 
+
+      - name: Commit necessary files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: commit provision configs"
+          file_pattern: .fx/env.default.json .fx/settings.json
