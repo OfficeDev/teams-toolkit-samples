@@ -6,15 +6,12 @@ import * as restify from "restify";
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 import {
   BotFrameworkAdapter,
-  ConversationState,
-  MemoryStorage,
-  UserState,
   TurnContext,
 } from "botbuilder";
 
 // This bot's main dialog.
 import { TeamsBot } from "./teamsBot";
-import { MainDialog } from "./dialogs/mainDialog";
+import { SSODialog } from "./helplers/ssoDialog";
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
@@ -46,23 +43,10 @@ const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
 // Set the onTurnError for the singleton BotFrameworkAdapter.
 adapter.onTurnError = onTurnErrorHandler;
 
-// Define the state store for your bot.
-// See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
-// A bot requires a state storage system to persist the dialog and user state between messages.
-const memoryStorage = new MemoryStorage();
 
-// For a distributed bot in production,
-// this requires a distributed storage to ensure only one token exchange is processed.
-const dedupMemory = new MemoryStorage();
 
-// Create conversation and user state with in-memory storage provider.
-const conversationState = new ConversationState(memoryStorage);
-const userState = new UserState(memoryStorage);
-
-// Create the main dialog.
-const dialog = new MainDialog(dedupMemory);
 // Create the bot that will handle incoming messages.
-const bot = new TeamsBot(conversationState, userState, dialog);
+const bot = new TeamsBot();
 
 // Create HTTP server.
 const server = restify.createServer();
