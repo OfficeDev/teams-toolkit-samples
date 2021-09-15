@@ -11,7 +11,7 @@ import {
 
 // This bot's main dialog.
 import { TeamsBot } from "./teamsBot";
-import { SSODialog } from "./helplers/ssoDialog";
+import { SSODialog } from "./helpers/ssoDialog";
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.

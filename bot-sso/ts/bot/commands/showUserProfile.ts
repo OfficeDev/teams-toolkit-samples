@@ -1,15 +1,15 @@
-import { SSOCommand } from "../helplers/ssoCommand";
 import { ResponseType } from "@microsoft/microsoft-graph-client";
 import { CardFactory, TurnContext } from "botbuilder";
 import {
   createMicrosoftGraphClient,
   OnBehalfOfUserCredential,
 } from "@microsoft/teamsfx";
+import { SSOCommand } from "../helpers/botCommand";
 
 export class ShowUserProfile extends SSOCommand {
   constructor() {
     super();
-    this.commandKey = "show";
+    this.matchPatterns = [/^\s*show\s*/];
     this.operationWithSSOToken = this.showUserInfo;
   }
 

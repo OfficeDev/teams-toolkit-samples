@@ -9,9 +9,9 @@ import {
   ConversationState,
   UserState,
 } from "botbuilder";
-import { Utils } from "./helplers/utils";
-import { SSODialog } from "./helplers/ssoDialog";
-import { CommandsHandler } from "./helplers/commandHelpler";
+import { Utils } from "./helpers/utils";
+import { SSODialog } from "./helpers/ssoDialog";
+import { CommandsHelper } from "./helpers/commandHelpler";
 const rawWelcomeCard = require("./adaptiveCards/welcome.json");
 const rawLearnCard = require("./adaptiveCards/learn.json");
 
@@ -21,7 +21,7 @@ export class TeamsBot extends TeamsActivityHandler {
   userState: BotState;
   dialog: SSODialog;
   dialogState: any;
-  commandsHandler: CommandsHandler;
+  commandsHelper: CommandsHelper;
 
   constructor() {
     super();
@@ -40,13 +40,11 @@ export class TeamsBot extends TeamsActivityHandler {
     this.dialog = new SSODialog(new MemoryStorage());
     this.dialogState = this.conversationState.createProperty("DialogState");
 
-    // Register and trigger commands
-    this.commandsHandler = new CommandsHandler();
-
     this.onMessage(async (context, next) => {
       console.log("Running with Message Activity.");
 
       let txt = context.activity.text;
+      // remove the mention of this bot
       const removedMentionText = TurnContext.removeRecipientMention(
         context.activity
       );
@@ -56,7 +54,7 @@ export class TeamsBot extends TeamsActivityHandler {
       }
 
       // Trigger command by IM text
-      await this.commandsHandler.triggerCommand(txt, {
+      await CommandsHelper.triggerCommand(txt, {
         context: context,
         ssoDialog: this.dialog,
         dialogState: this.dialogState,

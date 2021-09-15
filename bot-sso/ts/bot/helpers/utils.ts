@@ -1,5 +1,5 @@
 import { CardFactory, Attachment } from "botbuilder";
-const ACData = require("adaptivecards-templating");
+import ACData = require("adaptivecards-templating");
 
 export class Utils {
   // Bind AdaptiveCard with data
