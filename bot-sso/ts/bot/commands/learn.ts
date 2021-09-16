@@ -8,12 +8,15 @@ export class LearnCommand extends BotCommand {
     this.matchPatterns = [/^\s*learn\s*/];
   }
 
-  async run(parameters: any): Promise<any> {
+  validateParameters(parameters: any): boolean {
     if (!parameters.likeCount) {
-      throw new Error(
-        `Run "learn" command failed! Do not have input "likeCount"`
-      );
+      throw new Error(`Command "learn" failed: missing input "likeCount"`);
     }
+    return true;
+  }
+
+  async run(parameters: any): Promise<any> {
+    this.validateParameters(parameters);
     const card = Utils.renderAdaptiveCard(rawLearnCard, parameters.likeCount);
     return await parameters.context.sendActivity({ attachments: [card] });
   }
