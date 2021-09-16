@@ -14,9 +14,9 @@ export class ShowUserProfile extends SSOCommand {
   }
 
   async showUserInfo(context: TurnContext, ssoToken: string) {
-    await context.sendActivity("Call Microsoft Graph on behalf of user...");
+    await context.sendActivity("Retrieving user information from Microsoft Graph ...");
 
-    // Call Microsoft Graph on behalf of user
+    // Call Microsoft Graph half of user
     const oboCredential = new OnBehalfOfUserCredential(ssoToken);
     const graphClient = createMicrosoftGraphClient(oboCredential, [
       "User.Read",
@@ -49,7 +49,7 @@ export class ShowUserProfile extends SSOCommand {
       await context.sendActivity({ attachments: [card] });
     } else {
       await context.sendActivity(
-        "Getting profile from Microsoft Graph failed! "
+        "Could not retrieve profile information from Microsoft Graph."
       );
     }
   }
