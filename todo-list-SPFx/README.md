@@ -70,9 +70,9 @@ Todo List with SPFx is a Todo List Manage tool for a group of people. This app i
 ## (Optional) Debug
 Debug the app with SharePoint WorkBench in VSCode.
 1. Navigate to [launch.json](.vscode/launch.json), replace `enter-your-SharePoint-site` with your SharePoint site, eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}/_layouts/workbench.aspx`.
-1. In Debug mode, select "Hosted workbench" and press start button. The Hosted Workbench will be opened and you may need to sign in with your M365 account.
+1. In Debug mode, select "Hosted workbench"(SharePoint workbench) or "Teams workbench" and press start button. The browser will be opened and you may need to sign in with your M365 account.
 1. Click the plus button in the middle, and select `TodoList`, the webpart will show up in the workbench.
-- ![HostedWokbench](images/Workbench.png)
+ ![HostedWokbench](images/Workbench.png)
 
 ## Use the App in Teams
 1. Since SharePoint can get the context so app user doesn't need to do consent/login operation.
@@ -99,10 +99,11 @@ Debug the app with SharePoint WorkBench in VSCode.
 ![Issue](images/knownissue.png)
 2. When you want to switch accounts to test the app, and if you are using edge browser with profile mode instead of guest mode, we suggest you to switch accounts by switching  profiles in the browser. This is because if you simply log out in Teams site, SharePoint site will still use the profile account. Thus the accounts for these two sites may be not consistent and will cause error.
 3. In provision stage, you may encounter error "[AppStudio.RemoteAppIdCreatedFailed]:Failed to create teams app id in app studio, due to 409". This is because the teams app id(which is the provision resource) has been already created in your tenant.(It may be created by other users/accounts in your tenant). There are several solutions for this.
- - a. Delete provisioned Teams app id in [Teams Dev Portal](https://dev.teams.microsoft.com/home) and re-provision.
- - b. Or you can update the id(line:5) in your [manifest file](./appPackage/manifest.source.json) and re-provision.
+ - Delete provisioned Teams app id in [Teams Dev Portal](https://dev.teams.microsoft.com/home) and re-provision.
+ - Or you can update the id(line:5) in your [manifest file](./appPackage/manifest.source.json) and re-provision.
     ![Manifest Line 5](images/manifest1.png)
     Note: The toolkit will help keep the teams app id(on dev portal) consistent with the spfx component id for clearness, but it is also ok to make this two ids different since they present different meanings and won't cause any trouble in the following deployment.
+    
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 
