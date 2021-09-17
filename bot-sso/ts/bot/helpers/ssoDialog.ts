@@ -43,6 +43,7 @@ export class SSODialog extends ComponentDialog {
       new WaterfallDialog(MAIN_WATERFALL_DIALOG, [
         this.ssoStep.bind(this),
         this.dedupStep.bind(this),
+        this.executeOperationWithSSO.bind(this),
       ])
     );
 
@@ -75,13 +76,6 @@ export class SSODialog extends ComponentDialog {
     if (dialogTurnResult.status === DialogTurnStatus.empty) {
       dialogTurnResult = await dialogContext.beginDialog(this.id);
     }
-
-    // Once got ssoToken, run operation that depends on ssoToken
-    if (dialogTurnResult.result?.ssoToken && this.operationWithSSO) {
-      await this.operationWithSSO(context, dialogTurnResult.result?.ssoToken);
-      this.resetSSOOperation();
-      await dialogContext.endDialog();
-    }
   }
 
   async ssoStep(stepContext: any) {
@@ -99,7 +93,20 @@ export class SSODialog extends ComponentDialog {
         "Token exchange was not successful please try again."
       );
     }
-    return await stepContext.endDialog(tokenResponse);
+    return await stepContext.next(tokenResponse);
+  }
+
+  async executeOperationWithSSO(stepContext: any) {
+    const tokenResponse = stepContext.result;
+    if (!tokenResponse || !tokenResponse.ssoToken) {
+      return;
+    }
+
+    // Once got ssoToken, run operation that depends on ssoToken
+    if (this.operationWithSSO) {
+      await this.operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+    }
+    return await stepContext.endDialog();
   }
 
   async onEndDialog(context: TurnContext) {
@@ -111,6 +118,7 @@ export class SSODialog extends ComponentDialog {
     this.dedupStorageKeys = this.dedupStorageKeys.filter(
       (key) => key.indexOf(conversationId) < 0
     );
+    this.resetSSOOperation();
   }
 
   // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.
