@@ -1,34 +1,36 @@
-import { Dialog, DialogSet, DialogTurnStatus, WaterfallDialog } from "botbuilder-dialogs";
-import { RootDialog } from "./rootDialog";
+import {
+  Dialog,
+  DialogSet,
+  DialogTurnStatus,
+  WaterfallDialog,
+  ComponentDialog,
+} from "botbuilder-dialogs";
 import {
   ActivityTypes,
-  CardFactory,
   Storage,
   tokenExchangeOperationName,
   TurnContext,
 } from "botbuilder";
-import { ResponseType } from "@microsoft/microsoft-graph-client";
-import {
-  createMicrosoftGraphClient,
-  loadConfiguration,
-  OnBehalfOfUserCredential,
-  TeamsBotSsoPrompt,
-} from "@microsoft/teamsfx";
+import { loadConfiguration, TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 
-const MAIN_DIALOG = "MainDialog";
+const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
 const TEAMS_SSO_PROMPT_ID = "TeamsFxSsoPrompt";
 
-export class MainDialog extends RootDialog {
+export class SSODialog extends ComponentDialog {
   private requiredScopes: string[] = ["User.Read"]; // hard code the scopes for demo purpose only
   private dedupStorage: Storage;
   private dedupStorageKeys: string[];
+  private operationWithSSO: (
+    arg0: any,
+    ssoToken: string
+  ) => Promise<any> | undefined;
 
   // Developer controlls the lifecycle of credential provider, as well as the cache in it.
   // In this sample the provider is shared in all conversations
   constructor(dedupStorage: Storage) {
-    super(MAIN_DIALOG);
+    super(DIALOG_NAME);
     loadConfiguration();
     this.addDialog(
       new TeamsBotSsoPrompt(TEAMS_SSO_PROMPT_ID, {
@@ -41,7 +43,7 @@ export class MainDialog extends RootDialog {
       new WaterfallDialog(MAIN_WATERFALL_DIALOG, [
         this.ssoStep.bind(this),
         this.dedupStep.bind(this),
-        this.showUserInfo.bind(this),
+        this.executeOperationWithSSO.bind(this),
       ])
     );
 
@@ -50,19 +52,29 @@ export class MainDialog extends RootDialog {
     this.dedupStorageKeys = [];
   }
 
+  setSSOOperation(
+    handler: (arg0: any, arg1: string) => Promise<any> | undefined
+  ) {
+    this.operationWithSSO = handler;
+  }
+
+  resetSSOOperation() {
+    this.operationWithSSO = undefined;
+  }
+
   /**
    * The run method handles the incoming activity (in the form of a DialogContext) and passes it through the dialog system.
    * If no dialog is active, it will start the default dialog.
    * @param {*} dialogContext
    */
-  async run(context: TurnContext, accessor: any) {
-    const dialogSet = new DialogSet(accessor);
+  async run(context: TurnContext, dialogState: any) {
+    const dialogSet = new DialogSet(dialogState);
     dialogSet.add(this);
 
     const dialogContext = await dialogSet.createContext(context);
-    const results = await dialogContext.continueDialog();
-    if (results.status === DialogTurnStatus.empty) {
-      await dialogContext.beginDialog(this.id);
+    let dialogTurnResult = await dialogContext.continueDialog();
+    if (dialogTurnResult.status === DialogTurnStatus.empty) {
+      dialogTurnResult = await dialogContext.beginDialog(this.id);
     }
   }
 
@@ -76,56 +88,37 @@ export class MainDialog extends RootDialog {
     if (tokenResponse && (await this.shouldDedup(stepContext.context))) {
       return Dialog.EndOfTurn;
     }
+    if (!tokenResponse || !tokenResponse.ssoToken) {
+      await stepContext.context.sendActivity(
+        "Token exchange was not successful please try again."
+      );
+    }
     return await stepContext.next(tokenResponse);
   }
 
-  async showUserInfo(stepContext: any) {
+  async executeOperationWithSSO(stepContext: any) {
     const tokenResponse = stepContext.result;
-    if (tokenResponse) {
-      await stepContext.context.sendActivity("Call Microsoft Graph on behalf of user...");
-
-      // Call Microsoft Graph on behalf of user
-      const oboCredential = new OnBehalfOfUserCredential(tokenResponse.ssoToken);
-      const graphClient = createMicrosoftGraphClient(oboCredential, ["User.Read"]);
-      const me = await graphClient.api("/me").get();
-      if (me) {
-        await stepContext.context.sendActivity(
-          `You're logged in as ${me.displayName} (${me.userPrincipalName})${
-            me.jobTitle ? `; your job title is: ${me.jobTitle}` : ""
-          }.`
-        );
-
-        // show user picture
-        let photoBinary: ArrayBuffer;
-        try {
-          photoBinary = await graphClient
-            .api("/me/photo/$value")
-            .responseType(ResponseType.ARRAYBUFFER)
-            .get();
-        } catch {
-          // Just continue when failing to get the photo.
-          return await stepContext.endDialog();
-        }
-        const buffer = Buffer.from(photoBinary);
-        const imageUri = "data:image/png;base64," + buffer.toString("base64");
-        const card = CardFactory.thumbnailCard("User Picture", CardFactory.images([imageUri]));
-        await stepContext.context.sendActivity({ attachments: [card] });
-      } else {
-        await stepContext.context.sendActivity("Getting profile from Microsoft Graph failed! ");
-      }
-
-      return await stepContext.endDialog();
+    if (!tokenResponse || !tokenResponse.ssoToken) {
+      return;
     }
 
-    await stepContext.context.sendActivity("Token exchange was not successful please try again.");
+    // Once got ssoToken, run operation that depends on ssoToken
+    if (this.operationWithSSO) {
+      await this.operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+    }
     return await stepContext.endDialog();
   }
 
   async onEndDialog(context: TurnContext) {
     const conversationId = context.activity.conversation.id;
-    const currentDedupKeys = this.dedupStorageKeys.filter((key) => key.indexOf(conversationId) > 0);
+    const currentDedupKeys = this.dedupStorageKeys.filter(
+      (key) => key.indexOf(conversationId) > 0
+    );
     await this.dedupStorage.delete(currentDedupKeys);
-    this.dedupStorageKeys = this.dedupStorageKeys.filter((key) => key.indexOf(conversationId) < 0);
+    this.dedupStorageKeys = this.dedupStorageKeys.filter(
+      (key) => key.indexOf(conversationId) < 0
+    );
+    this.resetSSOOperation();
   }
 
   // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.
@@ -159,12 +152,19 @@ export class MainDialog extends RootDialog {
     const activity = context.activity;
     const channelId = activity.channelId;
     const conversationId = activity.conversation.id;
-    if (activity.type !== ActivityTypes.Invoke || activity.name !== tokenExchangeOperationName) {
-      throw new Error("TokenExchangeState can only be used with Invokes of signin/tokenExchange.");
+    if (
+      activity.type !== ActivityTypes.Invoke ||
+      activity.name !== tokenExchangeOperationName
+    ) {
+      throw new Error(
+        "TokenExchangeState can only be used with Invokes of signin/tokenExchange."
+      );
     }
     const value = activity.value;
     if (!value || !value.id) {
-      throw new Error("Invalid signin/tokenExchange. Missing activity.value.id.");
+      throw new Error(
+        "Invalid signin/tokenExchange. Missing activity.value.id."
+      );
     }
     return `${channelId}/${conversationId}/${value.id}`;
   }
