@@ -12,5 +12,6 @@
             "fx-resource-bot",
             "fx-resource-aad-app-for-teams"
         ]
-    }
+    },
+    "isFromSample": true
 }
