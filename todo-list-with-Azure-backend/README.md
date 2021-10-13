@@ -31,8 +31,8 @@ Todo List provides an easy way to manage to-do items in Teams Client. This app h
 1. Open the project in Visual Studio Code.
 1. Open the command palette and select `Teams: Provision in the Cloud`. You will be asked to input admin name and password of SQL. The toolkit will help you to provision Azure SQL.
 1. Once provision is completed, open the command palette and select `Teams: Deploy to the Cloud`.
-1. Open [.fx/env.default.json](.fx/env.default.json) file, you could get the SQL endpoint in `sqlEndpoint` setting and database name in `databaseName` setting. [Add IP address of your computer into allowlist of firewall of Azure SQL Server](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page).
-1. In Azure portal, find the database and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
+1. Open [.fx/env.default.json](.fx/env.default.json) file, you could get the SQL endpoint in `sqlEndpoint` setting. [Add IP address of your computer into allowlist of firewall of Azure SQL Server](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page).
+1. Open [.fx/env.default.json](.fx/env.default.json) file, you could get the database name in `databaseName` setting. In Azure portal, find the database and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
     ```sql
     CREATE TABLE Todo
     (
