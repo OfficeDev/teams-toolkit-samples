@@ -33,8 +33,8 @@ Keep a note of the ngrok endpoint (Example: `https://f631****.ngrok.io`), as you
 
 > **IMPORTANT**: A fixed subdomain from ngrok requires a subscription. If you don't have it, please remember to update your Azure AD app registration application ID URI, redirect URL, env files in this project and manifest file every time you restart ngrok, as the domain will change.
 
-### Step 2: Complete Bot Channel Registration in Azure
-1. Register your bot using bot channel registration in Azure AD portal, following the instructions [here](docs/azure-bot-channels-registration.md).
+### Step 2: Complete Bot Registration in Azure
+1. Register your bot using Azure Bot, following the instructions [here](docs/azure-bot-registration.md).
 
 ### Step 3: Register Azure Active Directory applications
 1. Update the AAD app registration for single sign on features needed in the tab, following the instructions [here](docs/auth-aad-sso.md). The "fully qualified domain name" in the instructions will be your ngrok domain (Example: `f631****.ngrok.io`).

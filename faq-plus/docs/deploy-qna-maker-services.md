@@ -161,7 +161,7 @@ Remember to click on "OK" after changing a setting. To edit the setting later, c
 
 3. Click **Show keys** button, then copy the connection string of either key1 or key2. Record the value to your notebook and name it `StorageConnectionString`.
 
-4. Go to the resource group again and click to open the Cognitive Service instance. The service name is the same as the "Base resource name" you specified during provision.
+4. Go to the resource group again and click to open the QnA maker instance. The service name is the same as the "Base resource name" you specified during provision.
 
 5. Click **Keys and Endpoint** in left panel, then click **Show Keys** button.
 

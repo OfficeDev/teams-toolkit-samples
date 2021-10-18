@@ -23,7 +23,7 @@ jobs:
         
       # We suggest to do the `teamsfx provision` step manually or in a separate workflow. The following steps are for your reference.
       # After provisioning, you should commit .fx/env.default.json into the repository.
-      # You should pick required secrets from .fx/default.userdata, and save them in the repository secrets (https://docs.github.com/en/actions/reference/encrypted-secrets) which can be refered by the step with name 'Generate default.userdata'. 
+      # You should save the file content of default.userdata into the repository secrets (https://docs.github.com/en/actions/reference/encrypted-secrets) which can be refered by the step with name 'Generate default.userdata' in cd.yml.
       - name: Provision hosting environment
         uses: OfficeDev/teamsfx-cli-action@v1
         env:
@@ -62,22 +62,13 @@ jobs:
       - name: Set Outputs for default.userdata
         id: set-userdata
         run: |
-          userdata_tenant_id=`awk -F'=' '{print $2}' .fx/default.userdata | head -n 1`
-          echo "::set-output name=USERDATA_TENANT_ID::${userdata_tenant_id}"
-          userdata_client_secret=`awk -F'=' '{print $2}' .fx/default.userdata | tail -n 1` 
-          echo "::set-output name=USERDATA_CLIENT_SECRET::${userdata_client_secret}"
-      # Set USERDATA_TENANT_ID as GitHub Secret
+          userdata_content=`cat .fx/default.userdata`
+          echo "::set-output name=USERDATA_CONTENT::${userdata_content}"
+      # Set USERDATA_CONTENT as GitHub Secret
       - uses: jon-grey/github-actions-secrets-creator@v1
         with:
-          name: USERDATA_TENANT_ID 
-          value: ${{steps.set-userdata.outputs.USERDATA_TENANT_ID}}
-          pa_token: ${{ secrets.PA_TOKEN }} 
-
-      # Set USERDATA_CLIENT_SECRET as GitHub Secret
-      - uses: jon-grey/github-actions-secrets-creator@v1
-        with:
-          name: USERDATA_CLIENT_SECRET
-          value: ${{steps.set-userdata.outputs.USERDATA_CLIENT_SECRET}}
+          name: USERDATA_CONTENT
+          value: ${{steps.set-userdata.outputs.USERDATA_CONTENT}}
           pa_token: ${{ secrets.PA_TOKEN }} 
 
       - name: Commit necessary files

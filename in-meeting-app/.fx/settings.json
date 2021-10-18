@@ -16,5 +16,6 @@
             "fx-resource-simple-auth",
             "fx-resource-bot"
         ]
-    }
+    },
+    "isFromSample": true
 }

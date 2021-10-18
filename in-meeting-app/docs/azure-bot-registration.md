@@ -16,20 +16,18 @@ You use a resource group to create individual resources for the Bot Framework. F
 > **TIP:**
 > As with the resources you'll create later in this guide, it's a good idea to pin this resource group to your dashboard for easy access. If you'd like to do so, select the pin icon &#128204; in the upper right of the dashboard.
 
-## Create the bot channels registration
+## Create the Azure Bot
 
-The bot channels registration registers your web service as a bot with the Bot Framework, provided you have a Microsoft App Id and App password (client secret).
+The Azure Bot registers your web service as a bot with the Bot Framework, provided you have a Microsoft App Id and App password (client secret).
 
 > **IMPORTANT:**
 > You only need to register your bot if it is not hosted in Azure. If you [created a bot](https://docs.microsoft.com/en-us/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0&viewFallbackFrom=azure-bot-service-3.0&preserve-view=true) through the Azure portal then it is already registered with the service. If you created your bot through the [Bot Framework](https://dev.botframework.com/bots/new) or [AppStudio](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/app-studio-overview) your bot isn't registered in Azure.
 
 1. In the [Azure portal](https://portal.azure.com/), under Azure services, select **Create a resource**.
-1. In the search box enter "bot". And in the drop-down list, select **Bot Channels Registration**.
+1. In the search box enter "bot". And in the drop-down list, select **Azure Bot**.
 1. Select the **Create** button.
-1. In the **Bot Channel Registration** blade, provide the requested information about your bot.
-1. In the **Messaging endpoint** box, use same ngrok endpoint created earlier and append `/api/messages` to that endpoint. Example: `https://f631****.ngrok.io/api/messages`. 
-1. Click **Microsoft App ID and password** and then **Create New**.
-1. Click **Create App ID in the App Registration Portal** link.
+1. In the **Basics** blade, provide the requested information about your bot.
+1. In the **Microsoft App ID** cLick **Manually create App ID**.
 1. In the displayed **App registration** window, click the **New registration** tab in the upper left.
 1. Enter the name of the bot application you are registering, we used *BotTeamsAuth* (you need to select your own unique name).
 1. For the **Supported account types** select *Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)*.
@@ -41,18 +39,19 @@ The bot channels registration registers your web service as a bot with the Bot F
     1. Set *Expires* to your selection.
     1. Click **Add**.
     1. Copy the client secret and save it to a file.
-1. Go back to the **Bot Channel Registration -> Create Microsoft App ID** window and copy the *App ID* and the *Client secret* in the **Microsoft App ID** and **Password** boxes, respectively.
-1. Click **OK**.
+1. Go back to the **Create an Azure Bot -> Microsoft App ID** window, select **Use existing app registration** and copy the *App ID* and the *Client secret* in the **Existing app id** and **Existing app password** boxes, respectively.
+1. Click **Review + create**.
 1. Finally, click **Create**.
 
-After 2-3 mins, the new Bot Channel Registration resource you just created will be added to your resource group.
+After 2-3 mins, the new Azure Bot resource you just created will be added to your resource group.
   
-Once your bot channels registration is created, you'll need to enable the Teams channel.
+Once your bot registration is created, you'll need to update message endpoint and enable the Teams channel.
 
-1. In the [Azure portal](https://portal.azure.com/), in the resource group you just created, find your **Bot Channel Registration** instance.
+1. In the [Azure portal](https://portal.azure.com/), in the resource group you just created, find your **Azure Bot** instance.
 1. In the left panel, click **Channels**.
 1. Click the Microsoft Teams icon, then choose **Save**.
-
+1. In the left panel, click **Configuration**.
+1. In the **Messaging endpoint** box, use same ngrok endpoint created earlier and append `/api/messages` to that endpoint. Example: `https://f631****.ngrok.io/api/messages`, then choose **Apply**.
 
 > **NOTE:**
-> The Bot Channels Registration resource will show the **Global** region even if you selected West US. This is expected.
+> The Azure Bot resource will show the **Global** region even if you selected West US. This is expected.

@@ -12,5 +12,6 @@
             "fx-resource-local-debug",
             "fx-resource-spfx"
         ]
-    }
+    },
+    "isFromSample": true
 }

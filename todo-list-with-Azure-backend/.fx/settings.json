@@ -20,5 +20,6 @@
             "fx-resource-aad-app-for-teams",
             "fx-resource-simple-auth"
         ]
-    }
+    },
+    "isFromSample": true
 }

@@ -1,6 +1,6 @@
 {
-    "appName": "aweraer",
-    "projectId": "0c901fbd-2b45-4cf7-80e6-0639f328d75c",
+    "appName": "SSOBotSample",
+    "projectId": "dda5dd60-daf9-44b1-8ce2-f6168fedb139",
     "solutionSettings": {
         "name": "fx-solution-azure",
         "version": "1.0.0",
@@ -16,5 +16,5 @@
             "fx-resource-appstudio"
         ]
     },
-    "programmingLanguage": "javascript"
+    "programmingLanguage": "typescript"
 }
