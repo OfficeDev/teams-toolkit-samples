@@ -52,7 +52,7 @@ Todo List with SPFx is a Todo List Manage tool for a group of people. This app i
     > This step will generate a SharePoint package (*.sppkg) under `sharepoint/solution` folder.
 1. Upload or drag-and-drop the *.sppkg file under `sharepoint/solution` folder to the SharePoint App Catalog site, follow the instruction [Deploy the HelloWorld package to App Catalog](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#deploy-the-helloworld-package-to-app-catalog)
     > Note: Tick the "Make this solution available to all sites in the organization" option to make the solution available in Teams.
-1. Go back to Microsoft Teams Toolkit extension, in in DEPLOYMENT panel, click `Publish to Teams` or open the command palette and select `Teams: Publish to Teams`.
+1. Go back to Microsoft Teams Toolkit extension, in DEPLOYMENT panel, click `Publish to Teams` or open the command palette and select `Teams: Publish to Teams`.
 1. Check the published app in [Microsoft Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps) by searching "todoList" in the search box.
 ![TeamsAppAdminCenter](images/TeamsAppAdminCenter.png)
 1. Click the 'TodoList' app you just published and select `Publish` in the Publishing status.
