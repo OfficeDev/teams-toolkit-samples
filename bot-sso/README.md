@@ -10,19 +10,18 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
-## Create an application
-
-- From Visual Studio Code, open command palette and select `Teams: Create a new Teams app`. Or from the CLI, (after `npm install -g @microsoft/teamsfx-cli`) run command `teamsfx new`.
-- Choose the bot capabilities from the prompts.
-  > Note: You have the option to reuse an existing bot by entering the credential manually. But make sure that bot is not associated with any AAD apps.
-
 ## Debug
 
-Start debugging the project by hitting the `F5` key in Visual Studio Code. Alternatively use the `Run and Debug Activity Panel` in Visual Studio Code and click the `Start Debugging` green arrow button.
+Clone this repo, navigate to bot-sso/ folder. Start debugging the project by hitting the `F5` key in Visual Studio Code. Alternatively use the `Run and Debug Activity Panel` in Visual Studio Code and click the `Start Debugging` green arrow button.
+
+## Add a SSO Command
+- Follow the code in `bot-sso/bot/commands/showUserProfile.ts`, implemet `YourSSOCommand extends SSOCommand`
+- Export `YourSSOCommand` in `commands/index.ts`
+- You don't need to care about the details of SSO implements, the SSO process is in `bot-sso/helpers/ssoDialog.ts`, it will call `@microsoft/teamsfx` sdk to fetch SSO token, once got the token, it will call `YourSSOCommand.operationWithSSOToken`;
 
 ## Edit the manifest
 
-You can find the Teams manifest in `.fx/manifest.source.json`. It contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
+You can find the Teams manifest in `appPackage/manifest.source.json`. It contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
 
 ## Deploy to Azure
 
@@ -66,3 +65,5 @@ Once deployed, you may want to distribute your application to your organization'
 - [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
 - [Bot Framework Documentation](https://docs.botframework.com/)
 - [Azure Bot Service Introduction](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+- [Single sign-on (SSO) support for bots](https://docs.microsoft.com/en-us/microsoftteams/platform/bots/how-to/authentication/auth-aad-sso-bots#:~:text=%20Develop%20an%20SSO%20Teams%20bot%20%201,token%20is%20a%20normal%20POST%20message...%20More%20)
+- [Dialogs in the Bot Framework SDK](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-dialog?view=azure-bot-service-4.0)
