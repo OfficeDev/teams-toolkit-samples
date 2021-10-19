@@ -78,7 +78,7 @@ Keep a note of the ngrok endpoint (Example: `https://f631****.ngrok.io`), as you
 ### Step 1: Provision the resources in Azure
 > **Important** This step may require you to login to the Microsoft Teams Toolkit extension first.
 
-In Visual Studio Code, open the command palette and select: `Teams: Provision in the Cloud` from the command palette. 
+In Visual Studio Code, open the command palette and select: `Teams: Provision in the cloud` from the command palette. 
 > This will create a Teams app in Teams Developer Portal.
 
 ### Step 2: Update Azure Active Directory applications
@@ -102,7 +102,7 @@ In Visual Studio Code, open the command palette and select: `Teams: Provision in
 1. Add a new line `REACT_APP_GRAPH_SCOPES=User.Read`
 
 ### Step 5: Deploy the resource
-1. Go back to Visual Studio Code,Microsoft Teams Toolkit extension, open the command palette and select: `Teams: Deploy to the Cloud`.
+1. Go back to Visual Studio Code,Microsoft Teams Toolkit extension, open the command palette and select: `Teams: Deploy to the cloud`.
 1. Select both `Tab` and `Bot` in the next step.
 
 ## Use the app in Teams
