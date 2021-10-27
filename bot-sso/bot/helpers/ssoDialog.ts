@@ -73,7 +73,7 @@ export class SSODialog extends ComponentDialog {
 
     const dialogContext = await dialogSet.createContext(context);
     let dialogTurnResult = await dialogContext.continueDialog();
-    if (dialogTurnResult.status === DialogTurnStatus.empty) {
+    if (dialogTurnResult && dialogTurnResult.status === DialogTurnStatus.empty) {
       dialogTurnResult = await dialogContext.beginDialog(this.id);
     }
   }
@@ -88,23 +88,20 @@ export class SSODialog extends ComponentDialog {
     if (tokenResponse && (await this.shouldDedup(stepContext.context))) {
       return Dialog.EndOfTurn;
     }
-    if (!tokenResponse || !tokenResponse.ssoToken) {
-      await stepContext.context.sendActivity(
-        "Token exchange was not successful please try again."
-      );
-    }
     return await stepContext.next(tokenResponse);
   }
 
   async executeOperationWithSSO(stepContext: any) {
     const tokenResponse = stepContext.result;
     if (!tokenResponse || !tokenResponse.ssoToken) {
-      return;
-    }
-
-    // Once got ssoToken, run operation that depends on ssoToken
-    if (this.operationWithSSO) {
-      await this.operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+      await stepContext.context.sendActivity(
+        "Token exchange was not successful please try again."
+      );
+    } else {
+      // Once got ssoToken, run operation that depends on ssoToken
+      if (this.operationWithSSO) {
+        await this.operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+      }
     }
     return await stepContext.endDialog();
   }
