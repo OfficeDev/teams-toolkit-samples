@@ -12,13 +12,11 @@
     ```
     teamsfx provision
     ```
-1. Deploy your project (Currently only helps build the SharePoint package).
-    > This step will generate a SharePoint package (*.sppkg) under `sharepoint/solution` folder.
+1. Deploy your project.
+    > This step will generate a SharePoint package (*.sppkg) under `sharepoint/solution` folder. The cli will automatically upload and deploy it to your tenant App Catalog site. Only tenant App Catalog site admin has permission to do it. If you are not the admin, you can create your test tenant following [Setup your Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
     ```
     teamsfx deploy
     ```
-1. Upload or drag-and-drop the *.sppkg file under `sharepoint/solution` folder to the SharePoint App Catalog site, follow the instruction [Deploy the HelloWorld package to App Catalog](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#deploy-the-helloworld-package-to-app-catalog)
-    > Note: Tick the "Make this solution available to all sites in the organization" option to make the solution available in Teams.
 1. Publish your app to Teams App Studio.
     ```
     teamsfx publish
