@@ -1,12 +1,12 @@
 # Getting Started With Todo List Sample (SPFx)
 
-> Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate. 
+> Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate.
 > 
 > We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
 >  
 > This warning will be removed when the samples are ready for production.
 
-Todo List with SPFx is a Todo List Manage tool for a group of people. This app is installed in Teams Team or Channel and hosted on SharePoint, members in the Team/Channel can collaborate on the same Todo List, manipulate the same set of Todo items. There is no requirement asking for an Azure account to deploy Azure resources to run this sample app.
+`Todo List with SPFx` is a Todo List Manage tool for a group of people. This app is installed in Teams Team or Channel and hosted on SharePoint, members in the Team/Channel can collaborate on the same Todo List, manipulate the same set of Todo items. There is no requirement asking for an Azure account to deploy Azure resources to run this sample app.
 
 ![TodoList](images/ToDoListCRUD.gif)
 
@@ -44,15 +44,14 @@ Todo List with SPFx is a Todo List Manage tool for a group of people. This app i
 
 ## Try the Sample
 >Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try sample with TeamsFx CLI](cli.md)
-1. Clone the repo to your local workspace or directly download the source code. 
+
+1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open [./SPFx/src/webparts/todoList/components/SharePointListManager.ts](./SPFx/src/webparts/todoList/components/SharePointListManager.ts), navigate to line:17, set the `listname` variable to your SharePoint List name.
 1. Open the project in Visual Studio Code, click `Provision in the cloud` in DEPLOYMENT panel of Microsoft Teams Toolkit extension or open the command palette and select `Teams: Provision in the cloud`. This step will create an app in Teams App Studio.
-1. Go back to Microsoft Teams Toolkit extension, click `Deploy to the cloud` in DEPLOYMENT panel or open the command palette and select `Teams: Deploy to the cloud`. 
-    > This step will generate a SharePoint package (*.sppkg) under `sharepoint/solution` folder.
-1. Upload or drag-and-drop the *.sppkg file under `sharepoint/solution` folder to the SharePoint App Catalog site, follow the instruction [Deploy the HelloWorld package to App Catalog](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#deploy-the-helloworld-package-to-app-catalog)
-    > Note: Tick the "Make this solution available to all sites in the organization" option to make the solution available in Teams.
-1. Go back to Microsoft Teams Toolkit extension, in in DEPLOYMENT panel, click `Publish to Teams` or open the command palette and select `Teams: Publish to Teams`.
+1. Go back to Microsoft Teams Toolkit extension, click `Deploy to the cloud` in DEPLOYMENT panel or open the command palette and select `Teams: Deploy to the cloud`.
+    > This step will build a SharePoint package (*.sppkg) under `sharepoint/solution` folder. The Teams Toolkit will automatically upload and deploy it to your tenant App Catalog site. Only tenant App Catalog site admin has permission to do it. If you are not the admin, you can create your test tenant following [Setup your Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
+1. Go back to Microsoft Teams Toolkit extension, in DEPLOYMENT panel, click `Publish to Teams` or open the command palette and select `Teams: Publish to Teams`.
 1. Check the published app in [Microsoft Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps) by searching "todoList" in the search box.
 ![TeamsAppAdminCenter](images/TeamsAppAdminCenter.png)
 1. Click the 'TodoList' app you just published and select `Publish` in the Publishing status.
