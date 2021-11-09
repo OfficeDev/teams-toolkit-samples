@@ -15,8 +15,10 @@
             "fx-resource-frontend-hosting",
             "fx-resource-function",
             "fx-resource-aad-app-for-teams",
+            "fx-resource-appstudio",
             "fx-resource-simple-auth"
         ]
     },
-    "isFromSample": true
+    "isFromSample": true,
+    "programmingLanguage": "javascript"
 }
