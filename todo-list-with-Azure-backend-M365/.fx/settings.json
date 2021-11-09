@@ -1,0 +1,24 @@
+{
+    "appName": "to-do-list",
+    "solutionSettings": {
+        "name": "fx-solution-azure",
+        "version": "1.0.0",
+        "hostType": "Azure",
+        "capabilities": [
+            "Tab"
+        ],
+        "azureResources": [
+            "function"
+        ],
+        "activeResourcePlugins": [
+            "fx-resource-local-debug",
+            "fx-resource-frontend-hosting",
+            "fx-resource-function",
+            "fx-resource-aad-app-for-teams",
+            "fx-resource-appstudio",
+            "fx-resource-simple-auth"
+        ]
+    },
+    "isFromSample": true,
+    "programmingLanguage": "javascript"
+}
