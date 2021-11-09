@@ -20,7 +20,7 @@ Todo List app helps to manage personal to do items and also runs across Microsof
 ## Prerequisite
 - [NodeJS](https://nodejs.org/en/)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
-- [Set up your dev environment for extending Teams apps across Microsoft 365](https://review.docs.microsoft.com/en-us/windows/uwp/m365-apps/prerequisites?branch=pr-en-us-2017)
+- [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
 
 ## What you will learn in this sample:
 
@@ -64,10 +64,10 @@ To preview your app running in Microsoft Office Home, log into office.com with t
 
 Click on your app icon to launch and preview your app running in Outlook.
 
-## Use the App in Outlook Web Access
-To view your app in Outlook Web Access, visit https://outlook.office.com and sign in using your test tenant account. Click on the ellipses (...) menu on the Outlook app bar. Your sideloaded app title will appear among your installed apps.
+## Use the App in Outlook Web Client
+To view your app in Outlook Web Client, visit https://outlook.office.com and sign in using your test tenant account. Click on the ellipses (...) menu on the Outlook app bar. Your sideloaded app title will appear among your installed apps.
 
-Click on your app icon to launch and preview your app running in Outlook Web Access.
+Click on your app icon to launch and preview your app running in Outlook Web Client.
 
 ## Use the App in Office
 To preview your app running in Office, log into [office.com](https://www.office.com/) with your test tenant credentials. Click on the ellipses (...) menu on the Office app bar. Your sideloaded app title will appear among your installed apps.

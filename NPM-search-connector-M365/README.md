@@ -13,7 +13,7 @@ NPM Search Connector is a Messaging Extension that allows you to perform a quick
 ## Prerequisite
 - [NodeJS](https://nodejs.org/en/)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
-- [Set up your dev environment for extending Teams apps across Microsoft 365](https://review.docs.microsoft.com/en-us/windows/uwp/m365-apps/prerequisites?branch=pr-en-us-2017)
+- [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
 
 ## What you will learn in this sample:
 - How to build message extension bot on Azure for your app.
@@ -45,8 +45,8 @@ In a conversation, open the **Messaging extensions** flyout menu on the bottom o
 Then an adaptive card will be inserted to the message you are composing.
 ![NPM Search Adaptive Card in Teams](images/npm-search-adaptive-card-in-teams.png)
 
-## Use the app in Outlook Web Access
-To preview your app running in Outlook Web Access, log in to [outlook.com](https://www.outlook.com) using credentials for your test tenant. Click on **New message**. Open the **Messaging extensions** flyout menu on the bottom of the composition window. Your message extension will be listed. You can invoke it from there and use it just as you would while composing a message in Outlook.
+## Use the app in Outlook Web Client
+To preview your app running in Outlook Web Client, log in to [outlook.com](https://www.outlook.com) using credentials for your test tenant. Click on **New message**. Open the **Messaging extensions** flyout menu on the bottom of the composition window. Your message extension will be listed. You can invoke it from there and use it just as you would while composing a message in Outlook.
 ![Outlook Web Compose Message Extensions](images/outlook-web-compose-message-extensions.png)
 
 ## Architecture
