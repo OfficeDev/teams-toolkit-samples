@@ -13,7 +13,6 @@
         "activeResourcePlugins": [
             "fx-resource-local-debug",
             "fx-resource-frontend-hosting",
-            "fx-resource-identity",
             "fx-resource-function",
             "fx-resource-aad-app-for-teams",
             "fx-resource-simple-auth"

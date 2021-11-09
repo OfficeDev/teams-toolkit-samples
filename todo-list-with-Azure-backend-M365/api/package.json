@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@azure/functions": "^1.2.2",
-    "@microsoft/teamsfx": "^0.2.1",
+    "@microsoft/teamsfx": "^0.3.0",
     "isomorphic-fetch": "^3.0.0",
     "uuid": "^8.3.2"
   }
