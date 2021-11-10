@@ -6,7 +6,7 @@
 >  
 > This warning will be removed when the samples are ready for production.
 
-Todo List app helps to manage personal to do items and also runs across Microsoft 365, including Teams, Outlook and Office. The frontend is a React app and the backend is an Azure Function. You can optionally deploy and host the app in Azure.
+Todo List app helps to manage your personal to do items. This app can be installed and used not only in your Teams client, but also Outlook client and Office.com. The frontend is a React app and the backend is an Azure Function. You can deploy and host the app in Azure.
 
 ## Teams
 ![Todo Item List](images/teams.gif)
@@ -58,7 +58,7 @@ Todo List app helps to manage personal to do items and also runs across Microsof
 1. You could try to delete todo item by clicking "..." and then choose "delete" button.
 
 ## Use the App in Outlook
-To preview your app running in Microsoft Office Home, log into office.com with test tenant credentials. Click on the ellipses (...) menu on the Office app bar. Your sideloaded app title will appear among your installed apps.
+To view your app running in Outlook on desktop, launch Outlook and sign in using your test tenant account. Click on the ellipses (...) menu on the Outlook app bar. Your sideloaded app title will appear among your installed apps.
 
 ![Tab App Flow](images/OpenAppInOutlook.jpg)
 
@@ -66,6 +66,8 @@ Click on your app icon to launch and preview your app running in Outlook.
 
 ## Use the App in Outlook Web Client
 To view your app in Outlook Web Client, visit https://outlook.office.com and sign in using your test tenant account. Click on the ellipses (...) menu on the Outlook app bar. Your sideloaded app title will appear among your installed apps.
+
+![Open App in Outlook Web](images/OpenAppInOutlookWeb.png)
 
 Click on your app icon to launch and preview your app running in Outlook Web Client.
 
