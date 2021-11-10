@@ -34,9 +34,9 @@ Todo List app helps to manage your personal to do items. This app can be install
 1. Clone the repo to your local workspace or directly download the source code.
 2. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 3. Open the project in Visual Studio Code.
-4. Open the command palette and select `Teams: Provision in the Cloud`. 
-5. Once provision is completed, open the command palette and select `Teams: Deploy to the Cloud`.
-6. Once deployment is completed, open the command palett and select `Teams: Zip Teams metadata package`.
+4. Open the command palette and select `Teams: Provision in the cloud`. 
+5. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
+6. Once deployment is completed, open the command palette and select `Teams: Zip Teams metadata package`.
 7. Log in to Teams with your test tenant account, and ensure you are on the Public Developer Preview. You can verify this in Teams client by clicking on the ellipsis (...) menu by your user profile and opening **About** to check that the *Developer preview* option is toggled on.
    ![Teams Dev Preview](images/teams-dev-preview.png)
 8.  Open the *Apps* pane, and click **Upload a custom app** and then **Upload for me or my teams**.

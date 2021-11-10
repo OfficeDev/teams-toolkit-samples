@@ -29,7 +29,7 @@ NPM Search Connector is a Messaging Extension that allows you to perform a quick
    ![Azure Bot Channel Message Extension](images/azure-bot-channel-message-extensions.png)
    Confirm that your Outlook channel is listed along with Microsoft Teams in your bot's **Channels** pane.
    ![Azure Bot Channels](images/azure-bot-channels.png)
-7. Open the command palett and select `Teams: Zip Teams metadata package`.
+7. Open the command palette and select `Teams: Zip Teams metadata package`.
 8. Log in to Teams with your test tenant account, and ensure you are on the Public Developer Preview. You can verify this in Teams client by clicking on the ellipsis (...) menu by your user profile and opening **About** to check that the *Developer preview* option is toggled on.
    ![Teams Dev Preview](images/teams-dev-preview.png)
 9.  Open the *Apps* pane, and click **Upload a custom app** and then **Upload for me or my teams**.
