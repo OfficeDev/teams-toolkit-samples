@@ -1,0 +1,5 @@
+node_modules
+/.fx/*.env
+/.fx/*.userdata
+/.fx/subscriptionInfo.json
+.DS_Store
