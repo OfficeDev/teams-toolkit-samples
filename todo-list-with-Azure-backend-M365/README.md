@@ -18,7 +18,7 @@ Todo List app helps to manage personal to do items and also runs across Microsof
 ![Todo Item List](images/office.gif)
 
 ## Prerequisite
-- [NodeJS](https://nodejs.org/en/)
+- [NodeJS](https://nodejs.org/en/), version 10, 12 or 14
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
 
