@@ -9,13 +9,13 @@
 Todo List app helps to manage your personal to do items. This app can be installed and used not only in your Teams client, but also Outlook client and Office.com. The frontend is a React app and the backend is an Azure Function. You can deploy and host the app in Azure.
 
 ## Teams
-![Todo Item List](images/teams.gif)
+![Todo Item List in Teams](images/todo-list-M365-in-teams.gif)
 
 ## Outlook
-![Todo Item List](images/outlook.gif)
+![Todo Item List in Outlook](images/todo-list-M365-in-outlook.gif)
 
 ## Office
-![Todo Item List](images/office.gif)
+![Todo Item List in Office](images/todo-list-M365-in-office.gif)
 
 ## Prerequisite
 - [NodeJS](https://nodejs.org/en/)
@@ -48,39 +48,39 @@ Todo List app helps to manage your personal to do items. This app can be install
 
 1. The app will look like this when it runs for the first time.
 
-    ![Todo List](images/StartPage.jpg)
-1. For the first time to run the app, you need to consent the app to get your profile information like your avatar. Click on "Accept" button to accept the Authorization.
+    ![Todo List Start Page](images/start-page.jpg)
+2. For the first time to run the app, you need to consent the app to get your profile information like your avatar. Click on "Accept" button to accept the Authorization.
 
-    ![Todo List](images/Consent.jpg)
-1. You could try to add new todo item by typing item by clicking "Add task" button.
-1. You could try to complete todo item by choosing the checkbox before the item.
-1. You could try to update todo item by typing text in todo item list.
-1. You could try to delete todo item by clicking "..." and then choose "delete" button.
+    ![Todo List Consent Page](images/consent-page.jpg)
+3. You could try to add new todo item by typing item by clicking "Add task" button.
+4. You could try to complete todo item by choosing the checkbox before the item.
+5. You could try to update todo item by typing text in todo item list.
+6. You could try to delete todo item by clicking "..." and then choose "delete" button.
 
 ## Use the App in Outlook
 To view your app running in Outlook on desktop, launch Outlook and sign in using your test tenant account. Click on the ellipses (...) menu on the Outlook app bar. Your sideloaded app title will appear among your installed apps.
 
-![Tab App Flow](images/OpenAppInOutlook.jpg)
+![Open App in Outlook](images/open-app-in-outlook.jpg)
 
 Click on your app icon to launch and preview your app running in Outlook.
 
 ## Use the App in Outlook Web Client
 To view your app in Outlook Web Client, visit https://outlook.office.com and sign in using your test tenant account. Click on the ellipses (...) menu on the Outlook app bar. Your sideloaded app title will appear among your installed apps.
 
-![Open App in Outlook Web](images/OpenAppInOutlookWeb.png)
+![Open App in Outlook Web](images/open-app-in-outlook-web.png)
 
 Click on your app icon to launch and preview your app running in Outlook Web Client.
 
 ## Use the App in Office
 To preview your app running in Office, log into [office.com](https://www.office.com/) with your test tenant credentials. Click on the ellipses (...) menu on the Office app bar. Your sideloaded app title will appear among your installed apps.
 
-![Open App in Office](images/OpenAppInOffice.jpg)
+![Open App in Office](images/open-app-in-office.jpg)
 
 Click on your app icon to launch and preview your app running in Office.
 
 ## Architecture
 
-![Tab App Flow](images/TabAppFlow.jpg)
+![Architecture](images/todo-list-architecture.jpg)
 - The frontend is a react tab app hosted on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
 - The backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for managing posts in the tab app.
 - The backend data is stored in memory on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/). This is only for simplicity of demonstration. The data might not persist in certain circumstances.

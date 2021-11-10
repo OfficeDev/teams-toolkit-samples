@@ -47,7 +47,7 @@ Then an adaptive card will be inserted to the message you are composing.
 
 ## Use the app in Outlook Web Client
 To preview your app running in Outlook Web Client, log in to [outlook.com](https://www.outlook.com) using credentials for your test tenant. Click on **New message**. Open the **Messaging extensions** flyout menu on the bottom of the composition window. Your message extension will be listed. You can invoke it from there and use it just as you would while composing a message in Outlook.
-![Outlook Web Compose Message Extensions](images/outlook-web-compose-message-extensions.png)
+![Outlook Web Compose Message Extensions](images/npm-search-in-outlook.png)
 
 ## Architecture
 ### Code structure
