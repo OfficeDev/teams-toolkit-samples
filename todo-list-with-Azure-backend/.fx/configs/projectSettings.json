@@ -12,14 +12,19 @@
             "function"
         ],
         "activeResourcePlugins": [
-            "fx-resource-local-debug",
             "fx-resource-frontend-hosting",
-            "fx-resource-azure-sql",
             "fx-resource-identity",
-            "fx-resource-function",
+            "fx-resource-azure-sql",
             "fx-resource-aad-app-for-teams",
+            "fx-resource-function",
+            "fx-resource-local-debug",
+            "fx-resource-appstudio",
             "fx-resource-simple-auth"
         ]
     },
-    "isFromSample": true
+    "isFromSample": true,
+    "programmingLanguage": "javascript",
+    "defaultFunctionName": "getUserProfile",
+    "version": "1.0.0",
+    "projectId": "45f8780c-ac1a-4827-8e4e-6fe657fc5ed5"
 }
