@@ -9,12 +9,15 @@
 Todo List app helps to manage your personal to do items. This app can be installed and used not only in your Teams client, but also Outlook client and Office.com. The frontend is a React app and the backend is an Azure Function. You can deploy and host the app in Azure.
 
 ## Teams
+
 ![Todo Item List in Teams](images/todo-list-M365-in-teams.gif)
 
 ## Outlook
+
 ![Todo Item List in Outlook](images/todo-list-M365-in-outlook.gif)
 
 ## Office
+
 ![Todo Item List in Office](images/todo-list-M365-in-office.gif)
 
 ## Prerequisite
@@ -38,8 +41,10 @@ Todo List app helps to manage your personal to do items. This app can be install
 5. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
 6. Once deployment is completed, open the command palette and select `Teams: Zip Teams metadata package`.
 7. Log in to Teams with your test tenant account, and ensure you are on the Public Developer Preview. You can verify this in Teams client by clicking on the ellipsis (...) menu by your user profile and opening **About** to check that the *Developer preview* option is toggled on.
+
    ![Teams Dev Preview](images/teams-dev-preview.png)
 8.  Open the *Apps* pane, and click **Upload a custom app** and then **Upload for me or my teams**.
+
     ![Teams Upload Custom App](images/teams-upload-custom-app.png)
 
     Select your app package and click *Open*. Once the app is uploaded, your app will be available in Outlook and Office within several minutes.
