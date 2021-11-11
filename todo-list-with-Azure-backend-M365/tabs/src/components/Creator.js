@@ -3,7 +3,7 @@
 
 import React from 'react';
 import './Creator.css';
-import { createMicrosoftGraphClient } from "../common/utils";
+import { createMicrosoftGraphClient } from "@microsoft/teamsfx";
 import defaultPhoto from '../images/default-photo.png'
 
 class Creator extends React.Component {
