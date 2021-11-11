@@ -26,6 +26,7 @@ NPM Search Connector is a Messaging Extension that allows you to perform a quick
 4. Open the command palette and select `Teams: Provision in the cloud`.
 5. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
 6. Once deployment is completed, from [Azure Portal](https://portal.azure.com/), navigate to your bot resource. From *Settings*, select **Channels**. Click on **Outlook**, select the **Message Extensions** tab and then click **Save**.
+
    ![Azure Bot Channel Message Extension](images/azure-bot-channel-message-extensions.png)
 
    Confirm that your Outlook channel is listed along with Microsoft Teams in your bot's **Channels** pane.
@@ -33,8 +34,10 @@ NPM Search Connector is a Messaging Extension that allows you to perform a quick
    ![Azure Bot Channels](images/azure-bot-channels.png)
 7. Open the command palette and select `Teams: Zip Teams metadata package`.
 8. Log in to Teams with your test tenant account, and ensure you are on the Public Developer Preview. You can verify this in Teams client by clicking on the ellipsis (...) menu by your user profile and opening **About** to check that the *Developer preview* option is toggled on.
+
    ![Teams Dev Preview](images/teams-dev-preview.png)
 9.  Open the *Apps* pane, and click **Upload a custom app** and then **Upload for me or my teams**.
+
     ![Teams Upload Custom App](images/teams-upload-custom-app.png)
     
     Select your app package and click *Open*. Once the app is uploaded, your app will be available in Outlook Web Acess within several minutes.
