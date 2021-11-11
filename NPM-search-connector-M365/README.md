@@ -27,7 +27,9 @@ NPM Search Connector is a Messaging Extension that allows you to perform a quick
 5. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
 6. Once deployment is completed, from [Azure Portal](https://portal.azure.com/), navigate to your bot resource. From *Settings*, select **Channels**. Click on **Outlook**, select the **Message Extensions** tab and then click **Save**.
    ![Azure Bot Channel Message Extension](images/azure-bot-channel-message-extensions.png)
+
    Confirm that your Outlook channel is listed along with Microsoft Teams in your bot's **Channels** pane.
+
    ![Azure Bot Channels](images/azure-bot-channels.png)
 7. Open the command palette and select `Teams: Zip Teams metadata package`.
 8. Log in to Teams with your test tenant account, and ensure you are on the Public Developer Preview. You can verify this in Teams client by clicking on the ellipsis (...) menu by your user profile and opening **About** to check that the *Developer preview* option is toggled on.
@@ -43,10 +45,12 @@ In a conversation, open the **Messaging extensions** flyout menu on the bottom o
 ![NPM Search in Teams](images/npm-search-in-teams.png)
 
 Then an adaptive card will be inserted to the message you are composing.
+
 ![NPM Search Adaptive Card in Teams](images/npm-search-adaptive-card-in-teams.png)
 
 ## Use the app in Outlook Web Client
 To preview your app running in Outlook Web Client, log in to [outlook.com](https://www.outlook.com) using credentials for your test tenant. Click on **New message**. Open the **Messaging extensions** flyout menu on the bottom of the composition window. Your message extension will be listed. You can invoke it from there and use it just as you would while composing a message in Outlook.
+
 ![Outlook Web Compose Message Extensions](images/npm-search-in-outlook.png)
 
 ## Architecture
