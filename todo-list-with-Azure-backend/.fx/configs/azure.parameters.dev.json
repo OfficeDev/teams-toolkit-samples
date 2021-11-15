@@ -4,7 +4,7 @@
     "parameters": {
         "provisionParameters": {
             "value": {
-                "resourceBaseName": "todolistdev10e7e3",
+                "resourceBaseName": "{{state.solution.resourceNameSuffix}}",
                 "azureSqlAdmin": "{{state.fx-resource-azure-sql.admin}}",
                 "azureSqlAdminPassword": "{{state.fx-resource-azure-sql.adminPassword}}",
                 "m365ClientId": "{{state.fx-resource-aad-app-for-teams.clientId}}",
