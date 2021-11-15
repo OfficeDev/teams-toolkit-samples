@@ -1,3 +1,4 @@
 node_modules
-.fx/
+.fx
 .DS_Store
+backup

@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "resourceBaseName": {
+            "value": "ssobotsampdev{{state.solution.resourceSuffix}}"
+        },
+        "bot_aadClientId": {
+            "value": "{{state.fx-resource-bot.botId}}"
+        },
+        "bot_aadClientSecret": {
+            "value": "{{state.fx-resource-bot.botPassword}}"
+        },
+        "m365ClientId": {
+            "value": "{{state.fx-resource-aad-app-for-teams.clientId}}"
+        },
+        "m365ClientSecret": {
+            "value": "{{state.fx-resource-aad-app-for-teams.clientSecret}}"
+        },
+        "m365TenantId": {
+            "value": "{{state.fx-resource-aad-app-for-teams.tenantId}}"
+        },
+        "m365OauthAuthorityHost": {
+            "value": "{{state.fx-resource-aad-app-for-teams.oauthHost}}"
+        },
+        "bot_webAppSKU": {
+            "value": "F1"
+        }
+    }
+}

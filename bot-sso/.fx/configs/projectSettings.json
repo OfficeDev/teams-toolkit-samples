@@ -16,5 +16,6 @@
             "fx-resource-appstudio"
         ]
     },
-    "programmingLanguage": "typescript"
+    "programmingLanguage": "typescript",
+    "version": "1.0.0"
 }
