@@ -13,5 +13,7 @@
             "fx-resource-aad-app-for-teams"
         ]
     },
-    "isFromSample": true
+    "isFromSample": true,
+    "programmingLanguage": "typescript",
+    "version": "1.0.0"
 }
