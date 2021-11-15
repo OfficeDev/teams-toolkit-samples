@@ -9,9 +9,12 @@
         ],
         "azureResources": [],
         "activeResourcePlugins": [
+            "fx-resource-spfx",
             "fx-resource-local-debug",
-            "fx-resource-spfx"
+            "fx-resource-appstudio"
         ]
     },
-    "isFromSample": true
+    "isFromSample": true,
+    "programmingLanguage": "typescript",
+    "version": "1.0.0"
 }
