@@ -1,0 +1,36 @@
+{
+    "teamsApp": {
+        "tenantId": "",
+        "teamsAppId": ""
+    },
+    "auth": {
+        "clientId": "",
+        "clientSecret": "",
+        "objectId": "",
+        "oauth2PermissionScopeId": "",
+        "oauthAuthority": "",
+        "oauthHost": "",
+        "applicationIdUris": "",
+        "simpleAuthFilePath": "",
+        "SimpleAuthEnvironmentVariableParams": "",
+        "AuthServiceEndpoint": ""
+    },
+    "frontend": {
+        "browser": "none",
+        "https": true,
+        "trustDevCert": true,
+        "sslCertFile": "",
+        "sslKeyFile": "",
+        "tabDomain": "",
+        "tabEndpoint": ""
+    },
+    "bot": {
+        "skipNgrok": false,
+        "botId": "",
+        "botPassword": "",
+        "botAadObjectId": "",
+        "botRedirectUri": "",
+        "botDomain": "",
+        "botEndpoint": ""
+    }
+}
