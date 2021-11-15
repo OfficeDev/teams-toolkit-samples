@@ -38,37 +38,28 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 
 ### Try the Sample
 
-1. FAQ Plus Bot relies on the 'QnA Maker' Azure services. Before you start, follow the [instructions](docs/deploy-qna-maker-services.md) to deploy QnA Maker to Azure. You will get configurations of QnA Maker service on completion. Make sure to record them down and you will need this later. 
+1. FAQ Plus Bot relies on the 'QnA Maker' Azure services. Before you start, follow the [instructions](docs/deploy-qna-maker-services.md##step-1-register-azure-ad-applications) to create an Azure AD app.
 2. Open project in [Visual Studio Code](https://code.visualstudio.com/), ensure you have installed [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 3. Open the command palette by pressing `Ctrl+Shift+P / ⌘⇧-P or View -> Command - Palette` and select: `Teams: Provision in the cloud`. If you have not logged in with your Azure Account, you will be asked to login and select a subscription to provision resources for this Bot.
-4. Once provision is completed, open `.fx/env.default.json` file. Notice the value of `siteName` in `fx-resource-bot` section, this is the name of Azure Web App service provisioned by Teams Toolkit. You will need this value in step 5.
-5. From [Azure Portal](https://portal.azure.com/#home), navigate to resource group named `FaqPlus-rg`. This resource group is created by Teams Toolkit during provision. Find the Azure Web App service named after the value of `siteName` parameter you got from step 4 and open this Azure Web App service.
-6. Click `Configuration` in left panel. Add the following application settings with configuration values you got from step 1 and click `Save` button.
-    | Application Setting Name | Expected Value | Note |
-    | ---- | ---- | ---- |
-    | SCORETHRESHOLD | 0.5 | The expected value works fine for the sample. You can adjust this threshold per your requirement. |
-    | STORAGECONNECTIONSTRING | `StorageConnectionString` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
-    | QNAMAKERAPIENDPOINTURL | `QnAMakerApiEndpointUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[Location].api.cognitive.microsoft.com |
-    | QNAMAKERHOSTURL | `QnAMakerHostUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[BaseResourceName]-qnamaker.azurewebsites.net |
-    | QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Usually a 32 alphanumeric characters string |
-7. Open the command palette and select: `Teams: Deploy to the cloud`.
-8. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to launch Teams client in browser. Log in to Teams and click `Add` button to install the app to your Teams client.
-9. Your app is successfully running in your Teams client now, refer to ['Use the App' section](#use-the-app) below to interact with the app.
+4. Once provision is completed, follow the [instructions to create qna maker](docs/deploy-qna-maker-services.md#step-2-create-the-qna-maker-knowledge-base) and [configure the FAQ Plus app](docs/deploy-qna-maker-services.md#step-3-finish-configuring-the-faq-plus-app).
+5. Open the command palette and select: `Teams: Deploy to the cloud`.
+6. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to launch Teams client in browser. Log in to Teams and click `Add` button to install the app to your Teams client.
+7. Your app is successfully running in your Teams client now, refer to ['Use the App' section](#use-the-app) below to interact with the app.
 
 ### (Optional) Debug
 
-1. FAQ Plus Bot relies on the 'QnA Maker' Azure services. Before you start, follow the [instructions](docs/deploy-qna-maker-services.md) to deploy QnA Maker to Azure. You will get configurations of QnA Maker service on completion. Make sure to record them down and you will need this later. 
-2. Open project in [Visual Studio Code](https://code.visualstudio.com/), ensure you have installed [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
-2. Open `.fx/local.env` file. Fill values for following environment variables.
-    | Application Setting Name | Expected Value | Note |
-    | ---- | ---- | ---- |
-    | BOT_SCORETHRESHOLD | 0.5 | The expected value works fine for the sample. You can adjust this threshold per your requirement. |
-    | BOT_STORAGECONNECTIONSTRING | `StorageConnectionString` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
-    | BOT_QNAMAKERAPIENDPOINTURL | `QnAMakerApiEndpointUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[Location].api.cognitive.microsoft.com |
-    | BOT_QNAMAKERHOSTURL | `QnAMakerHostUrl` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Example: https://[BaseResourceName]-qnamaker.azurewebsites.net |
-    | BOT_QNAMAKERSUBSCRIPTIONKEY | `QnAMakerSubscriptionKey` got in [deploy-qna-maker-services](docs/deploy-qna-maker-services.md) step | Usually a 32 alphanumeric characters string |
-3. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Debug (Edge)` or `Debug (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to launch Teams client in browser. Log in to Teams and click `Add` button to install the app to your Teams client.
-4. Your app is successfully running in your Teams client now, refer to ['Use the App' section](#use-the-app) below to interact with the app.
+1. Open project in [Visual Studio Code](https://code.visualstudio.com/), ensure you have installed [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
+2. Follow the [instcution](docs/deploy-qna-maker-services.md#step-4-prepare-required-parameters-for-teams-bot-app) to get necessary info. You need to use them in the next step.
+3. Open `bot/.env.teamsfx.local` file. Fill values for following environment variables. Note: You should get all these values in previous step.
+    ```
+    SCORETHRESHOLD=0.5
+    STORAGECONNECTIONSTRING=
+    QNAMAKERAPIENDPOINTURL=
+    QNAMAKERHOSTURL=
+    QNAMAKERHOSTURL=
+    ```
+4. To install and run the app, in Visual Studio Code, open `Run and Debug` tab and select `Debug (Edge)` or `Debug (Chrome)` in the dropdown list. Then press `F5` or click green arrow button to launch Teams client in browser. Log in to Teams and click `Add` button to install the app to your Teams client.
+5. Your app is successfully running in your Teams client now, refer to ['Use the App' section](#use-the-app) below to interact with the app.
 
 ### Use the App
 
