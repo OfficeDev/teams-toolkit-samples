@@ -15,12 +15,12 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "helloWorldTabapp-local-debug",
-        "full": "helloWorldTabapp-local-debug"
+        "short": "helloWorldTabApp-local-debug",
+        "full": "helloWorldTabApp-local-debug"
     },
     "description": {
-        "short": "Short description of helloWorldTabapp-local-debug",
-        "full": "Full description of helloWorldTabapp-local-debug"
+        "short": "Short description of helloWorldTabApp-local-debug",
+        "full": "Full description of helloWorldTabApp-local-debug"
     },
     "accentColor": "#FFFFFF",
     "bots": [],
