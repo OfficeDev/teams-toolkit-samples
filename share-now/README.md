@@ -84,15 +84,15 @@ To debug the project, you will need to configure an Azure SQL Database to be use
     )
     GO
     ```
-2. Open **api/.env.teamsfx.local** file and **bot/.env.teamsfx.local**, and set the values of below config with the Azure SQL Database you just created:
+1. Open **api/.env.teamsfx.local** and **bot/.env.teamsfx.local** file, and set the values of below config with the Azure SQL Database you just created:
     ```
     SQL_ENDPOINT=
     SQL_DATABASE_NAME=
     SQL_USER_NAME=
     SQL_PASSWORD=
     ```
-3. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
-4. Press "F5" to open a browser window and then select your package to view share now sample app. 
+1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
+1. Press "F5" to open a browser window and then select your package to view share now sample app. 
 
 ## Use the App in Teams
 
