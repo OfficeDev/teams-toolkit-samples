@@ -67,11 +67,14 @@
 ![appdisplay](images/appdisplay.png)
 
 ## (Optional) Debug
-Debug the app with Teams workbench in VSCode.
+Debug the app with Teams workbench
 
 1. In Debug mode, select `Teams workbench (Edge)` or `Teams workbench (Chrome)` and press start button. The browser will be opened and you need to sign in Teams with your M365 account.
+![teamsworkbench](images/teamsworkbench.png)
 2. Click `Add to a team`.
+![debug](images/localdebug.png)
 3. You should see the app running in your Teams.
+![localdebug-preview](images/localdebug-preview.png)
 
 ## Use the App in Teams
 1. Since SharePoint can get the context so app user doesn't need to do consent/login operation.
