@@ -15,12 +15,12 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "helloWorldTabAppWithAzureBackend",
-        "full": "helloWorldTabAppWithAzureBackend"
+        "short": "Hello World Tab with Backend",
+        "full": "Hello World Tab with Backend"
     },
     "description": {
-        "short": "Short description of helloWorldTabAppWithAzureBackend",
-        "full": "Full description of helloWorldTabAppWithAzureBackend"
+        "short": "Short description of Hello World Tab with Backend",
+        "full": "Full description of Hello World Tab with Backend"
     },
     "accentColor": "#FFFFFF",
     "bots": [],
