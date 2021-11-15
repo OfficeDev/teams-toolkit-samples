@@ -23,5 +23,8 @@
             "fx-resource-bot"
         ]
     },
-    "isFromSample": true
+    "isFromSample": true,
+    "programmingLanguage": "typescript",
+    "defaultFunctionName": "posts",
+    "version": "1.0.0"
 }
