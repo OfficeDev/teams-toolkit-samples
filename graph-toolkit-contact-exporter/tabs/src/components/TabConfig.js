@@ -25,7 +25,7 @@ class TabConfig extends React.Component {
     microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
       const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
       microsoftTeams.settings.setSettings({
-        "suggestedDisplayName": "Contact Export",
+        "suggestedDisplayName": "Contact Exporter",
         "entityId": "Test",
         "contentUrl": baseUrl + "/index.html#/tab",
         "websiteUrl": baseUrl + "/index.html#/tab"

@@ -195,7 +195,7 @@ class Tab extends React.Component {
         </div>}
 
         {this.state.showLoginPage === true && <div className="auth">
-          <h2>Welcome to Contact Export App!</h2>
+          <h2>Welcome to Contact Exporter App!</h2>
           <Button primary onClick={() => this.loginBtnClick()}>Start</Button>
         </div>}
       </div>
