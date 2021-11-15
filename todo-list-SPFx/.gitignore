@@ -1,4 +1,5 @@
 node_modules
 /.fx/*.env
 /.fx/*.userdata
+/.fx/configs/localSettings.json
 .DS_Store
