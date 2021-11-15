@@ -20,7 +20,7 @@
             "preLaunchTask": "gulp serve",
             "postDebugTask": "Terminate All Tasks",
             "presentation": {
-                "group": "all",
+                "group": "local",
                 "order": 1
             }
         },
@@ -43,7 +43,7 @@
             "preLaunchTask": "gulp serve",
             "postDebugTask": "Terminate All Tasks",
             "presentation": {
-                "group": "all",
+                "group": "local",
                 "order": 2
             }
         },
@@ -140,7 +140,7 @@
             ],
             "preLaunchTask": "prepare dev env",
             "presentation": {
-                "group": "teams",
+                "group": "forteams",
                 "order": 1
             },
             "stopAll": true
@@ -152,7 +152,7 @@
             ],
             "preLaunchTask": "prepare dev env",
             "presentation": {
-                "group": "teams",
+                "group": "forteams",
                 "order": 2
             },
             "stopAll": true
