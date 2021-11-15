@@ -14,7 +14,6 @@ Contact Exporter sample APP provides an easy way to export your teams contact in
 - [NodeJS](https://nodejs.org/en/)
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
-- An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
 
 ## What you will learn in this sample:
@@ -31,12 +30,13 @@ Contact Exporter sample APP provides an easy way to export your teams contact in
 1. Press "F5" to open a browser window and then select your package to view contact exporter sample app. 
 
 ### Provision and Deploy the Sample to Azure
-
+> If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
 1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to select Azure resource group to provision the sample.
 1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
 1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
 
 ## Try the Sample with TeamsFx CLI
+> If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
 1. Install [Node.js](https://nodejs.org/en/download/) (use the latest v14 LTS release)
 1. To install the TeamsFx CLI, use the npm package manager:
     ```
