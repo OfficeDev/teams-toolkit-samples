@@ -11,8 +11,7 @@
         "msteams-react-base-component": "^3.1.0",
         "react": "^16.14.0",
         "react-dom": "^16.14.0",
-        "react-router-dom": "^5.1.2",
-        "react-scripts": "^4.0.3"
+        "react-router-dom": "^5.1.2"
     },
     "devDependencies": {
         "@types/jest": "^26.0.15",
@@ -20,6 +19,7 @@
         "@types/react": "^16.14.6",
         "@types/react-dom": "^16.9.12",
         "@types/react-router-dom": "^5.1.7",
+        "react-scripts": "^4.0.3",
         "typescript": "^4.1.2"
     },
     "scripts": {
