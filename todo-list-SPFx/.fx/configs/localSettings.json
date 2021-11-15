@@ -1,0 +1,18 @@
+{
+    "teamsApp": {
+        "tenantId": "",
+        "teamsAppId": ""
+    },
+    "auth": {
+        "clientId": "",
+        "clientSecret": "",
+        "objectId": "",
+        "oauth2PermissionScopeId": "",
+        "oauthAuthority": "",
+        "oauthHost": "",
+        "applicationIdUris": "",
+        "simpleAuthFilePath": "",
+        "SimpleAuthEnvironmentVariableParams": "",
+        "AuthServiceEndpoint": ""
+    }
+}

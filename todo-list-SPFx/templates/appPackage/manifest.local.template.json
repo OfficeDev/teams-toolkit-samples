@@ -2,7 +2,7 @@
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
     "manifestVersion": "1.9",
     "packageName": "todoList",
-    "id": "c314487b-f51c-474d-823e-a2c3ec82b1ff",
+    "id": "{{localSettings.teamsApp.teamsAppId}}",
     "version": "1.0.0.0",
     "developer": {
         "name": "SPFx + Teams Dev",
@@ -11,15 +11,16 @@
         "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
     },
     "name": {
-        "short": "todoList"
+        "short": "todoList-local-debug",
+        "full": "todoList-local-debug"
     },
     "description": {
         "short": "todoList",
         "full": "todoList"
     },
     "icons": {
-        "outline": "outline.png",
-        "color": "color.png"
+        "outline": "resources/outline.png",
+        "color": "resources/color.png"
     },
     "accentColor": "#004578",
     "configurableTabs": [
