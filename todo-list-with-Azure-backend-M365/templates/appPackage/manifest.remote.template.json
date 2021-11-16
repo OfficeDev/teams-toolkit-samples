@@ -1,0 +1,48 @@
+{
+    "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
+    "manifestVersion": "m365DevPreview",
+    "version": "1.0.0",
+    "id": "{{state.fx-resource-appstudio.teamsAppId}}",
+    "packageName": "com.microsoft.teams.extension",
+    "developer": {
+        "name": "Teams App, Inc.",
+        "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}",
+        "privacyUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/privacy",
+        "termsOfUseUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/termsofuse"
+    },
+    "icons": {
+        "color": "resources/color.png",
+        "outline": "resources/outline.png"
+    },
+    "name": {
+        "short": "{{config.manifest.appName.short}}",
+        "full": "{{config.manifest.appName.full}}"
+    },
+    "description": {
+        "short": "toDoList",
+        "full": "toDoList"
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [],
+    "composeExtensions": [],
+    "staticTabs": [
+        {
+            "entityId": "index",
+            "name": "Personal Tab",
+            "contentUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/tab",
+            "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/tab",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [],
+    "webApplicationInfo": {
+        "id": "{{state.fx-resource-aad-app-for-teams.clientId}}",
+        "resource": "{{{state.fx-resource-aad-app-for-teams.applicationIdUris}}}"
+    }
+}
