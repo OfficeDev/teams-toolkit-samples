@@ -25,6 +25,5 @@
     "isFromSample": true,
     "programmingLanguage": "javascript",
     "defaultFunctionName": "getUserProfile",
-    "version": "1.0.0",
-    "projectId": "45f8780c-ac1a-4827-8e4e-6fe657fc5ed5"
+    "version": "2.0.0"
 }
