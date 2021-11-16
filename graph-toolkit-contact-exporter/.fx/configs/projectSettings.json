@@ -1,6 +1,5 @@
 {
     "appName": "teamsfxgraphtoolkitcontact",
-    "projectId": "52fcb4b8-b415-4e5a-9691-5010d4eca78e",
     "solutionSettings": {
         "name": "fx-solution-azure",
         "version": "1.0.0",
@@ -19,6 +18,6 @@
         ]
     },
     "version": "2.0.0",
-    "isFromSample": false,
+    "isFromSample": true,
     "programmingLanguage": "javascript"
 }
