@@ -38,7 +38,7 @@ param planSize string = '2'
 @description('Location for all resources.')
 param location string = resourceGroup().location
 
-@description('The pricing tier for the QnAMaker service.')
+@description('The pricing tier for the QnAMaker service. You can find detailed information from https://azure.microsoft.com/en-us/pricing/details/cognitive-services/qna-maker/')
 @allowed([
   'F0 (3 managed documents per month, 3 transactions per second, 100 transactions per minute, 50K transactions per month)'
   'S0 ($10 per month for unlimited documents, 3 transactions per second, 100 transactions per minute)'
@@ -293,3 +293,4 @@ resource qnaMakerAppServiceName_appsettings 'Microsoft.Web/sites/config@2015-08-
 output configurationAppUrl string = configAppUrl
 output qnaStorageAccount string = storageAccountName.name
 output qnaMakerAccount string = qnaMakerAccountName.name
+output qnAMakerHostUrl string = 'https://${qnaMakerAppServiceName_var}-qnamaker.azurewebsites.net'

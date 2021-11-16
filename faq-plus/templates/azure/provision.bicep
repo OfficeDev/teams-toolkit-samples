@@ -1,8 +1,7 @@
 @secure()
 param provisionParameters object
-
-param qnaStorageAccount string
-param qnaMakerAccount string
+param configAdminUPNList string
+param configAppClientId string
 
 module userAssignedIdentityProvision './provision/identity.bicep' = {
   name: 'userAssignedIdentityProvision'
@@ -23,10 +22,22 @@ module botProvision './provision/bot.bicep' = {
   params: {
     provisionParameters: provisionParameters
     userAssignedIdentityId: userAssignedIdentityProvision.outputs.identityResourceId
-    qnaStorageAccount: qnaStorageAccount
-    qnaMakerAccount: qnaMakerAccount
+    qnaStorageAccount: qnaService.outputs.qnaStorageAccount
+    qnaMakerAccount: qnaService.outputs.qnaMakerAccount
+    qnAMakerHostUrl: qnaService.outputs.qnAMakerHostUrl
   }
 }
+
+module qnaService './qnaService.bicep' = {
+  name: 'qnaService'
+  params: {
+    baseResourceName: provisionParameters.resourceBaseName
+    configAdminUPNList: configAdminUPNList
+    configAppClientId: configAppClientId
+    provisionParameters: provisionParameters
+  }
+}
+
 
 output botOutput object = {
   teamsFxPluginId: 'fx-resource-bot'

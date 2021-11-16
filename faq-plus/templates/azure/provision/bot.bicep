@@ -4,6 +4,7 @@ param userAssignedIdentityId string
 
 param qnaStorageAccount string
 param qnaMakerAccount string
+param qnAMakerHostUrl string
 
 var resourceBaseName = provisionParameters.resourceBaseName
 var botAadAppClientId = provisionParameters['botAadAppClientId']
@@ -15,7 +16,6 @@ var webAppSKU = contains(provisionParameters, 'botWebAppSKU') ? provisionParamet
 var webAppName = contains(provisionParameters, 'botSitesName') ? provisionParameters['botSitesName'] : '${resourceBaseName}-bot-sites'
 
 var qnaStorageConnectionString = 'DefaultEndpointsProtocol=https;AccountName=${qnaStorage.name};AccountKey=${listKeys(qnaStorage.id, qnaStorage.apiVersion).keys[0].value};EndpointSuffix=${environment().suffixes.storage}'
-var qnAMakerHostUrl = 'https://${qnaMakerAccount}-qnamaker.azurewebsites.net'
 var qnAMakerSubscriptionKey = listKeys(qnaMaker.id, qnaMaker.apiVersion).key1
 
 resource qnaStorage 'Microsoft.Storage/storageAccounts@2021-04-01' existing = {

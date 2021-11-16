@@ -7,8 +7,8 @@ module provision './provision.bicep' = {
   name: 'provisionResources'
   params: {
     provisionParameters: provisionParameters
-    qnaStorageAccount: qnaService.outputs.qnaStorageAccount
-    qnaMakerAccount: qnaService.outputs.qnaMakerAccount
+    configAdminUPNList: configAdminUPNList
+    configAppClientId: configAppClientId
   }
 }
 
@@ -17,16 +17,6 @@ module teamsFxConfig './config.bicep' = {
   params: {
     provisionParameters: provisionParameters
     provisionOutputs: provision
-  }
-}
-
-module qnaService './qnaService.bicep' = {
-  name: 'qnaService'
-  params: {
-    baseResourceName: provisionParameters.resourceBaseName
-    configAdminUPNList: configAdminUPNList
-    configAppClientId: configAppClientId
-    provisionParameters: provisionParameters
   }
 }
 
