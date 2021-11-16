@@ -2,21 +2,21 @@
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
     "manifestVersion": "1.9",
     "version": "1.0.0",
-    "id": "{appid}",
+    "id": "{{state.fx-resource-appstudio.teamsAppId}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Teams App, Inc.",
-        "websiteUrl": "{baseUrl}/tab",
-        "privacyUrl": "{baseUrl}/privacy",
-        "termsOfUseUrl": "{baseUrl}/termsofuse"
+        "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/tab",
+        "privacyUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/privacy",
+        "termsOfUseUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/termsofuse"
     },
     "icons": {
-        "color": "color.png",
-        "outline": "outline.png"
+        "color": "resources/color.png",
+        "outline": "resources/outline.png"
     },
     "name": {
-        "short": "Meeting App",
-        "full": "Meeting App"
+        "short": "{{config.manifest.appName.short}}",
+        "full": "{{config.manifest.appName.full}}"
     },
     "description": {
         "short": "Short description for Meeting App.",
@@ -25,7 +25,7 @@
     "accentColor": "#FFFFFF",
     "configurableTabs": [
         {
-            "configurationUrl": "{baseUrl}/config",
+            "configurationUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/config",
             "canUpdateConfiguration": false,
             "scopes": [
                 "groupchat"
@@ -39,7 +39,7 @@
     ],
     "bots": [
         {
-            "botId": "{botId}",
+            "botId": "{{state.fx-resource-bot.botId}}",
             "scopes": [
                 "personal",
                 "groupchat",
@@ -55,7 +55,7 @@
     ],
     "validDomains": [],
     "webApplicationInfo": {
-        "id": "{appClientId}",
-        "resource": "{webApplicationInfoResource}"
+        "id": "{{state.fx-resource-aad-app-for-teams.clientId}}",
+        "resource": "{{{state.fx-resource-aad-app-for-teams.applicationIdUris}}}"
     }
 }
