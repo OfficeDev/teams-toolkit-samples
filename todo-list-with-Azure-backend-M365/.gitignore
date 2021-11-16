@@ -3,3 +3,5 @@ node_modules
 /.fx/*.userdata
 .DS_Store
 /.fx/configs/localSettings.json
+/.fx/states/*.userdata
+**/.env.teamsfx.local
