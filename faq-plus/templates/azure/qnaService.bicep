@@ -43,7 +43,7 @@ param location string = resourceGroup().location
   'F0 (3 managed documents per month, 3 transactions per second, 100 transactions per minute, 50K transactions per month)'
   'S0 ($10 per month for unlimited documents, 3 transactions per second, 100 transactions per minute)'
 ])
-param qnaMakerSku string = 'S0 ($10 per month for unlimited documents, 3 transactions per second, 100 transactions per minute)'
+param qnaMakerSku string = 'F0 (3 managed documents per month, 3 transactions per second, 100 transactions per minute, 50K transactions per month)'
 
 @description('The pricing tier for the Azure Search service.')
 @allowed([
@@ -58,7 +58,7 @@ param searchServiceSku string = 'B (15 indexes)'
 param gitRepoUrl string = 'https://github.com/OfficeDev/TeamsFx-Samples'
 
 @description('The branch of the GitHub repository to deploy.')
-param gitBranch string = 'main'
+param gitBranch string = 'v2'
 
 var hostingPlanName_var = baseResourceName
 var storageAccountName_var = uniqueString(concat(resourceGroup().id, baseResourceName))
@@ -249,7 +249,7 @@ resource qnaMakerAppServiceName 'Microsoft.Web/sites@2016-08-01' = {
       }
     }
     name: qnaMakerAppServiceName_var
-    serverFarmId: '/subscriptions/${subscription().subscriptionId}/resourcegroups/${resourceGroup().name}/providers/Microsoft.Web/serverfarms/${hostingPlanName_var}'
+    serverFarmId: hostingPlanName.id
     hostingEnvironment: ''
   }
   tags: {
@@ -291,5 +291,5 @@ resource qnaMakerAppServiceName_appsettings 'Microsoft.Web/sites/config@2015-08-
 }
 
 output configurationAppUrl string = configAppUrl
-output storageName string = storageAccountName.name
-output qnaMakerAccountName string = qnaMakerAccountName.name
+output qnaStorageAccount string = storageAccountName.name
+output qnaMakerAccount string = qnaMakerAccountName.name

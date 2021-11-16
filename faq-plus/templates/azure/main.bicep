@@ -7,6 +7,8 @@ module provision './provision.bicep' = {
   name: 'provisionResources'
   params: {
     provisionParameters: provisionParameters
+    qnaStorageAccount: qnaService.outputs.qnaStorageAccount
+    qnaMakerAccount: qnaService.outputs.qnaMakerAccount
   }
 }
 
@@ -15,13 +17,11 @@ module teamsFxConfig './config.bicep' = {
   params: {
     provisionParameters: provisionParameters
     provisionOutputs: provision
-    storageName: azuredeploy.outputs.storageName
-    qnaMakerAccountName: azuredeploy.outputs.qnaMakerAccountName
   }
 }
 
-module azuredeploy './azuredeploy.bicep' = {
-  name: 'azuredeploy'
+module qnaService './qnaService.bicep' = {
+  name: 'qnaService'
   params: {
     baseResourceName: provisionParameters.resourceBaseName
     configAdminUPNList: configAdminUPNList

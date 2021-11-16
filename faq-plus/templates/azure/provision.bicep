@@ -1,5 +1,9 @@
 @secure()
 param provisionParameters object
+
+param qnaStorageAccount string
+param qnaMakerAccount string
+
 module userAssignedIdentityProvision './provision/identity.bicep' = {
   name: 'userAssignedIdentityProvision'
   params: {
@@ -19,6 +23,8 @@ module botProvision './provision/bot.bicep' = {
   params: {
     provisionParameters: provisionParameters
     userAssignedIdentityId: userAssignedIdentityProvision.outputs.identityResourceId
+    qnaStorageAccount: qnaStorageAccount
+    qnaMakerAccount: qnaMakerAccount
   }
 }
 
