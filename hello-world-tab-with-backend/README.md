@@ -8,7 +8,9 @@
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
-![Hello World Tab](images/HelloWorldTab.png)
+Hello World Tab with Backend shows you how to build a tab app with an Azure Function as backend, how to get user login information with SSO and how to call Azure Function from frontend tab.
+
+![Hello World Tab](images/HelloWorld-Tab-with-Backend.png)
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/)
@@ -18,6 +20,7 @@ Microsoft Teams supports the ability to run web-based UI inside "custom tabs" th
 ## What you will learn in this sample:
 
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
+- How to use TeamsFx to build backend hosting on Azure for your tab app.
 - How to use MS graph client in TeamsFx to get access to M365 data.
 - How to use TeamsFx simple auth capability to get Teams user login information.
 
@@ -55,11 +58,18 @@ Once deployed, you may want to distribute your application to your organization'
 - From TeamsFx CLI: run command `teamsfx publish` in your project directory.
 
 ## Architecture
+
+- The frontend is a react tab app hosted on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
+- The Backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for managing posts in the tab app.
+
 ### Code structure
+
 - You can check app configuration and environment information in: [.fx](.fx)
 - You will find frontend code in: [tabs/src/components](tabs/src/components)
+- You will find backend code in: [api/getUserProfile](api/getUserProfile)
 
 ## Code of Conduct
+
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or

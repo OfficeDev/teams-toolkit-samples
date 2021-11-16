@@ -8,6 +8,8 @@
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
+Hello World Tab shows you how to build a tab app and how to get user login information with SSO.
+
 ![Hello World Tab](images/HelloWorldTab.png)
 ## Prerequisites
 
@@ -27,6 +29,8 @@ Microsoft Teams supports the ability to run web-based UI inside "custom tabs" th
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
 1. Start debugging the project by hitting the `F5` key in Visual Studio Code.
+
+## Use the App in Teams
 
 ## Edit the manifest
 
@@ -55,11 +59,16 @@ Once deployed, you may want to distribute your application to your organization'
 - From TeamsFx CLI: run command `teamsfx publish` in your project directory.
 
 ## Architecture
+
+- The frontend is a react tab app hosted on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
+
 ### Code structure
+
 - You can check app configuration and environment information in: [.fx](.fx)
 - You will find frontend code in: [tabs/src/components](tabs/src/components)
 
 ## Code of Conduct
+
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
