@@ -17,13 +17,17 @@ jobs:
       M365_ACCOUNT_NAME: ${{secrets.M365_ACCOUNT_NAME}}
       M365_ACCOUNT_PASSWORD: ${{secrets.M365_ACCOUNT_PASSWORD}}
 
+      # The following line is to enable insider preview features.
+      TEAMSFX_INSIDER_PREVIEW: true
+      # To specify the env name for multi-env feature.
+      TEAMSFX_ENV_NAME: dev
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-        
+
       # We suggest to do the `teamsfx provision` step manually or in a separate workflow. The following steps are for your reference.
-      # After provisioning, you should commit .fx/env.default.json into the repository.
-      # You should save the file content of default.userdata into the repository secrets (https://docs.github.com/en/actions/reference/encrypted-secrets) which can be refered by the step with name 'Generate default.userdata' in cd.yml.
+      # After provisioning, you should commit necessary files into the repository which is automated in this workflow.
+      # You should copy content of .fx/states/dev.userdata into a repository secret (https://docs.github.com/en/actions/reference/encrypted-secrets) with name 'USERDATA_CONTENT' for future usage which is automated in this workflow.
       - name: Provision hosting environment
         uses: OfficeDev/teamsfx-cli-action@v1
         env:
@@ -31,6 +35,7 @@ jobs:
           SQL_PASSWORD: ${{secrets.SQL_PASSWORD}}
         with:
           commands: provision
+          env: ${{env.TEAMSFX_ENV_NAME}} 
           subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
           sql-admin-name: ${{env.SQL_ADMIN_NAME}}
           sql-password: ${{env.SQL_PASSWORD}}
@@ -45,9 +50,9 @@ jobs:
       - name: Set SQL_ENDPOINT and DB_NAME
         id: set-sql
         run: |
-          sqlEndpoint=`node ./extract.js fx-resource-azure-sql sqlEndpoint`
+          sqlEndpoint=`node ./extract.js ${TEAMSFX_ENV_NAME} fx-resource-azure-sql sqlEndpoint`
           echo "::set-output name=SQL_ENDPOINT::${sqlEndpoint}"
-          databaseName=`node ./extract.js fx-resource-azure-sql databaseName`
+          databaseName=`node ./extract.js ${TEAMSFX_ENV_NAME} fx-resource-azure-sql databaseName`
           echo "::set-output name=DB_NAME::${databaseName}"
  
       - name: Create Todo Table
@@ -58,11 +63,11 @@ jobs:
           DB_NAME: ${{ steps.set-sql.outputs.DB_NAME}}
         run: |
            sqlcmd -S ${SQL_ENDPOINT} -d ${DB_NAME} -U ${SQL_ADMIN_NAME} -P ${SQL_PASSWORD} -i ./create_table.sql
-      # Set default.userdata as outputs
-      - name: Set Outputs for default.userdata
+      # Set userdata as outputs
+      - name: Set Outputs for userdata
         id: set-userdata
         run: |
-          userdata_content=`cat .fx/default.userdata`
+          userdata_content=`cat .fx/states/${TEAMSFX_ENV_NAME}.userdata`
           echo "::set-output name=USERDATA_CONTENT::${userdata_content}"
       # Set USERDATA_CONTENT as GitHub Secret
       - uses: jon-grey/github-actions-secrets-creator@v1
@@ -75,4 +80,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "chore: commit provision configs"
-          file_pattern: .fx/env.default.json .fx/settings.json
+          file_pattern: .fx/states/state.${{env.TEAMSFX_ENV_NAME}}.json
