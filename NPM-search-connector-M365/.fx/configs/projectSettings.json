@@ -11,11 +11,12 @@
         "activeResourcePlugins": [
             "fx-resource-bot",
             "fx-resource-aad-app-for-teams",
+            "fx-resource-identity",
             "fx-resource-local-debug",
             "fx-resource-appstudio"
         ]
     },
-    "version": "1.0.0",
+    "version": "2.0.0",
     "isFromSample": true,
     "programmingLanguage": "javascript"
 }

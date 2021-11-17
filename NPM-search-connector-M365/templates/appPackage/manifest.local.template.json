@@ -2,21 +2,21 @@
     "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
     "manifestVersion": "m365DevPreview",
     "version": "1.0.0",
-    "id": "{appid}",
+    "id": "{{localSettings.teamsApp.teamsAppId}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Teams App, Inc.",
-        "websiteUrl": "{baseUrl}",
-        "privacyUrl": "{baseUrl}/index.html#/privacy",
-        "termsOfUseUrl": "{baseUrl}/index.html#/termsofuse"
+        "websiteUrl": "{{{localSettings.frontend.tabEndpoint}}}",
+        "privacyUrl": "{{{localSettings.frontend.tabEndpoint}}}/index.html#/privacy",
+        "termsOfUseUrl": "{{{localSettings.frontend.tabEndpoint}}}/index.html#/termsofuse"
     },
     "icons": {
-        "color": "color.png",
-        "outline": "outline.png"
+        "color": "resources/color.png",
+        "outline": "resources/outline.png"
     },
     "name": {
-        "short": "npmSearchConnector",
-        "full": "npmSearchConnector"
+        "short": "npmSearchConnector-local-debug",
+        "full": "npmSearchConnector-local-debug"
     },
     "description": {
         "short": "npmSearchConnector",
@@ -26,7 +26,7 @@
     "bots": [],
     "composeExtensions": [
         {
-            "botId": "{botId}",
+            "botId": "{{localSettings.bot.botId}}",
             "commands": [
                 {
                     "id": "createCard",
@@ -113,7 +113,7 @@
     ],
     "validDomains": [],
     "webApplicationInfo": {
-        "id": "{appClientId}",
-        "resource": "{webApplicationInfoResource}"
+        "id": "{{localSettings.auth.clientId}}",
+        "resource": "{{{localSettings.auth.applicationIdUris}}}"
     }
 }
