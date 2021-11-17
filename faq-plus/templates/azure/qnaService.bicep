@@ -38,12 +38,14 @@ param planSize string = '2'
 @description('Location for all resources.')
 param location string = resourceGroup().location
 
+// F0: 3 managed documents per month, 3 transactions per second, 100 transactions per minute, 50K transactions per month
+// S0: $10 per month for unlimited documents, 3 transactions per second, 100 transactions per minute
 @description('The pricing tier for the QnAMaker service. You can find detailed information from https://azure.microsoft.com/en-us/pricing/details/cognitive-services/qna-maker/')
 @allowed([
-  'F0 (3 managed documents per month, 3 transactions per second, 100 transactions per minute, 50K transactions per month)'
-  'S0 ($10 per month for unlimited documents, 3 transactions per second, 100 transactions per minute)'
+  'F0'
+  'S0'
 ])
-param qnaMakerSku string = 'F0 (3 managed documents per month, 3 transactions per second, 100 transactions per minute, 50K transactions per month)'
+param qnaMakerSkuValue string = 'F0'
 
 @description('The pricing tier for the Azure Search service.')
 @allowed([
@@ -69,7 +71,6 @@ var qnaMakerAccountName_var = baseResourceName
 var qnaMakerLocation = 'westus'
 var qnaMakerAppServiceName_var = '${baseResourceName}-qnamaker'
 var qnaMakerAppInsightsName = '${baseResourceName}-qnamaker'
-var qnaMakerSkuValue = substring(qnaMakerSku, 0, 2)
 var azureSearchName_var = '${uniqueString(concat(resourceGroup().id, baseResourceName))}-search'
 var azureSearchSkus = {
   'F ': 'free'
