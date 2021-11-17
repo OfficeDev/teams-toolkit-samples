@@ -2,21 +2,21 @@
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
     "manifestVersion": "1.9",
     "version": "1.0.0",
-    "id": "{appid}",
+    "id": "{{state.fx-resource-appstudio.teamsAppId}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Teams App, Inc.",
-        "websiteUrl": "{baseUrl}",
-        "privacyUrl": "{baseUrl}/index.html#/privacy",
-        "termsOfUseUrl": "{baseUrl}/index.html#/termsofuse"
+        "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}",
+        "privacyUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/privacy",
+        "termsOfUseUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/termsofuse"
     },
     "icons": {
-        "color": "color.png",
-        "outline": "outline.png"
+        "color": "resources/color.png",
+        "outline": "resources/outline.png"
     },
     "name": {
-        "short": "toDoList",
-        "full": "toDoList"
+        "short": "{{config.manifest.appName.short}}",
+        "full": "{{config.manifest.appName.full}}"
     },
     "description": {
         "short": "toDoList",
@@ -27,7 +27,7 @@
     "composeExtensions": [],
     "configurableTabs": [
         {
-            "configurationUrl": "{baseUrl}/index.html#/config",
+            "configurationUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/config",
             "canUpdateConfiguration": true,
             "scopes": [
                 "team",
@@ -41,7 +41,7 @@
     ],
     "validDomains": [],
     "webApplicationInfo": {
-        "id": "{appClientId}",
-        "resource": "{webApplicationInfoResource}"
+        "id": "{{state.fx-resource-aad-app-for-teams.clientId}}",
+        "resource": "{{{state.fx-resource-aad-app-for-teams.applicationIdUris}}}"
     }
 }
