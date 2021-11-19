@@ -19,8 +19,8 @@
         "full": "Hello World Tab-local-debug"
     },
     "description": {
-        "short": "Short description of Hello World Tab-local-debug",
-        "full": "Full description of Hello World Tab-local-debug"
+        "short": "Hello World app of Microsoft Teams Tab app.",
+        "full": "This is a Hello World app of Microsoft Teams Tab app which accomplishes very simple function like single-sign on. You can run this app locally or deploy it to Microsoft Azure. This app only has a Tab frontend."
     },
     "accentColor": "#FFFFFF",
     "bots": [],
