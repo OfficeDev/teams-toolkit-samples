@@ -18,7 +18,7 @@ This is a hello-world template which shows how to build an app in the context of
 - How to use the Teams Toolkit to provision and deploy your app to Azure. 
 
 ## Prerequisites
--  [NodeJS](https://nodejs.org/en/), recommend v12+, v13+ and v14+.
+-  [NodeJS](https://nodejs.org/en/), recommend v14.x, v13.x, or v12.x.
 -  [ngrok](https://ngrok.com/)
 -  An M365 account, if you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 -  [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
