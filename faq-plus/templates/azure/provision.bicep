@@ -2,7 +2,7 @@
 param provisionParameters object
 param configAdminUPNList string
 param configAppClientId string
-
+// Resources for identity
 module userAssignedIdentityProvision './provision/identity.bicep' = {
   name: 'userAssignedIdentityProvision'
   params: {
@@ -45,7 +45,6 @@ output botOutput object = {
   siteName: botProvision.outputs.botWebAppName
   validDomain: botProvision.outputs.botDomain
   appServicePlanName: botProvision.outputs.appServicePlanName
-  botChannelRegName: botProvision.outputs.botServiceName
   botWebAppResourceId: botProvision.outputs.botWebAppResourceId
   siteEndpoint: botProvision.outputs.botWebAppEndpoint
 }
