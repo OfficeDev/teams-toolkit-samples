@@ -1,5 +1,6 @@
 @secure()
 param provisionParameters object
+// Resources for frontend hosting
 module frontendHostingProvision './provision/frontendHosting.bicep' = {
   name: 'frontendHostingProvision'
   params: {
@@ -13,6 +14,7 @@ output frontendHostingOutput object = {
   endpoint: frontendHostingProvision.outputs.endpoint
   storageResourceId: frontendHostingProvision.outputs.resourceId
 }
+// Resources for identity
 module userAssignedIdentityProvision './provision/identity.bicep' = {
   name: 'userAssignedIdentityProvision'
   params: {
@@ -26,6 +28,7 @@ output identityOutput object = {
   identityResourceId: userAssignedIdentityProvision.outputs.identityResourceId
   identityClientId: userAssignedIdentityProvision.outputs.identityClientId
 }
+// Resources for Azure SQL
 module azureSqlProvision './provision/azureSql.bicep' = {
   name: 'azureSqlProvision'
   params: {
