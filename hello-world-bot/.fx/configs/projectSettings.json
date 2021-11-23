@@ -9,6 +9,7 @@
             "Bot"
         ],
         "activeResourcePlugins": [
+            "fx-resource-identity",
             "fx-resource-bot",
             "fx-resource-aad-app-for-teams",
             "fx-resource-local-debug",
