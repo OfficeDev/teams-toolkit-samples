@@ -34,7 +34,11 @@ Hello World Tab shows you how to build a tab app and how to get user login infor
 
 ## Edit the manifest
 
-You can find the Teams manifest in `templates/appPackage/manifest.local.template.json`. It contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
+You can find the Teams manifest in `templates/appPackage` folder. The templates contains:
+* `manifest.local.template.json`: Manifest file for Teams app running locally.
+* `manifest.remote.template.json`: Manifest file for Teams app running remotely (After deployed to Azure).
+
+Both file contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
 
 ## Deploy to Azure
 
@@ -46,10 +50,10 @@ Deploy your project to Azure by following these steps:
 
 > Note: Provisioning and deployment may incur charges to your Azure Subscription.
 
-## Build
+## Package
 
-- From Visual Studio Code: open the Teams Toolkit and click `Zip Teams metadata package` or open the command palette and select `Teams: Zip Teams metadata package`.
-- Alternatively, from the command line run `teamsfx build` in the project directory.
+- From Visual Studio Code: open the command palette and select `Teams: Zip Teams metadata package`.
+- Alternatively, from the command line run `teamsfx package` in the project directory.
 
 ## Publish to Teams
 

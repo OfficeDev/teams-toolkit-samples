@@ -57,7 +57,11 @@ Then following requests sent to the Azure function app will be handled by new no
 
 ## Edit the manifest
 
-You can find the Teams manifest in `.fx/manifest.source.json`. It contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
+You can find the Teams manifest in `templates/appPackage` folder. The templates contains:
+* `manifest.local.template.json`: Manifest file for Teams app running locally.
+* `manifest.remote.template.json`: Manifest file for Teams app running remotely (After deployed to Azure).
+
+Both file contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
 
 ## Deploy to Azure
 
@@ -81,10 +85,10 @@ Once the provisioning and deployment steps are finished, you can preview your ap
 
 - From TeamsFx CLI: execute `teamsfx preview --remote` in your project directory to launch your application.
 
-## Build
+## Package
 
 - From Visual Studio Code: open the command palette and select `Teams: Zip Teams metadata package`.
-- Alternatively, from the command line run `teamsfx build` in the project directory.
+- Alternatively, from the command line run `teamsfx package` in the project directory.
 
 ## Publish to Teams
 
