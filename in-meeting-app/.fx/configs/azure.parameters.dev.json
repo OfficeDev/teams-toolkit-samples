@@ -4,7 +4,7 @@
     "parameters": {
         "provisionParameters": {
             "value": {
-                "resourceBaseName": "meetingappdev{{state.solution.resourceNameSuffix}} ",
+                "resourceBaseName": "meetingappdev{{state.solution.resourceNameSuffix}}",
                 "botAadAppClientId": "{{state.fx-resource-bot.botId}}",
                 "botAadAppClientSecret": "{{state.fx-resource-bot.botPassword}}",
                 "m365ClientId": "{{state.fx-resource-aad-app-for-teams.clientId}}",

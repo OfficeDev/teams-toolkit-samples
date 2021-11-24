@@ -1,5 +1,6 @@
 @secure()
 param provisionParameters object
+// Resources for frontend hosting
 module frontendHostingProvision './provision/frontendHosting.bicep' = {
   name: 'frontendHostingProvision'
   params: {
@@ -13,6 +14,7 @@ output frontendHostingOutput object = {
   endpoint: frontendHostingProvision.outputs.endpoint
   storageResourceId: frontendHostingProvision.outputs.resourceId
 }
+// Resources for identity
 module userAssignedIdentityProvision './provision/identity.bicep' = {
   name: 'userAssignedIdentityProvision'
   params: {
