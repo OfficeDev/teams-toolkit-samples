@@ -8,7 +8,7 @@
 
 Contact Exporter sample APP provides an easy way to export your teams contact info to Excel file. This APP is using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) as UI component.
 
-![Contact Exporter Overview](images/overview.png)
+![Contact Exporter Overview](images/overview.gif)
 
 ## Prerequisite
 - [NodeJS](https://nodejs.org/en/), recommend v14.x
