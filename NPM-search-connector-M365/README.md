@@ -11,7 +11,7 @@ NPM Search Connector is a Messaging Extension that allows you to perform a quick
 ![Npm Search Connector](images/npm-search-connector-M365.gif)
 
 ## Prerequisite
-- [NodeJS](https://nodejs.org/en/), version 10, 12 or 14
+- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 14
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
 
