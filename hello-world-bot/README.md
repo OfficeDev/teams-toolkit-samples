@@ -8,7 +8,7 @@ If you are looking for a sample that implements Single Sign On, please refer [he
 
 ## Prerequisites
 
-- [NodeJS](https://nodejs.org/en/), recommend v14.x.
+- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version after 1.55 or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 

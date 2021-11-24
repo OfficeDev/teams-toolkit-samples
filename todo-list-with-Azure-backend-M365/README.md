@@ -21,7 +21,7 @@ Todo List app helps to manage your personal to do items. This app can be install
 ![Todo Item List in Office](images/todo-list-M365-in-office.gif)
 
 ## Prerequisite
-- [NodeJS](https://nodejs.org/en/), version 10, 12 or 14
+- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 10, 12, 14
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
 
