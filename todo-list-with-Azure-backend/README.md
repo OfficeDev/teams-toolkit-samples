@@ -61,7 +61,7 @@ To debug the project, you will need to configure an Azure SQL Database to be use
         isCompleted TinyInt NOT NULL default 0,
     )
     ```
-1. Open **api/todo/.env.teamsfx.local** file, and set the values of below config with the Azure SQL Database you just created:
+1. Create **api/todo/.env.teamsfx.local** file, and set the values of below config with the Azure SQL Database you just created:
     ```
     SQL_ENDPOINT=
     SQL_DATABASE_NAME=

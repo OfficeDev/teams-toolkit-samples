@@ -84,7 +84,7 @@ To debug the project, you will need to configure an Azure SQL Database to be use
     )
     GO
     ```
-1. Open **api/.env.teamsfx.local** and **bot/.env.teamsfx.local** file, and set the values of below config with the Azure SQL Database you just created:
+1. Create **api/.env.teamsfx.local** and **bot/.env.teamsfx.local** files, and set the values of below config with the Azure SQL Database you just created:
     ```
     SQL_ENDPOINT=
     SQL_DATABASE_NAME=
