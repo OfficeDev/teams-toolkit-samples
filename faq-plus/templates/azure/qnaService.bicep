@@ -294,4 +294,4 @@ resource qnaMakerAppServiceName_appsettings 'Microsoft.Web/sites/config@2015-08-
 output configurationAppUrl string = configAppUrl
 output qnaStorageAccount string = storageAccountName.name
 output qnaMakerAccount string = qnaMakerAccountName.name
-output qnAMakerHostUrl string = 'https://${qnaMakerAppServiceName_var}-qnamaker.azurewebsites.net'
+output qnAMakerHostUrl string = 'https://${qnaMakerAppServiceName_var}.azurewebsites.net'
