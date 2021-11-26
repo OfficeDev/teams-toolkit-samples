@@ -49,7 +49,7 @@ We recommend that you copy these values into a text file, using an application l
 1. Open `.fx\states\state.{envName}.json`, and note the **resourceNameSuffix** under `solution`.
 1. Open `.fx/configs/azure.parameters.{envName}.json`, copy the **resourceBaseName** and replace `{{state.solution.resourceNameSuffix}}` with **resourceNameSuffix** saved above; we will need it later.
 
-1. Note the location of the configuration app that you deployed is "https://[BaseResourceName]-config.azurewebsites.net". For example, if you chose "contosofaqplus" as the base name, the configuration app will be at "https://contosofaqplus-config.azurewebsites.net".
+1. Note the location of the configuration app that you deployed is "https://[resourceBaseName]-config.azurewebsites.net". For example, if you chose "contosofaqplus" as the base name, the configuration app will be at "https://contosofaqplus-config.azurewebsites.net".
 
 1. Go back to the [App Registrations page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview).
 
@@ -104,7 +104,7 @@ Remember the knowledge base ID: we will need it in the next step.
 
 *Note: You need to run `Teams: Provision in the cloud` first before finishing the FAQ Plus app. If you have not run the command yet, please go back to the [ReadMe](../README.md#try-the-sample) and follow the steps.*
 
-1. Open the configuration app by typing your confirguration app url "https://[BaseResourceName]-config.azurewebsites.net" in browser. For example, if you chose "contosofaqplus" as the base name, the configuration app url will be "https://contosofaqplus-config.azurewebsites.net".
+1. Open the configuration app by typing your confirguration app url "https://[resourceBaseName]-config.azurewebsites.net" in browser. For example, if you chose "contosofaqplus" as the base name, the configuration app url will be "https://contosofaqplus-config.azurewebsites.net".
 
 2. You will be prompted to log in with your credentials. Make sure that you log in with an account that is in the list of users allowed to access the configuration app.
 
@@ -144,13 +144,13 @@ Remember to click on "OK" after changing a setting. To edit the setting later, c
 
 7. Copy the value of endpoint URL. Record it to your notebook and name it `QnAMakerApiEndpointUrl`.
 
-8. The last parameter you will use is `QnAMakerHostUrl`. It should be "https://[BaseResourceName]-qnamaker.azurewebsites.net". 
-Remember to replace the BaseResourceName, for example, if you chose "contosofaqplus" as the base name, your url will be "https://contosofaqplus-qnamaker.azurewebsites.net".
+8. The last parameter you will use is `QnAMakerHostUrl`. It should be "https://[resourceBaseName]-qnamaker.azurewebsites.net". 
+Remember to replace the resourceBaseName, for example, if you chose "contosofaqplus" as the base name, your url will be "https://contosofaqplus-qnamaker.azurewebsites.net".
  
 Now you will have following parameters ready on your notebook. You can go back to [readme](../README.md) and follow the instructions to config and run your app.
 | Name | Example |
 | ---- | ---- |
 | StorageConnectionString | DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
 | QnAMakerApiEndpointUrl | https://[Location].api.cognitive.microsoft.com |
-| QnAMakerHostUrl | https://[BaseResourceName]-qnamaker.azurewebsites.net |
+| QnAMakerHostUrl | https://[resourceBaseName]-qnamaker.azurewebsites.net |
 | QnAMakerSubscriptionKey | 32 alphanumeric characters string |
