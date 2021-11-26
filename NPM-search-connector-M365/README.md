@@ -40,7 +40,7 @@ NPM Search Connector is a Messaging Extension that allows you to perform a quick
 
     ![Teams Upload Custom App](images/teams-upload-custom-app.png)
     
-    Select your app package and click *Open*. Once the app is uploaded, your app will be available in Outlook Web Acess within several minutes.
+    Select your app package and click *Open*. Once the app is uploaded, your app will be available in Outlook Web Client within several minutes.
 
 ## Use the app in Teams
 In a conversation, open the **Messaging extensions** flyout menu on the bottom of the composition window. Your message extension will be listed and you can invoke it from there. Type a NPM package that you want to search and select one from the search results.
