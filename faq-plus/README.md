@@ -50,7 +50,7 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 
 1. Open project in [Visual Studio Code](https://code.visualstudio.com/), ensure you have installed [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 2. Follow the [instcution](docs/deploy-qna-maker-services.md#step-4-prepare-required-parameters-for-teams-bot-app) to get necessary info. You need to use them in the next step.
-3. Open `bot/.env.teamsfx.local` file. Fill values for following environment variables. Note: You should get all these values in previous step.
+3. Create `bot/.env.teamsfx.local` file. Fill values for following environment variables. Note: You should get all these values in previous step.
     ```
     SCORETHRESHOLD=0.5
     STORAGECONNECTIONSTRING=
