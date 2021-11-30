@@ -33,81 +33,54 @@ We recommend that you copy these values into a text file, using an application l
 
 ![Configuration step 1](images/azure-config-app-step.png)
 
-## Step 2: Deploy to your Azure subscription
+5. Open `.fx/configs/azure.parameters.{envName}.json`
 
-1. Click on the "Deploy to Azure" button below.
+6. Fill in the following values:
 
-[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FOfficeDev%2FTeamsFx-Samples%2Fmain%2Ffaq-plus%2Fdeployment%2Fazuredeploy.json)
+     1. **configAppClientId**: the **Application (client) ID** you saved in Step 1.
 
-2. When prompted, log in to your Azure subscription.
+     2. **configAdminUPNList**: a semicolon-delimited list of users who will be allowed to access the configuration app.
+         * For example, to allow Megan Bowen (meganb@contoso.com) and Adele Vance (adelev@contoso.com) to access the configuration app, set this parameter to `meganb@contoso.com;adelv@contoso.com`.
 
-3. Azure will create a "Custom deployment" based on the ARM template and ask you to fill in the template parameters.
+## Step 2: Configure Azure AD application
 
-4. Select a subscription and resource group. We recommend creating a new resource group.
-* The resource group location MUST be in a data center that supports:
-	* Application Insights
-	* Azure cognitive search
-	* QnA Maker
+*Note: You need to run `Teams: Provision in the cloud` first before configuring the Azure AD app. If you have not run the command yet, please go back to the [ReadMe](../README.md#try-the-sample) and follow the steps.*
 
- Click [here](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=logic-apps,cognitive-services,search,monitor) to check up-to-date list.
-	
-5. Enter a "Base Resource Name", which the template uses to generate names for the other resources.
-* The app service names `[Base Resource Name]-config`, and `[Base Resource Name]-qnamaker` must be available. For example, if you select `contosofaqplus` as the base name, the names `contosofaqplus-config`, and `contosofaqplus-qnamaker` must be available (not taken); otherwise, the deployment will fail with a conflict error.
-* Remember the base resource name that you selected. We will need it later.
+1. Open `.fx\states\state.{envName}.json`, and note the **resourceNameSuffix** under `solution`.
+1. Open `.fx/configs/azure.parameters.{envName}.json`, copy the **resourceBaseName** and replace `{{state.solution.resourceNameSuffix}}` with **resourceNameSuffix** saved above; we will need it later.
 
-6. Fill in the various IDs in the template:
+1. Note the location of the configuration app that you deployed is "https://[resourceBaseName]-config.azurewebsites.net". For example, if you chose "contosofaqplus" as the base name, the configuration app will be at "https://contosofaqplus-config.azurewebsites.net".
 
-	1. **Config App Client Id**: The application (client) ID of the configuration app registered in step 1.
+1. Go back to the [App Registrations page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview).
 
-	4. **Tenant Id**: The tenant ID registered in Step 1. If your Microsoft Teams tenant is the same as the Azure subscription tenant, then we would recommend keeping the default values.
+1. Click on the configuration app in the application list. Under "Manage", click on "Authentication" to bring up authentication settings.
 
-Make sure that the values are copied as-is, with no extra spaces. The template checks that GUIDs are exactly 36 characters.
-
-7. Fill in the "Config Admin UPN List", which is a semicolon-delimited list of users who will be allowed to access the configuration app.
-* For example, to allow Megan Bowen (meganb@contoso.com) and Adele Vance (adelev@contoso.com) to access the configuration app, set this parameter to `meganb@contoso.com;adelv@contoso.com`.
-* You can change this list later by going to the configuration app service's "Configuration" blade.
-
-8. If you wish to change the app name, description, and icon from the defaults, modify the corresponding template parameters.
-
-9. Click on "Review + create" to review the information you inputted. Then click "Create" to start the deployment.
-
-10. Wait for the deployment to finish. You can check the progress of the deployment from the "Notifications" pane of the Azure Portal. It can take more than 10 minutes for the deployment to finish.
-
-11. Once the deployment has finished, you would be directed to a page that has the following fields:
-* configurationAppUrl - This is the URL for the configuration web application.
-
-## Step 3: Set up authentication for the configuration app
-
-1. Note the location of the configuration app that you deployed is "https://[BaseResourceName]-config.azurewebsites.net". For example, if you chose "contosofaqplus" as the base name, the configuration app will be at "https://contosofaqplus-config.azurewebsites.net".
-
-2. Go back to the [App Registrations page](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview).
-
-3. Click on the configuration app in the application list. Under "Manage", click on "Authentication" to bring up authentication settings.
-
-4. Click on Add a platform, select Web.
+1. Click on Add a platform, select Web.
 
 ![Adding Redirect URI1](images/authentication-image-1.png)
 
-5. Add new entry to "Redirect URIs":
+1. Add new entry to "Redirect URIs":
 	If your configuration app URL is https://contosofaqplus-config.azurewebsites.net, then add the following entry as the Redirect URIs:
 	- https://contosofaqplus-config.azurewebsites.net
 
 	Note: Please refer to Step 3.1 for more details about the URL. 
 
-6. Under "Implicit grant", check "ID tokens" and "Access tokens". The reason to check "ID tokens" is because you are using only the accounts on your current Azure tenant and using that to authenticate yourself in the configuration app. Click configure.
+1. Under "Implicit grant", check "ID tokens" and "Access tokens". The reason to check "ID tokens" is because you are using only the accounts on your current Azure tenant and using that to authenticate yourself in the configuration app. Click configure.
 
 ![Adding Redirect URI2](images/authentication-image-2.png)
 
-7. Add new entries to "Redirect URIs":
+1. Add new entries to "Redirect URIs":
 	If your configuration app's URL is https://contosofaqplus-config.azurewebsites.net, then add the following entry as the Redirect URIs:
 	- https://contosofaqplus-config.azurewebsites.net/signin
 	- https://contosofaqplus-config.azurewebsites.net/configuration
 
 ![Adding Redirect URI3](images/authentication-image-3.png)
 
-8. Click "Save" to commit your changes.
+1. Click "Save" to commit your changes.
 
-## Step 4: Create the QnA Maker knowledge base
+## Step 3: Create the QnA Maker knowledge base
+
+*Note: You need to run `Teams: Provision in the cloud` first before creating the QnA Maker knowledge base. If you have not run the command yet, please go back to the [ReadMe](../README.md#try-the-sample) and follow the steps.*
 
 Create a knowledge base on the [QnA Maker portal](https://www.qnamaker.ai/Create), following the instructions in the QnA Maker documentation [QnA Maker documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal#create-a-knowledge-base).
 
@@ -127,9 +100,11 @@ After [publishing the knowledge base](https://docs.microsoft.com/en-us/azure/cog
 
 Remember the knowledge base ID: we will need it in the next step.
 
-## Step 5: Finish configuring the FAQ Plus app
+## Step 4: Finish configuring the FAQ Plus app
 
-1. Open the configuration app by typing your confirguration app url "https://[BaseResourceName]-config.azurewebsites.net" in browser. For example, if you chose "contosofaqplus" as the base name, the configuration app url will be "https://contosofaqplus-config.azurewebsites.net".
+*Note: You need to run `Teams: Provision in the cloud` first before finishing the FAQ Plus app. If you have not run the command yet, please go back to the [ReadMe](../README.md#try-the-sample) and follow the steps.*
+
+1. Open the configuration app by typing your confirguration app url "https://[resourceBaseName]-config.azurewebsites.net" in browser. For example, if you chose "contosofaqplus" as the base name, the configuration app url will be "https://contosofaqplus-config.azurewebsites.net".
 
 2. You will be prompted to log in with your credentials. Make sure that you log in with an account that is in the list of users allowed to access the configuration app.
 
@@ -153,7 +128,7 @@ Click on "Copy" to copy the link to the clipboard.
 
 Remember to click on "OK" after changing a setting. To edit the setting later, click on "Edit" to make the text box editable.
 
-## Step 6: Prepare required parameters for Teams Bot app
+## Step 5: Prepare required parameters for Teams Bot app
 
 1. Go to Azure portal, open the resource group you created during deployment in step 2.4 on this page.
 
@@ -169,13 +144,13 @@ Remember to click on "OK" after changing a setting. To edit the setting later, c
 
 7. Copy the value of endpoint URL. Record it to your notebook and name it `QnAMakerApiEndpointUrl`.
 
-8. The last parameter you will use is `QnAMakerHostUrl`. It should be "https://[BaseResourceName]-qnamaker.azurewebsites.net". 
-Remember to replace the BaseResourceName, for example, if you chose "contosofaqplus" as the base name, your url will be "https://contosofaqplus-qnamaker.azurewebsites.net".
+8. The last parameter you will use is `QnAMakerHostUrl`. It should be "https://[resourceBaseName]-qnamaker.azurewebsites.net". 
+Remember to replace the resourceBaseName, for example, if you chose "contosofaqplus" as the base name, your url will be "https://contosofaqplus-qnamaker.azurewebsites.net".
  
 Now you will have following parameters ready on your notebook. You can go back to [readme](../README.md) and follow the instructions to config and run your app.
 | Name | Example |
 | ---- | ---- |
 | StorageConnectionString | DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[Key] |
 | QnAMakerApiEndpointUrl | https://[Location].api.cognitive.microsoft.com |
-| QnAMakerHostUrl | https://[BaseResourceName]-qnamaker.azurewebsites.net |
+| QnAMakerHostUrl | https://[resourceBaseName]-qnamaker.azurewebsites.net |
 | QnAMakerSubscriptionKey | 32 alphanumeric characters string |

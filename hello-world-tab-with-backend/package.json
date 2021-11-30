@@ -1,0 +1,16 @@
+{
+    "name": "helloWorldTabAppWithAzureBackend",
+    "version": "0.0.1",
+    "description": "",
+    "author": "",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "install:tabs": "cd tabs && npm install",
+        "installAll": "npm run install:api & npm run install:tabs",
+        "install:api": "cd api && npm install"
+    },
+    "devDependencies": {
+        "@microsoft/teamsfx-cli": "0.*"
+    },
+    "license": "MIT"
+}

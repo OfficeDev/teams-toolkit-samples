@@ -1,0 +1,22 @@
+{
+    "appName": "npm-search-connector",
+    "solutionSettings": {
+        "name": "fx-solution-azure",
+        "version": "1.0.0",
+        "hostType": "Azure",
+        "azureResources": [],
+        "capabilities": [
+            "MessagingExtension"
+        ],
+        "activeResourcePlugins": [
+            "fx-resource-bot",
+            "fx-resource-aad-app-for-teams",
+            "fx-resource-identity",
+            "fx-resource-local-debug",
+            "fx-resource-appstudio"
+        ]
+    },
+    "version": "2.0.0",
+    "isFromSample": true,
+    "programmingLanguage": "javascript"
+}

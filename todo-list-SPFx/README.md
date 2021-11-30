@@ -67,11 +67,14 @@
 ![appdisplay](images/appdisplay.png)
 
 ## (Optional) Debug
-Debug the app with SharePoint WorkBench in VSCode.
-1. Navigate to [launch.json](.vscode/launch.json), replace `enter-your-SharePoint-site` with your SharePoint site, eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}/_layouts/workbench.aspx`.
-1. In Debug mode, select "Hosted workbench"(SharePoint workbench) or "Teams workbench" and press start button. The browser will be opened and you may need to sign in with your M365 account.
-1. Click the plus button in the middle, and select `TodoList`, the webpart will show up in the workbench.
- ![HostedWokbench](images/Workbench.png)
+Debug the app with Teams workbench
+
+1. In Debug mode, select `Teams workbench (Edge)` or `Teams workbench (Chrome)` and press start button. The browser will be opened and you need to sign in Teams with your M365 account.
+![teamsworkbench](images/teamsworkbench.png)
+2. Click `Add to a team`.
+![debug](images/localdebug.png)
+3. You should see the app running in your Teams.
+![localdebug-preview](images/localdebug-preview.png)
 
 ## Use the App in Teams
 1. Since SharePoint can get the context so app user doesn't need to do consent/login operation.
@@ -97,11 +100,6 @@ Debug the app with SharePoint WorkBench in VSCode.
 1. Importing [msteams-ui-components-react](https://www.npmjs.com/package/msteams-ui-components-react) package will cause issues during package build:
 ![Issue](images/knownissue.png)
 2. When you want to switch accounts to test the app, and if you are using edge browser with profile mode instead of guest mode, we suggest you to switch accounts by switching  profiles in the browser. This is because if you simply log out in Teams site, SharePoint site will still use the profile account. Thus the accounts for these two sites may be not consistent and will cause error.
-3. In provision stage, you may encounter error "[AppStudio.RemoteAppIdCreatedFailed]:Failed to create teams app id in app studio, due to 409". This is because the teams app id(which is the provision resource) has been already created in your tenant.(It may be created by other users/accounts in your tenant). There are several solutions for this.
- - Delete provisioned Teams app id in [Teams Dev Portal](https://dev.teams.microsoft.com/home) and re-provision.
- - Or you can update the id(line:5) in your [manifest file](./appPackage/manifest.source.json) and re-provision.
-    ![Manifest Line 5](images/manifest1.png)
-    Note: The toolkit will help keep the teams app id(on dev portal) consistent with the spfx component id for clearness, but it is also ok to make this two ids different since they present different meanings and won't cause any trouble in the following deployment.
     
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).

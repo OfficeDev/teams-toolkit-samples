@@ -11,7 +11,7 @@ Share Now promotes the exchange of information between colleagues by enabling us
 ![Share Now](images/shareNow.gif)
 
 ## Prerequisite
-- [NodeJS](https://nodejs.org/en/)
+- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
@@ -29,7 +29,7 @@ Share Now promotes the exchange of information between colleagues by enabling us
 1. Open the project in Visual Studio Code.
 1. Open the command palette and select: `Teams: Provision in the cloud`. You will be asked to input admin name and password of SQL. The toolkit will help you to provision Azure SQL.
 1. Once provision is completed, open the command palette and select: `Teams: Deploy to the cloud`.
-1. Open [.fx/env.default.json](.fx/env.default.json) file, you could get the database name in `databaseName` setting. [Set IP address of your computer into server-level IP firewall rule from the database overview page](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page).
+1. Open **.fx/states/state.dev.json** file, you could get the database name in `databaseName` setting. [Set IP address of your computer into server-level IP firewall rule from the database overview page](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page).
 1. In Azure portal, find the database by `databaseName` and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
     ```sql
     CREATE TABLE [TeamPostEntity](
@@ -84,17 +84,12 @@ To debug the project, you will need to configure an Azure SQL Database to be use
     )
     GO
     ```
-1. Open [.fx/local.env](.fx/local.env) file, and set the values of below config with the Azure SQL Database you just created:
+1. Create **api/.env.teamsfx.local** and **bot/.env.teamsfx.local** files, and set the values of below config with the Azure SQL Database you just created:
     ```
-    BACKEND_SQL_ENDPOINT=
-    BACKEND_SQL_DATABASE_NAME=
-    BACKEND_SQL_USER_NAME=
-    BACKEND_SQL_PASSWORD=
-
-    BOT_SQL_ENDPOINT=
-    BOT_SQL_DATABASE_NAME=
-    BOT_SQL_USER_NAME=
-    BOT_SQL_PASSWORD=
+    SQL_ENDPOINT=
+    SQL_DATABASE_NAME=
+    SQL_USER_NAME=
+    SQL_PASSWORD=
     ```
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
 1. Press "F5" to open a browser window and then select your package to view share now sample app. 

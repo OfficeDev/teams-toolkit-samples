@@ -18,7 +18,7 @@ This is a hello-world template which shows how to build an app in the context of
 - How to use the Teams Toolkit to provision and deploy your app to Azure. 
 
 ## Prerequisites
--  [NodeJS](https://nodejs.org/en/)
+-  [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 13, 14
 -  [ngrok](https://ngrok.com/)
 -  An M365 account, if you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 -  [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
@@ -92,13 +92,13 @@ In Visual Studio Code, open the command palette and select: `Teams: Provision in
 1. Click **Save**.
 
 ### Step 3: Update App Service
-1. Locate the value of key `siteName` in the file `.fx/env.default.json`. This will be the name of your Azure Resource.
+1. Locate the value of key `siteName` in the file `.fx/states/state.dev.json`. This will be the name of your Azure Resource.
 1. Find the Resource in your Subscription in [Azure Portal](https://portal.azure.com).
-1. Navigate to the **CORS** blade in your resource (An `Azure Web App` resource). Copy the value of key `fx-resource-frontend-hosting.endpoint` in file `env.default.json`. Paste in the **Allowed Origins** in **CORS** and click **Save**.  
-1. Navigate to **Configuration** for your resource. Copy the value of key `remoteTeamsAppId` from the file `.fx/env.default.json`. Click **New application setting**. Add two settings, one is named `TEAMS_APP_ID`, its value is `remoteTeamsAppId` we just copied. Add another named `TEAMSFX_ENDPOINT`, and set its value to the endpoint URL we copied in the previous step. Then click **Save**.
+1. Navigate to the **CORS** blade in your resource (An `Azure Web App` resource). Copy the value of key `fx-resource-frontend-hosting.endpoint` in file `state.dev.json`. Paste in the **Allowed Origins** in **CORS** and click **Save**.  
+1. Navigate to **Configuration** for your resource. Copy the value of key `teamsAppId` from the file `.fx/states/state.dev.json`. Click **New application setting**. Add two settings, one is named `TEAMS_APP_ID`, its value is `remoteTeamsAppId` we just copied. Add another named `TEAMSFX_ENDPOINT`, and set its value to the endpoint URL we copied in the previous step. Then click **Save**.
 
 ### Step 4: Update env file in project
-1. In `tabs/.env`, change the value of `REACT_APP_TEAMSFX_ENDPOINT` to the value of the `siteEndpoint` key in file `.fx/env.default.json`. 
+1. In `tabs/.env`, change the value of `REACT_APP_TEAMSFX_BACKEND_ENDPOINT` to the value of the `siteEndpoint` key in file `.fx/states/state.dev.json`. 
 1. Add a new line `REACT_APP_GRAPH_SCOPES=User.Read`
 
 ### Step 5: Deploy the resource

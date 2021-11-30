@@ -1,0 +1,49 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.9",
+    "version": "1.0.0",
+    "id": "{{state.fx-resource-appstudio.teamsAppId}}",
+    "packageName": "com.microsoft.teams.faqplus",
+    "developer": {
+        "name": "Teams App, Inc.",
+        "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}",
+        "privacyUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/privacy",
+        "termsOfUseUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/termsofuse"
+    },
+    "icons": {
+        "color": "resources/color.png",
+        "outline": "resources/outline.png"
+    },
+    "name": {
+        "short": "{{config.manifest.appName.short}}",
+        "full": "{{config.manifest.appName.full}}"
+    },
+    "description": {
+        "short": "A friendly FAQ bot that answers questions and connects you to experts.",
+        "full": "A friendly question and answer bot that answers commonly asked questions. If it can't answer, it will put you in touch with an expert as soon as they are available."
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [
+        {
+            "botId": "{{state.fx-resource-bot.botId}}",
+            "scopes": [
+                "personal",
+                "team"
+            ],
+            "supportsFiles": false,
+            "isNotificationOnly": false
+        }
+    ],
+    "composeExtensions": [],
+    "configurableTabs": [],
+    "staticTabs": [],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [],
+    "webApplicationInfo": {
+        "id": "{{state.fx-resource-aad-app-for-teams.clientId}}",
+        "resource": "{{{state.fx-resource-aad-app-for-teams.applicationIdUris}}}"
+    }
+}

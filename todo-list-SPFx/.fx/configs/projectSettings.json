@@ -1,0 +1,20 @@
+{
+    "appName": "TodoListSPFx",
+    "solutionSettings": {
+        "name": "fx-solution-azure",
+        "version": "1.0.0",
+        "hostType": "SPFx",
+        "capabilities": [
+            "Tab"
+        ],
+        "azureResources": [],
+        "activeResourcePlugins": [
+            "fx-resource-spfx",
+            "fx-resource-local-debug",
+            "fx-resource-appstudio"
+        ]
+    },
+    "isFromSample": true,
+    "programmingLanguage": "typescript",
+    "version": "2.0.0"
+}
