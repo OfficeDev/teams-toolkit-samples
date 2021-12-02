@@ -94,7 +94,7 @@ There're three workflows provided:
 |`provision.yml`|It is an example workflow for provisioning resources which can be customized to meet your own requirements.|
 |`cd.yml`|It is an example workflow for continuous deployment which can be customized to meet your own requirements.|
 
-The detailed instructions can be found by clicking [teamsfx-cicd-guide](https://aka.ms/teamsfx-cicd-guide).
+The detailed instructions can be found by clicking [teamsfx-cicd-guide](https://aka.ms/teamsfx-cicd-insider-guide).
 
 ## Architecture
 
