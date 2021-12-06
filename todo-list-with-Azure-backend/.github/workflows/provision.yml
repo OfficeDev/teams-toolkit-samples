@@ -10,8 +10,6 @@ jobs:
     # You can uncomment the line below to use environments (refer to https://docs.github.com/en/actions/reference/environments). 
     # environment: test_environment
     env:
-      AZURE_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
-
       # To specify the env name for multi-env feature.
       TEAMSFX_ENV_NAME: dev
     steps:
@@ -32,15 +30,12 @@ jobs:
       # You should copy content of .fx/states/dev.userdata into a repository secret (https://docs.github.com/en/actions/reference/encrypted-secrets) with name 'USERDATA_CONTENT' for future usage which is automated in this workflow.
       - name: Provision hosting environment
         uses: OfficeDev/teamsfx-cli-action@v1
-        env:
-          SQL_ADMIN_NAME: ${{secrets.SQL_ADMIN_NAME}}
-          SQL_PASSWORD: ${{secrets.SQL_PASSWORD}}
         with:
           commands: provision
           env: ${{env.TEAMSFX_ENV_NAME}} 
-          subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
-          sql-admin-name: ${{env.SQL_ADMIN_NAME}}
-          sql-password: ${{env.SQL_PASSWORD}}
+          subscription: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+          sql-admin-name: ${{secrets.SQL_ADMIN_NAME}}
+          sql-password: ${{secrets.SQL_PASSWORD}}
 
       # Create Todo Table if not existing
       # Install sqlcmd

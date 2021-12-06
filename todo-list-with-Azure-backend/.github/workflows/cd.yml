@@ -13,8 +13,6 @@ jobs:
     # You can uncomment the line below to use environments (refer to https://docs.github.com/en/actions/reference/environments). 
     # environment: test_environment
     env:
-      AZURE_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
-
       # To specify the env name for multi-env feature.
       TEAMSFX_ENV_NAME: dev
     steps:
