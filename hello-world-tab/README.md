@@ -10,7 +10,7 @@ Microsoft Teams supports the ability to run web-based UI inside "custom tabs" th
 
 Hello World Tab shows you how to build a tab app and how to get user login information with SSO.
 
-![Hello World Tab](images/HelloWorldTab.png)
+![Hello World Tab](images/helloWorld-tab.gif)
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14
@@ -24,6 +24,7 @@ Hello World Tab shows you how to build a tab app and how to get user login infor
 - How to use TeamsFx simple auth capability to get Teams user login information.
 
 ## Try the Sample with Visual Studio Code Extension:
+>Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
 1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
