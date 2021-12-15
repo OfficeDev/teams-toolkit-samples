@@ -38,7 +38,6 @@
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-import": "^2.23.3",
         "eslint-plugin-prettier": "^3.4.0",
-        "ngrok": "^3.4.0",
         "nodemon": "^2.0.7",
         "prettier": "^2.3.0",
         "ts-node": "~9.1.1",
