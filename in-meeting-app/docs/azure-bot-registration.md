@@ -27,7 +27,7 @@ The Azure Bot registers your web service as a bot with the Bot Framework, provid
 1. In the search box enter "bot". And in the drop-down list, select **Azure Bot**.
 1. Select the **Create** button.
 1. In the **Basics** blade, provide the requested information about your bot.
-1. In the **Microsoft App ID** cLick **Manually create App ID**.
+1. In the **Microsoft App ID** , choose "Multi Tenant" type then cLick **Manually create App ID**.
 1. In the displayed **App registration** window, click the **New registration** tab in the upper left.
 1. Enter the name of the bot application you are registering, we used *BotTeamsAuth* (you need to select your own unique name).
 1. For the **Supported account types** select *Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)*.
