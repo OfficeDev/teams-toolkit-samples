@@ -4,7 +4,7 @@
         {
             "label": "dependency check",
             "type": "shell",
-            "command": "exit ${command:fx-extension.validate-spfx-dependencies}"
+            "command": "echo ${command:fx-extension.validate-spfx-dependencies}"
         },
         {
             "label": "spfx npm install",
@@ -63,7 +63,7 @@
         {
             "label": "prepare local environment",
             "type": "shell",
-            "command": "exit ${command:fx-extension.pre-debug-check}"
+            "command": "echo ${command:fx-extension.pre-debug-check}"
         },
         {
             "label": "prepare dev env",
