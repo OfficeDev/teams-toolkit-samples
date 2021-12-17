@@ -12,7 +12,7 @@
         {
             "label": "dependency check",
             "type": "shell",
-            "command": "exit ${command:fx-extension.validate-dependencies}"
+            "command": "echo ${command:fx-extension.validate-dependencies}"
         },
         {
             "label": "prepare dev env",
@@ -25,7 +25,7 @@
         {
             "label": "prepare local environment",
             "type": "shell",
-            "command": "exit ${command:fx-extension.pre-debug-check}"
+            "command": "echo ${command:fx-extension.pre-debug-check}"
         },
         {
             "label": "Start Frontend",
