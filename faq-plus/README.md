@@ -83,6 +83,15 @@ Experts can receive Bot notifications from Teams Channel. An expert can assign t
 5. Click "Change status" button to change the status of the support ticket. The user who created the ticket will receive status change notification from the bot.
 6. Click 'View article' to search related answers from Knowledge base for some reference.
 
+## FAQ
+Here're some frequently met errors when running this sample:
+
+### The provided value for the template parameter 'configAppClientId' at line xxx and column xxx is not valid.
+This is because `configAppClientId` is not correctly set in `.fx/configs/azure.parameters.{envName}.json`. Please follow this [instruction](docs/deploy-qna-maker-services.md#step-1-register-azure-ad-applications) to create an Azure AD app and config related values to `.fx/configs/azure.parameters.{envName}.json`.
+
+### Only one free account is allowed for account type 'QnAMaker'.
+Your subscription already has a free QnAMaker account. You can delete the free account if it's not used, or set value of `qnaMakerSku` in `.fx/configs/azure.parameters.{envName}.json` to `S0` to created a paid QnAMaker account.
+> Note: Changing the SKU will impact the cost of your subscription. Please review the changes carefully.
 
 ## Feedback
 

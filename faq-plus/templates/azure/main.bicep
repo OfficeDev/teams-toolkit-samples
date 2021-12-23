@@ -2,13 +2,16 @@
 param provisionParameters object
 param configAdminUPNList string
 param configAppClientId string
-
+param configAppTenantId string
+param qnaMakerSku string
 module provision './provision.bicep' = {
   name: 'provisionResources'
   params: {
     provisionParameters: provisionParameters
     configAdminUPNList: configAdminUPNList
     configAppClientId: configAppClientId
+    configAppTenantId: configAppTenantId
+    qnaMakerSku: qnaMakerSku
   }
 }
 
