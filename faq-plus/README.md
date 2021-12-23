@@ -90,7 +90,7 @@ Here're some frequently met errors when running this sample:
 This is because `configAppClientId` is not correctly set in `.fx/configs/azure.parameters.{envName}.json`. Please follow this [instruction](docs/deploy-qna-maker-services.md#step-1-register-azure-ad-applications) to create an Azure AD app and config related values to `.fx/configs/azure.parameters.{envName}.json`.
 
 ### Only one free account is allowed for account type 'QnAMaker'.
-Your subscription already has a free QnAMaker account. You can delete the free account if it's not used, or set value of `qnaMakerSku` in `.fx/configs/azure.parameters.{envName}.json` to `S0` to created a paid QnAMaker account.
+Your subscription already has a free QnAMaker account. You can delete the free account if it's not used, or set value of `qnaMakerSku` in `.fx/configs/azure.parameters.{envName}.json` to `S0` to create a paid QnAMaker account.
 > Note: Changing the SKU will impact the cost of your subscription. Please review the changes carefully.
 
 ## Feedback
