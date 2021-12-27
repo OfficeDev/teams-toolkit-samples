@@ -73,7 +73,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
         }
         {
           name: 'WEBSITE_NODE_DEFAULT_VERSION'
-          value: '12.13.0'
+          value: '~14'
         }
         {
           name: 'SCORETHRESHOLD'
