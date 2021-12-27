@@ -39,7 +39,7 @@
         {
             "label": "frontend npm install",
             "type": "shell",
-            "command": "npm install",
+            "command": "npm install --no-audit",
             "options": {
                 "cwd": "${workspaceFolder}/tabs"
             }
@@ -60,7 +60,7 @@
         {
             "label": "backend npm install",
             "type": "shell",
-            "command": "npm install",
+            "command": "npm install --no-audit",
             "options": {
                 "cwd": "${workspaceFolder}/api"
             },
