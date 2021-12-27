@@ -9,7 +9,7 @@
         {
             "label": "spfx npm install",
             "type": "shell",
-            "command": "npm install",
+            "command": "npm install --no-audit",
             "options": {
                 "cwd": "${workspaceFolder}/SPFx"
             },
