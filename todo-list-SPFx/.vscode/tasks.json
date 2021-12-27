@@ -71,7 +71,7 @@
                 "prepare local environment",
                 "gulp serve"
             ],
-            "dependsOrder": "parallel"
+            "dependsOrder": "sequence"
         },
         {
             "label": "Terminate All Tasks",
