@@ -72,19 +72,17 @@ class Tab extends React.Component {
   }
 
   async checkIsConsentNeeded() {
+    let consentNeeded = false;
     try {
       await this.credential.getToken(this.scope);
     } catch (error) {
-      this.setState({
-        showLoginPage: true
-      });
-      return true;
+      consentNeeded = true;
     }
     this.setState({
-      showLoginPage: false
+      showLoginPage: consentNeeded
     });
-    Providers.globalProvider.setState(ProviderState.SignedIn);
-    return false;
+    Providers.globalProvider.setState(consentNeeded ? ProviderState.SignedOut : ProviderState.SignedIn);
+    return consentNeeded;
   }
   
   render() {
@@ -160,7 +158,6 @@ class Tab extends React.Component {
 
                 </div>
               </div>
-
 
               <div className="people-picker-area">
                 <PeoplePicker selectionChanged={handleInputChange} placeholder="Typing name to select people to view contact info"></PeoplePicker>
