@@ -37,9 +37,11 @@ We recommend that you copy these values into a text file, using an application l
 
 6. Fill in the following values:
 
-     1. **configAppClientId**: the **Application (client) ID** you saved in Step 1.
+     1. **configAppClientId**: the **Application (client) ID** you saved in Step 4.
 
-     2. **configAdminUPNList**: a semicolon-delimited list of users who will be allowed to access the configuration app.
+     2. **configAppTenantId**: the **Directory (tenant) ID** you saved in Step 4.
+
+     3. **configAdminUPNList**: a semicolon-delimited list of users who will be allowed to access the configuration app.
          * For example, to allow Megan Bowen (meganb@contoso.com) and Adele Vance (adelev@contoso.com) to access the configuration app, set this parameter to `meganb@contoso.com;adelv@contoso.com`.
 
 ## Step 2: Configure Azure AD application

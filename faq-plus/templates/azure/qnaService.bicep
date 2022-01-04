@@ -1,6 +1,3 @@
-@secure()
-param provisionParameters object
-
 @description('The base name to use for the resources that will be provisioned.')
 @minLength(1)
 param baseResourceName string
@@ -17,7 +14,7 @@ param configAdminUPNList string
 @description('The ID of the tenant to which the app will be deployed.')
 @minLength(1)
 @maxLength(36)
-param tenantId string = subscription().tenantId
+param configAppTenantId string = subscription().tenantId
 
 @description('The pricing tier for the hosting plan.')
 @allowed([
@@ -165,7 +162,7 @@ resource configAppName 'Microsoft.Web/sites@2016-08-01' = {
         }
         {
           name: 'ida:TenantId'
-          value: tenantId
+          value: configAppTenantId
         }
         {
           name: 'ida:RedirectUri'
