@@ -10,9 +10,12 @@ import {
 } from "@microsoft/teamsfx";
 import { Button, Table } from "@fluentui/react-northstar"
 
-import { Providers, ProviderState, SimpleProvider } from '@microsoft/mgt-element';
+import { Providers, ProviderState } from '@microsoft/mgt-element';
 import { PeoplePicker, Person, PersonViewType, PersonCardInteraction } from '@microsoft/mgt-react';
 import { CSVLink } from "react-csv";
+
+import { TeamsFxProvider } from '@microsoft/mgt-teamsfx-provider';
+
 class Tab extends React.Component {
 
   constructor(props) {
@@ -33,26 +36,8 @@ class Tab extends React.Component {
   }
 
   async initGraphToolkit(credential, scope) {
-
-    async function getAccessToken(scopes) {
-      let tokenObj = await credential.getToken(scopes);
-      return tokenObj.token;
-    }
-  
-    async function login() {
-      try {
-        await credential.login(scopes);
-      } catch (err) {
-        alert("Login failed: " + err);
-        return;
-      }
-      Providers.globalProvider.setState(ProviderState.SignedIn);
-    }
-  
-    async function logout() {}
-
-    Providers.globalProvider = new SimpleProvider(getAccessToken, login, logout);
-    Providers.globalProvider.setState(ProviderState.SignedIn);
+    const provider = new TeamsFxProvider(credential, scope)
+    Providers.globalProvider = provider;
   }
 
   async initTeamsFx() {
@@ -76,6 +61,7 @@ class Tab extends React.Component {
   async loginBtnClick() {
     try {
       await this.credential.login(this.scope);
+      Providers.globalProvider.setState(ProviderState.SignedIn);
       this.setState({
         showLoginPage: false
       });
@@ -86,20 +72,18 @@ class Tab extends React.Component {
   }
 
   async checkIsConsentNeeded() {
+    let consentNeeded = false;
     try {
       await this.credential.getToken(this.scope);
     } catch (error) {
-      this.setState({
-        showLoginPage: true
-      });
-      return true;
+      consentNeeded = true;
     }
     this.setState({
-      showLoginPage: false
+      showLoginPage: consentNeeded
     });
-    return false;
+    Providers.globalProvider.setState(consentNeeded ? ProviderState.SignedOut : ProviderState.SignedIn);
+    return consentNeeded;
   }
-
   
   render() {
 
@@ -174,7 +158,6 @@ class Tab extends React.Component {
 
                 </div>
               </div>
-
 
               <div className="people-picker-area">
                 <PeoplePicker selectionChanged={handleInputChange} placeholder="Typing name to select people to view contact info"></PeoplePicker>
