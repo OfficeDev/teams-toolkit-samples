@@ -2,6 +2,8 @@
 param provisionParameters object
 param configAdminUPNList string
 param configAppClientId string
+param configAppTenantId string
+param qnaMakerSku string
 // Resources for identity
 module userAssignedIdentityProvision './provision/identity.bicep' = {
   name: 'userAssignedIdentityProvision'
@@ -34,7 +36,8 @@ module qnaService './qnaService.bicep' = {
     baseResourceName: provisionParameters.resourceBaseName
     configAdminUPNList: configAdminUPNList
     configAppClientId: configAppClientId
-    provisionParameters: provisionParameters
+    configAppTenantId: configAppTenantId
+    qnaMakerSkuValue: qnaMakerSku
   }
 }
 

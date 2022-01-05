@@ -6,7 +6,7 @@
 >  
 > This warning will be removed when the samples are ready for production.
 
-Contact Exporter sample APP provides an easy way to export your teams contact info to Excel file. This APP is using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) as UI component.
+Contact Exporter sample APP provides an easy way to export your teams contact info to Excel file. This APP is using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) as UI component. Please be advised that [mgt-teamsfx-provider](https://www.npmjs.com/package/@microsoft/mgt-teamsfx-provider) library is currently in preview stage, please expect breaking changes in the future release.
 
 ![Contact Exporter Overview](images/overview.gif)
 
