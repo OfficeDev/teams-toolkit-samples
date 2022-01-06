@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  buildAndPublish:
+  buildAndDeploy:
     runs-on: ubuntu-latest
     # You can uncomment the line below to use environments (refer to https://docs.github.com/en/actions/reference/environments). 
     # environment: test_environment
@@ -49,7 +49,6 @@ jobs:
 
       # We suggest to do the `teamsfx provision` step manually or in a separate workflow. The following steps are for your reference.
       # After provisioning, you should commit .fx/env.default.json into the repository.
-      # You should save the file content of default.userdata into the repository secrets (https://docs.github.com/en/actions/reference/encrypted-secrets) with name 'USERDATA_CONTENT' for future usage. 
       #- name: Provision hosting environment
       #  uses: OfficeDev/teamsfx-cli-action@v1
       #  env:
@@ -68,34 +67,8 @@ jobs:
       #    commit_message: "chore: commit provision configs"
       #    file_pattern: .fx/states/state.${{env.TEAMSFX_ENV_NAME}}.json
       
-      #- name: Upload userdata as artifact
-      #  uses: actions/upload-artifact@v2
-      #  with:
-      #    name: UserData
-      #    path: .fx/states/${{env.TEAMSFX_ENV_NAME}}.userdata
-      
-      - name: Generate userdata
-        env:
-          USERDATA_CONTENT: ${{ secrets.USERDATA_CONTENT }}
-        run: |
-          [ ! -z "${USERDATA_CONTENT}" ] && echo "${USERDATA_CONTENT}" > .fx/states/${TEAMSFX_ENV_NAME}.userdata
-      
       - name: Deploy to hosting environment
         uses: OfficeDev/teamsfx-cli-action@v1
         with:
           commands: deploy
           env: ${{env.TEAMSFX_ENV_NAME}} 
-
-      # This step is to pack the Teams App as zip file,
-      # which can be used to be uploaded onto Teams Client for installation.
-      - name: Package Teams App for publishing
-        uses: OfficeDev/teamsfx-cli-action@v1
-        with:
-          commands: package
-          env: ${{env.TEAMSFX_ENV_NAME}} 
-
-      - name: Upload Teams App's package as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: appPackage
-          path: build/appPackage/appPackage.${{env.TEAMSFX_ENV_NAME}}.zip
