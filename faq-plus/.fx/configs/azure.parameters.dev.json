@@ -18,6 +18,12 @@
         },
         "configAppClientId": {
           "value": "value"
+        },
+        "configAppTenantId": {
+          "value": "value"
+        },
+        "qnaMakerSku": {
+          "value": "F0"
         }
     }
 }

@@ -10,35 +10,33 @@ jobs:
     # You can uncomment the line below to use environments (refer to https://docs.github.com/en/actions/reference/environments). 
     # environment: test_environment
     env:
-      AZURE_ACCOUNT_NAME: ${{secrets.AZURE_ACCOUNT_NAME}}
-      AZURE_ACCOUNT_PASSWORD: ${{secrets.AZURE_ACCOUNT_PASSWORD}}
-      AZURE_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
-      AZURE_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
       M365_ACCOUNT_NAME: ${{secrets.M365_ACCOUNT_NAME}}
       M365_ACCOUNT_PASSWORD: ${{secrets.M365_ACCOUNT_PASSWORD}}
-
-      # The following line is to enable insider preview features.
-      TEAMSFX_INSIDER_PREVIEW: true
       # To specify the env name for multi-env feature.
       TEAMSFX_ENV_NAME: dev
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
 
+      - name: Login Azure by service principal 
+        uses: OfficeDev/teamsfx-cli-action@v1
+        with:
+          commands: account login azure 
+          service-principal: true
+          username: ${{secrets.AZURE_SERVICE_PRINCIPAL_NAME}}
+          password: ${{secrets.AZURE_SERVICE_PRINCIPAL_PASSWORD}}
+          tenant: ${{secrets.AZURE_TENANT_ID}}
+
       # We suggest to do the `teamsfx provision` step manually or in a separate workflow. The following steps are for your reference.
       # After provisioning, you should commit necessary files into the repository which is automated in this workflow.
-      # You should copy content of .fx/states/dev.userdata into a repository secret (https://docs.github.com/en/actions/reference/encrypted-secrets) with name 'USERDATA_CONTENT' for future usage which is automated in this workflow.
       - name: Provision hosting environment
         uses: OfficeDev/teamsfx-cli-action@v1
-        env:
-          SQL_ADMIN_NAME: ${{secrets.SQL_ADMIN_NAME}}
-          SQL_PASSWORD: ${{secrets.SQL_PASSWORD}}
         with:
           commands: provision
           env: ${{env.TEAMSFX_ENV_NAME}} 
-          subscription: ${{env.AZURE_SUBSCRIPTION_ID}}
-          sql-admin-name: ${{env.SQL_ADMIN_NAME}}
-          sql-password: ${{env.SQL_PASSWORD}}
+          subscription: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+          sql-admin-name: ${{secrets.SQL_ADMIN_NAME}}
+          sql-password: ${{secrets.SQL_PASSWORD}}
 
       # Create Todo Table if not existing
       # Install sqlcmd
@@ -63,18 +61,6 @@ jobs:
           DB_NAME: ${{ steps.set-sql.outputs.DB_NAME}}
         run: |
            sqlcmd -S ${SQL_ENDPOINT} -d ${DB_NAME} -U ${SQL_ADMIN_NAME} -P ${SQL_PASSWORD} -i ./create_table.sql
-      # Set userdata as outputs
-      - name: Set Outputs for userdata
-        id: set-userdata
-        run: |
-          userdata_content=`cat .fx/states/${TEAMSFX_ENV_NAME}.userdata`
-          echo "::set-output name=USERDATA_CONTENT::${userdata_content}"
-      # Set USERDATA_CONTENT as GitHub Secret
-      - uses: jon-grey/github-actions-secrets-creator@v1
-        with:
-          name: USERDATA_CONTENT
-          value: ${{steps.set-userdata.outputs.USERDATA_CONTENT}}
-          pa_token: ${{ secrets.PA_TOKEN }} 
 
       - name: Commit necessary files
         uses: stefanzweifel/git-auto-commit-action@v4

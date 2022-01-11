@@ -25,7 +25,7 @@
         {
             "label": "dependency check",
             "type": "shell",
-            "command": "echo ${command:fx-extension.validate-dependencies}"
+            "command": "exit ${command:fx-extension.validate-dependencies}"
         },
         {
             "label": "start ngrok",
@@ -48,7 +48,7 @@
         {
             "label": "bot npm install",
             "type": "shell",
-            "command": "npm install",
+            "command": "npm install --no-audit",
             "options": {
                 "cwd": "${workspaceFolder}/bot"
             }
@@ -56,12 +56,12 @@
         {
             "label": "prepare local environment",
             "type": "shell",
-            "command": "echo ${command:fx-extension.pre-debug-check}"
+            "command": "exit ${command:fx-extension.pre-debug-check}"
         },
         {
             "label": "frontend npm install",
             "type": "shell",
-            "command": "npm install",
+            "command": "npm install --no-audit",
             "options": {
                 "cwd": "${workspaceFolder}/tabs"
             }
@@ -77,7 +77,7 @@
         {
             "label": "backend npm install",
             "type": "shell",
-            "command": "npm install",
+            "command": "npm install --no-audit",
             "options": {
                 "cwd": "${workspaceFolder}/api"
             },
@@ -89,7 +89,7 @@
         {
             "label": "backend extensions install",
             "type": "shell",
-            "command": "echo ${command:fx-extension.backend-extensions-install}"
+            "command": "exit ${command:fx-extension.backend-extensions-install}"
         }
     ]
 }

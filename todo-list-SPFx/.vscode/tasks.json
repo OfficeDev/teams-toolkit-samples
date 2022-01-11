@@ -4,12 +4,12 @@
         {
             "label": "dependency check",
             "type": "shell",
-            "command": "echo ${command:fx-extension.validate-spfx-dependencies}"
+            "command": "exit ${command:fx-extension.validate-spfx-dependencies}"
         },
         {
             "label": "spfx npm install",
             "type": "shell",
-            "command": "npm install",
+            "command": "npm install --no-audit",
             "options": {
                 "cwd": "${workspaceFolder}/SPFx"
             },
@@ -63,7 +63,7 @@
         {
             "label": "prepare local environment",
             "type": "shell",
-            "command": "echo ${command:fx-extension.pre-debug-check}"
+            "command": "exit ${command:fx-extension.pre-debug-check}"
         },
         {
             "label": "prepare dev env",
@@ -71,7 +71,7 @@
                 "prepare local environment",
                 "gulp serve"
             ],
-            "dependsOrder": "parallel"
+            "dependsOrder": "sequence"
         },
         {
             "label": "Terminate All Tasks",
