@@ -1,4 +1,5 @@
 node_modules
+.backup
 .fx/configs/localSettings.json
 .fx/states/*.userdata
 .DS_Store
