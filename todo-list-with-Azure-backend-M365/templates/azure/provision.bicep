@@ -42,17 +42,3 @@ output functionOutput object = {
   functionAppResourceId: functionProvision.outputs.functionAppResourceId
   functionEndpoint: functionProvision.outputs.functionEndpoint
 }
-// Resources for Simple Auth
-module simpleAuthProvision './provision/simpleAuth.bicep' = {
-  name: 'simpleAuthProvision'
-  params: {
-    provisionParameters: provisionParameters
-    userAssignedIdentityId: userAssignedIdentityProvision.outputs.identityResourceId
-  }
-}
-
-output simpleAuthOutput object = {
-  teamsFxPluginId: 'fx-resource-simple-auth'
-  endpoint: simpleAuthProvision.outputs.endpoint
-  webAppResourceId: simpleAuthProvision.outputs.webAppResourceId
-}

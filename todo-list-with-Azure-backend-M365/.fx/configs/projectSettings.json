@@ -11,17 +11,17 @@
             "function"
         ],
         "activeResourcePlugins": [
-            "fx-resource-local-debug",
             "fx-resource-frontend-hosting",
             "fx-resource-identity",
-            "fx-resource-function",
             "fx-resource-aad-app-for-teams",
-            "fx-resource-appstudio",
-            "fx-resource-simple-auth"
+            "fx-resource-function",
+            "fx-resource-local-debug",
+            "fx-resource-appstudio"
         ]
     },
     "isFromSample": true,
     "programmingLanguage": "javascript",
     "defaultFunctionName": "getUserProfile",
-    "version": "2.0.0"
+    "version": "2.0.0",
+    "projectId": "cb8960fd-7860-4a04-ab51-b605517e6c8c"
 }
