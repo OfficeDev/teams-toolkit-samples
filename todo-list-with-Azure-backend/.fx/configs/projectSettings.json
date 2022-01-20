@@ -18,8 +18,7 @@
             "fx-resource-aad-app-for-teams",
             "fx-resource-function",
             "fx-resource-local-debug",
-            "fx-resource-appstudio",
-            "fx-resource-simple-auth"
+            "fx-resource-appstudio"
         ]
     },
     "isFromSample": true,

@@ -41,7 +41,6 @@ class Tab extends React.Component {
     loadConfiguration({
       authentication: {
         initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
-        simpleAuthEndpoint: process.env.REACT_APP_TEAMSFX_ENDPOINT,
         clientId: process.env.REACT_APP_CLIENT_ID
       },
       resources: [
