@@ -30,7 +30,6 @@ Todo List app helps to manage your personal to do items. This app can be install
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
 - How to use TeamsFx to build backend hosting on Azure for your tab app.
 - How to use MS graph client in TeamsFx to get access to M365 data.
-- How to use TeamsFx simple auth capability to get Teams user login information.
 - How to use Teams Toolkit to build a personal tab app with Azure Function backend that runs across M365 including Teams, Outlook and Office
 
 ## Try the Sample with Visual Studio Code Extension:
