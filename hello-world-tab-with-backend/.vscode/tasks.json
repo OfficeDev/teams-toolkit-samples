@@ -31,7 +31,7 @@
         {
             "label": "Start Frontend",
             "dependsOn": [
-                "teamsfx: frontend start",
+                "teamsfx: frontend start"
             ],
             "dependsOrder": "parallel"
         },
