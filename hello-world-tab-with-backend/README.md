@@ -23,7 +23,6 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
 - How to use TeamsFx to build backend hosting on Azure for your tab app.
 - How to use MS graph client in TeamsFx to get access to M365 data.
-- How to use TeamsFx simple auth capability to get Teams user login information.
 
 ## Try the Sample with Visual Studio Code Extension:
 >Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
