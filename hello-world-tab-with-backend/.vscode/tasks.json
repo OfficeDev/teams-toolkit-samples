@@ -32,7 +32,6 @@
             "label": "Start Frontend",
             "dependsOn": [
                 "teamsfx: frontend start",
-                "teamsfx: auth start"
             ],
             "dependsOrder": "parallel"
         },
