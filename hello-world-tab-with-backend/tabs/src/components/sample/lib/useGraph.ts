@@ -31,7 +31,7 @@ export function useGraph<T>(
         const graph = createMicrosoftGraphClient(credential, scope);
         return await asyncFunc(graph);
       } catch (err) {
-        if (err.message?.includes("CancelledByUser")) {
+        if (err instanceof Error && err.message?.includes("CancelledByUser")) {
           const helpLink = "https://aka.ms/teamsfx-auth-code-flow";
           err.message +=
             "\nIf you see \"AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application\" " + 
