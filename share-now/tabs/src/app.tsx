@@ -23,7 +23,7 @@ export interface IAppState {
 export default class App extends React.Component<{}, IAppState> {
     theme?: string | null;
 
-    constructor(props: any) {
+    constructor(props: {[key:string]:unknown}) {
       super(props);
       const search = window.location.search;
       const params = new URLSearchParams(search);
@@ -34,17 +34,17 @@ export default class App extends React.Component<{}, IAppState> {
       }
     }
 
-    componentDidMount() {
+    componentDidMount():void {
       microsoftTeams.initialize();
 
       microsoftTeams.registerOnThemeChangeHandler((theme: string) => {
-        this.setState({ theme: theme! }, () => {
+        this.setState({ theme: theme }, () => {
           this.forceUpdate();
         });
       });
     }
 
-    public setThemeComponent = () => {
+    public setThemeComponent:() => JSX.Element = () => {
       if (this.state.theme === Resources.dark) {
         return (
           <Provider theme={themes.teamsDark}>
@@ -73,7 +73,7 @@ export default class App extends React.Component<{}, IAppState> {
       }
     }
 
-    public getAppDom = () => {
+    public getAppDom: () => JSX.Element = () => {
       return (
         <div className="appContainer">
           <Suspense fallback={<div className="container-div"><div className="container-subdiv"></div></div>}>

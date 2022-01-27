@@ -8,7 +8,7 @@ import React from "react";
  * link in the about tab.
  */
 class TermsOfUse extends React.Component {
-  render() {
+  render():JSX.Element {
     return (
       <div>
         <h1>Terms of Use</h1>

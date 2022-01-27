@@ -11,8 +11,8 @@ import "../../styles/more-menu.css";
 
 interface IPopupMoreMenu {
     cardDetails: IDiscoverPost;
-    onMenuItemClick: (key: any) => void;
-    onEditSubmit: (editedCardDetails: any, isSuccess: boolean) => void;
+    onMenuItemClick: (key: number) => void;
+    onEditSubmit: (editedCardDetails: IDiscoverPost, isSuccess: boolean) => void;
 }
 
 const PopupMoreMenu: React.FunctionComponent<IPopupMoreMenu> = props => {
@@ -48,7 +48,7 @@ const PopupMoreMenu: React.FunctionComponent<IPopupMoreMenu> = props => {
 
   return (
     <Popup
-      onOpenChange={(e, { open }: any) => setMenuOpen(open)}
+      onOpenChange={(e, { open }:any) => setMenuOpen(open)}
       open={menuOpen}
       content={
         <MoreMenuContent cardDetails={props.cardDetails} onCancel={onCancel} onEditSubmit={onEditSubmit} onMenuItemClick={onItemClick} />

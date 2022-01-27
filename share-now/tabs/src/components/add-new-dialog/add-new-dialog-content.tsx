@@ -48,7 +48,7 @@ class AddNewItemDialogContent extends React.Component<IAddNewDialogContentProps,
     localize: TFunction;
     teamId = "";
 
-    constructor(props: any) {
+    constructor(props) {
       super(props);
 
       this.localize = this.props.t;
@@ -87,9 +87,9 @@ class AddNewItemDialogContent extends React.Component<IAddNewDialogContentProps,
     componentDidMount() {
       window.addEventListener("resize", function () {
         if (this.document) {
-          if (document!.activeElement!.tagName == "INPUT") {
+          if (document?.activeElement?.tagName == "INPUT") {
             window.setTimeout(function () {
-                        document!.activeElement!.scrollIntoView();
+              document?.activeElement?.scrollIntoView();
             }, 0);
           }
         }
@@ -350,7 +350,7 @@ class AddNewItemDialogContent extends React.Component<IAddNewDialogContentProps,
 	* Adds tag when enter key is pressed
 	* @param event Object containing event details
 	*/
-    onTagKeyDown = (event: any) => {
+    onTagKeyDown = (event) => {
       if (event.key === 'Enter') {
         this.onTagAddClick();
       }
@@ -363,7 +363,7 @@ class AddNewItemDialogContent extends React.Component<IAddNewDialogContentProps,
 
       const onTypeSelection = {
         onAdd: item => {
-          this.setState((prevState: IAddNewDialogContentState) => ({ postDetails: { ...prevState.postDetails, type: item!.key } }));
+          this.setState((prevState: IAddNewDialogContentState) => ({ postDetails: { ...prevState.postDetails, type: item?.key } }));
           return "";
         },
       };
@@ -432,7 +432,7 @@ class AddNewItemDialogContent extends React.Component<IAddNewDialogContentProps,
               </Flex>
               <Flex gap="gap.smaller" className="input-label-space-between">
                 <Flex.Item>
-                  <Input maxLength={Resources.postContentUrlMaxLength} placeholder={this.localize("linkPlaceholder")} fluid value={this.state.postDetails.contentUrl} onChange={(event: any) => this.onLinkChange(event.target.value)} />
+                  <Input maxLength={Resources.postContentUrlMaxLength} placeholder={this.localize("linkPlaceholder")} fluid value={this.state.postDetails.contentUrl} onChange={(event:any) => this.onLinkChange(event.target.value)} />
                 </Flex.Item>
               </Flex>
 

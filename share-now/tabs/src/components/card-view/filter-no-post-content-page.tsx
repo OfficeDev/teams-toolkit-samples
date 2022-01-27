@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 import "../../styles/no-post-added-page.css";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-const FilterNoPostContentPage: React.FunctionComponent<{}> = props => {
+const FilterNoPostContentPage: React.FunctionComponent<{}> = () => {
   const localize = useTranslation().t;
 
   return (
