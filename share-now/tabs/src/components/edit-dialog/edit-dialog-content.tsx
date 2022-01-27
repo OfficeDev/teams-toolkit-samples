@@ -4,7 +4,6 @@
 import * as React from "react";
 import { Button, Flex, Text, Input, Tooltip, TextArea, ItemLayout, Label, Image, Provider, Dropdown } from "@fluentui/react-northstar";
 import { CloseIcon, AddIcon, InfoIcon } from "@fluentui/react-icons-northstar";
-import * as microsoftTeams from "@microsoft/teams-js";
 import { IDiscoverPost } from "../card-view/discover-wrapper-page";
 import { updatePostContent } from "../../api/discover-api";
 import { WithTranslation, withTranslation } from "react-i18next";
@@ -41,7 +40,7 @@ interface IEditDialogContentStateState {
 class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEditDialogContentStateState> {
     localize: TFunction;
 
-    constructor(props: any) {
+    constructor(props) {
       super(props);
 
       this.localize = this.props.t;
@@ -65,9 +64,9 @@ class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEd
     componentDidMount() {
       window.addEventListener("resize", function () {
         if (this.document) {
-          if (document!.activeElement!.tagName == "INPUT") {
+          if (document?.activeElement?.tagName == "INPUT") {
             window.setTimeout(function () {
-                        document!.activeElement!.scrollIntoView();
+              document?.activeElement?.scrollIntoView();
             }, 0);
           }
         }
@@ -326,7 +325,7 @@ class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEd
 	*Invoked when user hits enter key in tag input box
 	*@param event Input box event object
 	*/
-    onTagKeyDown = (event: any) => {
+    onTagKeyDown = (event) => {
       if (event.key === 'Enter') {
         this.onTagAddClick();
       }
@@ -338,7 +337,7 @@ class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEd
     public render(): JSX.Element {
       const onTypeSelection = {
         onAdd: item => {
-          this.setState((prevState: IEditDialogContentStateState) => ({ postDetails: { ...prevState.postDetails, type: item!.key } }));
+          this.setState((prevState: IEditDialogContentStateState) => ({ postDetails: { ...prevState.postDetails, type: item?.key } }));
           return "";
         },
       };

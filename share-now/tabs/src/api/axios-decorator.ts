@@ -7,13 +7,13 @@ import { TeamsUserCredential } from "@microsoft/teamsfx";
 export class AxiosJWTDecorator {
 
   /**
-	* Post data to API
-	* @param  {String} url Resource URI
-	* @param  {Object} data Request body data
-	*/
-  public async post<T = any, R = AxiosResponse<T>>(
+  * Post data to API
+  * @param  {String} url Resource URI
+  * @param  {Object} data Request body data
+  */
+  public async post<T, R = AxiosResponse<T>>(
     url: string,
-    data?: any,
+    data?: { [key: string]: unknown; },
     config?: AxiosRequestConfig
   ): Promise<R> {
     try {
@@ -26,10 +26,10 @@ export class AxiosJWTDecorator {
   }
 
   /**
-	* Post data to API
-	* @param  {String} url Resource URI
-	*/
-  public async delete<T = any, R = AxiosResponse<T>>(
+  * Post data to API
+  * @param  {String} url Resource URI
+  */
+  public async delete<T, R = AxiosResponse<T>>(
     url: string,
     config?: AxiosRequestConfig
   ): Promise<R> {
@@ -43,13 +43,13 @@ export class AxiosJWTDecorator {
   }
 
   /**
-	* Post data to API
-	* @param  {String} url Resource URI
-	* @param  {Object} data Request body data
-	*/
-  public async put<T = any, R = AxiosResponse<T>>(
+  * Post data to API
+  * @param  {String} url Resource URI
+  * @param  {Object} data Request body data
+  */
+  public async put<T, R = AxiosResponse<T>>(
     url: string,
-    data?: any,
+    data?: { [key: string]: unknown; },
     config?: AxiosRequestConfig
   ): Promise<R> {
     try {
@@ -62,9 +62,9 @@ export class AxiosJWTDecorator {
   }
 
   /**
-	* Get data to API
-	*/
-  public async get<T = any, R = AxiosResponse<T>>(
+  * Get data to API
+  */
+  public async get<T, R = AxiosResponse<T>>(
     url: string,
     config?: AxiosRequestConfig,
     authenticationRequired = true
@@ -72,7 +72,7 @@ export class AxiosJWTDecorator {
     try {
       if (authenticationRequired) {
         config = await this.setupAuthorizationHeader(config);
-      }			
+      }
       return await axios.get(url, config);
     } catch (error) {
       this.handleError(error);
@@ -81,11 +81,11 @@ export class AxiosJWTDecorator {
   }
 
   /**
-	* Handle error occurred during API call.
-	* @param  {Object} error Error response object
-	*/
-  private handleError(error: any): void {
-    const message = encodeURIComponent(error.response!.data);
+  * Handle error occurred during API call.
+  * @param  {Object} error Error response object
+  */
+  private handleError(error): void {
+    const message = encodeURIComponent(error.response?.data);
     window.location.href = `/index.html#/errorpage/${message}`;
   }
 

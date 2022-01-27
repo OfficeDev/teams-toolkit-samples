@@ -19,7 +19,7 @@ interface INotificationMessageState {
 }
 
 export default class NotificationMessage extends React.Component<INotificationMessageProps, INotificationMessageState> {
-  constructor(props: any) {
+  constructor(props: INotificationMessageProps) {
     super(props);
 
     this.state = {
@@ -27,7 +27,7 @@ export default class NotificationMessage extends React.Component<INotificationMe
     }
   }
 
-  componentWillReceiveProps(nextProps: INotificationMessageProps) {
+  componentWillReceiveProps(nextProps: INotificationMessageProps):void {
     if (nextProps.showAlert !== this.props.showAlert) {
       this.setState({ showAlert: nextProps.showAlert })
     }

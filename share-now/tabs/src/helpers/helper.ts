@@ -41,14 +41,14 @@ export const getLocalizedPostTypes = (localize: TFunction): Array<IPostType> => 
 /**
 * Get random colors for avatar.
 */
-export const generateColor = () => {
+export const generateColor:()=>string = () => {
   return Resources.avatarColors[Math.floor(Math.random() * Resources.avatarColors.length)];
 }
 
 /**
 * get initial of user names to show in avatar.
 */
-export const getInitials = (userPostName: string) => {
+export const getInitials:(string) => string = (userPostName: string) => {
   const fullName = userPostName;
   const names = fullName.split(' ');
   let initials = names[0].substring(0, 1).toUpperCase();

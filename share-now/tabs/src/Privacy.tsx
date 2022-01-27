@@ -8,7 +8,7 @@ import React from "react";
  * about tab.
  */
 class Privacy extends React.Component {
-  render() {
+  render():JSX.Element {
     return (
       <div>
         <h1>Privacy Statement</h1>
