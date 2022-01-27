@@ -19,7 +19,6 @@
             "fx-resource-identity",
             "fx-resource-function",
             "fx-resource-aad-app-for-teams",
-            "fx-resource-simple-auth",
             "fx-resource-bot"
         ]
     },

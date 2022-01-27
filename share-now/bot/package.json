@@ -16,7 +16,7 @@
         "url": "https://github.com/OfficeDev/TeamsFx-Samples.git"
     },
     "dependencies": {
-        "@microsoft/teamsfx": "^0.3.0",
+        "@microsoft/teamsfx": "^0.5.0",
         "adaptivecards": "^2.9.0",
         "axios": "^0.21.1",
         "botbuilder": "~4.11.0",
