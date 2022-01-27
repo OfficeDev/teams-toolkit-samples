@@ -16,7 +16,7 @@ interface IErrorPageProps extends WithTranslation, RouteComponentProps {
 class ErrorPage extends React.Component<IErrorPageProps, {}> {
     localize: TFunction;
 
-    constructor(props: any) {
+    constructor(props) {
       super(props);
 
       this.localize = this.props.t;

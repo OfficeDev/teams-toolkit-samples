@@ -3,7 +3,7 @@
 
 import * as React from "react";
 import { Flex, Text, Divider, Dialog, Provider } from "@fluentui/react-northstar";
-import { AddIcon, TrashCanIcon } from "@fluentui/react-icons-northstar";
+import { TrashCanIcon } from "@fluentui/react-icons-northstar";
 import EditItemDialog from "../edit-dialog/edit-dialog";
 import { Container } from "react-bootstrap";
 import { IDiscoverPost } from "./discover-wrapper-page";
@@ -19,15 +19,15 @@ interface IAppState {
 
 interface IMoreMenuContentProps extends WithTranslation {
     cardDetails: IDiscoverPost;
-    onMenuItemClick: (key: any) => void;
+    onMenuItemClick: (key: number) => void;
     onCancel: () => void;
-    onEditSubmit: (editedCardDetails: any, isSuccess: boolean) => void;
+    onEditSubmit: (editedCardDetails: IDiscoverPost, isSuccess: boolean) => void;
 }
 
 class MoreMenuContent extends React.Component<IMoreMenuContentProps, IAppState> {
     localize: TFunction;
 
-    constructor(props: any) {
+    constructor(props) {
       super(props);
       this.localize = this.props.t;
       this.state = {
