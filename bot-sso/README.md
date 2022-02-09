@@ -14,6 +14,16 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
 
 Clone this repo, navigate to bot-sso/ folder. Start debugging the project by hitting the `F5` key in Visual Studio Code. Alternatively use the `Run and Debug Activity Panel` in Visual Studio Code and click the `Start Debugging` green arrow button.
 
+If you encounter the ngrok page below when sending the `show` command to the bot, please follow the steps to solve this issue.
+
+1. Stop debugging in Visual Studio Code.
+2. Sign up an ngrok account in https://dashboard.ngrok.com/signup.
+3. Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
+4. Run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in Visual Studio Code terminal.
+5. Start debugging the project again by hitting the F5 key in Visual Studio Code.
+
+![ngrok auth page](./images/ngrok-authtoken-page.png)
+
 ## Add a SSO Command
 - Follow the code in `bot-sso/bot/commands/showUserProfile.ts`, implemet `YourSSOCommand extends SSOCommand`
 - Export `YourSSOCommand` in `commands/index.ts`
