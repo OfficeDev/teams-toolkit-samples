@@ -13,7 +13,7 @@ Share Now promotes the exchange of information between colleagues by enabling us
 ## Prerequisite
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 14
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
+- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) **version >= 3.3.0** or [TeamsFx CLI](https://aka.ms/teamsfx-cli) **version >= 0.10.2**
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
 ## What you will learn in this sample
