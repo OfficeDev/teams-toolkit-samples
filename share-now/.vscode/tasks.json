@@ -4,92 +4,84 @@
         {
             "label": "Pre Debug Check",
             "dependsOn": [
-                "dependency check",
+                "validate local prerequisites",
                 "start ngrok",
-                "prepare dev env"
+                "prepare local environment"
             ],
             "dependsOrder": "sequence"
         },
         {
-            "label": "Start Frontend",
-            "dependsOn": [
-                "teamsfx: frontend start",
-                "teamsfx: auth start"
-            ],
-            "dependsOrder": "parallel"
-        },
-        {
-            "label": "Start Bot",
-            "dependsOn": "teamsfx: bot start"
-        },
-        {
-            "label": "dependency check",
+            "label": "validate local prerequisites",
             "type": "shell",
-            "command": "exit ${command:fx-extension.validate-dependencies}"
+            "command": "exit ${command:fx-extension.validate-local-prerequisites}",
+            "presentation": {
+                "reveal": "never"
+            }
         },
         {
             "label": "start ngrok",
-            "type": "teamsfx",
-            "command": "ngrok start",
-            "isBackground": true,
-            "dependsOn": [
-                "bot npm install"
-            ]
-        },
-        {
-            "label": "prepare dev env",
-            "dependsOn": [
-                "prepare local environment",
-                "backend npm install",
-                "frontend npm install"
-            ],
-            "dependsOrder": "parallel"
-        },
-        {
-            "label": "bot npm install",
-            "type": "shell",
-            "command": "npm install --no-audit",
-            "options": {
-                "cwd": "${workspaceFolder}/bot"
-            }
+            "dependsOn": "teamsfx: ngrok start"
         },
         {
             "label": "prepare local environment",
             "type": "shell",
-            "command": "exit ${command:fx-extension.pre-debug-check}"
+            "command": "exit ${command:fx-extension.pre-debug-check}",
+            "presentation": {
+                "reveal": "never"
+            }
         },
         {
-            "label": "frontend npm install",
+            "label": "Start Frontend",
             "type": "shell",
-            "command": "npm install --no-audit",
+            "command": "npm run dev:teamsfx",
+            "isBackground": true,
+            "problemMatcher": "$teamsfx-frontend-watch",
             "options": {
                 "cwd": "${workspaceFolder}/tabs"
             }
         },
         {
             "label": "Start Backend",
-            "dependsOn": [
-                "teamsfx: backend watch",
-                "teamsfx: backend start"
-            ],
-            "dependsOrder": "sequence"
+            "type": "shell",
+            "command": "npm run dev:teamsfx",
+            "isBackground": true,
+            "problemMatcher": "$teamsfx-backend-watch",
+            "options": {
+                "cwd": "${workspaceFolder}/api",
+                "env": {
+                    "PATH": "${env:PATH}${command:fx-extension.get-func-path}"
+                }
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "dependsOn": "Watch Backend"
         },
         {
-            "label": "backend npm install",
+            "label": "Watch Backend",
             "type": "shell",
-            "command": "npm install --no-audit",
+            "command": "npm run watch:teamsfx",
+            "isBackground": true,
+            "problemMatcher": "$tsc-watch",
             "options": {
                 "cwd": "${workspaceFolder}/api"
             },
             "presentation": {
                 "reveal": "silent"
-            },
-            "dependsOn": "backend extensions install"
+            }
         },
         {
-            "label": "backend extensions install",
+            "label": "Start Bot",
             "type": "shell",
-            "command": "exit ${command:fx-extension.backend-extensions-install}"
+            "command": "npm run dev:teamsfx",
+            "isBackground": true,
+            "problemMatcher": "$teamsfx-bot-watch",
+            "options": {
+                "cwd": "${workspaceFolder}/bot"
+            },
+            "presentation": {
+                "reveal": "silent"
+            }
         }
     ]
 }

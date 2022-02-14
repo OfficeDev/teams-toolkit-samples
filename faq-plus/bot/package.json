@@ -6,6 +6,8 @@
     "license": "MIT",
     "main": "./lib/index.js",
     "scripts": {
+        "dev:teamsfx": "env-cmd --silent -f .env.teamsfx.local npm run dev",
+        "dev": "nodemon --exec node --inspect=9239 --signal SIGINT -r ts-node/register ./index.ts",
         "build": "tsc --build",
         "start": "node ./lib/index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -33,6 +35,7 @@
         "@typescript-eslint/eslint-plugin": "^4.25.0",
         "@typescript-eslint/parser": "^4.25.0",
         "babel-eslint": "^10.1.0",
+        "env-cmd": "^10.1.0",
         "eslint": "^7.27.0",
         "eslint-config-google": "^0.14.0",
         "eslint-config-prettier": "^8.3.0",

@@ -4,66 +4,66 @@
         {
             "label": "Pre Debug Check",
             "dependsOn": [
-                "dependency check",
-                "prepare dev env"
+                "validate local prerequisites",
+                "prepare local environment"
             ],
             "dependsOrder": "sequence"
         },
         {
-            "label": "dependency check",
+            "label": "validate local prerequisites",
             "type": "shell",
-            "command": "exit ${command:fx-extension.validate-dependencies}"
-        },
-        {
-            "label": "prepare dev env",
-            "dependsOn": [
-                "prepare local environment",
-                "frontend npm install",
-                "backend npm install"
-            ],
-            "dependsOrder": "parallel"
+            "command": "exit ${command:fx-extension.validate-local-prerequisites}",
+            "presentation": {
+                "reveal": "never"
+            }
         },
         {
             "label": "prepare local environment",
             "type": "shell",
-            "command": "exit ${command:fx-extension.pre-debug-check}"
+            "command": "exit ${command:fx-extension.pre-debug-check}",
+            "presentation": {
+                "reveal": "never"
+            }
         },
         {
             "label": "Start Frontend",
-            "dependsOn": [
-                "teamsfx: frontend start"
-            ],
-            "dependsOrder": "parallel"
-        },
-        {
-            "label": "frontend npm install",
             "type": "shell",
-            "command": "npm install --no-audit",
+            "command": "npm run dev:teamsfx",
+            "isBackground": true,
+            "problemMatcher": "$teamsfx-frontend-watch",
             "options": {
                 "cwd": "${workspaceFolder}/tabs"
             }
         },
         {
             "label": "Start Backend",
-            "dependsOn": [
-                "teamsfx: backend watch",
-                "teamsfx: backend start"
-            ],
-            "dependsOrder": "sequence"
+            "type": "shell",
+            "command": "npm run dev:teamsfx",
+            "isBackground": true,
+            "problemMatcher": "$teamsfx-backend-watch",
+            "options": {
+                "cwd": "${workspaceFolder}/api",
+                "env": {
+                    "PATH": "${env:PATH}${command:fx-extension.get-func-path}"
+                }
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "dependsOn": "Watch Backend"
         },
         {
-            "label": "backend extensions install",
+            "label": "Watch Backend",
             "type": "shell",
-            "command": "exit ${command:fx-extension.backend-extensions-install}"
-        },
-        {
-            "label": "backend npm install",
-            "type": "shell",
-            "command": "npm install --no-audit",
+            "command": "npm run watch:teamsfx",
+            "isBackground": true,
+            "problemMatcher": "$tsc-watch",
             "options": {
                 "cwd": "${workspaceFolder}/api"
             },
-            "dependsOn": "backend extensions install"
+            "presentation": {
+                "reveal": "silent"
+            }
         }
     ]
 }
