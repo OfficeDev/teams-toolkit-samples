@@ -14,6 +14,7 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import { Suspense } from "react";
 import Privacy from "./Privacy";
 import TermsOfUse from "./TermsOfUse";
+import Website from "./Website";
 
 export interface IAppState {
     theme: string;
@@ -84,6 +85,7 @@ export default class App extends React.Component<{}, IAppState> {
               <Route exact path="/errorpage/:message?" component={ErrorPage} />
               <Route exact path="/privacy" component={Privacy} />
               <Route exact path="/termsofuse" component={TermsOfUse} />
+              <Route exact path="/website" component={Website} />
             </Router>
           </Suspense>
         </div>);
