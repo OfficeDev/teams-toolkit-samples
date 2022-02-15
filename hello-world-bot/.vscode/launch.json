@@ -27,7 +27,7 @@
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
             "cascadeTerminateToConfigurations": [
-                "Start and Attach to Bot"
+                "Attach to Bot"
             ],
             "presentation": {
                 "group": "all",
@@ -40,7 +40,7 @@
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
             "cascadeTerminateToConfigurations": [
-                "Start and Attach to Bot"
+                "Attach to Bot"
             ],
             "presentation": {
                 "group": "all",
@@ -48,7 +48,7 @@
             }
         },
         {
-            "name": "Start and Attach to Bot",
+            "name": "Attach to Bot",
             "type": "pwa-node",
             "request": "attach",
             "port": 9239,
@@ -64,7 +64,7 @@
             "name": "Debug (Edge)",
             "configurations": [
                 "Launch Bot (Edge)",
-                "Start and Attach to Bot"
+                "Attach to Bot"
             ],
             "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
@@ -77,7 +77,7 @@
             "name": "Debug (Chrome)",
             "configurations": [
                 "Launch Bot (Chrome)",
-                "Start and Attach to Bot"
+                "Attach to Bot"
             ],
             "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {

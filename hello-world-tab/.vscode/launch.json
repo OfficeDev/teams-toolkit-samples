@@ -22,7 +22,7 @@
             }
         },
         {
-            "name": "Start and Attach to Frontend (Edge)",
+            "name": "Attach to Frontend (Edge)",
             "type": "pwa-msedge",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
@@ -32,7 +32,7 @@
             }
         },
         {
-            "name": "Start and Attach to Frontend (Chrome)",
+            "name": "Attach to Frontend (Chrome)",
             "type": "pwa-chrome",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
@@ -46,7 +46,7 @@
         {
             "name": "Debug (Edge)",
             "configurations": [
-                "Start and Attach to Frontend (Edge)"
+                "Attach to Frontend (Edge)"
             ],
             "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
@@ -58,7 +58,7 @@
         {
             "name": "Debug (Chrome)",
             "configurations": [
-                "Start and Attach to Frontend (Chrome)"
+                "Attach to Frontend (Chrome)"
             ],
             "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {

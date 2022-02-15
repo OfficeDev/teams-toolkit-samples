@@ -22,12 +22,12 @@
             }
         },
         {
-            "name": "Start and Attach to Frontend (Edge)",
+            "name": "Attach to Frontend (Edge)",
             "type": "pwa-msedge",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
             "cascadeTerminateToConfigurations": [
-                "Start and Attach to Backend"
+                "Attach to Backend"
             ],
             "presentation": {
                 "group": "all",
@@ -35,12 +35,12 @@
             }
         },
         {
-            "name": "Start and Attach to Frontend (Chrome)",
+            "name": "Attach to Frontend (Chrome)",
             "type": "pwa-chrome",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
             "cascadeTerminateToConfigurations": [
-                "Start and Attach to Backend"
+                "Attach to Backend"
             ],
             "presentation": {
                 "group": "all",
@@ -48,7 +48,7 @@
             }
         },
         {
-            "name": "Start and Attach to Backend",
+            "name": "Attach to Backend",
             "type": "pwa-node",
             "request": "attach",
             "port": 9229,
@@ -64,8 +64,8 @@
         {
             "name": "Debug (Edge)",
             "configurations": [
-                "Start and Attach to Frontend (Edge)",
-                "Start and Attach to Backend"
+                "Attach to Frontend (Edge)",
+                "Attach to Backend"
             ],
             "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
@@ -77,8 +77,8 @@
         {
             "name": "Debug (Chrome)",
             "configurations": [
-                "Start and Attach to Frontend (Chrome)",
-                "Start and Attach to Backend"
+                "Attach to Frontend (Chrome)",
+                "Attach to Backend"
             ],
             "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
