@@ -53,7 +53,6 @@
             "request": "attach",
             "port": 9239,
             "restart": true,
-            "preLaunchTask": "Start Bot",
             "presentation": {
                 "group": "all",
                 "hidden": true
@@ -67,7 +66,7 @@
                 "Launch Bot (Edge)",
                 "Start and Attach to Bot"
             ],
-            "preLaunchTask": "Pre Debug Check",
+            "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
                 "group": "all",
                 "order": 1
@@ -80,7 +79,7 @@
                 "Launch Bot (Chrome)",
                 "Start and Attach to Bot"
             ],
-            "preLaunchTask": "Pre Debug Check",
+            "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
                 "group": "all",
                 "order": 2

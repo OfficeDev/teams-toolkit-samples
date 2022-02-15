@@ -26,7 +26,6 @@
             "type": "pwa-msedge",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "preLaunchTask": "Start Frontend",
             "presentation": {
                 "group": "all",
                 "hidden": true
@@ -37,7 +36,6 @@
             "type": "pwa-chrome",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "preLaunchTask": "Start Frontend",
             "presentation": {
                 "group": "all",
                 "hidden": true
@@ -50,7 +48,7 @@
             "configurations": [
                 "Start and Attach to Frontend (Edge)"
             ],
-            "preLaunchTask": "Pre Debug Check",
+            "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
                 "group": "all",
                 "order": 1
@@ -62,7 +60,7 @@
             "configurations": [
                 "Start and Attach to Frontend (Chrome)"
             ],
-            "preLaunchTask": "Pre Debug Check",
+            "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
                 "group": "all",
                 "order": 2

@@ -26,7 +26,6 @@
             "type": "pwa-msedge",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "preLaunchTask": "Start Frontend",
             "cascadeTerminateToConfigurations": [
                 "Start and Attach to Bot",
                 "Start and Attach to Backend"
@@ -41,7 +40,6 @@
             "type": "pwa-chrome",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "preLaunchTask": "Start Frontend",
             "cascadeTerminateToConfigurations": [
                 "Start and Attach to Bot",
                 "Start and Attach to Backend"
@@ -57,7 +55,6 @@
             "request": "attach",
             "port": 9239,
             "restart": true,
-            "preLaunchTask": "Start Bot",
             "presentation": {
                 "group": "all",
                 "hidden": true
@@ -70,7 +67,6 @@
             "request": "attach",
             "port": 9229,
             "restart": true,
-            "preLaunchTask": "Start Backend",
             "presentation": {
                 "group": "all",
                 "hidden": true
@@ -86,7 +82,7 @@
                 "Start and Attach to Bot",
                 "Start and Attach to Backend"
             ],
-            "preLaunchTask": "Pre Debug Check",
+            "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
                 "group": "all",
                 "order": 1
@@ -100,7 +96,7 @@
                 "Start and Attach to Bot",
                 "Start and Attach to Backend"
             ],
-            "preLaunchTask": "Pre Debug Check",
+            "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
                 "group": "all",
                 "order": 2
