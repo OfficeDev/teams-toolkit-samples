@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "dev:teamsfx": "env-cmd --silent -f .env.teamsfx.local npm run dev",
+    "dev": "func start --javascript --language-worker=\"--inspect=9229\" --port \"7071\" --cors \"*\"",
     "start": "npx func start",
     "test": "echo \"No tests yet...\""
   },
