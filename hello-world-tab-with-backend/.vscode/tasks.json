@@ -57,6 +57,20 @@
             },
             "presentation": {
                 "reveal": "silent"
+            },
+            "dependsOn": "Watch Backend"
+        },
+        {
+            "label": "Watch Backend",
+            "type": "shell",
+            "command": "npm run watch:teamsfx",
+            "isBackground": true,
+            "problemMatcher": "$tsc-watch",
+            "options": {
+                "cwd": "${workspaceFolder}/api"
+            },
+            "presentation": {
+                "reveal": "silent"
             }
         }
     ]
