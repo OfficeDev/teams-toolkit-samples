@@ -21,7 +21,7 @@ interface IAddNewDialogState {
 class AddNewPostDialog extends React.Component<IAddNewPostProps, IAddNewDialogState> {
     localize: TFunction;
 
-    constructor(props: any) {
+    constructor(props) {
       super(props);
 
       this.localize = this.props.t;

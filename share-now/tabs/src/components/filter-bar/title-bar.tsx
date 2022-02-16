@@ -30,7 +30,7 @@ class TitleBar extends React.Component<IFilterBarProps, IFilterBarState> {
     }
   }
 
-  componentWillReceiveProps(nextProps: IFilterBarProps) {
+  componentWillReceiveProps(nextProps: IFilterBarProps):void {
     if (nextProps.hideFilterbar !== this.props.hideFilterbar) {
       if (nextProps.hideFilterbar === true) {
         this.setState({ isOpen: false });

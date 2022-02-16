@@ -33,7 +33,7 @@ interface ICardState {
 
 class Card extends React.Component<ICardProps, ICardState> {
     localize: TFunction;
-    constructor(props: any) {
+    constructor(props) {
       super(props);
 
       this.localize = this.props.t;
@@ -139,7 +139,7 @@ class Card extends React.Component<ICardProps, ICardState> {
                 <Text onClick={() => window.open(this.state.cardDetails.contentUrl, "_blank")} className="title-text" size="large" content={this.state.cardDetails.title} title={this.state.cardDetails.title} weight="bold" />
               </Flex>
               <Flex gap="gap.smaller">
-                <TypeLabel postType={this.state.cardDetails.type!} size="small" />
+                <TypeLabel postType={this.state.cardDetails.type as number} size="small" />
               </Flex>
               <Flex className="content-flex" gap="gap.small">
                 <Text size="small" className="content-text" title={this.state.cardDetails.description} content={this.state.cardDetails.description} />

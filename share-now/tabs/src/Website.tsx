@@ -4,17 +4,17 @@
 import React from "react";
 /**
  * This component is used to display the required
- * privacy statement which can be found in a link in the
- * about tab.
+ * terms of use statement which can be found in a
+ * link in the about tab.
  */
-class Privacy extends React.Component {
+class Website extends React.Component {
   render():JSX.Element {
     return (
       <div>
-        <h1>Privacy Statement</h1>
+        <h1>Website</h1>
       </div>
     );
   }
 }
 
-export default Privacy;
+export default Website;

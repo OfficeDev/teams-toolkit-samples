@@ -18,7 +18,7 @@ interface INoPostAddedProps extends WithTranslation {
 
 class TeamsConfigPage extends React.Component<INoPostAddedProps> {
     localize: TFunction;
-    constructor(props: any) {
+    constructor(props) {
       super(props);
       this.localize = this.props.t;
     }

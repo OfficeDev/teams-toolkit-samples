@@ -8,7 +8,6 @@ import EditItemDialogContent from "./edit-dialog-content";
 import { IDiscoverPost } from "../card-view/discover-wrapper-page";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
-import * as microsoftTeams from "@microsoft/teams-js";
 
 import "../../styles/edit-dialog.css";
 import Resources from "../../constants/resources";
@@ -28,7 +27,7 @@ interface IEditDialogStateState {
 class EditItemDialog extends React.Component<IEditItemProps, IEditDialogStateState> {
     localize: TFunction;
 
-    constructor(props: any) {
+    constructor(props) {
       super(props);
 
       this.localize = this.props.t;

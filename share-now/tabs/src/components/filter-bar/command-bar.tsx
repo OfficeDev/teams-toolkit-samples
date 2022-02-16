@@ -4,7 +4,6 @@
 import * as React from "react";
 import { Flex } from "@fluentui/react-northstar";
 import { initializeIcons } from "@uifabric/icons";
-import { useTranslation } from 'react-i18next';
 import AddNewPostDialog from "../add-new-dialog/add-new-dialog";
 import { IDiscoverPost } from "../card-view/discover-wrapper-page";
 
@@ -18,7 +17,6 @@ interface ICommandBarProps {
 }
 
 const CommandBar: React.FunctionComponent<ICommandBarProps> = props => {
-  const localize = useTranslation().t;
   initializeIcons();
 
   return (

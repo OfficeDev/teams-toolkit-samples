@@ -47,7 +47,7 @@ export interface IUserVote {
 
 interface ICardViewState {
     loader: boolean;
-    resourceStrings: any;
+    resourceStrings: unknown;
     discoverPosts: Array<IDiscoverPost>;
     discoverSearchPosts: Array<IDiscoverPost>;
     alertMessage: string;
@@ -69,19 +69,19 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     allPosts: Array<IDiscoverPost>;
     loggedInUserObjectId: string;
     teamId: string;
-    authorAvatarBackground: Array<any>;
+    authorAvatarBackground: Array<{ id: string, color: string }>;
     hasmorePost: boolean;
     clearSearchText: boolean;
     credential: TeamsUserCredential;
 
-    constructor(props: any) {
+    constructor(props) {
       super(props);
       const colors = localStorage.getItem("avatar-colors");
       this.localize = this.props.t;
       this.allPosts = [];
       this.loggedInUserObjectId = "";
       this.teamId = "";
-      this.authorAvatarBackground = colors === null ? [] : JSON.parse(colors!);
+      this.authorAvatarBackground = colors === null ? [] : JSON.parse(colors);
       this.hasmorePost = true;
       this.clearSearchText = false;
       this.credential = new TeamsUserCredential();
@@ -368,64 +368,64 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
       } else {
 
         // Cards component array to be rendered in grid.
-        const cards = new Array<any>();
+        const cards = new Array<JSX.Element>();
 
-            this.state.discoverPosts!.map((value: IDiscoverPost, index) => {
-              if (!value.isRemoved) {
-                cards.push(<Col lg={3} sm={6} md={4} className="grid-column d-flex justify-content-center">
-                  <Card onAddPrivatePostClick={this.handleUserPrivatePostButtonClick} index={index} cardDetails={value} onVoteClick={this.onVoteClick} onCardUpdate={this.onCardUpdate} onDeleteButtonClick={this.handleDeleteButtonClick} />
-                </Col>)
-              }
-            });
+        this.state.discoverPosts.map((value: IDiscoverPost, index) => {
+          if (!value.isRemoved) {
+            cards.push(<Col lg={3} sm={6} md={4} className="grid-column d-flex justify-content-center">
+              <Card onAddPrivatePostClick={this.handleUserPrivatePostButtonClick} index={index} cardDetails={value} onVoteClick={this.onVoteClick} onCardUpdate={this.onCardUpdate} onDeleteButtonClick={this.handleDeleteButtonClick} />
+            </Col>)
+          }
+        });
 
-            if (this.state.initialPosts.length === 0) {
-              return (
-                <div className="container-div">
-                  <div className="container-subdiv">
-                    <NotificationMessage onClose={this.hideAlert} showAlert={this.state.showAlert} content={this.state.alertMessage} notificationType={this.state.alertType} />
-                    <NoPostAddedPage showAddButton={true} onNewPostSubmit={this.onNewPost} />
-                  </div>
-                </div>
-              )
-            }
-            const scrollViewStyle = { height: this.state.isFilterApplied === true ? "84vh" : "92vh" };
-            return (
-              <div className="container-div">
-                <div className="container-subdiv-cardview">
-                  <Container fluid className="container-fluid-overriden">
-                    <NotificationMessage
-                      onClose={this.hideAlert}
-                      showAlert={this.state.showAlert}
-                      content={this.state.alertMessage}
-                      notificationType={this.state.alertType}
-                    />
-                    <TitleBar
-                      commandBarSearchText={this.state.searchText}
-                      hideFilterbar={!this.state.isFilterApplied}
-                      onNewPostSubmit={this.onNewPost}
-                    />
-                    <div key={this.state.infiniteScrollParentKey} className="scroll-view scroll-view-mobile" style={scrollViewStyle}>
-                      <InfiniteScroll
-                        pageStart={this.state.pageLoadStart}
-                        loadMore={this.loadMorePosts}
-                        hasMore={this.state.hasMorePosts}
-                        initialLoad={this.state.isPageInitialLoad}
-                        useWindow={false}
-                        loader={<div className="loader"><Loader /></div>}>
-
-                        <Row>
-                          {
-                            cards.length ? cards : this.state.hasMorePosts === true ? <></> : <FilterNoPostContentPage />
-                          }
-                        </Row>
-
-                      </InfiniteScroll>
-                    </div>
-
-                  </Container>
-                </div>
+        if (this.state.initialPosts.length === 0) {
+          return (
+            <div className="container-div">
+              <div className="container-subdiv">
+                <NotificationMessage onClose={this.hideAlert} showAlert={this.state.showAlert} content={this.state.alertMessage} notificationType={this.state.alertType} />
+                <NoPostAddedPage showAddButton={true} onNewPostSubmit={this.onNewPost} />
               </div>
-            );
+            </div>
+          )
+        }
+        const scrollViewStyle = { height: this.state.isFilterApplied === true ? "84vh" : "92vh" };
+        return (
+          <div className="container-div">
+            <div className="container-subdiv-cardview">
+              <Container fluid className="container-fluid-overriden">
+                <NotificationMessage
+                  onClose={this.hideAlert}
+                  showAlert={this.state.showAlert}
+                  content={this.state.alertMessage}
+                  notificationType={this.state.alertType}
+                />
+                <TitleBar
+                  commandBarSearchText={this.state.searchText}
+                  hideFilterbar={!this.state.isFilterApplied}
+                  onNewPostSubmit={this.onNewPost}
+                />
+                <div key={this.state.infiniteScrollParentKey} className="scroll-view scroll-view-mobile" style={scrollViewStyle}>
+                  <InfiniteScroll
+                    pageStart={this.state.pageLoadStart}
+                    loadMore={this.loadMorePosts}
+                    hasMore={this.state.hasMorePosts}
+                    initialLoad={this.state.isPageInitialLoad}
+                    useWindow={false}
+                    loader={<div className="loader"><Loader /></div>}>
+
+                    <Row>
+                      {
+                        cards.length ? cards : this.state.hasMorePosts === true ? <></> : <FilterNoPostContentPage />
+                      }
+                    </Row>
+
+                  </InfiniteScroll>
+                </div>
+
+              </Container>
+            </div>
+          </div>
+        );
       }
     }
 }

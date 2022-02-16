@@ -12,6 +12,7 @@ output frontendHostingOutput object = {
   teamsFxPluginId: 'fx-resource-frontend-hosting'
   domain: frontendHostingProvision.outputs.domain
   endpoint: frontendHostingProvision.outputs.endpoint
+  indexPath: frontendHostingProvision.outputs.indexPath
   storageResourceId: frontendHostingProvision.outputs.resourceId
 }
 // Resources for identity
@@ -27,18 +28,4 @@ output identityOutput object = {
   identityName: userAssignedIdentityProvision.outputs.identityName
   identityResourceId: userAssignedIdentityProvision.outputs.identityResourceId
   identityClientId: userAssignedIdentityProvision.outputs.identityClientId
-}
-// Resources for Simple Auth
-module simpleAuthProvision './provision/simpleAuth.bicep' = {
-  name: 'simpleAuthProvision'
-  params: {
-    provisionParameters: provisionParameters
-    userAssignedIdentityId: userAssignedIdentityProvision.outputs.identityResourceId
-  }
-}
-
-output simpleAuthOutput object = {
-  teamsFxPluginId: 'fx-resource-simple-auth'
-  endpoint: simpleAuthProvision.outputs.endpoint
-  webAppResourceId: simpleAuthProvision.outputs.webAppResourceId
 }
