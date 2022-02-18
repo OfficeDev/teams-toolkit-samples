@@ -4,41 +4,53 @@
         {
             "label": "Pre Debug Check",
             "dependsOn": [
-                "validate local prerequisites",
+                "dependency check",
                 "start ngrok",
-                "prepare local environment"
+                "prepare dev env"
             ],
             "dependsOrder": "sequence"
         },
         {
-            "label": "validate local prerequisites",
+            "label": "Start Bot",
+            "dependsOn": "teamsfx: bot start"
+        },
+        {
+            "label": "dependency check",
             "type": "shell",
-            "command": "exit ${command:fx-extension.validate-local-prerequisites}",
-            "presentation": {
-                "reveal": "never"
-            }
+            "command": "exit ${command:fx-extension.validate-dependencies}"
         },
         {
             "label": "start ngrok",
-            "dependsOn": "teamsfx: ngrok start"
+            "type": "teamsfx",
+            "command": "ngrok start",
+            "isBackground": true,
+            "presentation": {
+                "panel": "new"
+            },
+            "dependsOn": [
+                "bot npm install"
+            ]
+        },
+        {
+            "label": "prepare dev env",
+            "dependsOn": [
+                "prepare local environment",
+                "bot npm install"
+            ],
+            "dependsOrder": "parallel"
+        },
+        {
+            "label": "bot npm install",
+            "type": "shell",
+            "command": "npm install --no-audit",
+            "options": {
+                "cwd": "${workspaceFolder}/bot"
+            }
         },
         {
             "label": "prepare local environment",
             "type": "shell",
-            "command": "exit ${command:fx-extension.pre-debug-check}",
-            "presentation": {
-                "reveal": "never"
-            }
-        },
-        {
-            "label": "Start Bot",
-            "type": "shell",
-            "command": "npm run dev:teamsfx",
-            "isBackground": true,
-            "problemMatcher": "$teamsfx-bot-watch",
-            "options": {
-                "cwd": "${workspaceFolder}/bot"
-            }
+            "command": "exit ${command:fx-extension.pre-debug-check}"
         }
     ]
 }

@@ -4,38 +4,46 @@
         {
             "label": "Pre Debug Check",
             "dependsOn": [
-                "validate local prerequisites",
+                "dependency check",
                 "start ngrok",
-                "prepare local environment"
+                "prepare dev env"
             ],
             "dependsOrder": "sequence"
         },
         {
-            "label": "validate local prerequisites",
+            "label": "dependency check",
             "type": "shell",
-            "command": "exit ${command:fx-extension.validate-local-prerequisites}",
-            "presentation": {
-                "reveal": "never"
-            }
+            "command": "exit ${command:fx-extension.validate-dependencies}"
         },
         {
             "label": "start ngrok",
-            "dependsOn": "teamsfx: ngrok start"
+            "type": "teamsfx",
+            "command": "ngrok start",
+            "isBackground": true,
+            "dependsOn": [
+                "bot npm install"
+            ]
+        },
+        {
+            "label": "prepare dev env",
+            "dependsOn": [
+                "prepare local environment"
+            ],
+            "dependsOrder": "parallel"
         },
         {
             "label": "prepare local environment",
             "type": "shell",
-            "command": "exit ${command:fx-extension.pre-debug-check}",
-            "presentation": {
-                "reveal": "never"
-            }
+            "command": "exit ${command:fx-extension.pre-debug-check}"
         },
         {
             "label": "Start Bot",
+            "dependsOn": "teamsfx: bot start"
+        },
+        {
+            "label": "bot npm install",
             "type": "shell",
-            "command": "npm run dev:teamsfx",
-            "isBackground": true,
-            "problemMatcher": "$teamsfx-bot-watch",
+            "command": "npm install --no-audit",
             "options": {
                 "cwd": "${workspaceFolder}/bot"
             }
