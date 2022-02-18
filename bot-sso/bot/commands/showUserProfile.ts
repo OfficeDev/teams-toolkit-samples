@@ -2,7 +2,7 @@ import { ResponseType } from "@microsoft/microsoft-graph-client";
 import { CardFactory, TurnContext } from "botbuilder";
 import {
   createMicrosoftGraphClient,
-  OnBehalfOfUserCredential,
+  TeamsFx,
 } from "@microsoft/teamsfx";
 import { SSOCommand } from "../helpers/botCommand";
 
@@ -17,8 +17,8 @@ export class ShowUserProfile extends SSOCommand {
     await context.sendActivity("Retrieving user information from Microsoft Graph ...");
 
     // Call Microsoft Graph half of user
-    const oboCredential = new OnBehalfOfUserCredential(ssoToken);
-    const graphClient = createMicrosoftGraphClient(oboCredential, [
+    const teamsfx = new TeamsFx().setSsoToken(ssoToken);
+    const graphClient = createMicrosoftGraphClient(teamsfx, [
       "User.Read",
     ]);
     const me = await graphClient.api("/me").get();
