@@ -2,42 +2,42 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Pre Debug Check & Start All",
+            "label": "Pre Debug Check",
             "dependsOn": [
-                "validate local prerequisites",
-                "prepare local environment",
-                "Start All"
+                "dependency check",
+                "prepare dev env"
             ],
             "dependsOrder": "sequence"
         },
         {
-            "label": "validate local prerequisites",
+            "label": "dependency check",
             "type": "shell",
-            "command": "exit ${command:fx-extension.validate-local-prerequisites}",
-            "presentation": {
-                "reveal": "never"
-            }
+            "command": "exit ${command:fx-extension.validate-dependencies}"
+        },
+        {
+            "label": "prepare dev env",
+            "dependsOn": [
+                "prepare local environment",
+                "frontend npm install"
+            ],
+            "dependsOrder": "parallel"
         },
         {
             "label": "prepare local environment",
             "type": "shell",
-            "command": "exit ${command:fx-extension.pre-debug-check}",
-            "presentation": {
-                "reveal": "never"
-            }
-        },
-        {
-            "label": "Start All",
-            "dependsOn": [
-                "Start Frontend"
-            ]
+            "command": "exit ${command:fx-extension.pre-debug-check}"
         },
         {
             "label": "Start Frontend",
+            "dependsOn": [
+                "teamsfx: frontend start"
+            ],
+            "dependsOrder": "parallel"
+        },
+        {
+            "label": "frontend npm install",
             "type": "shell",
-            "command": "npm run dev:teamsfx",
-            "isBackground": true,
-            "problemMatcher": "$teamsfx-frontend-watch",
+            "command": "npm install --no-audit",
             "options": {
                 "cwd": "${workspaceFolder}/tabs"
             }
