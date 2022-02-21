@@ -1,4 +1,4 @@
-import { TeamsFx, LogLevel, setLogLevel, setLogFunction } from "@microsoft/teamsfx";
+import { LogLevel, setLogLevel, setLogFunction } from "@microsoft/teamsfx";
 import { useData } from "./useData";
 import { useTeams } from "msteams-react-base-component";
 

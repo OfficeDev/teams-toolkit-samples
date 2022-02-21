@@ -1,5 +1,5 @@
 import { useData } from "./useData";
-import { TeamsUserCredential, createMicrosoftGraphClient } from "@microsoft/teamsfx";
+import { TeamsFx, createMicrosoftGraphClient } from "@microsoft/teamsfx";
 import { Client, GraphError } from "@microsoft/microsoft-graph-client";
 
 export function useGraph<T>(
@@ -9,9 +9,9 @@ export function useGraph<T>(
   const { scope } = { scope: ["User.Read"], ...options };
   const initial = useData(async () => {
     try {
-      const credential = new TeamsUserCredential();
+      const teamsfx = new TeamsFx();
       // Important: tokens are stored in sessionStorage, read more here: https://aka.ms/teamsfx-session-storage-notice
-      const graph = createMicrosoftGraphClient(credential, scope);
+      const graph = createMicrosoftGraphClient(teamsfx, scope);
       return await asyncFunc(graph);
     } catch (err: unknown) {
       if (err instanceof GraphError && err.code?.includes("UiRequiredError")) {
@@ -25,10 +25,10 @@ export function useGraph<T>(
   const { data, error, loading, reload } = useData(
     async () => {
       try{
-        const credential = new TeamsUserCredential();
-        await credential.login(scope);
+        const teamsfx = new TeamsFx();
+        await teamsfx.login(scope);
         // Important: tokens are stored in sessionStorage, read more here: https://aka.ms/teamsfx-session-storage-notice
-        const graph = createMicrosoftGraphClient(credential, scope);
+        const graph = createMicrosoftGraphClient(teamsfx, scope);
         return await asyncFunc(graph);
       } catch (err) {
         if (err instanceof Error && err.message?.includes("CancelledByUser")) {
