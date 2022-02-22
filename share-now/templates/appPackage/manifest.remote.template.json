@@ -6,7 +6,7 @@
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Teams App, Inc.",
-        "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}",
+        "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/website",
         "privacyUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/privacy",
         "termsOfUseUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/termsofuse"
     },

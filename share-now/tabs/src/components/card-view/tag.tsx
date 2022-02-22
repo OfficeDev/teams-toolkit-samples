@@ -20,7 +20,7 @@ const Tag: React.FunctionComponent<ITagProps> = props => {
     *Invoked when 'X' icon is clicked of the label and passes control back to parent component.
     */
   const onRemoveClick = () => {
-        props.onRemoveClick!(props.index);
+    props.onRemoveClick?.(props.index);
   }
 
   // Check whether remove icon is to be displayed or not

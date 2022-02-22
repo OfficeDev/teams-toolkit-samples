@@ -24,13 +24,13 @@ Todo List app helps to manage your personal to do items. This app can be install
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 14
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
+- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) **version >= 3.3.0** or [TeamsFx CLI](https://aka.ms/teamsfx-cli) **version >= 0.10.2**
 
 ## What you will learn in this sample:
 
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
 - How to use TeamsFx to build backend hosting on Azure for your tab app.
 - How to use MS graph client in TeamsFx to get access to M365 data.
-- How to use TeamsFx simple auth capability to get Teams user login information.
 - How to use Teams Toolkit to build a personal tab app with Azure Function backend that runs across M365 including Teams, Outlook and Office
 
 ## Try the Sample with Visual Studio Code Extension:

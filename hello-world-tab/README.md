@@ -17,13 +17,12 @@ Hello World Tab shows you how to build a tab app and how to get user login infor
 
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 14
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version after 1.55 or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version after 3.3.0 or [TeamsFx CLI](https://aka.ms/teamsfx-cli) version after 0.10.2
 
 ## What you will learn in this sample:
 
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
 - How to use MS graph client in TeamsFx to get access to M365 data.
-- How to use TeamsFx simple auth capability to get Teams user login information.
 
 ## Try the Sample with Visual Studio Code Extension:
 >Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
