@@ -30,7 +30,7 @@ export function AddSSO(props: {}) {
         .
       </p>
       <p>
-        See instructions ({" "}
+        See instructions ({""}
           <a href={readmeUrl} target="_blank" rel="noreferrer">
             here
           </a>
