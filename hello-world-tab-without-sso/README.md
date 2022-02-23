@@ -69,6 +69,52 @@ Once deployed, you may want to distribute your application to your organization'
 - You can check app configuration and environment information in: [.fx](.fx)
 - You will find frontend code in: [tabs/src/components](tabs/src/components)
 
+### Add Single Sign On feature to retrieve user profile
+
+You can follow the following steps to add Single Sign On feature in this project.
+
+1. Add `fx-resource-aad-app-for-teams` into `activeResourcePlugins` in `.fx/configs/projectSettings.json`
+
+1. Add the following lines in `templates/appPackage/manifest.local.template.json`
+    ```
+    "webApplicationInfo": {
+        "id": "{{localSettings.auth.clientId}}",
+        "resource": "{{{localSettings.auth.applicationIdUris}}}"
+    }
+    ```
+
+    *Note: You need to add comma at the end of last line*
+
+1. Add the following lines in `templates/appPackage/manifest.remote.template.json`
+    ```
+    "webApplicationInfo": {
+        "id": "{{state.fx-resource-aad-app-for-teams.clientId}}",
+        "resource": "{{{state.fx-resource-aad-app-for-teams.applicationIdUris}}}"
+    }
+    ```
+
+    *Note: You need to add comma at the end of last line*
+
+1. Copy [auth-start.html](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/public/auth-start.html) and [auth-end.html](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/public/auth-end.html) to `tabs/public`
+
+1. Copy [.lib](https://github.com/OfficeDev/TeamsFx/tree/main/templates/tab/ts/default/src/components/sample/lib) foler to `tabs/components/sample`
+
+1. Copy [Graph.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/sample/Graph.tsx) and [ProfileCard.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/sample/Graph.tsx) to `tabs/components/sample`
+
+1. Copy [App.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/App.tsx) and replace `tabs/components/App.tsx`
+
+1. In `tabs/components/Welcome.tsx`, find following line and replace `AddSSO` with `Graph`:
+    ```
+    <AddSSO />
+    ```
+
+    Remerber to add command to import `Graph`:
+    ```
+    import { Graph } from "./Graph";
+    ```
+
+1. Then you can run you can follow [local-debug](#try-the-sample-with-visual-studio-code-extension) or [remote](#deploy-to-azure) to test your app.
+
 ## Code of Conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
