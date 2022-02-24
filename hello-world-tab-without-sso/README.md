@@ -71,11 +71,11 @@ Once deployed, you may want to distribute your application to your organization'
 
 ### Add Single Sign On feature to retrieve user profile
 
-You can follow the following steps to add Single Sign On feature in this project.
+You can follow the steps below to add Single Sign-On feature to this project.
 
 1. Add `fx-resource-aad-app-for-teams` into `activeResourcePlugins` in `.fx/configs/projectSettings.json`
 
-    By adding this line, `Teams Toolkit` will provision an Azure AD app for Single Sign On when local debug or provision.
+    By adding this line, `Teams Toolkit` knows when to register an Azure Active Directory application required for implementing SSO feature. The AAD app will be created either during the time your press F5 or when you are ready to move your application to Azure (when you click `Provision in the Cloud`).
 
 1. Add the following lines in `templates/appPackage/manifest.local.template.json`
     ```
@@ -85,7 +85,7 @@ You can follow the following steps to add Single Sign On feature in this project
     }
     ```
 
-    This step aims to add a new section to manifest of Teams App for local debug which contains the info of Azure AD app for Single Sign On when local debug or provision.
+    This is to associate the Azure Active Directory app registration with Teams app manifest.
 
     *Note: You need to add comma at the end of last line*
 
@@ -103,7 +103,7 @@ You can follow the following steps to add Single Sign On feature in this project
 
 1. Copy [auth-start.html](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/public/auth-start.html) and [auth-end.html](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/public/auth-end.html) to `tabs/public`
 
-    When running the following code, Teams will pop up a login window and redirect to `auth-start.html` for login. After login, will redirect to `auth-end.html` to retrive user credential. You can config the path by updating the `REACT_APP_START_LOGIN_PAGE_URL` configuration.
+    When running the following code, Teams will pop up a consent window and redirect to `auth-start.html` for login. After login, will redirect to `auth-end.html` to retrive user credential. You can config the path by updating the `REACT_APP_START_LOGIN_PAGE_URL` configuration.
 
 1. Copy [.lib](https://github.com/OfficeDev/TeamsFx/tree/main/templates/tab/ts/default/src/components/sample/lib) foler to `tabs/components/sample`
 
