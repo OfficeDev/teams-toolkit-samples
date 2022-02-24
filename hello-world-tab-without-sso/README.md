@@ -119,7 +119,7 @@ You can follow the following steps to add Single Sign On feature in this project
 
     This step will update `App.tsx` which will initialize `TeamsFx` SDK before launching the Teams App.
 
-4. In `tabs/components/Welcome.tsx`, find following line and replace `AddSSO` with `Graph`:
+1. In `tabs/components/Welcome.tsx`, find following line and replace `AddSSO` with `Graph`:
     ```
     <AddSSO />
     ```
@@ -131,7 +131,7 @@ You can follow the following steps to add Single Sign On feature in this project
 
     This step will remove the `Add Single Sign On feature to retrieve user profile` component and add `Get the user's profile photo` component in the Teams App.
 
-5.  Then you can run you can follow [local-debug](#try-the-sample-with-visual-studio-code-extension) or [remote](#deploy-to-azure) to test your app.
+1.  Then you can run you can follow [local-debug](#try-the-sample-with-visual-studio-code-extension) or [remote](#deploy-to-azure) to test your app.
 
 ## Code of Conduct
 
