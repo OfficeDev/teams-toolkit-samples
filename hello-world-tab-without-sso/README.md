@@ -1,4 +1,4 @@
-# Getting Started with Hello World Tab Withoud SSO Sample
+# Getting Started with Hello World Tab Without SSO Sample
 
 > Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate.
 >
@@ -75,7 +75,7 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
 1. Add `fx-resource-aad-app-for-teams` into `activeResourcePlugins` in `.fx/configs/projectSettings.json`
 
-    By adding this line, `Teams Toolkit` knows when to register an Azure Active Directory application required for implementing SSO feature. The AAD app will be created either during the time your press F5 or when you are ready to move your application to Azure (when you click `Provision in the Cloud`).
+    By adding this line, `Teams Toolkit` knows when to register an Azure Active Directory application required for implementing SSO feature. The AAD app will be created either during the time you press F5 or when you are ready to move your application to Azure (when you click `Provision in the Cloud`).
 
 1. Add the following lines in `templates/appPackage/manifest.local.template.json`
     ```
@@ -103,28 +103,28 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
 1. Copy [auth-start.html](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/public/auth-start.html) and [auth-end.html](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/public/auth-end.html) to `tabs/public`
 
-    When running the following code, Teams will pop up a consent window and redirect to `auth-start.html` for login. After login, will redirect to `auth-end.html` to retrive user credential. You can config the path by updating the `REACT_APP_START_LOGIN_PAGE_URL` configuration.
+    When running the following code, Teams will pop up a consent window and redirect to `auth-start.html` for login. After login, will redirect to `auth-end.html` to retrieve user credential. You can config the path by updating the `REACT_APP_START_LOGIN_PAGE_URL` configuration.
 
-1. Copy [.lib](https://github.com/OfficeDev/TeamsFx/tree/main/templates/tab/ts/default/src/components/sample/lib) foler to `tabs/components/sample`
+1. Copy [lib](https://github.com/OfficeDev/TeamsFx/tree/main/templates/tab/ts/default/src/components/sample/lib) folder to `tabs/src/components/sample`
 
     This folder contains three files: `useTeamsFx.ts`, `useGraph.ts` and `useData.ts`. These three files contains some basic functions for initializing [TeamsFx SDK](https://www.npmjs.com/package/@microsoft/teamsfx?activeTab=explore), calling Graph API, etc.
 
-1. Copy [Graph.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/sample/Graph.tsx) and [ProfileCard.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/sample/Graph.tsx) to `tabs/components/sample`
+1. Copy [Graph.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/sample/Graph.tsx) and [ProfileCard.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/sample/ProfileCard.tsx) to `tabs/src/components/sample`
 
-    These two files contains `Get the user's profile photo` component which will call Graph to retrive user profile.
+    These two files contains `Get the user's profile photo` component which will call Graph to retrieve user profile.
 
     ![Get the user's profile photo](images/get-user-profile.png)
 
-1. Copy [App.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/App.tsx) and replace `tabs/components/App.tsx`
+1. Copy [App.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/App.tsx) and replace `tabs/src/components/App.tsx`
 
     This step will update `App.tsx` which will initialize `TeamsFx` SDK before launching the Teams App.
 
-1. In `tabs/components/Welcome.tsx`, find following line and replace `AddSSO` with `Graph`:
+1. In `tabs/src/components/sample/Welcome.tsx`, find following line and replace `AddSSO` with `Graph`:
     ```
     <AddSSO />
     ```
 
-    Remerber to add command to import `Graph`:
+    Remember to add command to import `Graph`:
     ```
     import { Graph } from "./Graph";
     ```
