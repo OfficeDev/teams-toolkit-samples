@@ -119,7 +119,7 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
     This step will update `App.tsx` which will initialize `TeamsFx` SDK before launching the Teams App.
 
-1. In `tabs/src/components/Welcome.tsx`, find following line and replace `AddSSO` with `Graph`:
+1. In `tabs/src/components/sample/Welcome.tsx`, find following line and replace `AddSSO` with `Graph`:
     ```
     <AddSSO />
     ```
