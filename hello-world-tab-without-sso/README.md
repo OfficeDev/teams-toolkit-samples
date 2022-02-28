@@ -109,17 +109,98 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
     This folder contains three files: `useTeamsFx.ts`, `useGraph.ts` and `useData.ts`. These three files contains some basic functions for initializing [TeamsFx SDK](https://www.npmjs.com/package/@microsoft/teamsfx?activeTab=explore), calling Graph API, etc.
 
-1. Copy [Graph.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/sample/Graph.tsx) and [ProfileCard.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/sample/ProfileCard.tsx) to `tabs/src/components/sample`
 
-    These two files contains `Get the user's profile photo` component which will call Graph to retrieve user profile.
+
+1. Create `Graph.tsx` under `tabs/src/components/sample` and copy the following code into it.
+
+    ```
+      import React from "react";
+      import { Button } from "@fluentui/react-northstar";
+      import { useGraph } from "./lib/useGraph";
+      import { ProfileCard } from "./ProfileCard";
+
+      export function Graph() {
+        const { loading, error, data, reload } = useGraph(
+          async (graph) => {
+            const profile = await graph.api("/me").get();
+            let photoUrl = "";
+            try {
+              const photo = await graph.api("/me/photo/$value").get();
+              photoUrl = URL.createObjectURL(photo);
+            } catch {
+              // Could not fetch photo from user's profile, return empty string as placeholder.
+            }
+            return { profile, photoUrl };
+          },
+          { scope: ["User.Read"] }
+        );
+
+        return (
+          <div>
+            <h2>Get the user's profile photo</h2>
+            <p>Click below to authorize this app to read your profile photo using Microsoft Graph.</p>
+            <Button primary content="Authorize" disabled={loading} onClick={reload} />
+            {loading && ProfileCard(true)}
+            {!loading && error && (
+              <div className="error">
+                Failed to read your profile. Please try again later. <br /> Details: {error.toString()}
+              </div>
+            )}
+            {!loading && data && ProfileCard(false, data)}
+          </div>
+        );
+      }
+    ```
+
+   Create `ProfileCard.tsx` under `tabs/src/components/sample` and copy the following code into it.
+
+    ```
+      import React from "react";
+      import { Avatar, Card, Flex, Skeleton, Text } from "@fluentui/react-northstar";
+
+      export const ProfileCard = (loading: boolean, data?: any) => (
+        <Card
+          aria-roledescription="card avatar"
+          elevated
+          inverted
+          styles={{ height: "max-content", margin: "0.5em 0" }}
+        >
+          <Card.Header styles={{ "margin-bottom": "0" }}>
+            {loading && (
+              <Skeleton animation="wave">
+                <Flex gap="gap.medium">
+                  <Skeleton.Avatar size="larger" />
+                  <div>
+                    <Skeleton.Line width="100px" />
+                    <Skeleton.Line width="150px" />
+                  </div>
+                </Flex>
+              </Skeleton>
+            )}
+            {!loading && data && (
+              <Flex gap="gap.medium">
+                <Avatar size="larger" image={data.photoUrl} name={data.profile.displayName} />{" "}
+                <Flex column>
+                  <Text content={data.profile.displayName} weight="bold" />
+                  <Text content={data.profile.mail} size="small" />
+                  <Text content={data.profile.mobilePhone} size="small" />
+                </Flex>
+              </Flex>
+            )}
+          </Card.Header>
+        </Card>
+      );
+    ```
+
+    The above two files contains `Get the user's profile photo` component which will call Graph to retrieve user profile.
 
     ![Get the user's profile photo](images/get-user-profile.png)
 
-1. Copy [App.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/App.tsx) and replace `tabs/src/components/App.tsx`
+2. Copy [App.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/App.tsx) and replace `tabs/src/components/App.tsx`
 
     This step will update `App.tsx` which will initialize `TeamsFx` SDK before launching the Teams App.
 
-1. In `tabs/src/components/sample/Welcome.tsx`, find following line and replace `AddSSO` with `Graph`:
+3. In `tabs/src/components/sample/Welcome.tsx`, find following line and replace `AddSSO` with `Graph`:
     ```
     <AddSSO />
     ```
@@ -131,7 +212,7 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
     This step will remove the `Add Single Sign On feature to retrieve user profile` component and add `Get the user's profile photo` component in the Teams App.
 
-1.  Then you can run you can follow [local-debug](#try-the-sample-with-visual-studio-code-extension) or [remote](#deploy-to-azure) to test your app.
+4.  Then you can run you can follow [local-debug](#try-the-sample-with-visual-studio-code-extension) or [remote](#deploy-to-azure) to test your app.
 
 ## Code of Conduct
 
