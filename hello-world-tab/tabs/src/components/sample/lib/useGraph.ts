@@ -1,16 +1,15 @@
 import { useData } from "./useData";
-import { TeamsFx, createMicrosoftGraphClient } from "@microsoft/teamsfx";
+import { TeamsFx, createMicrosoftGraphClient, ErrorWithCode } from "@microsoft/teamsfx";
 import { Client, GraphError } from "@microsoft/microsoft-graph-client";
 
 export function useGraph<T>(
-  asyncFunc: (graph: Client, credential: TeamsUserCredential, scope: string[]) => Promise<T>,
+  asyncFunc: (graph: Client, teamsfx: TeamsFx, scope: string[]) => Promise<T>,
   options?: { scope: string[] }
 ) {
   const { scope } = { scope: ["User.Read"], ...options };
   const initial = useData(async () => {
     try {
       const teamsfx = new TeamsFx();
-      // Important: tokens are stored in sessionStorage, read more here: https://aka.ms/teamsfx-session-storage-notice
       const graph = createMicrosoftGraphClient(teamsfx, scope);
       return await asyncFunc(graph, teamsfx, scope);
     } catch (err: unknown) {
@@ -31,7 +30,7 @@ export function useGraph<T>(
         const graph = createMicrosoftGraphClient(teamsfx, scope);
         return await asyncFunc(graph, teamsfx, scope);
       } catch (err: unknown) {
-        if (err instanceof Error && err.message?.includes("CancelledByUser")) {
+        if (err instanceof ErrorWithCode && err.message?.includes("CancelledByUser")) {
           const helpLink = "https://aka.ms/teamsfx-auth-code-flow";
           err.message += 
             "\nIf you see \"AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application\" " + 
