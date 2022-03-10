@@ -33,7 +33,7 @@ class Tab extends React.Component {
   }
 
   async initGraphToolkit(teamsfx, scope) {
-    const provider = new TeamsFxProvider(teamsfx.getCredential(), scope)
+    const provider = new TeamsFxProvider(teamsfx, scope)
     Providers.globalProvider = provider;
   }
 
