@@ -5,7 +5,12 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import './Tab.css'
-import { TeamsFx } from "@microsoft/teamsfx";
+import {
+  TeamsUserCredential,
+  loadConfiguration,
+  getResourceConfiguration,
+  ResourceType
+} from "@microsoft/teamsfx";
 import Profile from "./Profile";
 import Creator from "./Creator";
 import { Checkbox, Button, Input, MenuButton } from "@fluentui/react-northstar"
@@ -33,15 +38,31 @@ class Tab extends React.Component {
   }
 
   async initTeamsFx() {
-    const teamsfx = new TeamsFx();
+    // Initialize configuration from environment variables and set the global instance
+    loadConfiguration({
+      authentication: {
+        initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
+        clientId: process.env.REACT_APP_CLIENT_ID
+      },
+      resources: [
+        {
+          type: ResourceType.API,
+          name: "default",
+          properties: {
+            endpoint: process.env.REACT_APP_FUNC_ENDPOINT
+          }
+        }
+      ]
+    });
+    const credential = new TeamsUserCredential();
     // Get the user info from access token
-    const userInfo = await teamsfx.getUserInfo();
+    const userInfo = await credential.getUserInfo();
 
     this.setState({
       userInfo: userInfo
     });
 
-    this.teamsfx = teamsfx;
+    this.credential = credential;
     this.scope = ["User.Read", "User.ReadBasic.All"];
     this.channelOrChatId = await this.getChannelOrChatId();
     const platformInfo = await this.getPlatformInfo();
@@ -59,7 +80,7 @@ class Tab extends React.Component {
   async loginBtnClick() {
     try {
       // Popup login page to get user's access token
-      await this.teamsfx.login(this.scope);
+      await this.credential.login(this.scope);
     } catch (err) {
       if (err instanceof Error && err.message?.includes("CancelledByUser")) {
         const helpLink = "https://aka.ms/teamsfx-auth-code-flow";
@@ -77,7 +98,7 @@ class Tab extends React.Component {
 
   async checkIsConsentNeeded() {
     try {
-      await this.teamsfx.getCredential().getToken(this.scope);
+      await this.credential.getToken(this.scope);
     } catch (error) {
       this.setState({
         showLoginPage: true
@@ -109,12 +130,12 @@ class Tab extends React.Component {
     var funcErrorMsg = "";
     try {
       // Get SSO token for the user
-      const accessToken = await this.teamsfx.getCredential().getToken("");
-      // Gets endpoint for API
-      const apiEndpoint = this.teamsfx.getConfig("apiEndpoint");
+      const accessToken = await this.credential.getToken("");
+      // Gets configuration for API
+      const apiConfig = getResourceConfiguration(ResourceType.API);
       const response = await axios.default.request({
         method: method,
-        url: apiEndpoint + "/api/" + command,
+        url: apiConfig.endpoint + "/api/" + command,
         headers: {
           authorization: "Bearer " + accessToken.token
         },
@@ -243,7 +264,7 @@ class Tab extends React.Component {
             className={"text" + (this.state.items[index].isCompleted ? " is-completed" : "")}
           />
         </div>
-        <Creator objectId={item.objectId} teamsfx={this.teamsfx} scope={this.scope} />
+        <Creator objectId={item.objectId} credential={this.credential} scope={this.scope} />
         <div className="action">
           <MenuButton
             trigger={<Button content="..." />}
