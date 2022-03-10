@@ -83,8 +83,8 @@ In Visual Studio Code, open the command palette and select: `Teams: Provision in
 
 ### Step 2: Update Azure Active Directory applications
 1. Go to Azure Portal, select `Azure Active Directory` and then find `App Registrations`.
-1. In owned applications, locate the AAD application named after this project (`Meeting App`).
-> Note: This project uses a default name `Meeting App`.
+1. In owned applications, locate the AAD application named after this project (`in-meetingapp`).
+> Note: This project uses a default name `in-meetingapp`.
 1. Navigate to the **Authentication** blade and change the redirect URI to remove the `.html`, these will be: `https://XXXX.z13.web.core.windows.net/auth-end`.
 1. Next, enable implicit grant by checking the following boxes:  
     - ID Token  
@@ -95,7 +95,7 @@ In Visual Studio Code, open the command palette and select: `Teams: Provision in
 1. Locate the value of key `siteName` in the file `.fx/states/state.dev.json`. This will be the name of your Azure Resource.
 1. Find the Resource in your Subscription in [Azure Portal](https://portal.azure.com).
 1. Navigate to the **CORS** blade in your resource (An `Azure Web App` resource). Copy the value of key `fx-resource-frontend-hosting.endpoint` in file `state.dev.json`. Paste in the **Allowed Origins** in **CORS** and click **Save**.  
-1. Navigate to **Configuration** for your resource. Copy the value of key `teamsAppId` from the file `.fx/states/state.dev.json`. Click **New application setting**. Add two settings, one is named `TEAMS_APP_ID`, its value is `remoteTeamsAppId` we just copied. Add another named `TEAMSFX_ENDPOINT`, and set its value to the endpoint URL we copied in the previous step. Then click **Save**.
+1. Navigate to **Configuration** for your resource. Copy the value of key `teamsAppId` from the file `.fx/states/state.dev.json`. Click **New application setting**. Add two settings, one is named `TEAMS_APP_ID`, its value is `teamsAppId` we just copied. Add another named `TEAMSFX_ENDPOINT`, and set its value to the endpoint URL we copied in the previous step. Then click **Save**.
 
 ### Step 4: Update env file in project
 1. In `tabs/.env`, add a new line `REACT_APP_TEAMSFX_BACKEND_ENDPOINT=`, append the equal sign is the value of `siteEndpoint` in file `.fx/states/state.dev.json`. 
