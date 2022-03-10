@@ -4,10 +4,7 @@
 import React from 'react';
 import './App.css';
 import './Tab.css'
-import {
-  TeamsUserCredential,
-  loadConfiguration,
-} from "@microsoft/teamsfx";
+import { TeamsFx } from "@microsoft/teamsfx";
 import { Button, Table } from "@fluentui/react-northstar"
 
 import { Providers, ProviderState } from '@microsoft/mgt-element';
@@ -31,25 +28,18 @@ class Tab extends React.Component {
 
   async componentDidMount() {
     await this.initTeamsFx();
-    await this.initGraphToolkit(this.credential, this.scope);
+    await this.initGraphToolkit(this.teamsfx, this.scope);
     await this.checkIsConsentNeeded();
   }
 
-  async initGraphToolkit(credential, scope) {
-    const provider = new TeamsFxProvider(credential, scope)
+  async initGraphToolkit(teamsfx, scope) {
+    const provider = new TeamsFxProvider(teamsfx, scope)
     Providers.globalProvider = provider;
   }
 
   async initTeamsFx() {
-    loadConfiguration({
-      authentication: {
-        initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
-        clientId: process.env.REACT_APP_CLIENT_ID
-      }
-    });
-    const credential = new TeamsUserCredential();
+    this.teamsfx = new TeamsFx();
 
-    this.credential = credential;
     // Only these two permission can be used without admin approval in microsoft tenant
     this.scope = [
       "User.Read",
@@ -59,7 +49,7 @@ class Tab extends React.Component {
 
   async loginBtnClick() {
     try {
-      await this.credential.login(this.scope);
+      await this.teamsfx.login(this.scope);
       Providers.globalProvider.setState(ProviderState.SignedIn);
       this.setState({
         showLoginPage: false
@@ -81,7 +71,7 @@ class Tab extends React.Component {
   async checkIsConsentNeeded() {
     let consentNeeded = false;
     try {
-      await this.credential.getToken(this.scope);
+      await this.teamsfx.getCredential().getToken(this.scope);
     } catch (error) {
       consentNeeded = true;
     }
