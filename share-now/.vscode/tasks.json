@@ -2,109 +2,94 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Pre Debug Check & Start All",
+            "label": "Pre Debug Check",
             "dependsOn": [
-                "validate local prerequisites",
+                "dependency check",
                 "start ngrok",
-                "prepare local environment",
-                "Start All"
+                "prepare dev env"
             ],
             "dependsOrder": "sequence"
         },
         {
-            "label": "validate local prerequisites",
+            "label": "Start Frontend",
+            "dependsOn": [
+                "teamsfx: frontend start",
+                "teamsfx: auth start"
+            ],
+            "dependsOrder": "parallel"
+        },
+        {
+            "label": "Start Bot",
+            "dependsOn": "teamsfx: bot start"
+        },
+        {
+            "label": "dependency check",
             "type": "shell",
-            "command": "exit ${command:fx-extension.validate-local-prerequisites}",
-            "presentation": {
-                "reveal": "never"
-            }
+            "command": "exit ${command:fx-extension.validate-dependencies}"
         },
         {
             "label": "start ngrok",
-            "dependsOn": "teamsfx: ngrok start"
+            "type": "teamsfx",
+            "command": "ngrok start",
+            "isBackground": true,
+            "dependsOn": [
+                "bot npm install"
+            ]
+        },
+        {
+            "label": "prepare dev env",
+            "dependsOn": [
+                "prepare local environment",
+                "backend npm install",
+                "frontend npm install"
+            ],
+            "dependsOrder": "parallel"
+        },
+        {
+            "label": "bot npm install",
+            "type": "shell",
+            "command": "npm install --no-audit",
+            "options": {
+                "cwd": "${workspaceFolder}/bot"
+            }
         },
         {
             "label": "prepare local environment",
             "type": "shell",
-            "command": "exit ${command:fx-extension.pre-debug-check}",
-            "presentation": {
-                "reveal": "never"
-            }
+            "command": "exit ${command:fx-extension.pre-debug-check}"
         },
         {
-            "label": "Start All",
-            "dependsOn": [
-                "Start Frontend",
-                "Start Backend",
-                "Start Bot"
-            ]
-        },
-        {
-            "label": "Start Frontend",
+            "label": "frontend npm install",
             "type": "shell",
-            "command": "npm run dev:teamsfx",
-            "isBackground": true,
-            "problemMatcher": "$teamsfx-frontend-watch",
+            "command": "npm install --no-audit",
             "options": {
                 "cwd": "${workspaceFolder}/tabs"
             }
         },
         {
             "label": "Start Backend",
-            "type": "shell",
-            "command": "npm run dev:teamsfx",
-            "isBackground": true,
-            "problemMatcher": "$teamsfx-backend-watch",
-            "options": {
-                "cwd": "${workspaceFolder}/api",
-                "env": {
-                    "PATH": "${env:PATH}${command:fx-extension.get-func-path}"
-                }
-            },
-            "presentation": {
-                "reveal": "silent"
-            },
-            "dependsOn": "Watch Backend"
+            "dependsOn": [
+                "teamsfx: backend watch",
+                "teamsfx: backend start"
+            ],
+            "dependsOrder": "sequence"
         },
         {
-            "label": "Watch Backend",
+            "label": "backend npm install",
             "type": "shell",
-            "command": "npm run watch:teamsfx",
-            "isBackground": true,
-            "problemMatcher": "$tsc-watch",
+            "command": "npm install --no-audit",
             "options": {
                 "cwd": "${workspaceFolder}/api"
             },
             "presentation": {
                 "reveal": "silent"
-            }
+            },
+            "dependsOn": "backend extensions install"
         },
         {
-            "label": "Start Bot",
+            "label": "backend extensions install",
             "type": "shell",
-            "command": "npm run dev:teamsfx",
-            "isBackground": true,
-            "problemMatcher": {
-                "pattern": [
-                    {
-                        "regexp": "^.*$",
-                        "file": 0,
-                        "location": 1,
-                        "message": 2
-                    }
-                ],
-                "background": {
-                    "activeOnStart": true,
-                    "beginsPattern": "[nodemon] starting",
-                    "endsPattern": "restify listening to|Bot/ME service listening at|[nodemon] app crashed"
-                }
-            },
-            "options": {
-                "cwd": "${workspaceFolder}/bot"
-            },
-            "presentation": {
-                "reveal": "silent"
-            }
+            "command": "exit ${command:fx-extension.backend-extensions-install}"
         }
     ]
 }
