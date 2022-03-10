@@ -24,7 +24,6 @@
 		"typescript": "^4.2.4"
 	},
 	"scripts": {
-		"dev:teamsfx": "env-cmd --silent -f .env.teamsfx.local npm run start",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
@@ -53,7 +52,6 @@
 		"@types/node": "^12.12.21",
 		"@types/react": "^16.9.17",
 		"@types/react-dom": "^16.9.4",
-		"@types/react-router-dom": "^4.3.3",
-		"env-cmd": "^10.1.0"
+		"@types/react-router-dom": "^4.3.3"
 	}
 }
