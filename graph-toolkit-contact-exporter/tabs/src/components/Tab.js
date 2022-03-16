@@ -12,11 +12,14 @@ import { PeoplePicker, Person, PersonViewType, PersonCardInteraction } from '@mi
 import { CSVLink } from "react-csv";
 
 import { TeamsFxProvider } from '@microsoft/mgt-teamsfx-provider';
+import { CacheService } from '@microsoft/mgt';
 
 class Tab extends React.Component {
 
   constructor(props) {
     super(props);
+    CacheService.clearCaches();
+
     this.state = {
       showLoginPage: undefined,
       selectedPeople: undefined,
@@ -157,7 +160,7 @@ class Tab extends React.Component {
               </div>
 
               <div className="people-picker-area">
-                <PeoplePicker selectionChanged={handleInputChange} placeholder="Typing name to select people to view contact info"></PeoplePicker>
+                <PeoplePicker userType="user" selectionChanged={handleInputChange} placeholder="Typing name to select people to view contact info"></PeoplePicker>
               </div>
 
               <div className="table-area">
