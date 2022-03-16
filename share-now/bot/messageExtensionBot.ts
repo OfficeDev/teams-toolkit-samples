@@ -1,14 +1,10 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 import { TeamsActivityHandler, CardFactory, TurnContext } from 'botbuilder';
-import {
-    loadConfiguration,
-} from "@microsoft/teamsfx";
 import { executeQuery, getSQLConnection } from './utils/common';
 export class MessageExtensionBot extends TeamsActivityHandler {
     constructor() {
         super();
-        loadConfiguration();
     }
     // Search.
     public async handleTeamsMessagingExtensionQuery(context: TurnContext, query: any): Promise<any> {

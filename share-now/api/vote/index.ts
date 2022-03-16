@@ -2,10 +2,7 @@
 // Licensed under the MIT License.
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
-import {
-  loadConfiguration,
-  OnBehalfOfUserCredential,
-} from "@microsoft/teamsfx";
+import { TeamsFx } from "@microsoft/teamsfx";
 import { executeQuery, getSQLConnection } from "../utils/common";
 import { checkPost } from "../utils/query";
 
@@ -30,13 +27,12 @@ export default async function run(
   };
   
   let connection;
-  loadConfiguration();
   try {
     connection = await getSQLConnection();
     const method = req.method.toLowerCase();
     const accessToken = teamsfxContext["AccessToken"];
-    const credential = new OnBehalfOfUserCredential(accessToken);
-    const currentUser = await credential.getUserInfo();
+    const teamsfx = new TeamsFx().setSsoToken(accessToken);
+    const currentUser = await teamsfx.getUserInfo();
 
     const postID = context.bindingData.id as number;
     const checkRes = await checkPost(postID, connection);

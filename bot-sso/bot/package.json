@@ -16,15 +16,15 @@
     "url": "https://github.com"
   },
   "dependencies": {
-    "adaptive-expressions": "^4.14.1",
+    "@azure/msal-node": "^1.1.0",
+    "@microsoft/microsoft-graph-client": "^3.0.1",
+    "@microsoft/teamsfx": "^0.6.0",
+    "adaptive-expressions": "^4.15.0",
     "adaptivecards-templating": "2.1.0",
-    "@azure/msal-node": "^1.0.0-beta.3",
-    "@microsoft/microsoft-graph-client": "^2.2.1",
-    "botbuilder": "~4.14.0",
-    "botbuilder-dialogs": "~4.14.0",
+    "botbuilder": "^4.15.0",
+    "botbuilder-dialogs": "^4.15.0",
     "isomorphic-fetch": "^3.0.0",
     "restify": "^8.5.1",
-    "@microsoft/teamsfx": "^0.2.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

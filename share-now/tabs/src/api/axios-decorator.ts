@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
-import { TeamsUserCredential } from "@microsoft/teamsfx";
+import { TeamsFx } from "@microsoft/teamsfx";
 
 export class AxiosJWTDecorator {
 
@@ -92,8 +92,8 @@ export class AxiosJWTDecorator {
   private async setupAuthorizationHeader(
     config?: AxiosRequestConfig
   ): Promise<AxiosRequestConfig> {
-    const credential = new TeamsUserCredential();
-    const token = await credential.getToken("");
+    const teamsfx = new TeamsFx();
+    const token = await teamsfx.getCredential().getToken("");
     if (!config) {
       config = axios.defaults;
     }

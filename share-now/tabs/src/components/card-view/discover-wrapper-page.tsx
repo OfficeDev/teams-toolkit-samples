@@ -14,9 +14,7 @@ import NotificationMessage from "../notification-message/notification-message";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
 import InfiniteScroll from 'react-infinite-scroller';
-import {
-  TeamsUserCredential,
-} from "@microsoft/teamsfx";
+import { TeamsFx } from "@microsoft/teamsfx";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../styles/site.css";
@@ -72,7 +70,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     authorAvatarBackground: Array<{ id: string, color: string }>;
     hasmorePost: boolean;
     clearSearchText: boolean;
-    credential: TeamsUserCredential;
+    teamsfx: TeamsFx;
 
     constructor(props) {
       super(props);
@@ -84,7 +82,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
       this.authorAvatarBackground = colors === null ? [] : JSON.parse(colors);
       this.hasmorePost = true;
       this.clearSearchText = false;
-      this.credential = new TeamsUserCredential();
+      this.teamsfx = new TeamsFx();
 
       this.state = {
         loader: true,
@@ -109,7 +107,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     * Used to initialize Microsoft Teams sdk
     */
     async componentDidMount() {
-      const userInfo = await this.credential.getUserInfo();
+      const userInfo = await this.teamsfx.getUserInfo();
       this.loggedInUserObjectId = userInfo.objectId;
 
       this.initDiscoverPosts();
