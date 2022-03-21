@@ -105,7 +105,7 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
     When running the following code, Teams will pop up a consent window and redirect to `auth-start.html` for login. After login, will redirect to `auth-end.html` to retrieve user credential. You can config the path by updating the `REACT_APP_START_LOGIN_PAGE_URL` configuration.
 
-1. Copy [lib](https://github.com/OfficeDev/TeamsFx/tree/main/templates/tab/ts/default/src/components/sample/lib) folder to `tabs/src/components/sample`
+1. Copy [lib](https://github.com/OfficeDev/TeamsFx/tree/b7804f7b703bde02cddaa6d2a8546db295d6a7fe/templates/tab/ts/default/src/components/sample/lib) folder to `tabs/src/components/sample`
 
     This folder contains three files: `useTeamsFx.ts`, `useGraph.ts` and `useData.ts`. These three files contains some basic functions for initializing [TeamsFx SDK](https://www.npmjs.com/package/@microsoft/teamsfx?activeTab=explore), calling Graph API, etc.
 
