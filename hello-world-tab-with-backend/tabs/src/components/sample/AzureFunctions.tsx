@@ -10,7 +10,7 @@ let teamsfx: TeamsFx | undefined;
 
 async function callFunction() {
   if (!teamsfx) {
-    return;
+    throw new Error("TeamsFx SDK is not initialized.");
   }
   try {
     const accessToken = await teamsfx.getCredential().getToken("");
