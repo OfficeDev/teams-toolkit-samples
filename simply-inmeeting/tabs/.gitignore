@@ -11,5 +11,5 @@
 
 # misc
 .DS_Store
-templateremove//.env
+.env
 .deployment

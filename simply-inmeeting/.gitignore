@@ -1,5 +1,5 @@
 node_modules
-templateremove//.fx/configs/localSettings.json
+.fx/configs/localSettings.json
 .fx/states/*.userdata
 .DS_Store
 .env.teamsfx.local
