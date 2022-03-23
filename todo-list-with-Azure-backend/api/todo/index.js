@@ -2,9 +2,8 @@
 // Licensed under the MIT License.
 
 const {
-    loadConfiguration,
-    OnBehalfOfUserCredential,
-    DefaultTediousConnectionConfiguration,
+    TeamsFx,
+    getTediousConnectionConfig,
 } = require("@microsoft/teamsfx");
 const { Connection, Request } = require('tedious');
 
@@ -29,15 +28,12 @@ const { Connection, Request } = require('tedious');
  */
 module.exports = async function (context, req, config) {
     let connection;
-    // Initialize configuration from environment variables and set the global instance
-    loadConfiguration()
     try {
-        connection = await getSQLConnection();
         const method = req.method.toLowerCase();
         const accessToken = config.AccessToken;
-        const credential = new OnBehalfOfUserCredential(accessToken);
+        const teamsfx = new TeamsFx().setSsoToken(accessToken);
         // Get the user info from access token
-        const currentUser = await credential.getUserInfo();
+        const currentUser = await teamsfx.getUserInfo();
         const objectId = currentUser.objectId;
         var query;
 
@@ -59,6 +55,7 @@ module.exports = async function (context, req, config) {
                 query = "delete from dbo.Todo where " + (req.body ? `id = ${req.body.id}` : `objectId = '${objectId}'`);
                 break;
         }
+        connection = await getSQLConnection(teamsfx);
         // Execute SQL through TeamsFx server SDK generated connection and return result
         const result = await execQuery(query, connection);
         return {
@@ -81,9 +78,8 @@ module.exports = async function (context, req, config) {
     }
 }
 
-async function getSQLConnection() {
-    const sqlConnectConfig = new DefaultTediousConnectionConfiguration();
-    const config = await sqlConnectConfig.getConfig();
+async function getSQLConnection(teamsfx) {
+    const config = await getTediousConnectionConfig(teamsfx);
     const connection = new Connection(config);
     return new Promise((resolve, reject) => {
         connection.on('connect', err => {

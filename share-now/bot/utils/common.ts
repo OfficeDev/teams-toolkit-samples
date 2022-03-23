@@ -1,12 +1,10 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
-import {
-    DefaultTediousConnectionConfiguration
-} from "@microsoft/teamsfx";
+import { getTediousConnectionConfig, TeamsFx } from "@microsoft/teamsfx";
 import * as tedious from "tedious";
 export async function getSQLConnection() {
-    const sqlConnectConfig = new DefaultTediousConnectionConfiguration();
-    const config = await sqlConnectConfig.getConfig();
+    const teamsfx = new TeamsFx();
+    const config = await getTediousConnectionConfig(teamsfx);
     const connection = new tedious.Connection(config);
     return new Promise((resolve, reject) => {
         connection.on('connect', err => {
