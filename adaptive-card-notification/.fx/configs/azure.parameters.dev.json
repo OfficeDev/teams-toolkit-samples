@@ -4,7 +4,7 @@
   "parameters": {
     "provisionParameters": {
       "value": {
-        "resourceBaseName": "notificatidev22578f",
+        "resourceBaseName": "adaptivecadev22578f",
         "botAadAppClientId": "{{state.fx-resource-bot.botId}}",
         "botAadAppClientSecret": "{{state.fx-resource-bot.botPassword}}",
         "m365ClientId": "{{state.fx-resource-aad-app-for-teams.clientId}}",
