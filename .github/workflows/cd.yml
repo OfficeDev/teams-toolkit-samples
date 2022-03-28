@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       update-tag:
-        description: "need bump up version"
+        description: "input yes means bump up tag version, and no means update the tag to top"
         required: true
         default: "no"
 jobs:
