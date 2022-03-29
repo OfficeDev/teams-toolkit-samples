@@ -17,8 +17,7 @@
 
 ## Prerequisites
 * [NodeJS](https://nodejs.org/en/download/releases/) (Recommend LTS 14.x)
-    >  The SharePoint Framework v1.12.1 is supported on the following Node.js versions:
-    >- Node.js v10.13.0+ (Dubnium)
+    >  The SharePoint Framework v1.14.0 is supported on the following Node.js versions:
     >- Node.js v12.13.0+ (Erbium)
     >- Node.js v14.15.0+ (Fermium) 
 * Setup SharePoint Environment by following the [instructions](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
