@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Validate CD branch
-        if: ${{ github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/release' }}
+        if: ${{ github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/release' && !startsWith(github.ref, 'refs/heads/hotfix/') }}
         run: |
-          echo It's not allowed to run CD on other branch except release.
+          echo It's not allowed to run CD on other branch except release or hotfix.
           exit 1
       
       - uses: actions/checkout@v2
@@ -32,7 +32,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Bump version and push tag
-        if: ${{ github.event.inputs.update-tag != 'no' }}
+        if: ${{ github.event.inputs.update-tag == 'yes' && !startsWith(github.ref, 'refs/heads/hotfix/')}}
         uses: anothrNick/github-tag-action@1.26.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
