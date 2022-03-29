@@ -2,52 +2,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Local workbench (Edge)",
-            "type": "pwa-msedge",
-            "request": "launch",
-            "url": "https://localhost:5432/workbench",
-            "webRoot": "${workspaceRoot}/SPFx",
-            "sourceMaps": true,
-            "sourceMapPathOverrides": {
-                "webpack:///.././src/*": "${webRoot}/src/*",
-                "webpack:///../../../src/*": "${webRoot}/src/*",
-                "webpack:///../../../../src/*": "${webRoot}/src/*",
-                "webpack:///../../../../../src/*": "${webRoot}/src/*"
-            },
-            "runtimeArgs": [
-                "--remote-debugging-port=9222"
-            ],
-            "preLaunchTask": "gulp serve",
-            "postDebugTask": "Terminate All Tasks",
-            "presentation": {
-                "group": "local",
-                "order": 1
-            }
-        },
-        {
-            "name": "Local workbench (Chrome)",
-            "type": "pwa-chrome",
-            "request": "launch",
-            "url": "https://localhost:5432/workbench",
-            "webRoot": "${workspaceRoot}/SPFx",
-            "sourceMaps": true,
-            "sourceMapPathOverrides": {
-                "webpack:///.././src/*": "${webRoot}/src/*",
-                "webpack:///../../../src/*": "${webRoot}/src/*",
-                "webpack:///../../../../src/*": "${webRoot}/src/*",
-                "webpack:///../../../../../src/*": "${webRoot}/src/*"
-            },
-            "runtimeArgs": [
-                "--remote-debugging-port=9222"
-            ],
-            "preLaunchTask": "gulp serve",
-            "postDebugTask": "Terminate All Tasks",
-            "presentation": {
-                "group": "local",
-                "order": 2
-            }
-        },
-        {
             "name": "Hosted workbench (Edge)",
             "type": "pwa-msedge",
             "request": "launch",
