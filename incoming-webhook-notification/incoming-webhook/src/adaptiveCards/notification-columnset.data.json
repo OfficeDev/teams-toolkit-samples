@@ -1,0 +1,23 @@
+{
+  "title": "New Event Occurred!",
+  "appName": "Contoso App",
+  "description": "Detailed description of what happened so the user knows what's going on.",
+  "notificationUrl": "https://www.adaptivecards.io/",
+  "data": [
+    {
+      "property1": "sample data",
+      "property2": "sample data",
+      "property3": "https://www.adaptivecards.io/"
+    },
+    {
+      "property1": "sample data",
+      "property2": "sample data",
+      "property3": "https://www.adaptivecards.io/"
+    },
+    {
+      "property1": "sample data",
+      "property2": "sample data",
+      "property3": "https://www.adaptivecards.io/"
+    }
+  ]
+}

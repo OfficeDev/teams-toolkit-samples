@@ -1,0 +1,11 @@
+{
+    "title": "New Event Occurred!",
+    "appName": "Contoso App",
+    "description": "Detailed description of what happened so the user knows what's going on.",
+    "notificationUrl" : "https://www.adaptivecards.io/",
+    "factSet": {
+      "property1": "https://github.com/OfficeDev/TeamsFx",
+      "property2": "sample@contoso.com",
+      "property3": "2022-05-04"
+    }
+  }

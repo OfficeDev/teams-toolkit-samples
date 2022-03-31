@@ -1,0 +1,15 @@
+{
+    "appName": "IncomingWebhookNotification",
+    "projectId": "228d3a4d-0560-48d2-bf5c-ac279c71b34d",
+    "version": "2.1.0",
+    "isFromSample": false,
+    "solutionSettings": {
+        "name": "fx-solution-azure",
+        "version": "1.0.0",
+        "hostType": "Azure",
+        "azureResources": [],
+        "capabilities": [],
+        "activeResourcePlugins": []
+    },
+    "programmingLanguage": "typescript"
+}
