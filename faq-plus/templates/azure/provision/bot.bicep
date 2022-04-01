@@ -12,7 +12,7 @@ var botServiceName = contains(provisionParameters, 'botServiceName') ? provision
 var botServiceSku = contains(provisionParameters, 'botServiceSku') ? provisionParameters['botServiceSku'] : 'F0'
 var botDisplayName = contains(provisionParameters, 'botDisplayName') ? provisionParameters['botDisplayName'] : '${resourceBaseName}'
 var serverfarmsName = contains(provisionParameters, 'botServerfarmsName') ? provisionParameters['botServerfarmsName'] : '${resourceBaseName}bot'
-var webAppSKU = contains(provisionParameters, 'botWebAppSKU') ? provisionParameters['botWebAppSKU'] : 'F1'
+var webAppSKU = contains(provisionParameters, 'botWebAppSKU') ? provisionParameters['botWebAppSKU'] : 'B1'
 var webAppName = contains(provisionParameters, 'botSitesName') ? provisionParameters['botSitesName'] : '${resourceBaseName}bot'
 
 var qnaStorageConnectionString = 'DefaultEndpointsProtocol=https;AccountName=${qnaStorage.name};AccountKey=${listKeys(qnaStorage.id, qnaStorage.apiVersion).keys[0].value};EndpointSuffix=${environment().suffixes.storage}'
@@ -66,6 +66,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
     serverFarmId: serverfarm.id
     keyVaultReferenceIdentity: userAssignedIdentityId
     siteConfig: {
+      alwaysOn: true
       appSettings: [
         {
           name: 'SCM_DO_BUILD_DURING_DEPLOYMENT'
