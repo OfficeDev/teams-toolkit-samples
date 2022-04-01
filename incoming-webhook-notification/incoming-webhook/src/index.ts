@@ -4,8 +4,8 @@ import { buildAdaptiveCard } from "./adaptiveCard";
 import * as fs from "fs-extra";
 import * as path from "path";
 
-const url: string = "<webhook-url>";
-const target: NotificationTarget = new IncomingWebhookTarget(new URL(url));
+const webhookUrl: string = "<webhook-url>";
+const target: NotificationTarget = new IncomingWebhookTarget(new URL(webhookUrl));
 const testNames = ["default", "columnset", "factset", "list", "mention"];
 
 async function triggerIncomingWebhook<TData, TTemplate>(dataFileName: string, templateFileName: string) {
