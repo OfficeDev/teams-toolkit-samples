@@ -8,8 +8,6 @@
 
 An Incoming Webhook Sample provides an easy way to send adaptive cards  in Microsoft Teams channels. The webhooks are used as tools to track and notify.
 
-![Incoming Webhook](images/x.gif)
-
 ## Prerequisite
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 14
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
