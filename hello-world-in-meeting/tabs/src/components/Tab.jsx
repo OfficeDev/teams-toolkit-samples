@@ -25,17 +25,8 @@ class Tab extends React.Component {
   }
 
   render() {
-    let meetingId;
-    let userPrincipleName;
-
-    if (Object.keys(this.state.context).length > 0) {
-      meetingId = this.state.context['meetingId'];
-      userPrincipleName = this.state.context['userPrincipalName'];
-    }
-    else {
-      meetingId = "";
-      userPrincipleName = "";
-    }
+    let meetingId = this.state.context['meetingId'] ?? "";
+    let userPrincipleName = this.state.context['userPrincipalName'] ?? "";
 
     return (
     <div>

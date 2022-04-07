@@ -1,7 +1,7 @@
 {
     "appName": "Hello_World_In_Meeting_App",
     "version": "2.1.0",
-    "isFromSample": false,
+    "isFromSample": true,
     "solutionSettings": {
         "name": "fx-solution-azure",
         "version": "1.0.0",
