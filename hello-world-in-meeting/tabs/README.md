@@ -1,4 +1,4 @@
-# How to use this In-meeting app HelloWorld app
+# How to use this HelloWorld In-meeting app
 
 > Important: Please be advised that access tokens are stored in sessionStorage for you by default. This can make it possible for malicious code in your app (or code pasted into a console on your page) to access APIs at the same privilege level as your client application. Please ensure you only request the minimum necessary scopes from your client application, and perform any sensitive operations from server side code that your client has to authenticate with.
 
