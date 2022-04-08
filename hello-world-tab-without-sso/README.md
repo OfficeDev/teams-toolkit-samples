@@ -105,18 +105,17 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
     When running the following code, Teams will pop up a consent window and redirect to `auth-start.html` for login. After login, will redirect to `auth-end.html` to retrieve user credential. You can config the path by updating the `REACT_APP_START_LOGIN_PAGE_URL` configuration.
 
-1. Copy [lib](https://github.com/OfficeDev/TeamsFx/tree/main/templates/tab/ts/default/src/components/sample/lib) folder to `tabs/src/components/sample`
+1. Add `@microsoft/teamsfx-react` npm package.
 
-    This folder contains three files: `useTeamsFx.ts`, `useGraph.ts` and `useData.ts`. These three files contains some basic functions for initializing [TeamsFx SDK](https://www.npmjs.com/package/@microsoft/teamsfx?activeTab=explore), calling Graph API, etc.
+    - Run `npm install @microsoft/teamsfx-react` under `tabs` folder.
 
-
+    This package contains three APIs: `useTeamsFx()`, `useGraph()` and `useData()`. These three APIs contains some basic functions for initializing [TeamsFx SDK](https://www.npmjs.com/package/@microsoft/teamsfx?activeTab=explore), calling Graph API, etc.
 
 1. Create `Graph.tsx` under `tabs/src/components/sample` and copy the following code into it.
 
     ```
-      import React from "react";
       import { Button } from "@fluentui/react-northstar";
-      import { useGraph } from "./lib/useGraph";
+      import { useGraph } from "@microsoft/teamsfx-react";
       import { ProfileCard } from "./ProfileCard";
 
       export function Graph() {
@@ -143,7 +142,7 @@ You can follow the steps below to add Single Sign-On feature to this project.
             {loading && ProfileCard(true)}
             {!loading && error && (
               <div className="error">
-                Failed to read your profile. Please try again later. <br /> Details: {error.toString()}
+                Failed to read your profile. Please try again later. <br /> Details: {(error as any).toString()}
               </div>
             )}
             {!loading && data && ProfileCard(false, data)}
@@ -196,7 +195,46 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
     ![Get the user's profile photo](images/get-user-profile.png)
 
-1. Copy [App.tsx](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/src/components/App.tsx) and replace `tabs/src/components/App.tsx`
+1. Replace the content in `tabs/src/components/App.tsx` with following code:
+
+    ```
+    // https://fluentsite.z22.web.core.windows.net/quick-start
+    import { Provider, teamsTheme, Loader } from "@fluentui/react-northstar";
+    import { HashRouter as Router, Redirect, Route } from "react-router-dom";
+    import { useTeamsFx } from "@microsoft/teamsfx-react";
+    import Privacy from "./Privacy";
+    import TermsOfUse from "./TermsOfUse";
+    import Tab from "./Tab";
+    import "./App.css";
+    import TabConfig from "./TabConfig";
+
+    /**
+    * The main app which handles the initialization and routing
+    * of the app.
+    */
+    export default function App() {
+      const { loading, theme } = useTeamsFx();
+      return (
+        <Provider theme={theme || teamsTheme} styles={{ backgroundColor: "#eeeeee" }}>
+          <Router>
+            <Route exact path="/">
+              <Redirect to="/tab" />
+            </Route>
+            {loading ? (
+              <Loader style={{ margin: 100 }} />
+            ) : (
+              <>
+                <Route exact path="/privacy" component={Privacy} />
+                <Route exact path="/termsofuse" component={TermsOfUse} />
+                <Route exact path="/tab" component={Tab} />
+                <Route exact path="/config" component={TabConfig} />
+              </>
+            )}
+          </Router>
+        </Provider>
+      );
+    }
+    ```
 
     This step will update `App.tsx` which will initialize `TeamsFx` SDK before launching the Teams App.
 
