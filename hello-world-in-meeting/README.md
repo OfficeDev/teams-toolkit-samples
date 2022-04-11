@@ -16,7 +16,7 @@ Microsoft Teams supports the ability to run web-based UI inside "custom tabs" th
 1. Start Ngrok using command `ngrok http https://localhost:53000`, if the ngrok show error and let you log in to get the feature, please follow the tutorial in its return log. 
 2. Get the forwarding endpoint in https, it looks like `https://XX-XX-XX-XX.ngrok.io`
 3. You can find the Teams app manifest for local in `templates/appPackage` folder. The folder contains two manifest files:
-we need this one `manifest.local.template.json`. Change the `{{{NGROK_ENDPOINT}}}` placholder to the ngrok forwarding endpoint.
+we need this one `manifest.template.json`. Change the `{{{NGROK_ENDPOINT}}}` placholder to the ngrok forwarding endpoint.
 
 ## Prepare a meeting
 Follow the instruction to [create a meeting in Teams](https://support.microsoft.com/en-us/office/create-a-meeting-in-teams-for-personal-and-small-business-use-eb571219-517b-49bf-afe1-4fff091efa85). Then in the Calendar you could find it, double click the meeting then you could see the meeting detail, this step makes the meetig enable.

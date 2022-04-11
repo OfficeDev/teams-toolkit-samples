@@ -34,8 +34,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 ## Edit the manifest
 
 You can find the Teams manifest in `templates/appPackage` folder. The templates contains:
-* `manifest.local.template.json`: Manifest file for Teams app running locally.
-* `manifest.remote.template.json`: Manifest file for Teams app running remotely (After deployed to Azure).
+* `manifest.template.json`: Manifest file for Teams app running locally and remotely.
 
 Both file contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
 

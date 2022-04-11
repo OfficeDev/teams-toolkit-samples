@@ -33,8 +33,7 @@ Hello World Tab shows you how to build a tab app without single sign on.
 ## Edit the manifest
 
 You can find the Teams manifest in `templates/appPackage` folder. The templates contains:
-* `manifest.local.template.json`: Manifest file for Teams app running locally.
-* `manifest.remote.template.json`: Manifest file for Teams app running remotely (After deployed to Azure).
+* `manifest.template.json`: Manifest file for Teams app running locally and remotely.
 
 Both file contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
 
@@ -77,19 +76,7 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
     By adding this line, `Teams Toolkit` knows when to register an Azure Active Directory application required for implementing SSO feature. The AAD app will be created either during the time you press F5 or when you are ready to move your application to Azure (when you click `Provision in the Cloud`).
 
-1. Add the following lines in `templates/appPackage/manifest.local.template.json`
-    ```
-    "webApplicationInfo": {
-        "id": "{{localSettings.auth.clientId}}",
-        "resource": "{{{localSettings.auth.applicationIdUris}}}"
-    }
-    ```
-
-    This is to associate the Azure Active Directory app registration with Teams app manifest.
-
-    *Note: You need to add comma at the end of last line*
-
-1. Add the following lines in `templates/appPackage/manifest.remote.template.json`
+2. Add the following lines in `templates/appPackage/manifest.template.json`
     ```
     "webApplicationInfo": {
         "id": "{{state.fx-resource-aad-app-for-teams.clientId}}",
@@ -101,17 +88,17 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
     *Note: You need to add comma at the end of last line*
 
-1. Copy [auth-start.html](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/public/auth-start.html) and [auth-end.html](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/public/auth-end.html) to `tabs/public`
+3. Copy [auth-start.html](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/public/auth-start.html) and [auth-end.html](https://github.com/OfficeDev/TeamsFx/blob/main/templates/tab/ts/default/public/auth-end.html) to `tabs/public`
 
     When running the following code, Teams will pop up a consent window and redirect to `auth-start.html` for login. After login, will redirect to `auth-end.html` to retrieve user credential. You can config the path by updating the `REACT_APP_START_LOGIN_PAGE_URL` configuration.
 
-1. Add `@microsoft/teamsfx-react` npm package.
+4. Add `@microsoft/teamsfx-react` npm package.
 
     - Run `npm install @microsoft/teamsfx-react` under `tabs` folder.
 
     This package contains three APIs: `useTeamsFx()`, `useGraph()` and `useData()`. These three APIs contains some basic functions for initializing [TeamsFx SDK](https://www.npmjs.com/package/@microsoft/teamsfx?activeTab=explore), calling Graph API, etc.
 
-1. Create `Graph.tsx` under `tabs/src/components/sample` and copy the following code into it.
+5. Create `Graph.tsx` under `tabs/src/components/sample` and copy the following code into it.
 
     ```
       import { Button } from "@fluentui/react-northstar";
@@ -195,7 +182,7 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
     ![Get the user's profile photo](images/get-user-profile.png)
 
-1. Replace the content in `tabs/src/components/App.tsx` with following code:
+6. Replace the content in `tabs/src/components/App.tsx` with following code:
 
     ```
     // https://fluentsite.z22.web.core.windows.net/quick-start
@@ -238,7 +225,7 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
     This step will update `App.tsx` which will initialize `TeamsFx` SDK before launching the Teams App.
 
-1. In `tabs/src/components/sample/Welcome.tsx`, find following line and replace `AddSSO` with `Graph`:
+7. In `tabs/src/components/sample/Welcome.tsx`, find following line and replace `AddSSO` with `Graph`:
     ```
     <AddSSO />
     ```
@@ -250,7 +237,7 @@ You can follow the steps below to add Single Sign-On feature to this project.
 
     This step will remove the `Add Single Sign On feature to retrieve user profile` component and add `Get the user's profile photo` component in the Teams App.
 
-1.  Then you can run you can follow [local-debug](#try-the-sample-with-visual-studio-code-extension) or [remote](#deploy-to-azure) to test your app.
+8.  Then you can run you can follow [local-debug](#try-the-sample-with-visual-studio-code-extension) or [remote](#deploy-to-azure) to test your app.
 
 ## Code of Conduct
 
