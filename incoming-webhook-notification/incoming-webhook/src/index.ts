@@ -1,6 +1,7 @@
 // Import required packages
+import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
 import { IncomingWebhookTarget, NotificationTarget } from "@microsoft/teamsfx";
-import { buildAdaptiveCard } from "./adaptiveCard";
+import { CardData } from "./cardModels";
 import * as fs from "fs-extra";
 import * as path from "path";
 
@@ -11,9 +12,9 @@ const testNames = ["default", "columnset", "factset", "list", "mention"];
 async function triggerIncomingWebhook<TData, TTemplate>(dataFileName: string, templateFileName: string) {
     const cardData = await fs.readJson(dataFileName);
     const cardTemplate = await fs.readJson(templateFileName);
-    await target.sendAdaptiveCard(buildAdaptiveCard(() => {
-        return cardData;
-    }, cardTemplate));
+    await target.sendAdaptiveCard(
+        AdaptiveCards.declare<CardData>(cardTemplate).render(cardData)
+    );
 }
 
 for (const name of testNames) {

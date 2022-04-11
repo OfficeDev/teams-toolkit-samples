@@ -29,10 +29,19 @@ An Incoming Webhook Sample provides an easy way to send adaptive cards  in Micro
     ```ts
     const webhookUrl: string = "<webhook-url>";
     ```
+1. Update the `userId` and `userName` to the user who you want to mentioned in the file [`incoming-webhook/src/adaptiveCards/notification-mention.data.json`](bot/src/adaptiveCards/notification-mention.data.json).
 1. Execute the command `npm install`, `npm run build` and `npm run start` under the `./incoming-webhook` folder. 
-1. In the Teams channel, you can find the Adaptive Cards sent from the Incoming Webhook Sample.
-![adaptive-cards](./images/adaptive-cards.jpg)
-
+1. In the Teams channel, you can find the Adaptive Cards sent from the Incoming Webhook Sample. 
+    - Default Adaptive Card
+      ![default](./images/default.jpg)
+    - Columnset Adaptive Card
+      ![columnset](./images/columnset.jpg)
+    - Factset Adaptive Card
+      ![factset](./images/factset.jpg)
+    - List Adaptive Card
+      ![list](./images/list.jpg)
+    - Mention Adaptive Card
+      ![mention](./images/mention.jpg)
 
 ## (Optional) Debug
 >Here are the instructions to debug the sample in **Visual Studio Code**.
