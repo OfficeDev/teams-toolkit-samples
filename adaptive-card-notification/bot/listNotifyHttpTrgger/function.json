@@ -8,7 +8,7 @@
       "methods": [
         "post"
       ],
-      "route": "list-notification"
+      "route": "api/list-notification"
     },
     {
       "type": "http",

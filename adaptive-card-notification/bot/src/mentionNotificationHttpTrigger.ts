@@ -15,8 +15,6 @@ const httpTrigger: AzureFunction = async function (
       AdaptiveCards.declare<CardData>(notificationTemplate).render(notificationData)
     );
   }
-
-  context.res = {};
 };
 
 export default httpTrigger;

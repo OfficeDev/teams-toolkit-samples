@@ -8,7 +8,7 @@
       "methods": [
         "post"
       ],
-      "route": "columnset-notification"
+      "route": "api/columnset-notification"
     },
     {
       "type": "http",
