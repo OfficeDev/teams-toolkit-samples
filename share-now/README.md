@@ -122,6 +122,7 @@ This sample app consists of a personal tab and a messaging extension used to man
 - You will find backend code in: [api/posts](api/posts), [api/vote](api/vote)
 - You will find bot code in: [bot](bot)
 - You will find DB Connection code in: [api/utils/common.ts](api/utils/common.ts)
+- You will find localization strings in: [tabs/public/locales/en-US/translation.json](tabs/public/locales/en-US/translation.json)
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
