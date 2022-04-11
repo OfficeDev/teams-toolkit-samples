@@ -26,6 +26,9 @@
             "type": "pwa-msedge",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
+            "cascadeTerminateToConfigurations": [
+                "Attach to Bot"
+            ],
             "presentation": {
                 "group": "all",
                 "hidden": true
@@ -36,6 +39,9 @@
             "type": "pwa-chrome",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
+            "cascadeTerminateToConfigurations": [
+                "Attach to Bot"
+            ],
             "presentation": {
                 "group": "all",
                 "hidden": true

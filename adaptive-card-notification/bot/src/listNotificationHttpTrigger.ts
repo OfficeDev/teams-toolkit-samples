@@ -1,6 +1,7 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
-import { BotNotification } from "@microsoft/teamsfx";
-import { buildAdaptiveCard } from "./adaptiveCard";
+import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import { CardData } from "./cardModels";
+import { bot } from "./internal/initialize";
 import notificationTemplate from "./adaptiveCards/notification-list.json";
 import notificationData from "./adaptiveCards/notification-list.data.json";
 
@@ -9,9 +10,9 @@ const httpTrigger: AzureFunction = async function (
   context: Context,
   req: HttpRequest
 ): Promise<void> {
-  for (const target of await BotNotification.installations()) {
+  for (const target of await bot.notification.installations()) {
     await target.sendAdaptiveCard(
-      buildAdaptiveCard(() => notificationData, notificationTemplate)
+      AdaptiveCards.declare<CardData>(notificationTemplate).render(notificationData)
     );
   }
 

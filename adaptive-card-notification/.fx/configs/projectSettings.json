@@ -1,8 +1,7 @@
 {
     "appName": "AdaptiveCardNotification",
-    "projectId": "dac6ca6b-e075-4ebc-9343-88b4c2f047e7",
     "version": "2.1.0",
-    "isFromSample": false,
+    "isFromSample": true,
     "solutionSettings": {
         "name": "fx-solution-azure",
         "version": "1.0.0",
@@ -17,7 +16,8 @@
             "fx-resource-aad-app-for-teams",
             "fx-resource-local-debug",
             "fx-resource-appstudio",
-            "fx-resource-cicd"
+            "fx-resource-cicd",
+            "fx-resource-api-connector"
         ]
     },
     "programmingLanguage": "typescript",
