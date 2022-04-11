@@ -5,3 +5,5 @@ node_modules
 /.fx/configs/localSettings.json
 /.fx/states/*.userdata
 **/.env.teamsfx.local
+.fx/configs/config.local.json
+.fx/states/state.local.json
