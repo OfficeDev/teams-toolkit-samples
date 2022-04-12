@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "npx func start",
-    "test": "echo \"No tests yet...\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@azure/functions": "^1.2.2",
