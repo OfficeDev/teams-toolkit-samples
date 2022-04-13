@@ -1,0 +1,12 @@
+[
+    {
+        "resource": "Microsoft Graph",
+        "delegated": [
+            "User.Read",
+            "ExternalItem.Read.All"
+        ],
+        "application": [
+            "ExternalItem.ReadWrite.All"
+        ]
+    }
+]
