@@ -1,6 +1,5 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
 import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
-import { CardData } from "./cardModels";
 import { bot } from "./internal/initialize";
 import notificationTemplate from "./adaptiveCards/notification-default.json";
 import notificationData from "./adaptiveCards/notification-default.data.json";
@@ -12,10 +11,10 @@ const httpTrigger: AzureFunction = async function (
 ): Promise<void> {
   for (const target of await bot.notification.installations()) {
     await target.sendAdaptiveCard(
-      AdaptiveCards.declare<CardData>(notificationTemplate).render(notificationData)
+      AdaptiveCards.declare(notificationTemplate).render(notificationData)
     );
   }
-
+  
   context.res = {};
 };
 
