@@ -1,26 +1,39 @@
-// Import required packages
 import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
-import { IncomingWebhookTarget, NotificationTarget } from "@microsoft/teamsfx";
-import { CardData } from "./cardModels";
 import * as fs from "fs-extra";
 import * as path from "path";
+import { IncomingWebhook } from "./incomingWebhook";
 
+/**
+ * Fill in your incoming webhook url.
+ */
 const webhookUrl: string = "<webhook-url>";
-const target: NotificationTarget = new IncomingWebhookTarget(new URL(webhookUrl));
-const testNames = ["default", "columnset", "factset", "list", "mention"];
 
-async function triggerIncomingWebhook<TData, TTemplate>(dataFileName: string, templateFileName: string) {
-    const cardData = await fs.readJson(dataFileName);
-    const cardTemplate = await fs.readJson(templateFileName);
-    await target.sendAdaptiveCard(
-        AdaptiveCards.declare<CardData>(cardTemplate).render(cardData)
+const incomingWebhook = new IncomingWebhook(new URL(webhookUrl));
+const adaptiveCardNames = ["default", "columnset", "factset", "list", "mention"];
+
+/**
+ * Load adaptive card and send it to incoming webhook.
+ */
+async function sendAdaptiveCard(name: string) {
+    const cardData = await fs.readJson(path.join(__dirname, `./adaptiveCards/notification-${name}.data.json`));
+    const cardTemplate = await fs.readJson(path.join(__dirname, `./adaptiveCards/notification-${name}.json`));
+    await incomingWebhook.sendAdaptiveCard(
+        AdaptiveCards.declare(cardTemplate).render(cardData)
     );
 }
 
-for (const name of testNames) {
-    const dataFileName = path.join(__dirname, `./adaptiveCards/notification-${name}.data.json`);
-    const templateFileName = path.join(__dirname, `./adaptiveCards/notification-${name}.json`);
-    triggerIncomingWebhook(dataFileName, templateFileName)
-    .then(() => console.log(`Send ${name} adaptive card suffessfully.`))
-    .catch(e => console.log(`Failed to send ${name} adaptive card. ${e}`));
+/**
+ * Send message.
+ */
+incomingWebhook.sendMessage("New Event Occurred!")
+    .then(() => console.log(`Send message suffessfully.`))
+    .catch(e => console.log(`Failed to send message. ${e}`));;
+
+/**
+* Send adaptive cards.
+*/
+for (const name of adaptiveCardNames) {
+    sendAdaptiveCard(name)
+        .then(() => console.log(`Send ${name} adaptive card suffessfully.`))
+        .catch(e => console.log(`Failed to send ${name} adaptive card. ${e}`));
 }

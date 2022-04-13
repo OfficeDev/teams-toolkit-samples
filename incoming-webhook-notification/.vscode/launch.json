@@ -10,7 +10,8 @@
             "presentation": {
                 "group": "all"
             },
-            "preLaunchTask": "Start Incoming Webhook"
+            "preLaunchTask": "Start Incoming Webhook",
+            "postDebugTask": "Terminate All Tasks"
         }
     ]
 }

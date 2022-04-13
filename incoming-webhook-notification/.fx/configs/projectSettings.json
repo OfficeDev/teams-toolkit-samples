@@ -2,13 +2,6 @@
     "appName": "IncomingWebhookNotification",
     "version": "2.1.0",
     "isFromSample": true,
-    "solutionSettings": {
-        "name": "fx-solution-azure",
-        "version": "1.0.0",
-        "hostType": "Azure",
-        "azureResources": [],
-        "capabilities": [],
-        "activeResourcePlugins": []
-    },
+    "solutionSettings": {},
     "programmingLanguage": "typescript"
 }
