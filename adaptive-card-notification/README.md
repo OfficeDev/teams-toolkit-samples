@@ -32,16 +32,16 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 1. Press "F5" to open a browser window and then select your package to view todo list sample app. 
 
 ## Use the App in Teams
-1. Get the endpoint of the trigger. For debug, `<hostname>` is `localhost:3978` by default. For preview, the `<hostname>` can be found in `fx-resource-bot.validDomain` of the file `.fx/states/state.{env}.json`.
-1. Send a POST request to `http://<hostname>/api/default-notification`, you will receive an adaptive card.
+1. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default. For preview, the `<endpoint>` can be found in `fx-resource-bot.siteEndpoint` of the file `.fx/states/state.{env}.json`.
+1. Send a POST request to `<endpoint>/api/default-notification`, you will receive an adaptive card.
 ![default](./images/default.jpg)
-1. Send a POST request to `http://<hostname>/api/columnset-notification`, you will receive a columnset adaptive card.
+1. Send a POST request to `<endpoint>/api/columnset-notification`, you will receive a columnset adaptive card.
 ![columnset](./images/columnset.jpg)
-1. Send a POST request to `http://<hostname>/api/factset-notification`, you will receive a factset adaptive card.
+1. Send a POST request to `<endpoint>/api/factset-notification`, you will receive a factset adaptive card.
 ![factset](./images/factset.jpg)
-1. Send a POST request to `http://<hostname>/api/list-notification`, you will receive a list adaptive card.
+1. Send a POST request to `<endpoint>/api/list-notification`, you will receive a list adaptive card.
 ![list](./images/list.jpg)
-1. Update the `userId` and `userName` to the user who you want to mentioned in the file [`bot/src/adaptiveCards/notification-mention.data.json`](bot/src/adaptiveCards/notification-mention.data.json). Send a POST request to `http://<hostname>/api/mention-notification`, you will receive a mention adaptive card.
+1. Update the `userId` and `userName` to the user who you want to mentioned in the file [`bot/src/adaptiveCards/notification-mention.data.json`](bot/src/adaptiveCards/notification-mention.data.json). Send a POST request to `<endpoint>/api/mention-notification`, you will receive a mention adaptive card.
 ![mention](./images/mention.jpg)
 
 ## Architecture
