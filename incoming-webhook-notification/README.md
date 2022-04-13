@@ -18,29 +18,21 @@ An Incoming Webhook Sample provides an easy way to send adaptive cards  in Micro
 
 ## Try the Sample with Visual Studio Code:
 1. [Add an incoming webhook in Teams](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook#create-an-incoming-webhook-1). 
-    - Open the channel in which you want to add the webhook and select **••• More** options from the top navigation bar.
-    - Select **Connectors** from the dropdown menu: ![connectors](./images/connectors.png)
-    - Search for **Incoming Webhook** and select **Add**.
-    - Select **Configure**, provide a name, and upload an image for your webhook if necessary: ![configure](./images/configure.png)
-    - Copy and save the unique webhook URL present in the dialog window. The URL maps to the channel and you can use it to send information to Teams. ![url](./images/url.png)
-    - Select **Done**. 
 1. Clone the repo to your local workspace or directly download the source code.
 1. Replace the placeholder `<webhook-url>` with the webhook URL in `./incoming-webhook/src/index.ts`
     ```ts
     const webhookUrl: string = "<webhook-url>";
     ```
-1. Update the `userId` and `userName` to the user who you want to mentioned in the file [`incoming-webhook/src/adaptiveCards/notification-mention.data.json`](bot/src/adaptiveCards/notification-mention.data.json).
 1. Execute the command `npm install`, `npm run build` and `npm run start` under the `./incoming-webhook` folder. 
 1. In the Teams channel, you can find the Adaptive Cards sent from the Incoming Webhook Sample. 
-    - Default Adaptive Card
-      ![default](./images/default.jpg)
+![default](./images/default.jpg)
 
 
 ## (Optional) Debug
 >Here are the instructions to debug the sample in **Visual Studio Code**.
 1. Download [Visual Studio Code](https://code.visualstudio.com).
 1. Open the project in Visual Studio Code.
-1. [Add an incoming webhook in Teams](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook#create-an-incoming-webhook-1) and replace the Replace the placeholder `<webhook-url>` with the webhook URL in `./incoming-webhook/src/index.ts`.
+1. [Add an incoming webhook in Teams](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook#create-an-incoming-webhook-1) and replace the placeholder `<webhook-url>` with the webhook URL in `./incoming-webhook/src/index.ts`.
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
 1. Press "F5" to open a browser window and then select your package to view todo list sample app. 
 
