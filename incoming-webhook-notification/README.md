@@ -34,14 +34,7 @@ An Incoming Webhook Sample provides an easy way to send adaptive cards  in Micro
 1. In the Teams channel, you can find the Adaptive Cards sent from the Incoming Webhook Sample. 
     - Default Adaptive Card
       ![default](./images/default.jpg)
-    - Columnset Adaptive Card
-      ![columnset](./images/columnset.jpg)
-    - Factset Adaptive Card
-      ![factset](./images/factset.jpg)
-    - List Adaptive Card
-      ![list](./images/list.jpg)
-    - Mention Adaptive Card
-      ![mention](./images/mention.jpg)
+
 
 ## (Optional) Debug
 >Here are the instructions to debug the sample in **Visual Studio Code**.
