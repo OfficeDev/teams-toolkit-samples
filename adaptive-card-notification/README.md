@@ -41,7 +41,7 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 ![factset](./images/factset.jpg)
 1. Send a POST request to `<endpoint>/api/list-notification`, you will receive a list adaptive card.
 ![list](./images/list.jpg)
-1. Update the `userId` and `userName` to the user who you want to mentioned in the file [`bot/src/adaptiveCards/notification-mention.data.json`](bot/src/adaptiveCards/notification-mention.data.json). Send a POST request to `<endpoint>/api/mention-notification`, you will receive a mention adaptive card.
+1. Update the `userId` and `userName` to the user who you want to mentioned in the file [bot/src/mentionNotificationHttpTrigger.ts](bot/src/mentionNotificationHttpTrigger.ts). Send a POST request to `<endpoint>/api/mention-notification`, you will receive a mention adaptive card.
 ![mention](./images/mention.jpg)
 
 ## Architecture
