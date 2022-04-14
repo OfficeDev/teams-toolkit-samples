@@ -1,17 +1,17 @@
 import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
-import { IncomingWebhookNotificationTarget } from "./incomingWebhookNotificationTarget";
-import template from "./adaptiveCards/notification.json";
+import { WebhookTarget } from "./webhookTarget";
+import template from "./adaptiveCards/notification-default.json";
 
 /**
  * Fill in your incoming webhook url.
  */
 const webhookUrl: string = "<webhook-url>"
-const notification = new IncomingWebhookNotificationTarget(new URL(webhookUrl));
+const webhookTarget = new WebhookTarget(new URL(webhookUrl));
 
 /**
 * Send adaptive cards.
 */
-notification.sendAdaptiveCard(
+webhookTarget.sendAdaptiveCard(
     AdaptiveCards.declare(template).render(
     {
         "title": "New Event Occurred!",
@@ -21,4 +21,3 @@ notification.sendAdaptiveCard(
     }))
 .then(() => console.log("Send adaptive card successfully."))
 .catch(e => console.log(`Failed to send adaptive card. ${e}`));
-
