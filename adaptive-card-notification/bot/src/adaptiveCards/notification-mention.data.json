@@ -1,0 +1,8 @@
+{
+    "title": "New Event Occurred!",
+    "appName": "Contoso App",
+    "userId": "sample@contoso.com",
+    "userName": "sample user",
+    "description": "Detailed description of what happened so the user knows what's going on.",
+    "notificationUrl" : "https://www.adaptivecards.io/"
+  }
