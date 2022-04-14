@@ -10,7 +10,7 @@ An Incoming Webhook Sample provides an easy way to send adaptive cards  in Micro
 
 ## Prerequisite
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 14
-- [Teams Channel](https://docs.microsoft.com/en-us/microsoftteams/teams-channels-overview)
+- A [Teams Channel](https://docs.microsoft.com/en-us/microsoftteams/teams-channels-overview)
 
 ## What you will learn in this sample:
 - How to create an Incoming Webhook in Teams
