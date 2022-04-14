@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export class IncomingWebhook {
+export class IncomingWebhookNotificationTarget {
     /**
      * The bound incoming webhook URL.
      */
