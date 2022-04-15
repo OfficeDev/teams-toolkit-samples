@@ -33,16 +33,24 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 
 ## Use the App in Teams
 1. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default. For preview, the `<endpoint>` can be found in `fx-resource-bot.siteEndpoint` of the file `.fx/states/state.{env}.json`.
-1. Send a POST request to `<endpoint>/api/default-notification`, you will receive an adaptive card.
+1. Send a POST request via `<endpoint>/api/default-notification`, you will receive an adaptive card message.
 ![default](./images/default.jpg)
-1. Send a POST request to `<endpoint>/api/columnset-notification`, you will receive a columnset adaptive card.
+1. Send a POST request via `<endpoint>/api/columnset-notification`, you will receive a columnset adaptive card message.
 ![columnset](./images/columnset.jpg)
-1. Send a POST request to `<endpoint>/api/factset-notification`, you will receive a factset adaptive card.
+1. Send a POST request via `<endpoint>/api/factset-notification`, you will receive a factset adaptive card message.
 ![factset](./images/factset.jpg)
-1. Send a POST request to `<endpoint>/api/list-notification`, you will receive a list adaptive card.
+1. Send a POST request via `<endpoint>/api/list-notification`, you will receive a list adaptive card message.
 ![list](./images/list.jpg)
-1. Update the `userId` and `userName` to the user who you want to mentioned in the file [`bot/src/adaptiveCards/notification-mention.data.json`](bot/src/adaptiveCards/notification-mention.data.json). Send a POST request to `<endpoint>/api/mention-notification`, you will receive a mention adaptive card.
-![mention](./images/mention.jpg)
+1. Update the `userId` and `userName` to the user who you want to mention in the file [bot/src/mentionNotificationHttpTrigger.ts](bot/src/mentionNotificationHttpTrigger.ts). Send a POST request via `<endpoint>/api/mention-notification`, you will receive an adaptive card message that mentioned a particular user.
+    ```js
+    const data: MentionData = {
+    ......
+    userId: "<user-id>",
+    userName: "<user-name>",
+    ......
+    };
+    ```
+    ![mention](./images/mention.jpg)
 
 ## Architecture
 - The notification is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for triggering a notification.

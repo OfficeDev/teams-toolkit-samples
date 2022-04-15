@@ -2,7 +2,16 @@ import { AzureFunction, Context, HttpRequest } from "@azure/functions";
 import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
 import { bot } from "./internal/initialize";
 import notificationTemplate from "./adaptiveCards/notification-mention.json";
-import notificationData from "./adaptiveCards/notification-mention.data.json";
+import { MentionData } from "./cardModels";
+
+const data: MentionData = {
+  title: "New Event Occurred!",
+  appName: "Contoso App",
+  userId: "<user-id>",
+  userName: "<user-name>",
+  description: "Detailed description of what happened so the user knows what's going on.",
+  notificationUrl: "https://www.adaptivecards.io/"
+};
 
 // HTTP trigger to send notification.
 const httpTrigger: AzureFunction = async function (
@@ -11,8 +20,18 @@ const httpTrigger: AzureFunction = async function (
 ): Promise<void> {
   for (const target of await bot.notification.installations()) {
     await target.sendAdaptiveCard(
-      AdaptiveCards.declare(notificationTemplate).render(notificationData)
+      AdaptiveCards.declare<MentionData>(notificationTemplate).render(data)
     );
+
+    /** List all members then notify each member
+    for (const member of await target.members()) {
+      data.userId = member.account.email;
+      data.userName = member.account.name;
+      await target.sendAdaptiveCard(
+        AdaptiveCards.declare<MentionData>(notificationTemplate).render(data)
+      );
+    }
+    */
   }
 
   context.res = {};
