@@ -27,7 +27,7 @@ export interface FactsetData extends CardData {
 
 /**
  * Adaptive card data model that bound to the List template in `adaptiveCards/notification-list.json`.
- * For more details of the Container schema, you can refer to https://adaptivecards.io/explorer/Container.html
+ * For more details of the List schema, you can refer to https://adaptivecards.io/explorer/ColumnSet.html
  */
 export interface ListData extends CardData {
     data: string[];
