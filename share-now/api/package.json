@@ -2,6 +2,9 @@
   "name": "teamsfx-sample-share-now-function",
   "version": "1.0.0",
   "scripts": {
+    "dev:teamsfx": "env-cmd --silent -f .env.teamsfx.local npm run dev",
+    "dev": "func start --typescript --language-worker=\"--inspect=9229\" --port \"7071\" --cors \"*\"",
+    "watch:teamsfx": "tsc --watch",
     "build": "tsc",
     "watch": "tsc -w",
     "prestart": "npm run build",
@@ -17,6 +20,7 @@
   },
   "devDependencies": {
     "@types/tedious": "^4.0.3",
+    "env-cmd": "^10.1.0",
     "typescript": "^3.3.3"
   }
 }
