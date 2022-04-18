@@ -6,7 +6,7 @@
 >  
 > This warning will be removed when the samples are ready for production.
 
-Graph Connector sample APP provides an easy way to use MS Graph client in TeamsFx to build a custom Graph Connector in Teams.
+This sample app showcases how to build custom Graph Connector with Azure Functions and query data using Microsoft Graph Client and TeamsFx SDK.
 
 ![Graph Connector Overview](images/graph-connector-app-demo.gif)
 
@@ -19,7 +19,7 @@ Graph Connector sample APP provides an easy way to use MS Graph client in TeamsF
 ## What you will learn in this sample:
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
 - How to use TeamsFx to build backend hosting on Azure for your tab app.
-- How to use MS Graph client in TeamsFx to build a custom Graph Connector in Teams.
+- How to use Microsoft Graph API to build a custom Graph Connector.
 
 ## Try the Sample with Visual Studio Code Extension:
 
