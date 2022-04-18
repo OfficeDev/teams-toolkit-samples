@@ -2,10 +2,11 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Pre Debug Check",
+            "label": "Pre Debug Check & Start All",
             "dependsOn": [
                 "validate local prerequisites",
-                "prepare local environment"
+                "prepare local environment",
+                "Start All"
             ],
             "dependsOrder": "sequence"
         },
@@ -24,6 +25,12 @@
             "presentation": {
                 "reveal": "never"
             }
+        },
+        {
+            "label": "Start All",
+            "dependsOn": [
+                "Start Frontend"
+            ]
         },
         {
             "label": "Start Frontend",
