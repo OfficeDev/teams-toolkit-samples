@@ -1,4 +1,0 @@
-node_modules
-/.fx/*.env
-.DS_Store
-/.fx/configs/localSettings.json
