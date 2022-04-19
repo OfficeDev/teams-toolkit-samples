@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to Incoming Webhook",
+            "type": "pwa-node",
+            "request": "attach",
+            "port": 9239,
+            "restart": true,
+            "presentation": {
+                "group": "all"
+            },
+            "preLaunchTask": "Start Incoming Webhook",
+            "postDebugTask": "Terminate All Tasks"
+        }
+    ]
+}
