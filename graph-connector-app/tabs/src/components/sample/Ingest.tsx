@@ -49,10 +49,6 @@ async function callFunction(functionName: string, method: axios.Method, params?:
 }
 
 export function Ingest() {
-  // const { loading, data, error, reload } = useData(fun, {
-  //   auto: false,
-  // });
-
   const [step, setStep] = useState(-1);
   const [error, setError] = useState<any>("");
   const [loading, setLoading] = useState(false);

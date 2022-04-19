@@ -1,8 +1,7 @@
 {
     "appName": "graphconnectorapp",
-    "projectId": "c88c8bc5-1e60-4a09-963d-02549a56322b",
     "version": "2.1.0",
-    "isFromSample": false,
+    "isFromSample": true,
     "solutionSettings": {
         "name": "fx-solution-azure",
         "version": "1.0.0",
