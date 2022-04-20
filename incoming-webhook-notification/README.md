@@ -33,8 +33,8 @@ An Incoming Webhook Sample provides an easy way to send adaptive cards  in Micro
 1. Download [Visual Studio Code](https://code.visualstudio.com).
 1. Open the project in Visual Studio Code.
 1. [Add an incoming webhook in Teams](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook#create-an-incoming-webhook-1) and replace the placeholder `<webhook-url>` with the webhook URL in `./incoming-webhook/src/index.ts`.
-1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
-1. Press "F5" to open a browser window and then select your package to view todo list sample app. 
+1. Open Debug View (`Ctrl+Shift+D`) and select "Attach to Incoming Webhook" in dropdown list.
+1. Press "F5" to open a browser window and then select your package to view incoming webhook sample app. 
 
 ## Architecture
 ### Code structure
