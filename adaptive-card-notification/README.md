@@ -33,7 +33,7 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 
 ## Use the App in Teams
 1. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default. For preview, the `<endpoint>` can be found in `fx-resource-bot.siteEndpoint` of the file `.fx/states/state.{env}.json`.
-1. (Optional) Update the `userId` and `userName` to the user who you want to mention in the file [mentionNotificationHttpTrigger.ts](bot/src/mentionNotificationHttpTrigger.ts), you will receive an adaptive card message that mentioned a particular user.
+1. (Mention sample) Update the `userId` and `userName` to the user who you want to mention in the file [mentionNotificationHttpTrigger.ts](bot/src/mentionNotificationHttpTrigger.ts).
     ```js
     const data: MentionData = {
     ......
