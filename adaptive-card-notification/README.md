@@ -29,19 +29,11 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 
 ## (Optional) Debug
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
-1. Press "F5" to open a browser window and then select your package to view todo list sample app. 
+1. Press "F5" to open a browser window and then select your package to view adaptive card notification sample app. 
 
 ## Use the App in Teams
 1. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default. For preview, the `<endpoint>` can be found in `fx-resource-bot.siteEndpoint` of the file `.fx/states/state.{env}.json`.
-1. Send a POST request via `<endpoint>/api/default-notification`, you will receive an adaptive card message.
-![default](./images/default.jpg)
-1. Send a POST request via `<endpoint>/api/columnset-notification`, you will receive a columnset adaptive card message.
-![columnset](./images/columnset.jpg)
-1. Send a POST request via `<endpoint>/api/factset-notification`, you will receive a factset adaptive card message.
-![factset](./images/factset.jpg)
-1. Send a POST request via `<endpoint>/api/list-notification`, you will receive a list adaptive card message.
-![list](./images/list.jpg)
-1. Update the `userId` and `userName` to the user who you want to mention in the file [bot/src/mentionNotificationHttpTrigger.ts](bot/src/mentionNotificationHttpTrigger.ts). Send a POST request via `<endpoint>/api/mention-notification`, you will receive an adaptive card message that mentioned a particular user.
+1. (Optional) Update the `userId` and `userName` to the user who you want to mention in the file [mentionNotificationHttpTrigger.ts](bot/src/mentionNotificationHttpTrigger.ts), you will receive an adaptive card message that mentioned a particular user.
     ```js
     const data: MentionData = {
     ......
@@ -50,7 +42,24 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
     ......
     };
     ```
-    ![mention](./images/mention.jpg)
+1. Send a POST request to the http trigger, you will receive the adaptive card message in Teams. The trigger can be addressable with the following route:
+    - Default adaptive card: `<endpoint>/api/default-notification`
+    - Columnset adaptive card: `<endpoint>/api/columnset-notification`
+    - Factset adaptive card: `<endpoint>/api/factset-notification`
+    - List adaptive card: `<endpoint>/api/list-notification`
+    - Adaptive card that mentioned a particular user: `<endpoint>/api/mention-notification`
+
+## Author an adaptive card
+- The default adaptive card template is in [notification-default.json](bot/src/adaptiveCards/notification-default.json). For more details of the adaptive card schema, you can refer to https://adaptivecards.io/explorer/AdaptiveCard.html.
+  ![default](./images/default.jpg)
+- The columnset adaptive card template is in [notification-columnset.json](bot/src/adaptiveCards/notification-columnset.json). For more details of the adaptive card schema, you can refer to https://adaptivecards.io/explorer/ColumnSet.html.
+  ![columnset](./images/columnset.jpg)
+- The list adaptive card is in [notification-list.json](bot/src/adaptiveCards/notification-list.json). For more details of the adaptive card schema, you can refer to https://adaptivecards.io/explorer/ColumnSet.html.
+  ![list](./images/list.jpg)
+- The factset adaptive card template is in [notification-factset.json](bot/src/adaptiveCards/notification-factset.json). For more details of the adaptive card schema, you can refer to https://adaptivecards.io/explorer/FactSet.html.
+  ![factset](./images/factset.jpg)
+- The mention adaptive card template is in [notification-mention.json](bot/src/adaptiveCards/notification-mention.json). For more details of the adaptive card schema, you can refer to https://docs.microsoft.com/microsoftteams/platform/task-modules-and-cards/cards/cards-format?tabs=adaptive-md%2Cconnector-html#mention-support-within-adaptive-cards.
+  ![mention](./images/mention.jpg)
 
 ## Architecture
 - The notification is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for triggering a notification.
