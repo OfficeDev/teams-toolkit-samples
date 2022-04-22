@@ -1,0 +1,13 @@
+.query.page > img {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+}
+
+.search {
+  margin-bottom: 20px;
+}
+
+.search input {
+  width: 300px;
+}

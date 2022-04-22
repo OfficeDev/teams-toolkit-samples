@@ -1,0 +1,25 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ],
+      "route": "status"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "direction": "in",
+      "name": "teamsfxContext",
+      "type": "TeamsFx"
+    }
+  ],
+  "scriptFile": "../dist/status/index.js"
+}
