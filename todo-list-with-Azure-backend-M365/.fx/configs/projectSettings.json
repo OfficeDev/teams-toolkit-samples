@@ -5,7 +5,8 @@
         "version": "1.0.0",
         "hostType": "Azure",
         "capabilities": [
-            "Tab"
+            "Tab",
+            "TabSSO"
         ],
         "azureResources": [
             "function"
@@ -20,6 +21,7 @@
         ]
     },
     "isFromSample": true,
+    "isM365": true,
     "programmingLanguage": "javascript",
     "defaultFunctionName": "getUserProfile",
     "version": "2.1.0"
