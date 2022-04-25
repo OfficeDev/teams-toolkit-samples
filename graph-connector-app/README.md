@@ -47,7 +47,17 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 
 1. Before ingesting data, you need to do 'Admin Consent' with 'ExternalItem.ReadWrite.All' application permission for your AAD App in Azure Portal.
 
-    ![Admin Consent](images/admin-consent.png)
+    1. Find the client id in `.fx\states\state.xxx.json` file (e.g. `state.local.json` for local environment, `state.dev.json` for dev environment).
+
+        ![Find Client ID](images/find-client-id.png)
+
+    1. In 'App registrations' blade of Azure Active Directory in Azure Portal, search the client id to find the AAD Application.
+
+        ![Search Client ID](images/search-client-id.png)
+
+    1. In 'API Permissions' blade, click 'Grant admin consent'.
+
+        ![Admin Consent](images/admin-consent.png)
 
 1. You could try to ingest data into custom Graph Connector. 
 
