@@ -1,4 +1,5 @@
 import { ConversationBot } from "@microsoft/teamsfx";
+import { BlobsStorage } from "../storage/blobsStorage";
 
 // Create bot.
 export const bot = new ConversationBot({
@@ -11,5 +12,7 @@ export const bot = new ConversationBot({
   // Enable notification
   notification: {
     enabled: true,
+    // uncomment following line to use your own blob storage
+    //storage: new BlobsStorage("{your-connection-string}", "{your-container-name}"),
   },
 });
