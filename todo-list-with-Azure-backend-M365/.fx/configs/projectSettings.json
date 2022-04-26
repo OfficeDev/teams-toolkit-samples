@@ -17,7 +17,9 @@
             "fx-resource-aad-app-for-teams",
             "fx-resource-function",
             "fx-resource-local-debug",
-            "fx-resource-appstudio"
+            "fx-resource-appstudio",
+            "fx-resource-cicd",
+            "fx-resource-api-connector"
         ]
     },
     "isFromSample": true,
