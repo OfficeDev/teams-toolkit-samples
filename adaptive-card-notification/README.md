@@ -61,6 +61,20 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 - The mention adaptive card template is in [notification-mention.json](bot/src/adaptiveCards/notification-mention.json). For more details of the adaptive card schema, you can refer to https://docs.microsoft.com/microsoftteams/platform/task-modules-and-cards/cards/cards-format?tabs=adaptive-md%2Cconnector-html#mention-support-within-adaptive-cards.
   ![mention](./images/mention.jpg)
 
+## (Optional) Use Azure Blob Storage to persist notification connections
+This sample provides an implementation of `NotificationTargetStorage` at `bot/src/storage/blobsStorage.ts`, which connects to Azure Blob Storage to persist notification connections.
+
+To try it, uncomment the `notification.storage` settings of your bot in `bot/src/internal/initialize.ts`, then enter your own connection string and container name.
+
+``` typescript
+...
+  notification: {
+    enabled: true,
+    storage: new BlobsStorage("{your-connection-string}", "{your-container-name}"),
+  },
+...
+```
+
 ## Architecture
 - The notification is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for triggering a notification.
 - The Backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for receiving bot messages.
