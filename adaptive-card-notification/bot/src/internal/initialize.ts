@@ -13,6 +13,6 @@ export const bot = new ConversationBot({
   notification: {
     enabled: true,
     // uncomment following line to use your own blob storage
-    //storage: new BlobsStorage("{your-connection-string}", "{your-container-name}"),
+    // storage: new BlobsStorage("{your-connection-string}", "{your-container-name}"),
   },
 });
