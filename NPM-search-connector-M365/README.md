@@ -26,7 +26,7 @@ NPM Search Connector is a Messaging Extension that allows you to perform a quick
 3. Open the project in Visual Studio Code.
 4. Open the command palette and select `Teams: Provision in the cloud`.
 5. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
-6. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Teams Toolkit` Activity Panel. In `ENVIRONMENTS`, select the environment you want to preview and click the `Preview App` icon. For the prompted question, select the platform you want to preview in. If you select `Outlook`, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Configure Outlook" to connect the bot to Outlook channel, then click "Continue" to continue to preview the app in Outlook.
+6. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Teams Toolkit` Activity Panel. In `ENVIRONMENTS`, select the environment you want to preview and click the `Preview App` icon. For the prompted question, select the platform you want to preview in. If you select `Outlook`, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Continue" to continue to preview the app in Outlook.
   ![Install in Teams VSC Remote](./images/install-in-teams-vsc-remote.png)
 
 ## (Optional) Debug

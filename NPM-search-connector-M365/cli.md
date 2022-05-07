@@ -16,7 +16,7 @@
     ```
     teamsfx deploy
     ```
-1. Execute `teamsfx preview --remote --m365-host <m365-host>` in your project directory to launch your application, where `m365-host` is `teams` or `outlook`. If you select `m365-host` as `outlook`, during preview, a dialog will be popped up as the image below. Please select "Install in Teams" first to install the app in Teams, then select "Configure Outlook" to connect the bot to Outlook channel, then select "Continue" to continue to debug the app in Outlook.
+1. Execute `teamsfx preview --remote --m365-host <m365-host>` in your project directory to launch your application, where `m365-host` is `teams` or `outlook`. If you select `m365-host` as `outlook`, during preview, a dialog will be popped up as the image below. Please select "Install in Teams" first to install the app in Teams, then select "Continue" to continue to debug the app in Outlook.
   ![Install in Teams CLI Remote](./images/install-in-teams-cli-remote.png)
 
 ## (Optional) Debug
