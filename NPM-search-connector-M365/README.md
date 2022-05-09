@@ -20,41 +20,32 @@ NPM Search Connector is a Messaging Extension that allows you to perform a quick
 - How to use Teams Toolkit to build a message extension app that runs across M365 including Teams and Outlook (Web)
 
 ## Try the Sample with Visual Studio Code Extension:
+> Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
 1. Clone the repo to your local workspace or directly download the source code.
 2. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 3. Open the project in Visual Studio Code.
 4. Open the command palette and select `Teams: Provision in the cloud`.
 5. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
-6. Once deployment is completed, from [Azure Portal](https://portal.azure.com/), navigate to your bot resource. From *Settings*, select **Channels**. Click on **Outlook**, select the **Message Extensions** tab and then click **Save**.
+6. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Teams Toolkit` Activity Panel. In `ENVIRONMENTS`, select the environment you want to preview and click the `Preview App` icon. For the prompted question, select the platform you want to preview in. If you select `Outlook`, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Configure Outlook" to connect the bot to Outlook channel, then click "Continue" to continue to preview the app in Outlook.
+  ![Install in Teams VSC Remote](./images/install-in-teams-vsc-remote.png)
 
-   ![Azure Bot Channel Message Extension](images/azure-bot-channel-message-extensions.png)
-
-   Confirm that your Outlook channel is listed along with Microsoft Teams in your bot's **Channels** pane.
-
-   ![Azure Bot Channels](images/azure-bot-channels.png)
-7. Open the command palette and select `Teams: Zip Teams metadata package`.
-8. Log in to Teams with your test tenant account, and ensure you are on the Public Developer Preview. You can verify this in Teams client by clicking on the ellipsis (...) menu by your user profile and opening **About** to check that the *Developer preview* option is toggled on.
-
-   ![Teams Dev Preview](images/teams-dev-preview.png)
-9.  Open the *Apps* pane, and click **Upload a custom app** and then **Upload for me or my teams**.
-
-    ![Teams Upload Custom App](images/teams-upload-custom-app.png)
-    
-    Select your app package and click *Open*. Once the app is uploaded, your app will be available in Outlook Web Client within several minutes.
+## (Optional) Debug
+1. In Visual Studio Code, open the `Run and Debug` Activity Panel, select `Debug in Teams` or `Debug in Outlook` and click the `Run and Debug` green arrow button. If you select Debug in Outlook, during debugging, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Configure Outlook" to connect the bot to Outlook channel, then click "Continue" to continue to debug the app in Outlook.
+  ![Install in Teams VSC Local](./images/install-in-teams-vsc-local.png)
 
 ## Use the app in Teams
-In a conversation, open the **Messaging extensions** flyout menu on the bottom of the composition window. Your message extension will be listed and you can invoke it from there. Type a NPM package that you want to search and select one from the search results.
-
-![NPM Search in Teams](images/npm-search-in-teams.png)
-
-Then an adaptive card will be inserted to the message you are composing.
-
-![NPM Search Adaptive Card in Teams](images/npm-search-adaptive-card-in-teams.png)
+To trigger the messaging extension in Teams, there are multiple entry points:
+- `@mention` your messaging extension, from the search box area.
+  ![At Bot from Search](./images/at-bot-from-search.png)
+- `@mention` your messaging extension from the compose message area.
+  ![At Bot in Message](./images/at-bot-in-message.png)
+- Click the `...` under compose message area, find your messaging extension.
+  ![Open Bot via Three Dot](./images/open-bot-via-three-dot.png)
 
 ## Use the app in Outlook Web Client
-To preview your app running in Outlook Web Client, log in to [outlook.com](https://www.outlook.com) using credentials for your test tenant. Click on **New message**. Open the **Messaging extensions** flyout menu on the bottom of the composition window. Your message extension will be listed. You can invoke it from there and use it just as you would while composing a message in Outlook.
-
-![Outlook Web Compose Message Extensions](images/npm-search-in-outlook.png)
+To trigger the messaging extension in Outlook:
+- Click the "More apps" icon under compose email area, find your messaging extension.
+  ![Open Bot in Outlook](./images/open-bot-in-outlook.png)
 
 ## Architecture
 ### Code structure

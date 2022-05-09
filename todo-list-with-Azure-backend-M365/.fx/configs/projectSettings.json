@@ -5,7 +5,8 @@
         "version": "1.0.0",
         "hostType": "Azure",
         "capabilities": [
-            "Tab"
+            "Tab",
+            "TabSSO"
         ],
         "azureResources": [
             "function"
@@ -16,10 +17,13 @@
             "fx-resource-aad-app-for-teams",
             "fx-resource-function",
             "fx-resource-local-debug",
-            "fx-resource-appstudio"
+            "fx-resource-appstudio",
+            "fx-resource-cicd",
+            "fx-resource-api-connector"
         ]
     },
     "isFromSample": true,
+    "isM365": true,
     "programmingLanguage": "javascript",
     "defaultFunctionName": "getUserProfile",
     "version": "2.1.0"

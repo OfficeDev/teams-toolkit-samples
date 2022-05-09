@@ -2,27 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Remote (Edge)",
-            "type": "pwa-msedge",
-            "request": "launch",
-            "url": "https://teams.microsoft.com/l/app/${teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "presentation": {
-                "group": "remote",
-                "order": 1
-            }
-        },
-        {
-            "name": "Launch Remote (Chrome)",
-            "type": "pwa-chrome",
-            "request": "launch",
-            "url": "https://teams.microsoft.com/l/app/${teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "presentation": {
-                "group": "remote",
-                "order": 2
-            }
-        },
-        {
-            "name": "Launch Bot (Edge)",
+            "name": "Launch Bot in Teams (Edge)",
             "type": "pwa-msedge",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
@@ -35,10 +15,36 @@
             }
         },
         {
-            "name": "Launch Bot (Chrome)",
+            "name": "Launch Bot in Teams (Chrome)",
             "type": "pwa-chrome",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${localTeamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
+            "cascadeTerminateToConfigurations": [
+                "Attach to Bot"
+            ],
+            "presentation": {
+                "group": "all",
+                "hidden": true
+            }
+        },
+        {
+            "name": "Launch Bot in Outlook (Edge)",
+            "type": "pwa-msedge",
+            "request": "launch",
+            "url": "https://outlook.office.com/mail?${account-hint}",
+            "cascadeTerminateToConfigurations": [
+                "Attach to Bot"
+            ],
+            "presentation": {
+                "group": "all",
+                "hidden": true
+            }
+        },
+        {
+            "name": "Launch Bot in Outlook (Chrome)",
+            "type": "pwa-chrome",
+            "request": "launch",
+            "url": "https://outlook.office.com/mail?${account-hint}",
             "cascadeTerminateToConfigurations": [
                 "Attach to Bot"
             ],
@@ -61,27 +67,53 @@
     ],
     "compounds": [
         {
-            "name": "Debug (Edge)",
+            "name": "Debug in Teams (Edge)",
             "configurations": [
-                "Launch Bot (Edge)",
+                "Launch Bot in Teams (Edge)",
                 "Attach to Bot"
             ],
             "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
-                "group": "all",
+                "group": "group 1: Teams",
                 "order": 1
             },
             "stopAll": true
         },
         {
-            "name": "Debug (Chrome)",
+            "name": "Debug in Teams (Chrome)",
             "configurations": [
-                "Launch Bot (Chrome)",
+                "Launch Bot in Teams (Chrome)",
                 "Attach to Bot"
             ],
             "preLaunchTask": "Pre Debug Check & Start All",
             "presentation": {
-                "group": "all",
+                "group": "group 1: Teams",
+                "order": 2
+            },
+            "stopAll": true
+        },
+        {
+            "name": "Debug in Outlook (Edge)",
+            "configurations": [
+                "Launch Bot in Outlook (Edge)",
+                "Attach to Bot"
+            ],
+            "preLaunchTask": "Pre Debug Check & Start All & Install App",
+            "presentation": {
+                "group": "group 2: Outlook",
+                "order": 1
+            },
+            "stopAll": true
+        },
+        {
+            "name": "Debug in Outlook (Chrome)",
+            "configurations": [
+                "Launch Bot in Outlook (Chrome)",
+                "Attach to Bot"
+            ],
+            "preLaunchTask": "Pre Debug Check & Start All & Install App",
+            "presentation": {
+                "group": "group 2: Outlook",
                 "order": 2
             },
             "stopAll": true
