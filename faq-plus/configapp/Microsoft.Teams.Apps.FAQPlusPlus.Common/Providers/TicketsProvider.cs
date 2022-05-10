@@ -53,7 +53,7 @@ namespace Microsoft.Teams.Apps.FAQPlusPlus.Common.Providers
         /// <returns><see cref="Task"/> Already saved entity detail.</returns>
         public async Task<TicketEntity> GetTicketAsync(string ticketId)
         {
-            await this.EnsureInitializedAsync().ConfigureAwait(false); // When there is no ticket created by end user and messaging extension is open by SME, table initialization is required before creating search index or datasource or indexer.
+            await this.EnsureInitializedAsync().ConfigureAwait(false); // When there is no ticket created by end user and message extension is open by SME, table initialization is required before creating search index or datasource or indexer.
             if (string.IsNullOrEmpty(ticketId))
             {
                 return null;
