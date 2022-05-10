@@ -24,7 +24,7 @@ namespace Microsoft.Teams.Apps.FAQPlusPlus.Common.Providers
         private const string TicketsIndexerName = "tickets-indexer";
         private const string TicketsDataSourceName = "tickets-storage";
 
-        // Default to 25 results, same as page size of a messaging extension query
+        // Default to 25 results, same as page size of a message extension query
         private const int DefaultSearchResultCount = 25;
 
         private readonly Lazy<Task> initializeTask;
@@ -124,7 +124,7 @@ namespace Microsoft.Teams.Apps.FAQPlusPlus.Common.Providers
         {
             try
             {
-                await this.ticketProvider.GetTicketAsync(string.Empty); // When there is no ticket created by end user and messaging extension is open by SME, table initialization is required here before creating search index or datasource or indexer.
+                await this.ticketProvider.GetTicketAsync(string.Empty); // When there is no ticket created by end user and message extension is open by SME, table initialization is required here before creating search index or datasource or indexer.
                 await this.CreateIndexAsync().ConfigureAwait(false);
                 await this.CreateDataSourceAsync(storageConnectionString).ConfigureAwait(false);
                 await this.CreateIndexerAsync().ConfigureAwait(false);
