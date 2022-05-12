@@ -81,7 +81,7 @@ export function Ingest() {
 
   return (
     <div>
-      <h2>Ingest Sample Data into Graph Connector</h2>
+      <h2>2. Ingest Sample Data into Graph Connector</h2>
       <p>An Azure Functions app is running. Click below button to ingest data from the <a href="https://github.com/microsoftgraph/msgraph-search-connector-sample/blob/main/PartsInventoryConnector/ApplianceParts.csv" target="_blank" rel="noreferrer">CSV file</a>.</p>
       <p><strong>Note: before ingesting data, you need to do 'Admin Consent' with 'ExternalItem.ReadWrite.All' application permission for your AAD App in Azure Portal.</strong></p>
       <Button primary content="Ingest Data" disabled={loading} onClick={ingestData} />
@@ -91,7 +91,7 @@ export function Ingest() {
       <div style={{ marginTop: 20 }}>
         <Status currentStep={step} targetStep={1} error={error} text="Create connection" />
         <Status currentStep={step} targetStep={2} error={error} text="Register schema" />
-        <Status currentStep={step} targetStep={3} error={error} text="Wait for schema to be ready (It may take about several minutes for the first time)" />
+        <Status currentStep={step} targetStep={3} error={error} text="Wait for schema to be ready (It may take about several minutes for the first time, and please do not reload this page)" />
         <Status currentStep={step} targetStep={4} error={error} text="Push all items from CSV file to current connection" />
       </div>
       {!loading && !!error && <div className="error fixed">{error.toString()}</div>}
