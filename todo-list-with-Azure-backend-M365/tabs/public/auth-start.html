@@ -8,48 +8,46 @@
 
   <body>
     <script
-      src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"
-      integrity="sha384-mhp2E+BLMiZLe7rDIzj19WjgXJeI32NkPvrvvZBrMi5IvWup/1NUfS5xuYN5S3VT"
+      src="https://res.cdn.office.net/teams-js/2.0.0-beta.6/js/MicrosoftTeams.min.js"
+      integrity="sha384-zUXDMKhIVeFW07S2xPrtvwSCnfjFTHafmXXzxnNT0ONpSv4NOmekx15PEdsHDDf4"
       crossorigin="anonymous"
     ></script>
     <script
       type="text/javascript"
       src="https://alcdn.msauth.net/browser/2.21.0/js/msal-browser.min.js"
       integrity="sha384-s/NxjjAgw1QgpDhOlVjTceLl4axrp5nqpUbCPOEQy1PqbFit9On6uw2XmEF1eq0s"
-      crossorigin="anonymous"
-    ></script>
-    <script type="text/javascript">
-      microsoftTeams.initialize();
-
-      // Get the tab context, and use the information to navigate to Azure AD login page
-      microsoftTeams.getContext(async function (context) {
-        // Generate random state string and store it, so we can verify it in the callback
-        var currentURL = new URL(window.location);
-        var clientId = currentURL.searchParams.get("clientId");
-        var scope = currentURL.searchParams.get("scope");
-        var loginHint = currentURL.searchParams.get("loginHint");
-
-        const msalConfig = {
-          auth: {
-            clientId: clientId,
-            authority: `https://login.microsoftonline.com/${context.tid}`,
-            navigateToLoginRequestUrl: false,
-          },
-          cache: {
-            cacheLocation: "sessionStorage",
-          },
-        };
-
-        const msalInstance = new msal.PublicClientApplication(msalConfig);
-        const scopesArray = scope.split(" ");
-        const scopesRequest = {
-          scopes: scopesArray,
-          redirectUri:
-            window.location.origin + `/auth-end.html?clientId=${clientId}`,
-          loginHint: loginHint,
-        };
-        await msalInstance.loginRedirect(scopesRequest);
-      });
+      crossorigin="anonymous">
     </script>
+    <script type="text/javascript">
+      microsoftTeams.app.initialize().then(() => {
+        microsoftTeams.app.getContext().then(async (context) => {
+          // Generate random state string and store it, so we can verify it in the callback
+          var currentURL = new URL(window.location);
+          var clientId = currentURL.searchParams.get("clientId");
+          var scope = currentURL.searchParams.get("scope");
+          var loginHint = currentURL.searchParams.get("loginHint");
+
+          const msalConfig = {
+            auth: {
+              clientId: clientId,
+              authority: `https://login.microsoftonline.com/${context.user.tenant.id}`,
+              navigateToLoginRequestUrl: false
+            },
+            cache: {
+              cacheLocation: "sessionStorage",
+            },
+          }
+
+          const msalInstance = new msal.PublicClientApplication(msalConfig);
+          const scopesArray = scope.split(" ");
+          const scopesRequest = {
+            scopes: scopesArray,
+            redirectUri: window.location.origin + `/auth-end.html?clientId=${clientId}`,
+            loginHint: loginHint
+          };
+          await msalInstance.loginRedirect(scopesRequest);
+        });
+      });
+      </script>
   </body>
 </html>
