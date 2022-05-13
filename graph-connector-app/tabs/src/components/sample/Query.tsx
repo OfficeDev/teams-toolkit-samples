@@ -107,7 +107,7 @@ export function Query() {
   return (
     <div className="query page">
       <div className="section-margin">
-        <h2>Query Data from Graph Connector</h2>
+        <h2>3. Query Data from Graph Connector</h2>
         <Input className="search" inverted role="search" icon={<SearchIcon />}
           placeholder="Type keyword (e.g. 'Contoso') and press 'Enter' to search" iconPosition="start" value={query}
           onChange={(e: any) => setQuery(e.target.value)}
