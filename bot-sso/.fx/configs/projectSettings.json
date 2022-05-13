@@ -22,6 +22,7 @@
     "version": "2.0.0",
     "pluginSettings": {
         "fx-resource-bot": {
+            "host-type": "app-service",
             "capabilities": []
         }
     }
