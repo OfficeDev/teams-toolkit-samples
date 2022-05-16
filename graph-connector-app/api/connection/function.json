@@ -1,0 +1,25 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "post"
+      ],
+      "route": "connection"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "direction": "in",
+      "name": "teamsfxContext",
+      "type": "TeamsFx"
+    }
+  ],
+  "scriptFile": "../dist/connection/index.js"
+}

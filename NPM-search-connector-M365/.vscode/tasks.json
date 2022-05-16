@@ -12,6 +12,17 @@
             "dependsOrder": "sequence"
         },
         {
+            "label": "Pre Debug Check & Start All & Install App",
+            "dependsOn": [
+                "validate local prerequisites",
+                "start ngrok",
+                "prepare local environment",
+                "Start All",
+                "install app in Teams"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
             "label": "validate local prerequisites",
             "type": "shell",
             "command": "exit ${command:fx-extension.validate-local-prerequisites}",
@@ -36,6 +47,14 @@
             "dependsOn": [
                 "Start Bot"
             ]
+        },
+        {
+            "label": "install app in Teams",
+            "type": "shell",
+            "command": "exit ${command:fx-extension.install-app-in-teams}",
+            "presentation": {
+                "reveal": "never"
+            }
         },
         {
             "label": "Start Bot",

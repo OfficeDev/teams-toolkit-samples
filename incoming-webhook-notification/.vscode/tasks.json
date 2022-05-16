@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Install Incoming Webhook",
+            "type": "shell",
+            "command": "npm install",
+            "isBackground": true,
+            "options": {
+                "cwd": "${workspaceFolder}/incoming-webhook"
+            },
+        },
+        {
+            "label": "Start Incoming Webhook",
+            "type": "shell",
+            "command": "npm run dev",
+            "isBackground": true,
+            "problemMatcher": {
+                "pattern": [
+                    {
+                        "regexp": "^.*$",
+                        "file": 0,
+                        "location": 1,
+                        "message": 2
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "[nodemon] starting",
+                    "endsPattern": "Debugger listening"
+                }
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/incoming-webhook"
+            },
+            "dependsOn": "Install Incoming Webhook"
+        },
+        {
+            "label": "Terminate All Tasks",
+            "command": "echo ${input:terminate}",
+            "type": "shell",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "terminate",
+            "type": "command",
+            "command": "workbench.action.tasks.terminate",
+            "args": "terminateAll"
+        }
+    ]
+}

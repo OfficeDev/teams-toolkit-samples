@@ -1,0 +1,11 @@
+PartNumber,Name,Description,Price,Inventory,Appliances
+1000,Door hinge,Door hinge for refrigerators,19.99,350,Contoso Fridge;Contoso Sub-zero Fridge;Contoso XL Fridge
+1001,Door handle (stainless steel),Door handle for refrigerators,49.99,200,Contoso Fridge;Contoso Sub-zero Fridge;Contoso XL Fridge
+1002,Door handle (black),Door handle for refrigerators,39.99,300,Contoso Fridge;Contoso Sub-zero Fridge;Contoso XL Fridge
+1003,Door handle (white),Door handle for refrigerators,39.99,275,Contoso Fridge;Contoso Sub-zero Fridge;Contoso XL Fridge
+1004,Compressor,Compressor for refrigerators,129.99,120,Contoso Fridge;Contoso Sub-zero Fridge;Contoso XL Fridge
+1005,Door hinge,Door hinge for dishwashers,17.99,388,Contoso Diswasher;Contoso Super-silent Diswasher
+1006,Door handle (stainless steel),Door handle for dishwashers,48.99,129,Contoso Diswasher;Contoso Super-silent Diswasher
+1007,Door handle (black),Door handle for dishwashers,37.99,47,Contoso Diswasher;Contoso Super-silent Diswasher
+1008,Door handle (white),Door handle for dishwashers,37.99,103,Contoso Diswasher;Contoso Super-silent Diswasher
+1009,Water pump,Water pump for dishwashers,89.99,42,Contoso Diswasher;Contoso Super-silent Diswasher

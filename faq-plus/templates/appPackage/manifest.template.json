@@ -41,9 +41,5 @@
         "identity",
         "messageTeamMembers"
     ],
-    "validDomains": [],
-    "webApplicationInfo": {
-        "id": "{{state.fx-resource-aad-app-for-teams.clientId}}",
-        "resource": "{{{state.fx-resource-aad-app-for-teams.applicationIdUris}}}"
-    }
+    "validDomains": []
 }
