@@ -5,7 +5,8 @@
         "version": "1.0.0",
         "hostType": "Azure",
         "capabilities": [
-            "Tab"
+            "Tab",
+            "TabSSO"
         ],
         "azureResources": [
             "sql",
