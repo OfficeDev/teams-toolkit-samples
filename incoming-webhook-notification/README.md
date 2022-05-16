@@ -6,7 +6,8 @@
 >  
 > This warning will be removed when the samples are ready for production.
 
-An Incoming Webhook Sample provides an easy way to send adaptive cards  in Microsoft Teams channels. The webhooks are used as tools to track and notify.
+An Incoming Webhook Sample provides an easy way to send adaptive cards in Microsoft Teams channels. The webhooks are used as tools to track and notify.
+![Incoming Webhook Overall](./images/incoming-webhook.gif)
 
 ## Prerequisite
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 14

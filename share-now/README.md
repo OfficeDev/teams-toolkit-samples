@@ -109,10 +109,10 @@ To debug the project, you will need to configure an Azure SQL Database to be use
 
 ![Tab App Flow](images/app.png)
 
-This sample app consists of a personal tab and a messaging extension used to manage, search and share posts.
+This sample app consists of a personal tab and a message extension used to manage, search and share posts.
 - The frontend is a react tab app hosted on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
 - The Backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for managing posts in the tab app.
-- The messaging extension is hosted on [Azure Web App](https://docs.microsoft.com/en-us/azure/app-service/overview) for searching and sharing posts.
+- The message extension is hosted on [Azure Web App](https://docs.microsoft.com/en-us/azure/app-service/overview) for searching and sharing posts.
 - The [Azure SQL DB](https://docs.microsoft.com/en-us/azure/azure-sql/) used to persist data.
 
 ### Code structure

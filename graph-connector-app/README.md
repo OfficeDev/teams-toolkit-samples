@@ -30,7 +30,7 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
 1. Press "F5" to open a browser window and then select your package to view contact exporter sample app. 
 
-### Provision and Deploy the Sample to Azure
+### (Optional) Provision and Deploy the Sample to Azure
 > If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
 1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to select Azure resource group to provision the sample.
 1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
@@ -51,6 +51,8 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 
         ![Find Client ID](images/find-client-id.png)
 
+    1. Sign in to Azure Portal with M365 account.
+    
     1. In 'App registrations' blade of Azure Active Directory in Azure Portal, search the client id to find the AAD Application.
 
         ![Search Client ID](images/search-client-id.png)
@@ -62,6 +64,8 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 1. You could try to ingest data into custom Graph Connector. 
 
     > **Note**: It may take about several minutes for the first time.
+
+    > In addition, you could go to [Microsoft 365 admin center](https://admin.microsoft.com/Adminportal/Home#/MicrosoftSearch/connectors) to see the status of custom Graph Connector.
 
     ![Ingest](images/ingest.png)
 

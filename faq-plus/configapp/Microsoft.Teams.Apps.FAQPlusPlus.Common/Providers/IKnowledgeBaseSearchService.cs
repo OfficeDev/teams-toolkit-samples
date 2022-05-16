@@ -13,7 +13,7 @@ namespace Microsoft.Teams.Apps.FAQPlusPlus.Common.Providers
     public interface IKnowledgeBaseSearchService
     {
         /// <summary>
-        /// This method gives search result(Knowledgebase QnA pairs) based on search query for messaging extension.
+        /// This method gives search result(Knowledgebase QnA pairs) based on search query for message extension.
         /// </summary>
         /// <param name="searchQuery">Search query for question and answer pair.</param>
         /// <returns>Search result list.</returns>

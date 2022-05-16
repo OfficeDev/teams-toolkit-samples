@@ -6,7 +6,7 @@
 >  
 > This warning will be removed when the samples are ready for production.
 
-NPM Search Connector is a Messaging Extension that allows you to perform a quick search to NPM Registry for a package and insert package details into conversations for sharing with your co-workers. The front end is built with Adaptive Cards to render NPM package details and the backend is an Azure Bot Service handling search queries and communication between the server workload and the clients, including Teams and Outlook (Web Client).
+NPM Search Connector is a Message Extension that allows you to perform a quick search to NPM Registry for a package and insert package details into conversations for sharing with your co-workers. The front end is built with Adaptive Cards to render NPM package details and the backend is an Azure Bot Service handling search queries and communication between the server workload and the clients, including Teams and Outlook (Web Client).
 
 ![Npm Search Connector](images/npm-search-connector-M365.gif)
 
@@ -34,17 +34,17 @@ NPM Search Connector is a Messaging Extension that allows you to perform a quick
   ![Install in Teams VSC Local](./images/install-in-teams-vsc-local.png)
 
 ## Use the app in Teams
-To trigger the messaging extension in Teams, there are multiple entry points:
-- `@mention` your messaging extension, from the search box area.
+To trigger the message extension in Teams, there are multiple entry points:
+- `@mention` your message extension, from the search box area.
   ![At Bot from Search](./images/at-bot-from-search.png)
-- `@mention` your messaging extension from the compose message area.
+- `@mention` your message extension from the compose message area.
   ![At Bot in Message](./images/at-bot-in-message.png)
-- Click the `...` under compose message area, find your messaging extension.
+- Click the `...` under compose message area, find your message extension.
   ![Open Bot via Three Dot](./images/open-bot-via-three-dot.png)
 
 ## Use the app in Outlook Web Client
-To trigger the messaging extension in Outlook:
-- Click the "More apps" icon under compose email area, find your messaging extension.
+To trigger the message extension in Outlook:
+- Click the "More apps" icon under compose email area, find your message extension.
   ![Open Bot in Outlook](./images/open-bot-in-outlook.png)
 
 ## Architecture

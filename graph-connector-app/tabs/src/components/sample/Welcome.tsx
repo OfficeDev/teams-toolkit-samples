@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Button, Image, Loader, Menu } from "@fluentui/react-northstar";
+import { Button, Image, Loader } from "@fluentui/react-northstar";
 import "./Welcome.css";
 import { Introduce } from "./Introduce";
 import { Ingest } from "./Ingest";
@@ -10,23 +9,8 @@ import { Query } from "./Query";
 import { useLogin } from "./lib/useLogin";
 import { Scopes } from "./lib/constants";
 
-export function Welcome(props: { showFunction?: boolean; environment?: string }) {
+export function Welcome() {
   let { needLogin, loading, reload } = useLogin(Scopes);
-  const steps = ["introduce", "ingest", "query"];
-  const friendlyStepsName: { [key: string]: string } = {
-    introduce: "Introduction to Graph Connector",
-    ingest: "Ingest a Sample Data Pack",
-    query: "Query and Display Custom Data",
-  };
-  const [selectedMenuItem, setSelectedMenuItem] = useState("introduce");
-  const items = steps.map((step) => {
-    return {
-      key: step,
-      content: friendlyStepsName[step] || "",
-      onClick: () => setSelectedMenuItem(step),
-    };
-  });
-
   const { isInTeams } = useTeamsFx();
   const userProfile = useData(async () => {
     const teamsfx = new TeamsFx();
@@ -65,23 +49,10 @@ export function Welcome(props: { showFunction?: boolean; environment?: string })
             <Image src="hello.png" />
             <h1 className="center">Hello{userName ? ", " + userName : ""}!</h1>
             <p className="center">Let's build your first custom Microsoft Graph connector.</p>
-            <Menu defaultActiveIndex={0} items={items} underlined secondary />
             <div className="sections">
-              {selectedMenuItem === "introduce" && (
-                <div>
-                  <Introduce />
-                </div>
-              )}
-              {selectedMenuItem === "ingest" && (
-                <div>
-                  <Ingest />
-                </div>
-              )}
-              {selectedMenuItem === "query" && (
-                <div>
-                  <Query />
-                </div>
-              )}
+              <Introduce />
+              <Ingest />
+              <Query />
             </div>
           </div>
         </div>
