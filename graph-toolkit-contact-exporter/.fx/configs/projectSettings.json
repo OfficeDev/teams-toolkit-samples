@@ -6,7 +6,8 @@
         "hostType": "Azure",
         "azureResources": [],
         "capabilities": [
-            "Tab"
+            "Tab",
+            "TabSSO"
         ],
         "activeResourcePlugins": [
             "fx-resource-frontend-hosting",
