@@ -27,5 +27,10 @@
     "isFromSample": true,
     "programmingLanguage": "typescript",
     "defaultFunctionName": "posts",
-    "version": "2.1.0"
+    "version": "2.1.0",
+    "pluginSettings": {
+        "fx-resource-bot": {
+            "capabilities": []
+        }
+    }
 }
