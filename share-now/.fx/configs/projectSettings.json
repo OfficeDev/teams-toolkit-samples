@@ -27,6 +27,5 @@
     "isFromSample": true,
     "programmingLanguage": "typescript",
     "defaultFunctionName": "posts",
-    "version": "2.1.0",
-    "projectId": "e38f688f-651e-47cd-ab80-dde2692d56b4"
+    "version": "2.1.0"
 }
