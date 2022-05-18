@@ -10,7 +10,7 @@
         "install:api": "cd api && npm install"
     },
     "devDependencies": {
-        "@microsoft/teamsfx-cli": "0.*"
+        "@microsoft/teamsfx-cli": "1.*"
     },
     "license": "MIT"
 }
