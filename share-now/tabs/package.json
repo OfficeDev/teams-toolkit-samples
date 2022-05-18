@@ -19,7 +19,7 @@
     "react-i18next": "^11.8.15",
     "react-infinite-scroller": "^1.2.4",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.0",
     "tslib": "^2.0.0",
     "typescript": "^4.2.4"
   },
