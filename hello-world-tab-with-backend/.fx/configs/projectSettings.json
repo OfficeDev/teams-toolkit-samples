@@ -1,5 +1,7 @@
 {
     "appName": "Hello_World_Tab_with_Backend",
+    "version": "2.1.0",
+    "isFromSample": true,
     "solutionSettings": {
         "name": "fx-solution-azure",
         "version": "1.0.0",
@@ -17,11 +19,11 @@
             "fx-resource-aad-app-for-teams",
             "fx-resource-function",
             "fx-resource-local-debug",
-            "fx-resource-appstudio"
+            "fx-resource-appstudio",
+            "fx-resource-cicd",
+            "fx-resource-api-connector"
         ]
     },
-    "version": "2.1.0",
-    "isFromSample": true,
     "programmingLanguage": "typescript",
     "defaultFunctionName": "getUserProfile"
 }
