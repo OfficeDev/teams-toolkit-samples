@@ -9,7 +9,6 @@
     "react-dom": "^16.14.0",
     "react-responsive": "^8.2.0",
     "react-router-dom": "^5.1.2",
-    "msteams-react-base-component": "^3.1.0",
     "react-scripts": "^5.0.0"
   },
   "devDependencies": {
