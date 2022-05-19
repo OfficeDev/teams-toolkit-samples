@@ -13,9 +13,9 @@
     "bootstrap": "5.0.1",
     "i18next": "^20.2.4",
     "i18next-xhr-backend": "^3.2.2",
-    "react": "^16.8",
+    "react": "^16.8.0",
     "react-bootstrap": "^1.6.0",
-    "react-dom": "^16.8",
+    "react-dom": "^16.8.0",
     "react-i18next": "^11.8.15",
     "react-infinite-scroller": "^1.2.4",
     "react-router-dom": "^5.2.0",
@@ -52,8 +52,8 @@
     "@testing-library/user-event": "^7.2.1",
     "@types/jest": "^24.0.24",
     "@types/node": "^12.12.21",
-    "@types/react": "^16.8",
-    "@types/react-dom": "^16.8",
+    "@types/react": "^16.8.0",
+    "@types/react-dom": "^16.8.0",
     "@types/react-router-dom": "^4.3.3",
     "env-cmd": "^10.1.0"
   }
