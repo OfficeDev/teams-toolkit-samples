@@ -12,7 +12,7 @@ Microsoft Teams supports the ability to run web-based UI inside "custom tabs" th
 
 ## Prepare a meeting
 
-Follow the instruction to [create a meeting in Teams](https://support.microsoft.com/en-us/office/create-a-meeting-in-teams-for-personal-and-small-business-use-eb571219-517b-49bf-afe1-4fff091efa85). Then in the Calendar you can find the meeting you just created, double click the meeting to check the meeting details. Your in-meeting app will launch in this meeting.
+Follow the instruction to [create a meeting in Teams](https://support.microsoft.com/en-us/office/create-a-meeting-in-teams-for-personal-and-small-business-use-eb571219-517b-49bf-afe1-4fff091efa85). Then in the Calendar you can find the meeting you just created. Double click the meeting will open the meeting details, and will enable the meeting app to be added in this meeting in later steps.
 
 ## Run the app locally
 
