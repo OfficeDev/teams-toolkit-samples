@@ -4,7 +4,7 @@
     "manifest": {
         "appName": {
             "short": "Hello World Tab",
-            "full": "Hello World Tab"
+            "full": "Full name for Hello World Tab"
         }
     }
 }

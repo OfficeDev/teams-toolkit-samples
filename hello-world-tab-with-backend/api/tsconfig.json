@@ -6,6 +6,6 @@
     "rootDir": ".",
     "sourceMap": true,
     "strict": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
   }
 }
