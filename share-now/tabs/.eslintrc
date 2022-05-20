@@ -8,8 +8,5 @@
       "eslint:recommended",
       "plugin:@typescript-eslint/eslint-recommended",
       "plugin:@typescript-eslint/recommended"
-    ],
-    "rules": {
-      "indent": [2, 2]
-    }
+    ]
 }
