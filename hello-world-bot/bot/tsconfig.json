@@ -8,6 +8,8 @@
     "sourceMap": true,
     "incremental": true,
     "tsBuildInfoFile": "./lib/.tsbuildinfo",
-    "skipLibCheck": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
   }
 }

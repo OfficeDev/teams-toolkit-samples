@@ -4,10 +4,10 @@
   "parameters": {
     "provisionParameters": {
       "value": {
-          "resourceBaseName": "helloworlddev{{state.solution.resourceNameSuffix}}",
-          "botAadAppClientId": "{{state.fx-resource-bot.botId}}",
-          "botAadAppClientSecret": "{{state.fx-resource-bot.botPassword}}"
+        "resourceBaseName": "helloworlddev{{state.solution.resourceNameSuffix}}",
+        "botAadAppClientId": "{{state.fx-resource-bot.botId}}",
+        "botAadAppClientSecret": "{{state.fx-resource-bot.botPassword}}"
       }
-  }
+    }
   }
 }
