@@ -46,7 +46,7 @@
             "options": {
                 "cwd": "${workspaceFolder}/bot",
                 "env": {
-                    "PATH": "${env:PATH}${command:fx-extension.get-func-path}"
+                    "PATH": "${command:fx-extension.get-func-path}${env:PATH}"
                 }
             },
             "dependsOn": [
