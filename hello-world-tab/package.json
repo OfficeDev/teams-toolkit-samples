@@ -4,12 +4,10 @@
     "description": "",
     "author": "",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "install:tabs": "cd tabs && npm install",
-        "installAll": "npm run install:tabs"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
-        "@microsoft/teamsfx-cli": "0.*"
+        "@microsoft/teamsfx-cli": "1.*"
     },
     "license": "MIT"
 }

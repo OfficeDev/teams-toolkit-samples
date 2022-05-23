@@ -1,8 +1,6 @@
 # Getting Started with Graph Connector Sample
 
-> Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate. 
-> 
-> We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
 >  
 > This warning will be removed when the samples are ready for production.
 
@@ -11,7 +9,7 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 ![Graph Connector Overview](images/graph-connector-app-demo.gif)
 
 ## Prerequisite
-- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 14
+- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 

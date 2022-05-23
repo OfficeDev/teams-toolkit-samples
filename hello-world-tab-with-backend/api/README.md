@@ -23,10 +23,10 @@ To call your Azure Function, the client sends an HTTP request with an SSO token 
 ```ts
 import { TeamsFx } from "@microsoft/teamsfx";
 
-var teamsfx = new TeamsFx();
-var accessToken = await teamsfx.getCredential().getToken("");
+const teamsfx = new TeamsFx();
+const accessToken = await teamsfx.getCredential().getToken("");
 // note: empty string argument on the previous line is required for now, this will be fixed in a later release
-var response = await fetch(`${functionEndpoint}/api/${functionName}`, {
+const response = await fetch(`${functionEndpoint}/api/${functionName}`, {
   headers: {
     Authorization: `Bearer ${accessToken.token}`,
   },
@@ -45,7 +45,7 @@ By default, Teams Toolkit and TeamsFx CLI will provision an Azure function app w
 - Sign in to [Azure Portal](https://azure.microsoft.com/).
 - Find your application's resource group and Azure Function app resource. The resource group name and the Azure function app name are stored in your project configuration file `.fx/env.*.json`. You can find them by searching the key `resourceGroupName` and `functionAppName` in that file.
 - After enter the home page of the Azure function app, you can find a navigation item called `Configuration` under `settings` group.
-- Click `Configuration`, you would see a list of settings. Then click `WEBSITE_NODE_DEFAULT_VERSION` and update the value to `~10`, `~12` or `~14` according to your requirement.
+- Click `Configuration`, you would see a list of settings. Then click `WEBSITE_NODE_DEFAULT_VERSION` and update the value to `~14` or `~16` according to your requirement.
 - After Click `OK` button, don't forget to click `Save` button on the top of the page.
 
 Then following requests sent to the Azure function app will be handled by new node runtime version.
@@ -57,10 +57,10 @@ Then following requests sent to the Azure function app will be handled by new no
 
 ## Edit the manifest
 
-You can find the Teams manifest in `templates/appPackage` folder. The templates contains:
-* `manifest.template.json`: Manifest file for Teams app running locally and remotely.
+You can find the Teams app manifest in `templates/appPackage` folder. The folder contains one manifest file:
+* `manifest.template.json`: Manifest file for Teams app running locally or running remotely (After deployed to Azure).
 
-Both file contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
+This file contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more information.
 
 ## Deploy to Azure
 
@@ -83,6 +83,13 @@ Once the provisioning and deployment steps are finished, you can preview your ap
   1. Press the Play (green arrow) button to launch your app - now running remotely from Azure.
 
 - From TeamsFx CLI: execute `teamsfx preview --remote` in your project directory to launch your application.
+
+## Validate manifest file
+
+To check that your manifest file is valid:
+
+- From Visual Studio Code: open the command palette and select: `Teams: Validate manifest file`.
+- From TeamsFx CLI: run command `teamsfx validate` in your project directory.
 
 ## Package
 

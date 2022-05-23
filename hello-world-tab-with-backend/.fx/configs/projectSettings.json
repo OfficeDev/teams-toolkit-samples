@@ -1,5 +1,7 @@
 {
     "appName": "Hello_World_Tab_with_Backend",
+    "version": "2.1.0",
+    "isFromSample": true,
     "solutionSettings": {
         "name": "fx-solution-azure",
         "version": "1.0.0",
@@ -8,7 +10,8 @@
             "function"
         ],
         "capabilities": [
-            "Tab"
+            "Tab",
+            "TabSSO"
         ],
         "activeResourcePlugins": [
             "fx-resource-frontend-hosting",
@@ -19,8 +22,6 @@
             "fx-resource-appstudio"
         ]
     },
-    "version": "2.1.0",
-    "isFromSample": true,
     "programmingLanguage": "typescript",
     "defaultFunctionName": "getUserProfile"
 }

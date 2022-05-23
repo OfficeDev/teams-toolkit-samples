@@ -5,7 +5,8 @@
         "version": "1.0.0",
         "capabilities": [
             "Tab",
-            "MessagingExtension"
+            "MessagingExtension",
+            "TabSSO"
         ],
         "hostType": "Azure",
         "azureResources": [
@@ -19,11 +20,17 @@
             "fx-resource-identity",
             "fx-resource-function",
             "fx-resource-aad-app-for-teams",
-            "fx-resource-bot"
+            "fx-resource-bot",
+            "fx-resource-appstudio"
         ]
     },
     "isFromSample": true,
     "programmingLanguage": "typescript",
     "defaultFunctionName": "posts",
-    "version": "2.1.0"
+    "version": "2.1.0",
+    "pluginSettings": {
+        "fx-resource-bot": {
+            "capabilities": []
+        }
+    }
 }
