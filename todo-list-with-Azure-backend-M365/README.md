@@ -1,8 +1,6 @@
 # Getting Started with Todo List Sample
 
-> Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate. 
-> 
-> We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
 >  
 > This warning will be removed when the samples are ready for production.
 
@@ -12,7 +10,7 @@ Todo List app helps to manage your personal to do items. This app can be install
 
 ## Prerequisite
 
-- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 14
+- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
 - Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) **version >= 3.8.0** or [TeamsFx CLI](https://aka.ms/teamsfx-cli) **version >= 0.14.0**
