@@ -33,7 +33,7 @@ Deploy your project to Azure by following these steps:
 
 | From Visual Studio Code                                                                                                                                                                                                                                                                                                                                                  | From TeamsFx CLI                                                                                                                                                                                                                    |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <ul><li>Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.</li> <li>After you signed in, select a subscription under your account.</li><li>Open the Teams Toolkit and click `Provision in the cloud` from DEVELOPMENT section or open the command palette and select: `Teams: Provision in the cloud`.</li><li>Open the Teams Toolkit and click `Deploy to the cloud` or open the command palette and select: `Teams: Deploy to the cloud`.</li></ul> | <ul> <li>Run command `teamsfx account login azure`.</li> <li>Run command `teamsfx account set --subscription <your-subscription-id>`.</li> <li> Run command `teamsfx provision`.</li> <li>Run command: `teamsfx deploy`. </li></ul> |
+| <ul><li>Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.</li> <li>After you signed in, select a subscription under your account.</li><li>Open the Teams Toolkit and click `Provision in the cloud` from DEPLOYMENT section or open the command palette and select: `Teams: Provision in the cloud`.</li><li>Open the Teams Toolkit and click `Deploy to the cloud` or open the command palette and select: `Teams: Deploy to the cloud`.</li></ul> | <ul> <li>Run command `teamsfx account login azure`.</li> <li>Run command `teamsfx account set --subscription <your-subscription-id>`.</li> <li> Run command `teamsfx provision`.</li> <li>Run command: `teamsfx deploy`. </li></ul> |
 
 > Note: Provisioning and deployment may incur charges to your Azure Subscription.
 
@@ -76,33 +76,33 @@ This template provides some sample functionality:
 
 - You can create and send an adaptive card.
 
-  ![CreateCard](./images/AdaptiveCard.png)
+  ![CreateCard](./bot/images/AdaptiveCard.png)
 
 - You can share a message in an adaptive card form.
 
-  ![ShareMessage](./images/ShareMessage.png)
+  ![ShareMessage](./bot/images/ShareMessage.png)
 
 - You can paste a link that "unfurls" (`.botframwork.com` is monitored in this template) and a card will be rendered.
 
-  ![ComposeArea](./images/LinkUnfurlingImage.png)
+  ![ComposeArea](./bot/images/LinkUnfurlingImage.png)
 
 To trigger these functions, there are multiple entry points:
 
 - `@mention` Your message extension, from the `search box area`.
 
-  ![AtBotFromSearch](./images/AtBotFromSearch.png)
+  ![AtBotFromSearch](./bot/images/AtBotFromSearch.png)
 
 - `@mention` your message extension from the `compose message area`.
 
-  ![AtBotFromMessage](./images/AtBotInMessage.png)
+  ![AtBotFromMessage](./bot/images/AtBotInMessage.png)
 
 - Click the `...` under compose message area, find your message extension.
 
-  ![ComposeArea](./images/ThreeDot.png)
+  ![ComposeArea](./bot/images/ThreeDot.png)
 
 - Click the `...` next to any messages you received or sent.
 
-  ![ComposeArea](./images/ThreeDotOnMessage.png)
+  ![ComposeArea](./bot/images/ThreeDotOnMessage.png)
 
 ## Further reading
 
