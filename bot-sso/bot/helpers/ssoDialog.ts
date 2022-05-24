@@ -98,7 +98,7 @@ export class SSODialog extends ComponentDialog {
     const tokenResponse = stepContext.result;
     if (!tokenResponse || !tokenResponse.ssoToken) {
       await stepContext.context.sendActivity(
-        "Token exchange was not successful please try again."
+        "There is an issue while trying to sign you in and retrieve your profile photo, please type \"show\" command to login and consent permissions again."
       );
     } else {
       // Once got ssoToken, run operation that depends on ssoToken
