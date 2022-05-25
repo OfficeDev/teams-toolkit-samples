@@ -4,7 +4,7 @@
   "parameters": {
     "provisionParameters": {
       "value": {
-        "resourceBaseName": "nonessotabdev{{state.solution.resourceNameSuffix}}",
+        "resourceBaseName": "deeplinknonessotabdev{{state.solution.resourceNameSuffix}}",
         "m365ClientId": "{{state.fx-resource-aad-app-for-teams.clientId}}",
         "m365ClientSecret": "{{state.fx-resource-aad-app-for-teams.clientSecret}}",
         "m365TenantId": "{{state.fx-resource-aad-app-for-teams.tenantId}}",

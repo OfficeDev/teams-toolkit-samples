@@ -3,8 +3,8 @@
     "description": "You can customize the TeamsFx config for different environments. Visit https://aka.ms/teamsfx-env-config to learn more about this.",
     "manifest": {
         "appName": {
-            "short": "NoneSSOTab",
-            "full": "Full name for NoneSSOTab"
+            "short": "DeepLinking-NoneSSOTab-M365",
+            "full": "Deep Linking demo app on NoneSSOTab extended to Outlook and Teams"
         }
     }
 }
