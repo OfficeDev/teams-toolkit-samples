@@ -29,7 +29,7 @@ export default function TabDetails(props: any) {
       <div className="welcome page">
         <div className="narrow page-padding">
           <h1 className="center">{selectedTab ? 'Congratulations!' : 'Oops!'}</h1>
-          <p className="center">{selectedTab ? 'You opened a tab from' : 'Select a tab and Click on the "Open in new tab" from "Navigate within app" section from'}<Button content="Personal Tab" primary size="small" text onClick={navigateToTab} />.</p>
+          <p className="center">{selectedTab ? 'You opened a tab from' : 'Select a tab and Click on the "Open in new tab" from "Navigate within app" section from'}<Button content="Main Tab" primary size="small" text onClick={navigateToTab} />.</p>
           <div className="sections">
 
             {selectedTab === "local" && (

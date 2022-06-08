@@ -1,5 +1,4 @@
 .narrow {
-  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -7,25 +6,26 @@
   padding: 4rem;
 }
 
-.welcome.page > .narrow > img {
+.welcome.page>.narrow>img {
   margin: 0 auto;
   display: block;
   width: 200px;
 }
 
-.welcome.page > .narrow > ul {
-  width: 80%;
+.welcome.page>.narrow ul {
+  width: 100%;
   justify-content: space-between;
   margin: 4rem auto;
   border-bottom: none;
+  margin-top: 20px;
 }
 
-.welcome.page > .narrow > ul > li {
+.welcome.page>.narrow ul>li {
   background-color: inherit;
   margin: auto;
 }
 
-.welcome.page > .narrow > ul > li > a {
+.welcome.page>.narrow ul>li>a {
   font-size: 14px;
   min-height: 32px;
   border-bottom-color: rgb(98, 100, 167);
@@ -35,7 +35,7 @@
   text-align: center;
 }
 
-.sections > * {
+.sections>* {
   margin: 4rem auto;
 }
 
@@ -66,4 +66,23 @@ code {
 
 .error {
   color: red;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main-section>.deeplink-functions-container {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.main-section>.menu-container {
+  width: 60%;
+  padding: 10px;
 }

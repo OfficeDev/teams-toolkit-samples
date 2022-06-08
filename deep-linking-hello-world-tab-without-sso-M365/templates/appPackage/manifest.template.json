@@ -38,7 +38,7 @@
     "staticTabs": [
         {
             "entityId": "index",
-            "name": "Personal Tab",
+            "name": "Main Tab",
             "contentUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/tab",
             "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/tab",
             "scopes": [
@@ -47,7 +47,7 @@
         },
         {
             "entityId": "tabdetails",
-            "name": "Tab Details",
+            "name": "Details Tab",
             "contentUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/tabdetails",
             "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/tabdetails",
             "scopes": [
