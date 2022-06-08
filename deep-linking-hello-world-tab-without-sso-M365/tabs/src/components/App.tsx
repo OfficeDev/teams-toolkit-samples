@@ -8,6 +8,7 @@ import Tab from "./Tab";
 import "./App.css";
 import TabConfig from "./TabConfig";
 import { useTeams } from "msteams-react-base-component";
+import TabDetails from "./TabDetails";
 
 /**
  * The main app which handles the initialization and routing
@@ -21,12 +22,14 @@ export default function App() {
         <Route exact path="/">
           <Redirect to="/tab" />
         </Route>
-          <>
-            <Route exact path="/privacy" component={Privacy} />
-            <Route exact path="/termsofuse" component={TermsOfUse} />
-            <Route exact path="/tab" component={Tab} />
-            <Route exact path="/config" component={TabConfig} />
-          </>
+        <>
+          <Route exact path="/tabdetails/:typeOfTab" component={TabDetails} />
+          <Route exact path="/tabdetails" component={TabDetails} />
+          <Route exact path="/privacy" component={Privacy} />
+          <Route exact path="/termsofuse" component={TermsOfUse} />
+          <Route exact path="/tab" component={Tab} />
+          <Route exact path="/config" component={TabConfig} />
+        </>
       </Router>
     </Provider>
   );

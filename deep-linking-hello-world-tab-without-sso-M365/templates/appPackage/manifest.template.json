@@ -44,6 +44,15 @@
             "scopes": [
                 "personal"
             ]
+        },
+        {
+            "entityId": "tabdetails",
+            "name": "Tab Details",
+            "contentUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/tabdetails",
+            "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/tabdetails",
+            "scopes": [
+                "personal"
+            ]
         }
     ],
     "permissions": [

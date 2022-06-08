@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Button, Image, Menu, Alert } from "@fluentui/react-northstar";
+import { Button, Image, Menu, Alert, Input } from "@fluentui/react-northstar";
 import "./Welcome.css";
 import { EditCode } from "./EditCode";
 import { Deploy } from "./Deploy";
 import { Publish } from "./Publish";
 import { AddSSO } from "./AddSSO";
-import { pages } from "@microsoft/teams-js";
+import { pages, app } from "@microsoft/teams-js";
 import { useTeams } from "msteams-react-base-component";
 
 
@@ -16,6 +16,8 @@ export function Welcome(props: { environment?: string }) {
     environment: window.location.hostname === "localhost" ? "local" : "azure",
     ...props,
   };
+  const appId = environment === "local" ? "980e4d1c-2122-4588-9fd6-f3327a401506" : "50bf1c82-4eab-4ab9-82eb-6d9235117891";
+
   const friendlyEnvironmentName =
     {
       local: "local environment",
@@ -41,6 +43,7 @@ export function Welcome(props: { environment?: string }) {
     };
   });
 
+  const [txtLink, setTxtLink] = useState("");
   console.log(context ? context : "")
   useEffect(() => {
     if (context && context.subEntityId) {
@@ -57,16 +60,16 @@ export function Welcome(props: { environment?: string }) {
         <p className="center">Your app is running in your {friendlyEnvironmentName}</p>
         <Menu activeIndex={steps.indexOf(selectedMenuItem)} items={items} underlined secondary />
         <div className="sections">
-          <div>
-            <h2>Generate Share URL to this tab</h2>
+          <div id="generate-deeplink">
+            <h2>1. Generate Share URL to this tab</h2>
+            <p>Generates a share URL which can be copied and shared anywhere.</p>
+            <p>The below button uses <code>pages.shareDeepLink()</code> function to generate hub specific share URL that can be used as deeplink.</p>
             <Button primary content="Generate Share URL" onClick={() => {
-              console.log(context ? context : "");
-              console.log(friendlyStepsName[selectedMenuItem]);
               const labelName = friendlyStepsName[selectedMenuItem];
-              const baseUrl = `https://${window.location.hostname}:${window.location.port}/index.html#/tab?selectedTab=${selectedMenuItem}&label=${labelName}`;
+              // const baseUrl = `https://${window.location.hostname}:${window.location.port}/index.html#/tab?selectedTab=${selectedMenuItem}&label=${labelName}`;
 
               // const url = `https://teams.microsoft.com/l/entity/69e84217-e248-4c91-82a5-c8904443a009/${context ? context.entityId : "index"}?webUrl=${encodeURI(baseUrl)}&context=${encodeURI(`{"subEntityId": "${selectedMenuItem}"`)}}`;
-              const url = `https://teams.microsoft.com/l/entity/${environment === "local" ? "69e84217-e248-4c91-82a5-c8904443a009" : "50bf1c82-4eab-4ab9-82eb-6d9235117891"}/${context ? context.entityId : "index"}?context=${encodeURI(`{"subEntityId": "${selectedMenuItem}"`)}}`;
+              const url = `https://teams.microsoft.com/l/entity/${appId}/${context ? context.entityId : "index"}?context=${encodeURI(`{"subEntityId": "${selectedMenuItem}"`)}}`;
 
               setShareURL(url);
               // pages.shareDeepLink({ subPageId: selectedMenuItem, subPageLabel: labelName, subPageWebUrl: encodeURI(baseUrl) });
@@ -75,6 +78,32 @@ export function Welcome(props: { environment?: string }) {
             }} />
             {shareURL && (<Alert content={shareURL} dismissible dismissAction="Close" />)}
           </div>
+
+          <div id="navigate-within-app">
+            <h2>2. Navigate within the app</h2>
+            <p>Open this <code>{friendlyStepsName[selectedMenuItem]}</code> tab contents in another tab.
+              Click on the below button and it will navigate to the other tab displaying this current tab content.
+            </p>
+            <p>The below button uses <code>pages.navigateToApp()</code> function to navigate a user to another tab.</p>
+            <Button primary content="Open in new tab" onClick={() => {
+              const baseUrl = `https://${window.location.hostname}:${window.location.port}/index.html#/tabdetails/${selectedMenuItem}`;
+              pages.navigateToApp({ appId: appId, pageId: 'tabdetails', webUrl: baseUrl, subPageId: selectedMenuItem });
+            }} />
+          </div>
+
+          <div id="openlink-within-app">
+            <h2>3. Opening link that was shared in the app</h2>
+            <p>Copy and paste a share URL(deeplink URL) from the first section "Generate Share URL" and paste it in the textbox below and click on the open button.</p>
+            <p>For any other external deep linking scenarios, you can use <code>app.openLink()</code>, which provides similar functionality to the now deprecated (starting in TeamsJS v.2.0) executeDeepLink API.</p>
+
+            <Input defaultValue={txtLink} value={txtLink} inverted placeholder="Paste link here" onChange={(e: any) => {
+              setTxtLink(e.target.value);
+            }} />
+            <Button disabled={!txtLink} primary content="Open Link" onClick={() => {
+              app.openLink(txtLink);
+            }} />
+          </div>
+
           {selectedMenuItem === "local" && (
             <div>
               <EditCode />
