@@ -4,7 +4,7 @@
     "parameters": {
         "provisionParameters": {
             "value": {
-                "resourceBaseName": "npmsearchcdev{{state.solution.resourceNameSuffix}}",
+                "resourceBaseName": "npmsearchcdev",
                 "botAadAppClientId": "{{state.fx-resource-bot.botId}}",
                 "botAadAppClientSecret": "{{state.fx-resource-bot.botPassword}}"
             }
