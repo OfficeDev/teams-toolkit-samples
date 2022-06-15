@@ -4,7 +4,7 @@ export function AddSSO(props: {}) {
   const { ssoDocUrl, fluentDocUrl, readmeUrl } = {
     ssoDocUrl: "https://aka.ms/teamsfx-sso-doc",
     fluentDocUrl: "https://aka.ms/teamsfax-fluent-doc",
-    readmeUrl: "https://aka.ms/teamsfx-add-sso",  
+    readmeUrl: "https://aka.ms/teamsfx-add-sso",
     ...props,
   }
 
