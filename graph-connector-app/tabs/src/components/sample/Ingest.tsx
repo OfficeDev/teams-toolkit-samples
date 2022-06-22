@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 import { Button, Loader } from "@fluentui/react-northstar";
 import * as axios from "axios";
-import { TeamsFx } from "@microsoft/teamsfx";
+import { apiClient } from "./lib/apiClient";
 import { ConnectionId } from "./lib/constants";
 import { Status } from "./Status";
 
+
 async function callFunction(functionName: string, method: axios.Method, params?: any, data?: any) {
   try {
-    const teamsfx = new TeamsFx();
-    const accessToken = await teamsfx.getCredential().getToken("");
-    const endpoint = teamsfx.getConfig("apiEndpoint");
-    const response = await axios.default.request(
+    const response = await apiClient.request(
       {
-        url: endpoint + "/api/" + functionName,
+        url: functionName,
         method,
-        headers: {
-          authorization: "Bearer " + accessToken?.token || "",
-        },
         params,
         data,
       });

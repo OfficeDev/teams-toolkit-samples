@@ -2,10 +2,9 @@
 // Licensed under the MIT License.
 
 import React from 'react';
-import axios from 'axios';
 import './App.css';
 import './Tab.css'
-import { TeamsFx } from "@microsoft/teamsfx";
+import { BearerTokenAuthProvider, createApiClient, TeamsFx } from "@microsoft/teamsfx";
 import Profile from "./Profile";
 import Creator from "./Creator";
 import { Checkbox, Button, Input, MenuButton } from "@fluentui/react-northstar"
@@ -43,6 +42,14 @@ class Tab extends React.Component {
     this.teamsfx = teamsfx;
     this.scope = ["User.Read", "User.ReadBasic.All"];
     this.channelOrChatId = await this.getChannelOrChatId();
+
+    const credential = teamsfx.getCredential();
+    const apiBaseUrl = teamsfx.getConfig("apiEndpoint") + "/api/";
+    // createApiClient(...) creates an Axios instance which uses BearerTokenAuthProvider to inject token to request header
+    const apiClient = createApiClient(
+      apiBaseUrl,
+      new BearerTokenAuthProvider(async () => (await credential.getToken("")).token));
+    this.apiClient = apiClient;
   }
 
   async initData() {
@@ -103,16 +110,9 @@ class Tab extends React.Component {
     var message = [];
     var funcErrorMsg = "";
     try {
-      // Get SSO token for the user
-      const accessToken = await this.teamsfx.getCredential().getToken("");
-      // Gets configuration for API
-      const apiEndpoint = this.teamsfx.getConfig("apiEndpoint");
-      const response = await axios.default.request({
+      const response = await this.apiClient.request({
         method: method,
-        url: apiEndpoint + "/api/" + command,
-        headers: {
-          authorization: "Bearer " + accessToken.token
-        },
+        url: command,
         data: options,
         params
       });
