@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Button, Image, Menu, Alert, Input } from "@fluentui/react-northstar";
 import "./Welcome.css";
 import { EditCode } from "./EditCode";
@@ -6,17 +6,14 @@ import { Deploy } from "./Deploy";
 import { Publish } from "./Publish";
 import { AddSSO } from "./AddSSO";
 import { pages, app } from "@microsoft/teams-js";
-import { useTeams } from "msteams-react-base-component";
 
-
-export function Welcome(props: { environment?: string }) {
-
-  const { context } = useTeams({})[0];
+export function Welcome(props: { environment?: string }): ReactElement {
+  const [context, setContext] = useState({} as app.Context);
   const { environment } = {
     environment: window.location.hostname === "localhost" ? "local" : "azure",
     ...props,
   };
-  const appId = environment === "local" ? "980e4d1c-2122-4588-9fd6-f3327a401506" : "50bf1c82-4eab-4ab9-82eb-6d9235117891";
+  const appId = environment === "local" ? "045b2e71-7dd9-4652-9010-fc95542ebc47" : "50bf1c82-4eab-4ab9-82eb-6d9235117891";
 
   const friendlyEnvironmentName =
     {
@@ -44,10 +41,23 @@ export function Welcome(props: { environment?: string }) {
   });
 
   const [txtLink, setTxtLink] = useState("");
-  console.log(context ? context : "")
+
   useEffect(() => {
-    if (context && context.subEntityId) {
-      setSelectedMenuItem(context.subEntityId);
+    if (!app.isInitialized()) {
+      app.initialize();
+    }
+    app.getContext().then((context) => {
+      setContext(context);
+      console.log(context);
+    }).catch((err) => {
+      console.error("Error getting context -> ", err);
+    });
+
+  }, []);
+
+  useEffect(() => {
+    if (context && Object.keys(context).length > 0 && context.page.subPageId) {
+      setSelectedMenuItem(context.page.subPageId);
     }
 
   }, [context])
@@ -58,7 +68,7 @@ export function Welcome(props: { environment?: string }) {
         <Image src="hello.png" />
         <h1 className="center">Congratulations!</h1>
         <p className="center">Your app is running in your {friendlyEnvironmentName}</p>
-        <p className="center">The deeplinking uses <code>subEntityId</code> property from the Teams SDK <code>context</code> object which can be used to maintain the app state
+        <p className="center">The deeplinking uses <code>page.subPageId</code> property from the Teams SDK <code>context</code> object which can be used to maintain the app state
           when a user clicks on the deeplink.</p>
         <div className="main-section">
           <div className="deeplink-functions-container">
@@ -74,7 +84,7 @@ export function Welcome(props: { environment?: string }) {
                 // const baseUrl = `https://${window.location.hostname}:${window.location.port}/index.html#/tab?selectedTab=${selectedMenuItem}&label=${labelName}`;
 
                 // const url = `https://teams.microsoft.com/l/entity/69e84217-e248-4c91-82a5-c8904443a009/${context ? context.entityId : "index"}?webUrl=${encodeURI(baseUrl)}&context=${encodeURI(`{"subEntityId": "${selectedMenuItem}"`)}}`;
-                const url = `https://teams.microsoft.com/l/entity/${appId}/${context ? context.entityId : "index"}?context=${encodeURI(`{"subEntityId": "${selectedMenuItem}"`)}}`;
+                const url = `https://teams.microsoft.com/l/entity/${appId}/${context ? context.page.id : "index"}?context=${encodeURI(`{"subEntityId": "${selectedMenuItem}"`)}}`;
 
                 setShareURL(url);
                 // pages.shareDeepLink({ subPageId: selectedMenuItem, subPageLabel: labelName, subPageWebUrl: encodeURI(baseUrl) });
@@ -91,8 +101,8 @@ export function Welcome(props: { environment?: string }) {
               </p>
               <p>The below button uses <code>pages.navigateToApp()</code> function to navigate a user to another tab.</p>
               <Button primary content="Open in new tab" onClick={() => {
-                const baseUrl = `https://${window.location.hostname}:${window.location.port}/index.html#/tabdetails/${selectedMenuItem}`;
-                pages.navigateToApp({ appId: appId, pageId: 'tabdetails', webUrl: baseUrl, subPageId: selectedMenuItem });
+                const baseUrl = `https://${window.location.hostname}:${window.location.port}/index.html/tabdetails/${selectedMenuItem}`;
+                pages.navigateToApp({ appId: appId, pageId: 'tabdetails', webUrl: encodeURI(baseUrl), subPageId: selectedMenuItem });
               }} />
             </div>
 
