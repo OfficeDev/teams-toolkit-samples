@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from "react";
-import { Button, Image, Menu, Alert, Input } from "@fluentui/react-northstar";
+import { Button, Image, Menu, Alert } from "@fluentui/react-northstar";
 import "./Welcome.css";
 import { EditCode } from "./EditCode";
 import { Deploy } from "./Deploy";
@@ -39,8 +39,6 @@ export function Welcome(props: { environment?: string }): ReactElement {
       },
     };
   });
-
-  const [txtLink, setTxtLink] = useState("");
 
   useEffect(() => {
     if (!app.isInitialized()) {
@@ -103,19 +101,6 @@ export function Welcome(props: { environment?: string }): ReactElement {
               <Button primary content="Open in new tab" onClick={() => {
                 const baseUrl = `https://${window.location.hostname}:${window.location.port}/index.html/tabdetails/${selectedMenuItem}`;
                 pages.navigateToApp({ appId: appId, pageId: 'tabdetails', webUrl: encodeURI(baseUrl), subPageId: selectedMenuItem });
-              }} />
-            </div>
-
-            <div id="openlink-within-app">
-              <h2>3. Opening link that was shared in the app</h2>
-              <p>Copy and paste a share URL(deeplink URL) from the first section "Generate Share URL" and paste it in the textbox below and click on the open button.</p>
-              <p>For any other external deep linking scenarios, you can use <code>app.openLink()</code>, which provides similar functionality to the now deprecated (starting in TeamsJS v.2.0) executeDeepLink API.</p>
-
-              <Input defaultValue={txtLink} value={txtLink} inverted placeholder="Paste link here" onChange={(e: any) => {
-                setTxtLink(e.target.value);
-              }} />
-              <Button disabled={!txtLink} primary content="Open Link" onClick={() => {
-                app.openLink(txtLink);
               }} />
             </div>
           </div>
