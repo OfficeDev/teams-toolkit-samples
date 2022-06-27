@@ -38,9 +38,18 @@
     "staticTabs": [
         {
             "entityId": "index",
-            "name": "Main Tab",
+            "name": "Generate DeepLink",
             "contentUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/tab",
             "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/tab",
+            "scopes": [
+                "personal"
+            ]
+        },
+        {
+            "entityId": "navigateWithinApp",
+            "name": "Navigate within app",
+            "contentUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/navigateWithinApp",
+            "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/navigateWithinApp",
             "scopes": [
                 "personal"
             ]

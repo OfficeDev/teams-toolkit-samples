@@ -9,6 +9,7 @@ import "./App.css";
 import TabConfig from "./TabConfig";
 import { useTeams } from "msteams-react-base-component";
 import TabDetails from "./TabDetails";
+import NavigateWithinApp from "./NavigateWithinApp";
 
 /**
  * The main app which handles the initialization and routing
@@ -23,6 +24,7 @@ export default function App() {
           <Redirect to="/tab" />
         </Route>
         <>
+          <Route exact path="/navigateWithinApp" component={NavigateWithinApp} />
           <Route exact path="/tabdetails/:typeOfTab" component={TabDetails} />
           <Route exact path="/tabdetails" component={TabDetails} />
           <Route exact path="/privacy" component={Privacy} />

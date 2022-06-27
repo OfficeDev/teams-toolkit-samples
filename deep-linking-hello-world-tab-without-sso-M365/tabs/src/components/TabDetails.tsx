@@ -35,9 +35,8 @@ class TabDetails extends Component<any, any> {
     app.getContext().then((context) => {
       this.setState({
         context: context,
-        subPageId: context.page.subPageId || this.props.match.params
+        subPageId: context.page.subPageId || this.props.match.params.id
       });
-      console.log(context);
     }).catch((err) => {
       console.error("Error getting context -> ", err);
     });

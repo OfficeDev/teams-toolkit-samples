@@ -91,18 +91,6 @@ export function Welcome(props: { environment?: string }): ReactElement {
               }} />
               {shareURL && (<Alert content={shareURL} dismissible dismissAction="Close" />)}
             </div>
-
-            <div id="navigate-within-app">
-              <h2>2. Navigate within the app</h2>
-              <p>Open this <code>{friendlyStepsName[selectedMenuItem]}</code> tab contents in another tab.
-                Click on the below button and it will navigate to the other tab displaying this current tab content.
-              </p>
-              <p>The below button uses <code>pages.navigateToApp()</code> function to navigate a user to another tab.</p>
-              <Button primary content="Open in new tab" onClick={() => {
-                const baseUrl = `https://${window.location.hostname}:${window.location.port}/index.html/tabdetails/${selectedMenuItem}`;
-                pages.navigateToApp({ appId: appId, pageId: 'tabdetails', webUrl: encodeURI(baseUrl), subPageId: selectedMenuItem });
-              }} />
-            </div>
           </div>
           <div className="menu-container">
             <Menu activeIndex={steps.indexOf(selectedMenuItem)} items={items} underlined secondary />
