@@ -6,6 +6,7 @@ import { Deploy } from "./sample/Deploy";
 import { EditCode } from "./sample/EditCode";
 import { Publish } from "./sample/Publish";
 import { Button, Menu } from "@fluentui/react-northstar";
+import { constants } from "../constants";
 /**
  * This component is used to display the selected record from Welcome.tsx page
  * using pages.navigateToApp();
@@ -16,8 +17,7 @@ export default function NavigateWithinApp(props: { environment?: string }): Reac
     environment: window.location.hostname === "localhost" ? "local" : "azure",
     ...props,
   };
-  const appId = environment === "local" ? "045b2e71-7dd9-4652-9010-fc95542ebc47" : "50bf1c82-4eab-4ab9-82eb-6d9235117891";
-
+  const appId = environment === "local" ? constants.TEAMS_APP_ID_LOCAL : constants.TEAMS_APP_ID_DEV;
   const steps = ["local", "azure", "publish"];
   const friendlyStepsName: { [key: string]: string } = {
     local: "1. Build your app locally",

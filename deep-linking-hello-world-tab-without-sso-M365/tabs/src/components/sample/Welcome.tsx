@@ -6,6 +6,7 @@ import { Deploy } from "./Deploy";
 import { Publish } from "./Publish";
 import { AddSSO } from "./AddSSO";
 import { pages, app } from "@microsoft/teams-js";
+import { constants } from "../../constants";
 
 export function Welcome(props: { environment?: string }): ReactElement {
   const [context, setContext] = useState({} as app.Context);
@@ -13,8 +14,8 @@ export function Welcome(props: { environment?: string }): ReactElement {
     environment: window.location.hostname === "localhost" ? "local" : "azure",
     ...props,
   };
-  const appId = environment === "local" ? "045b2e71-7dd9-4652-9010-fc95542ebc47" : "50bf1c82-4eab-4ab9-82eb-6d9235117891";
-
+  const appId = environment === "local" ? constants.TEAMS_APP_ID_LOCAL : constants.TEAMS_APP_ID_DEV;
+console.table(process.env);
   const friendlyEnvironmentName =
     {
       local: "local environment",
