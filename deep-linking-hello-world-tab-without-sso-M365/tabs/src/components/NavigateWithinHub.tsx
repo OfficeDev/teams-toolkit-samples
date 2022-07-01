@@ -3,7 +3,7 @@ import { ReactElement, useState } from "react";
 import { chat, people } from "@microsoft/teams-js";
 import './sample/Welcome.css'
 
-import { Button, ChatIcon, Flex, Input, ParticipantAddIcon, TextArea } from "@fluentui/react-northstar";
+import { Button, ChatIcon, Flex, InfoIcon, Input, ParticipantAddIcon, TextArea, Text } from "@fluentui/react-northstar";
 
 export default function NavigateWithinHub(): ReactElement {
     const [selectedUsersList, setSelectedUsersList] = useState([] as people.PeoplePickerResult[]);
@@ -20,6 +20,13 @@ export default function NavigateWithinHub(): ReactElement {
                     <div className="sections">
                         <div id="open-chat-section">
                             <Flex column gap="gap.small" space="between">
+                                {(!people.isSupported() || !chat.isSupported()) && (
+                                    <Flex.Item grow>
+                                        <Flex gap="gap.small" vAlign="center" >
+                                            <InfoIcon color="red" /> <Text color="red" content="Functionality not supported in this hub." important weight="bold" />
+                                        </Flex>
+                                    </Flex.Item>
+                                )}
                                 <Flex.Item grow>
                                     <Flex gap="gap.small" vAlign="center" >
                                         <p>Select users to start your group chat with: </p>
@@ -62,7 +69,6 @@ export default function NavigateWithinHub(): ReactElement {
                                         alert("Functionality not supported in this hub");
                                     }
                                 }} />
-
                             </Flex>
                         </div>
                     </div>
