@@ -62,6 +62,15 @@
             "scopes": [
                 "personal"
             ]
+        },
+        {
+            "entityId": "navigateWithinHub",
+            "name": "Navigate within hub",
+            "contentUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/navigateWithinHub",
+            "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/navigateWithinHub",
+            "scopes": [
+                "personal"
+            ]
         }
     ],
     "permissions": [
