@@ -2,12 +2,9 @@ import { Component, ReactNode } from "react";
 import { withRouter } from "react-router";
 import { app, pages } from "@microsoft/teams-js";
 import './sample/Welcome.css'
-import { AddSSO } from "./sample/AddSSO";
-import { Deploy } from "./sample/Deploy";
-import { EditCode } from "./sample/EditCode";
-import { Publish } from "./sample/Publish";
 import { Button } from "@fluentui/react-northstar";
 import { constants } from "../constants";
+import { SampleTabs } from "./sample/SampleTabs";
 /**
  * This component is used to display the selected record from Welcome.tsx page
  * using pages.navigateToApp();
@@ -17,7 +14,8 @@ class TabDetails extends Component<any, any> {
     super(props)
     this.state = {
       context: {},
-      subPageId: ""
+      subPageId: "",
+      selectedMenuItem: "tab1"
     }
   }
 
@@ -47,35 +45,58 @@ class TabDetails extends Component<any, any> {
   }
 
   render(): ReactNode {
-    const { subPageId } = this.state;
+    const { subPageId, selectedMenuItem } = this.state;
     return (
-      <div>
-        <div className="welcome page">
-          <div className="narrow page-padding">
-            <h1 className="center">{subPageId ? 'Congratulations!' : 'Oops!'}</h1>
-            <p className="center">{subPageId ? 'You opened a tab from' : 'Select a tab and Click on the "Open in new tab" from "Navigate within app" section from'}<Button content="Navigate within app Tab" primary size="small" text onClick={() => { this.navigateToTab() }} />.</p>
-            <div className="sections">
+      <div className="welcome page">
+        <div className="narrow page-padding">
+          {subPageId && (
+            <>
+              <h1 className="center">Congratulations!</h1>
+              <p className="center">You opened a tab from <code><Button content="Navigate within app Tab" primary size="small" text onClick={() => { this.navigateToTab() }} /></code>.</p>
+              <div className="sections">
+                {subPageId === "tab1" && (
+                  <div>
+                    <p>You selected Tab 1</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quis recusandae quibusdam doloremque repellendus voluptatibus eaque pariatur officia perferendis deleniti,
+                      quasi numquam quas veniam quos maxime iusto delectus beatae dolores iste?
+                    </p>
+                  </div>
+                )}
+                {subPageId === "tab2" && (
+                  <div>
+                    <p>You selected Tab 2</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quis recusandae quibusdam doloremque repellendus voluptatibus eaque pariatur officia perferendis deleniti,
+                      quasi numquam quas veniam quos maxime iusto delectus beatae dolores iste?
+                    </p>
+                  </div>
+                )}
+                {subPageId === "tab3" && (
+                  <div>
+                    <p>You selected Tab 3</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quis recusandae quibusdam doloremque repellendus voluptatibus eaque pariatur officia perferendis deleniti,
+                      quasi numquam quas veniam quos maxime iusto delectus beatae dolores iste?
+                    </p>
+                  </div>
+                )}
+              </div>
+              <Button primary content="Close this content" onClick={() => {
+                this.setState({
+                  selectedMenuItem: "tab1",
+                  subPageId: ""
+                })
+              }} />
+            </>
+          )}
 
-              {subPageId === "local" && (
-                <div>
-                  <EditCode />
-                  <AddSSO />
-                </div>
-              )}
-              {subPageId === "azure" && (
-                <div>
-                  <Deploy />
-                </div>
-              )}
-              {subPageId === "publish" && (
-                <div>
-                  <Publish />
-                </div>
-              )}
-            </div>
-          </div>
+          {!subPageId && (<SampleTabs selectedTab={selectedMenuItem} onTabChange={(selectedTab: string) => {
+            this.setState({
+              selectedMenuItem: selectedTab
+            })
+          }} />)}
         </div>
-
       </div>
     );
 

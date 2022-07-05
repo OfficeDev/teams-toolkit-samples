@@ -1,12 +1,9 @@
 import { ReactElement, useEffect, useState } from "react";
-import { Button, Image, Menu, Alert } from "@fluentui/react-northstar";
+import { Button, Image, Alert } from "@fluentui/react-northstar";
 import "./Welcome.css";
-import { EditCode } from "./EditCode";
-import { Deploy } from "./Deploy";
-import { Publish } from "./Publish";
-import { AddSSO } from "./AddSSO";
 import { pages, app } from "@microsoft/teams-js";
 import { constants } from "../../constants";
+import { SampleTabs } from "./SampleTabs";
 
 export function Welcome(props: { environment?: string }): ReactElement {
   const [context, setContext] = useState({} as app.Context);
@@ -15,31 +12,19 @@ export function Welcome(props: { environment?: string }): ReactElement {
     ...props,
   };
   const appId = environment === "local" ? constants.TEAMS_APP_ID_LOCAL : constants.TEAMS_APP_ID_DEV;
-console.table(process.env);
   const friendlyEnvironmentName =
     {
       local: "local environment",
       azure: "Azure environment",
     }[environment] || "local environment";
 
-  const steps = ["local", "azure", "publish"];
   const friendlyStepsName: { [key: string]: string } = {
-    local: "1. Build your app locally",
-    azure: "2. Provision and Deploy to the Cloud",
-    publish: "3. Publish to Teams",
+    tab1: "Tab 1",
+    tab2: "Tab 2",
+    tab3: "Tab 3",
   };
   const [shareURL, setShareURL] = useState("");
-  const [selectedMenuItem, setSelectedMenuItem] = useState("local");
-  const items = steps.map((step) => {
-    return {
-      key: step,
-      content: friendlyStepsName[step] || "",
-      onClick: () => {
-        setSelectedMenuItem(step);
-        setShareURL("");
-      },
-    };
-  });
+  const [selectedMenuItem, setSelectedMenuItem] = useState("tab1");
 
   useEffect(() => {
     if (!app.isInitialized()) {
@@ -93,27 +78,10 @@ console.table(process.env);
               {shareURL && (<Alert content={shareURL} dismissible dismissAction="Close" />)}
             </div>
           </div>
-          <div className="menu-container">
-            <Menu activeIndex={steps.indexOf(selectedMenuItem)} items={items} underlined secondary />
-            <div className="sections">
-              {selectedMenuItem === "local" && (
-                <div>
-                  <EditCode />
-                  <AddSSO />
-                </div>
-              )}
-              {selectedMenuItem === "azure" && (
-                <div>
-                  <Deploy />
-                </div>
-              )}
-              {selectedMenuItem === "publish" && (
-                <div>
-                  <Publish />
-                </div>
-              )}
-            </div>
-          </div>
+          <SampleTabs selectedTab={selectedMenuItem} onTabChange={(selectedTab: string) => {
+            setSelectedMenuItem(selectedTab);
+            setShareURL("");
+          }} />
         </div>
       </div>
     </div>
