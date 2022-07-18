@@ -65,6 +65,8 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 
     > In addition, you could go to [Microsoft 365 admin center](https://admin.microsoft.com/Adminportal/Home#/MicrosoftSearch/connectors) to see the status of custom Graph Connector.
 
+    > If you meet with error of `400` status code, you could try to delete the connection in [Microsoft 365 admin center](https://admin.microsoft.com/Adminportal/Home#/MicrosoftSearch/connectors) and ingest data again.
+
     ![Ingest](images/ingest.png)
 
 1. You could try to query data from custom Graph Connector.
