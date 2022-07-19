@@ -14,10 +14,11 @@
 - How to deploy your app to SharePoint App Catalog and sync the solution to Teams App Catalog.
 
 ## Prerequisites
-* [NodeJS](https://nodejs.org/en/download/releases/) (Recommend LTS 14.x)
-    >  The SharePoint Framework v1.14.0 is supported on the following Node.js versions:
+* [NodeJS](https://nodejs.org/en/download/releases/) (Recommend LTS 16.x)
+    >  The SharePoint Framework v1.15.0 is supported on the following Node.js versions:
+    >- Node.js v16.15.0+ (Gallium)
+    >- Node.js v14.15.0+ (Fermium)
     >- Node.js v12.13.0+ (Erbium)
-    >- Node.js v14.15.0+ (Fermium) 
 * Setup SharePoint Environment by following the [instructions](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
 * Use the team site in SharePoint to create a List.
     - Navigate to the [SharePoint team site](https://support.microsoft.com/en-us/office/create-a-team-site-in-sharepoint-ef10c1e7-15f3-42a3-98aa-b5972711777d), in `Home` tab, click `New` and select `List`.
