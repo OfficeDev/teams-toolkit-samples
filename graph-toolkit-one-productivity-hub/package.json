@@ -1,0 +1,21 @@
+{
+    "name": "OneProductivityHub",
+    "version": "0.0.1",
+    "description": "",
+    "author": "",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "install:tabs": "cd tabs && npm install",
+        "installAll": "npm run install:tabs"
+    },
+    "devDependencies": {
+        "@microsoft/teamsfx-cli": "1.*"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@microsoft/mgt": "^2.5.2",
+        "@microsoft/mgt-element": "^2.5.2",
+        "@microsoft/mgt-react": "^2.5.2",
+        "@microsoft/mgt-teamsfx-provider": "^2.5.2"
+    }
+}
