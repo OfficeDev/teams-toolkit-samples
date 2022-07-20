@@ -6,7 +6,7 @@ import './Profile.module.css';
 import { ProfileProps } from './ProfileProps';
 
 class Profile extends React.Component<ProfileProps> {
-  public render() {
+  public render(): JSX.Element {
     const defaultPhoto:string = require('../images/default-photo.png');
     return (
       <div className="profile">
