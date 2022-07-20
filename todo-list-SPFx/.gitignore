@@ -5,3 +5,4 @@ node_modules
 .DS_Store
 .fx/configs/config.local.json
 .fx/states/state.local.json
+.heft
