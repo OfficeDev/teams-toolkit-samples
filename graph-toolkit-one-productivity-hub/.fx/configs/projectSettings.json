@@ -1,8 +1,8 @@
 {
     "appName": "OneProductivityHub",
-    "projectId": "392be947-8ed3-4f14-8dd6-b1e4878ac4bc",
+    "projectId": "",
     "version": "2.1.0",
-    "isFromSample": false,
+    "isFromSample": true,
     "solutionSettings": {
         "name": "fx-solution-azure",
         "version": "1.0.0",

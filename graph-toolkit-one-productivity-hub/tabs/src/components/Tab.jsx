@@ -11,17 +11,13 @@ import { TeamsFxProvider } from '@microsoft/mgt-teamsfx-provider';
 import { CacheService } from '@microsoft/mgt';
 
 class Tab extends React.Component {
-
   constructor(props) {
     super(props);
     CacheService.clearCaches();
-
     this.state = {
       showLoginPage: undefined,
-     
     }
   }
-
   async componentDidMount() {
 
      /*Define scope for the required permissions*/
@@ -52,10 +48,7 @@ class Tab extends React.Component {
     });
     Providers.globalProvider.setState(consentNeeded ? ProviderState.SignedOut : ProviderState.SignedIn);
     return consentNeeded;
-
   }
-
- 
 
   async loginBtnClick() {
     try {
@@ -72,17 +65,11 @@ class Tab extends React.Component {
           "in the popup window, you may be using unmatched version for TeamsFx SDK (version >= 0.5.0) and Teams Toolkit (version < 3.3.0) or " +
           `cli (version < 0.11.0). Please refer to the help link for how to fix the issue: ${helpLink}` ;
       }
-
       alert("Login failed: " + err);
       return;
     }
   }
-
-
   render() {
-
-   
-   
     return (
       <div>
         {
@@ -110,11 +97,8 @@ class Tab extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
-
-       
-          <div class="row" className="content">
-    
+          </div>    
+          <div class="row" className="content"> 
                   <div class="column" className="mgt-col">
                     <Agenda></Agenda>
                   </div>
@@ -123,15 +107,11 @@ class Tab extends React.Component {
                   </div>
                   <div class="column" className="mgt-col">
                     <FileList></FileList>
-                  </div>
-                  
+                  </div>             
           </div>
-
         </div>
-        </div>
-           
+        </div>  
         }
-
         {
         this.state.showLoginPage === true && 
         <div className="auth">
@@ -140,8 +120,7 @@ class Tab extends React.Component {
         <Button primary onClick={() => this.loginBtnClick()}>Start One Productivity Hub</Button>
         </div>
         }
-      </div>
-      
+      </div> 
     );
   }
 }

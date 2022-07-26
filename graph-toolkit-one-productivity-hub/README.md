@@ -27,7 +27,7 @@ One Productivity Hub sample shows you how to build a tab for viewing your calend
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
-1. Press "F5" to open a browser window and then select your package to view contact exporter sample app.
+1. Press "F5" to open a browser window and then select your package to view one productivity hub app.
 
 ### Provision and Deploy the Sample to Azure
 
@@ -48,7 +48,12 @@ One Productivity Hub sample shows you how to build a tab for viewing your calend
     npm install -g @microsoft/teamsfx-cli
     ```
 
-1. Clone this sample project.
+1. To clone this sample project, run the following command:
+
+    ```
+    teamsfx new template graph-toolkit-one-productivity-hub
+    ```
+
 1. In the sample project folder, run provision command.
 
     ```
