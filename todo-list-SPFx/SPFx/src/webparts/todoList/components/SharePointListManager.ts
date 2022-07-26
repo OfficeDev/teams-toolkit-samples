@@ -95,7 +95,7 @@ export class SharePointListManager {
   public async updateSPItem(id: number, item: any): Promise<void> {
     // If the update one is the same as previous, just return to prevent duplicate call
     if (
-      this._previousUpdateId === id &&
+      this._previousUpdateId === id && this._previousUpdateItem?.description &&
       this._previousUpdateItem?.description === item.description
     ) {
       return;
