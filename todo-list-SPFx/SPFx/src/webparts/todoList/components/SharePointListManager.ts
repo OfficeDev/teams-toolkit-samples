@@ -12,19 +12,19 @@ import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { ISPItem } from "./ITodoListState";
 
 export class SharePointListManager {
-  private spContext: WebPartContext;
-  private siteURL: string;
-  private listname: string = "To%20Do%20List";
-  private previousUpdateItem = null;
-  private previousUpdateId: number = -1;
-  private UserInfoMap = new Map();
+  private _spContext: WebPartContext;
+  private _siteURL: string;
+  private _listname: string = "To%20Do%20List";
+  private _previousUpdateItem = null;
+  private _previousUpdateId: number = -1;
+  private _UserInfoMap: Map<number, string[]> = new Map();
 
-  constructor(spContext: WebPartContext) {
-    this.spContext = spContext;
-    this.siteURL = spContext.pageContext.web.absoluteUrl;
+  public constructor(spContext: WebPartContext) {
+    this._spContext = spContext;
+    this._siteURL = spContext.pageContext.web.absoluteUrl;
   }
 
-  public static async processResponseError(response: HttpClientResponse) {
+  public static async processResponseError(response: HttpClientResponse): Promise<void> {
     const resdata = await response.json();
     if (resdata.error?.message) {
       alert(resdata.error?.message);
@@ -33,13 +33,13 @@ export class SharePointListManager {
     }
   }
 
-  private async getUserInfo(AuthorId: number) {
-    if (this.UserInfoMap.has(AuthorId)) {
-      return this.UserInfoMap.get(AuthorId);
+  private async _getUserInfo(authorId: number): Promise<string[]> {
+    if (this._UserInfoMap.has(authorId)) {
+      return this._UserInfoMap.get(authorId);
     }
     const userinfo: SPHttpClientResponse =
-      await this.spContext.spHttpClient.get(
-        `${this.siteURL}/_api/web/GetUserById(` + AuthorId.toString() + `)`,
+      await this._spContext.spHttpClient.get(
+        `${this._siteURL}/_api/web/GetUserById(` + authorId.toString() + `)`,
         SPHttpClient.configurations.v1
       );
 
@@ -47,10 +47,10 @@ export class SharePointListManager {
       const userinfojson = await userinfo.json();
       const username: string = userinfojson.UserPrincipalName;
       const userDisplayName: string = userinfojson.Title;
-      const photoObjectURL: string = `${this.siteURL}/_layouts/15/userphoto.aspx?size=S&username=${username}`;
-      this.UserInfoMap.set(AuthorId, [userDisplayName, photoObjectURL]);
+      const photoObjectURL: string = `${this._siteURL}/_layouts/15/userphoto.aspx?size=S&username=${username}`;
+      this._UserInfoMap.set(authorId, [userDisplayName, photoObjectURL]);
 
-      return this.UserInfoMap.get(AuthorId);
+      return this._UserInfoMap.get(authorId);
     } else {
       SharePointListManager.processResponseError(userinfo);
     }
@@ -63,20 +63,20 @@ export class SharePointListManager {
    */
   public async getItems(): Promise<ISPItem[]> {
     const response: SPHttpClientResponse =
-      await this.spContext.spHttpClient.get(
-        `${this.siteURL}/_api/web/lists/GetByTitle('${this.listname}')/Items`,
+      await this._spContext.spHttpClient.get(
+        `${this._siteURL}/_api/web/lists/GetByTitle('${this._listname}')/Items`,
         SPHttpClient.configurations.v1
       );
 
     if (response.ok) {
       const responsejson = await response.json();
       const items: ISPItem[] = responsejson.value;
-      for (var i in items) {
-        const AuthorId: number = items[i].AuthorId;
+      for (const item of items) {
+        const AuthorId: number = item.AuthorId;
 
-        var userinfo = await this.getUserInfo(AuthorId);
-        items[i].userDisplayName = userinfo[0];
-        items[i].photoObjectURL = userinfo[1];
+        const userinfo: string[] = await this._getUserInfo(AuthorId);
+        item.userDisplayName = userinfo[0];
+        item.photoObjectURL = userinfo[1];
       }
 
       return items;
@@ -92,16 +92,16 @@ export class SharePointListManager {
    * @param item the object({columnname:columnvalue}) that need to be updated.
    *
    */
-  public async updateSPItem(id: number, item: any) {
+  public async updateSPItem(id: number, item: any): Promise<void> {
     // If the update one is the same as previous, just return to prevent duplicate call
     if (
-      this.previousUpdateId === id &&
-      this.previousUpdateItem?.description === item.description
+      this._previousUpdateId === id &&
+      this._previousUpdateItem?.description === item.description
     ) {
       return;
     }
-    this.previousUpdateId = id;
-    this.previousUpdateItem = item;
+    this._previousUpdateId = id;
+    this._previousUpdateItem = item;
     const options: ISPHttpClientOptions = {
       body: JSON.stringify(item),
       headers: {
@@ -112,8 +112,8 @@ export class SharePointListManager {
       },
     };
     const response: SPHttpClientResponse =
-      await this.spContext.spHttpClient.post(
-        `${this.siteURL}/_api/web/lists/GetByTitle('${this.listname}')/Items(${id})`,
+      await this._spContext.spHttpClient.post(
+        `${this._siteURL}/_api/web/lists/GetByTitle('${this._listname}')/Items(${id})`,
         SPHttpClient.configurations.v1,
         options
       );
@@ -131,7 +131,7 @@ export class SharePointListManager {
    * @param description the description of the new item that need to be added.
    *
    */
-  public async AddItem(description: string) {
+  public async AddItem(description: string): Promise<void> {
     const options: ISPHttpClientOptions = {
       body: JSON.stringify({ description: description, isCompleted: false }),
       headers: {
@@ -140,8 +140,8 @@ export class SharePointListManager {
       },
     };
     const response: SPHttpClientResponse =
-      await this.spContext.spHttpClient.post(
-        `${this.siteURL}/_api/web/lists/GetByTitle('${this.listname}')/Items`,
+      await this._spContext.spHttpClient.post(
+        `${this._siteURL}/_api/web/lists/GetByTitle('${this._listname}')/Items`,
         SPHttpClient.configurations.v1,
         options
       );
@@ -159,7 +159,7 @@ export class SharePointListManager {
    * @param id the unique id of item(automatically assigned by SharePoint list).
    *
    */
-  public async DeleteItem(id: number) {
+  public async DeleteItem(id: number): Promise<void> {
     const options: ISPHttpClientOptions = {
       headers: {
         accept: "application/json",
@@ -169,8 +169,8 @@ export class SharePointListManager {
       },
     };
     const response: SPHttpClientResponse =
-      await this.spContext.spHttpClient.post(
-        `${this.siteURL}/_api/web/lists/GetByTitle('${this.listname}')/Items(${id})`,
+      await this._spContext.spHttpClient.post(
+        `${this._siteURL}/_api/web/lists/GetByTitle('${this._listname}')/Items(${id})`,
         SPHttpClient.configurations.v1,
         options
       );

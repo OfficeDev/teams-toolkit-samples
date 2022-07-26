@@ -1,7 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-export interface ProfileProps {
+export interface IProfileProps
+ {
   photoObjectURL: string;
   userName: string;
 }

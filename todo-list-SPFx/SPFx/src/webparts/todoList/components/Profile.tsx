@@ -3,9 +3,9 @@
 
 import * as React from 'react';
 import './Profile.module.css';
-import { ProfileProps } from './ProfileProps';
+import { IProfileProps } from './ProfileProps';
 
-class Profile extends React.Component<ProfileProps> {
+class Profile extends React.Component<IProfileProps> {
   public render(): JSX.Element {
     const defaultPhoto:string = require('../images/default-photo.png');
     return (

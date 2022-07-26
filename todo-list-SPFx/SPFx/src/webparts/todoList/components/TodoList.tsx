@@ -10,9 +10,9 @@ import Profile from './Profile';
 import './TodoList.module.css';
 
 export default class TodoList extends React.Component<ITodoListProps, ITodoListState> {
-  private sharePointListManager: SharePointListManager;
+  private _sharePointListManager: SharePointListManager;
 
-  constructor(props: ITodoListProps) {
+  public constructor(props: ITodoListProps) {
     super(props);
 
     // Initialize the state of the component
@@ -25,61 +25,61 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
     };
 
     // Initialize SharePoint List Manager
-    this.sharePointListManager = new SharePointListManager(this.props.context);
+    this._sharePointListManager = new SharePointListManager(this.props.context);
   }
 
-  private async getItems() {
-    let items: ISPItem[] = await this.sharePointListManager.getItems();
+  private async _getItems(): Promise<void> {
+    const items: ISPItem[] = await this._sharePointListManager.getItems();
     this.setState({
       items,
     });
   }
 
-  public async componentDidMount() {
+  public async componentDidMount(): Promise<void> {
     // Get user photo and get to-do list items after the component is mounted.
-    Promise.all([this.getItems()]);
+    Promise.all([this._getItems()]);
   }
 
-  private handleInputChange(index: number, property: string, value: string | boolean) {
-    const tmp = JSON.parse(JSON.stringify(this.state.items));
+  private _handleInputChange(index: number, property: string, value: string | boolean): void {
+    const tmp: ISPItem[] = JSON.parse(JSON.stringify(this.state.items));
     tmp[index][property] = value;
     this.setState({
       items: tmp,
     });
   }
 
-  private async onDeleteItem(id: number) {
-    await this.sharePointListManager.DeleteItem(id);
-    this.getItems();
+  private async _onDeleteItem(id: number): Promise<void> {
+    await this._sharePointListManager.DeleteItem(id);
+    this._getItems();
   }
 
-  private async onAddItem() {
-    await this.sharePointListManager.AddItem(this.state.newItemDescription);
+  private async _onAddItem(): Promise<void> {
+    await this._sharePointListManager.AddItem(this.state.newItemDescription);
     this.setState({
       newItemDescription: '',
     });
-    this.getItems();
+    this._getItems();
   }
 
-  private async onCompletionStatusChange(id: number, index: number, isCompleted: boolean) {
+  private async _onCompletionStatusChange(id: number, index: number, isCompleted: boolean): Promise<void> {
     // Change the "isCompleted" status on page and update it to the Sharepoint List database
-    this.handleInputChange(index, 'isCompleted', isCompleted);
-    await this.sharePointListManager.updateSPItem(id, { isCompleted: isCompleted });
+    this._handleInputChange(index, 'isCompleted', isCompleted);
+    await this._sharePointListManager.updateSPItem(id, { isCompleted: isCompleted });
   }
 
-  private async onUpdateItem(id: number, description: string) {
+  private async _onUpdateItem(id: number, description: string): Promise<void> {
     // Update the SharePoint database according to the user input.
-    await this.sharePointListManager.updateSPItem(id, { description: description });
+    await this._sharePointListManager.updateSPItem(id, { description: description });
   }
 
   public render(): React.ReactElement<ITodoListProps> {
-    const items = this.state.items.map((item, index) =>
+    const items: JSX.Element[]= this.state.items.map((item, index) =>
       <div key={item.Id} className="item">
           <div className="is-completed">
           <Checkbox
             checked={this.state.items[index].isCompleted}
             onChange={(e, selectedOption) => {
-              this.onCompletionStatusChange(item.Id, index, selectedOption);
+              this._onCompletionStatusChange(item.Id, index, selectedOption);
             }}
             className="is-completed-input"
           />
@@ -87,14 +87,14 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
         <div className="description">
           <TextField
             value={this.state.items[index].description}
-            onChange={(e, v) => this.handleInputChange(index, "description", v)}
+            onChange={(e, v) => this._handleInputChange(index, "description", v)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
                 (e.target as HTMLInputElement).blur();
-                this.onUpdateItem(item.Id, this.state.items[index].description);
+                this._onUpdateItem(item.Id, this.state.items[index].description);
               }
             }}
-            onBlur={() => this.onUpdateItem(item.Id, this.state.items[index].description)}
+            onBlur={() => this._onUpdateItem(item.Id, this.state.items[index].description)}
             className={"text" + (this.state.items[index].isCompleted ? " is-completed" : "")}
           />
         </div>
@@ -118,7 +118,7 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
                   icon: 'Delete',
                   name: 'Delete',
                   onClick: () => {
-                    this.onDeleteItem(this.state.selectItemID);
+                    this._onDeleteItem(this.state.selectItemID);
                     this.setState({ selectItemID: -1 });
                   },
                   onBlur: () => this.setState({ selectItemID: -1 })
@@ -182,12 +182,12 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
                   onChange={(e, v) => this.setState({ newItemDescription: v })}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
-                      this.onAddItem();
+                      this._onAddItem();
                     }
                   }}
                   onBlur={() => {
                     if (this.state.newItemDescription) {
-                      this.onAddItem();
+                      this._onAddItem();
                     }
                     this.setState({
                       isAddingItem: false,
