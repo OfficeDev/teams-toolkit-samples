@@ -1,4 +1,4 @@
-# Getting Started with Hello World Tab Without SSO Sample
+# Getting Started with Deeplinking Hello World Tab Without SSO Sample
 
 > Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate.
 >
@@ -8,9 +8,14 @@
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
-Hello World Tab shows you how to build a tab app without single sign on.
+Deeplinking Hello World Tab Without SSO Sample app shows you how to use new Teams SDK V2 capabilities on Teams, Outlook and Office. It covers two different scenarios:
+1. App to App Scenarios
+    - Deeplinking from outside app
+    - Navigating within app
 
-![Hello World Tab Without SSO](images/hello-world-tab-without-sso.gif)
+2. App to Hub Scenarios
+    - Deeplinking from outside app
+    - Navigating from within the hub 
 
 ## Prerequisites
 

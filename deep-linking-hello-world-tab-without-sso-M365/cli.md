@@ -5,9 +5,9 @@
     ```
     npm install -g @microsoft/teamsfx-cli
     ```
-1. Create hello-world-tab project.
+1. Create deep-linking-hello-world-tab-without-sso-M365 project.
     ```
-    teamsfx new template hello-world-tab-without-sso
+    teamsfx new template deep-linking-hello-world-tab-without-sso-M365
     ```
 1. Provision the project to Azure.
     ```
