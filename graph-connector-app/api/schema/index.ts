@@ -84,7 +84,7 @@ export default async function run(
           },
           {
             "name": "price",
-            "type": "string",
+            "type": "double",
             "isSearchable": false,
             "isRetrievable": true,
             "isQueryable": true,
