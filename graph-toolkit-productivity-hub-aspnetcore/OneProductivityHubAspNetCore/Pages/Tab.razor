@@ -1,0 +1,60 @@
+﻿@page "/"
+@page "/tab"
+@using OneProductivityHubAspNetCore.Components;
+
+<div>
+    <mgt-teams-msal2-provider client-id="<YOUR_CLIENT_ID>"
+                              auth-popup-url="https://localhost:44302/auth"
+                              authority="https://login.microsoftonline.com/<YOUR_TENANT_ID>"
+                              scopes="User.Read,
+                                User.ReadBasic.All,
+                                Calendars.Read,
+                                Files.Read,
+                                Files.Read.All,
+                                Sites.Read.All,
+                                Tasks.Read,
+                                Tasks.ReadWrite,
+                                People.Read,
+                                User.ReadBasic.All">
+    </mgt-teams-msal2-provider>
+    <div>
+
+        <mgt-login></mgt-login>
+
+        <div class="features">
+
+            <div class="header">
+                <div class="title">
+                    <h2>One Productivity Hub</h2>
+                    <div class="row">
+                        <div class="column">
+                            <h3>Calendar events</h3>
+                        </div>
+                        <div class="column">
+                            <h3>To-do tasks</h3>
+                        </div>
+                        <div class="column">
+                            <h3>Files</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="content">
+                <div class="column" id="mgt-col">
+                    <mgt-agenda></mgt-agenda>
+                </div>
+                <div class="column" id="mgt-col">
+                    <mgt-todo></mgt-todo>
+                </div>
+                <div class="column" id="mgt-col">
+                    <mgt-file-list></mgt-file-list>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

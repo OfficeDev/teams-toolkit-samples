@@ -1,0 +1,29 @@
+{
+    "appName": "OneProductivityHubAspNetCore",
+    "projectId": "eea820f6-485f-4136-978b-cc7c94afe764",
+    "version": "2.1.0",
+    "isFromSample": false,
+    "solutionSettings": {
+        "name": "fx-solution-azure",
+        "version": "1.0.0",
+        "hostType": "Azure",
+        "azureResources": [],
+        "capabilities": [
+            "Tab"
+        ],
+        "activeResourcePlugins": [
+            "fx-resource-frontend-hosting",
+            "fx-resource-identity",
+            "fx-resource-aad-app-for-teams",
+            "fx-resource-local-debug",
+            "fx-resource-appstudio",
+            "fx-resource-cicd",
+            "fx-resource-api-connector"
+        ]
+    },
+    "programmingLanguage": "csharp",
+    "pluginSettings": {
+        "projectFilePath": "C:\\Users\\aycabas\\Documents\\GitHub\\TeamsFx-Samples\\graph-toolkit-one-productivity-hub-aspnetcore\\OneProductivityHubAspNetCore\\OneProductivityHubAspNetCore\\OneProductivityHubAspNetCore.csproj"
+    },
+    "isFirstTimeOpenProject": false
+}
