@@ -72,7 +72,7 @@ export default async function run(
             "partNumber": Number(item.PartNumber),
             "name": item.Name,
             "description": item.Description,
-            "price": item.Price,
+            "price": Number(item.Price),
             "inventory": Number(item.Inventory),
             "appliances": item.Appliances.split(";"),
             "appliances@odata.type": "Collection(String)"
