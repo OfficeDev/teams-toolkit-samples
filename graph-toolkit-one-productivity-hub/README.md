@@ -86,7 +86,7 @@ One Productivity Hub sample shows you how to build a tab for viewing your calend
 
 - You can check app configuration and environment information in: [.fx](.fx)
 - You will find frontend code in: [tabs/src/components](tabs/src/components)
-- You will find authentication code in: [public](public)
+- You will find authentication code in: [public](tabs/public/)
 
 ## Code of Conduct
 
