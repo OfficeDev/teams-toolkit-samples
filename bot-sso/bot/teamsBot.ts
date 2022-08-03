@@ -11,7 +11,7 @@ import {
 } from "botbuilder";
 import { Utils } from "./helpers/utils";
 import { SSODialog } from "./helpers/ssoDialog";
-import { CommandsHelper } from "./helpers/commandHelpler";
+import { CommandsHelper } from "./helpers/commandHelper";
 const rawWelcomeCard = require("./adaptiveCards/welcome.json");
 const rawLearnCard = require("./adaptiveCards/learn.json");
 
