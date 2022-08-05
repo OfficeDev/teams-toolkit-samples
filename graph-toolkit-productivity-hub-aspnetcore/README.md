@@ -40,9 +40,11 @@ One Productivity Hub sample shows you how to build a tab for viewing your calend
 
         ![Screenshot showing the new app registration form](images/aad-new-app-registration-form.png)
 
-    - Once app registration is completed, go to **Overview** tab in your application page and copy **Application (client) ID**, you will need it in the following section.
+    - Once app registration is completed, go to **Overview** tab in your application page and copy **Application (client) ID** and **Directory (tenant) ID**, you will need it in the following section.
 
-1. In your project, select **Pages > Tab.razor** file, inside `mgt-teams-msal2-provider`, replace `<YOUR_CLIENT_ID>` with the client ID copied from the Azure AD application.
+1. In your project, select **Pages > Tab.razor** file, inside `mgt-teams-msal2-provider`: 
+    - in **client-id**, replace `<YOUR_CLIENT_ID>` with the client ID copied from the Azure AD application.
+    - in **authority**, replace `<YOUR_TENANT_ID>` with your tenant ID.
 1. Press "F5" to open a browser window and then select your package to view one productivity hub app.
 
 ### Provision and Deploy the Sample to Azure
