@@ -1,8 +1,7 @@
 {
     "appName": "StocksUpdateNotificationBot",
-    "projectId": "aa1be8f6-8ef2-40a9-a52f-388172ab72f9",
     "version": "2.1.0",
-    "isFromSample": false,
+    "isFromSample": true,
     "solutionSettings": {
         "name": "fx-solution-azure",
         "version": "1.0.0",
