@@ -20,7 +20,7 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 - How to render data in an Adaptive Card.
 
 ## Try the Sample with Visual Studio Code Extension:
->Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
+
 1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
