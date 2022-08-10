@@ -6,13 +6,13 @@
 
 One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) components and [Proxy Provider](https://docs.microsoft.com/en-us/graph/toolkit/providers/proxy).
 
-![One Productivity Hub Overview](images/oneproductivityhub-overview.gif)
+![One Productivity Hub Overview](images/oneproductivityhub-overview-proxy.gif)
 
 ## Prerequisite
 
-- [Visual Studio 2022](https://visualstudio.microsoft.com/), version 17.3 or higher
-- Latest [Teams Toolkit for Visual Studio](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/teams-toolkit-overview-visual-studio)
-- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/), version 17.3 or higher.
+- Latest [Teams Toolkit for Visual Studio](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/teams-toolkit-overview-visual-studio).
+- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
 
 ## What you will learn in this sample
 
@@ -24,7 +24,7 @@ One Productivity Hub sample shows you how to build a tab for viewing your calend
 ### Local Debug the Sample
 
 1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio](https://visualstudio.microsoft.com/) and install [Teams Toolkit Visual Studio Extension](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/visual-studio-overview).
+1. Download [Visual Studio](https://visualstudio.microsoft.com/) and install [Teams Toolkit for Visual Studio Extension](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/visual-studio-overview).
 1. Open the project in Visual Studio.
 1. Right click to the project, select **Teams Toolkit > Prepare Teams App Dependencies**.
 1. Press "F5" to open a browser window and then select your package to view one productivity hub app.
@@ -44,17 +44,13 @@ Teams Toolkit will create Azure resources in this subscription but no code is de
 
 ## Use the app in Teams
 
-1. The app will look like this when it runs for the first time. Select **Sign in** to enable the app for your account.
-
-    ![Login Page](images/signin.png)
-
-1. For the first time to run the app, you need to consent the required permissions for Microsoft Graph. Select **Accept** to consent permissions.
+1. If you are running the for the first time, you need to consent the required permissions for Microsoft Graph. Select **Accept** to consent permissions.
 
     ![Consent](images/consent.png)
 
 1. Scroll down to review your calendar events, to-do tasks and file folders in One Productivity Hub tab.
 
-    ![Select](images/oneproductivityhub-overview.gif)
+    ![Select](images/oneproductivityhub-proxy.png)
 ## Code structure
 
 - You can check app configuration and environment information in: [OneProductivityHubNetCore/.fx](OneProductivityHubNetCore/.fx)
