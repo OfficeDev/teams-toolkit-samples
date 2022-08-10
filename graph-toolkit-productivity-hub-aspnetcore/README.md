@@ -4,7 +4,7 @@
 >  
 > This warning will be removed when the samples are ready for production.
 
-One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) components and [Proxy Provider](https://docs.microsoft.com/en-us/graph/toolkit/providers/proxy).
+One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) components and [MSAL2 Provider](https://docs.microsoft.com/en-us/graph/toolkit/providers/msal2).
 
 ![One Productivity Hub Overview](images/oneproductivityhub-overview-proxy.gif)
 
