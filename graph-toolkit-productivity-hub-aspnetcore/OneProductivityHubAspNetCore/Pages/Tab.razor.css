@@ -32,7 +32,7 @@
 
     .title h3 {
         float: left;
-        width: 32%;
+        width: 33%;
         background: transparent;
         font-size: 16px;
         margin-bottom: 10px;
@@ -42,7 +42,8 @@
         font-weight: 600;
     }
 
-mgt-login {
+mgt-person {
+    margin-top: 20px;
     margin-left: 20px;
     --avatar-size: 60px;
     --font-family: 'Segoe UI';
@@ -62,9 +63,9 @@ mgt-login {
 
 #mgt-col {
     float: left;
-    width: 32%;
+    width: 33%;
     background: transparent;
-    height: 500px;
+    height: 60vh;
     overflow: hidden;
     padding: 5px;
     margin-top: 5px;

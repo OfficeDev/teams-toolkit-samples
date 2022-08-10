@@ -3,23 +3,11 @@
 @using OneProductivityHubAspNetCore.Components;
 
 <div>
-    <mgt-teams-msal2-provider client-id="<YOUR_CLIENT_ID>"
-                              auth-popup-url="https://localhost:44302/auth"
-                              authority="https://login.microsoftonline.com/<YOUR_TENANT_ID>"
-                              scopes="User.Read,
-                                User.ReadBasic.All,
-                                Calendars.Read,
-                                Files.Read,
-                                Files.Read.All,
-                                Sites.Read.All,
-                                Tasks.Read,
-                                Tasks.ReadWrite,
-                                People.Read,
-                                User.ReadBasic.All">
-    </mgt-teams-msal2-provider>
+   
     <div>
 
-        <mgt-login></mgt-login>
+        <mgt-person person-query="me" view="twoLines"></mgt-person>
+
 
         <div class="features">
 

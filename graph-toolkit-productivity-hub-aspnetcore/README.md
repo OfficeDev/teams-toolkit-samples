@@ -4,14 +4,14 @@
 >  
 > This warning will be removed when the samples are ready for production.
 
-One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) components and [Teams MSAL2 Provider](https://docs.microsoft.com/en-us/graph/toolkit/providers/teams-msal2?tabs=ts).
+One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) components and [Proxy Provider](https://docs.microsoft.com/en-us/graph/toolkit/providers/proxy).
 
 ![One Productivity Hub Overview](images/oneproductivityhub-overview.gif)
 
 ## Prerequisite
 
 - [Visual Studio 2022](https://visualstudio.microsoft.com/), version 17.3 or higher
-- Latest [Teams Toolkit Visual Studio Extension](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/visual-studio-overview)
+- Latest [Teams Toolkit for Visual Studio](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/teams-toolkit-overview-visual-studio)
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 
 ## What you will learn in this sample
@@ -27,24 +27,6 @@ One Productivity Hub sample shows you how to build a tab for viewing your calend
 1. Download [Visual Studio](https://visualstudio.microsoft.com/) and install [Teams Toolkit Visual Studio Extension](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/visual-studio-overview).
 1. Open the project in Visual Studio.
 1. Right click to the project, select **Teams Toolkit > Prepare Teams App Dependencies**.
-1. Register an application in the Azure Active Directory to enable user authentication for your application:
-    - Go to [Azure Portal](https://portal.azure.com) and sign in with your Microsoft 365 Developer Program tenant.
-    - Select **Azure Active Directory** from the left pane, select **App Registration** and click on **New Registration**.
-
-        ![Screenshot showing Azure Active Directory App registration tab](images/aad-app-registration.png)
-
-    - Complete the **Register an application** form with the following values, and then select **Register**.
-        - **Name**: One Productivity Hub Demo
-        - **Supported account types**: Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)
-        - **Redirect URI**: Select **Single-page application (SPA)** as a type of redirect URI and place `https://localhost:44302/auth` as a redirect URI to test locally.
-
-        ![Screenshot showing the new app registration form](images/aad-new-app-registration-form.png)
-
-    - Once app registration is completed, go to **Overview** tab in your application page and copy **Application (client) ID** and **Directory (tenant) ID**, you will need it in the following section.
-
-1. In your project, select **Pages > Tab.razor** file, inside `mgt-teams-msal2-provider`: 
-    - in **client-id**, replace `<YOUR_CLIENT_ID>` with the client ID copied from the Azure AD application.
-    - in **authority**, replace `<YOUR_TENANT_ID>` with your tenant ID.
 1. Press "F5" to open a browser window and then select your package to view one productivity hub app.
 
 ### Provision and Deploy the Sample to Azure
@@ -77,8 +59,7 @@ Teams Toolkit will create Azure resources in this subscription but no code is de
 
 - You can check app configuration and environment information in: [OneProductivityHubNetCore/.fx](OneProductivityHubNetCore/.fx)
 - You will find Microsoft Graph Toolkit SDK code in: [OneProductivityHubNetCore/_Host.cshtml](OneProductivityHubNetCore/_Host.cshtml)
-- You will find frontend code in: [OneProductivityHubNetCore/Pages/tab.razor](OneProductivityHubNetCore/Pages/tab.razor)
-- You will find authentication code in: [OneProductivityHubNetCore/Auth.cshtml](OneProductivityHubNetCore/Auth.cshtml)
+- You will find frontend code in: [OneProductivityHubNetCore/Pages/Tab.razor](OneProductivityHubNetCore/Pages/tab.razor)
 
 ## Code of Conduct
 

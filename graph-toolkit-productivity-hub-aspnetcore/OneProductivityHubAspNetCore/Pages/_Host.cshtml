@@ -4,6 +4,8 @@
 @{
     Layout = null;
 }
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,10 +20,17 @@
 </head>
 <body>
 
-     <!-- Microsoft Teams sdk must be referenced before the toolkit -->
-    <script src="https://unpkg.com/%40microsoft/teams-js/dist/MicrosoftTeams.min.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/%40microsoft/mgt/dist/bundle/mgt-loader.js"></script>
+    <script src="https://unpkg.com/@@microsoft/mgt/dist/bundle/mgt-loader.js"></script>
 
+    <script>
+        mgt.Providers.globalProvider = new mgt.Msal2Provider({
+            clientId: "@Configuration["TeamsFx:Authentication:ClientId"]",
+            loginHint: "@User.Claims.FirstOrDefault(c => c.Type == "preferred_username")?.Value",
+            redirectUri: "/blank-auth-end.html",
+            loginType: mgt.LoginType.Popup,
+            authority: "@Configuration["TeamsFx:Authentication:OAuthAuthority"]"
+        });
+    </script>
     <component type="typeof(App)" render-mode="ServerPrerendered" />
 
     <div id="blazor-error-ui">
