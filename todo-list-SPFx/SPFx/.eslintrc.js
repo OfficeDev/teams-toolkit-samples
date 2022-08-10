@@ -6,6 +6,7 @@ require('@rushstack/eslint-config/patch/modern-module-resolution');
       "@microsoft/spfx/no-async-await": "off",
       "@typescript-eslint/typedef": "off",
       "@typescript-eslint/no-floating-promises": "off",
+      "@typescript-eslint/no-explicit-any": "off",
       "react/jsx-no-bind": "off"
     }
   };
