@@ -104,7 +104,8 @@ Remember the knowledge base ID: we will need it in the next step.
 
 ## Step 4: Finish configuring the FAQ Plus app
 
-*Note: You need to run `Teams: Provision in the cloud` first before finishing the FAQ Plus app. If you have not run the command yet, please go back to the [ReadMe](../README.md#try-the-sample) and follow the steps.*
+*Note: You need to run `Teams: Provision in the cloud` first before finishing the FAQ Plus app. If you have not run the command yet, please go back to the [ReadMe](../README.md#try-the-sample) and follow the steps. If you encounter the following error page, please refer to [this workaround](#workaround-for-configuration-app-error-page) for a solution.*
+![Configuration app error page](images/config-app-error.png)
 
 1. Open the configuration app by typing your confirguration app url "https://[resourceBaseName]-config.azurewebsites.net" in browser. For example, if you chose "contosofaqplus" as the base name, the configuration app url will be "https://contosofaqplus-config.azurewebsites.net".
 
@@ -129,6 +130,46 @@ Click on "Copy" to copy the link to the clipboard.
 ### Notes
 
 Remember to click on "OK" after changing a setting. To edit the setting later, click on "Edit" to make the text box editable.
+
+### Workaround for configuration app page error
+
+Here is a workaround to replace the step 4.
+
+1. Create a configuration table in your AAD Storage Instance. The table name must be **ConfigurationInfo**.
+
+![image](images/wa-img-1.png)
+
+2. After creating the configuration table, click **Add Entity**
+
+![image](images/wa-img-2.png)
+	
+3. Edit the configuration table to add Team ID and Knowledge base ID: (PartitionKey=ConfigurationInfo, RowKey=KnowledgeBaseId/TeamId). The property name of data should be "**Data**".
+
+(i)	If you want to insert a KnowledgeBaseId, then set RowKey= KnowledgeBaseId 
+
+![image](images/wa-img-3.png)
+
+(ii)	You need to use the following **C#** code snippet to trans your raw **team link** string to a storable one.
+
+```cs
+using System.Text.RegularExpressions;
+using System.Web;
+public class Example {
+   public static void Main() {
+      var teamIdDeepLink = "<YOUR_TEAM_LINK>"; // For example: "https://teams.microsoft.com/l/team/19%3a9M4Dz_-DQsKsqV0MfFjmpRz4Np0dcidgmIv6OkWGMwM1%40thread.tacv2/conversations?groupId=fee6b738-335e-4882-9105-92c9fd6d71c6&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47"
+      var match = Regex.Match(teamIdDeepLink, @"teams.microsoft.com/l/team/(\S+)/");
+
+      Console.Write(HttpUtility.UrlDecode(match.Groups[1].Value));
+   }
+}
+```
+After run the code above, you'll get a string in your terminal like this (the green string):
+
+![image](images/wa-img-4.png)
+
+Then go to Azure portal, find the storage table in your resource group, and add a new entity. Set RowKey=TeamId, Data=<the_green_string_above>
+
+![image](images/wa-img-5.png)
 
 ## Step 5: Prepare required parameters for Teams Bot app
 
