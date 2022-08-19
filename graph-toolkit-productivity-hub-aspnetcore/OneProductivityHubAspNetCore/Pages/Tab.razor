@@ -1,0 +1,47 @@
+﻿@page "/"
+@page "/tab"
+
+<div>
+   
+    <div>
+
+        <mgt-person person-query="me" view="twoLines"></mgt-person>
+
+
+        <div class="features">
+
+            <div class="header">
+                <div class="title">
+                    <h2>One Productivity Hub</h2>
+                    <div class="row">
+                        <div class="column">
+                            <h3>Calendar events</h3>
+                        </div>
+                        <div class="column">
+                            <h3>To-do tasks</h3>
+                        </div>
+                        <div class="column">
+                            <h3>Files</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="content">
+                <div class="column" id="mgt-col">
+                    <mgt-agenda></mgt-agenda>
+                </div>
+                <div class="column" id="mgt-col">
+                    <mgt-todo></mgt-todo>
+                </div>
+                <div class="column" id="mgt-col">
+                    <mgt-file-list></mgt-file-list>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
