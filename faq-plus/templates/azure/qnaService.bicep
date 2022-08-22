@@ -57,7 +57,7 @@ param searchServiceSku string = 'B (15 indexes)'
 param gitRepoUrl string = 'https://github.com/OfficeDev/TeamsFx-Samples'
 
 @description('The branch of the GitHub repository to deploy.')
-param gitBranch string = 'faqp_configapp_package_version_frankedit'
+param gitBranch string = 'v2'
 
 var hostingPlanName_var = baseResourceName
 var storageAccountName_var = uniqueString(concat(resourceGroup().id, baseResourceName))
