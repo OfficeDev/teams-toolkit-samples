@@ -7,7 +7,7 @@
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import { Client } from "@microsoft/microsoft-graph-client";
-import { createMicrosoftGraphClient, TeamsFx, UserInfo } from "@microsoft/teamsfx";
+import { createMicrosoftGraphClient, UserInfo, TeamsFx, IdentityType } from "@microsoft/teamsfx";
 
 interface Response {
   status: number;
@@ -72,6 +72,7 @@ export default async function run(
       status: 500,
       body: {
         error:
+          "User credential error" +
           "Failed to construct TeamsFx using your accessToken. " +
           "Ensure your function app is configured with the right Azure AD App registration.",
       },
@@ -79,8 +80,11 @@ export default async function run(
   }
 
   // Query user's information from the access token.
+  let userName: string;
   try {
     const currentUser: UserInfo = await teamsfx.getUserInfo();
+    console.log(currentUser);
+    userName = currentUser.preferredUserName; // Will be used in app credential flow
     if (currentUser && currentUser.displayName) {
       res.body.userInfoMessage = `User display name is ${currentUser.displayName}.`;
     } else {
@@ -96,10 +100,35 @@ export default async function run(
     };
   }
 
-  // Create a graph client to access user's Microsoft 365 data after user has consented.
+  // Use IdentityType.App + client secret to create a teamsfx
+  let teamsfx_app: TeamsFx;
   try {
-    const graphClient: Client = createMicrosoftGraphClient(teamsfx, [".default"]);
-    const profile: any = await graphClient.api("/me").get();
+    teamsfx_app = new TeamsFx(IdentityType.App, 
+      {
+        clientId: process.env.M365_CLIENT_ID,
+        clientSecret: process.env.M365_CLIENT_SECRET,
+        authorityHost: process.env.M365_AUTHORITY_HOST,
+        tenantId: process.env.M365_TENANT_ID,
+      }
+    );
+  } catch (e) {
+    context.log.error(e);
+    return {
+      status: 500,
+      body: {
+        error:
+          "App credential error:" +
+          "Failed to construct TeamsFx using your accessToken. " +
+          "Ensure your function app is configured with the right Azure AD App registration.",
+      },
+    };
+  }
+
+  // Create a graph client to access user's Microsoft 365 data after user has consented. 
+  try {
+    const graphClient: Client = createMicrosoftGraphClient(teamsfx_app, [".default"]);
+  
+    const profile: any = await graphClient.api("/users/"+userName).get();
     res.body.graphClientMessage = profile;
   } catch (e) {
     context.log.error(e);
