@@ -43,7 +43,7 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 
     ![Consent](images/consent.png)
 
-1. Before ingesting data, you need to do 'Admin Consent' with 'ExternalItem.ReadWrite.All' application permission for your AAD App in Azure Portal.
+1. Before ingesting data, you need to do 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.OwnedBy' application permissions for your AAD App in Azure Portal.
 
     1. Find the client id in `.fx\states\state.xxx.json` file (e.g. `state.local.json` for local environment, `state.dev.json` for dev environment).
 
