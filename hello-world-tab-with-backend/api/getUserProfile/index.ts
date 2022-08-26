@@ -7,7 +7,7 @@
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import { Client } from "@microsoft/microsoft-graph-client";
-import { createMicrosoftGraphClient, UserInfo, TeamsFx } from "@microsoft/teamsfx";
+import { createMicrosoftGraphClient, TeamsFx, UserInfo } from "@microsoft/teamsfx";
 
 interface Response {
   status: number;
