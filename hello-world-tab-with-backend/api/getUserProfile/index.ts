@@ -124,7 +124,7 @@ export default async function run(
     };
   }
 
-  // Create a graph client to access user's Microsoft 365 data after user has consented. 
+  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented. 
   try {
     const graphClient: Client = createMicrosoftGraphClient(teamsfx_app, [".default"]);
   
