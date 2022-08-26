@@ -7,7 +7,7 @@
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import { Client } from "@microsoft/microsoft-graph-client";
-import { createMicrosoftGraphClient, UserInfo, TeamsFx, IdentityType } from "@microsoft/teamsfx";
+import { createMicrosoftGraphClient, UserInfo, TeamsFx } from "@microsoft/teamsfx";
 
 interface Response {
   status: number;
@@ -72,7 +72,6 @@ export default async function run(
       status: 500,
       body: {
         error:
-          "User credential error" +
           "Failed to construct TeamsFx using your accessToken. " +
           "Ensure your function app is configured with the right Azure AD App registration.",
       },
@@ -80,6 +79,47 @@ export default async function run(
   }
 
   // Query user's information from the access token.
+  try {
+    const currentUser: UserInfo = await teamsfx.getUserInfo();
+    if (currentUser && currentUser.displayName) {
+      res.body.userInfoMessage = `User display name is ${currentUser.displayName}.`;
+    } else {
+      res.body.userInfoMessage = "No user information was found in access token.";
+    }
+  } catch (e) {
+    context.log.error(e);
+    return {
+      status: 400,
+      body: {
+        error: "Access token is invalid.",
+      },
+    };
+  }
+
+  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented. 
+  try {
+    const graphClient: Client = createMicrosoftGraphClient(teamsfx, [".default"]);
+  
+    const profile: any = await graphClient.api("/me").get();
+    res.body.graphClientMessage = profile;
+  } catch (e) {
+    context.log.error(e);
+    return {
+      status: 500,
+      body: {
+        error:
+          "Failed to retrieve user profile from Microsoft Graph. The application may not be authorized.",
+      },
+    };
+  }
+
+  return res;
+}
+
+// You can replace line 81 to line 114 with the following codes to use application permission to get the user profiles. 
+// Remember to get admin consent of application permission "User.Read.All".
+/*
+// Query user's information from the access token.
   let userName: string;
   try {
     const currentUser: UserInfo = await teamsfx.getUserInfo();
@@ -140,6 +180,4 @@ export default async function run(
       },
     };
   }
-
-  return res;
-}
+*/
