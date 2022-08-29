@@ -9,7 +9,7 @@ import Profile from "./Profile";
 import Creator from "./Creator";
 import { Checkbox, Button, Input, MenuButton } from "@fluentui/react-northstar"
 import noItemimage from '../images/no-item.png'
-import * as microsoftTeams from '@microsoft/teams-js';
+import { app } from '@microsoft/teams-js';
 
 class Tab extends React.Component {
 
@@ -200,7 +200,7 @@ class Tab extends React.Component {
 
   async getPlatformInfo() {
     return new Promise((resolve, reject) => {
-      microsoftTeams.app.getContext().then((context) => {
+      app.getContext().then((context) => {
         const name = context.app.host?.name;
         resolve({name: name});
       })
