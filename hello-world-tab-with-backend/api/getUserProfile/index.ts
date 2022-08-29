@@ -116,7 +116,8 @@ export default async function run(
   return res;
 }
 
-// You can replace line 81 to line 114 with the following codes to use application permission to get the user profiles. 
+// You can replace the codes above from the function body with comment "Query user's information from the access token." to the end 
+// with the following codes to use application permission to get user profiles. 
 // Remember to get admin consent of application permission "User.Read.All".
 /*
 // Query user's information from the access token.
