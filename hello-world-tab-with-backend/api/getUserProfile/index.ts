@@ -96,9 +96,10 @@ export default async function run(
     };
   }
 
-  // Create a graph client to access user's Microsoft 365 data after user has consented.
+  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented. 
   try {
     const graphClient: Client = createMicrosoftGraphClient(teamsfx, [".default"]);
+  
     const profile: any = await graphClient.api("/me").get();
     res.body.graphClientMessage = profile;
   } catch (e) {
@@ -114,3 +115,70 @@ export default async function run(
 
   return res;
 }
+
+// You can replace the codes above from the function body with comment "Query user's information from the access token." to the end 
+// with the following codes to use application permission to get user profiles. 
+// Remember to get admin consent of application permission "User.Read.All".
+/*
+// Query user's information from the access token.
+  let userName: string;
+  try {
+    const currentUser: UserInfo = await teamsfx.getUserInfo();
+    console.log(currentUser);
+    userName = currentUser.preferredUserName; // Will be used in app credential flow
+    if (currentUser && currentUser.displayName) {
+      res.body.userInfoMessage = `User display name is ${currentUser.displayName}.`;
+    } else {
+      res.body.userInfoMessage = "No user information was found in access token.";
+    }
+  } catch (e) {
+    context.log.error(e);
+    return {
+      status: 400,
+      body: {
+        error: "Access token is invalid.",
+      },
+    };
+  }
+
+  // Use IdentityType.App + client secret to create a teamsfx
+  let teamsfx_app: TeamsFx;
+  try {
+    teamsfx_app = new TeamsFx(IdentityType.App, 
+      {
+        clientId: process.env.M365_CLIENT_ID,
+        clientSecret: process.env.M365_CLIENT_SECRET,
+        authorityHost: process.env.M365_AUTHORITY_HOST,
+        tenantId: process.env.M365_TENANT_ID,
+      }
+    );
+  } catch (e) {
+    context.log.error(e);
+    return {
+      status: 500,
+      body: {
+        error:
+          "App credential error:" +
+          "Failed to construct TeamsFx using your accessToken. " +
+          "Ensure your function app is configured with the right Azure AD App registration.",
+      },
+    };
+  }
+
+  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented. 
+  try {
+    const graphClient: Client = createMicrosoftGraphClient(teamsfx_app, [".default"]);
+  
+    const profile: any = await graphClient.api("/users/"+userName).get();
+    res.body.graphClientMessage = profile;
+  } catch (e) {
+    context.log.error(e);
+    return {
+      status: 500,
+      body: {
+        error:
+          "Failed to retrieve user profile from Microsoft Graph. The application may not be authorized.",
+      },
+    };
+  }
+*/
