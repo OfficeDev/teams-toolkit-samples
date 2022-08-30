@@ -3,11 +3,10 @@
 
 import * as React from "react";
 import Resources from "./constants/resources";
-import * as microsoftTeams from "@microsoft/teams-js";
+import { app } from "@microsoft/teams-js";
 import { Provider, themes } from "@fluentui/react-northstar";
 import DiscoverWrapperPage from "./components/card-view/discover-wrapper-page";
 import ErrorPage from "./components/error-page";
-
 import "./styles/site.css";
 import "./i18n";
 import { HashRouter as Router, Route } from "react-router-dom";
@@ -36,11 +35,11 @@ export default class App extends React.Component<{}, IAppState> {
     }
 
     componentDidMount():void {
-      microsoftTeams.initialize();
-
-      microsoftTeams.registerOnThemeChangeHandler((theme: string) => {
-        this.setState({ theme: theme }, () => {
-          this.forceUpdate();
+      app.initialize().then(() => {
+        app.registerOnThemeChangeHandler((theme: string) => {
+          this.setState({ theme: theme }, () => {
+            this.forceUpdate();
+          });
         });
       });
     }

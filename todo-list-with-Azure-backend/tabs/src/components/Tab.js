@@ -9,7 +9,7 @@ import Profile from "./Profile";
 import Creator from "./Creator";
 import { Checkbox, Button, Input, MenuButton } from "@fluentui/react-northstar"
 import noItemimage from '../images/no-item.png'
-import * as microsoftTeams from '@microsoft/teams-js';
+import { app } from '@microsoft/teams-js';
 
 class Tab extends React.Component {
 
@@ -94,7 +94,7 @@ class Tab extends React.Component {
 
   async getChannelOrChatId() {
     return new Promise((resolve) => {
-      microsoftTeams.getContext((context) => {
+      app.getContext().then((context) => {
         if (context.channelId) {
           resolve(context.channelId);
         } else if (context.chatId) {
