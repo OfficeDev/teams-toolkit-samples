@@ -20,7 +20,7 @@
   "dependencies": {
     "@azure/msal-node": "^1.1.0",
     "@microsoft/microsoft-graph-client": "^3.0.1",
-    "@microsoft/teamsfx": "^1.0.0",
+    "@microsoft/teamsfx": "^2.0.0-beta.0",
     "adaptive-expressions": "^4.15.0",
     "adaptivecards-templating": "2.1.0",
     "botbuilder": "^4.15.0",
