@@ -1,18 +1,18 @@
 # Getting Started with Graph Connector Bot Sample
 
-This sample app showcases how to build custom Graph Connector with Bots in Microsoft Teams and query data using Microsoft Graph Client and TeamsFx SDK.
+This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.
 
 ![Graph Connector Overview](images/graph-connector-bot-demo.gif)
 
-## Prerequisite
+## Prerequisites
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
-- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- An Microsoft 365 account with admin permission. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 
 ## What you will learn in this sample:
 - How to handle webhook notification when Graph connector is turned on or off in Teams Admin Center.
 - How to use Microsoft Graph API to integrate with Microsoft Graph connector.
-- How to use TeamsFx to build bot to query data from Microsoft Graph connector.
+- How to use TeamsFx SDK to build bot to query data from Microsoft Graph connector.
 
 ## Try the Sample with Visual Studio Code Extension:
 
@@ -34,7 +34,7 @@ This sample app showcases how to build custom Graph Connector with Bots in Micro
 1. Use Teams Toolkit to [submit the Teams app to the Teams Admin Center](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#publish-to-your-organization).
 1. [Approve the Teams app for publishing to your organization's app store](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#admin-approval-for-teams-apps).
 
-## Use the APP in Teams
+## Use the app in Teams
 1. Navigate to 'Graph Connector' section of the Teams app in [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and click 'Grant permissions'.
 
     ![Grant permissions](images/grant-permission.png)

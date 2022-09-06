@@ -71,6 +71,7 @@ server.post("/api/messages", async (req, res) => {
 });
 
 server.post("/api/notification", async (req, res) => {
+  // By design to not use 'await' in order to immediately return an HTTP 202 and process webhook notification in background.
   NotificationHandler.processGraphWebhookChangeNotification(req);
   res.send(202);
 });
