@@ -6,9 +6,9 @@
     "packageName": "com.microsoft.teams.faqplus",
     "developer": {
         "name": "Teams App, Inc.",
-        "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}",
-        "privacyUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/privacy",
-        "termsOfUseUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/termsofuse"
+        "websiteUrl": "https://www.example.com",
+        "privacyUrl": "https://www.example.com/privacy",
+        "termsOfUseUrl": "https://www.example.com/termsofuse"
     },
     "icons": {
         "color": "resources/color.png",
