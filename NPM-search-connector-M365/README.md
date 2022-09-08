@@ -15,7 +15,7 @@ NPM Search Connector is a Message Extension that allows you to perform a quick s
 
 ## What you will learn in this sample:
 - How to build message extension bot on Azure for your app.
-- How to use Teams Toolkit to build a message extension app that runs across M365 including Teams and Outlook (Web)
+- How to use Teams Toolkit to build a message extension app that runs across Microsoft 365 including Teams and Outlook (Web)
 
 ## Try the Sample with Visual Studio Code Extension:
 > Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)

@@ -13,7 +13,7 @@ Hello World Tab shows you how to build a tab app without single sign on.
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
-- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version after 4.0.0 or [TeamsFx CLI](https://aka.ms/teamsfx-cli) version after 0.10.2
 
 ## What you will learn in this sample:

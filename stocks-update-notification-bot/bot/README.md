@@ -28,7 +28,7 @@ If you selected `http` trigger, you can test it:
 > To run locally, you will need:
 >
 > - `Node.js` installed locally (recommended version: 14)
-> - An [M365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts)
+> - An [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts)
 >
 
 # Understanding the code
@@ -112,7 +112,7 @@ For more information, [click here](https://aka.ms/teamsfx-connect-api).
 
 ## Customize where notifications are sent
 
-By default, the notification is sent to a new private chat between your M365 user and the application. You can customize where each notification is delivered by editing the notification source file (for example, `src/*Trigger.ts`).
+By default, the notification is sent to a new private chat between your Microsoft 365 user and the application. You can customize where each notification is delivered by editing the notification source file (for example, `src/*Trigger.ts`).
 
 ### Send notifications to a team/channel
 

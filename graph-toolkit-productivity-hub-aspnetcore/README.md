@@ -12,7 +12,7 @@ One Productivity Hub sample shows you how to build a tab for viewing your calend
 
 - [Visual Studio 2022](https://visualstudio.microsoft.com/), version 17.3 or higher.
 - Latest [Teams Toolkit for Visual Studio](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/teams-toolkit-overview-visual-studio).
-- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
+- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
 
 ## What you will learn in this sample
 

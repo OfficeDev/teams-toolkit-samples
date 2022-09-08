@@ -23,7 +23,7 @@ FAQ Plus bot is a friendly Q&A bot that brings a human in the loop when it is un
 ### Prerequisites
 
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
-- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
