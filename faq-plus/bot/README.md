@@ -6,7 +6,7 @@ This is a simple hello world chatbot application with built-in Single Sign-on fe
 
 ## Prerequisites
 -	[NodeJS](https://nodejs.org/en/)
--	An M365 account, if you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+-	A Microsoft 365 account, if you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 -	Teams Toolkit or TeamsFx CLI
 
 ## Create an application

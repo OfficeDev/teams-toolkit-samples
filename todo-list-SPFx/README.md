@@ -56,7 +56,7 @@
     ![Publish](images/Publish.png)
 
     It may take a few minutes to publish the Teams app.
-1. Login to Teams using your M365 tenant admin account, same account you are using to create SharePoint environment and logging to VS Code extension. You will see your app in the `Apps - Built for your org`. 
+1. Login to Teams using your Microsoft 365 tenant admin account, same account you are using to create SharePoint environment and logging to VS Code extension. You will see your app in the `Apps - Built for your org`. 
 ![addapp](images/addapp.png)
 1. Add the app to your Teams.
 ![addtoateam](images/addtoateam.png)
@@ -66,7 +66,7 @@
 ## (Optional) Debug
 Debug the app with Teams workbench
 
-1. In Debug mode, select `Teams workbench (Edge)` or `Teams workbench (Chrome)` and press start button. The browser will be opened and you need to sign in Teams with your M365 account.
+1. In Debug mode, select `Teams workbench (Edge)` or `Teams workbench (Chrome)` and press start button. The browser will be opened and you need to sign in Teams with your Microsoft 365 account.
 ![teamsworkbench](images/teamsworkbench.png)
 2. Click `Add to a team`.
 ![debug](images/localdebug.png)
