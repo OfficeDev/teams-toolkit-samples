@@ -1,0 +1,34 @@
+{
+    "appName": "StocksUpdateNotificationBot",
+    "projectId": "bf27535b-3175-4717-9822-875ba992b662",
+    "version": "2.1.0",
+    "isFromSample": true,
+    "solutionSettings": {
+        "name": "fx-solution-azure",
+        "version": "1.0.0",
+        "hostType": "Azure",
+        "azureResources": [],
+        "capabilities": [
+            "Bot"
+        ],
+        "activeResourcePlugins": [
+            "fx-resource-identity",
+            "fx-resource-bot",
+            "fx-resource-aad-app-for-teams",
+            "fx-resource-local-debug",
+            "fx-resource-appstudio",
+            "fx-resource-cicd",
+            "fx-resource-api-connector"
+        ]
+    },
+    "programmingLanguage": "csharp",
+    "pluginSettings": {
+        "fx-resource-bot": {
+            "host-type": "azure-functions",
+            "capabilities": [
+                "notification"
+            ]
+        }
+    },
+    "isFirstTimeOpenProject": false
+}

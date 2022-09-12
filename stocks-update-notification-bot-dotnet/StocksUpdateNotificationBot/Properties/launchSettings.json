@@ -1,0 +1,26 @@
+{
+  "profiles": {
+    "Microsoft Teams (browser)": {
+      "commandName": "Project",
+      "commandLineArgs": "host start --port 5130 --pause-on-error",
+      "dotnetRunMessages": "true",
+      "launchBrowser": true,
+      "launchUrl": "https://teams.microsoft.com/l/app/d1d85760-66a7-4d20-bb3e-36d8fce28c2f?installAppPackage=true&webjoin=true&appTenantId=560b685f-2d5e-4266-976b-0f2b2dd819ce&login_hint=admin@M365x94132455.onmicrosoft.com",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "TEAMSFX_NOTIFICATION_LOCALSTORE_DIR": "../../.." // Path to project folder $(MSBuildProjectDirectory)
+      }
+    }
+    //// Uncomment following profile to debug project only (without launching Teams)
+    //,
+    //"StocksUpdateNotificationBot": {
+    //  "commandName": "Project",
+    //  "commandLineArgs": "host start --port 5130 --pause-on-error",
+    //  "dotnetRunMessages": "true",
+    //  "environmentVariables": {
+    //    "ASPNETCORE_ENVIRONMENT": "Development",
+    //    "TEAMSFX_NOTIFICATION_LOCALSTORE_DIR": "../../.." // Path to project folder $(MSBuildProjectDirectory)
+    //  }
+    //}
+  }
+}
