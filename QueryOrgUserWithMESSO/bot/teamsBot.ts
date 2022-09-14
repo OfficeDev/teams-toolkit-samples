@@ -50,12 +50,6 @@ export class TeamsBot extends TeamsActivityHandler {
           await context.sendActivity({ attachments: [CardFactory.adaptiveCard(card)] });
           break;
         }
-        /**
-         * case "yourCommand": {
-         *   await context.sendActivity(`Add your response here!`);
-         *   break;
-         * }
-         */
       }
 
       // By calling next() you ensure that the next BotHandler is run.
@@ -112,6 +106,11 @@ export class TeamsBot extends TeamsActivityHandler {
 
   // Search.
   public async handleTeamsMessagingExtensionQuery(context: TurnContext, query: any): Promise<any> {
+    /**
+     * User Code Here.
+     * If query without token, no need to implement handleMessageExntesionQueryWithToken;
+     * Otherwise, just follow the sample code below to modify the user code.
+     */
     return await handleMessageExtensionQueryWithToken(context, null, ['User.Read.All', 'User.Read'], async (token: MessageExtensionTokenResponse) => {
       // User Code
       const teamsfx = new TeamsFx().setSsoToken(token.ssoToken);
