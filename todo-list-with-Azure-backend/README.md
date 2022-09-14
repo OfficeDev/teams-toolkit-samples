@@ -10,7 +10,7 @@ Todo List provides an easy way to manage to-do items in Teams Client. This app h
 
 ## Prerequisite
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
-- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
@@ -19,7 +19,7 @@ Todo List provides an easy way to manage to-do items in Teams Client. This app h
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
 - How to use TeamsFx to build backend hosting on Azure for your tab app.
 - How to connect to Azure SQL DB and how to do CRUD operations in DB.
-- How to use MS graph client in TeamsFx to get access to M365 data.
+- How to use MS graph client in TeamsFx to get access to Microsoft 365 data.
 - How to use TeamsFx simple auth capability to get Teams user login information.
 
 ## Try the Sample with Visual Studio Code Extension:
