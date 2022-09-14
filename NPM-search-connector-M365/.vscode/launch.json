@@ -12,7 +12,8 @@
             "presentation": {
                 "group": "all",
                 "hidden": true
-            }
+            },
+            "internalConsoleOptions": "neverOpen"
         },
         {
             "name": "Launch Bot in Teams (Chrome)",
@@ -25,7 +26,8 @@
             "presentation": {
                 "group": "all",
                 "hidden": true
-            }
+            },
+            "internalConsoleOptions": "neverOpen"
         },
         {
             "name": "Launch Bot in Outlook (Edge)",
@@ -38,7 +40,8 @@
             "presentation": {
                 "group": "all",
                 "hidden": true
-            }
+            },
+            "internalConsoleOptions": "neverOpen"
         },
         {
             "name": "Launch Bot in Outlook (Chrome)",
@@ -51,7 +54,8 @@
             "presentation": {
                 "group": "all",
                 "hidden": true
-            }
+            },
+            "internalConsoleOptions": "neverOpen"
         },
         {
             "name": "Attach to Bot",

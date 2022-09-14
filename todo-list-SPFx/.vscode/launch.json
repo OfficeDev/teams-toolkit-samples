@@ -65,7 +65,8 @@
             "postDebugTask": "Terminate All Tasks",
             "presentation": {
                 "hidden": true
-            }
+            },
+            "internalConsoleOptions": "neverOpen"
         },
         {
             "name": "Start Teams workbench (Chrome)",
@@ -83,7 +84,8 @@
             "postDebugTask": "Terminate All Tasks",
             "presentation": {
                 "hidden": true
-            }
+            },
+            "internalConsoleOptions": "neverOpen"
         }
     ],
     "compounds": [
