@@ -6,60 +6,51 @@ This is a simple search-based message extension app demonstrating how to integra
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
-## Debug
-Clone this repo, navigate to QueryYourOrgUserWithMeSSO/ folder, start debugging the project by hitting the F5 key in Visual Studio Code. Alternatively use the `Run and Debug Activity Panel` in Visual Studio Code and click the `Start Debugging` green arrow button.
+## What you will learn in this sample
+- How to do query in Message Extension
+- How to use Microsoft Graph API to do query with SSO token in Message Extension
 
-If you encounter the ngrok page below when sending the `show` command to the bot, please follow the steps to solve this issue.
+## Try the Sample with Visual Studio Code Extension
+### Local Debug the Sample
+1. Clone the repo to your local workspace or directly download the source code.
+2. Download [Visual Studio Code](https://code.visualstudio.com/) and install [Teams Toolkit Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
+3. Open the project in Visual Studio Code.
+4. Open Debug View (`Ctrl+Shift+D`) and select "Debug(Edge)" or "Debug(Chrome)" in dropdown list.
+5. Press "F5" finnaly pop up an window to login your tennant account, and install this Teams App.
 
+### (Optional) Provision and Deploy the Sample To Azure
+> If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
+1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to select Azure resource group to provision the sample.
+2. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
+3. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote(Edge)` or `Launch Remote(Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
+
+
+### Handle ERR_NGROK_6022 Error
+> If you encounter the ngrok page below when sending the `show` command to the bot, please follow the steps to solve this issue.
+
+![ngrok auth page](./images/ngrok-authtoken-page.png)
 1. Stop debugging in Visual Studio Code.
 2. Sign up an ngrok account in https://dashboard.ngrok.com/signup.
 3. Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
 4. Run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in Visual Studio Code terminal.
 5. Start debugging the project again by hitting the F5 key in Visual Studio Code.
-![ngrok auth page](./images/ngrok-authtoken-page.png)
 
-## Update the Query logic
+
+## Use the APP in Teams
+1. Select the `QueryOrgUserWithMESSO` message extension from the More options(...) button in the compose box. The APP will look like this when it runs for the first time.
+![QueryOrgUserWithMESSO](./images/first-open.gif)
+2. For the first time to run the app, you need to Sign In the APP and consent to use Microsoft Graph API. Click on "Accept" button to accept the Authorization.
+![ConsentPage](./images/consent-page.png)
+3. Once consnet, The APP will list your profile like this.
+![ShowProfile](./images/show-profile.png)
+4. Then you can search your team member names and the APP list the result.
+![ShowQueryResult](./images/show-query-result.png)
+
+### Custom Your Query Logic
 - Follow the code in `bot/teamsBot.ts`, modify the code in `handleTeamsMessagingExtensionQuery`
+- Update the scopes in `./templates/appPackages/aad.template.json` which used by your Graph Client.
 
-## Edit the manifest
-
-You can find the Teams manifest in `templates/appPackage/manifest.template.json`. It contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
-
-## Deploy to Azure
-
-Deploy your project to Azure by following these steps:
-
-| From Visual Studio Code | Using TeamsFx CLI|
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <ul><li>Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.</li> <li>After you signed in, select a subscription under your account.</li><li>Open the command palette and select: `Teams: Provision in the cloud`.</li><li>Open the command palette and select: `Teams: Deploy to the cloud`.</li></ul> | <ul> <li>Run command `teamsfx account login azure`.</li> <li>Run command `teamsfx account set --subscription <your-subscription-id>`.</li> <li> Run command `teamsfx provision`.</li> <li>Run command: `teamsfx deploy`. </li></ul> |
-
-> Note: Provisioning and deployment may incur charges to your Azure Subscription.
-
-## Preview
-
-Once the provisioning and deployment steps are finished, you can preview your app:
-
-1. From Visual Studio Code, open the `Run and Debug Activity Panel`.
-1. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
-1. Press the Play (green arrow) button to launch your app - now running remotely from Azure.
-## Validate manifest file
-
-To check that your manifest file is valid:
-
-- From Visual Studio Code: open the command palette and select: `Teams: Validate manifest file`.
-- From TeamsFx CLI: run command `teamsfx validate` in your project directory.
-
-## Build
-
-- From Visual Studio Code: open the command palette and select `Teams: Zip Teams metadata package`.
-- Alternatively, from the command line run `teamsfx build` in the project directory.
-
-## Publish to Teams
-
-Once deployed, you may want to distribute your application to your organization's internal app store in Teams. Your app will be submitted for admin approval.
-
-- From Visual Studio Code: open the command palette and select: `Teams: Publish to Teams`.
-- From TeamsFx CLI: run command `teamsfx publish` in your project directory.
+![UpdateScopes](./images/graph-scope.png)
 
 ## Further reading
 - [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
