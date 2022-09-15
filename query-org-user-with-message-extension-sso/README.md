@@ -7,7 +7,7 @@ This is a simple search-based message extension app demonstrating how to integra
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## What you will learn in this sample
-- How to do query in Message Extension
+- How to login and consent in Message Extension
 - How to use Microsoft Graph API to do query with SSO token in Message Extension
 
 ## Try the Sample with Visual Studio Code Extension
@@ -24,6 +24,35 @@ This is a simple search-based message extension app demonstrating how to integra
 2. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
 3. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote(Edge)` or `Launch Remote(Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
 
+## Use the APP in Teams
+1. Select the `QueryOrgUserWithMESSO` message extension from the More options(...) button in the compose box. The APP will look like this when it runs for the first time.
+
+![QueryOrgUserWithMESSO](./images/first-open.gif)
+
+2. For the first time to run the App, you need to Sign In the APP and consent to use Microsoft Graph API. Click on "Accept" button to accept the Authorization.
+
+![ConsentPage](./images/consent-page.png)
+
+3. Once consented, the App will show your profile like this.
+
+![ShowProfile](./images/show-profile.png)
+
+4. Then you can search your team member names and the App list the result.
+
+![ShowQueryResult](./images/show-query-result.png)
+
+5. Select the result and send the card.
+
+![SendCard](./images/send-card.gif)
+
+
+### Custom the Query Logic
+- Follow the code in `bot/teamsBot.ts`, modify the code in `handleTeamsMessagingExtensionQuery`.
+- Update the scopes in `./templates/appPackages/aad.template.json` which used by your Graph Client.
+![UpdateScopes](./images/graph-scope.png)
+
+- If you want to see the updated results, please re-run local debug, or re-provision to update the AAD app and re-deploy the changed part.
+
 
 ### Handle ERR_NGROK_6022 Error
 > If you encounter the ngrok page below when sending the `show` command to the bot, please follow the steps to solve this issue.
@@ -34,23 +63,6 @@ This is a simple search-based message extension app demonstrating how to integra
 3. Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
 4. Run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in Visual Studio Code terminal.
 5. Start debugging the project again by hitting the F5 key in Visual Studio Code.
-
-
-## Use the APP in Teams
-1. Select the `QueryOrgUserWithMESSO` message extension from the More options(...) button in the compose box. The APP will look like this when it runs for the first time.
-![QueryOrgUserWithMESSO](./images/first-open.gif)
-2. For the first time to run the app, you need to Sign In the APP and consent to use Microsoft Graph API. Click on "Accept" button to accept the Authorization.
-![ConsentPage](./images/consent-page.png)
-3. Once consnet, The APP will list your profile like this.
-![ShowProfile](./images/show-profile.png)
-4. Then you can search your team member names and the APP list the result.
-![ShowQueryResult](./images/show-query-result.png)
-
-### Custom Your Query Logic
-- Follow the code in `bot/teamsBot.ts`, modify the code in `handleTeamsMessagingExtensionQuery`
-- Update the scopes in `./templates/appPackages/aad.template.json` which used by your Graph Client.
-
-![UpdateScopes](./images/graph-scope.png)
 
 ## Further reading
 - [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
