@@ -1,7 +1,7 @@
 {
     "appName": "QueryOrgUserWithMESSO",
     "version": "2.1.0",
-    "isFromSample": false,
+    "isFromSample": true,
     "solutionSettings": {
         "name": "fx-solution-azure",
         "version": "1.0.0",
