@@ -12,7 +12,7 @@
       "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": ""
+      "mpnId": "Undefined-1.15.0"
     },
     "metadata": {
       "shortDescription": {
@@ -29,7 +29,7 @@
       {
         "title": "todo-list-sp-fx Feature",
         "description": "The feature that activates elements of the todo-list-sp-fx solution.",
-        "id": "41264553-ead6-4561-8bbc-a85472961ab4",
+        "id": "a1f91f7e-eed2-4f4a-9f8d-4dbf2257d47d",
         "version": "1.0.0.0"
       }
     ]
