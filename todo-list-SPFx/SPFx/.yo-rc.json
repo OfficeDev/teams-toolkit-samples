@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.0",
+    "libraryName": "todo-list-sp-fx",
+    "libraryId": "c314487b-f51c-474d-823e-a2c3ec82b1ff",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "todo-list-sp-fx",
+    "solutionShortDescription": "todo-list-sp-fx description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
