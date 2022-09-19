@@ -20,9 +20,9 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 
 ## Debug
 
-Clone this repo, navigate to `sso-command-bot/` folder. Start debugging the project by hitting the `F5` key in Visual Studio Code. Alternatively use the `Run and Debug Activity Panel` in Visual Studio Code and click the `Start Debugging` green arrow button.
+Clone this repo, navigate to `command-bot-with-sso/` folder. Start debugging the project by hitting the `F5` key in Visual Studio Code. Alternatively use the `Run and Debug Activity Panel` in Visual Studio Code and click the `Start Debugging` green arrow button.
 
-If you encounter the ngrok page below when sending the `profile` command to the bot, please follow the steps to solve this issue.
+If you encounter the ngrok page below when sending the `helloworld`/`profile`/`photo` command to the bot, please follow the steps to solve this issue.
 
 1. Stop debugging in Visual Studio Code.
 2. Sign up an ngrok account in https://dashboard.ngrok.com/signup.
