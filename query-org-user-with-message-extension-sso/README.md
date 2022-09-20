@@ -1,5 +1,7 @@
 # Query Org User with Message Extension SSO
 This is a simple search-based message extension app demonstrating how to integrate with Bot Framework SDK, TeamsFx SDK and Microsoft Graph API to implement a feature that queries organization's user with single sign on (SSO) capability.
+
+![TotalShow](./images/total.gif)
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
@@ -65,6 +67,12 @@ This is a simple search-based message extension app demonstrating how to integra
 3. Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
 4. Run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in Visual Studio Code terminal.
 5. Start debugging the project again by hitting the F5 key in Visual Studio Code.
+
+## Code of Conduct
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Further reading
 - [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
