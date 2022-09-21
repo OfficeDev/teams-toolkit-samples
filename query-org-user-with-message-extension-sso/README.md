@@ -17,8 +17,8 @@ This is a simple search-based message extension app demonstrating how to integra
 1. Clone the repo to your local workspace or directly download the source code.
 2. Download [Visual Studio Code](https://code.visualstudio.com/) and install [Teams Toolkit Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
 3. Open the project in Visual Studio Code.
-4. Open Debug View (`Ctrl+Shift+D`) and select "Debug(Edge)" or "Debug(Chrome)" in dropdown list.
-5. Press `F5` finnaly pop up an window to login your tennant account, and install this Teams App.
+4. Open Debug View (`Ctrl+Shift+D`) and select `Debug(Edge)` or `Debug(Chrome)` in dropdown list.
+5. Press `F5` finally pop up an window to login your tenant account, and install this Teams App.
 
 ### (Optional) Provision and Deploy the Sample To Azure
 > If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
@@ -52,7 +52,7 @@ This is a simple search-based message extension app demonstrating how to integra
 - Follow the code in `bot/teamsBot.ts`, custom your query logic in `handleMessageExtensionQueryWithToken`.
 ![CustomLogic](./images/custom-query.png)
 
-- Update the scopes in `./templates/appPackages/aad.template.json` which used by your Graph Client.
+- Update the scopes in `./templates/appPackage/aad.template.json` which used by your Graph Client.
 ![UpdateScopes](./images/graph-scope-update.png)
 
 - If you want to see the updated results, please re-run local debug, or re-provision to update the AAD app and re-deploy the changed part.
