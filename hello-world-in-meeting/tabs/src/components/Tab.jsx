@@ -18,7 +18,8 @@ class Tab extends React.Component {
       // Get the user context from Teams and set it in the state
       app.getContext().then(async (context) => {
         this.setState({
-          context: context
+          meetingId: context.meeting.id,
+          userName: context.user.userPrincipalName
         });
       });
     });
@@ -26,8 +27,8 @@ class Tab extends React.Component {
   }
 
   render() {
-    let meetingId = this.state.context['meetingId'] ?? "";
-    let userPrincipleName = this.state.context['userPrincipalName'] ?? "";
+    let meetingId = this.state.meetingId ?? "";
+    let userPrincipleName = this.state.userName ?? "";
 
     return (
     <div>
