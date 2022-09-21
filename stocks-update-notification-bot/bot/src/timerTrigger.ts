@@ -78,7 +78,7 @@ const sendCard =
   <T extends object>(target: TeamsBotInstallation) =>
     (ac: typeof AdaptiveCards) =>
       (template: object) =>
-        (quote: GlobalQuote): Promise<void> =>
+        (quote: GlobalQuote): Promise<any> =>
           target.sendAdaptiveCard(ac.declare<T>(template).render(quote as T));
 
 const handleError =
