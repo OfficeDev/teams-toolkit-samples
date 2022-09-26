@@ -18,6 +18,8 @@ jobs:
           exit 1
       
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: fetch latest tag
         uses: actions-ecosystem/action-get-latest-tag@v1
@@ -38,4 +40,39 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
           INITIAL_VERSION: ${{ steps.get-latest-tag.outputs.tag }}
+        id: bump-version
+      
+      - name: generate tag list
+        run: git tag | grep v > ${{ runner.temp }}/sample-tags.txt
+
+      - name: update sample tag list release
+        uses: ncipollo/release-action@v1.10.0
+        with:
+          artifacts: ${{ runner.temp }}/sample-tags.txt
+          name: "Sample Tag List"
+          body: "Release to maintain sample tag list."
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: "sample-tag-list"
+          allowUpdates: true
+
+      - name: generate sample zip
+        run: .github/scripts/sample-zip.sh ${{ runner.temp }}/teamsfx_samples
+
+      - name: update sample release on github
+        if: ${{ github.event.inputs.update-tag == 'no' }}
+        uses: ncipollo/release-action@v1.10.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.get-latest-tag.outputs.tag }}
+          artifacts: ${{ runner.temp }}/teamsfx_samples/*.zip
+          allowUpdates: true
+      
+      - name: release sample new version on github
+        if: ${{ github.event.inputs.update-tag != 'no' }}
+        uses: ncipollo/release-action@v1.10.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.bump-version.outputs.new_tag }}
+          artifacts: ${{ runner.temp }}/teamsfx_samples/*.zip
+          allowUpdates: true
           
