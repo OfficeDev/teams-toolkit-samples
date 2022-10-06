@@ -1,8 +1,5 @@
 # Stocks Update Notification Bot
 
-> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
->
-
 Bots can be used to deliver pro-active messages into different Microsoft Teams contexts, such as a personal bot chat, one to one or group chat, or a channel conversation.
 
 The Stocks Update Notification bot shows you how to request data on a pretermined schedule from a public API using API Key authentication and render that data using an Adaptive Card in different Microsoft Teams contexts.

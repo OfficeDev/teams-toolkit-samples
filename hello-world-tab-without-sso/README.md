@@ -1,9 +1,5 @@
 # Getting Started with Hello World Tab Without SSO Sample
 
-> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
->
-> This warning will be removed when the samples are ready for production.
-
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
 Hello World Tab shows you how to build a tab app without single sign on.

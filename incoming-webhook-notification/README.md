@@ -1,9 +1,5 @@
 # Getting Started with Incoming Webhook Notification Sample
 
-> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
->  
-> This warning will be removed when the samples are ready for production.
-
 An Incoming Webhook Sample provides an easy way to send adaptive cards in Microsoft Teams channels. The webhooks are used as tools to track and notify.
 ![Incoming Webhook Overall](./images/incoming-webhook.gif)
 

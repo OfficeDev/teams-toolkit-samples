@@ -1,9 +1,5 @@
 # Getting Started with Graph Connector Sample
 
-> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
->  
-> This warning will be removed when the samples are ready for production.
-
 This sample app showcases how to build custom Graph Connector with Azure Functions and query data using Microsoft Graph Client and TeamsFx SDK.
 
 ![Graph Connector Overview](images/graph-connector-app-demo.gif)
