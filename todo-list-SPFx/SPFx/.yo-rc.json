@@ -11,6 +11,7 @@
     "solutionShortDescription": "todo-list-sp-fx description",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "template": "react"
   }
 }
