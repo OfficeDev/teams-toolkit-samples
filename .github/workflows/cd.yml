@@ -3,18 +3,25 @@ name: CD
 on:
   workflow_dispatch:
     inputs:
-      update-tag:
-        description: "input yes means bump up tag version, and no means update the tag to top"
+      preid:
+        description: "preid name(rc, stable)"
         required: true
-        default: "no"
+        default: "rc"
+  schedule:
+    - cron: "0 8 * * *"
 jobs:
   cd:
     runs-on: ubuntu-latest
     steps:
-      - name: Validate CD branch
-        if: ${{ github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/release' }}
+      - name: Validate alpha release
+        if: ${{ github.event_name == 'schedule' && github.ref != 'refs/heads/dev' }}
         run: |
-          echo It's not allowed to run CD on other branch except release.
+          echo It's not allowed to run schedule release except dev branch.
+          exit 1
+      - name: Validate rc and stable release
+        if: ${{ github.event_name == 'workflow_dispatch'&& github.ref != 'refs/heads/release' }}
+        run: |
+          echo It's not allowed to run release rc or stable except release branch.
           exit 1
       
       - uses: actions/checkout@v2
@@ -24,20 +31,29 @@ jobs:
       - name: fetch latest tag
         uses: actions-ecosystem/action-get-latest-tag@v1
         id: get-latest-tag
-      
-      - name: update tag
+
+      - name: update templates alpha tag
+        if: ${{ github.event_name == 'schedule' }}
         uses: richardsimko/update-tag@v1
-        if: ${{ github.event.inputs.update-tag == 'no' }}
         with:
-          tag_name: ${{ steps.get-latest-tag.outputs.tag }}
+          tag_name: "templates-0.0.0-alpha"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: update template rc tag
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.preid == 'rc' }}
+        uses: richardsimko/update-tag@v1
+        with:
+          tag_name: "templates@0.0.0-rc"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Bump version and push tag
-        if: ${{ github.event.inputs.update-tag != 'no' }}
+        if: ${{ github.event.inputs.preid == 'stable' }}
         uses: anothrNick/github-tag-action@1.26.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
           WITH_V: true
           INITIAL_VERSION: ${{ steps.get-latest-tag.outputs.tag }}
         id: bump-version
@@ -57,22 +73,34 @@ jobs:
 
       - name: generate sample zip
         run: .github/scripts/sample-zip.sh ${{ runner.temp }}/teamsfx_samples
-
-      - name: update sample release on github
-        if: ${{ github.event.inputs.update-tag == 'no' }}
+      
+      - name: release sample' alpha version to github
+        if: ${{ github.event_name == 'schedule' }}
         uses: ncipollo/release-action@v1.10.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.get-latest-tag.outputs.tag }}
+          prerelease: true
+          tag: "v0.0.0-alpha"
           artifacts: ${{ runner.temp }}/teamsfx_samples/*.zip
           allowUpdates: true
+          removeArtifacts: true
+
+      - name: release templates' RC version to github
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.preid == 'rc' }}
+        uses: ncipollo/release-action@v1.10.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: true
+          tag: "v0.0.0-rc"
+          artifacts: ${{ runner.temp }}/teamsfx_samples/*.zip
+          allowUpdates: true
+          removeArtifacts: true
       
       - name: release sample new version on github
-        if: ${{ github.event.inputs.update-tag != 'no' }}
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.preid == 'stable' }}
         uses: ncipollo/release-action@v1.10.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.bump-version.outputs.new_tag }}
           artifacts: ${{ runner.temp }}/teamsfx_samples/*.zip
-          allowUpdates: true
           
