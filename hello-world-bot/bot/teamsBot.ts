@@ -17,7 +17,7 @@ export interface DataInterface {
 
 export class TeamsBot extends TeamsActivityHandler {
   // record the likeCount
-  likeCountObj: { likeCount: number };
+  likeCountObj: DataInterface;
 
   constructor() {
     super();

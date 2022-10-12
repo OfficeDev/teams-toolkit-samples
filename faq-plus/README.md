@@ -1,3 +1,5 @@
+> This sample is deprecated because the QnA Maker service is being retired. You can visit https://azure.microsoft.com/en-us/updates/azure-qna-maker-will-be-retired-on-31-march-2025/ for QnA Maker retirement announcement.
+
 # Getting Started with FAQ Plus Sample
 
 > Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

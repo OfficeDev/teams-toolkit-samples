@@ -240,6 +240,7 @@ class Tab extends React.Component {
               }
             ]}
             on="click"
+            unstable_pinned={true}
           />
         </div>
       </div>
