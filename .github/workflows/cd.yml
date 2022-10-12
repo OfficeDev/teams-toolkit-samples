@@ -36,7 +36,7 @@ jobs:
         if: ${{ github.event_name == 'schedule' }}
         uses: richardsimko/update-tag@v1
         with:
-          tag_name: "templates-0.0.0-alpha"
+          tag_name: "v0.0.0-alpha"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -44,7 +44,7 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.preid == 'rc' }}
         uses: richardsimko/update-tag@v1
         with:
-          tag_name: "templates@0.0.0-rc"
+          tag_name: "v0.0.0-rc"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -53,23 +53,11 @@ jobs:
         uses: anothrNick/github-tag-action@1.26.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BUMP: patch
           WITH_V: true
+          DEFAULT_BUMP: patch
           INITIAL_VERSION: ${{ steps.get-latest-tag.outputs.tag }}
+          RELEASE_BRANCHES: release
         id: bump-version
-      
-      - name: generate tag list
-        run: git tag | grep v > ${{ runner.temp }}/sample-tags.txt
-
-      - name: update sample tag list release
-        uses: ncipollo/release-action@v1.10.0
-        with:
-          artifacts: ${{ runner.temp }}/sample-tags.txt
-          name: "Sample Tag List"
-          body: "Release to maintain sample tag list."
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "sample-tag-list"
-          allowUpdates: true
 
       - name: generate sample zip
         run: .github/scripts/sample-zip.sh ${{ runner.temp }}/teamsfx_samples
@@ -103,4 +91,19 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.bump-version.outputs.new_tag }}
           artifacts: ${{ runner.temp }}/teamsfx_samples/*.zip
+      
+      - name: generate tag list
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.preid == 'stable' }}
+        run: git tag | grep v > ${{ runner.temp }}/sample-tags.txt
+
+      - name: update sample tag list release
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.preid == 'stable' }}
+        uses: ncipollo/release-action@v1.10.0
+        with:
+          artifacts: ${{ runner.temp }}/sample-tags.txt
+          name: "Sample Tag List"
+          body: "Release to maintain sample tag list."
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: "sample-tag-list"
+          allowUpdates: true
           
