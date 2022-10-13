@@ -7,6 +7,10 @@ on:
         description: "preid name(rc, stable)"
         required: true
         default: "rc"
+      bump-type:
+        description: "bump type"
+        required: true
+        default: "patch"
   schedule:
     - cron: "0 8 * * *"
 jobs:
@@ -54,7 +58,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
-          DEFAULT_BUMP: patch
+          DEFAULT_BUMP: ${{ github.event.inputs.bump-type }}
           INITIAL_VERSION: ${{ steps.get-latest-tag.outputs.tag }}
           RELEASE_BRANCHES: release
         id: bump-version
