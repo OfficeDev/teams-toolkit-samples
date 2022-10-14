@@ -8,7 +8,7 @@ on:
         required: true
         default: "rc"
       bump-type:
-        description: "bump type"
+        description: "bump type(major, minor, patch)"
         required: true
         default: "patch"
   schedule:
