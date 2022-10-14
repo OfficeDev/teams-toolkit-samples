@@ -32,11 +32,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: fetch latest stable tag
-        run: |
-          echo "::set-output name=LATEST_TAG::$(git describe --exclude "*rc" --exclude "*list" --exclude "*alpha" --abbrev=0 --tags)"
-        id: get-latest-tag
-
       - name: update templates alpha tag
         if: ${{ github.event_name == 'schedule' }}
         uses: richardsimko/update-tag@v1
@@ -60,7 +55,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
           DEFAULT_BUMP: ${{ github.event.inputs.bump-type }}
-          INITIAL_VERSION: ${{ steps.get-latest-tag.outputs.LATEST_TAG }}
           RELEASE_BRANCHES: release
         id: bump-version
 
