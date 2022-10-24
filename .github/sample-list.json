@@ -1,0 +1,24 @@
+{
+    "samples": [
+        "command-bot-with-sso",
+        "faq-plus",
+        "graph-connector-app",
+        "graph-connector-bot",
+        "graph-toolkit-contact-exporter",
+        "graph-toolkit-one-productivity-hub",
+        "graph-toolkit-productivity-hub-aspnetcore",
+        "hello-world-bot",
+        "hello-world-in-meeting",
+        "hello-world-tab",
+        "hello-world-tab-with-backend",
+        "hello-world-tab-without-sso",
+        "incoming-webhook-notification",
+        "NPM-search-connector-M365",
+        "query-org-user-with-message-extension-sso",
+        "share-now",
+        "stocks-update-notification-bot",
+        "todo-list-SPFx",
+        "todo-list-with-Azure-backend",
+        "todo-list-with-Azure-backend-M365"
+    ]
+}
