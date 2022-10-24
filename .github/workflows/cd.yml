@@ -8,7 +8,7 @@ on:
         required: true
         default: "alpha"
       bump-type:
-        description: "bump type(major, minor, patch)"
+        description: "bump type(major, minor, patch), only used when preid is stable"
         required: true
         default: "patch"
   schedule:
