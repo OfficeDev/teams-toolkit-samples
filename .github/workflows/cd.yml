@@ -35,7 +35,7 @@ jobs:
       
       - uses: actions/checkout@v2
 
-      - name: update templates alpha tag
+      - name: update sample alpha tag
         if: ${{ github.event.inputs.preid == 'alpha' }}
         uses: richardsimko/update-tag@v1
         with:
@@ -43,7 +43,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: update template rc tag
+      - name: update sample rc tag
         if: ${{ github.event.inputs.preid == 'rc' }}
         uses: richardsimko/update-tag@v1
         with:
@@ -64,7 +64,7 @@ jobs:
       - name: generate sample zip
         run: .github/scripts/sample-zip.sh ${{ runner.temp }}/teamsfx_samples
       
-      - name: release sample' alpha version to github
+      - name: release samples' alpha version to github
         if: ${{ github.event.inputs.preid == 'alpha' }}
         uses: ncipollo/release-action@v1.10.0
         with:
@@ -75,7 +75,7 @@ jobs:
           allowUpdates: true
           removeArtifacts: true
 
-      - name: release templates' RC version to github
+      - name: release samples' RC version to github
         if: ${{ github.event.inputs.preid == 'rc' }}
         uses: ncipollo/release-action@v1.10.0
         with:
@@ -86,7 +86,7 @@ jobs:
           allowUpdates: true
           removeArtifacts: true
       
-      - name: release sample new version on github
+      - name: release samples' new version on github
         if: ${{ github.event.inputs.preid == 'stable' }}
         uses: ncipollo/release-action@v1.10.0
         with:
