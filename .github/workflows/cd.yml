@@ -3,109 +3,39 @@ name: CD
 on:
   workflow_dispatch:
     inputs:
-      preid:
-        description: "use(rc, stable) on release branch, use alpha on dev branch"
+      update-tag:
+        description: "input yes means bump up tag version, and no means update the tag to top"
         required: true
-        default: "alpha"
-      bump-type:
-        description: "bump type(major, minor, patch), only used when preid is stable"
-        required: true
-        default: "patch"
-  schedule:
-    - cron: "0 8 * * *"
+        default: "no"
 jobs:
   cd:
     runs-on: ubuntu-latest
     steps:
-      - name: Validate shcedule run on dev branch
-        if: ${{ github.event_name == 'schedule' && github.ref != 'refs/heads/dev' }}
+      - name: Validate CD branch
+        if: ${{ github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/release' }}
         run: |
-          echo It's not allowed to run schedule release except dev branch.
-          exit 1
-      - name: Validate preid on release branch
-        if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/release' && github.event.inputs.preid != 'rc' && github.event.inputs.preid != 'stable' }}
-        run: |
-          echo Only allow rc or stable on release branch.
-          exit 1
-      - name: Validate preid on dev branch
-        if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/dev' && github.event.inputs.preid != 'alpha' }}
-        run: |
-          echo Only allow alpha on dev branch.
+          echo It's not allowed to run CD on other branch except release.
           exit 1
       
       - uses: actions/checkout@v2
 
-      - name: update sample alpha tag
-        if: ${{ github.event.inputs.preid == 'alpha' }}
+      - name: fetch latest tag
+        uses: actions-ecosystem/action-get-latest-tag@v1
+        id: get-latest-tag
+      
+      - name: update tag
         uses: richardsimko/update-tag@v1
+        if: ${{ github.event.inputs.update-tag == 'no' }}
         with:
-          tag_name: "v0.0.0-alpha"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: update sample rc tag
-        if: ${{ github.event.inputs.preid == 'rc' }}
-        uses: richardsimko/update-tag@v1
-        with:
-          tag_name: "v0.0.0-rc"
+          tag_name: ${{ steps.get-latest-tag.outputs.tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Bump version and push tag
-        if: ${{ github.event.inputs.preid == 'stable' }}
-        uses: anothrNick/github-tag-action@1.44.0
+        if: ${{ github.event.inputs.update-tag != 'no' }}
+        uses: anothrNick/github-tag-action@1.26.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
-          DEFAULT_BUMP: ${{ github.event.inputs.bump-type }}
-          RELEASE_BRANCHES: release
-        id: bump-version
-
-      - name: generate sample zip
-        run: .github/scripts/sample-zip.sh ${{ runner.temp }}/teamsfx_samples
-      
-      - name: release samples' alpha version to github
-        if: ${{ github.event.inputs.preid == 'alpha' }}
-        uses: ncipollo/release-action@v1.10.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          prerelease: true
-          tag: "v0.0.0-alpha"
-          artifacts: ${{ runner.temp }}/teamsfx_samples/*.zip
-          allowUpdates: true
-          removeArtifacts: true
-
-      - name: release samples' RC version to github
-        if: ${{ github.event.inputs.preid == 'rc' }}
-        uses: ncipollo/release-action@v1.10.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          prerelease: true
-          tag: "v0.0.0-rc"
-          artifacts: ${{ runner.temp }}/teamsfx_samples/*.zip
-          allowUpdates: true
-          removeArtifacts: true
-      
-      - name: release samples' new version on github
-        if: ${{ github.event.inputs.preid == 'stable' }}
-        uses: ncipollo/release-action@v1.10.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.bump-version.outputs.new_tag }}
-          artifacts: ${{ runner.temp }}/teamsfx_samples/*.zip
-      
-      - name: generate tag list
-        if: ${{ github.event.inputs.preid == 'stable' }}
-        run: git tag | grep v > ${{ runner.temp }}/sample-tags.txt
-
-      - name: update sample tag list release
-        if: ${{ github.event.inputs.preid == 'stable' }}
-        uses: ncipollo/release-action@v1.10.0
-        with:
-          artifacts: ${{ runner.temp }}/sample-tags.txt
-          name: "Sample Tag List"
-          body: "Release to maintain sample tag list."
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "sample-tag-list"
-          allowUpdates: true
+          INITIAL_VERSION: ${{ steps.get-latest-tag.outputs.tag }}
           
