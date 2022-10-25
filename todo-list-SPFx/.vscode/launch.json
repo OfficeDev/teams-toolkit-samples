@@ -94,7 +94,7 @@
             "configurations": [
                 "Start Teams workbench (Edge)"
             ],
-            "preLaunchTask": "prepare dev env",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "forteams",
                 "order": 1
@@ -106,7 +106,7 @@
             "configurations": [
                 "Start Teams workbench (Chrome)"
             ],
-            "preLaunchTask": "prepare dev env",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "forteams",
                 "order": 2

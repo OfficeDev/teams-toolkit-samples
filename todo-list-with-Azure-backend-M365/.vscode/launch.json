@@ -105,7 +105,7 @@
                 "Attach to Frontend in Teams (Edge)",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "group 1: Teams",
                 "order": 1
@@ -118,7 +118,7 @@
                 "Attach to Frontend in Teams (Chrome)",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "group 1: Teams",
                 "order": 2
@@ -131,7 +131,7 @@
                 "Attach to Frontend in Outlook (Edge)",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All & Install App",
+            "preLaunchTask": "Start Teams App Locally & Install App",
             "presentation": {
                 "group": "group 2: Outlook",
                 "order": 1
@@ -144,7 +144,7 @@
                 "Attach to Frontend in Outlook (Chrome)",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All & Install App",
+            "preLaunchTask": "Start Teams App Locally & Install App",
             "presentation": {
                 "group": "group 2: Outlook",
                 "order": 2
@@ -157,7 +157,7 @@
                 "Attach to Frontend in Office (Edge)",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All & Install App",
+            "preLaunchTask": "Start Teams App Locally & Install App",
             "presentation": {
                 "group": "group 3: Office",
                 "order": 1
@@ -170,7 +170,7 @@
                 "Attach to Frontend in Office (Chrome)",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All & Install App",
+            "preLaunchTask": "Start Teams App Locally & Install App",
             "presentation": {
                 "group": "group 3: Office",
                 "order": 2

@@ -86,7 +86,7 @@
                 "Attach to Bot",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "all",
                 "order": 1
@@ -100,7 +100,7 @@
                 "Attach to Bot",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "all",
                 "order": 2
