@@ -76,7 +76,7 @@
                 "Launch Bot in Teams (Edge)",
                 "Attach to Bot"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "group 1: Teams",
                 "order": 1
@@ -89,7 +89,7 @@
                 "Launch Bot in Teams (Chrome)",
                 "Attach to Bot"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "group 1: Teams",
                 "order": 2
@@ -102,7 +102,7 @@
                 "Launch Bot in Outlook (Edge)",
                 "Attach to Bot"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All & Install App",
+            "preLaunchTask": "Start Teams App Locally & Install App",
             "presentation": {
                 "group": "group 2: Outlook",
                 "order": 1
@@ -115,7 +115,7 @@
                 "Launch Bot in Outlook (Chrome)",
                 "Attach to Bot"
             ],
-            "preLaunchTask": "Pre Debug Check & Start All & Install App",
+            "preLaunchTask": "Start Teams App Locally & Install App",
             "presentation": {
                 "group": "group 2: Outlook",
                 "order": 2
