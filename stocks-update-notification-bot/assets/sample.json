@@ -35,7 +35,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/OfficeDev/TeamsFx-Samples/blob/983b66ea6eea602b2e73cbc07972f0af8f51eb1c/stocks-update-notification-bot/images/app.gif",
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/stocks-update-notification-bot/images/app.gif",
         "alt": "Solution UX showing the notification cards sent from stock bot"
       }
     ],
