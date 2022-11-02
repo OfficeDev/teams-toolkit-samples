@@ -1,7 +1,7 @@
 import "./Query.css";
 import { KeyboardEvent, useState } from "react";
 import { Input, Loader, Table } from "@fluentui/react-northstar";
-import { SearchIcon } from '@fluentui/react-icons-northstar'
+import { SearchIcon } from "@fluentui/react-icons-northstar";
 import { createMicrosoftGraphClient, TeamsFx } from "@microsoft/teamsfx";
 import { ConnectionId, Scopes } from "./lib/constants";
 
@@ -11,13 +11,15 @@ export function Query() {
   const [error, setError] = useState<any>("");
   const [loading, setLoading] = useState(false);
   const header = {
-    items: ['PartNumber',
-      'Name',
-      'Description',
-      'Price',
-      'Inventory',
-      'Appliances'],
-  }
+    items: [
+      "PartNumber",
+      "Name",
+      "Description",
+      "Price",
+      "Inventory",
+      "Appliances",
+    ],
+  };
 
   async function search(e: KeyboardEvent) {
     if (e.key === "Enter" && query) {
@@ -26,35 +28,32 @@ export function Query() {
       const searchContent = {
         requests: [
           {
-            entityTypes: [
-              'externalItem'
-            ],
-            contentSources: [
-              `/external/connections/${ConnectionId}`
-            ],
+            entityTypes: ["externalItem"],
+            contentSources: [`/external/connections/${ConnectionId}`],
             query: {
-              queryString: query
+              queryString: query,
             },
             from: 0,
             size: 25,
             fields: [
-              'partNumber',
-              'name',
-              'description',
-              'price',
-              'inventory',
-              'appliances'
-            ]
-          }
-        ]
+              "partNumber",
+              "name",
+              "description",
+              "price",
+              "inventory",
+              "appliances",
+            ],
+          },
+        ],
       };
 
       try {
         const teamsfx = new TeamsFx();
         const graph = createMicrosoftGraphClient(teamsfx, Scopes);
 
-        const result = await graph.api('/search/query')
-          .version('beta')
+        const result = await graph
+          .api("/search/query")
+          .version("beta")
           .post(searchContent);
 
         let rows: any[] = [];
@@ -87,19 +86,19 @@ export function Query() {
                   truncateContent: true,
                 },
                 {
-                  content: properties.appliances.join(','),
+                  content: properties.appliances.join(","),
                   truncateContent: true,
-                }
+                },
               ],
             };
-          })
+          });
         }
         setData(rows);
         setError("");
       } catch (error) {
-        setError(error)
+        setError(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
   }
@@ -108,8 +107,14 @@ export function Query() {
     <div className="query page">
       <div className="section-margin">
         <h2>3. Query Data from Graph Connector</h2>
-        <Input className="search" inverted role="search" icon={<SearchIcon />}
-          placeholder="Type keyword (e.g. 'Contoso') and press 'Enter' to search" iconPosition="start" value={query}
+        <Input
+          className="search"
+          inverted
+          role="search"
+          icon={<SearchIcon />}
+          placeholder="Type keyword (e.g. 'Contoso') and press 'Enter' to search"
+          iconPosition="start"
+          value={query}
           onChange={(e: any) => setQuery(e.target.value)}
           onKeyDown={(e) => search(e)}
         />
@@ -123,7 +128,9 @@ export function Query() {
             <Table header={header} rows={data} aria-label="Static table" />
           </div>
         )}
-        {!loading && !!error && <div className="error fixed">{error.toString()}</div>}
+        {!loading && !!error && (
+          <div className="error fixed">{error.toString()}</div>
+        )}
       </div>
     </div>
   );
