@@ -7,7 +7,7 @@ import TermsOfUse from "./TermsOfUse";
 import Tab from "./Tab";
 import "./App.css";
 import TabConfig from "./TabConfig";
-import { useTeams } from "msteams-react-base-component";
+import { useTeams } from "@microsoft/teamsfx-react";
 
 /**
  * The main app which handles the initialization and routing
@@ -16,17 +16,20 @@ import { useTeams } from "msteams-react-base-component";
 export default function App() {
   const { theme } = useTeams({})[0];
   return (
-    <Provider theme={theme || teamsTheme} styles={{ backgroundColor: "#eeeeee" }}>
+    <Provider
+      theme={theme || teamsTheme}
+      styles={{ backgroundColor: "#eeeeee" }}
+    >
       <Router>
         <Route exact path="/">
           <Redirect to="/tab" />
         </Route>
-          <>
-            <Route exact path="/privacy" component={Privacy} />
-            <Route exact path="/termsofuse" component={TermsOfUse} />
-            <Route exact path="/tab" component={Tab} />
-            <Route exact path="/config" component={TabConfig} />
-          </>
+        <>
+          <Route exact path="/privacy" component={Privacy} />
+          <Route exact path="/termsofuse" component={TermsOfUse} />
+          <Route exact path="/tab" component={Tab} />
+          <Route exact path="/config" component={TabConfig} />
+        </>
       </Router>
     </Provider>
   );
