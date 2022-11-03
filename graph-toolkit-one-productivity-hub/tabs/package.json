@@ -13,10 +13,10 @@
         "react-dom": "^16.14.0",
         "react-router-dom": "^5.1.2",
         "react-scripts": "^5.0.1",
-        "@microsoft/mgt": "2.4.1-next.teamsfx.8d56785",
-        "@microsoft/mgt-element": "2.4.1-next.teamsfx.8d56785",
-        "@microsoft/mgt-react": "2.4.1-next.teamsfx.8d56785",
-        "@microsoft/mgt-teamsfx-provider": "2.4.1-next.teamsfx.8d56785",
+        "@microsoft/mgt": "^2.6.2",
+        "@microsoft/mgt-element": "^2.6.2",
+        "@microsoft/mgt-react": "^2.6.2",
+        "@microsoft/mgt-teamsfx-provider": "^2.6.2",
         "react-csv": "^2.2.2"
     },
     "devDependencies": {
