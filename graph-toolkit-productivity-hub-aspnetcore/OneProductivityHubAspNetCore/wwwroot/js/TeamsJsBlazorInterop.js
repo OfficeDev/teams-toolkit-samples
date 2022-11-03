@@ -1,51 +1,111 @@
 ﻿export function initializeAsync() {
-    return microsoftTeams.app.initialize();
+    return new Promise((resolve, reject) => {
+        try {
+            microsoftTeams.initialize(() => {
+                resolve();
+            });
+        } catch (e) {
+            reject(e);
+        }        
+    });
 }
 
 export function getContextAsync() {
-    return microsoftTeams.app.getContext();
+    return new Promise((resolve, reject) => {
+        try {
+            microsoftTeams.getContext((context) => {
+                resolve(context);
+            });
+        } catch (e) {
+            reject(e);
+        }        
+    });    
 }
 
-export function setCurrentFrame(contentUrl, websiteUrl) {
-    microsoftTeams.pages.setCurrentFrame(contentUrl, websiteUrl);
+export function initializeWithContext(contentUrl, websiteUrl) {
+    microsoftTeams.initializeWithContext(contentUrl, websiteUrl);
+}
+
+export function setFrameContext(contentUrl, websiteUrl) {
+    microsoftTeams.setFrameContext(contentUrl, websiteUrl);
 }
 
 export function registerFullScreenHandler() {
-    return microsoftTeams.pages.registerFullScreenHandler();
+    return new Promise((resolve, reject) => {
+        try {
+            microsoftTeams.registerFullScreenHandler((isFullScreen) => {
+                resolve(isFullScreen);
+            });
+        } catch (e) {
+            reject(e);
+        }
+    });
 }
 
-export function registerChangeConfigHandler() {
-    microsoftTeams.pages.config.registerChangeConfigHandler();
+export function registerChangeSettingsHandler() {
+    microsoftTeams.registerChangeSettingsHandler();
 }
 
 export function getTabInstances(tabInstanceParameters) {
-    return microsoftTeams.pages.tabs.getTabInstances(tabInstanceParameters);
+    return new Promise((resolve, reject) => {
+        try {
+            microsoftTeams.getTabInstances((tabInfo) => {
+                resolve(tabInfo);
+            }, tabInstanceParameters);
+        } catch (e) {
+            reject(e);
+        }
+    });
 }
 
 export function getMruTabInstances(tabInstanceParameters) {
-    return microsoftTeams.pages.tabs.getMruTabInstances(tabInstanceParameters);
+    return new Promise((resolve, reject) => {
+        try {
+            microsoftTeams.getMruTabInstances((tabInfo) => {
+                resolve(tabInfo);
+            }, tabInstanceParameters);
+        } catch (e) {
+            reject(e);
+        }
+    });
 }
 
 export function shareDeepLink(deepLinkParameters) {
-    microsoftTeams.pages.shareDeepLink(deepLinkParameters);
+    microsoftTeams.shareDeepLink(deepLinkParameters);
 }
 
-export function openLink(deepLink) {
-    return microsoftTeams.app.openLink(deepLink);
+export function executeDeepLink(deepLink) {
+    return new Promise((resolve, reject) => {
+        try {
+            microsoftTeams.executeDeepLink(deepLink, (status, reason) => {
+                resolve(status, reason);
+            });
+        } catch (e) {
+            reject(e);
+        }
+    });
 }
 
 export function navigateToTab(tabInstance) {
-    return microsoftTeams.pages.tabs.navigateToTab(tabInstance);
+    return new Promise((resolve, reject) => {
+        try {
+            microsoftTeams.navigateToTab(tabInstance, (status, reason) => {
+                resolve(status, reason);
+            });
+        } catch (e) {
+            reject(e);
+        }
+    });
 }
 
 // Settings module
 export function registerOnSaveHandler(settings) {
-    microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
-        microsoftTeams.pages.config.setConfig(settings);
+    microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
+        microsoftTeams.settings.setSettings(settings);
         saveEvent.notifySuccess();
     });
 
-    microsoftTeams.pages.config.setValidityState(true);
+    microsoftTeams.settings.setValidityState(true);
 }
 
 // Come from here: https://github.com/wictorwilen/msteams-react-base-component/blob/master/src/useTeams.ts
