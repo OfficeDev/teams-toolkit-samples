@@ -61,6 +61,12 @@ export function Welcome() {
           <Button primary content="Start" disabled={loading} onClick={reload} />
         </div>
       )}
+      {!loading && error && (
+        <div className="error">
+          Failed to get your profile. Please try again later. <br /> Details:{" "}
+          {error.toString()}
+        </div>
+      )}
     </div>
   );
 }
