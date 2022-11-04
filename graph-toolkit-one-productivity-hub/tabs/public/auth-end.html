@@ -28,7 +28,7 @@
           const msalConfig = {
             auth: {
               clientId: clientId,
-              authority: `https://login.microsoftonline.com/${context.user.tenant.id}`,
+              authority: `https://login.microsoftonline.com/${context.tid}`,
               navigateToLoginRequestUrl: false
             },
             cache: {
