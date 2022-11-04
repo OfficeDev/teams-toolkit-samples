@@ -1,7 +1,5 @@
 import { useContext } from "react";
 import { Button, Image, Loader } from "@fluentui/react-northstar";
-import { Providers, ProviderState } from "@microsoft/mgt-element";
-import { TeamsFxProvider } from "@microsoft/mgt-teamsfx-provider";
 import "./Welcome.css";
 import { Introduce } from "./Introduce";
 import { Ingest } from "./Ingest";
@@ -14,18 +12,9 @@ export function Welcome() {
   const { teamsfx } = useContext(TeamsFxContext);
   const { loading, error, data, reload } = useGraph(
     async (graph, teamsfx, scope) => {
-      try {
-        // Call graph api directly to get user profile information
-        const profile = await graph.api("/me").get();
-        // Initialize Graph Toolkit TeamsFx provider
-        const provider = new TeamsFxProvider(teamsfx, scope);
-        Providers.globalProvider = provider;
-        Providers.globalProvider.setState(ProviderState.SignedIn);
-
-        return { profile };
-      } catch (err: any) {
-        throw err;
-      }
+      // Call graph api directly to get user profile information
+      const profile = await graph.api("/me").get();
+      return { profile };
     },
     { scope: Scopes, teamsfx: teamsfx }
   );
@@ -41,9 +30,7 @@ export function Welcome() {
         <div className="welcome page">
           <div className="narrow page-padding">
             <Image src="hello.png" />
-            <h1 className="center">
-              Hello{data ? ", " + data.profile.displayName : ""}!
-            </h1>
+            <h1 className="center">Hello, {data.profile.displayName}!</h1>
             <p className="center">
               Let's build your first custom Microsoft Graph connector.
             </p>
@@ -55,7 +42,7 @@ export function Welcome() {
           </div>
         </div>
       )}
-      {!loading && data === undefined && (
+      {!loading && !data && (
         <div className="auth">
           <h2>Welcome to Graph Connector App!</h2>
           <Button primary content="Start" disabled={loading} onClick={reload} />
