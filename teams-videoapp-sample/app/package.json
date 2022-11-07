@@ -4,21 +4,19 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "dev:teamsfx": "env-cmd --silent -f .env.teamsfx.local npm run start",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "keywords": [],
-  "author": {
-    "name": "Bo Lu",
-    "email": "bolu1@microsoft.com"
-  },
+  "author": "",
   "license": "MIT",
   "devDependencies": {
-    "vite": "^3.0.0"
+    "vite": "^3.0.0",
+    "env-cmd": "^10.1.0"
   },
   "dependencies": {
-    "@microsoft/teams-js": "^2.2.0",
-    "vite-plugin-mkcert": "^1.9.0"
+    "@microsoft/teams-js": "^2.2.0"
   }
 }
