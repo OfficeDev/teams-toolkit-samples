@@ -66,7 +66,7 @@ export default async function run(
       context.log.error(e);
       let error = "Failed to create a connection for Graph connector: " + e.toString();
       if (e?.statusCode === 401) {
-        error += " -- Please make sure you have done 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.OwnedBy' application permissions for your AAD App";
+        error += " -- Please make sure you have done 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.All' application permissions for your AAD App";
       }
       return {
         status: e?.statusCode ?? 500,

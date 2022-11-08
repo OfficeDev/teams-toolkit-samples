@@ -78,7 +78,7 @@ export function Ingest() {
     <div>
       <h2>2. Ingest Sample Data into Graph Connector</h2>
       <p>An Azure Functions app is running. Click below button to ingest data from the <a href="https://github.com/microsoftgraph/msgraph-search-connector-sample/blob/main/PartsInventoryConnector/ApplianceParts.csv" target="_blank" rel="noreferrer">CSV file</a>.</p>
-      <p><strong>Note: before ingesting data, you need to do 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.OwnedBy' application permissions for your AAD App in Azure Portal.</strong></p>
+      <p><strong>Note: before ingesting data, you need to do 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.All' application permissions for your AAD App in Azure Portal.</strong></p>
       <Button primary content="Ingest Data" disabled={loading} onClick={ingestData} />
       {loading && (
         <Loader />
