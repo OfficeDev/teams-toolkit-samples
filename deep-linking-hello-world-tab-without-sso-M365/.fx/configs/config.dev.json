@@ -4,7 +4,7 @@
     "manifest": {
         "appName": {
             "short": "DeepLinking-M365",
-            "full": "Deep Linking sample app extended to Outlook and Teams"
+            "full": "Hello World Deeplinking Navigation Tab App extended to Outlook and Teams"
         }
     }
 }
