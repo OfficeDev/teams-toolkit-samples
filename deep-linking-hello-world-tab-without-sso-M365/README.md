@@ -1,4 +1,4 @@
-# Getting Started with Deeplinking Hello World Tab Without SSO Sample
+# Getting Started with Hello World Deeplinking Tab Without SSO Sample
 
 > Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate.
 >
@@ -8,7 +8,7 @@
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
-Deeplinking Hello World Tab Without SSO Sample app shows you how to use new Teams SDK V2 capabilities on Teams, Outlook and Office. It covers two different scenarios:
+This sample app shows, how to use new Teams SDK V2 capabilities to simplify the process of deeplink navigation across the hubs (on Teams, Outlook and Office).It covers two different scenarios:
 1. App to App Scenarios
     - Deeplinking from outside app
     - Navigating within app
@@ -17,6 +17,7 @@ Deeplinking Hello World Tab Without SSO Sample app shows you how to use new Team
     - Deeplinking from outside app
     - Navigating from within the hub 
 
+![Hello World Deeplinking Tab](images/deeplink-without-SSO.gif)
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 14
@@ -25,7 +26,7 @@ Deeplinking Hello World Tab Without SSO Sample app shows you how to use new Team
 
 ## What you will learn in this sample:
 
-- How to use TeamsFx to build frontend hosting on Azure for your tab app.
+- How to use TeamsFx to build frontend hosting on Azure for your navigation tab app which simplify the process of deeplink navigation across the hubs (on Teams, Outlook and Office).
 
 ## Try the Sample with Visual Studio Code Extension:
 >Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
