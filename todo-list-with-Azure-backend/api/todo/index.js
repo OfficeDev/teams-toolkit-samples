@@ -4,8 +4,16 @@
 const {
     TeamsFx,
     getTediousConnectionConfig,
+    OnBehalfOfUserCredential
 } = require("@microsoft/teamsfx");
 const { Connection, Request } = require('tedious');
+
+const oboAuthConfig = {
+    authorityHost: process.env.M365_AUTHORITY_HOST,
+    clientId: process.env.M365_CLIENT_ID,
+    tenantId: process.env.M365_TENANT_ID,
+    clientSecret: process.env.M365_CLIENT_SECRET,
+};
 
 /**
  * This function handles requests sent from teamsfx client SDK.
@@ -31,9 +39,10 @@ module.exports = async function (context, req, config) {
     try {
         const method = req.method.toLowerCase();
         const accessToken = config.AccessToken;
-        const teamsfx = new TeamsFx().setSsoToken(accessToken);
+          
+        const oboCredential = new OnBehalfOfUserCredential(accessToken, oboAuthConfig);
         // Get the user info from access token
-        const currentUser = await teamsfx.getUserInfo();
+        const currentUser = await oboCredential.getUserInfo();
         const objectId = currentUser.objectId;
         var query;
 
@@ -55,6 +64,8 @@ module.exports = async function (context, req, config) {
                 query = "delete from dbo.Todo where " + (req.body ? `id = ${req.body.id}` : `objectId = '${objectId}'`);
                 break;
         }
+
+        const teamsfx = new TeamsFx()
         connection = await getSQLConnection(teamsfx);
         // Execute SQL through TeamsFx server SDK generated connection and return result
         const result = await execQuery(query, connection);

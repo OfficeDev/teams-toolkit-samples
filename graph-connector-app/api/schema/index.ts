@@ -2,11 +2,18 @@
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import { Client, ResponseType } from "@microsoft/microsoft-graph-client";
-import { createMicrosoftGraphClient, IdentityType, TeamsFx } from "@microsoft/teamsfx";
+import { AppCredential, AppCredentialAuthConfig, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
 
 interface Response {
   status: number;
   body: { [key: string]: any };
+}
+
+const authConfig: AppCredentialAuthConfig = {
+  authorityHost: process.env.M365_AUTHORITY_HOST,
+  clientId: process.env.M365_CLIENT_ID,
+  tenantId: process.env.M365_TENANT_ID,
+  clientSecret: process.env.M365_CLIENT_SECRET,
 }
 
 type TeamsfxContext = { [key: string]: any };
@@ -31,17 +38,16 @@ export default async function run(
     body: {},
   };
 
-  // Construct teamsfx.
-  let teamsfx: TeamsFx;
+  let appCredential;
   try {
-    teamsfx = new TeamsFx(IdentityType.App);
+    appCredential = new AppCredential(authConfig);
   } catch (e) {
     context.log.error(e);
     return {
       status: 500,
       body: {
         error:
-          "Failed to construct TeamsFx with Application Identity. " +
+          "Failed to construct AppCredential with Application Identity. " +
           "Ensure your function app is configured with the right Azure AD App registration.",
       },
     };
@@ -49,7 +55,7 @@ export default async function run(
 
   // Register schema
   try {
-    const graphClient: Client = createMicrosoftGraphClient(teamsfx);
+    const graphClient: Client = createMicrosoftGraphClientWithCredential(appCredential);
     const result = await graphClient.api(`/external/connections/${connectionId}/schema`)
       .responseType(ResponseType.RAW)
       .post({

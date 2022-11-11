@@ -2,11 +2,12 @@ import { Activity, TurnContext } from "botbuilder";
 import {
   CommandMessage,
   TriggerPatterns,
-  TeamsFx,
-  createMicrosoftGraphClient,
   TeamsFxBotSsoCommandHandler,
   TeamsBotSsoPromptTokenResponse,
+  OnBehalfOfUserCredential,
+  createMicrosoftGraphClientWithCredential,
 } from "@microsoft/teamsfx";
+import oboAuthConfig from "./authConfig";
 
 export class ProfileSsoCommandHandler implements TeamsFxBotSsoCommandHandler {
   triggerPatterns: TriggerPatterns = "profile";
@@ -18,12 +19,10 @@ export class ProfileSsoCommandHandler implements TeamsFxBotSsoCommandHandler {
   ): Promise<string | Partial<Activity> | void> {
     await context.sendActivity("Retrieving user information from Microsoft Graph ...");
 
-
-    // Init TeamsFx instance with SSO token
-    const teamsfx = new TeamsFx().setSsoToken(tokenResponse.ssoToken);
-
+    // Init OnBehalfOfUserCredential instance with SSO token
+    const oboCredential = new OnBehalfOfUserCredential(tokenResponse.ssoToken, oboAuthConfig);
     // Add scope for your Azure AD app. For example: Mail.Read, etc.
-    const graphClient = createMicrosoftGraphClient(teamsfx, ["User.Read"]);
+    const graphClient = createMicrosoftGraphClientWithCredential(oboCredential,  ["User.Read"]);
 
     // Call graph api use `graph` instance to get user profile information
     const me = await graphClient.api("/me").get();

@@ -12,8 +12,9 @@ import {
   tokenExchangeOperationName,
   TurnContext,
 } from "botbuilder";
-import { TeamsFx, TeamsBotSsoPrompt } from "@microsoft/teamsfx";
+import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
+import oboAuthConfig from "../authConfig";
 
 const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
@@ -33,9 +34,9 @@ export class SSODialog extends ComponentDialog {
   // In this sample the provider is shared in all conversations
   constructor(storage: Storage) {
     super(DIALOG_NAME);
-    const teamsfx = new TeamsFx();
-    const dialog = new TeamsBotSsoPrompt(
-      teamsfx,
+    const initialLoginEndpoint = process.env.INITIATE_LOGIN_ENDPOINT;
+    const dialog = new TeamsBotSsoPrompt(oboAuthConfig, 
+      initialLoginEndpoint,
       TEAMS_SSO_PROMPT_ID,
       {
         scopes: this.requiredScopes,

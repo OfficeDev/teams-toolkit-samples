@@ -4,8 +4,17 @@ import {
   TurnContext
 } from "botbuilder";
 import { ResponseType } from "@microsoft/microsoft-graph-client";
-import { MessageExtensionTokenResponse, handleMessageExtensionQueryWithToken, TeamsFx, createMicrosoftGraphClient } from "@microsoft/teamsfx";
+import { MessageExtensionTokenResponse, handleMessageExtensionQueryWithSSO, OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
+
+const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
+  authorityHost: process.env.M365_AUTHORITY_HOST,
+  clientId: process.env.M365_CLIENT_ID,
+  tenantId: process.env.M365_TENANT_ID,
+  clientSecret: process.env.M365_CLIENT_SECRET,
+};
+
+const initialLoginEndpoint = process.env.INITIATE_LOGIN_ENDPOINT;
 
 export class TeamsBot extends TeamsActivityHandler {
   constructor() {
@@ -16,16 +25,17 @@ export class TeamsBot extends TeamsActivityHandler {
   public async handleTeamsMessagingExtensionQuery(context: TurnContext, query: any): Promise<any> {
     /**
      * User Code Here.
-     * If query without token, no need to implement handleMessageExntesionQueryWithToken;
+     * If query without token, no need to implement handleMessageExtensionQueryWithSSO;
      * Otherwise, just follow the sample code below to modify the user code.
      */
-    return await handleMessageExtensionQueryWithToken(context, null, ['User.Read.All', 'User.Read'], 
+    return await handleMessageExtensionQueryWithSSO(context, oboAuthConfig, initialLoginEndpoint, ['User.Read.All', 'User.Read'], 
       async (token: MessageExtensionTokenResponse) => {
         // User Code
-        const teamsfx = new TeamsFx().setSsoToken(token.ssoToken);
+
+        const credential = new OnBehalfOfUserCredential(token.ssoToken, oboAuthConfig);
         const attachments = [];
         if (query.parameters[0] && query.parameters[0].name === 'initialRun') {
-          const graphClient = createMicrosoftGraphClient(teamsfx, 'User.Read');
+          const graphClient = createMicrosoftGraphClientWithCredential(credential, 'User.Read');
           const profile = await graphClient.api('/me').get();
           let photoBinary;
           try {
@@ -41,7 +51,7 @@ export class TeamsBot extends TeamsActivityHandler {
           const thumbnailCard = CardFactory.thumbnailCard(profile.displayName, profile.mail, CardFactory.images([imageUri]));
           attachments.push(thumbnailCard);
         } else {
-          const graphClient = createMicrosoftGraphClient(teamsfx, 'User.Read.All');
+          const graphClient = createMicrosoftGraphClientWithCredential(credential, 'User.Read.All');
           const searchContext = query.parameters[0].value;
           let users = await graphClient.api(`/users?$search="displayName:${searchContext}"&$count=true`)
             .header('ConsistencyLevel', 'eventual')

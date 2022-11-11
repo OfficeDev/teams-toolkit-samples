@@ -2,11 +2,12 @@ import { Activity, ActivityTypes, TurnContext } from "botbuilder";
 import {
   CommandMessage,
   TriggerPatterns,
-  TeamsFx,
-  createMicrosoftGraphClient,
   TeamsFxBotSsoCommandHandler,
   TeamsBotSsoPromptTokenResponse,
+  createMicrosoftGraphClientWithCredential,
+  OnBehalfOfUserCredential,
 } from "@microsoft/teamsfx";
+import oboAuthConfig from "./authConfig";
 
 export class PhotoSsoCommandHandler implements TeamsFxBotSsoCommandHandler {
   triggerPatterns: TriggerPatterns = "photo";
@@ -17,12 +18,11 @@ export class PhotoSsoCommandHandler implements TeamsFxBotSsoCommandHandler {
     tokenResponse: TeamsBotSsoPromptTokenResponse,
   ): Promise<string | Partial<Activity> | void> {
     await context.sendActivity("Retrieving user information from Microsoft Graph ...");
-
-    // Init TeamsFx instance with SSO token
-    const teamsfx = new TeamsFx().setSsoToken(tokenResponse.ssoToken);
-
+    // Init OnBehalfOfUserCredential instance with SSO token
+    const oboCredential = new OnBehalfOfUserCredential(tokenResponse.ssoToken, oboAuthConfig);
     // Add scope for your Azure AD app. For example: Mail.Read, etc.
-    const graphClient = createMicrosoftGraphClient(teamsfx, ["User.Read"]);
+    const graphClient = createMicrosoftGraphClientWithCredential(oboCredential,  ["User.Read"]);
+
     // You can add following code to get your photo:
     let photoUrl = "";
     try {
