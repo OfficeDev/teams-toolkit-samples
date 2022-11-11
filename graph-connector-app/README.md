@@ -1,6 +1,6 @@
 # Getting Started with Graph Connector Sample
 
-> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
 >  
 > This warning will be removed when the samples are ready for production.
 
@@ -43,7 +43,7 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 
     ![Consent](images/consent.png)
 
-1. Before ingesting data, you need to do 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.OwnedBy' application permissions for your AAD App in Azure Portal.
+1. Before ingesting data, you need to do 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.All' application permissions for your AAD App in Azure Portal.
 
     1. Find the client id in `.fx\states\state.xxx.json` file (e.g. `state.local.json` for local environment, `state.dev.json` for dev environment).
 

@@ -1,5 +1,5 @@
 {
-  "name": "AdaptiveCardNotification",
+  "name": "adaptive-card-notification",
   "version": "1.0.0",
   "description": "Microsoft Teams Toolkit Adaptive Card Notification Bot Sample",
   "author": "Microsoft",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@azure/storage-blob": "^12.9.0",
     "@microsoft/adaptivecards-tools": "^1.0.0",
-    "@microsoft/teamsfx": "^1.0.0",
+    "@microsoft/teamsfx": "^2.0.0",
     "botbuilder": "^4.15.0"
   },
   "devDependencies": {

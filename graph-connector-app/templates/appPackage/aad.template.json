@@ -25,7 +25,7 @@
                     "type": "Role"
                 },
                 {
-                    "id": "ExternalItem.ReadWrite.OwnedBy",
+                    "id": "ExternalItem.ReadWrite.All",
                     "type": "Role"
                 },
                 {

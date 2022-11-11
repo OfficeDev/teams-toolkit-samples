@@ -1,5 +1,5 @@
 {
-  "name": "TodoSampleReactTabSql-api",
+  "name": "todo-sample-react-tab-sql-api",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@azure/functions": "^1.2.2",
-    "@microsoft/teamsfx": "^1.0.0",
+    "@microsoft/teamsfx": "^2.0.0",
     "isomorphic-fetch": "^3.0.0",
     "tedious": "^9.2.1"
   },
