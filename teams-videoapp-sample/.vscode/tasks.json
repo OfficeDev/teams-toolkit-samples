@@ -30,11 +30,9 @@
                     53000, // video app service port
                     9222, // debugger port
                 ],
-                "installOptions": {
-                    "vxTestApp": {
-                        "version": "1.0.4"
-                    }
-                },
+                "vxTestApp": {
+                    "version": "1.0.4"
+                }
             }
         },
         {
