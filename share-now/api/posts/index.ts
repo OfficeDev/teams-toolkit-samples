@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
-import { TeamsFx } from "@microsoft/teamsfx";
+import { OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential } from "@microsoft/teamsfx";
 import { executeQuery, getSQLConnection, PostRequest, PostTypes, ResponsePost, LengthLimit } from "../utils/common";
 import { checkPost } from "../utils/query";
 
@@ -31,8 +31,16 @@ export default async function run(
     connection = await getSQLConnection();
     const method = req.method.toLowerCase();
     const accessToken: string = teamsfxContext["AccessToken"];
-    const teamsfx = new TeamsFx().setSsoToken(accessToken);
-    const currentUser = await teamsfx.getUserInfo();
+    const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
+      authorityHost: process.env.M365_AUTHORITY_HOST,
+      clientId: process.env.M365_CLIENT_ID,
+      tenantId: process.env.M365_TENANT_ID,
+      clientSecret: process.env.M365_CLIENT_SECRET,
+    };
+    
+    const oboCredential = new OnBehalfOfUserCredential(accessToken, oboAuthConfig);
+    
+    const currentUser = await oboCredential.getUserInfo();
     let query;
     let postID;
     let check;

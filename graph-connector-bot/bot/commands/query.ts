@@ -1,9 +1,4 @@
-import { ResponseType } from "@microsoft/microsoft-graph-client";
-import { CardFactory, TurnContext } from "botbuilder";
-import {
-  createMicrosoftGraphClient,
-  TeamsFx,
-} from "@microsoft/teamsfx";
+import { TurnContext } from "botbuilder";
 import { SSOCommand } from "../helpers/botCommand";
 import { GraphQueryService } from "../services/graphQueryService";
 import { Utils } from "../helpers/utils";

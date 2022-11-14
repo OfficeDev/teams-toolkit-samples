@@ -4,7 +4,7 @@
 import React from 'react';
 import './App.css';
 import './Tab.css'
-import { BearerTokenAuthProvider, createApiClient, TeamsFx } from "@microsoft/teamsfx";
+import { BearerTokenAuthProvider, createApiClient, TeamsUserCredential } from "@microsoft/teamsfx";
 import Profile from "./Profile";
 import Creator from "./Creator";
 import { Checkbox, Button, Input, MenuButton } from "@fluentui/react-northstar"
@@ -31,20 +31,23 @@ class Tab extends React.Component {
   }
 
   async initTeamsFx() {
-    const teamsfx = new TeamsFx();
-    // Get the user info from access token
-    const userInfo = await teamsfx.getUserInfo();
+    const authConfig = {
+      clientId: process.env.REACT_APP_CLIENT_ID,
+      initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
+    };
+    
+    const credential = new TeamsUserCredential(authConfig);
+    const userInfo = credential.getUserInfo();
 
     this.setState({
       userInfo: userInfo
     });
 
-    this.teamsfx = teamsfx;
     this.scope = ["User.Read", "User.ReadBasic.All"];
     this.channelOrChatId = await this.getChannelOrChatId();
+    this.credential = credential;
 
-    const credential = teamsfx.getCredential();
-    const apiBaseUrl = teamsfx.getConfig("apiEndpoint") + "/api/";
+    const apiBaseUrl = process.env.REACT_APP_FUNC_ENDPOINT + "/api/";
     // createApiClient(...) creates an Axios instance which uses BearerTokenAuthProvider to inject token to request header
     const apiClient = createApiClient(
       apiBaseUrl,
@@ -61,7 +64,7 @@ class Tab extends React.Component {
   async loginBtnClick() {
     try {
       // Popup login page to get user's access token
-      await this.teamsfx.login(this.scope);
+      await this.credential.login(this.scope);
     } catch (err) {
       if (err instanceof Error && err.message?.includes("CancelledByUser")) {
         const helpLink = "https://aka.ms/teamsfx-auth-code-flow";
@@ -79,7 +82,7 @@ class Tab extends React.Component {
 
   async checkIsConsentNeeded() {
     try {
-      await this.teamsfx.getCredential().getToken(this.scope);
+      await this.credential.getToken(this.scope);
     } catch (error) {
       this.setState({
         showLoginPage: true

@@ -1,9 +1,15 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-const { TeamsFx } = require("@microsoft/teamsfx");
+const { OnBehalfOfUserCredential } = require("@microsoft/teamsfx");
 const uuid = require("uuid");
 
+const oboAuthConfig = {
+    authorityHost: process.env.M365_AUTHORITY_HOST,
+    clientId: process.env.M365_CLIENT_ID,
+    tenantId: process.env.M365_TENANT_ID,
+    clientSecret: process.env.M365_CLIENT_SECRET,
+};
 
 /**
  * This function handles requests sent from teamsfx client SDK.
@@ -28,9 +34,9 @@ module.exports = async function (context, req, config) {
     try {
         const method = req.method.toLowerCase();
         const accessToken = config.AccessToken;
-        const teamsfx = new TeamsFx().setSsoToken(accessToken);
+        const oboCredential = new OnBehalfOfUserCredential(accessToken, oboAuthConfig);
         // Get the user info from access token
-        const currentUser = await teamsfx.getUserInfo();
+        const currentUser = await oboCredential.getUserInfo();
         const objectId = currentUser.objectId;
 
         let result = "";

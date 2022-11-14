@@ -14,7 +14,7 @@ import NotificationMessage from "../notification-message/notification-message";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
 import InfiniteScroll from 'react-infinite-scroller';
-import { TeamsFx } from "@microsoft/teamsfx";
+import { TeamsUserCredential, TeamsUserCredentialAuthConfig } from "@microsoft/teamsfx";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../styles/site.css";
@@ -70,7 +70,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     authorAvatarBackground: Array<{ id: string, color: string }>;
     hasmorePost: boolean;
     clearSearchText: boolean;
-    teamsfx: TeamsFx;
+    credential: TeamsUserCredential;
 
     constructor(props) {
       super(props);
@@ -82,7 +82,11 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
       this.authorAvatarBackground = colors === null ? [] : JSON.parse(colors);
       this.hasmorePost = true;
       this.clearSearchText = false;
-      this.teamsfx = new TeamsFx();
+      const authConfig: TeamsUserCredentialAuthConfig = {
+        clientId: process.env.REACT_APP_CLIENT_ID!,
+        initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL!,
+      };
+      this.credential = new TeamsUserCredential(authConfig)
 
       this.state = {
         loader: true,
@@ -107,7 +111,7 @@ class DiscoverWrapperPage extends React.Component<WithTranslation, ICardViewStat
     * Used to initialize Microsoft Teams sdk
     */
     async componentDidMount() {
-      const userInfo = await this.teamsfx.getUserInfo();
+      const userInfo = await this.credential.getUserInfo();
       this.loggedInUserObjectId = userInfo.objectId;
 
       this.initDiscoverPosts();

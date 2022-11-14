@@ -1,12 +1,13 @@
-import { createMicrosoftGraphClient, IdentityType, TeamsFx } from "@microsoft/teamsfx";
+import { AppCredential, createMicrosoftGraphClient, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
 import { Client } from "@microsoft/microsoft-graph-client";
+import authConfig from "../authConfig";
 
 export class GraphService {
     private graphClient: Client;
 
     constructor() {
-        const teamsfx = new TeamsFx(IdentityType.App);
-        this.graphClient = createMicrosoftGraphClient(teamsfx);
+        const appCredential = new AppCredential(authConfig)
+        this.graphClient = createMicrosoftGraphClientWithCredential(appCredential);
     }
 
     async createConnection(connection, connectorTicket: string) {

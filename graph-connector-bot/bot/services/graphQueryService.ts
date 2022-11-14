@@ -1,12 +1,13 @@
-import { createMicrosoftGraphClient, TeamsFx } from "@microsoft/teamsfx";
+import { createMicrosoftGraphClient, createMicrosoftGraphClientWithCredential, OnBehalfOfUserCredential } from "@microsoft/teamsfx";
 import { Client } from "@microsoft/microsoft-graph-client";
+import oboAuthConfig from "../authConfig";
 
 export class GraphQueryService {
     private graphClient: Client;
 
     constructor(ssoToken: string) {
-        const teamsfx = new TeamsFx().setSsoToken(ssoToken);
-        this.graphClient = createMicrosoftGraphClient(teamsfx, [
+        const oboCredential = new OnBehalfOfUserCredential(ssoToken, oboAuthConfig);
+        this.graphClient = createMicrosoftGraphClientWithCredential(oboCredential, [
             "ExternalItem.Read.All",
         ]);
     }
