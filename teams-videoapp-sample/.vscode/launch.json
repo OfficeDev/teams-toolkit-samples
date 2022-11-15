@@ -18,12 +18,13 @@
             "type": "node",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "${workspaceFolder}/.tools/vxTestApp/vxTestApp",
+            "runtimeExecutable": "${workspaceFolder}/.tools/video-extensibility-test-app/video-extensibility-test-app",
             "windows": {
-                "runtimeExecutable": "${workspaceFolder}/.tools/vxTestApp/vxTestApp.exe"
+                "runtimeExecutable": "${workspaceFolder}/.tools/video-extensibility-test-app/video-extensibility-test-app.exe"
             },
             "args": [
-                "--remote-debugging-port=9222"
+                "--app-url=https://localhost:53000",
+                "--remote-debugging-port=9222",
             ],
             "outputCapture": "std",
             "presentation": {
