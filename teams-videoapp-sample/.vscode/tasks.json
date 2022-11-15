@@ -24,7 +24,7 @@
                     "nodejs", // Validate if Node.js is installed.
                     "devCert", // Install localhost SSL certificate.
                     "portOccupancy", // Validate available ports to ensure those debug ones are not occupied.
-                    // "vxTestApp" // TODO: add vxTestApp check & install
+                    "vxTestApp" // Validate video extensibility app test app.
                 ],
                 "portOccupancy": [
                     53000, // video app service port
