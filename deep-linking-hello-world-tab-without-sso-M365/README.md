@@ -1,11 +1,7 @@
 # Getting Started with Hello World Deeplinking Tab Without SSO Sample
-
-> Note: Please be advised that this sample repository is currently in **Public Preview**, with a lot of active development work taking place. Please expect breaking changes as we continue to iterate.
 >
 > We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
 >
-> This warning will be removed when the samples are ready for production.
-
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
 This sample app shows, how to use new Teams SDK V2 capabilities to simplify the process of deeplink navigation across the hubs (on Teams, Outlook and Office).It covers two different scenarios:
@@ -21,7 +17,7 @@ This sample app shows, how to use new Teams SDK V2 capabilities to simplify the 
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 12, 14
-- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version after 4.0.0 or [TeamsFx CLI](https://aka.ms/teamsfx-cli) version after 0.10.2
 
 ## What you will learn in this sample:
@@ -32,7 +28,7 @@ This sample app shows, how to use new Teams SDK V2 capabilities to simplify the 
 >Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
 
 1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
+1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit for Visual Studio Code](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
 1. Start debugging the project by hitting the `F5` key in Visual Studio Code.
 
