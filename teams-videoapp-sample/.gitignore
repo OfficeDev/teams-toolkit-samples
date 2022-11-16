@@ -71,6 +71,7 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+.env.teamsfx.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -106,3 +107,5 @@ dist
 
 # Video extensibility test app
 .tools
+
+.fx/subscriptionInfo.json
