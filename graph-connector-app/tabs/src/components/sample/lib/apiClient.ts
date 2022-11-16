@@ -1,11 +1,12 @@
 import { BearerTokenAuthProvider, createApiClient, TeamsUserCredential, TeamsUserCredentialAuthConfig } from "@microsoft/teamsfx";
+import config from "./config";
 
 const authConfig: TeamsUserCredentialAuthConfig = {
-    clientId: process.env.REACT_APP_CLIENT_ID!,
-    initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL!,
+    clientId: config.clientId!,
+    initiateLoginEndpoint: config.initiateLoginEndpoint!,
 }
 const credential = new TeamsUserCredential(authConfig);
-const apiBaseUrl = process.env.REACT_APP_FUNC_ENDPOINT + "/api/";
+const apiBaseUrl = config.apiEndpoint + "/api/";
 // createApiClient(...) creates an Axios instance which uses BearerTokenAuthProvider to inject token to request header
 const apiClient = createApiClient(
     apiBaseUrl,
