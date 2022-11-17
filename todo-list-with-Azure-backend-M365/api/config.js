@@ -1,7 +1,8 @@
 const config = {
-    initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
-    clientId: process.env.REACT_APP_CLIENT_ID,
-    apiEndpoint: process.env.REACT_APP_FUNC_ENDPOINT,
-}
+    authorityHost: process.env.M365_AUTHORITY_HOST,
+    tenantId: process.env.M365_TENANT_ID,
+    clientId: process.env.M365_CLIENT_ID,
+    clientSecret: process.env.M365_CLIENT_SECRET,
+};
 
-export default config;
+module.exports = config;
