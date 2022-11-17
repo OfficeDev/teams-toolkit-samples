@@ -16,8 +16,8 @@ import config from "./sample/lib/config";
  */
 export default function App() {
   const { loading, theme, themeString, teamsfx } = useTeamsFx({
-    initiateLoginEndpoint: config.initiateLoginEndpoint,
-    clientId: config.clientId,
+    initiateLoginEndpoint: config.initiateLoginEndpoint!,
+    clientId: config.clientId!,
   });
   return (
     <TeamsFxContext.Provider value={{theme, themeString, teamsfx}}>
