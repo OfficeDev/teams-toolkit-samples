@@ -4,7 +4,7 @@
 import React from 'react';
 import './App.css';
 import './Tab.css'
-import { TeamsFx } from "@microsoft/teamsfx";
+import { TeamsFx, IdentityType } from "@microsoft/teamsfx";
 import { Button, Table } from "@fluentui/react-northstar"
 
 import { Providers, ProviderState } from '@microsoft/mgt-element';
@@ -13,6 +13,7 @@ import { CSVLink } from "react-csv";
 
 import { TeamsFxProvider } from '@microsoft/mgt-teamsfx-provider';
 import { CacheService } from '@microsoft/mgt';
+import config from './lib/config';
 
 class Tab extends React.Component {
 
@@ -41,7 +42,10 @@ class Tab extends React.Component {
   }
 
   async initTeamsFx() {
-    this.teamsfx = new TeamsFx();
+    this.teamsfx = new TeamsFx(IdentityType.User, {
+      initiateLoginEndpoint: config.initiateLoginEndpoint,
+      clientId: config.clientId,
+    });
 
     // Only these two permission can be used without admin approval in microsoft tenant
     this.scope = [
