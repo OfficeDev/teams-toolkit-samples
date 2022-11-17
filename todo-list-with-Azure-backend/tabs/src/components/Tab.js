@@ -10,6 +10,7 @@ import Creator from "./Creator";
 import { Checkbox, Button, Input, MenuButton } from "@fluentui/react-northstar"
 import noItemimage from '../images/no-item.png'
 import { app } from '@microsoft/teams-js';
+import config from './lib/config';
 
 class Tab extends React.Component {
 
@@ -32,8 +33,8 @@ class Tab extends React.Component {
 
   async initTeamsFx() {
     const authConfig = {
-      clientId: process.env.REACT_APP_CLIENT_ID,
-      initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
+      clientId: config.clientId,
+      initiateLoginEndpoint: config.initiateLoginEndpoint,
     };
     
     const credential = new TeamsUserCredential(authConfig);
@@ -47,7 +48,7 @@ class Tab extends React.Component {
     this.channelOrChatId = await this.getChannelOrChatId();
     this.credential = credential;
 
-    const apiBaseUrl = process.env.REACT_APP_FUNC_ENDPOINT + "/api/";
+    const apiBaseUrl = config.apiEndpoint + "/api/";
     // createApiClient(...) creates an Axios instance which uses BearerTokenAuthProvider to inject token to request header
     const apiClient = createApiClient(
       apiBaseUrl,
