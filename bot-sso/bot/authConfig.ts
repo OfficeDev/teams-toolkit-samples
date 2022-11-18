@@ -1,10 +1,11 @@
 import { OnBehalfOfCredentialAuthConfig } from "@microsoft/teamsfx";
+import config from "./config";
 
 const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
-  authorityHost: process.env.M365_AUTHORITY_HOST,
-  clientId: process.env.M365_CLIENT_ID,
-  tenantId: process.env.M365_TENANT_ID,
-  clientSecret: process.env.M365_CLIENT_SECRET,
+  authorityHost: config.authorityHost,
+  clientId: config.clientId,
+  tenantId: config.tenantId,
+  clientSecret: config.clientSecret,
 };
 
 export default oboAuthConfig;

@@ -12,12 +12,13 @@ import {
 // This bot's main dialog.
 import { TeamsBot } from "./teamsBot";
 import { SSODialog } from "./helpers/ssoDialog";
+import config from "./config";
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
 const adapter = new BotFrameworkAdapter({
-  appId: process.env.BOT_ID,
-  appPassword: process.env.BOT_PASSWORD,
+  appId: config.botId,
+  appPassword: config.botPassword,
 });
 
 // Catch-all for errors.

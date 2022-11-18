@@ -8,6 +8,7 @@ import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import { Client } from "@microsoft/microsoft-graph-client";
 import { AppCredential, AppCredentialAuthConfig, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
+import config from "../config";
 
 interface Response {
   status: number;
@@ -17,10 +18,10 @@ interface Response {
 type TeamsfxContext = { [key: string]: any };
 
 const authConfig: AppCredentialAuthConfig = {
-  authorityHost: process.env.M365_AUTHORITY_HOST,
-  clientId: process.env.M365_CLIENT_ID,
-  tenantId: process.env.M365_TENANT_ID,
-  clientSecret: process.env.M365_CLIENT_SECRET,
+  authorityHost: config.authorityHost,
+  clientId: config.clientId,
+  tenantId: config.tenantId,
+  clientSecret: config.clientSecret,
 }
 
 /**
