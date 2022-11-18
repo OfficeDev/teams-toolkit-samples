@@ -15,10 +15,6 @@ if (SSL_KEY_FILE && SSL_CRT_FILE) {
 }
 
 export default {
-    base: '/teams-videoapp-sample/app/',
-    build: {
-        outDir: './dist/app'
-    },
     server: {
         https: options || false,
         port: process.env["PORT"] || "53000"
