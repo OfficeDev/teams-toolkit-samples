@@ -1,0 +1,18 @@
+{
+    "$schema": "https://aka.ms/teamsfx-env-config-schema",
+    "description": "You can customize the TeamsFx config for different environments. Visit https://aka.ms/teamsfx-env-config to learn more about this.",
+    "manifest": {
+        "appName": {
+            "short": "ContosoRestaurant",
+            "full": "Full name for ContosoRestaurant"
+        },
+        "description": {
+            "short": "Short description of ContosoRestaurant",
+            "full": "Full description of ContosoRestaurant"
+        },
+        "icons": {
+            "color": "resources/color.png",
+            "outline": "resources/outline.png"
+        }
+    }
+}
