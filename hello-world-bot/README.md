@@ -11,8 +11,8 @@ This is a simple hello world application with both Bot and Message extension cap
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/)
-- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version after 1.55 or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Debug
 
@@ -22,7 +22,7 @@ This is a simple hello world application with both Bot and Message extension cap
 
 ## Edit the manifest
 
-You can find the Teams app manifest in `templates/appPackage` folder. The folder contains one manifest file:
+You can find the Teams app manifest in `appPackage` folder. The folder contains one manifest file:
 * `manifest.template.json`: Manifest file for Teams app running locally or running remotely (After deployed to Azure).
 
 This file contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more information.
@@ -76,33 +76,33 @@ This template provides some sample functionality:
 
 - You can create and send an adaptive card.
 
-  ![CreateCard](./bot/images/AdaptiveCard.png)
+  ![CreateCard](./images/AdaptiveCard.png)
 
 - You can share a message in an adaptive card form.
 
-  ![ShareMessage](./bot/images/ShareMessage.png)
+  ![ShareMessage](./images/ShareMessage.png)
 
 - You can paste a link that "unfurls" (`.botframwork.com` is monitored in this template) and a card will be rendered.
 
-  ![ComposeArea](./bot/images/LinkUnfurlingImage.png)
+  ![ComposeArea](./images/LinkUnfurlingImage.png)
 
 To trigger these functions, there are multiple entry points:
 
 - `@mention` Your message extension, from the `search box area`.
 
-  ![AtBotFromSearch](./bot/images/AtBotFromSearch.png)
+  ![AtBotFromSearch](./images/AtBotFromSearch.png)
 
 - `@mention` your message extension from the `compose message area`.
 
-  ![AtBotFromMessage](./bot/images/AtBotInMessage.png)
+  ![AtBotFromMessage](./images/AtBotInMessage.png)
 
 - Click the `...` under compose message area, find your message extension.
 
-  ![ComposeArea](./bot/images/ThreeDot.png)
+  ![ComposeArea](./images/ThreeDot.png)
 
 - Click the `...` next to any messages you received or sent.
 
-  ![ComposeArea](./bot/images/ThreeDotOnMessage.png)
+  ![ComposeArea](./images/ThreeDotOnMessage.png)
 
 ## Further reading
 
