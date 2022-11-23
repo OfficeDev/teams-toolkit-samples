@@ -1,8 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # TeamsFx files
-teamsfx/.env.dev
-teamsfx/.env.local
+teamsfx/.env.*
 
 # dependencies
 /node_modules
