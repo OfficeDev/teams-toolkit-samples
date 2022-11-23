@@ -1,31 +1,31 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.14",
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.15/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.15",
     "version": "1.0.0",
-    "id": "{{state.fx-resource-appstudio.teamsAppId}}",
+    "id": "${{TEAMS_APP_ID}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Teams App, Inc.",
         "websiteUrl": "https://www.example.com",
-        "privacyUrl": "https://www.example.com/privacy",
-        "termsOfUseUrl": "https://www.example.com/termsofuse"
+        "privacyUrl": "https://www.example.com/termofuse",
+        "termsOfUseUrl": "https://www.example.com/privacy"
     },
     "icons": {
         "color": "resources/color.png",
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "{{config.manifest.appName.short}}",
-        "full": "{{config.manifest.appName.full}}"
+        "short": "hello-world-bot",
+        "full": "full name for hello-world-bot"
     },
     "description": {
-        "short": "Short description of {{config.manifest.appName.short}}",
-        "full": "Full description of {{config.manifest.appName.short}}"
+        "short": "short description for hello-world-bot",
+        "full": "full description for hello-world-bot"
     },
     "accentColor": "#FFFFFF",
     "bots": [
         {
-            "botId": "{{state.fx-resource-bot.botId}}",
+            "botId": "${{BOT_ID}}",
             "scopes": [
                 "personal",
                 "team",
@@ -61,5 +61,7 @@
         "identity",
         "messageTeamMembers"
     ],
-    "validDomains": []
+    "validDomains": [
+        "${{BOT_DOMAIN}}"
+    ]
 }
