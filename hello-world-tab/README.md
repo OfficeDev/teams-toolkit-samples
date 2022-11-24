@@ -33,7 +33,7 @@ Hello World Tab shows you how to build a tab app and how to get user login infor
 
 ## Edit the manifest
 
-You can find the Teams manifest in `templates/appPackage` folder. The templates contains:
+You can find the Teams manifest in `./appPackage` folder. The templates contains:
 * `manifest.template.json`: Manifest file for Teams app running locally and remotely.
 
 Both file contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
@@ -66,8 +66,8 @@ Once deployed, you may want to distribute your application to your organization'
 
 ### Code structure
 
-- You can check app configuration and environment information in: [.fx](.fx)
-- You will find frontend code in: [tabs/src/components](tabs/src/components)
+- You can check app configuration and environment information in: [./teamsfx](./teamsfx)
+- You will find frontend code in: [./src/components](./src/components)
 
 ## Code of Conduct
 
