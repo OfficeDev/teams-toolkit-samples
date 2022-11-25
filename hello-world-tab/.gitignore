@@ -14,5 +14,5 @@ teamsfx/.env.*
 
 # misc
 .DS_Store
-.env*.local
+teamsfx/.env.*
 .deployment
