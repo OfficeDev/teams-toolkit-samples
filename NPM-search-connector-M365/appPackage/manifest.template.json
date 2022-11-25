@@ -15,7 +15,7 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "MynpmSearchConnector",
+        "short": "npmSearchConnector",
         "full": "full name for npmSearchConnector"
     },
     "description": {
