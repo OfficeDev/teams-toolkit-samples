@@ -36,7 +36,7 @@ Hello World Tab shows you how to build a tab app and how to get user login infor
 You can find the Teams manifest in `./appPackage` folder. The templates contains:
 * `manifest.template.json`: Manifest file for Teams app running locally and remotely.
 
-Both file contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
+Both file contains template arguments with `${{...}}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
 
 ## Deploy to Azure
 
