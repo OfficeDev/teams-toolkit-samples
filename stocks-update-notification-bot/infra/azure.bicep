@@ -16,8 +16,8 @@ param storageSKU string
 @maxLength(42)
 param botDisplayName string
 
-param teamsfxApiAlphavantageEndpoint: string;
-param teamsfxApiAlphavantageApiKey: string;
+param teamsfxApiAlphavantageEndpoint string
+param teamsfxApiAlphavantageApiKey string
 
 param serverfarmsName string = resourceBaseName
 param functionAppName string = resourceBaseName
