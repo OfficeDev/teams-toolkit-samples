@@ -8,7 +8,7 @@
             "url": "https://teams.microsoft.com/l/app/${dev:teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
             "presentation": {
                 "group": "remote",
-                "order": 1
+                "order": 2
             },
             "internalConsoleOptions": "neverOpen"
         },
@@ -19,7 +19,7 @@
             "url": "https://teams.microsoft.com/l/app/${dev:teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
             "presentation": {
                 "group": "remote",
-                "order": 2
+                "order": 1
             },
             "internalConsoleOptions": "neverOpen"
         },
@@ -74,7 +74,7 @@
             "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "all",
-                "order": 1
+                "order": 2
             },
             "stopAll": true
         },
@@ -87,7 +87,7 @@
             "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "all",
-                "order": 2
+                "order": 1
             },
             "stopAll": true
         }
