@@ -16,11 +16,11 @@
     },
     "name": {
         "short": "${{TEAMS_APP_NAME}}",
-        "full": "full name for stocks-update-notification-bot"
+        "full": "full name for stocks-update-notif-bot"
     },
     "description": {
-        "short": "short description for stocks-update-notification-bot",
-        "full": "full description for stocks-update-notification-bot"
+        "short": "short description for stocks-update-notif-bot",
+        "full": "full description for stocks-update-notif-bot"
     },
     "accentColor": "#FFFFFF",
     "bots": [

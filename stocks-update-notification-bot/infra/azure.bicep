@@ -16,6 +16,9 @@ param storageSKU string
 @maxLength(42)
 param botDisplayName string
 
+param teamsfxApiAlphavantageEndpoint: string;
+param teamsfxApiAlphavantageApiKey: string;
+
 param serverfarmsName string = resourceBaseName
 param functionAppName string = resourceBaseName
 param location string = resourceGroup().location
@@ -95,6 +98,14 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
         {
           name: 'SCM_ZIPDEPLOY_DONOT_PRESERVE_FILETIME'
           value: '1' // Zipdeploy files will always be updated. Detail: https://aka.ms/teamsfx-zipdeploy-donot-preserve-filetime
+        }
+        {
+          name: 'TEAMSFX_API_ALPHAVANTAGE_ENDPOINT'
+          value: teamsfxApiAlphavantageEndpoint
+        }
+        {
+          name: 'TEAMSFX_API_ALPHAVANTAGE_API_KEY'
+          value: teamsfxApiAlphavantageApiKey
         }
       ]
       ftpsState: 'FtpsOnly'

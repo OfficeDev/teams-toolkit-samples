@@ -16,6 +16,8 @@ async function run() {
   // set up environment variables required by teamsfx
   process.env.BOT_ID = envs.BOT_ID;
   process.env.BOT_PASSWORD = envs.SECRET_BOT_PASSWORD;
+  process.env.TEAMSFX_API_ALPHAVANTAGE_ENDPOINT = envs.TEAMSFX_API_ALPHAVANTAGE_ENDPOINT;
+  process.env.TEAMSFX_API_ALPHAVANTAGE_API_KEY = envs.TEAMSFX_API_ALPHAVANTAGE_API_KEY;
 
   // launch service locally by executing npm command
   cp.spawn(/^win/.test(process.platform) ? "npm.cmd" : "npm", ["run", "dev"], { stdio: "inherit" });

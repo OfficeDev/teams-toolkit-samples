@@ -18,7 +18,13 @@
       "value": "Standard_LRS"
     },
     "botDisplayName": {
-      "value": "stocks-update-notification-bot"
+      "value": "stocks-update-notif-bot"
+    },
+    "teamsfxApiAlphavantageEndpoint": {
+      "value": "${{TEAMSFX_API_ALPHAVANTAGE_ENDPOINT}}"
+    },
+    "teamsfxApiAlphavantageApiKey": {
+      "value": "${{TEAMSFX_API_ALPHAVANTAGE_API_KEY}}"
     }
   }
 }
