@@ -3,4 +3,12 @@
     "azureFunctions.showProjectWarning": false,
     "csharp.suppressDotnetRestoreNotification": true,
     "debug.onTaskErrors": "abort",
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/aad.*.json"
+            ],
+            "schema": {}
+        }
+    ]
 }
