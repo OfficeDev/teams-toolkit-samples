@@ -29,7 +29,7 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 
 ## Update local environment variables
 
-For the HTTP request to the public API to be succesful, the following environment variables need to be configured in the `bot/.env.teamsfx.local` file.
+For the HTTP request to the public API to be succesful, the following environment variables need to be configured in the `teamsfx/.env.local` file.
 
 ```sh
 TEAMSFX_API_ALPHAVANTAGE_ENDPOINT=https://www.alphavantage.co
@@ -40,7 +40,7 @@ TEAMSFX_API_ALPHAVANTAGE_API_KEY=demo
 
 ## Edit the manifest
 
-You can find the Teams manifest in `templates/appPackage` folder. The templates contains:
+You can find the Teams manifest in `appPackage` folder. The templates contains:
 * `manifest.template.json`: Manifest file for Teams app running locally and remotely.
 
 Both file contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
@@ -69,9 +69,9 @@ Once deployed, you may want to distribute your application to your organization'
 
 ### Code structure
 
-- You can check app configuration and environment information in: [.fx](.fx)
-- You will find Bot code in: [bot/src/](bot/src)
-- You will find API client code in: [bot/src/apiConnections](bot/src/apiConnections)
+- You can check app configuration and environment information in: [teamsfx](teamsfx)
+- You will find Bot code in: [src/](src)
+- You will find API client code in: [src/apiConnections](src/apiConnections)
 
 ## Code of Conduct
 
