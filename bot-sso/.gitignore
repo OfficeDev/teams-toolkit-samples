@@ -1,12 +1,13 @@
-node_modules
-.backup
-.fx/configs/localSettings.json
-.fx/states/*.userdata
+# TeamsFx files
+teamsfx/.env.*
+
+# dependencies
+node_modules/
+
+# misc
+.env
+.deployment
 .DS_Store
-.archive
-.archive.log
-.env.teamsfx.local
-subscriptionInfo.json
-.fx/configs/config.local.json
-.fx/states/state.local.json
-build
+
+# build
+lib/

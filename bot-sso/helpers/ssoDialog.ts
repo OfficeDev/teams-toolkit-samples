@@ -14,6 +14,7 @@ import {
 import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 import oboAuthConfig from "../authConfig";
+import config from "../config";
 
 const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
@@ -33,7 +34,7 @@ export class SSODialog extends ComponentDialog {
   constructor(dedupStorage: Storage) {
     super(DIALOG_NAME);
 
-    const initialLoginEndpoint = process.env.INITIATE_LOGIN_ENDPOINT;
+    const initialLoginEndpoint =`https://${config.botDomain}/auth-start.html` ;
 
     const dialog = new TeamsBotSsoPrompt(
       oboAuthConfig,

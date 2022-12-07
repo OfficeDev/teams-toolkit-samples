@@ -1,17 +1,13 @@
 // Import required packages
-import * as path from "path";
 import * as restify from "restify";
+import * as path from "path";
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
-import {
-  BotFrameworkAdapter,
-  TurnContext,
-} from "botbuilder";
+import { BotFrameworkAdapter, TurnContext } from "botbuilder";
 
 // This bot's main dialog.
 import { TeamsBot } from "./teamsBot";
-import { SSODialog } from "./helpers/ssoDialog";
 import config from "./config";
 
 // Create adapter.
@@ -44,8 +40,6 @@ const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
 // Set the onTurnError for the singleton BotFrameworkAdapter.
 adapter.onTurnError = onTurnErrorHandler;
 
-
-
 // Create the bot that will handle incoming messages.
 const bot = new TeamsBot();
 
@@ -54,6 +48,7 @@ const server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, () => {
   console.log(`\nBot Started, ${server.name} listening to ${server.url}`);
 });
+
 
 // Listen for incoming requests.
 server.post("/api/messages", async (req, res) => {
