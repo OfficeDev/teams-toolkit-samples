@@ -1,31 +1,19 @@
-# This repo demonstrates a minimal Teams video app.
-This repo contains:
-1. A minimal sample app with basic video processing capabilities.
-2. A test app can be used to test video app functionality in early development stage and provides performance evaluation tools.
+# How to use this HelloWorld Video Filter app
 
-The following steps shows how to create a video app on your own based on this sample, and how to improve it so that it can implement all kinds of video effects you want.
+> Important: Please be advised that access tokens are stored in sessionStorage for you by default. This can make it possible for malicious code in your app (or code pasted into a console on your page) to access APIs at the same privilege level as your client application. Please ensure you only request the minimum necessary scopes from your client application, and perform any sensitive operations from server side code that your client has to authenticate with.
 
 ## Prerequisites
 
-1. Install git on your machine following this [instructions](https://github.com/git-guides/install-git)
-2. Install Node. [Node.js](https://nodejs.org/en/).
-3. Install [Yarn](https://yarnpkg.com/en/)
+- [NodeJS](https://nodejs.org/en/)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 
-## Dowmload and start video app in local
+## Run the app in Video Extensibility Test App
 
-1. `git clone https://github.com/microsoft/teams-videoapp-sample.git`
-2. `cd` to the directory of README.md.
-3. run `yarn install`.
-4. run `yarn dev`, this will host the app in local environment or you can host the `src` folder on other place can access.
-5. The app will be hosted in `https://127.0.0.1:5173/`.
-
-## Load and test sample video app in local using test app
-
-1. go to `test-app` folder and unzip the latest test app according to your enviornment.
-2. Open the `.exe` file under the root folder.
-3. copy `https://127.0.0.1:5173/` or URL if you host on the place to test-app 'Video app url' input box and then click 'Load' button.
-4. Then it will show sample video app page in the right panel of test app.
-5. Click on the video effect thumbnail, it will apply the corresponding effect to the video frame showing at left side of test app. 
+- In Visual Studio Code: Start debugging the project by hitting the `F5` key in your keyboard. 
+  - Alternatively open the `Run and Debug Activity` panel(Ctrl+Shift+D) in Visual Studio Code and click the `Run and Debug` green arrow button.
+- Teams Toolkit will install Video Extensibility Test App (hereinafter Test App) if you are running Video Filter app for the first time.
+- The Test App will launch with a prompt asking for your consent. 
+- After acknowledging the statement, Test App will load the sample Video Filter app. You may switch between different filter options to inspect the effect.
 
 ## Develop your own video effects
 
@@ -77,25 +65,3 @@ registerForVideoEffect(callback)
 
 1. Make sure your camera has been plugged into your computer.
 2. Delete `%appdata%\Microsoft\electron` folder.
-
-## Contributing
-
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
-
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-## Trademarks
-
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.
