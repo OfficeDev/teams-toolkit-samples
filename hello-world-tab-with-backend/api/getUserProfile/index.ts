@@ -7,7 +7,13 @@
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import { Client } from "@microsoft/microsoft-graph-client";
-import { createMicrosoftGraphClient, TeamsFx, UserInfo } from "@microsoft/teamsfx";
+import {
+  createMicrosoftGraphClientWithCredential,
+  OnBehalfOfCredentialAuthConfig,
+  OnBehalfOfUserCredential,
+  UserInfo,
+} from "@microsoft/teamsfx";
+import config from "../config";
 
 interface Response {
   status: number;
@@ -22,9 +28,9 @@ type TeamsfxContext = { [key: string]: any };
  * Before trigger this function, teamsfx binding would process the SSO token and generate teamsfx configuration.
  *
  * This function initializes the teamsfx SDK with the configuration and calls these APIs:
- * - TeamsFx().setSsoToken() - Construct teamsfx instance with the received SSO token and initialized configuration.
+ * - new OnBehalfOfUserCredential(accessToken, oboAuthConfig) - Construct OnBehalfOfUserCredential instance with the received SSO token and initialized configuration.
  * - getUserInfo() - Get the user's information from the received SSO token.
- * - createMicrosoftGraphClient() - Get a graph client to access user's Microsoft 365 data.
+ * - createMicrosoftGraphClientWithCredential() - Get a graph client to access user's Microsoft 365 data.
  *
  * The response contains multiple message blocks constructed into a JSON object, including:
  * - An echo of the request body.
@@ -62,17 +68,23 @@ export default async function run(
     };
   }
 
-  // Construct teamsfx.
-  let teamsfx: TeamsFx;
+  const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
+    authorityHost: config.authorityHost,
+    clientId: config.clientId,
+    tenantId: config.tenantId,
+    clientSecret: config.clientSecret,
+  };
+
+  let oboCredential: OnBehalfOfUserCredential;
   try {
-    teamsfx = new TeamsFx().setSsoToken(accessToken);
+    oboCredential = new OnBehalfOfUserCredential(accessToken, oboAuthConfig);
   } catch (e) {
     context.log.error(e);
     return {
       status: 500,
       body: {
         error:
-          "Failed to construct TeamsFx using your accessToken. " +
+          "Failed to construct OnBehalfOfUserCredential using your accessToken. " +
           "Ensure your function app is configured with the right Azure AD App registration.",
       },
     };
@@ -80,11 +92,12 @@ export default async function run(
 
   // Query user's information from the access token.
   try {
-    const currentUser: UserInfo = await teamsfx.getUserInfo();
+    const currentUser: UserInfo = await oboCredential.getUserInfo();
     if (currentUser && currentUser.displayName) {
       res.body.userInfoMessage = `User display name is ${currentUser.displayName}.`;
     } else {
-      res.body.userInfoMessage = "No user information was found in access token.";
+      res.body.userInfoMessage =
+        "No user information was found in access token.";
     }
   } catch (e) {
     context.log.error(e);
@@ -96,10 +109,13 @@ export default async function run(
     };
   }
 
-  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented. 
+  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented.
   try {
-    const graphClient: Client = createMicrosoftGraphClient(teamsfx, [".default"]);
-  
+    const graphClient: Client = createMicrosoftGraphClientWithCredential(
+      oboCredential,
+      [".default"]
+    );
+
     const profile: any = await graphClient.api("/me").get();
     res.body.graphClientMessage = profile;
   } catch (e) {
@@ -116,8 +132,8 @@ export default async function run(
   return res;
 }
 
-// You can replace the codes above from the function body with comment "Query user's information from the access token." to the end 
-// with the following codes to use application permission to get user profiles. 
+// You can replace the codes above from the function body with comment "Query user's information from the access token." to the end
+// with the following codes to use application permission to get user profiles.
 // Remember to get admin consent of application permission "User.Read.All".
 /*
 // Query user's information from the access token.
@@ -142,16 +158,14 @@ export default async function run(
   }
 
   // Use IdentityType.App + client secret to create a teamsfx
-  let teamsfx_app: TeamsFx;
+  const appAuthConfig: AppCredentialAuthConfig = {
+    clientId: process.env.M365_CLIENT_ID,
+    clientSecret: process.env.M365_CLIENT_SECRET,
+    authorityHost: process.env.M365_AUTHORITY_HOST,
+    tenantId: process.env.M365_TENANT_ID,
+  };
   try {
-    teamsfx_app = new TeamsFx(IdentityType.App, 
-      {
-        clientId: process.env.M365_CLIENT_ID,
-        clientSecret: process.env.M365_CLIENT_SECRET,
-        authorityHost: process.env.M365_AUTHORITY_HOST,
-        tenantId: process.env.M365_TENANT_ID,
-      }
-    );
+    const appCredential = new AppCredential(appAuthConfig);
   } catch (e) {
     context.log.error(e);
     return {
@@ -165,10 +179,10 @@ export default async function run(
     };
   }
 
-  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented. 
+  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented.
   try {
-    const graphClient: Client = createMicrosoftGraphClient(teamsfx_app, [".default"]);
-  
+    const graphClient: Client = createMicrosoftGraphClientWithCredential(appCredential, [".default"]);
+
     const profile: any = await graphClient.api("/users/"+userName).get();
     res.body.graphClientMessage = profile;
   } catch (e) {
