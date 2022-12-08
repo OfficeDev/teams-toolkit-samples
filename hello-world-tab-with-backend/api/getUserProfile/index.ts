@@ -7,7 +7,12 @@
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import { Client } from "@microsoft/microsoft-graph-client";
-import { createMicrosoftGraphClientWithCredential, OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential, UserInfo } from "@microsoft/teamsfx";
+import {
+  createMicrosoftGraphClientWithCredential,
+  OnBehalfOfCredentialAuthConfig,
+  OnBehalfOfUserCredential,
+  UserInfo,
+} from "@microsoft/teamsfx";
 import config from "../config";
 
 interface Response {
@@ -69,9 +74,8 @@ export default async function run(
     tenantId: config.tenantId,
     clientSecret: config.clientSecret,
   };
-  
+
   let oboCredential: OnBehalfOfUserCredential;
-  
   try {
     oboCredential = new OnBehalfOfUserCredential(accessToken, oboAuthConfig);
   } catch (e) {
@@ -92,7 +96,8 @@ export default async function run(
     if (currentUser && currentUser.displayName) {
       res.body.userInfoMessage = `User display name is ${currentUser.displayName}.`;
     } else {
-      res.body.userInfoMessage = "No user information was found in access token.";
+      res.body.userInfoMessage =
+        "No user information was found in access token.";
     }
   } catch (e) {
     context.log.error(e);
@@ -104,10 +109,13 @@ export default async function run(
     };
   }
 
-  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented. 
+  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented.
   try {
-    const graphClient: Client = createMicrosoftGraphClientWithCredential(oboCredential, [".default"]);
-  
+    const graphClient: Client = createMicrosoftGraphClientWithCredential(
+      oboCredential,
+      [".default"]
+    );
+
     const profile: any = await graphClient.api("/me").get();
     res.body.graphClientMessage = profile;
   } catch (e) {
@@ -124,8 +132,8 @@ export default async function run(
   return res;
 }
 
-// You can replace the codes above from the function body with comment "Query user's information from the access token." to the end 
-// with the following codes to use application permission to get user profiles. 
+// You can replace the codes above from the function body with comment "Query user's information from the access token." to the end
+// with the following codes to use application permission to get user profiles.
 // Remember to get admin consent of application permission "User.Read.All".
 /*
 // Query user's information from the access token.
@@ -156,7 +164,6 @@ export default async function run(
     authorityHost: process.env.M365_AUTHORITY_HOST,
     tenantId: process.env.M365_TENANT_ID,
   };
-
   try {
     const appCredential = new AppCredential(appAuthConfig);
   } catch (e) {
@@ -172,10 +179,10 @@ export default async function run(
     };
   }
 
-  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented. 
+  // Create a graph client with default scope to access user's Microsoft 365 data after user has consented.
   try {
     const graphClient: Client = createMicrosoftGraphClientWithCredential(appCredential, [".default"]);
-  
+
     const profile: any = await graphClient.api("/users/"+userName).get();
     res.body.graphClientMessage = profile;
   } catch (e) {
