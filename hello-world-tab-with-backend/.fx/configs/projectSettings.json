@@ -14,14 +14,64 @@
             "TabSSO"
         ],
         "activeResourcePlugins": [
+            "fx-resource-local-debug",
+            "fx-resource-appstudio",
+            "fx-resource-cicd",
+            "fx-resource-api-connector",
+            "fx-resource-aad-app-for-teams",
             "fx-resource-frontend-hosting",
             "fx-resource-identity",
-            "fx-resource-aad-app-for-teams",
-            "fx-resource-function",
-            "fx-resource-local-debug",
-            "fx-resource-appstudio"
+            "fx-resource-function"
         ]
     },
     "programmingLanguage": "typescript",
-    "defaultFunctionName": "getUserProfile"
+    "defaultFunctionName": "getUserProfile",
+    "projectId": "cd5ccbb9-6690-4058-8ade-1bbf9acd2738",
+    "components": [
+        {
+            "name": "aad-app",
+            "provision": true,
+            "deploy": true
+        },
+        {
+            "hosting": "azure-storage",
+            "name": "teams-tab",
+            "build": true,
+            "provision": true,
+            "folder": "tabs",
+            "sso": true,
+            "deploy": true
+        },
+        {
+            "name": "azure-storage",
+            "connections": [
+                "teams-tab"
+            ],
+            "provision": true
+        },
+        {
+            "name": "identity"
+        },
+        {
+            "name": "teams-api",
+            "hosting": "azure-function",
+            "functionNames": [
+                "getUserProfile"
+            ],
+            "build": true,
+            "folder": "api",
+            "deploy": true,
+            "artifactFolder": "api"
+        },
+        {
+            "name": "azure-function",
+            "scenario": "Api",
+            "connections": [
+                "identity",
+                "aad-app",
+                "teams-tab",
+                "teams-api"
+            ]
+        }
+    ]
 }
