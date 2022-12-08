@@ -15,12 +15,12 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "hello-world-tab",
-        "full": "Full name for hello-world-tab"
+        "short": "${{TEAMS_APP_NAME}}",
+        "full": "Full name for ${{TEAMS_APP_NAME}}"
     },
     "description": {
-        "short": "Short description of hello-world-tab",
-        "full": "Full description of hello-world-tab"
+        "short": "Short description of ${{TEAMS_APP_NAME}}",
+        "full": "Full description of ${{TEAMS_APP_NAME}}"
     },
     "accentColor": "#FFFFFF",
     "bots": [],

@@ -64,7 +64,7 @@
         {
             "label": "Start frontend",
             "type": "shell",
-            "command": "node teamsfx/script/run.tab.js . teamsfx/.env.local",
+            "command": "npm run dev:teamsfx",
             "isBackground": true,
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -86,10 +86,10 @@
         {
             "label": "Start backend",
             "type": "shell",
-            "command": "node teamsfx/script/run.api.js . teamsfx/.env.local",
+            "command": "npm run dev:teamsfx",
             "isBackground": true,
             "options": {
-                "cwd": "${workspaceFolder}",
+                "cwd": "${workspaceFolder}/api",
                 "env": {
                     "PATH": "${command:fx-extension.get-func-path}${env:PATH}"
                 }
