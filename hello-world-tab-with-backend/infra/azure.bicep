@@ -1,6 +1,6 @@
 param resourceBaseName string
-param storageSku string
-param functionStorageSku string
+param storageSKU string
+param functionStorageSKU string
 param functionAppSKU string
 
 param aadAppClientId string
@@ -33,7 +33,7 @@ resource storage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
     supportsHttpsTrafficOnly: true
   }
   sku: {
-    name: storageSku
+    name: storageSKU
   }
 }
 
@@ -145,7 +145,7 @@ resource functionStorage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
   kind: 'StorageV2'
   location: location
   sku: {
-    name: functionStorageSku // You can follow https://aka.ms/teamsfx-bicep-add-param-tutorial to add functionStorageSku property to provisionParameters to override the default value "Standard_LRS".
+    name: functionStorageSKU// You can follow https://aka.ms/teamsfx-bicep-add-param-tutorial to add functionStorageSKUproperty to provisionParameters to override the default value "Standard_LRS".
   }
 }
 
