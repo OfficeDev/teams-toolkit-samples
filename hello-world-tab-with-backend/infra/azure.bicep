@@ -102,16 +102,20 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
           name: 'M365_CLIENT_ID'
           value: aadAppClientId
         }
-        { name: 'M365_CLIENT_SECRET'
+        {
+          name: 'M365_CLIENT_SECRET'
           value: aadAppClientSecret
         }
-        { name: 'M365_TENANT_ID'
+        {
+          name: 'M365_TENANT_ID'
           value: aadAppTenantId
         }
-        { name: 'M365_AUTHORITY_HOST'
+        {
+          name: 'M365_AUTHORITY_HOST'
           value: aadAppOauthAuthorityHost
         }
-        { name: 'M365_APPLICATION_ID_URI'
+        {
+          name: 'M365_APPLICATION_ID_URI'
           value: aadApplicationIdUri
         }
       ]
