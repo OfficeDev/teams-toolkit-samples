@@ -55,7 +55,7 @@ deploy:
 registerApp:
   - uses: aadApp/create # Creates a new AAD app to authenticate users if AAD_APP_CLIENT_ID environment variable is empty
     with:
-      name: hello-world-tab-aad # Note: when you run configure/aadApp, the AAD app name will be updated based on the definition of manifest. If you don't want to change the name, ensure the name in AAD manifest is same with the name defined here.
+      name: hello-world-tab-with-backend-aad # Note: when you run configure/aadApp, the AAD app name will be updated based on the definition of manifest. If you don't want to change the name, ensure the name in AAD manifest is same with the name defined here.
       generateClientSecret: true # If the value is false, the action will not generate client secret for you
     # Output: following environment variable will be persisted in current environment's .env file.
     # AAD_APP_CLIENT_ID: the client id of AAD app
@@ -67,7 +67,7 @@ registerApp:
 
   - uses: teamsApp/create # Creates a Teams app
     with:
-      name: hello-world-tab # Teams app name
+      name: ${{TEAMS_APP_NAME}} # Teams app name
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
 
@@ -82,7 +82,7 @@ configureApp:
   - uses: teamsApp/validate
     with:
       manifestTemplatePath: ./appPackage/manifest.template.json # Path to manifest template
-  - uses: teamsApp/createAppPackage # Build Teams app package with latest env value
+  - uses: teamsApp/zipAppPackage # Build Teams app package with latest env value
     with:
       manifestTemplatePath: ./appPackage/manifest.template.json # Path to manifest template
       outputZipPath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip
@@ -97,7 +97,7 @@ publish:
   - uses: teamsApp/validate
     with:
       manifestTemplatePath: ./appPackage/manifest.template.json # Path to manifest template
-  - uses: teamsApp/createAppPackage
+  - uses: teamsApp/zipAppPackage
     with:
       manifestTemplatePath: ./appPackage/manifest.template.json # Path to manifest template
       outputZipPath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip
