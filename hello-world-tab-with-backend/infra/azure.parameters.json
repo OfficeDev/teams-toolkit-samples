@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "resourceBaseName": {
-      "value": "notification${{RESOURCE_SUFFIX}}"
+      "value": "helloworld${{RESOURCE_SUFFIX}}"
     },
     "aadAppClientId": {
       "value": "${{AAD_APP_CLIENT_ID}}"
