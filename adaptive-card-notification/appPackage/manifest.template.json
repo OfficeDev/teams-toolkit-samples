@@ -16,11 +16,11 @@
     },
     "name": {
         "short": "${{TEAMS_APP_NAME}}",
-        "full": "ful name for adaptive-card-notification"
+        "full": "ful name for adaptive-card-notifi"
     },
     "description": {
-        "short": "short description for adaptive-card-notification",
-        "full": "full description for adaptive-card-notification"
+        "short": "short description for adaptive-card-notifi",
+        "full": "full description for adaptive-card-notifi"
     },
     "accentColor": "#FFFFFF",
     "bots": [
