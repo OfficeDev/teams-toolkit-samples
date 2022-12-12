@@ -15,7 +15,7 @@ export class SharePointListManager {
   private _spContext: WebPartContext;
   private _siteURL: string;
   private _listname: string = "To%20Do%20List";
-  private _previousUpdateItem = null;
+  private _previousUpdateItem: ISPItem | null = null;
   private _previousUpdateId: number = -1;
   private _UserInfoMap: Map<number, string[]> = new Map();
 
@@ -52,7 +52,7 @@ export class SharePointListManager {
 
       return this._UserInfoMap.get(authorId);
     } else {
-      SharePointListManager.processResponseError(userinfo);
+      await SharePointListManager.processResponseError(userinfo);
     }
   }
   /**
@@ -81,7 +81,7 @@ export class SharePointListManager {
 
       return items;
     } else {
-      SharePointListManager.processResponseError(response);
+      await SharePointListManager.processResponseError(response);
     }
   }
 
@@ -92,7 +92,7 @@ export class SharePointListManager {
    * @param item the object({columnname:columnvalue}) that need to be updated.
    *
    */
-  public async updateSPItem(id: number, item: any): Promise<void> {
+  public async updateSPItem(id: number, item: ISPItem): Promise<void> {
     // If the update one is the same as previous, just return to prevent duplicate call
     if (
       this._previousUpdateId === id && this._previousUpdateItem?.description &&
@@ -121,7 +121,7 @@ export class SharePointListManager {
     if (response.ok) {
       console.log(`Update Succeed for item${id}`);
     } else {
-      SharePointListManager.processResponseError(response);
+      await SharePointListManager.processResponseError(response);
     }
   }
 
@@ -149,7 +149,7 @@ export class SharePointListManager {
     if (response.ok) {
       console.log(`Insertion Succeed for item:${description}`);
     } else {
-      SharePointListManager.processResponseError(response);
+      await SharePointListManager.processResponseError(response);
     }
   }
 
@@ -178,7 +178,7 @@ export class SharePointListManager {
     if (response.ok) {
       console.log(`Deletion Succeed for item${id}`);
     } else {
-      SharePointListManager.processResponseError(response);
+      await SharePointListManager.processResponseError(response);
     }
   }
 }
