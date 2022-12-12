@@ -82,7 +82,7 @@ To try it, uncomment the `notification.storage` settings of your bot in `src/int
 ### Code structure
 - You can check app configuration and environment information in: [teamsfx](teamsfx)
 - You will find bot code in: [src](src)
-- You will find adaptive cards template in: [adaptiveCards]( src/adaptiveCards)
+- You will find adaptive cards template in: [adaptiveCards](src/adaptiveCards)
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
