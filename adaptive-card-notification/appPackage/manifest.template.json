@@ -2,30 +2,30 @@
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
     "manifestVersion": "1.14",
     "version": "1.0.0",
-    "id": "{{state.fx-resource-appstudio.teamsAppId}}",
+    "id": "${{TEAMS_APP_ID}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Teams App, Inc.",
         "websiteUrl": "https://www.example.com",
         "privacyUrl": "https://www.example.com/privacy",
-        "termsOfUseUrl": "https://www.example.com/termsofuse"
+        "termsOfUseUrl": "https://www.example.com/termofuse"
     },
     "icons": {
         "color": "resources/color.png",
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "{{config.manifest.appName.short}}",
-        "full": "{{config.manifest.appName.full}}"
+        "short": "${{TEAMS_APP_NAME}}",
+        "full": "full name for adaptive-card-notifi"
     },
     "description": {
-        "short": "Short description of {{config.manifest.appName.short}}",
-        "full": "Full description of {{config.manifest.appName.short}}"
+        "short": "short description for adaptive-card-notifi",
+        "full": "full description for adaptive-card-notifi"
     },
     "accentColor": "#FFFFFF",
     "bots": [
         {
-            "botId": "{{state.fx-resource-bot.botId}}",
+            "botId": "${{BOT_ID}}",
             "scopes": [
                 "personal",
                 "team",
@@ -42,5 +42,7 @@
         "identity",
         "messageTeamMembers"
     ],
-    "validDomains": []
+    "validDomains": [
+        "${{BOT_DOMAIN}}"
+    ]
 }

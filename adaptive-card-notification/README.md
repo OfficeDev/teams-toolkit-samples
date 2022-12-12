@@ -32,8 +32,8 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 1. Press "F5" to open a browser window and then select your package to view adaptive card notification sample app. 
 
 ## Use the App in Teams
-1. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default. For preview, the `<endpoint>` can be found in `fx-resource-bot.siteEndpoint` of the file `.fx/states/state.{env}.json`.
-1. (Mention sample) Update the `userId` and `userName` to the user who you want to mention in the file [mentionNotificationHttpTrigger.ts](bot/src/mentionNotificationHttpTrigger.ts).
+1. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default. For preview, the `<endpoint>` can be found in `BOT_ENDPOINT` of the file `teamsfx/.env.local`.
+2. (Mention sample) Update the `userId` and `userName` to the user who you want to mention in the file [mentionNotificationHttpTrigger.ts](src/mentionNotificationHttpTrigger.ts).
     ```js
     const data: MentionData = {
     ......
@@ -42,7 +42,7 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
     ......
     };
     ```
-1. Send a POST request to the http trigger, you will receive the adaptive card message in Teams. The trigger can be addressable with the following route:
+3. Send a POST request to the http trigger, you will receive the adaptive card message in Teams. The trigger can be addressable with the following route:
     - Default adaptive card: `<endpoint>/api/default-notification`
     - Columnset adaptive card: `<endpoint>/api/columnset-notification`
     - Factset adaptive card: `<endpoint>/api/factset-notification`
@@ -62,9 +62,9 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
   ![mention](./images/mention.jpg)
 
 ## (Optional) Use Azure Blob Storage to persist notification connections
-This sample provides an implementation of `NotificationTargetStorage` at `bot/src/storage/blobsStorage.ts`, which connects to Azure Blob Storage to persist notification connections.
+This sample provides an implementation of `NotificationTargetStorage` at `src/storage/blobsStorage.ts`, which connects to Azure Blob Storage to persist notification connections.
 
-To try it, uncomment the `notification.storage` settings of your bot in `bot/src/internal/initialize.ts`, then enter your own connection string and container name.
+To try it, uncomment the `notification.storage` settings of your bot in `src/internal/initialize.ts`, then enter your own connection string and container name.
 
 ``` typescript
 ...
@@ -80,9 +80,9 @@ To try it, uncomment the `notification.storage` settings of your bot in `bot/src
 - The Backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for receiving bot messages.
 
 ### Code structure
-- You can check app configuration and environment information in: [.fx](.fx)
-- You will find bot code in: [bot](bot)
-- You will find adaptive cards template in: [adaptiveCards](bot/src/adaptiveCards)
+- You can check app configuration and environment information in: [teamsfx](teamsfx)
+- You will find bot code in: [src](src)
+- You will find adaptive cards template in: [adaptiveCards](src/adaptiveCards)
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
