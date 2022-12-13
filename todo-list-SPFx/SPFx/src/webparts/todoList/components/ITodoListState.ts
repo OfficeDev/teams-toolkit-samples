@@ -2,12 +2,12 @@
 // Licensed under the MIT License.
 
 export interface ISPItem {
-  Id: number;
-  AuthorId: number;
-  userDisplayName: string;
-  photoObjectURL: string;
-  description: string;
-  isCompleted: boolean;
+  Id?: number;
+  AuthorId?: number;
+  userDisplayName?: string;
+  photoObjectURL?: string;
+  description?: string;
+  isCompleted?: boolean;
 }
 
 export interface ITodoListState {
