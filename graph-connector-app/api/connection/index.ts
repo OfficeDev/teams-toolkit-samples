@@ -1,12 +1,19 @@
 // Import polyfills for fetch required by msgraph-sdk-javascript.
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
-import { Client, ResponseType } from "@microsoft/microsoft-graph-client";
-import { createMicrosoftGraphClient, IdentityType, TeamsFx } from "@microsoft/teamsfx";
+import { Client } from "@microsoft/microsoft-graph-client";
+import { AppCredential, AppCredentialAuthConfig, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
 
 interface Response {
   status: number;
   body: { [key: string]: any };
+}
+
+const authConfig: AppCredentialAuthConfig = {
+  authorityHost: process.env.M365_AUTHORITY_HOST,
+  clientId: process.env.M365_CLIENT_ID,
+  tenantId: process.env.M365_TENANT_ID,
+  clientSecret: process.env.M365_CLIENT_SECRET,
 }
 
 type TeamsfxContext = { [key: string]: any };
@@ -33,10 +40,9 @@ export default async function run(
     },
   };
 
-  // Construct teamsfx.
-  let teamsfx: TeamsFx;
+  let appCredential;
   try {
-    teamsfx = new TeamsFx(IdentityType.App);
+    appCredential = new AppCredential(authConfig);
   } catch (e) {
     context.log.error(e);
     return {
@@ -51,7 +57,7 @@ export default async function run(
 
   // Create connection
   try {
-    const graphClient: Client = createMicrosoftGraphClient(teamsfx);
+    const graphClient: Client = createMicrosoftGraphClientWithCredential(appCredential);
     await graphClient.api("/external/connections")
       .post({
         "id": connectionId,

@@ -1,0 +1,53 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.4",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "${title}",
+            "wrap": true,
+            "style": "heading"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "FactSet",
+                    "facts": [
+                        {
+                            "title": "Entree",
+                            "value": "${actionData.EntreeSelectVal}"
+                        },
+                        {
+                            "title": "Side",
+                            "value": "${actionData.SideVal}"
+                        },
+                        {
+                            "title": "Drink",
+                            "value": "${actionData.DrinkVal}"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Execute",
+            "title": "Confirm Order"
+        },
+        {
+            "type": "Action.Execute",
+            "title": "Edit Order",
+            "data": "edit",
+            "mode": "secondary"
+        },
+        {
+            "type": "Action.Execute",
+            "title": "Save Order",
+            "data": "save",
+            "mode": "secondary"
+        }
+    ]
+}

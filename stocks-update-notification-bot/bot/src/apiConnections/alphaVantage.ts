@@ -24,17 +24,16 @@ If you added this API while local debugging, stop local debugging and start agai
 
 Refer to https://aka.ms/teamsfx-connect-api to learn more. 
 */
-import { TeamsFx, createApiClient, ApiKeyProvider, ApiKeyLocation } from "@microsoft/teamsfx";
+import { createApiClient, ApiKeyProvider, ApiKeyLocation } from "@microsoft/teamsfx";
 
 // Load application configuration
-const teamsFx = new TeamsFx();
 // Initialize a new axios instance to call alphaVantage
 const authProvider = new ApiKeyProvider(
   "apikey",
-  teamsFx.getConfig("TEAMSFX_API_ALPHAVANTAGE_API_KEY"),
+  process.env.TEAMSFX_API_ALPHAVANTAGE_API_KEY,
   ApiKeyLocation.QueryParams
 );
-const alphaVantageClient = createApiClient(teamsFx.getConfig("TEAMSFX_API_ALPHAVANTAGE_ENDPOINT"), authProvider);
+const alphaVantageClient = createApiClient(process.env.TEAMSFX_API_ALPHAVANTAGE_ENDPOINT, authProvider);
 export { alphaVantageClient };
 
 /* 

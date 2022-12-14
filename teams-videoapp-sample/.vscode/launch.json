@@ -1,0 +1,48 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to video filter test app",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "timeout": 60000,
+            "presentation": {
+                "hidden": true,
+                "group": "attach",
+                "order": 1
+            }
+        },
+        {
+            "name": "Launch test app",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "${workspaceFolder}/.tools/video-extensibility-test-app/video-extensibility-test-app",
+            "windows": {
+                "runtimeExecutable": "${workspaceFolder}/.tools/video-extensibility-test-app/video-extensibility-test-app.exe"
+            },
+            "args": [
+                "--app-url=https://localhost:53000",
+                "--remote-debugging-port=9222",
+            ],
+            "outputCapture": "std",
+            "presentation": {
+                "hidden": true,
+                "group": "all",
+                "order": 2
+            }
+        },
+    ],
+    "compounds": [
+        {
+            "name": "Launch Teams App",
+            "configurations": [
+                "Launch test app",
+                "Attach to video filter test app"
+            ],
+            "preLaunchTask": "Start Teams App Locally",
+            "stopAll": true
+        }
+    ]
+}

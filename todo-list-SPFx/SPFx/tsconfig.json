@@ -14,6 +14,7 @@
     "inlineSources": false,                    /* Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set. */
     "strictNullChecks": false,                 /* Enable strict null checks. */
     "noUnusedLocals": false,                   /* Report errors on unused locals. */
+    "noImplicitAny": true,
     "typeRoots": [                             /* List of folders to include type definitions from. */
           "./node_modules/@types",
           "./node_modules/@microsoft"
