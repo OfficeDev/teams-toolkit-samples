@@ -33,6 +33,8 @@ provision:
       name: sso-bot
       messagingEndpoint: ${{BOT_ENDPOINT}}/api/messages
       description: ""
+      channels:
+        - name: msteams
 
 configureApp:
 
