@@ -4,9 +4,7 @@ import * as path from "path";
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
-import {   CloudAdapter,
-  ConfigurationServiceClientCredentialFactory,
-  createBotFrameworkAuthenticationFromConfiguration, TurnContext } from "botbuilder";
+import { BotFrameworkAdapter, TurnContext } from "botbuilder";
 
 // This bot's main dialog.
 import { TeamsBot } from "./teamsBot";
@@ -14,18 +12,10 @@ import config from "./config";
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
-const credentialsFactory = new ConfigurationServiceClientCredentialFactory({
-  MicrosoftAppId: config.botId,
-  MicrosoftAppPassword: config.botPassword,
-  MicrosoftAppType: "MultiTenant",
+const adapter = new BotFrameworkAdapter({
+  appId: config.botId,
+  appPassword: config.botPassword,
 });
-
-const botFrameworkAuthentication = createBotFrameworkAuthenticationFromConfiguration(
-  null,
-  credentialsFactory
-);
-
-const adapter = new CloudAdapter(botFrameworkAuthentication);
 
 // Catch-all for errors.
 const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
@@ -47,7 +37,7 @@ const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
   await context.sendActivity("To continue to run this bot, please fix the bot source code.");
 };
 
-// Set the onTurnError for the singleton CloudAdapter
+// Set the onTurnError for the singleton BotFrameworkAdapter.
 adapter.onTurnError = onTurnErrorHandler;
 
 // Create the bot that will handle incoming messages.
@@ -55,7 +45,6 @@ const bot = new TeamsBot();
 
 // Create HTTP server.
 const server = restify.createServer();
-server.use(restify.plugins.bodyParser());
 server.listen(process.env.port || process.env.PORT || 3978, () => {
   console.log(`\nBot Started, ${server.name} listening to ${server.url}`);
 });
@@ -64,7 +53,7 @@ server.listen(process.env.port || process.env.PORT || 3978, () => {
 // Listen for incoming requests.
 server.post("/api/messages", async (req, res) => {
   await adapter
-    .process(req, res, async (context) => {
+    .processActivity(req, res, async (context) => {
       await bot.run(context);
     })
     .catch((err) => {
