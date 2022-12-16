@@ -6,7 +6,6 @@
 // Import polyfills for fetch required by msgraph-sdk-javascript.
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
-import { Client } from "@microsoft/microsoft-graph-client";
 import {
   createMicrosoftGraphClientWithCredential,
   OnBehalfOfCredentialAuthConfig,
@@ -111,7 +110,7 @@ export default async function run(
 
   // Create a graph client with default scope to access user's Microsoft 365 data after user has consented.
   try {
-    const graphClient: Client = createMicrosoftGraphClientWithCredential(
+    const graphClient = createMicrosoftGraphClientWithCredential(
       oboCredential,
       [".default"]
     );
