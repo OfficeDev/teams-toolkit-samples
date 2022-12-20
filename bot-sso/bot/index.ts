@@ -69,7 +69,7 @@ server.post("/api/messages", async (req, res) => {
 });
 
 server.get(
-  "/auth-*.html",
+  "/auth-:name(start|end).html",
   restify.plugins.serveStatic({
     directory: path.join(__dirname, "public"),
   })
