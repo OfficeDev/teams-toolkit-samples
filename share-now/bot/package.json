@@ -23,7 +23,7 @@
         "axios": "^0.21.1",
         "botbuilder": "~4.11.0",
         "replace": "^1.2.0",
-        "restify": "~10.0.0",
+        "restify": "^10.0.0",
         "tedious": "^9.2.3"
     },
     "devDependencies": {
