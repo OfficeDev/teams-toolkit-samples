@@ -29,12 +29,12 @@
     "isomorphic-fetch": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^2.1.4",
-    "restify": "^8.5.1",
+    "restify": "^10.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.8",
-    "@types/restify": "8.4.2",
+    "@types/restify": "8.5.5",
     "env-cmd": "^10.1.0",
     "nodemon": "^2.0.7",
     "shx": "^0.3.3",
