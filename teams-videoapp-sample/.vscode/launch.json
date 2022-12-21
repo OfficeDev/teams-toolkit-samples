@@ -22,6 +22,9 @@
             "windows": {
                 "runtimeExecutable": "${workspaceFolder}/.tools/video-extensibility-test-app/video-extensibility-test-app.exe"
             },
+            "osx": {
+                "runtimeExecutable": "${workspaceFolder}/.tools/video-extensibility-test-app/video-extensibility-test-app.app/Contents/MacOS/video-extensibility-test-app"
+            },
             "args": [
                 "--app-url=https://localhost:53000",
                 "--remote-debugging-port=9222",
