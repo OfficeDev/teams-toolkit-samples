@@ -15,7 +15,7 @@ const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
   clientSecret: config.clientSecret,
 };
 
-const initialLoginEndpoint = process.env.INITIATE_LOGIN_ENDPOINT;
+const initialLoginEndpoint =`${config.botEndpoint}/auth-start.html`;
 
 export class TeamsBot extends TeamsActivityHandler {
   constructor() {
