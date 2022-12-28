@@ -4,7 +4,6 @@
 import React from 'react';
 import './App.css';
 import './Tab.css'
-import { TeamsFx, IdentityType } from "@microsoft/teamsfx";
 import { Button, Table } from "@fluentui/react-northstar"
 
 import { Providers, ProviderState } from '@microsoft/mgt-element';
@@ -14,6 +13,8 @@ import { CSVLink } from "react-csv";
 import { TeamsFxProvider } from '@microsoft/mgt-teamsfx-provider';
 import { CacheService } from '@microsoft/mgt';
 import config from './lib/config';
+
+import { TeamsUserCredential } from '@microsoft/teamsfx';
 
 class Tab extends React.Component {
 
@@ -32,17 +33,17 @@ class Tab extends React.Component {
 
   async componentDidMount() {
     await this.initTeamsFx();
-    await this.initGraphToolkit(this.teamsfx, this.scope);
+    await this.initGraphToolkit(this.credential, this.scope);
     await this.checkIsConsentNeeded();
   }
 
-  async initGraphToolkit(teamsfx, scope) {
-    const provider = new TeamsFxProvider(teamsfx, scope)
+  async initGraphToolkit(credential, scope) {
+    const provider = new TeamsFxProvider(credential, scope)
     Providers.globalProvider = provider;
   }
 
   async initTeamsFx() {
-    this.teamsfx = new TeamsFx(IdentityType.User, {
+    this.credential = new TeamsUserCredential({
       initiateLoginEndpoint: config.initiateLoginEndpoint,
       clientId: config.clientId,
     });
@@ -56,7 +57,7 @@ class Tab extends React.Component {
 
   async loginBtnClick() {
     try {
-      await this.teamsfx.login(this.scope);
+      await this.credential.login(this.scope);
       Providers.globalProvider.setState(ProviderState.SignedIn);
       this.setState({
         showLoginPage: false
@@ -78,7 +79,7 @@ class Tab extends React.Component {
   async checkIsConsentNeeded() {
     let consentNeeded = false;
     try {
-      await this.teamsfx.getCredential().getToken(this.scope);
+      await this.credential.getToken(this.scope);
     } catch (error) {
       consentNeeded = true;
     }
