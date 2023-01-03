@@ -1,8 +1,18 @@
-node_modules
-/.fx/*.env
-/.fx/*.userdata
-/.fx/configs/localSettings.json
+# TeamsFx files
+teamsfx/.env.*
 .DS_Store
-.fx/configs/config.local.json
-.fx/states/state.local.json
-.heft
+build
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+.deployment

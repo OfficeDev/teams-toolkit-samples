@@ -1,9 +1,9 @@
 {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
     "manifestVersion": "1.14",
-    "packageName": "todoList",
-    "id": "{{state.fx-resource-appstudio.teamsAppId}}",
-    "version": "1.0.0.0",
+    "packageName": "com.microsoft.teams.extension",
+    "id": "${{TEAMS_APP_ID}}",
+    "version": "1.0.0",
     "developer": {
         "name": "SPFx + Teams Dev",
         "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
@@ -11,21 +11,21 @@
         "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
     },
     "name": {
-        "short": "{{config.manifest.appName.short}}",
-        "full": "{{config.manifest.appName.full}}"
+        "short": "TodoListSPFx-local-debug",
+        "full": "Full name for TodoListSPFx-local-debug"
     },
     "description": {
-        "short": "todoList",
+        "short": "StodoList",
         "full": "todoList"
     },
     "icons": {
-        "outline": "resources/outline.png",
-        "color": "resources/color.png"
+        "color": "resources/color.png",
+        "outline": "resources/outline.png"
     },
     "accentColor": "#004578",
     "configurableTabs": [
         {
-            "configurationUrl": "{{^config.isLocalDebug}}https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3Fteams%26componentId=c314487b-f51c-474d-823e-a2c3ec82b1ff%26forceLocale={locale}{{/config.isLocalDebug}}{{#config.isLocalDebug}}https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/TeamsWorkBench.aspx%3FcomponentId=c314487b-f51c-474d-823e-a2c3ec82b1ff%26openPropertyPane=true%26teams%26forceLocale={locale}%26loadSPFX%3Dtrue%26debugManifestsFile%3Dhttps%3A%2F%2Flocalhost%3A4321%2Ftemp%2Fmanifests.js{{/config.isLocalDebug}}",
+            "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/TeamsWorkBench.aspx%3FcomponentId=c314487b-f51c-474d-823e-a2c3ec82b1ff%26openPropertyPane=true%26teams%26forceLocale={locale}%26loadSPFX%3Dtrue%26debugManifestsFile%3Dhttps%3A%2F%2Flocalhost%3A4321%2Ftemp%2Fmanifests.js",
             "canUpdateConfiguration": true,
             "scopes": [
                 "team"
