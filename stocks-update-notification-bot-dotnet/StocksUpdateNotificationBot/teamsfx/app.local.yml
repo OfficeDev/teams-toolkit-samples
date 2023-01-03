@@ -28,6 +28,8 @@ provision:
       name: stocks-update-notif-bot
       messagingEndpoint: ${{BOT_ENDPOINT}}/api/messages
       description: ""
+      channels:
+        - name: msteams
 
 configureApp:
   - uses: teamsApp/validate
