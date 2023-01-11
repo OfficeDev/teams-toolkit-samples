@@ -1,5 +1,7 @@
 version: 1.0.0
 
+environmentFolderPath: ./teamsAppEnv
+
 provision:
   - uses: arm/deploy # Deploy given ARM templates parallelly.
     with:
@@ -27,39 +29,17 @@ deploy:
     env:
       REACT_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
       REACT_APP_START_LOGIN_PAGE_URL: ${{TAB_ENDPOINT}}/auth-start.html
-      REACT_APP_FUNC_NAME: getUserProfile
-      REACT_APP_FUNC_ENDPOINT: ${{API_FUNCTION_ENDPOINT}}
     with:
       args: run build --if-present
   - uses: azureStorage/deploy # Deploy bits to Azure Storage Static Website
     with:
       distributionPath: build # Deploy base folder. This folder includes manifest files for AAD app and Teams app that should be ignored using the ignoreFile.
       resourceId: ${{TAB_AZURE_STORAGE_RESOURCE_ID}} # The resource id of the cloud resource to be deployed to
-  - uses: cli/runNpmCommand # Run npm command
-    with:
-      workingDirectory: api
-      args: install
-  - uses: cli/runNpmCommand # Run npm command
-    with:
-      workingDirectory: api
-      args: run build --if-present
-  - uses: cli/runDotnetCommand
-    with:
-      workingDirectory: api
-      args: build extensions.csproj -o bin --ignore-failed-sources
-  - uses: azureFunctions/deploy
-    with:
-      # deploy base folder
-      distributionPath: api
-      # can be changed to any ignore file location, leave blank will ignore nothing
-      ignoreFile: api/.funcignore
-      # the resource id of the cloud resource to be deployed to
-      resourceId: ${{API_FUNCTION_RESOURCE_ID}}
 
 registerApp:
   - uses: aadApp/create # Creates a new AAD app to authenticate users if AAD_APP_CLIENT_ID environment variable is empty
     with:
-      name: hello-world-tab-with-backend-aad # Note: when you run configure/aadApp, the AAD app name will be updated based on the definition of manifest. If you don't want to change the name, ensure the name in AAD manifest is same with the name defined here.
+      name: hello-world-tab-aad # Note: when you run configure/aadApp, the AAD app name will be updated based on the definition of manifest. If you don't want to change the name, ensure the name in AAD manifest is same with the name defined here.
       generateClientSecret: true # If the value is false, the action will not generate client secret for you
     # Output: following environment variable will be persisted in current environment's .env file.
     # AAD_APP_CLIENT_ID: the client id of AAD app
@@ -71,7 +51,7 @@ registerApp:
 
   - uses: teamsApp/create # Creates a Teams app
     with:
-      name: ${{TEAMS_APP_NAME}} # Teams app name
+      name: hello-world-tab # Teams app name
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
 
