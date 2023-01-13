@@ -3,7 +3,7 @@ version: 1.0.0
 registerApp:
   - uses: teamsApp/create # Creates a Teams app
     with:
-      name: stocks-update-notif-bot # Teams app name
+      name: ${{TEAMS_APP_NAME}} # Teams app name
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
 
@@ -29,7 +29,7 @@ configureApp:
     with:
       manifestPath: ./appPackage/manifest.template.json # Path to manifest template
 
-  - uses: teamsApp/createAppPackage # Build Teams app package with latest env value
+  - uses: teamsApp/zipAppPackage # Build Teams app package with latest env value
     with:
       manifestPath: ./appPackage/manifest.template.json # Path to manifest template
       outputZipPath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip
@@ -46,6 +46,6 @@ deploy:
     with:
       func: true
 
-  - uses: npm/command # Run npm command
+  - uses: cli/runNpmCommand # Run npm command
     with:
       args: install --no-audit
