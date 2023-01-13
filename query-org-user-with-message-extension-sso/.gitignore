@@ -5,7 +5,6 @@ teamsfx/.env.*
 node_modules/
 
 # misc
-.env
 .deployment
 .DS_Store
 

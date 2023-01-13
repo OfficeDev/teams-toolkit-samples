@@ -19,12 +19,10 @@ This is a simple search-based message extension app demonstrating how to integra
 3. Open the project in Visual Studio Code.
 4. Open Debug View (`Ctrl+Shift+D`) and select `Debug(Edge)` or `Debug(Chrome)` in dropdown list.
 5. Sign up an ngrok account and copy the ngrok authtoken, run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in Visual Studio Code terminal.
-6. Add the attribute `TEAMS_APP_NAME` with an unique value to `teamsfx/.env.local` file.
 6. Press `F5` finally pop up an window to login your tenant account, and install this Teams App.
 
 ### (Optional) Provision and Deploy the Sample To Azure
 > If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
-1. Add the attribute `TEAMS_APP_NAME` with an unique value to `teamsfx/.env` file.
 1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to select Azure resource group to provision the sample.
 2. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
 3. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote(Edge)` or `Launch Remote(Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
