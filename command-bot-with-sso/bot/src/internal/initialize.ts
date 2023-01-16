@@ -1,4 +1,5 @@
-import {ConversationBot} from "@microsoft/teamsfx";
+import { BotBuilderCloudAdapter } from "@microsoft/teamsfx";
+import ConversationBot = BotBuilderCloudAdapter.ConversationBot;
 
 import { HelloWorldCommandHandler } from "../helloworldCommandHandler";
 import { ProfileSsoCommandHandler } from "../profileSsoCommandHandler";
@@ -9,11 +10,12 @@ import { PhotoSsoCommandHandler } from "../photoSsoCommandHandler";
 // if you don't want to register all of them in the constructor
 
 export const commandBot = new ConversationBot({
-  // The bot id and password to create BotFrameworkAdapter.
+  // The bot id and password to create CloudAdapter.
   // See https://aka.ms/about-bot-adapter to learn more about adapters.
   adapterConfig: {
-    appId: process.env.BOT_ID,
-    appPassword: process.env.BOT_PASSWORD,
+    MicrosoftAppId: process.env.BOT_ID,
+    MicrosoftAppPassword: process.env.BOT_PASSWORD,
+    MicrosoftAppType: "MultiTenant",
   },
 
   // See https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-sdk to learn more about ssoConfig
