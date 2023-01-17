@@ -15,7 +15,7 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "sso-bot",
+        "short": "sso-bot-${{TEAMSFX_ENV}}",
         "full": "full name for sso-bot"
     },
     "description": {

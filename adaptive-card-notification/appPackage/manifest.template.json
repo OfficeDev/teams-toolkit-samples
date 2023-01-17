@@ -15,7 +15,7 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "adaptive-card-notification",
+        "short": "adaptive-card-notifi-${{TEAMSFX_ENV}}",
         "full": "full name for adaptive-card-notifi"
     },
     "description": {

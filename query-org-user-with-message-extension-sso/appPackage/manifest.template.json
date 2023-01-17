@@ -15,7 +15,7 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "query-org-user-with-me-sso",
+        "short": "QueryOrgUserWithMESSO-${{TEAMSFX_ENV}}",
         "full": "full name for query-org-user-with-me-sso"
     },
     "description": {

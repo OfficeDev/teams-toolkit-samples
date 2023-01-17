@@ -15,7 +15,7 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "hello-world-tab-with-backend",
+        "short": "tab-with-backend-${{TEAMSFX_ENV}}",
         "full": "Full name for hello-world-tab-with-backend"
     },
     "description": {

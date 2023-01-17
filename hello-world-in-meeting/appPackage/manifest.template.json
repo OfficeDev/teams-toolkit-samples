@@ -15,7 +15,7 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "hello-world-in-meeting",
+        "short": "hello-world-in-meeting-${{TEAMSFX_ENV}}",
         "full": "Full name for hello-world-in-meeting"
     },
     "description": {
