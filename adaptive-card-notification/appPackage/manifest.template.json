@@ -15,7 +15,7 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "${{TEAMS_APP_NAME}}",
+        "short": "adaptive-card-notification",
         "full": "full name for adaptive-card-notifi"
     },
     "description": {

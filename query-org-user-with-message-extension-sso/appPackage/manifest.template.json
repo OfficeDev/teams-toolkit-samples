@@ -15,7 +15,7 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "${{TEAMS_APP_NAME}}",
+        "short": "query-org-user-with-me-sso",
         "full": "full name for query-org-user-with-me-sso"
     },
     "description": {
