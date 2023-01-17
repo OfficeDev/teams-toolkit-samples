@@ -11,7 +11,7 @@
         "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
     },
     "name": {
-        "short": "TodoListSPFx-local-debug",
+        "short": "TodoListSPFx-${{TEAMSFX_ENV}}",
         "full": "Full name for TodoListSPFx-local-debug"
     },
     "description": {

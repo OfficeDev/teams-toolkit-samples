@@ -15,7 +15,7 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "${{TEAMS_APP_NAME}}",
+        "short": "stocks-update-notif-bot-${{TEAMSFX_ENV}}",
         "full": "full name for stocks-update-notif-bot"
     },
     "description": {
