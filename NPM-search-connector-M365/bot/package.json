@@ -15,10 +15,8 @@
     "watch": "nodemon ./index.js"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "botbuilder": "~4.14.0",
-    "express": "~4.17.1",
-    "html-entities": "^1.3.1"
+    "botbuilder": "^4.18.0",
+    "restify": "^10.0.0"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",

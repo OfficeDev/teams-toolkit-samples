@@ -1,19 +1,31 @@
 // index.js is used to setup and configure your bot
 
 const path = require("path");
-const express = require("express");
+const restify = require("restify");
 
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
-const { BotFrameworkAdapter } = require("botbuilder");
+const {
+  CloudAdapter,
+  ConfigurationServiceClientCredentialFactory,
+  ConfigurationBotFrameworkAuthentication,
+} = require("botbuilder");
 
 const { MessageExtensionBot } = require("./messageExtensionBot.js");
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
-const adapter = new BotFrameworkAdapter({
-  appId: process.env.BOT_ID,
-  appPassword: process.env.BOT_PASSWORD,
+const credentialsFactory = new ConfigurationServiceClientCredentialFactory({
+  MicrosoftAppId: process.env.BOT_ID,
+  MicrosoftAppPassword: process.env.BOT_PASSWORD,
+  MicrosoftAppType: "MultiTenant",
 });
+
+const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(
+  {},
+  credentialsFactory
+);
+
+const adapter = new CloudAdapter(botFrameworkAuthentication);
 
 adapter.onTurnError = async (context, error) => {
   // This check writes out errors to console log .vs. app insights.
@@ -38,13 +50,15 @@ adapter.onTurnError = async (context, error) => {
 const messageExtensionBot = new MessageExtensionBot();
 
 // Create HTTP server.
-const server = express();
-const port = process.env.port || process.env.PORT || 3978;
-server.listen(port, () => console.log(`\Bot/ME service listening at https://localhost:${port}`));
+const server = restify.createServer();
+server.use(restify.plugins.bodyParser());
+server.listen(process.env.port || process.env.PORT || 3978, function () {
+  console.log(`\nBot started, ${server.name} listening to ${server.url}`);
+});
 
 // Listen for incoming requests.
-server.post("/api/messages", (req, res) => {
-  adapter.processActivity(req, res, async (context) => {
+server.post("/api/messages", async (req, res) => {
+  await adapter.process(req, res, async (context) => {
     // Process bot activity
     await messageExtensionBot.run(context);
   });
