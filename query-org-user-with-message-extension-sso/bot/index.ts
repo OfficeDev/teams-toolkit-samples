@@ -44,8 +44,12 @@ const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
   );
 
   // Send a message to the user
-  await context.sendActivity(`The bot encountered unhandled error:\n ${error.message}`);
-  await context.sendActivity("To continue to run this bot, please fix the bot source code.");
+  await context.sendActivity(
+    `The bot encountered unhandled error:\n ${error.message}`
+  );
+  await context.sendActivity(
+    "To continue to run this bot, please fix the bot source code."
+  );
 };
 
 // Set the onTurnError for the singleton BotFrameworkAdapter.
@@ -63,16 +67,21 @@ server.listen(process.env.port || process.env.PORT || 3978, () => {
 
 // Listen for incoming requests.
 server.post("/api/messages", async (req, res) => {
-  await adapter.process(req, res, async (context) => {
-    await bot.run(context);
-  }).catch((err)=> {
-    // Error message including "412" means it is waiting for user's consent, which is a normal process of SSO, sholdn't throw this error.
-    if(!err.message.includes("412")) {
-      throw err;
-    }
-  });
+  await adapter
+    .process(req, res, async (context) => {
+      await bot.run(context);
+    })
+    .catch((err) => {
+      // Error message including "412" means it is waiting for user's consent, which is a normal process of SSO, sholdn't throw this error.
+      if (!err.message.includes("412")) {
+        throw err;
+      }
+    });
 });
 
-server.get("/auth-:name(start|end).html", restify.plugins.serveStatic({
-  directory: path.join(__dirname, "public")
-}));
+server.get(
+  "/auth-:name(start|end).html",
+  restify.plugins.serveStatic({
+    directory: path.join(__dirname, "public"),
+  })
+);
