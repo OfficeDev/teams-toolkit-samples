@@ -7,7 +7,7 @@ Bots can be used to automate repetitive workflows through a conversational inter
 
 The Place Your Order workflow bot shows you how to implement a simple workflow that uses a command to start an order process which returns an Adaptive Card containing a form in the response to the command. The bot captures the submission of the Adaptive Card confirming the submitted data in an Adaptive Card which replaces the initial form card.
 
-![Place Your Order Workflow Bot](images/app.gif)
+![Place Your Order Workflow Bot](app/app.gif)
 
 ## Prerequisites
 
