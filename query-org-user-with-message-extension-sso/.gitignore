@@ -1,5 +1,5 @@
 # TeamsFx files
-teamsfx/.env.*
+env/.env.*
 
 # dependencies
 node_modules/
@@ -12,6 +12,4 @@ node_modules/
 # build
 lib/
 
-.fx/configs/config.local.json
-.fx/states/state.local.json
 .backup

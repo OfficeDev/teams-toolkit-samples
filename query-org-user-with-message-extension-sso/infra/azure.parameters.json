@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "resourceBaseName": {
-      "value": "query-org-user-with-me-sso"
+      "value": "query-org-user"
     },
     "botAadAppClientId": {
       "value": "${{BOT_ID}}"
