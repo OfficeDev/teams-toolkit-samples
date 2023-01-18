@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 import * as restify from 'restify';
+import * as path from "path";
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
