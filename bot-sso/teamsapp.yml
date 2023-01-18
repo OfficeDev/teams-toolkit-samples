@@ -47,7 +47,6 @@ registerApp:
       # AAD_APP_TENANT_ID: the tenant id of AAD app
       # AAD_APP_OAUTH_AUTHORITY_HOST: the host of OAUTH authority of AAD app
       # AAD_APP_OAUTH_AUTHORITY: the OAUTH authority of AAD app
-
   - uses: teamsApp/create # Creates a Teams app
     with:
       name: sso-bot-${{TEAMSFX_ENV}} # Teams app name
