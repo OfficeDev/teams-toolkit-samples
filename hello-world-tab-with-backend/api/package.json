@@ -2,7 +2,7 @@
     "name": "teamsfx-template-api",
     "version": "1.0.0",
     "scripts": {
-        "dev:teamsfx": "node ../teamsfx/script/run.api.js ../ ../teamsfx/.env.local",
+        "dev:teamsfx": "node ../script/run.api.js ../ ../env/.env.local",
         "dev": "func start --typescript --language-worker=\"--inspect=9229\" --port \"7071\" --cors \"*\"",
         "build": "tsc",
         "watch": "tsc -w",
