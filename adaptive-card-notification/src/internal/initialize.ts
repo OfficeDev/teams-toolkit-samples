@@ -1,5 +1,4 @@
 import { ConversationBot } from "@microsoft/teamsfx";
-import { BlobsStorage } from "../storage/blobsStorage";
 import config from "./config";
 
 // Create bot.
