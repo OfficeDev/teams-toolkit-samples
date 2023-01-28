@@ -25,11 +25,11 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
 1. Start debugging the project by hitting the `F5` key in Visual Studio Code.
-1. Update local environment variables in `bot/.env.teamsfx.local`
+1. Update local environment variables in `env/.env.local`
 
 ## Update local environment variables
 
-For the HTTP request to the public API to be succesful, the following environment variables need to be configured in the `teamsfx/.env.local` file.
+For the HTTP request to the public API to be succesful, the following environment variables need to be configured in the `env/.env.local` file.
 
 ```sh
 TEAMSFX_API_ALPHAVANTAGE_ENDPOINT=https://www.alphavantage.co
