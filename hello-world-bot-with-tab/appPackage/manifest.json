@@ -15,7 +15,7 @@
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "${{TEAMS_APP_NAME}}",
+        "short": "hello-world-bot-with-tab",
         "full": "Full name for hello-world-bot-with-tab"
     },
     "description": {
