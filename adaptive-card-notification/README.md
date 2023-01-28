@@ -80,7 +80,9 @@ To try it, uncomment the `notification.storage` settings of your bot in `src/int
 - The Backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for receiving bot messages.
 
 ### Code structure
-- You can check app configuration and environment information in: [teamsfx](teamsfx)
+- You will find the project configurations in: [teamsapp.local.yml](teamsapp.local.yml) or [teamsapp.yml](teamsapp.yml)
+- You will find the templates for provisioning Azure resources in: [infra](infra)
+- You will find the templates for the Teams application manifest in: [appPackage](appPackage)
 - You will find bot code in: [src](src)
 - You will find adaptive cards template in: [adaptiveCards](src/adaptiveCards)
 
