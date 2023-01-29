@@ -7,7 +7,7 @@
             "command": "npm install",
             "isBackground": true,
             "options": {
-                "cwd": "${workspaceFolder}/incoming-webhook"
+                "cwd": "${workspaceFolder}"
             },
         },
         {
@@ -31,7 +31,7 @@
                 }
             },
             "options": {
-                "cwd": "${workspaceFolder}/incoming-webhook"
+                "cwd": "${workspaceFolder}"
             },
             "dependsOn": "Install Incoming Webhook"
         },
