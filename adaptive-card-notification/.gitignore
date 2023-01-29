@@ -3,7 +3,7 @@ dist
 out
 
 # TeamsFx files
-teamsfx/.env.*
+env/.env.*
 
 # Dependency directories
 node_modules
