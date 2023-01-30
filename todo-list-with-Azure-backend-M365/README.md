@@ -10,7 +10,7 @@ Todo List app helps to manage your personal to do items. This app can be install
 
 ## Prerequisite
 
-- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
+- [Node.js](https://nodejs.org/en/), supported versions: 14, 16, 18 (preview)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
 - Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) **version >= 3.8.0** or [TeamsFx CLI](https://aka.ms/teamsfx-cli) **version >= 0.14.0**

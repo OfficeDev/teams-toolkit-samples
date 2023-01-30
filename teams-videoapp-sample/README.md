@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-- [NodeJS](https://nodejs.org/en/)
+- [Node.js](https://nodejs.org/en/), supported versions: 14, 16, 18
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 
 ## Run the app in Video Extensibility Test App
