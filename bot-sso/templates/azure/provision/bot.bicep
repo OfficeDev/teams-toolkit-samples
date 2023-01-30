@@ -59,7 +59,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
         }
         {
           name: 'WEBSITE_NODE_DEFAULT_VERSION'
-          value: '~14'
+          value: '~18'
         }
       ]
     }
