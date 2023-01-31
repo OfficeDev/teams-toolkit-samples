@@ -64,3 +64,15 @@ deploy:
   - uses: cli/runNpmCommand # Run npm command
     with:
       args: install --no-audit
+
+  - uses: file/updateEnv # Generate runtime environment variables
+    with:
+      target: ./.localSettings
+      envs:
+        BOT_ID: ${{BOT_ID}}
+        BOT_PASSWORD: ${{SECRET_BOT_PASSWORD}}
+        BOT_ENDPOINT: ${{BOT_ENDPOINT}}
+        AAD_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
+        AAD_APP_CLIENT_SECRET: ${{SECRET_AAD_APP_CLIENT_SECRET}}
+        AAD_APP_TENANT_ID: ${{AAD_APP_TENANT_ID}}
+        AAD_APP_OAUTH_AUTHORITY_HOST: ${{AAD_APP_OAUTH_AUTHORITY_HOST}}

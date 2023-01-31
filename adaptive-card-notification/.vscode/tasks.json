@@ -10,8 +10,8 @@
                 "Validate prerequisites",
                 "Start local tunnel",
                 "Create resources",
-                "Set up local projects",
-                "Start services"
+                "Build project",
+                "Start application"
             ],
             "dependsOrder": "sequence"
         },
@@ -66,9 +66,9 @@
             }
         },
         {
-            // Set up local projects.
+            // Build project.
             // See https://aka.ms/teamsfx-deploy-task to know the details and how to customize the args.
-            "label": "Set up local projects",
+            "label": "Build project",
             "type": "teamsfx",
             "command": "deploy",
             "args": {
@@ -77,7 +77,7 @@
             }
         },
         {
-            "label": "Start services",
+            "label": "Start application",
             "dependsOn": [
                 "Start bot"
             ]
