@@ -6,12 +6,14 @@
             "dependsOn": [
                 "Validate prerequisites",
                 "Create resources",
-                "Set up local projects",
-                "Start services"
+                "Build project",
+                "Start application"
             ],
             "dependsOrder": "sequence"
         },
         {
+            // Check all required prerequisites.
+            // See https://aka.ms/teamsfx-check-prerequisites-task to know the details and how to customize the args.
             "label": "Validate prerequisites",
             "type": "teamsfx",
             "command": "debug-check-prerequisites",
@@ -27,6 +29,8 @@
             }
         },
         {
+            // Create the debug resources.
+            // See https://aka.ms/teamsfx-provision-task to know the details and how to customize the args.
             "label": "Create resources",
             "type": "teamsfx",
             "command": "provision",
@@ -36,7 +40,9 @@
             }
         },
         {
-            "label": "Set up local projects",
+            // Build project.
+            // See https://aka.ms/teamsfx-deploy-task to know the details and how to customize the args.
+            "label": "Build project",
             "type": "teamsfx",
             "command": "deploy",
             "args": {
@@ -45,7 +51,7 @@
             }
         },
         {
-            "label": "Start services",
+            "label": "Start application",
             "dependsOn": [
                 "Start frontend"
             ]
@@ -53,7 +59,7 @@
         {
             "label": "Start frontend",
             "type": "shell",
-            "command": "node teamsfx/script/run.js . teamsfx/.env.local",
+            "command": "npm run dev:teamsfx",
             "isBackground": true,
             "options": {
                 "cwd": "${workspaceFolder}"

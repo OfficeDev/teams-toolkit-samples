@@ -13,3 +13,6 @@ local.settings.json
 
 # misc
 .DS_Store
+
+# Local data
+.localSettings
