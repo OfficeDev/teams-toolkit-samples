@@ -10,7 +10,7 @@ One Productivity Hub sample shows you how to build a tab for viewing your calend
 
 ## Prerequisite
 
-- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
+- [Node.js](https://nodejs.org/en/), supported versions: 14, 16, 18
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 

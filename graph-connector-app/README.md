@@ -9,7 +9,7 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 ![Graph Connector Overview](images/graph-connector-app-demo.gif)
 
 ## Prerequisite
-- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
+- [Node.js](https://nodejs.org/en/), supported versions: 14, 16, 18 (preview)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 
