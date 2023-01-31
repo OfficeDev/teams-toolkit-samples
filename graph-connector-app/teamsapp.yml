@@ -112,4 +112,3 @@ publish:
       appPackagePath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip
   # Output: following environment variable will be persisted in current environment's .env file.
   # TEAMS_APP_PUBLISHED_APP_ID: app id in Teams tenant app catalog.
-projectId: 5e550728-08e3-48ae-82e3-5bdfa49ccb9a
