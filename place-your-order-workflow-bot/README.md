@@ -7,11 +7,11 @@ Bots can be used to automate repetitive workflows through a conversational inter
 
 The Place Your Order workflow bot shows you how to implement a simple workflow that uses a command to start an order process which returns an Adaptive Card containing a form in the response to the command. The bot captures the submission of the Adaptive Card confirming the submitted data in an Adaptive Card which replaces the initial form card.
 
-![Place Your Order Workflow Bot](images/app.gif)
+![Place Your Order Workflow Bot](app/app.gif)
 
 ## Prerequisites
 
-- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
+- [Node.js](https://nodejs.org/en/), supported versions: 14, 16, 18
 - An Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 

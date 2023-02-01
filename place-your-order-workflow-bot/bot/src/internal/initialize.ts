@@ -1,4 +1,5 @@
-import { ConversationBot } from "@microsoft/teamsfx";
+import { BotBuilderCloudAdapter } from "@microsoft/teamsfx";
+import ConversationBot = BotBuilderCloudAdapter.ConversationBot;
 import config from "./config";
 import { OrderCommandHandler } from "../commands/orderCommandHandler";
 import { OrderActionHandler } from "../cardActions/orderActionHander";
@@ -8,8 +9,9 @@ export const conversationBot = new ConversationBot({
   // The bot id and password to create BotFrameworkAdapter.
   // See https://aka.ms/about-bot-adapter to learn more about adapters.
   adapterConfig: {
-    appId: config.botId,
-    appPassword: config.botPassword,
+    MicrosoftAppId: config.botId,
+    MicrosoftAppPassword: config.botPassword,
+    MicrosoftAppType: "MultiTenant",
   },
   command: {
     enabled: true,

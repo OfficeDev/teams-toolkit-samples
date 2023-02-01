@@ -19,6 +19,7 @@
     "tedious": "^9.2.3"
   },
   "devDependencies": {
+    "@types/node": "^18.11.18",
     "@types/tedious": "^4.0.3",
     "env-cmd": "^10.1.0",
     "typescript": "^4.4.4"

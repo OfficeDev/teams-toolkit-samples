@@ -7,9 +7,9 @@
     "@microsoft/teams-js": "^2.2.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-responsive": "^8.2.0",
+    "react-responsive": "^9.0.2",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

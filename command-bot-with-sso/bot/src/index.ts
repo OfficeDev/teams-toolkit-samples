@@ -6,6 +6,7 @@ import "isomorphic-fetch";
 // This template uses `restify` to serve HTTP responses.
 // Create a restify server.
 const server = restify.createServer();
+server.use(restify.plugins.bodyParser());
 server.listen(process.env.port || process.env.PORT || 3978, () => {
   console.log(`\nBot Started, ${server.name} listening to ${server.url}`);
 });
@@ -27,7 +28,7 @@ server.post("/api/messages", async (req, res) => {
 });
 
 server.get(
-  "/auth-*.html",
+  "/auth-:name(start|end).html",
   restify.plugins.serveStatic({
     directory: path.join(__dirname, "public"),
   })

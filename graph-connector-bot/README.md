@@ -5,7 +5,7 @@ This sample app showcases how to build a Teams command bot that queries custom d
 ![Graph Connector Overview](images/graph-connector-bot-demo.gif)
 
 ## Prerequisites
-- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
+- [Node.js](https://nodejs.org/en/), supported versions: 14, 16
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - An Microsoft 365 account with admin permission. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 

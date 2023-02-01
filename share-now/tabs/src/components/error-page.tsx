@@ -9,41 +9,39 @@ import { TFunction } from "i18next";
 
 import "../styles/site.css";
 
-interface IErrorPageProps extends WithTranslation, RouteComponentProps {
-}
+interface IErrorPageProps extends WithTranslation, RouteComponentProps {}
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 class ErrorPage extends React.Component<IErrorPageProps, {}> {
-    localize: TFunction;
+  localize: TFunction;
 
-    constructor(props) {
-      super(props);
+  constructor(props) {
+    super(props);
 
-      this.localize = this.props.t;
+    this.localize = this.props.t;
+  }
+
+  /**
+   * Renders the component
+   */
+  public render(): JSX.Element {
+    const params = this.props.match.params;
+    let message = this.localize("generalErrorMessage");
+
+    if ("message" in params) {
+      message = decodeURIComponent(params["message"] as string);
     }
 
-    /**
-    * Renders the component
-    */
-    public render(): JSX.Element {
-
-      const params = this.props.match.params;
-      let message = this.localize("generalErrorMessage");
-
-      if ("message" in params) {
-        message = decodeURIComponent(params["message"]);
-      }
-
-      return (
-        <div className="container-div">
-          <div className="container-subdiv">
-            <div className="error-message">
-              <Text content={message} error size="medium" />
-            </div>
+    return (
+      <div className="container-div">
+        <div className="container-subdiv">
+          <div className="error-message">
+            <Text content={message} error size="medium" />
           </div>
         </div>
-      );
-    }
+      </div>
+    );
+  }
 }
 
-export default withTranslation()(ErrorPage)
+export default withTranslation()(ErrorPage);
