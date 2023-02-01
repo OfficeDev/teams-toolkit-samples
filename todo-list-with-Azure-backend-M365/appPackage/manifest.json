@@ -11,11 +11,11 @@
         "termsOfUseUrl": "${{TAB_ENDPOINT}}/index.html#/termsofuse"
     },
     "icons": {
-        "color": "resources/color.png",
-        "outline": "resources/outline.png"
+        "color": "color.png",
+        "outline": "outline.png"
     },
     "name": {
-        "short": "toDoList",
+        "short": "toDoList-${{TEAMSFX_ENV}}",
         "full": "Full name for toDoList"
     },
     "description": {
@@ -28,7 +28,7 @@
     "configurableTabs": [],
     "staticTabs": [
         {
-            "entityId": "index0",
+            "entityId": "index",
             "name": "Personal Tab",
             "contentUrl": "${{TAB_ENDPOINT}}/index.html#/tab",
             "websiteUrl": "${{TAB_ENDPOINT}}/index.html#/tab",

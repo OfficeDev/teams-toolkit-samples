@@ -5,10 +5,8 @@
     "author": "",
     "scripts": {
         "install:api": "cd api && npm install",
-        "install:tab": "cd tab && npm install",
-        "install": "concurrently \"npm run install:api\" \"npm run install:tab\"",
-        "dev:api": "cd api && npm run dev",
-        "start:tab": "cd tab && npm run start",
+        "install:tabs": "cd tabs && npm install",
+        "install": "concurrently \"npm run install:api\" \"npm run install:tabs\"",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
