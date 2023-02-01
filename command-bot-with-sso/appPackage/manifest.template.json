@@ -66,7 +66,7 @@
         "messageTeamMembers"
     ],
     "validDomains": [
-        "${{STATE__FX_RESOURCE_BOT__VALIDDOMAIN}}"
+        "${{PROVISIONOUTPUT__WEBAPPOUTPUT__DOMAIN}}"
     ],
     "webApplicationInfo": {
         "id": "${{AAD_APP_CLIENT_ID}}",
