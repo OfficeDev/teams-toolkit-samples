@@ -6,3 +6,6 @@ node_modules
 subscriptionInfo.json
 build
 .fx/states/*
+
+env\.env.*
+.backup/*
