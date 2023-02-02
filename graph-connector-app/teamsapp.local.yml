@@ -25,7 +25,6 @@ configureApp:
       envs:
         TAB_DOMAIN: localhost:53000
         TAB_ENDPOINT: https://localhost:53000
-        FUNC_NAME: data
         FUNC_ENDPOINT: http://localhost:7071
 
   - uses: aadApp/update # Apply the AAD manifest to an existing AAD app. Will use the object id in manifest file to determine which AAD app to update.
@@ -79,7 +78,7 @@ deploy:
         SSL_KEY_FILE: ${{SSL_KEY_FILE}}
         REACT_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
         REACT_APP_START_LOGIN_PAGE_URL: ${{TAB_ENDPOINT}}/auth-start.html
-        REACT_APP_FUNC_NAME: ${{FUNC_NAME}}
+        REACT_APP_FUNC_NAME: data
         REACT_APP_FUNC_ENDPOINT: ${{FUNC_ENDPOINT}}
 
   - uses: file/updateEnv # Generate runtime environment variables for backend

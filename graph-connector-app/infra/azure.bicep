@@ -47,7 +47,7 @@ resource serverfarms 'Microsoft.Web/serverfarms@2021-02-01' = {
   kind: 'functionapp'
   location: location
   sku: {
-    name: functionAppSKU // You can follow https://aka.ms/teamsfx-bicep-add-param-tutorial to add functionServerfarmsSku property to provisionParameters to override the default value "Y1".
+    name: functionAppSKU
   }
   properties: {}
 }
@@ -61,7 +61,6 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
     serverFarmId: serverfarms.id
     httpsOnly: true
     siteConfig: {
-      alwaysOn: true
       cors: {
         allowedOrigins: [ tabEndpoint ]
       }
@@ -145,11 +144,11 @@ resource functionStorage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
   kind: 'StorageV2'
   location: location
   sku: {
-    name: functionStorageSKU// You can follow https://aka.ms/teamsfx-bicep-add-param-tutorial to add functionStorageSKUproperty to provisionParameters to override the default value "Standard_LRS".
+    name: functionStorageSKU
   }
 }
 
-// The output will be persisted in .env.{envName}. Visit https://aka.ms/teamsfx-provision-arm#output for more details.
+// The output will be persisted in .env.{envName}. Visit https://aka.ms/teamsfx-actions/arm-deploy for more details.
 output TAB_AZURE_STORAGE_RESOURCE_ID string = storage.id // used in deploy stage
 output TAB_DOMAIN string = siteDomain
 output TAB_ENDPOINT string = tabEndpoint
