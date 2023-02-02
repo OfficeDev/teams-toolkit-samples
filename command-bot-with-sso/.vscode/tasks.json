@@ -11,7 +11,7 @@
                 "Start local tunnel",
                 "Create resources",
                 "Build project",
-                "Start services"
+                "Start application"
             ],
             "dependsOrder": "sequence"
         },
@@ -47,9 +47,8 @@
                 "ngrokArgs": "http 3978 --log=stdout --log-format=logfmt",
                 "env": "local",
                 "output": {
-                    // Keep consistency with migrated configuration.
-                    "endpoint": "PROVISIONOUTPUT__WEBAPPOUTPUT__SITEENDPOINT",
-                    "domain": "PROVISIONOUTPUT__WEBAPPOUTPUT__DOMAIN"
+                    "endpoint": "BOT_ENDPOINT",
+                    "domain": "BOT_DOMAIN"
                 }
             },
             "isBackground": true,
@@ -78,7 +77,7 @@
             }
         },
         {
-            "label": "Start services",
+            "label": "Start application",
             "dependsOn": [
                 "Start bot"
             ]
@@ -89,7 +88,7 @@
             "command": "npm run dev:teamsfx",
             "isBackground": true,
             "options": {
-                "cwd": "${workspaceFolder}/bot"
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": {
                 "pattern": [

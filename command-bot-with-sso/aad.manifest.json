@@ -1,7 +1,7 @@
 {
     "id": "${{AAD_APP_OBJECT_ID}}",
     "appId": "${{AAD_APP_CLIENT_ID}}",
-    "name": "${{CONFIG__MANIFEST__APPNAME__SHORT}}-aad",
+    "name": "sso-command-bot-aad",
     "accessTokenAcceptedVersion": 2,
     "signInAudience": "AzureADMyOrg",
     "optionalClaims": {
@@ -94,7 +94,7 @@
     ],
     "replyUrlsWithType": [
         {
-            "url": "${{PROVISIONOUTPUT__WEBAPPOUTPUT__SITEENDPOINT}}/auth-end.html",
+            "url": "https://${{BOT_DOMAIN}}/auth-end.html",
             "type": "Web"
         }
     ]
