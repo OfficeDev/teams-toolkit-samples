@@ -1,11 +1,15 @@
 # TeamsFx files
-node_modules
-.fx/configs/localSettings.json
-.DS_Store
-.env.teamsfx.local
-subscriptionInfo.json
+env/.env.*
+.localSettings
 build
-.fx/states/*
 
-env\.env.*
-.backup/*
+# dependencies
+node_modules/
+
+# misc
+.env
+.deployment
+.DS_Store
+
+# build
+lib/
