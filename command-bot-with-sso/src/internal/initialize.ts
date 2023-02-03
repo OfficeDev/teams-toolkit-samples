@@ -1,4 +1,4 @@
-import {ConversationBot} from "@microsoft/teamsfx";
+import { ConversationBot } from "@microsoft/teamsfx";
 
 import { HelloWorldCommandHandler } from "../helloworldCommandHandler";
 import { ProfileSsoCommandHandler } from "../profileSsoCommandHandler";
@@ -19,13 +19,18 @@ export const commandBot = new ConversationBot({
 
   // See https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-sdk to learn more about ssoConfig
   ssoConfig: {
-    aad :{
-      scopes:["User.Read"],
+    aad: {
+      scopes: ["User.Read"],
+      initiateLoginEndpoint: `https://${config.botDomain}/auth-start.html`,
+      authorityHost: config.authorityHost,
+      clientId: config.clientId,
+      tenantId: config.tenantId,
+      clientSecret: config.clientSecret,
     },
   },
   command: {
     enabled: true,
-    commands: [new HelloWorldCommandHandler() ],
+    commands: [new HelloWorldCommandHandler()],
     ssoCommands: [new ProfileSsoCommandHandler(), new PhotoSsoCommandHandler()],
   },
 });
