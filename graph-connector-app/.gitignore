@@ -1,12 +1,13 @@
-
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 # TeamsFx files
-node_modules
-.fx/configs/localSettings.json
-.fx/states/*.userdata
+env/.env.*
 .DS_Store
-.env.teamsfx.local
-subscriptionInfo.json
 build
-.fx/configs/config.local.json
-.fx/states/state.local.json
-.backup
+.deployment
+.localSettings
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
