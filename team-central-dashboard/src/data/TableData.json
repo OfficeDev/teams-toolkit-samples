@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "title": "End of year business plan envision",
+    "assignedAvatar": "avatar.png",
+    "assignedName": "dolor sit",
+    "ownerAvatar": "avatar.png",
+    "ownerName": "dolor sit",
+    "priority": "1",
+    "color": "#7FC93D",
+    "state": 88
+  },
+  {
+    "id": "2",
+    "title": "End of year business plan envision",    
+    "assignedAvatar": "avatar.png",
+    "assignedName": "dolor sit",
+    "ownerAvatar": "avatar.png",
+    "ownerName": "dolor sit",
+    "priority": "1",
+    "color": "#F3AF57",
+    "state": 70
+  },
+  {
+    "id": "3",
+    "title": "End of year business plan envision",
+    "assignedAvatar": "avatar.png",
+    "assignedName": "dolor sit",
+    "ownerAvatar": "avatar.png",
+    "ownerName": "dolor sit",
+    "priority": "2",
+    "color": "#F3AF57",
+    "state": 70
+  },
+  {
+    "id": "4",
+    "title": "End of year business plan envision",
+    "assignedAvatar": "avatar.png",
+    "assignedName": "dolor sit",
+    "ownerAvatar": "avatar.png",
+    "ownerName": "dolor sit",
+    "priority": "3",
+    "color": "#E1DFDD",
+    "state": 0
+  }
+]
