@@ -2,21 +2,21 @@
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
     "manifestVersion": "1.14",
     "version": "1.0.0",
-    "id": "{{state.fx-resource-appstudio.teamsAppId}}",
+    "id": "${{TEAMS_APP_ID}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Teams App, Inc.",
-        "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}",
-        "privacyUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/privacy",
-        "termsOfUseUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/termsofuse"
+        "websiteUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}",
+        "privacyUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/privacy",
+        "termsOfUseUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/termsofuse"
     },
     "icons": {
         "color": "resources/color.png",
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "{{config.manifest.appName.short}}",
-        "full": "{{config.manifest.appName.full}}"
+        "short": "${{CONFIG__MANIFEST__APPNAME__SHORT}}",
+        "full": "${{CONFIG__MANIFEST__APPNAME__FULL}}"
     },
     "description": {
         "short": "toDoList",
@@ -27,7 +27,7 @@
     "composeExtensions": [],
     "configurableTabs": [
         {
-            "configurationUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/config",
+            "configurationUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/config",
             "canUpdateConfiguration": true,
             "scopes": [
                 "team",
@@ -41,7 +41,7 @@
     ],
     "validDomains": [],
     "webApplicationInfo": {
-        "id": "{{state.fx-resource-aad-app-for-teams.clientId}}",
-        "resource": "{{{state.fx-resource-aad-app-for-teams.applicationIdUris}}}"
+        "id": "${{AAD_APP_CLIENT_ID}}",
+        "resource": "api://${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
     }
 }
