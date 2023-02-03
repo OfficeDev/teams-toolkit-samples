@@ -33,7 +33,7 @@ resource storage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
 
 var siteDomain = replace(replace(storage.properties.primaryEndpoints.web, 'https://', ''), '/', '')
 var tabEndpoint = 'https://${siteDomain}'
-var aadApplicationIdUri = 'api://${TabAppDomain}/${aadAppClientId}'
+var aadApplicationIdUri = 'api://${siteDomain}/${aadAppClientId}'
 
 // Compute resources for Azure Functions
 resource serverfarms 'Microsoft.Web/serverfarms@2021-02-01' = {
