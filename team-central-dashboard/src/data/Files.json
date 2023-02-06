@@ -1,0 +1,25 @@
+[
+  {
+      "id": "t1",
+      "name": "Book.xlsx",
+      "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "url": "",
+      "icon": ""
+  },
+  {
+      "id": "t2",
+      "name": "Presentation.pptx",
+      "description": "description 2",
+      "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "url": "",
+      "icon": ""
+  },
+  {
+      "id": "t3",
+      "name": "Document.docx",
+      "description": "description 3",
+      "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "url": "",
+      "icon": ""
+  }
+]

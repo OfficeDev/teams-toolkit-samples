@@ -1,0 +1,18 @@
+.empty-layout {
+  display: grid;
+  gap: 1rem;
+}
+
+.empty-img {
+  height: 120px;
+  justify-self: center;
+}
+
+.empty-text {
+  justify-content: center;
+  text-align: center;
+}
+
+.widget-padding {
+  padding: 0.75rem 1.25rem 1rem 1.25rem;
+}
