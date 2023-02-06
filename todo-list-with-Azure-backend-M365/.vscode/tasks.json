@@ -51,7 +51,7 @@
             "type": "teamsfx",
             "command": "provision",
             "args": {
-                "template": "${workspaceFolder}/teamsfx/app.local.yml",
+                "template": "${workspaceFolder}/teamsapp.local.yml",
                 "env": "local"
             }
         },
@@ -62,7 +62,7 @@
             "type": "teamsfx",
             "command": "deploy",
             "args": {
-                "template": "${workspaceFolder}/teamsfx/app.local.yml",
+                "template": "${workspaceFolder}/teamsapp.local.yml",
                 "env": "local"
             }
         },
@@ -79,7 +79,7 @@
             "command": "npm run dev:teamsfx",
             "isBackground": true,
             "options": {
-                "cwd": "${workspaceFolder}/tab"
+                "cwd": "${workspaceFolder}/tabs"
             },
             "problemMatcher": {
                 "pattern": {
