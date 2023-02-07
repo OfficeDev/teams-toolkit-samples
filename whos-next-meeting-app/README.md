@@ -2,14 +2,19 @@
 
 ## Summary
 
+This application runs in the sidebar of a Teams meeting and assists in deciding who will speak next. Anyone who wishes to speak can enter their name to be added to the list of speakers. When it's time for the next speaker, the "Next Speaker" button will advance to display the new speaker at the top. There are also buttons for removing names (if someone has to leave the meeting, for example) and for shuffling the names randomly.
+
+This application illustrates the use of Teams Live Share SDK and the Fluid Framework. The Live Share SDK provides a secure connection to a Fluid Relay service hosted in Microsoft 365. Each instance of the service is isolated to the current meeting automatically. The Fluid Relay Service, along with the Fluid Framework SDK, synchronizes the list of names across everyone who is using the app. This is not screen sharing - it's keeping a JavaScript object structure in sync among all attendees, and a small React user interface is displaying the data locally. 
+
+![whos next image](./assets/WhosNext.gif)
+
+## The backstory
 🧑‍💻👩🏽‍💻 This project was created as part of FHL, a week dedicated to Fixing, Hacking and Learning something new together.
 
 ❓ The Microsoft 365 Cloud Advocates always had a challenge in their weekly sync meetings: They could not decide on **who's next** to give an update on project progress.
 
 🚀So [Bob German](https://github.com/BobGerman) and [Rabia Williams](https://github.com/rabwill) decided to take the necessary step, cloud 🥑 style, to create a meeting app called "Who's next" which will help choose attendees from a meeting.
 👀 Here is a quick look of how the app works!
-
-![whos next image](./assets/WhosNext.gif)
 
 ⚙️They used [Teams Toolkit](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/teams-toolkit-fundamentals?pivots=visual-studio-code), a VS Code extension to create their base teams app from a sample meeting app available in the toolkit itself.
 Then they used [Fluid Framework](https://fluidframework.com/docs/) to synchronize the view for each attendee. 
@@ -43,7 +48,7 @@ Version|Date|Author|Comments
 - Use of Live Share SDK to obtain a Fluid framework container
 - Use of Fluid framework to synchronize the contents of a meeting tab among meeting attendees
 
-## Minimal Path to Awesome
+## Try the sample with the Visual Studio Code extension
 
 ### Prepare a meeting
 
