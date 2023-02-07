@@ -1,0 +1,46 @@
+{
+    "appName": "WhosNext",
+    "version": "2.1.0",
+    "isFromSample": true,
+    "solutionSettings": {
+        "name": "fx-solution-azure",
+        "version": "1.0.0",
+        "hostType": "Azure",
+        "azureResources": [],
+        "capabilities": [
+            "Tab"
+        ],
+        "activeResourcePlugins": [
+            "fx-resource-local-debug",
+            "fx-resource-appstudio",
+            "fx-resource-cicd",
+            "fx-resource-api-connector",
+            "fx-resource-frontend-hosting",
+            "fx-resource-identity"
+        ]
+    },
+    "programmingLanguage": "javascript",
+    "projectId": "c5e9cdb1-266c-494b-a8be-cdb260280d2d",
+    "components": [
+        {
+            "hosting": "azure-storage",
+            "name": "teams-tab",
+            "build": true,
+            "provision": true,
+            "folder": "tabs",
+            "sso": false,
+            "deploy": true,
+            "artifactFolder": "tabs\\build"
+        },
+        {
+            "name": "azure-storage",
+            "connections": [
+                "teams-tab"
+            ],
+            "provision": true
+        },
+        {
+            "name": "identity"
+        }
+    ]
+}
