@@ -38,7 +38,7 @@ Team Central Dashboard shows you how to build a tab with data chats and content 
 >
 > To consent the "TeamsActivity.Send" permission, you should do the following steps after provision or run local debug twice.
 > 
-> Go to [Azure portal](https://portal.azure.com/) > Click `Azure Active Directory` > Click `App registrations` in the side bar > Click your Dashboard app > Click `API permissions` in the side bar > Click `+Add a permission` > Choose `Microsoft Graph` > Choose `Application permissions` > Find the permission `TeamsActivity.Send` > Click `Add permissions` button in the bottom > Click `✔Grant admin consent for XXX` and then click `Yes` button to finish the admin consent.
+> Go to [Azure portal](https://portal.azure.com/) > Click `Azure Active Directory` > Click `App registrations` in the side bar > Click your Dashboard app > Click `API permissions` in the side bar > Click `+Add a permission` > Choose `Microsoft Graph` > Choose `Application permissions` > Find the two permissions `TeamsActivity.Send` and `TeamsAppInstallation.ReadForUser.All` > Click `Add permissions` button in the bottom > Click `✔Grant admin consent for XXX` and then click `Yes` button to finish the admin consent.
 
 ## Implemented Features  
 
@@ -69,6 +69,8 @@ This widget displays your to-do tasks. Your can input a task name and click the 
 This widget displays your content files in OneDrive. You can click one to open it. You can also click the `...` button on the right to choose the way to open the file, download the file or copy the file link.
 
 <img src="public\document.png" style="zoom: 50%">
+
+**Known Issue**: In mobile devices, the feature of open in Teams may not work.
 
 ## Edit the manifest
 
