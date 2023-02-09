@@ -27,6 +27,7 @@ deploy:
       args: install
   - uses: cli/runNpmCommand # Run npm command
     env:
+      TEAMS_APP_ID: ${{TEAMS_APP_ID}}
       REACT_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
       REACT_APP_START_LOGIN_PAGE_URL: ${{TAB_ENDPOINT}}/auth-start.html
       REACT_APP_FUNC_NAME: finishTaskNotification
