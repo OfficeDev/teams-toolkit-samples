@@ -38,7 +38,7 @@ class Tab extends React.Component {
     };
     
     const credential = new TeamsUserCredential(authConfig);
-    const userInfo = credential.getUserInfo();
+    const userInfo = await credential.getUserInfo();
 
     this.setState({
       userInfo: userInfo
@@ -101,8 +101,12 @@ class Tab extends React.Component {
       app.getContext().then((context) => {
         if (context.channelId) {
           resolve(context.channelId);
+        } else if (context.channel?.id) {
+          resolve(context.channel.id);
         } else if (context.chatId) {
           resolve(context.chatId);
+        } else if (context.chat?.id) {
+          resolve(context.chat.id);
         } else {
           resolve(this.state.userInfo.objectId);
         }
@@ -233,7 +237,7 @@ class Tab extends React.Component {
             className={"text" + (this.state.items[index].isCompleted ? " is-completed" : "")}
           />
         </div>
-        <Creator objectId={item.objectId} teamsfx={this.teamsfx} scope={this.scope} />
+        <Creator objectId={item.objectId} teamsUserCredential={this.credential} scope={this.scope} />
         <div className="action">
           <MenuButton
             trigger={<Button content="..." />}
