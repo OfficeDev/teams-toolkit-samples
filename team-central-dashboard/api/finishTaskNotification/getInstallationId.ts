@@ -1,33 +1,21 @@
-import * as fs from "fs";
+import { createMicrosoftGraphClient, OnBehalfOfUserCredential, createMicrosoftGraphClientWithCredential, IdentityType, TeamsFx } from "@microsoft/teamsfx";
 
-import { Client } from "@microsoft/microsoft-graph-client";
-import { createMicrosoftGraphClient, TeamsFx } from "@microsoft/teamsfx";
-
-let appInfo;
-const manifestPath = "../../templates/appPackage/manifest.template.json";
-fs.exists(manifestPath, (exist) => {
-  if (exist) {
-    const Info = require(manifestPath);
-    appInfo = Info;
-  } else {
-    appInfo = {};
-  }
-});
-
-export async function getInstallationId(teamsfx: TeamsFx, userId: string) {
+export async function getInstallationId(credential: OnBehalfOfUserCredential, userId: string): Promise<any> {
   try {
-    const info = appInfo;
-    const teamsAppId: string = info["id"];
+    const teamsAppId = process.env.TEAMS_APP_ID;
     const apiPath =
       "/users/" +
       userId +
       "/teamwork/installedApps?$expand=teamsApp,teamsAppDefinition&$filter=teamsApp/externalId eq " +
-      teamsAppId;
+      "'" + teamsAppId + "'";
 
-    const graphClient: Client = await createMicrosoftGraphClient(teamsfx, ["User.Read"]);
-    const appInstallationInfo = await graphClient.api(apiPath).get()["value"];
-
-    const installationId = appInstallationInfo["id"];
+    let teamsfx_app;
+    teamsfx_app = new TeamsFx(IdentityType.App);
+    const graphClient = createMicrosoftGraphClient(teamsfx_app, [".default"]);
+    const appInstallationInfo = await graphClient.api(apiPath).get();
+    const appArray = appInstallationInfo["value"][0];
+    const installationId = appArray["id"];
+    
     return installationId;
   } catch (e) {}
 }

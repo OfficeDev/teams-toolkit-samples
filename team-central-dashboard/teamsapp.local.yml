@@ -70,6 +70,7 @@ deploy:
         BROWSER: none
         HTTPS: true
         PORT: 53000
+        TEAMS_APP_ID: ${{TEAMS_APP_ID}}
         SSL_CRT_FILE: ${{SSL_CRT_FILE}}
         SSL_KEY_FILE: ${{SSL_KEY_FILE}}
         REACT_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
@@ -81,6 +82,7 @@ deploy:
     with:
       target: ./api/.localSettings
       envs:
+        TEAMS_APP_ID: ${{TEAMS_APP_ID}}
         M365_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
         M365_CLIENT_SECRET: ${{SECRET_AAD_APP_CLIENT_SECRET}}
         M365_TENANT_ID: ${{AAD_APP_TENANT_ID}}
