@@ -56,5 +56,14 @@
     "webApplicationInfo": {
         "id": "${{AAD_APP_CLIENT_ID}}",
         "resource": "api://${{TAB_DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
+    },
+    "activities": {
+        "activityTypes": [
+            {
+                "type": "taskCreated",
+                "description": "Task Created",
+                "templateText": "{actor} created task"
+            }
+        ]
     }
 }
