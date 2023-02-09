@@ -5,8 +5,8 @@
         "provisionParameters": {
             "value": {
                 "resourceBaseName": "todolist${{RESOURCE_SUFFIX}}",
-                "azureSqlAdmin": "${{STATE__FX_RESOURCE_AZURE_SQL__ADMIN}}",
-                "azureSqlAdminPassword": "${{SECRET_FX_RESOURCE_AZURE_SQL__ADMINPASSWORD}}",
+                "azureSqlAdmin": "${{SQL_USER_NAME}}",
+                "azureSqlAdminPassword": "${{SQL_PASSWORD}}",
                 "m365ClientId": "${{AAD_APP_CLIENT_ID}}",
                 "m365ClientSecret": "${{SECRET_AAD_APP_CLIENT_SECRET}}",
                 "m365TenantId": "${{AAD_APP_TENANT_ID}}",
