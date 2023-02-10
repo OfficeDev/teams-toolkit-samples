@@ -13,7 +13,7 @@ Todo List app helps to manage your personal to do items. This app can be install
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
-- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) **version >= 3.8.0** or [TeamsFx CLI](https://aka.ms/teamsfx-cli) **version >= 0.14.0**
+- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## What you will learn in this sample:
 
@@ -31,12 +31,12 @@ Todo List app helps to manage your personal to do items. This app can be install
 3. Open the project in Visual Studio Code.
 4. Open the command palette and select `Teams: Provision in the cloud`. 
 5. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
-6. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Teams Toolkit` Activity Panel. In `ENVIRONMENTS`, select the environment you want to preview and click the `Preview App` icon. For the prompted question, select the platform you want to preview in. If you select Outlook or Office, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Continue" to continue to preview the app in Outlook or Office.
+6. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Run and Debug` Activity Panel.  Select a target Microsoft application where the app runs: `Launch Remote in Teams`, `Launch Remote in Outlook` or `Launch Remote in Office`. If you select `Launch Remote in Outlook` or `Launch Remote in Office`, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Continue" to continue to preview the app in Outlook or Office.
   ![Install in Teams VSC Remote](./images/install-in-teams-vsc-remote.png)
 
 ## (Optional) Debug
 
-1. In Visual Studio Code, open the `Run and Debug` Activity Panel, select `Debug in Teams`, `Debug in Outlook` or `Debug in Office` and click the `Run and Debug` green arrow button. If you select `Debug in Outlook` or `Debug in Office`, during debugging, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Continue" to continue to debug the app in Outlook or Office.
+1. In Visual Studio Code, open the `Run and Debug` Activity Panel. Select a target Microsoft application where the app runs: `Debug in Teams`, `Debug in Outlook` or `Debug in Office`. If you select `Debug in Outlook` or `Debug in Office`, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Continue" to continue to debug the app in Outlook or Office.
   ![Install in Teams VSC Local](./images/install-in-teams-vsc-local.png)
 
 

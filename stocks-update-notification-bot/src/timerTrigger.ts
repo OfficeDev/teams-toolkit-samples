@@ -1,6 +1,8 @@
 import { AzureFunction, Context } from '@azure/functions';
 import { AdaptiveCards } from '@microsoft/adaptivecards-tools';
-import { AxiosInstance, ConversationBot, TeamsBotInstallation } from '@microsoft/teamsfx';
+import { AxiosInstance, BotBuilderCloudAdapter} from '@microsoft/teamsfx';
+import ConversationBot = BotBuilderCloudAdapter.ConversationBot;
+import TeamsBotInstallation = BotBuilderCloudAdapter.TeamsBotInstallation;
 import { GlobalQuote } from './cardModels';
 import { bot } from './internal/initialize';
 import template from './adaptiveCards/notification-default.json'
