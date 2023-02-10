@@ -27,9 +27,10 @@ Todo List provides an easy way to manage to-do items in Teams Client. This app h
 1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
+1. Open **env/env.dev** file, set value for `SQL_USER_NAME` and `SQL_PASSWORD`
 1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to input admin name and password of SQL. The toolkit will help you to provision Azure SQL.
 1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
-1. Open **.fx/states/state.dev.json** file, you could get the database name in `databaseName` setting. [Set IP address of your computer into server-level IP firewall rule from the database overview page](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page).
+1. Open **env/env.dev** file, you could get the database name in `PROVISIONOUTPUT__AZURESQLOUTPUT__DATABASENAME` output. [Set IP address of your computer into server-level IP firewall rule from the database overview page](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page).
 1. In Azure portal, find the database by `databaseName` and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
     ```sql
     CREATE TABLE Todo
@@ -59,7 +60,7 @@ To debug the project, you will need to configure an Azure SQL Database to be use
         isCompleted TinyInt NOT NULL default 0,
     )
     ```
-1. Create **api/.env.teamsfx.local** file, and set the values of below config with the Azure SQL Database you just created:
+1. Open **env/env.local** file, and set the values of below config with the Azure SQL Database you just created:
     ```
     SQL_ENDPOINT=
     SQL_DATABASE_NAME=
@@ -103,7 +104,8 @@ The detailed instructions can be found by clicking [teamsfx-cicd-guide](https://
 
 ### Code structure
 
-- You can check app configuration and environment information in: [.fx](.fx)
+- You can check app configuration in `teamsapp.*.yml` files
+- You can check app environment information in: [env](env)
 - You will find frontend code in: [tabs/src/components](tabs/src/components)
 - You will find backend code in: [api/todo](api/todo)
 - You will find DB Connection code in: [api/todo/index.js](api/todo/index.js)
