@@ -2,21 +2,21 @@
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
     "manifestVersion": "1.14",
     "version": "1.0.0",
-    "id": "{{state.fx-resource-appstudio.teamsAppId}}",
+    "id": "${{TEAMS_APP_ID}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Teams App, Inc.",
-        "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/website",
-        "privacyUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/privacy",
-        "termsOfUseUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/termsofuse"
+        "websiteUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/website",
+        "privacyUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/privacy",
+        "termsOfUseUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/termsofuse"
     },
     "icons": {
         "color": "resources/color.png",
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "{{config.manifest.appName.short}}",
-        "full": "{{config.manifest.appName.full}}"
+        "short": "${{CONFIG__MANIFEST__APPNAME__SHORT}}",
+        "full": "${{CONFIG__MANIFEST__APPNAME__FULL}}"
     },
     "description": {
         "short": "Encourage co-workers to knowledge-based sharing of posts, videos, or topics.",
@@ -26,7 +26,7 @@
     "bots": [],
     "composeExtensions": [
         {
-            "botId": "{{state.fx-resource-bot.botId}}",
+            "botId": "${{BOT_ID}}",
             "commands": [
                 {
                     "id": "allItems",
@@ -81,8 +81,8 @@
         {
             "entityId": "index",
             "name": "Personal Tab",
-            "contentUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/tab",
-            "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}/index.html#/tab",
+            "contentUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/tab",
+            "websiteUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/tab",
             "scopes": [
                 "personal"
             ]
@@ -94,7 +94,7 @@
     ],
     "validDomains": [],
     "webApplicationInfo": {
-        "id": "{{state.fx-resource-aad-app-for-teams.clientId}}",
-        "resource": "{{{state.fx-resource-aad-app-for-teams.applicationIdUris}}}"
+        "id": "${{AAD_APP_CLIENT_ID}}",
+        "resource": "api://${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
     }
 }

@@ -9,3 +9,5 @@ subscriptionInfo.json
 .fx/configs/config.local.json
 .fx/states/state.local.json
 build
+env\.env.*
+.backup/*
