@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "graph-toolkit-contact-exporter-${{TEAMSFX_ENV}}",
+        "short": "contact-exporter-${{TEAMSFX_ENV}}",
         "full": "Full name for graph-toolkit-contact-exporter"
     },
     "description": {
@@ -31,7 +31,7 @@
             "canUpdateConfiguration": true,
             "scopes": [
                 "team",
-                "groupchat"
+                "groupChat"
             ]
         }
     ],
