@@ -1,0 +1,63 @@
+.header-padding {
+  padding: 0.75rem 1.25rem 0 1.25rem;
+}
+
+.has-doc-layout {
+  display: grid;
+  align-content: start;
+  overflow-x: hidden;
+  min-width: 18rem;
+}
+
+.no-doc-layout {
+  display: grid;
+  height: 100%;
+  justify-content: center;
+  align-content: center;
+  overflow-x: hidden;
+  min-width: 18rem;
+}
+
+.doc-container {
+  display: grid;
+  height: max-content;
+  align-content: center;
+}
+
+.doc-divider {
+  height: 1px;
+  background: var(--colorNeutralStroke2);
+}
+
+.doc-item-content {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 1rem;
+  align-items: center;
+  height: 2.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.doc-item-active {
+  background-color: var(--colorNeutralBackground5Hover);
+}
+
+.doc-item-non-active {
+  background-color: var(--colorNeutralBackground1);
+}
+
+.doc-info-layout {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footer-padding {
+  padding: 0px 1.25rem 1.25rem 1.25rem !important;
+}
+
+.doc-no-padding {
+  padding: 0;
+}
