@@ -1,5 +1,8 @@
-import React from "react";
-import "./App.css";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import React from 'react';
+import './App.css';
 import { app, pages } from "@microsoft/teams-js";
 
 /**
@@ -9,6 +12,7 @@ import { app, pages } from "@microsoft/teams-js";
  * their choices and communicate that to Teams to enable the save button.
  */
 class TabConfig extends React.Component {
+
   render() {
     // Initialize the Microsoft Teams SDK
     app.initialize().then(() => {
@@ -41,10 +45,6 @@ class TabConfig extends React.Component {
     return (
       <div>
         <h1>Tab Configuration</h1>
-        <div>
-          This is where you will add your tab configuration options the user can choose when the tab
-          is added to your team/group chat.
-        </div>
       </div>
     );
   }
