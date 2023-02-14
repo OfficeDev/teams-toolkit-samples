@@ -7,7 +7,7 @@ const httpTrigger: AzureFunction = async function (
   req: HttpRequest
 ): Promise<void> {
   const res = new ResponseWrapper(context.res);
-  await bot.requestHandler(req, res.originalResponse);
+  await bot.requestHandler(req, res);
   return res.body;
 };
 
