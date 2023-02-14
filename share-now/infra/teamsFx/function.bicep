@@ -14,6 +14,8 @@ var m365ClientId = provisionParameters['m365ClientId']
 var m365ClientSecret = provisionParameters['m365ClientSecret']
 var m365TenantId = provisionParameters['m365TenantId']
 var m365OauthAuthorityHost = provisionParameters['m365OauthAuthorityHost']
+var administratorLogin = contains(provisionParameters, 'azureSqlAdmin') ? provisionParameters['azureSqlAdmin'] : ''
+var administratorLoginPassword = contains(provisionParameters, 'azureSqlAdminPassword') ? provisionParameters['azureSqlAdminPassword'] : ''
 var oauthAuthority = uri(m365OauthAuthorityHost, m365TenantId)
 var tabAppDomain = provisionOutputs.frontendHostingOutput.value.domain
 var tabAppEndpoint = provisionOutputs.frontendHostingOutput.value.endpoint 
@@ -54,6 +56,8 @@ resource appSettings 'Microsoft.Web/sites/config@2021-02-01' = {
     IDENTITY_ID: provisionOutputs.identityOutput.value.identityClientId
     SQL_DATABASE_NAME: provisionOutputs.azureSqlOutput.value.databaseName
     SQL_ENDPOINT: provisionOutputs.azureSqlOutput.value.sqlEndpoint
+    SQL_USER_NAME: administratorLogin
+    SQL_PASSWORD: administratorLoginPassword
   }, currentAppSettings)
 }
 

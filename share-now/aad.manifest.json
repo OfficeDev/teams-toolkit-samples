@@ -1,7 +1,7 @@
 {
     "id": "${{AAD_APP_OBJECT_ID}}",
     "appId": "${{AAD_APP_CLIENT_ID}}",
-    "name": "${{CONFIG__MANIFEST__APPNAME__SHORT}}-aad",
+    "name": "share-now-aad",
     "accessTokenAcceptedVersion": 2,
     "signInAudience": "AzureADMyOrg",
     "optionalClaims": {
@@ -90,19 +90,19 @@
         }
     ],
     "identifierUris": [
-        "api://${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
+        "api://${{TAB_DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
     ],
     "replyUrlsWithType": [
         {
-            "url": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/auth-end.html",
+            "url": "${{TAB_ENDPOINT}}/auth-end.html",
             "type": "Web"
         },
         {
-            "url": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/auth-end.html?clientId=${{AAD_APP_CLIENT_ID}}",
+            "url": "${{TAB_ENDPOINT}}/auth-end.html?clientId=${{AAD_APP_CLIENT_ID}}",
             "type": "Spa"
         },
         {
-            "url": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/blank-auth-end.html",
+            "url": "${{TAB_ENDPOINT}}/blank-auth-end.html",
             "type": "Spa"
         }
     ]

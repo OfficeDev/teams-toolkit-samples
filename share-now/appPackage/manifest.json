@@ -6,21 +6,21 @@
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Teams App, Inc.",
-        "websiteUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/website",
-        "privacyUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/privacy",
-        "termsOfUseUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/termsofuse"
+        "websiteUrl": "${{TAB_ENDPOINT}}",
+        "privacyUrl": "${{TAB_ENDPOINT}}/index.html#/privacy",
+        "termsOfUseUrl": "${{TAB_ENDPOINT}}/index.html#/termsofuse"
     },
     "icons": {
-        "color": "resources/color.png",
-        "outline": "resources/outline.png"
+        "color": "color.png",
+        "outline": "outline.png"
     },
     "name": {
-        "short": "${{CONFIG__MANIFEST__APPNAME__SHORT}}",
-        "full": "${{CONFIG__MANIFEST__APPNAME__FULL}}"
+        "short": "shareNow-${{TEAMSFX_ENV}}",
+        "full": "Full name for shareNow"
     },
     "description": {
-        "short": "Encourage co-workers to knowledge-based sharing of posts, videos, or topics.",
-        "full": "Encourage and introduce your co-workers to a widespread knowledge-based sharing of posts, videos, or topics with a bite-sized information on how it influenced them and learn together in Teams."
+        "short": "Short description of shareNow",
+        "full": "Full description of shareNow"
     },
     "accentColor": "#FFFFFF",
     "bots": [],
@@ -81,8 +81,8 @@
         {
             "entityId": "index",
             "name": "Personal Tab",
-            "contentUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/tab",
-            "websiteUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}/index.html#/tab",
+            "contentUrl": "${{TAB_ENDPOINT}}/index.html#/tab",
+            "websiteUrl": "${{TAB_ENDPOINT}}/index.html#/tab",
             "scopes": [
                 "personal"
             ]
@@ -92,9 +92,12 @@
         "identity",
         "messageTeamMembers"
     ],
-    "validDomains": [],
+    "validDomains": [
+        "${{TAB_DOMAIN}}",
+        "${{BOT_DOMAIN}}"
+    ],
     "webApplicationInfo": {
         "id": "${{AAD_APP_CLIENT_ID}}",
-        "resource": "api://${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
+        "resource": "api://${{TAB_DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
     }
 }

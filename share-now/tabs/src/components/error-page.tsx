@@ -31,7 +31,7 @@ class ErrorPage extends React.Component<IErrorPageProps, {}> {
       let message = this.localize("generalErrorMessage");
 
       if ("message" in params) {
-        message = decodeURIComponent(params["message"]);
+        message = decodeURIComponent(params["message"] as string);
       }
 
       return (
