@@ -1,0 +1,11 @@
+{
+    "$schema": "https://aka.ms/teamsfx-env-config-schema",
+    "description": "Who's next (local build) Visit https://aka.ms/teamsfx-env-config to learn more about this.",
+    "manifest": {
+        "manifestVersion": "devPreview",
+        "appName": {
+            "short": "Whos Next? (Local)",
+            "full": "Whos Next? (Local)"
+        }
+    }
+}

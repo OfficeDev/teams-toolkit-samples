@@ -20,7 +20,6 @@
         ]
     },
     "programmingLanguage": "javascript",
-    "projectId": "c5e9cdb1-266c-494b-a8be-cdb260280d2d",
     "components": [
         {
             "hosting": "azure-storage",
