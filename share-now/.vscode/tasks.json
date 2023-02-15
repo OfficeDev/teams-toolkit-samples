@@ -50,7 +50,7 @@
                 "ngrokArgs": "http 3978 --log=stdout --log-format=logfmt",
                 "env": "local",
                 "output": {
-                    "endpoint": "PROVISIONOUTPUT",
+                    "endpoint": "BOT_ENDPOINT",
                     "domain": "BOT_DOMAIN"
                 }
             },

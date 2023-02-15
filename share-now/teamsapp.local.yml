@@ -116,6 +116,10 @@ deploy:
       envs:
         BOT_ID: ${{BOT_ID}}
         BOT_PASSWORD: ${{SECRET_BOT_PASSWORD}}
+        SQL_ENDPOINT: ${{SQL_ENDPOINT}}
+        SQL_DATABASE_NAME: ${{SQL_DATABASE_NAME}}
+        SQL_USER_NAME: ${{SQL_USER_NAME}}
+        SQL_PASSWORD: ${{SQL_PASSWORD}}
 
   - uses: file/updateEnv # Generate runtime environment variables for backend
     with:
