@@ -46,12 +46,8 @@
                             "description": "Resend welcome card of this Bot"
                         },
                         {
-                            "title": "learn",
-                            "description": "Learn about Adaptive Card and Bot Command"
-                        },
-                        {
-                            "title": "show",
-                            "description": "Show user profile using Single Sign On feature"
+                            "title": "query",
+                            "description": "Query data from Microsoft Graph connectors by calling Microsoft Graph API with SSO"
                         }
                     ]
                 }
@@ -71,5 +67,8 @@
     "webApplicationInfo": {
         "id": "${{AAD_APP_CLIENT_ID}}",
         "resource": "api://botid-${{BOT_ID}}"
+    },
+    "graphConnector": {
+        "notificationUrl": "${{BOT_ENDPOINT}}/api/notification"
     }
 }

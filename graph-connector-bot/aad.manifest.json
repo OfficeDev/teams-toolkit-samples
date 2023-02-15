@@ -1,7 +1,7 @@
 {
     "id": "${{AAD_APP_OBJECT_ID}}",
     "appId": "${{AAD_APP_CLIENT_ID}}",
-    "name": "bot-sso-aad",
+    "name": "graph-connector-bot-aad",
     "accessTokenAcceptedVersion": 2,
     "signInAudience": "AzureADMyOrg",
     "optionalClaims": {
@@ -23,6 +23,18 @@
                 {
                     "id": "User.Read",
                     "type": "Scope"
+                },
+                {
+                    "id": "ExternalItem.Read.All",
+                    "type": "Scope"
+                },
+                {
+                    "id": "ExternalConnection.ReadWrite.OwnedBy",
+                    "type": "Role"
+                },
+                {
+                    "id": "ExternalItem.ReadWrite.OwnedBy",
+                    "type": "Role"
                 }
             ]
         }
