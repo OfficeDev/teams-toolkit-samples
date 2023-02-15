@@ -54,10 +54,11 @@ deploy:
       devCert:
         trust: true
       func: true
-      # dotnet: true 
+      dotnet: true
     # Output: following environment variable will be persisted in current environment's .env file.
     # SSL_CRT_FILE: certificate file
     # SSL_KEY_FILE: certificate key
+    # DOTNET_PATH: the path of the .NET binary
 
   - uses: cli/runNpmCommand # Run npm command
     with:
