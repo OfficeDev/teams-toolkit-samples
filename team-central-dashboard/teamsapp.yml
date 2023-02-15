@@ -23,13 +23,9 @@ provision:
 
 deploy:
   - uses: prerequisite/install # Install dependencies
-    with:
-      devCert:
-        trust: true
+    with:      
       dotnet: true
-    # Output: following environment variable will be persisted in current environment's .env file.
-    # SSL_CRT_FILE: certificate file
-    # SSL_KEY_FILE: certificate key
+    # Output: following environment variable will be persisted in current environment's .env file.    
     # DOTNET_PATH: the path of the .NET binary
 
   - uses: cli/runNpmCommand # Run npm command
