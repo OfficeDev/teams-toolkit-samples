@@ -50,9 +50,11 @@ deploy:
     with:
       devCert:
         trust: true
+      dotnet: true
     # Output: following environment variable will be persisted in current environment's .env file.
     # SSL_CRT_FILE: certificate file
     # SSL_KEY_FILE: certificate key
+    # DOTNET_PATH: the path of the .NET binary
 
   - uses: cli/runNpmCommand # Run npm command
     with:
@@ -62,6 +64,12 @@ deploy:
     with:
       args: install --no-audit
       workingDirectory: api
+
+  - uses: cli/runDotnetCommand # Run dotnet command
+    with:
+      args: build extensions.csproj -o ./bin --ignore-failed-sources
+      workingDirectory: ./api
+      execPath: ${{DOTNET_PATH}}
 
   - uses: file/updateEnv # Generate runtime environment variables for tab
     with:
