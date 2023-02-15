@@ -22,6 +22,12 @@ provision:
     # Output: N/A
 
 deploy:
+  - uses: prerequisite/install # Install dependencies
+    with:
+      dotnet: true
+    # Output: following environment variable will be persisted in current environment's .env file.
+    # DOTNET_PATH: the path of the .NET binary
+
   - uses: cli/runNpmCommand # Run npm command
     with:
       workingDirectory: tabs
