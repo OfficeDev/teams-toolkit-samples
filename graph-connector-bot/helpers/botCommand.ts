@@ -31,6 +31,7 @@ export abstract class BotCommand {
 export class SSOCommand extends BotCommand {
   public operationWithSSOToken: (
     arg0: any,
+    text: string,
     ssoToken: string
   ) => Promise<any> | undefined;
 

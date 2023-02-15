@@ -1,79 +1,68 @@
-# Build Bots for Teams
+# Getting Started with Graph Connector Bot Sample
 
-A bot, chatbot, or conversational bot is an app that responds to simple commands sent in chat and replies in meaningful ways. Examples of bots in everyday use include: bots that notify about build failures, bots that provide information about the weather or bus schedules, or provide travel information. A bot interaction can be a quick question and answer, or it can be a complex conversation. Being a cloud application, a bot can provide valuable and secure access to cloud services and corporate resources.
+This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.
 
-This is a sample chatbot application demonstrating Single Sign-on using `botbuilder` and Teams Framework that can respond to a `hello` message.
+![Graph Connector Overview](images/graph-connector-bot-demo.gif)
 
 ## Prerequisites
-
 - [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
-- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- An [Azure subscription](https://azure.microsoft.com/en-us/free/)
+- An Microsoft 365 account with admin permission. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 
-## Debug
+## What you will learn in this sample:
+- How to handle webhook notification when Graph connector is turned on or off in Teams Admin Center.
+- How to use Microsoft Graph API to integrate with Microsoft Graph connector.
+- How to use TeamsFx SDK to build bot to query data from Microsoft Graph connector.
 
-Clone this repo, navigate to bot-sso/ folder. Start debugging the project by hitting the `F5` key in Visual Studio Code. Alternatively use the `Run and Debug Activity Panel` in Visual Studio Code and click the `Start Debugging` green arrow button.
+## Try the Sample with Visual Studio Code Extension:
 
-If you encounter the ngrok page below when sending the `show` command to the bot, please follow the steps to solve this issue.
+### Local Debug the Sample
+1. Clone the repo to your local workspace or directly download the source code.
+1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
+1. Open the project in Visual Studio Code.
+1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
+1. Press "F5" to open a browser window and then select your package to view sample app. 
+1. Find the Teams package in `build\appPackage\appPackage.local.zip`.
+1. Navigate to [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and upload the Teams package.
+    > **Note**: If you are testing in a new debug session again, you need to delete the existing Teams app in Teams Admin Center and upload a new one, since the ngrok endpoint will change when you start a new debug session.
 
-1. Stop debugging in Visual Studio Code.
-2. Sign up an ngrok account in https://dashboard.ngrok.com/signup.
-3. Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
-4. Run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in Visual Studio Code terminal.
-5. Start debugging the project again by hitting the F5 key in Visual Studio Code.
+### (Optional) Provision and Deploy the Sample to Azure
+> If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
+1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to select Azure resource group to provision the sample.
+1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
+1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
+1. Use Teams Toolkit to [submit the Teams app to the Teams Admin Center](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#publish-to-your-organization).
+1. [Approve the Teams app for publishing to your organization's app store](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#admin-approval-for-teams-apps).
 
-![ngrok auth page](./images/ngrok-authtoken-page.png)
+## Use the app in Teams
+1. Navigate to 'Graph Connector' section of the Teams app in [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and click 'Grant permissions'.
 
-## Add a SSO Command
-- Follow the code in `bot-sso/bot/commands/showUserProfile.ts`, implemet `YourSSOCommand extends SSOCommand`
-- Export `YourSSOCommand` in `commands/index.ts`
-- You don't need to care about the details of SSO implements, the SSO process is in `bot-sso/helpers/ssoDialog.ts`, it will call `@microsoft/teamsfx` sdk to fetch SSO token, once got the token, it will call `YourSSOCommand.operationWithSSOToken`;
+    ![Grant permissions](images/grant-permission.png)
 
-## Edit the manifest
+1. Wait for connection status to be ready.
 
-You can find the Teams manifest in `templates/appPackage/manifest.json`. It contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
+    > **Note**: It may take about several minutes.
 
-## Deploy to Azure
+    ![Connection ready](images/connection-ready.png)
 
-Deploy your project to Azure by following these steps:
+1. In Teams, type `query <query string>` in bot conversation to query data from Graph connector.
 
-| From Visual Studio Code                                                                                                                                                                                                                                                                                                                                                  | Using TeamsFx CLI                                                                                                                                                                                                                   |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <ul><li>Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.</li> <li>After you signed in, select a subscription under your account.</li><li>Open the command palette and select: `Teams: Provision in the cloud`.</li><li>Open the command palette and select: `Teams: Deploy to the cloud`.</li></ul> | <ul> <li>Run command `teamsfx account login azure`.</li> <li>Run command `teamsfx account set --subscription <your-subscription-id>`.</li> <li> Run command `teamsfx provision`.</li> <li>Run command: `teamsfx deploy`. </li></ul> |
+    ![Query](images/query.png)
 
-> Note: Provisioning and deployment may incur charges to your Azure Subscription.
+1. In 'Graph Connector' section of Teams Admin Center, you could toggle the 'Connection status' to turn off Graph connector, then the connection will be deleted.
 
-## Preview
+## Architecture
 
-Once the provisioning and deployment steps are finished, you can preview your app:
+![Architecture](images/architecture.drawio.png)
 
-1. From Visual Studio Code, open the `Run and Debug Activity Panel`.
-1. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
-1. Press the Play (green arrow) button to launch your app - now running remotely from Azure.
+### Code structure
 
-## Validate manifest file
+- You can check app configuration and environment information in: [.fx](.fx)
+- You will find bot code in: [bot/commands/](bot/commands/)
+- You will find backend services code in: [bot/services/](bot/services/)
 
-To check that your manifest file is valid:
+## Code of Conduct
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 
-- From Visual Studio Code: open the command palette and select: `Teams: Validate manifest file`.
-- From TeamsFx CLI: run command `teamsfx validate` in your project directory.
-
-## Build
-
-- From Visual Studio Code: open the command palette and select `Teams: Zip Teams metadata package`.
-- Alternatively, from the command line run `teamsfx build` in the project directory.
-
-## Publish to Teams
-
-Once deployed, you may want to distribute your application to your organization's internal app store in Teams. Your app will be submitted for admin approval.
-
-- From Visual Studio Code: open the command palette and select: `Teams: Publish to Teams`.
-- From TeamsFx CLI: run command `teamsfx publish` in your project directory.
-
-## Further reading
-
-- [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
-- [Bot Framework Documentation](https://docs.botframework.com/)
-- [Azure Bot Service Introduction](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-- [Single sign-on (SSO) support for bots](https://docs.microsoft.com/en-us/microsoftteams/platform/bots/how-to/authentication/auth-aad-sso-bots#:~:text=%20Develop%20an%20SSO%20Teams%20bot%20%201,token%20is%20a%20normal%20POST%20message...%20More%20)
-- [Dialogs in the Bot Framework SDK](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-dialog?view=azure-bot-service-4.0)
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.

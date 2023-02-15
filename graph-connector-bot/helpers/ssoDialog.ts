@@ -6,6 +6,7 @@ import {
   ComponentDialog,
 } from "botbuilder-dialogs";
 import {
+  Activity,
   ActivityTypes,
   Storage,
   tokenExchangeOperationName,
@@ -14,7 +15,6 @@ import {
 import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 import oboAuthConfig from "../authConfig";
-import config from "../config";
 
 const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
@@ -22,22 +22,20 @@ const TEAMS_SSO_PROMPT_ID = "TeamsFxSsoPrompt";
 
 export class SSODialog extends ComponentDialog {
   private requiredScopes: string[] = ["User.Read"]; // hard code the scopes for demo purpose only
-  private dedupStorage: Storage;
+  private storage: Storage;
   private dedupStorageKeys: string[];
   private operationWithSSO: (
     arg0: any,
+    text: string,
     ssoToken: string
   ) => Promise<any> | undefined;
 
   // Developer controlls the lifecycle of credential provider, as well as the cache in it.
   // In this sample the provider is shared in all conversations
-  constructor(dedupStorage: Storage) {
+  constructor(storage: Storage) {
     super(DIALOG_NAME);
-
-    const initialLoginEndpoint =`https://${config.botDomain}/auth-start.html` ;
-
-    const dialog = new TeamsBotSsoPrompt(
-      oboAuthConfig,
+    const initialLoginEndpoint = process.env.INITIATE_LOGIN_ENDPOINT;
+    const dialog = new TeamsBotSsoPrompt(oboAuthConfig, 
       initialLoginEndpoint,
       TEAMS_SSO_PROMPT_ID,
       {
@@ -56,12 +54,12 @@ export class SSODialog extends ComponentDialog {
     );
 
     this.initialDialogId = MAIN_WATERFALL_DIALOG;
-    this.dedupStorage = dedupStorage;
+    this.storage = storage;
     this.dedupStorageKeys = [];
   }
 
   setSSOOperation(
-    handler: (arg0: any, arg1: string) => Promise<any> | undefined
+    handler: (arg0: any, text: string, arg1: string) => Promise<any> | undefined
   ) {
     this.operationWithSSO = handler;
   }
@@ -99,16 +97,23 @@ export class SSODialog extends ComponentDialog {
     return await stepContext.next(tokenResponse);
   }
 
+  async setText(context: TurnContext, text: string) {
+    const key = this.getTextStorageKey(context)
+    await this.storage.write({ [key]: { text } });
+  }
+
   async executeOperationWithSSO(stepContext: any) {
     const tokenResponse = stepContext.result;
     if (!tokenResponse || !tokenResponse.ssoToken) {
       await stepContext.context.sendActivity(
-        "There is an issue while trying to sign you in and retrieve your profile photo, please type \"show\" command to login and consent permissions again."
+        "There is an issue while trying to sign you in, please type \"query\" command to login and consent permissions again."
       );
     } else {
       // Once got ssoToken, run operation that depends on ssoToken
       if (this.operationWithSSO) {
-        await this.operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+        const key = this.getTextStorageKey(stepContext.context)
+        const text = (await this.storage.read([key]))[key].text;
+        await this.operationWithSSO(stepContext.context, text, tokenResponse.ssoToken);
       }
     }
     return await stepContext.endDialog();
@@ -119,7 +124,7 @@ export class SSODialog extends ComponentDialog {
     const currentDedupKeys = this.dedupStorageKeys.filter(
       (key) => key.indexOf(conversationId) > 0
     );
-    await this.dedupStorage.delete(currentDedupKeys);
+    await this.storage.delete(currentDedupKeys);
     this.dedupStorageKeys = this.dedupStorageKeys.filter(
       (key) => key.indexOf(conversationId) < 0
     );
@@ -139,7 +144,7 @@ export class SSODialog extends ComponentDialog {
     const storeItems = { [key]: storeItem };
 
     try {
-      await this.dedupStorage.write(storeItems);
+      await this.storage.write(storeItems);
       this.dedupStorageKeys.push(key);
     } catch (err) {
       if (err instanceof Error && err.message.indexOf("eTag conflict")) {
@@ -172,5 +177,22 @@ export class SSODialog extends ComponentDialog {
       );
     }
     return `${channelId}/${conversationId}/${value.id}`;
+  }
+
+  getTextStorageKey(context: TurnContext): string {
+    const activity: Activity = context.activity;
+    const channelId: string = activity.channelId;
+    const conversationId: string =
+      activity && activity.conversation && activity.conversation.id ? activity.conversation.id : undefined;
+
+    if (!channelId) {
+      throw new Error('missing activity.channelId');
+    }
+
+    if (!conversationId) {
+      throw new Error('missing activity.conversation.id');
+    }
+
+    return `${channelId}/conversations/${conversationId}`;
   }
 }

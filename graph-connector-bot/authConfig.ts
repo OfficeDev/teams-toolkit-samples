@@ -1,11 +1,11 @@
-import { OnBehalfOfCredentialAuthConfig } from "@microsoft/teamsfx";
+import { AppCredentialAuthConfig, OnBehalfOfCredentialAuthConfig } from "@microsoft/teamsfx";
 import config from "./config";
 
-const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
+const authConfig: OnBehalfOfCredentialAuthConfig | AppCredentialAuthConfig = {
   authorityHost: config.authorityHost,
   clientId: config.clientId,
   tenantId: config.tenantId,
   clientSecret: config.clientSecret,
 };
 
-export default oboAuthConfig;
+export default authConfig;

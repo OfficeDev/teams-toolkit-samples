@@ -1,17 +1,20 @@
 // Import required packages
-import * as restify from "restify";
 import * as path from "path";
+import * as restify from "restify";
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 import {
   CloudAdapter,
   ConfigurationServiceClientCredentialFactory,
-  ConfigurationBotFrameworkAuthentication, TurnContext
+  ConfigurationBotFrameworkAuthentication,
+  TurnContext,
 } from "botbuilder";
 
 // This bot's main dialog.
 import { TeamsBot } from "./teamsBot";
+import { SSODialog } from "./helpers/ssoDialog";
+import { NotificationHandler } from "./services/notificationHandler";
 import config from "./config";
 
 // Create adapter.
@@ -49,8 +52,10 @@ const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
   await context.sendActivity("To continue to run this bot, please fix the bot source code.");
 };
 
-// Set the onTurnError for the singleton CloudAdapter
+// Set the onTurnError for the singleton BotFrameworkAdapter.
 adapter.onTurnError = onTurnErrorHandler;
+
+
 
 // Create the bot that will handle incoming messages.
 const bot = new TeamsBot();
@@ -61,7 +66,7 @@ server.use(restify.plugins.bodyParser());
 server.listen(process.env.port || process.env.PORT || 3978, () => {
   console.log(`\nBot Started, ${server.name} listening to ${server.url}`);
 });
-
+server.use(restify.plugins.bodyParser());
 
 // Listen for incoming requests.
 server.post("/api/messages", async (req, res) => {
@@ -75,6 +80,12 @@ server.post("/api/messages", async (req, res) => {
         throw err;
       }
     });
+});
+
+server.post("/api/notification", async (req, res) => {
+  // By design to not use 'await' in order to immediately return an HTTP 202 and process webhook notification in background.
+  NotificationHandler.processGraphWebhookChangeNotification(req);
+  res.send(202);
 });
 
 server.get(

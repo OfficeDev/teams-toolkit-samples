@@ -9,4 +9,8 @@ export class Utils {
     const card = CardFactory.adaptiveCard(cardWithData);
     return card;
   }
+
+  static getConnectionId(): string {
+    return process.env.BOT_ID.replace(/[^A-Za-z0-9]/g, '');
+  }
 }

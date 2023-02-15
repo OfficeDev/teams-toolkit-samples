@@ -5,19 +5,19 @@
       "type": "TextBlock",
       "size": "Medium",
       "weight": "Bolder",
-      "text": "Your Hello World Bot is Running"
+      "text": "Your Graph Connector Bot is Running"
     },
     {
       "type": "TextBlock",
-      "text": "Congratulations! Your hello world bot is running. Click the documentation below to learn more about Bots and the Teams Toolkit.",
+      "text": "Congratulations! Your hello world bot is running. Click the documentation below to learn more about Microsoft Graph connectors and the Teams Toolkit.",
       "wrap": true
     }
   ],
   "actions": [
     {
       "type": "Action.OpenUrl",
-      "title": "Bot Framework Docs",
-      "url": "https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0"
+      "title": "Microsoft Graph connectors Docs",
+      "url": "https://developer.microsoft.com/en-us/graph/connectors"
     },
     {
       "type": "Action.OpenUrl",

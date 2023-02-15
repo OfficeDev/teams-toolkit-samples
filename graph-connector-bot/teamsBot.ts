@@ -13,7 +13,6 @@ import { Utils } from "./helpers/utils";
 import { SSODialog } from "./helpers/ssoDialog";
 import { CommandsHelper } from "./helpers/commandHelper";
 const rawWelcomeCard = require("./adaptiveCards/welcome.json");
-const rawLearnCard = require("./adaptiveCards/learn.json");
 
 export class TeamsBot extends TeamsActivityHandler {
   likeCountObj: { likeCount: number };
@@ -53,6 +52,7 @@ export class TeamsBot extends TeamsActivityHandler {
         txt = removedMentionText.toLowerCase().replace(/\n|\r/g, "").trim();
       }
 
+      this.dialog.setText(context, txt);
       // Trigger command by IM text
       await CommandsHelper.triggerCommand(txt, {
         context: context,
@@ -76,25 +76,6 @@ export class TeamsBot extends TeamsActivityHandler {
       }
       await next();
     });
-  }
-
-  // Invoked when an action is taken on an Adaptive Card. The Adaptive Card sends an event to the Bot and this
-  // method handles that event.
-  async onAdaptiveCardInvoke(
-    context: TurnContext,
-    invokeValue: AdaptiveCardInvokeValue
-  ): Promise<AdaptiveCardInvokeResponse> {
-    // The verb "userlike" is sent from the Adaptive Card defined in adaptiveCards/learn.json
-    if (invokeValue.action.verb === "userlike") {
-      this.likeCountObj.likeCount++;
-      const card = Utils.renderAdaptiveCard(rawLearnCard, this.likeCountObj);
-      await context.updateActivity({
-        type: "message",
-        id: context.activity.replyToId,
-        attachments: [card],
-      });
-      return { statusCode: 200, type: undefined, value: undefined };
-    }
   }
 
   async run(context: TurnContext) {
