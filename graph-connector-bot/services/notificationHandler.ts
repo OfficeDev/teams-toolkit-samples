@@ -6,13 +6,14 @@ import { Utils as BotUtils } from "../helpers/utils";
 import { readFile } from "fs/promises";
 import * as path from "path";
 import { parse } from 'csv-parse/sync';
+import config from "../config";
 
 export class NotificationHandler {
     static async processGraphWebhookChangeNotification(req: restify.Request) {
         console.log("Received Graph Webhook Change Notification.");
         const validationToken = req.body?.validationTokens[0];
 
-        await Utils.validateToken(validationToken, process.env.M365_TENANT_ID, process.env.M365_CLIENT_ID);
+        await Utils.validateToken(validationToken, config.tenantId, config.clientId);
 
         const graphService = new GraphService();
         const connectionId = BotUtils.getConnectionId();
