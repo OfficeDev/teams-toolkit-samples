@@ -1,5 +1,5 @@
 {
-  "name": "sso-bot-sample",
+  "name": "graph-connector-bot",
   "version": "1.0.0",
   "description": "Microsoft Teams Toolkit sso bot sample",
   "engines": {

@@ -15,12 +15,12 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "sso-bot-${{TEAMSFX_ENV}}",
-        "full": "full name for sso-bot"
+        "short": "graph-connector-bot-${{TEAMSFX_ENV}}",
+        "full": "full name for graph-connector-bot"
     },
     "description": {
-        "short": "short description for sso-bot",
-        "full": "full description for sso-bot"
+        "short": "short description for graph-connector-bot",
+        "full": "full description for graph-connector-bot"
     },
     "accentColor": "#FFFFFF",
     "bots": [

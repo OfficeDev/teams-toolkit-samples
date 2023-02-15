@@ -6,7 +6,7 @@ provision:
 
   - uses: botAadApp/create # Creates a new AAD app for Bot Registration.
     with:
-      name: sso-bot-aad
+      name: graph-connector-bot-aad
     # Output: following environment variable will be persisted in current environment's .env file.
     # BOT_ID: the AAD app client id created for Bot Registration.
     # SECRET_BOT_PASSWORD: the AAD app client secret created for Bot Registration.
@@ -38,7 +38,7 @@ deploy:
 registerApp:
   - uses: aadApp/create # Creates a new AAD app to authenticate users if AAD_APP_CLIENT_ID environment variable is empty
     with:
-      name: sso-bot-aad # Note: when you run configure/aadApp, the AAD app name will be updated based on the definition of manifest. If you don't want to change the name, ensure the name in AAD manifest is same with the name defined here.
+      name: graph-connector-bot-aad # Note: when you run configure/aadApp, the AAD app name will be updated based on the definition of manifest. If you don't want to change the name, ensure the name in AAD manifest is same with the name defined here.
       generateClientSecret: true # If the value is false, the action will not generate client secret for you
       # Output: following environment variable will be persisted in current environment's .env file.
       # AAD_APP_CLIENT_ID: the client id of AAD app
@@ -49,7 +49,7 @@ registerApp:
       # AAD_APP_OAUTH_AUTHORITY: the OAUTH authority of AAD app
   - uses: teamsApp/create # Creates a Teams app
     with:
-      name: sso-bot-${{TEAMSFX_ENV}} # Teams app name
+      name: graph-connector-bot-${{TEAMSFX_ENV}} # Teams app name
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
 
