@@ -90,7 +90,7 @@
         }
     ],
     "identifierUris": [
-        "api://${{TAB_DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
+        "api://${{TAB_DOMAIN}}/botid-${{BOT_ID}}"
     ],
     "replyUrlsWithType": [
         {
