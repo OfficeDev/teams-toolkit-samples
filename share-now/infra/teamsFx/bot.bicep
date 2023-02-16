@@ -18,7 +18,7 @@ var botAadAppClientSecret = provisionParameters['botAadAppClientSecret']
 
 var botId = provisionParameters['botAadAppClientId']
 
-var m365ApplicationIdUri = 'api://${provisionOutputs.frontendHostingOutput.value.domain}/botid-${botId}'
+var m365ApplicationIdUri = 'api://${provisionOutputs.frontendHostingOutput.value.domain}/${m365ClientId}'
 
 resource botWebAppSettings 'Microsoft.Web/sites/config@2021-02-01' = {
   name: '${botWebAppName}/appsettings'
