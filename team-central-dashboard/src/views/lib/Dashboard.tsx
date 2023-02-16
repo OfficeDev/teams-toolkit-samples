@@ -1,7 +1,7 @@
 import React, { Component, CSSProperties } from "react";
 
 import { mergeStyles } from "@fluentui/react";
-import { getClassName } from "./Dashboard.styles";
+import { dashboardStyle } from "./Dashboard.styles";
 
 interface IDashboardState {
   isMobile?: boolean;
@@ -63,7 +63,7 @@ export class Dashboard extends Component<any, IDashboardState> {
    * Define thie dashboard default layout, you can edit the code here to customize your dashboard layout.
    */
   render() {
-    let { root } = getClassName();
+    let root = dashboardStyle(this.state.isMobile, this.rowHeights(), this.columnWidths());
     return (
       <div
         ref={this.ref}

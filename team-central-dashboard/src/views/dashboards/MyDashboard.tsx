@@ -24,7 +24,7 @@ export default class MyDashboard extends Dashboard {
           <>
             <Image className="img-style" src="bg.png" />
             <Chart />
-            <div style={oneColumn()}>
+            <div className={oneColumn()}>
               <Calendar />
               <Task />
             </div>
