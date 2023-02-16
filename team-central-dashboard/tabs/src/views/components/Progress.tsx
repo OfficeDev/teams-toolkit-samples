@@ -17,8 +17,7 @@ const ProgressBar = (props: any) => {
 
   return (
     <div style={containerStyles}>
-      <div style={fillerStyles}>
-      </div>
+      <div style={fillerStyles}></div>
     </div>
   );
 };

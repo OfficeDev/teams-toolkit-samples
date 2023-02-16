@@ -1,8 +1,5 @@
 import { Client } from "@microsoft/microsoft-graph-client";
-import {
-  createMicrosoftGraphClientWithCredential,
-  TeamsUserCredential,
-} from "@microsoft/teamsfx";
+import { createMicrosoftGraphClientWithCredential, TeamsUserCredential } from "@microsoft/teamsfx";
 
 import { TeamsUserCredentialContext } from "../internal/singletonContext";
 import { CalendarModel } from "../models/calendarModel";
@@ -11,15 +8,6 @@ export async function getCalendar(): Promise<CalendarModel[]> {
   var credential: TeamsUserCredential;
   try {
     credential = TeamsUserCredentialContext.getInstance().getCredential();
-    const token = await credential.getToken(["Calendars.Read"]);
-    let tokenstr = "";
-    if (token) tokenstr = token.token;
-  } catch (e) {
-    alert(e);
-    throw e;
-  }
-
-  try {
     const graphClient: Client = createMicrosoftGraphClientWithCredential(credential, [
       "Calendars.Read",
     ]);

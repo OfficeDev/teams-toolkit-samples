@@ -59,7 +59,7 @@ export default class MyDashboard extends Dashboard {
     this.setState({ showLogin: false });
   }
 
-  protected customiseDashboardStyle(): CSSProperties | undefined {
+  protected stylingDashboard(): CSSProperties | string {
     return this.state.showLogin === false
       ? {
           marginTop: "5%",

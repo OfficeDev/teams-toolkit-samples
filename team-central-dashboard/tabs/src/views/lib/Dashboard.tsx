@@ -67,7 +67,7 @@ export class Dashboard extends Component<any, IDashboardState> {
         ref={this.ref}
         style={{
           ...dashboardStyles(this.state.isMobile, this.rowHeights(), this.columnWidths()),
-          ...this.customiseDashboardStyle(),
+          ...this.stylingDashboard(),
         }}
       >
         {this.dashboardLayout()}
@@ -100,7 +100,7 @@ export class Dashboard extends Component<any, IDashboardState> {
     return undefined;
   }
 
-  protected customiseDashboardStyle(): CSSProperties | undefined {
+  protected stylingDashboard(): CSSProperties | undefined {
     return undefined;
   }
 }
