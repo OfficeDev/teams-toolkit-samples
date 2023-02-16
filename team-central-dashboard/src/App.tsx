@@ -15,9 +15,9 @@ import TabConfig from "./views/TabConfig";
 import TermsOfUse from "./views/TermsOfUse";
 
 export default function App() {
-  const { themeString, teamsfx } = useTeamsFx();
+  const { themeString} = useTeamsFx();
   return (
-    <TeamsFxContext.Provider value={{ themeString, teamsfx }}>
+    <TeamsFxContext.Provider value={{ themeString }}>
       <FluentProvider
         theme={
           themeString === "dark"
