@@ -17,7 +17,9 @@ export async function getTasks(): Promise<TaskModel[]> {
     const tasklists = await graphClient.api("/me/todo/lists").get();
     const myFirstTaskList = tasklists["value"][0];
     const todoTaskListId: string = myFirstTaskList["id"];
-    const resp = await graphClient.api(`/me/todo/lists/${todoTaskListId}/tasks?$top=3`).get();
+    const resp = await graphClient
+      .api(`/me/todo/lists/${todoTaskListId}/tasks?$filter=status ne 'completed'&$top=3`)
+      .get();
     const tasksInfo = resp["value"];
     let tasks: TaskModel[] = [];
     for (const obj of tasksInfo) {
