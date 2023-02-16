@@ -45,6 +45,8 @@ Team Central Dashboard shows you how to build a tab with data chats and content 
 ### Area Chart
 This widget displays a chart and a table with dummy data. You can select a date range to filter the data. 
 
+<img src="public\area-chart.png" style="zoom: 50%"> 
+
 ### Team Collaboration
 This widget displays some collaboration cards with dummy data.
 
@@ -61,9 +63,9 @@ This widget displays the upcoming events on your calendar. You can click the `Jo
 
 This widget displays your to-do tasks. Your can input a task name and click the `Add` button to add a new task. You also can click the `View all` button to open your task app.
 
-<img src="public\add-task.png" style="zoom: 50%">
+<img src="public\add-task.png" style="zoom: 45%">
 
-<img src="public\task-notification.png" style="zoom: 50%">
+<img src="public\task-notification.png">
 
 ### Your documents
 This widget displays your content files in OneDrive. You can click one to open it. You can also click the `...` button on the right to choose the way to open the file, download the file or copy the file link.
