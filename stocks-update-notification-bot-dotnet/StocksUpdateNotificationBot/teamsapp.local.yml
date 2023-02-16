@@ -1,9 +1,11 @@
+# Visit https://aka.ms/teamsfx-v5.0-guide for details on this file
+# Visit https://aka.ms/teamsfx-actions for details on actions
 version: 1.0.0
 
 registerApp:
   - uses: teamsApp/create # Creates a Teams app
     with:
-      name: stocks-update-notif-bot # Teams app name
+      name: stocks-update-notif-bot-${{TEAMSFX_ENV}} # Teams app name
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
 
@@ -15,7 +17,7 @@ provision:
     # BOT_ID: the AAD app client id created for bot
     # SECRET_BOT_PASSWORD: the AAD app client secret created for bot
 
-  - uses: appsettings/generate
+  - uses: file/updateJson # Generate runtime appsettings to JSON file
     with:
       target: ./appsettings.Development.json
       appsettings:
@@ -36,7 +38,7 @@ configureApp:
     with:
       manifestPath: ./appPackage/manifest.json # Path to manifest template
 
-  - uses: teamsApp/createAppPackage # Build Teams app package with latest env value
+  - uses: teamsApp/zipAppPackage # Build Teams app package with latest env value
     with:
       manifestPath: ./appPackage/manifest.json # Path to manifest template
       outputZipPath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip
