@@ -2,7 +2,7 @@
   "name": "teamsfx-sample-share-now-function",
   "version": "1.0.0",
   "scripts": {
-    "dev:teamsfx": "env-cmd --silent -f .env.teamsfx.local npm run dev",
+    "dev:teamsfx": "env-cmd --silent -f .localSettings npm run dev",
     "dev": "func start --typescript --language-worker=\"--inspect=9229\" --port \"7071\" --cors \"*\"",
     "watch:teamsfx": "tsc --watch",
     "build": "tsc",
