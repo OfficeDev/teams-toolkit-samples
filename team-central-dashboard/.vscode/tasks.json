@@ -23,10 +23,7 @@
             "args": {
                 "prerequisites": [
                     "nodejs", // Validate if Node.js is installed.
-                    "m365Account", // Sign-in prompt for Microsoft 365 account, then validate if the account enables the sideloading permission.
-                    "devCert", // Install localhost SSL certificate. It's used to serve the development sites over HTTPS to debug the Tab app in Teams.
-                    "func", // Install Azure Functions Core Tools. It's used to serve Azure Functions hosted project locally.
-                    "dotnet", // Ensure .NET Core SDK is installed. TeamsFx Azure Functions project depends on extra .NET binding extensions for HTTP trigger authorization.
+                    "m365Account", // Sign-in prompt for Microsoft 365 account, then validate if the account enables the sideloading permission.                    
                     "portOccupancy" // Validate available ports to ensure those debug ones are not occupied.
                 ],
                 "portOccupancy": [
