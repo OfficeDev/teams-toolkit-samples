@@ -186,7 +186,7 @@ export class Chart extends Widget<IChartWidgetState> {
             </div>
             {tableData.map((item: TableModel, index) => {
               return (
-                <>
+                <div key={`div-table-content-${item.id}`} className="column-divider-layout">
                   {index !== 0 && <div key={`table-divider-${item.id}`} className="divider" />}
                   <div key={`div-table-column-${item.id}`} className="table-column">
                     <div key={`div-table-title-${item.id}`} className="title">
@@ -233,7 +233,7 @@ export class Chart extends Widget<IChartWidgetState> {
                       </Text>
                     </div>
                   </div>
-                </>
+                </div>
               );
             })}
           </div>
