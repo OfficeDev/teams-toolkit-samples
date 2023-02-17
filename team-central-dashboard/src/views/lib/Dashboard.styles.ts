@@ -34,7 +34,7 @@ export const oneColumn = (heights?: string, width?: string): string => {
     return mergeStyles({
         display: "grid",
         gap: "20px",
-        ...(heights !== undefined ? { gridTemplateRows: heights } : { gridTemplateRows: "1fr" }),
+        ...(heights !== undefined ? { gridTemplateRows: heights } : {}),
         ...(width !== undefined ? { gridTemplateColumns: width } : { gridTemplateColumns: "1fr" }),
     });
 };

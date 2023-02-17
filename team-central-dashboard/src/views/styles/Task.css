@@ -9,6 +9,7 @@
   gap: 0.25rem;
   overflow-x: hidden;
   min-width: 18rem;
+  align-content: start;
 }
 
 .no-task-layout {
