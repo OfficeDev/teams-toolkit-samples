@@ -22,6 +22,9 @@ provision:
     # Output: N/A
 
 deploy:
+  - uses: prerequisite/install # Install dependencies
+    with:
+      dotnet: true
   - uses: cli/runNpmCommand # Run npm command
     with:
       workingDirectory: tabs
@@ -52,6 +55,7 @@ deploy:
     with:
       workingDirectory: api
       args: build extensions.csproj -o bin --ignore-failed-sources
+      execPath: ${{DOTNET_PATH}}
   - uses: azureFunctions/deploy
     with:
       # deploy base folder

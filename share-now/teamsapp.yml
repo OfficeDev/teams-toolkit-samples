@@ -65,10 +65,14 @@ deploy:
     with:
       workingDirectory: api
       args: install
+  - uses: prerequisite/install # Install dependencies
+    with:
+      dotnet: true
   - uses: cli/runDotnetCommand
     with:
       workingDirectory: api
       args: build extensions.csproj -o bin --ignore-failed-sources
+      execPath: ${{DOTNET_PATH}}
   - uses: cli/runNpmCommand
     with:
       workingDirectory: api
