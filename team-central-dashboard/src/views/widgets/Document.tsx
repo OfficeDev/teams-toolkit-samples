@@ -183,7 +183,7 @@ export class Documents extends Widget<IDocumentState> {
 
   protected loadingContent(): JSX.Element | undefined {
     return (
-      <div style={{ display: "grid" }}>
+      <div className="loading-layout">
         <Spinner label="Loading..." labelPosition="below" />
       </div>
     );

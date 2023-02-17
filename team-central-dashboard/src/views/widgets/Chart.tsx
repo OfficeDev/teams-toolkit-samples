@@ -219,7 +219,7 @@ export class Chart extends Widget<IChartWidgetState> {
                       />
                       <Text key={`text-owner-${item.id}`}>{item.ownerName}</Text>
                     </div>
-                    <Text key={`text-priority-${item.id}`} style={{ minWidth: "4rem" }}>
+                    <Text key={`text-priority-${item.id}`} className="min-width-4">
                       {item.priority}
                     </Text>
                     <div key={`div-state-${item.id}`} className="state-layout">

@@ -32,14 +32,7 @@ export default class MyDashboard extends Dashboard {
             <Documents />
           </>
         ) : (
-          <div
-            style={{
-              width: "100vw",
-              height: "100vh",
-              display: "grid",
-              placeItems: "center",
-            }}
-          >
+          <div className="spinner-layout">
             <Spinner size="huge" />
           </div>
         )}

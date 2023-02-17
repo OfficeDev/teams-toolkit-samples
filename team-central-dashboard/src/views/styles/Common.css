@@ -3,6 +3,10 @@
   gap: 1rem;
 }
 
+.loading-layout {
+  display: grid;
+}
+
 .empty-img {
   height: 120px;
   justify-self: center;
@@ -10,7 +14,7 @@
 
 .empty-text {
   justify-content: center;
-  text-align: center;
+  text-align: center !important;
 }
 
 .widget-padding {

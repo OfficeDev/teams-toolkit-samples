@@ -99,7 +99,7 @@ export class Task extends Widget<ITaskState> {
             );
           })
         ) : (
-          <div>
+          <div className="empty-layout">
             <EmptyThemeImg key="img-empty" />
             <Text key="text-empty" weight="semibold" className="empty-text">
               Once you have a task, you'll find it here
@@ -127,7 +127,7 @@ export class Task extends Widget<ITaskState> {
 
   protected loadingContent(): JSX.Element | undefined {
     return (
-      <div style={{ display: "grid" }}>
+      <div className="loading-layout">
         <Spinner label="Loading..." labelPosition="below" />
       </div>
     );
