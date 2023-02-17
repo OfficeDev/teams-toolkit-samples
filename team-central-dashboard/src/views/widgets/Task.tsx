@@ -204,8 +204,8 @@ export class Task extends Widget<ITaskState> {
         addBtnOver: false,
         loading: false,
       });
-      this.inputRef.current.value = "";
       callFunction(this.inputRef.current.value);
+      this.inputRef.current.value = "";
     }
   };
 
