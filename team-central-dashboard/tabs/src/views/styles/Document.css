@@ -54,8 +54,8 @@
   align-items: center;
 }
 
-.footer-padding {
-  padding: 0px 1.25rem 1.25rem 1.25rem !important;
+.footer-margin {
+  margin: 0px 1.25rem 1.25rem 1.25rem !important;
 }
 
 .doc-no-padding {

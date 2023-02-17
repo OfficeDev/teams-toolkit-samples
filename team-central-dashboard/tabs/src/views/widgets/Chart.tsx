@@ -186,7 +186,7 @@ export class Chart extends Widget<IChartWidgetState> {
             </div>
             {tableData.map((item: TableModel, index) => {
               return (
-                <>
+                <div key={`div-table-content-${item.id}`} className="column-divider-layout">
                   {index !== 0 && <div key={`table-divider-${item.id}`} className="divider" />}
                   <div key={`div-table-column-${item.id}`} className="table-column">
                     <div key={`div-table-title-${item.id}`} className="title">
@@ -219,7 +219,7 @@ export class Chart extends Widget<IChartWidgetState> {
                       />
                       <Text key={`text-owner-${item.id}`}>{item.ownerName}</Text>
                     </div>
-                    <Text key={`text-priority-${item.id}`} style={{ minWidth: "4rem" }}>
+                    <Text key={`text-priority-${item.id}`} className="min-width-4">
                       {item.priority}
                     </Text>
                     <div key={`div-state-${item.id}`} className="state-layout">
@@ -233,7 +233,7 @@ export class Chart extends Widget<IChartWidgetState> {
                       </Text>
                     </div>
                   </div>
-                </>
+                </div>
               );
             })}
           </div>

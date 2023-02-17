@@ -4,6 +4,7 @@
   overflow-x: hidden;
   min-width: 18rem;
   grid-template-rows: repeat(2, max-content);
+  align-content: start;
 }
 
 .no-meeting-layout {
