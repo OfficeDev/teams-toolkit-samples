@@ -38,8 +38,7 @@ deploy:
       args: install
   - uses: cli/runNpmCommand # Run npm command
     with:
-      workingDirectory: .
-      args: run build:tab --if-present
+      args: run build
   - uses: azureStorage/deploy # Deploy bits to Azure Storage Static Website
     with:
       distributionPath: ./tab/build # Deploy base folder
