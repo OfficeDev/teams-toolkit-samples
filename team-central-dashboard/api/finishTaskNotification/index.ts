@@ -81,10 +81,8 @@ export default async function run(
     };
   }
 
-  /////
   try {
     // do sth here, to call activity notification api
-    //
     const graphClient_userId: Client = await createMicrosoftGraphClient(teamsfx, ["User.Read"]);
     const userId = await graphClient_userId.api("/me").get()["id"];
     // get installationId
@@ -102,12 +100,6 @@ export default async function run(
       previewText: {
         content: "Task Created",
       },
-      // templateParameters: [
-      //   {
-      //     name: "taskId",
-      //     value: "12322",
-      //   },
-      // ],
     };
 
     let teamsfx_app: TeamsFx;

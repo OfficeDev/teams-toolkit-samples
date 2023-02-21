@@ -1,5 +1,5 @@
-import { tokens } from "@fluentui/react-components";
 import { mergeStyleSets } from "@fluentui/react";
+import { tokens } from "@fluentui/react-components";
 
 export const widgetStyle = mergeStyleSets({
   root: {

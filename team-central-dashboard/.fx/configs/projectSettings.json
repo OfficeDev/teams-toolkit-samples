@@ -1,7 +1,7 @@
 {
     "appName": "team-central-dashboard",
-    "projectId": "dd696907-c5d2-40f3-8f7c-3c0d656f914b",
     "version": "2.1.0",
+    "isFromSample": true,
     "components": [
         {
             "name": "teams-tab",
