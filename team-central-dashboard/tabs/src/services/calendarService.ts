@@ -1,8 +1,5 @@
 import { Client } from "@microsoft/microsoft-graph-client";
-import {
-  createMicrosoftGraphClientWithCredential,
-  TeamsUserCredential,
-} from "@microsoft/teamsfx";
+import { createMicrosoftGraphClientWithCredential, TeamsUserCredential } from "@microsoft/teamsfx";
 
 import { TeamsUserCredentialContext } from "../internal/singletonContext";
 import { CalendarModel } from "../models/calendarModel";
@@ -11,21 +8,14 @@ export async function getCalendar(): Promise<CalendarModel[]> {
   var credential: TeamsUserCredential;
   try {
     credential = TeamsUserCredentialContext.getInstance().getCredential();
-    const token = await credential.getToken(["Calendars.Read"]);
-    let tokenstr = "";
-    if (token) tokenstr = token.token;
-  } catch (e) {
-    alert(e);
-    throw e;
-  }
-
-  try {
     const graphClient: Client = createMicrosoftGraphClientWithCredential(credential, [
       "Calendars.Read",
     ]);
+    let endOfDay = new Date();
+    endOfDay.setUTCHours(23, 59, 59, 999);
     const calendarResponse = await graphClient
       .api(
-        `/me/events?$top=2&$select=subject,bodyPreview,organizer,attendees,start,end,location,onlineMeeting&$filter=start/dateTime ge '${new Date().toDateString()}'`
+        `/me/events?$top=2&$select=subject,bodyPreview,organizer,attendees,start,end,location,onlineMeeting&$filter=start/dateTime ge '${new Date().toUTCString()}' and start/dateTime lt '${endOfDay.toUTCString()}'`
       )
       .get();
     const calendarValue = calendarResponse["value"];

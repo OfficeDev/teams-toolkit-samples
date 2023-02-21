@@ -1,3 +1,5 @@
+import "./App.css";
+
 import { HashRouter as Router, Redirect, Route } from "react-router-dom";
 
 import {
@@ -26,10 +28,7 @@ export default function App() {
             ? teamsHighContrastTheme
             : teamsLightTheme
         }
-        style={{
-          height: "100vh",
-          background: "var(--Background)",
-        }}
+        className="app"
       >
         <Router>
           <Route exact path="/">

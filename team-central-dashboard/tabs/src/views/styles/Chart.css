@@ -96,6 +96,11 @@
   line-height: 1rem !important;
 }
 
+.column-divider-layout {
+  display: grid;
+  gap: 0.6rem;
+}
+
 .table-column {
   display: grid;
   grid-template-columns: 8fr 4fr 4fr 2fr 2fr;
