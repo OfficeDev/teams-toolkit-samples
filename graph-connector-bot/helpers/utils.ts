@@ -1,5 +1,6 @@
 import { CardFactory, Attachment } from "botbuilder";
 import ACData = require("adaptivecards-templating");
+import config from "../config";
 
 export class Utils {
   // Bind AdaptiveCard with data
@@ -11,6 +12,6 @@ export class Utils {
   }
 
   static getConnectionId(): string {
-    return process.env.BOT_ID.replace(/[^A-Za-z0-9]/g, '');
+    return config.botId.replace(/[^A-Za-z0-9]/g, '');
   }
 }
