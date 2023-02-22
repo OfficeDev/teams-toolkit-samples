@@ -16,6 +16,8 @@ param location string = resourceGroup().location
 param serverfarmsName string = resourceBaseName
 param functionAppName string = resourceBaseName
 param functionStorageName string = '${resourceBaseName}api'
+param teamsAppId string
+param allowedAppIds string
 var oauthAuthority = uri(aadAppOauthAuthorityHost, aadAppTenantId)
 
 // Azure Storage that hosts your static web site
@@ -106,6 +108,14 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
         {
           name: 'M365_APPLICATION_ID_URI'
           value: aadApplicationIdUri
+        }
+        {
+          name: 'TEAMS_APP_ID'
+          value: teamsAppId
+        }
+        {
+          name: 'ALLOWED_APP_IDS'
+          value: allowedAppIds
         }
       ]
       ftpsState: 'FtpsOnly'
