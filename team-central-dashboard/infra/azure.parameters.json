@@ -28,9 +28,6 @@
     },
     "teamsAppId": {
       "value": "${{TEAMS_APP_ID}}"
-    },
-    "allowedAppIds": {
-      "value": "${{ALLOWED_APP_IDS}}"
     }
   }
 }
