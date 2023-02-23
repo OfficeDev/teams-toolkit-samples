@@ -50,10 +50,10 @@ export function generateTeamsUrl(obj: any): string {
       : fileType.substring(fileType.indexOf("application/" + 12)));
   // objectUrl
   const objectURL: string = obj["remoteItem"]["webDavUrl"];
-  url += "&objectUrl=" + objectURL.replace(":", "%3A").replace("/", "%2F");
+  url += "&objectUrl=" + objectURL.replaceAll(":", "%3A").replaceAll("/", "%2F");
   // baseUrl
   const baseUrl: string = obj["remoteItem"]["sharepointIds"]["siteUrl"];
-  url += "&baseUrl=" + baseUrl.replace(":", "%3A").replace("/", "%2F");
+  url += "&baseUrl=" + baseUrl.replaceAll(":", "%3A").replaceAll("/", "%2F");
 
   console.log(url);
 
@@ -63,7 +63,7 @@ export function generateTeamsUrl(obj: any): string {
 export async function getDocuments(): Promise<DocumentModel[]> {
   let credential: TeamsUserCredential;
   try {
-    credential = TeamsUserCredentialContext.getInstance().getCredential();    
+    credential = TeamsUserCredentialContext.getInstance().getCredential();
     const graphClient: Client = createMicrosoftGraphClientWithCredential(credential, [
       "Files.Read",
     ]);
