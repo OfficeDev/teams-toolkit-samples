@@ -58,7 +58,7 @@
             "internalConsoleOptions": "neverOpen"
         },
         {
-            "name": "Attach to Frontend in Office (Edge)",
+            "name": "Attach to Frontend in Microsoft 365 app (Edge)",
             "type": "pwa-msedge",
             "request": "launch",
             "url": "https://www.office.com/m365apps/${localTeamsAppInternalId}?auth=2&${account-hint}",
@@ -72,7 +72,7 @@
             "internalConsoleOptions": "neverOpen"
         },
         {
-            "name": "Attach to Frontend in Office (Chrome)",
+            "name": "Attach to Frontend in Microsoft 365 app (Chrome)",
             "type": "pwa-chrome",
             "request": "launch",
             "url": "https://www.office.com/m365apps/${localTeamsAppInternalId}?auth=2&${account-hint}",
@@ -152,27 +152,27 @@
             "stopAll": true
         },
         {
-            "name": "Debug in Office (Edge)",
+            "name": "Debug in Microsoft 365 app (Edge)",
             "configurations": [
-                "Attach to Frontend in Office (Edge)",
+                "Attach to Frontend in Microsoft 365 app (Edge)",
                 "Attach to Backend"
             ],
             "preLaunchTask": "Start Teams App Locally & Install App",
             "presentation": {
-                "group": "group 3: Office",
+                "group": "group 3: Microsoft 365 app",
                 "order": 1
             },
             "stopAll": true
         },
         {
-            "name": "Debug in Office (Chrome)",
+            "name": "Debug in Microsoft 365 app (Chrome)",
             "configurations": [
-                "Attach to Frontend in Office (Chrome)",
+                "Attach to Frontend in Microsoft 365 app (Chrome)",
                 "Attach to Backend"
             ],
             "preLaunchTask": "Start Teams App Locally & Install App",
             "presentation": {
-                "group": "group 3: Office",
+                "group": "group 3: Microsoft 365 app",
                 "order": 2
             },
             "stopAll": true
