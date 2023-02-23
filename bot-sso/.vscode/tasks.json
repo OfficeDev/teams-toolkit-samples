@@ -9,8 +9,8 @@
             "dependsOn": [
                 "Validate & install prerequisites",
                 "Start local tunnel",
-                "Create resources",
-                "Build project",
+                "Provision",
+                "Deploy",
                 "Start application"
             ],
             "dependsOrder": "sequence"
@@ -56,22 +56,20 @@
         {
             // Create the debug resources.
             // See https://aka.ms/teamsfx-tasks/provision to know the details and how to customize the args.
-            "label": "Create resources",
+            "label": "Provision",
             "type": "teamsfx",
             "command": "provision",
             "args": {
-                "template": "${workspaceFolder}/teamsapp.local.yml",
                 "env": "local"
             }
         },
         {
             // Build project.
             // See See https://aka.ms/teamsfx-tasks/deploy to know the details and how to customize the args.
-            "label": "Build project",
+            "label": "Deploy",
             "type": "teamsfx",
             "command": "deploy",
             "args": {
-                "template": "${workspaceFolder}/teamsapp.local.yml",
                 "env": "local"
             }
         },
