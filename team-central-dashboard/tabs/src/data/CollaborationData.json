@@ -1,0 +1,30 @@
+[
+  {
+    "id": "collaboration-1",
+    "img": "github.png",
+    "title": "Code Repository",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim, elementum sed",
+    "updateTime": "2 hrs ago"
+  },
+  {
+    "id": "collaboration-2",
+    "img": "azure.png",
+    "title": "Azure DevOps",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim, elementum sed",
+    "updateTime": "2 hrs ago"
+  },
+  {
+    "id": "collaboration-3",
+    "img": "analytics.png",
+    "title": "Data Analytics",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim, elementum sed",
+    "updateTime": "2 hrs ago"
+  },
+  {
+    "id": "collaboration-4",
+    "img": "dolor.png",
+    "title": "Dolor sit amet, consectetur",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim, elementum sed",
+    "updateTime": "2 hrs ago"
+  }
+]
