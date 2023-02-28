@@ -47,7 +47,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
       appSettings: [
         {
           name: 'WEBSITE_NODE_DEFAULT_VERSION'
-          value: '~16' // Set NodeJS version to 16.x for your site
+          value: '~18' // Set NodeJS version to 18.x for your site
         }
         {
           name: 'SCM_SCRIPT_GENERATOR_ARGS'
@@ -66,7 +66,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
 resource webAppSettings 'Microsoft.Web/sites/config@2021-02-01' = {
   name: '${webAppName}/appsettings'
   properties: {
-    WEBSITE_NODE_DEFAULT_VERSION: '~16'
+    WEBSITE_NODE_DEFAULT_VERSION: '~18'
     SCM_SCRIPT_GENERATOR_ARGS: '--node'
     BOT_ID: botAadAppClientId
     BOT_PASSWORD: botAadAppClientSecret
