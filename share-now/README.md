@@ -25,10 +25,10 @@ Share Now promotes the exchange of information between colleagues by enabling us
 1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install 'Teams Toolkit' extension.
 1. Open the project in Visual Studio Code.
-1. Open **env/env.dev** file, set value for `SQL_USER_NAME` and `SQL_PASSWORD`
+1. Open **env/.env.dev** file, set value for `SQL_USER_NAME` and `SQL_PASSWORD`
 1. Open the command palette and select: `Teams: Provision in the cloud`. You will be asked to input admin name and password of SQL. The toolkit will help you to provision Azure SQL.
 1. Once provision is completed, open the command palette and select: `Teams: Deploy to the cloud`.
-1. Open **env/env.dev** file, you could get the database name in `PROVISIONOUTPUT__AZURESQLOUTPUT__DATABASENAME` output. [Set IP address of your computer into server-level IP firewall rule from the database overview page](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page).
+1. Open **env/.env.dev** file, you could get the database name in `PROVISIONOUTPUT__AZURESQLOUTPUT__DATABASENAME` output. [Set IP address of your computer into server-level IP firewall rule from the database overview page](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page).
 1. In Azure portal, find the database by `databaseName` and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
     ```sql
     CREATE TABLE [TeamPostEntity](
@@ -83,7 +83,7 @@ To debug the project, you will need to configure an Azure SQL Database to be use
     )
     GO
     ```
-1. Open **env/env.local** file, and set the values of below config with the Azure SQL Database you just created:
+1. Open **env/.env.local** file, and set the values of below config with the Azure SQL Database you just created:
     ```
     SQL_ENDPOINT=
     SQL_DATABASE_NAME=

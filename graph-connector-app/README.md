@@ -45,9 +45,7 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 
 1. Before ingesting data, you need to do 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.All' application permissions for your AAD App in Azure Portal.
 
-    1. Find the client id in `.fx\states\state.xxx.json` file (e.g. `state.local.json` for local environment, `state.dev.json` for dev environment).
-
-        ![Find Client ID](images/find-client-id.png)
+    1. Find the client id from the value of `AAD_APP_CLIENT_ID` in `env\.env.xxx` file (e.g. `.env.local` for local environment, `.env.dev` for dev environment).
 
     1. Sign in to Azure Portal with Microsoft 365 account.
     
@@ -82,7 +80,8 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 
 ### Code structure
 
-- You can check app configuration and environment information in: [.fx](.fx)
+- You can check app configuration in `teamsapp.*.yml` files
+- You can check app environment information in: [env](env)
 - You will find frontend code in: [tabs/src/components](tabs/src/components)
 - You will find backend code in: [api](api)
 
