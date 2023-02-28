@@ -55,10 +55,6 @@ deploy:
       workingDirectory: api
       args: install
 
-  - uses: prerequisite/install # Install dependencies
-    with:
-      dotnet: true
-
   - uses: cli/runDotnetCommand
     with:
       workingDirectory: api
