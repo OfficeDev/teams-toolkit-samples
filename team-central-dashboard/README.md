@@ -77,7 +77,7 @@ This widget displays your content files in OneDrive. You can click one to open i
 ## Edit the manifest
 
 You can find the Teams manifest in `appPackage` folder. The templates contains:
-* `manifest.template.json`: Manifest file for Teams app running locally and remotely.
+* `manifest.json`: Manifest file for Teams app running locally and remotely.
 
 Both file contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
 
