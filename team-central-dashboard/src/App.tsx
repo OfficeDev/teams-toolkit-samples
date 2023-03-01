@@ -1,3 +1,5 @@
+import "./App.css";
+
 import { HashRouter as Router, Redirect, Route } from "react-router-dom";
 
 import {
@@ -15,7 +17,7 @@ import TabConfig from "./views/TabConfig";
 import TermsOfUse from "./views/TermsOfUse";
 
 export default function App() {
-  const { themeString} = useTeamsFx();
+  const { themeString } = useTeamsFx();
   return (
     <TeamsFxContext.Provider value={{ themeString }}>
       <FluentProvider
@@ -26,10 +28,7 @@ export default function App() {
             ? teamsHighContrastTheme
             : teamsLightTheme
         }
-        style={{
-          height: "100vh",
-          background: "var(--Background)",
-        }}
+        className="app"
       >
         <Router>
           <Route exact path="/">

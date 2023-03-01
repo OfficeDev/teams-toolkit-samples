@@ -1,0 +1,102 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.14",
+    "version": "1.0.0",
+    "id": "${{TEAMS_APP_ID}}",
+    "packageName": "com.microsoft.teams.extension",
+    "developer": {
+        "name": "Teams App, Inc.",
+        "websiteUrl": "${{TAB_ENDPOINT}}",
+        "privacyUrl": "${{TAB_ENDPOINT}}/index.html#/privacy",
+        "termsOfUseUrl": "${{TAB_ENDPOINT}}/index.html#/termsofuse"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "shareNow-${{TEAMSFX_ENV}}",
+        "full": "Full name for shareNow"
+    },
+    "description": {
+        "short": "Short description of shareNow",
+        "full": "Full description of shareNow"
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [],
+    "composeExtensions": [
+        {
+            "botId": "${{BOT_ID}}",
+            "commands": [
+                {
+                    "id": "allItems",
+                    "title": "All",
+                    "description": "Show all created posts.",
+                    "context": [
+                        "compose",
+                        "commandBox"
+                    ],
+                    "type": "query",
+                    "parameters": [
+                        {
+                            "name": "searchText",
+                            "title": "allItems",
+                            "description": "Enter a keyword"
+                        }
+                    ],
+                    "initialRun": true
+                },
+                {
+                    "id": "postedByMe",
+                    "title": "Posted by me",
+                    "description": "Show all posts created by me.",
+                    "context": [
+                        "compose",
+                        "commandBox"
+                    ],
+                    "type": "query",
+                    "parameters": [
+                        {
+                            "name": "searchText",
+                            "title": "postedByMe",
+                            "description": "Enter a keyword"
+                        }
+                    ],
+                    "initialRun": true
+                }
+            ],
+            "messageHandlers": [
+                {
+                    "type": "link",
+                    "value": {
+                        "domains": [
+                            "*.botframework.com"
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "staticTabs": [
+        {
+            "entityId": "index",
+            "name": "Personal Tab",
+            "contentUrl": "${{TAB_ENDPOINT}}/index.html#/tab",
+            "websiteUrl": "${{TAB_ENDPOINT}}/index.html#/tab",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [
+        "${{TAB_DOMAIN}}"
+    ],
+    "webApplicationInfo": {
+        "id": "${{AAD_APP_CLIENT_ID}}",
+        "resource": "api://${{TAB_DOMAIN}}/${{AAD_APP_CLIENT_ID}}"
+    }
+}

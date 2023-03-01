@@ -173,7 +173,7 @@ export class Documents extends Widget<IDocumentState> {
         icon={<ArrowRight16Filled />}
         iconPosition="after"
         size="small"
-        className={mergeStyles(widgetStyle.footerBtn, "footer-padding")}
+        className={mergeStyles(widgetStyle.footerBtn, "footer-margin")}
         onClick={() => window.open("https://www.office.com/mycontent")}
       >
         View all
@@ -183,7 +183,7 @@ export class Documents extends Widget<IDocumentState> {
 
   protected loadingContent(): JSX.Element | undefined {
     return (
-      <div style={{ display: "grid" }}>
+      <div className="loading-layout">
         <Spinner label="Loading..." labelPosition="below" />
       </div>
     );

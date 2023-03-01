@@ -1,6 +1,6 @@
-import { createMicrosoftGraphClient, OnBehalfOfUserCredential, createMicrosoftGraphClientWithCredential, IdentityType, TeamsFx } from "@microsoft/teamsfx";
+import { createMicrosoftGraphClient, IdentityType, TeamsFx } from "@microsoft/teamsfx";
 
-export async function getInstallationId(credential: OnBehalfOfUserCredential, userId: string): Promise<any> {
+export async function getInstallationId(userId: string): Promise<any> {
   try {
     const teamsAppId = process.env.TEAMS_APP_ID;
     const apiPath =

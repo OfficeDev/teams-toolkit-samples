@@ -57,7 +57,8 @@ This sample app showcases how to build a Teams command bot that queries custom d
 
 ### Code structure
 
-- You can check app configuration and environment information in: [.fx](.fx)
+- You can check app configuration in `teamsapp.*.yml` files
+- You can check app environment information in: [env](env)
 - You will find bot code in: [bot/commands/](bot/commands/)
 - You will find backend services code in: [bot/services/](bot/services/)
 

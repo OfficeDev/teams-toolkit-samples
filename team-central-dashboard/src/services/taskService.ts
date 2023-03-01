@@ -1,8 +1,5 @@
 import { Client } from "@microsoft/microsoft-graph-client";
-import {
-  createMicrosoftGraphClientWithCredential,
-  TeamsUserCredential,
-} from "@microsoft/teamsfx";
+import { createMicrosoftGraphClientWithCredential, TeamsUserCredential } from "@microsoft/teamsfx";
 
 import { TeamsUserCredentialContext } from "../internal/singletonContext";
 import { TaskModel } from "../models/taskModel";

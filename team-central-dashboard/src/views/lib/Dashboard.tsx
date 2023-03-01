@@ -1,6 +1,7 @@
 import React, { Component, CSSProperties } from "react";
 
-import { dashboardStyles } from "./Dashboard.styles";
+import { mergeStyles } from "@fluentui/react";
+import { dashboardStyle } from "./Dashboard.styles";
 
 interface IDashboardState {
   isMobile?: boolean;
@@ -62,13 +63,12 @@ export class Dashboard extends Component<any, IDashboardState> {
    * Define thie dashboard default layout, you can edit the code here to customize your dashboard layout.
    */
   render() {
+    let root = dashboardStyle(this.state.isMobile, this.rowHeights(), this.columnWidths());
     return (
       <div
         ref={this.ref}
-        style={{
-          ...dashboardStyles(this.state.isMobile, this.rowHeights(), this.columnWidths()),
-          ...this.customiseDashboardStyle(),
-        }}
+        className={mergeStyles(root, this.genClassName())}
+        style={this.genStyle()}
       >
         {this.dashboardLayout()}
       </div>
@@ -100,7 +100,29 @@ export class Dashboard extends Component<any, IDashboardState> {
     return undefined;
   }
 
-  protected customiseDashboardStyle(): CSSProperties | undefined {
-    return undefined;
+  /**
+   * Override this method to customize the dashboard style.
+   * @returns custom style for the dashboard
+   */
+  protected styingDashboard(): CSSProperties | string {
+    return {};
+  }
+
+  /**
+   * Construct CSSProperties object for styling the dashboard.
+   * @returns CSSProperties object
+   */
+  private genStyle(): CSSProperties {
+    return typeof this.styingDashboard() === "string"
+      ? ({} as CSSProperties)
+      : (this.styingDashboard() as CSSProperties);
+  }
+
+  /**
+   * Construct className string for styling the dashboard.
+   * @returns className for styling the dashboard
+   */
+  private genClassName(): string {
+    return typeof this.styingDashboard() === "string" ? (this.styingDashboard() as string) : "";
   }
 }

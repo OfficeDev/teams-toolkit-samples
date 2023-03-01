@@ -102,7 +102,7 @@ export default async function run(
     const userProfile = await graphClient_userId.api("/me").get();
     const userId = userProfile["id"];
     // get installationId
-    const installationId = await getInstallationId(oboCredential, userId);
+    const installationId = await getInstallationId(userId);
     let postbody = {
       topic: {
         source: "entityUrl",
