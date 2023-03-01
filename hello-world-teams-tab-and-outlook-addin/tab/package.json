@@ -1,5 +1,5 @@
 {
-    "name": "Contoso",
+    "name": "contoso-tab",
     "version": "0.1.0",
     "engines": {
         "node": ">=14 <=16"
