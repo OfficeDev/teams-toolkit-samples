@@ -1,5 +1,40 @@
 @secure()
 param provisionParameters object
+
+// Merge TeamsFx configurations to Bot service
+module botProvision './provision/botService.bicep' = {
+  name: 'botProvision'
+  params: {
+    provisionParameters: provisionParameters
+    botEndpoint: azureWebAppBotProvision.outputs.siteEndpoint
+  }
+}
+
+// Resources web app
+module azureWebAppBotProvision './provision/azureWebAppBot.bicep' = {
+  name: 'azureWebAppBotProvision'
+  params: {
+    provisionParameters: provisionParameters
+    userAssignedIdentityId: userAssignedIdentityProvision.outputs.identityResourceId
+  }
+}
+
+
+output azureWebAppBotOutput object = {
+  teamsFxPluginId: 'teams-bot'
+  skuName: azureWebAppBotProvision.outputs.skuName
+  siteName: azureWebAppBotProvision.outputs.siteName
+  domain: azureWebAppBotProvision.outputs.domain
+  appServicePlanName: azureWebAppBotProvision.outputs.appServicePlanName
+  resourceId: azureWebAppBotProvision.outputs.resourceId
+  siteEndpoint: azureWebAppBotProvision.outputs.siteEndpoint
+}
+
+output BotOutput object = {
+  domain: azureWebAppBotProvision.outputs.domain
+  endpoint: azureWebAppBotProvision.outputs.siteEndpoint
+}
+
 // Resources for identity
 module userAssignedIdentityProvision './provision/identity.bicep' = {
   name: 'userAssignedIdentityProvision'
@@ -9,26 +44,8 @@ module userAssignedIdentityProvision './provision/identity.bicep' = {
 }
 
 output identityOutput object = {
-  teamsFxPluginId: 'fx-resource-identity'
+  teamsFxPluginId: 'identity'
   identityName: userAssignedIdentityProvision.outputs.identityName
   identityResourceId: userAssignedIdentityProvision.outputs.identityResourceId
   identityClientId: userAssignedIdentityProvision.outputs.identityClientId
-}
-// Resources for bot
-module botProvision './provision/bot.bicep' = {
-  name: 'botProvision'
-  params: {
-    provisionParameters: provisionParameters
-    userAssignedIdentityId: userAssignedIdentityProvision.outputs.identityResourceId
-  }
-}
-
-output botOutput object = {
-  teamsFxPluginId: 'fx-resource-bot'
-  skuName: botProvision.outputs.botWebAppSKU
-  siteName: botProvision.outputs.botWebAppName
-  validDomain: botProvision.outputs.botDomain
-  appServicePlanName: botProvision.outputs.appServicePlanName
-  botWebAppResourceId: botProvision.outputs.botWebAppResourceId
-  siteEndpoint: botProvision.outputs.botWebAppEndpoint
 }

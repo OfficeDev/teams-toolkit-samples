@@ -6,17 +6,12 @@ param provisionOutputs object
 @secure()
 param currentAppSettings object
 
-var botWebAppName = split(provisionOutputs.botOutput.value.botWebAppResourceId, '/')[8]
-
-
+var webAppName = split(provisionOutputs.azureWebAppBotOutput.value.resourceId, '/')[8]
 var botAadAppClientId = provisionParameters['botAadAppClientId']
-
 var botAadAppClientSecret = provisionParameters['botAadAppClientSecret']
 
-var botId = provisionParameters['botAadAppClientId']
-
-resource botWebAppSettings 'Microsoft.Web/sites/config@2021-02-01' = {
-  name: '${botWebAppName}/appsettings'
+resource webAppSettings 'Microsoft.Web/sites/config@2021-02-01' = {
+  name: '${webAppName}/appsettings'
   properties: union({
     BOT_ID: botAadAppClientId // ID of your bot
     BOT_PASSWORD: botAadAppClientSecret // Secret of your bot
