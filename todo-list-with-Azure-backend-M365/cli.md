@@ -8,13 +8,12 @@
     ```
     teamsfx new template todo-list-with-azure-backend-m365
     ```
-1. Provision the project to Azure.
+1. Provision.
     ```
-    teamsfx provision
+    teamsfx provision --env <env>
     ```
 1. Deploy.
     ```
-    teamsfx deploy
+    teamsfx deploy --env <env>
     ```
-1. Execute `teamsfx preview --env <env> --m365-host <m365-host>` in your project directory to launch your application, where `m365-host` is `teams`, `outlook` or `office`. If you select `m365-host` as `outlook` or `office`, a dialog will be popped up as the image below. Please select "Install in Teams" first to install the app in Teams, then select "Continue" to continue to preview the app in Outlook or the Microsoft 365 app.
-  ![Install in Teams CLI](./images/install-in-teams-cli.png)
+1. Execute `teamsfx preview --env <env> --m365-host <m365-host>` in your project directory to launch your application, where `m365-host` is `teams`, `outlook` or `office`.

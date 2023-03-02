@@ -24,12 +24,10 @@ NPM Search Connector is a Message Extension that allows you to perform a quick s
 3. Open the project in Visual Studio Code.
 4. Open the command palette and select `Teams: Provision in the cloud`.
 5. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
-6. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Run and Debug` Activity Panel. Select a target Microsoft application where the app runs: `Launch Remote in Teams` or `Launch Remote in Outlook`. If you select `Launch Remote in Outlook`, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Continue" to continue to preview the app in Outlook.
-  ![Install in Teams VSC Remote](./images/install-in-teams-vsc-remote.png)
+6. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Run and Debug` Activity Panel. Select a target Microsoft application where the app runs: `Launch Remote in Teams` or `Launch Remote in Outlook`.
 
 ## (Optional) Debug
-1. In Visual Studio Code, open the `Run and Debug` Activity Panel, select `Debug in Teams` or `Debug in Outlook`. If you select `Debug in Outlook`, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Continue" to continue to debug the app in Outlook.
-  ![Install in Teams VSC Local](./images/install-in-teams-vsc-local.png)
+1. In Visual Studio Code, open the `Run and Debug` Activity Panel, select `Debug in Teams` or `Debug in Outlook`.
 
 ## Use the app in Teams
 To trigger the message extension in Teams, there are multiple entry points:
