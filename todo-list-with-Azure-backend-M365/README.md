@@ -4,7 +4,7 @@
 >  
 > This warning will be removed when the samples are ready for production.
 
-Todo List app helps to manage your personal to do items. This app can be installed and used not only in your Teams client, but also Outlook client and Microsoft 365 app. The frontend is a React app and the backend is an Azure Function. You can deploy and host the app in Azure.
+Todo List app helps to manage your personal to do items. This app can be installed and used not only in your Teams client, but also Outlook client and the Microsoft 365 app. The frontend is a React app and the backend is an Azure Function. You can deploy and host the app in Azure.
 
 ![Todo Item List](images/todo-list-M365.gif)
 
@@ -20,7 +20,7 @@ Todo List app helps to manage your personal to do items. This app can be install
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
 - How to use TeamsFx to build backend hosting on Azure for your tab app.
 - How to use MS graph client in TeamsFx to get access to Microsoft 365 data.
-- How to use Teams Toolkit to build a personal tab app with Azure Function backend that runs across Microsoft 365 including Teams, Outlook and Microsoft 365 app
+- How to use Teams Toolkit to build a personal tab app with Azure Function backend that runs across Microsoft 365 including Teams, Outlook and the Microsoft 365 app
 
 ## Try the Sample with Visual Studio Code Extension:
 
@@ -31,12 +31,12 @@ Todo List app helps to manage your personal to do items. This app can be install
 3. Open the project in Visual Studio Code.
 4. Open the command palette and select `Teams: Provision in the cloud`. 
 5. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
-6. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Run and Debug` Activity Panel.  Select a target Microsoft application where the app runs: `Launch Remote in Teams`, `Launch Remote in Outlook` or `Launch Remote in Microsoft 365 app`. If you select `Launch Remote in Outlook` or `Launch Remote in Microsoft 365 app`, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Continue" to continue to preview the app in Outlook or Microsoft 365 app.
+6. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Run and Debug` Activity Panel.  Select a target Microsoft application where the app runs: `Launch Remote in Teams`, `Launch Remote in Outlook` or `Launch Remote in the Microsoft 365 app`. If you select `Launch Remote in Outlook` or `Launch Remote in the Microsoft 365 app`, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Continue" to continue to preview the app in Outlook or the Microsoft 365 app.
   ![Install in Teams VSC Remote](./images/install-in-teams-vsc-remote.png)
 
 ## (Optional) Debug
 
-1. In Visual Studio Code, open the `Run and Debug` Activity Panel. Select a target Microsoft application where the app runs: `Debug in Teams`, `Debug in Outlook` or `Debug in Microsoft 365 app`. If you select `Debug in Outlook` or `Debug in Microsoft 365 app`, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Continue" to continue to debug the app in Outlook or Microsoft 365 app.
+1. In Visual Studio Code, open the `Run and Debug` Activity Panel. Select a target Microsoft application where the app runs: `Debug in Teams`, `Debug in Outlook` or `Debug in the Microsoft 365 app`. If you select `Debug in Outlook` or `Debug in the Microsoft 365 app`, a VS Code dialog will be popped up as the image below. Please click "Install in Teams" first to install the app in Teams, then click "Continue" to continue to debug the app in Outlook or the Microsoft 365 app.
   ![Install in Teams VSC Local](./images/install-in-teams-vsc-local.png)
 
 
