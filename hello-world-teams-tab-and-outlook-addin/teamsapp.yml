@@ -65,7 +65,7 @@ configureApp:
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
 
-    # Triggered when 'teamsfx publish' is executed
+# Triggered when 'teamsfx publish' is executed
 publish:
   - uses: teamsApp/validate
     with:
@@ -83,6 +83,3 @@ publish:
   - uses: teamsApp/publishAppPackage # Publish the app to Teams Admin Center (https://admin.teams.microsoft.com/policies/manage-apps) for review and approval
     with:
       appPackagePath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip
-  # Output: following environment variable will be persisted in current environment's .env file.
-  # TEAMS_APP_PUBLISHED_APP_ID: app id in Teams tenant app catalog.
-projectId: d8aab503-754e-407b-858c-99b3b797979b
