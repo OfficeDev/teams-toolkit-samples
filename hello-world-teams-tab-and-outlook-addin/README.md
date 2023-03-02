@@ -11,10 +11,10 @@ Now you have the ability to create a single unit of distribution for all your Mi
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/): version 16 or 18.
-- Edge or Chrome installed.
-- Outlook for debugging Outlook add-in.
+- Edge or Chrome installed for debugging Teams Tab
+- Outlook Desktop on Windows and Edge installed for debugging Outlook add-in.
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version after 4.0.0 or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) Pre-release version or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Debug Teams Tab
 
@@ -23,11 +23,12 @@ Now you have the ability to create a single unit of distribution for all your Mi
 - From TeamsFx CLI: Start debugging the project by executing the command `teamsfx preview --env local` in your project directory.
 
 ## Debug Outlook add-in
+- Please note that the same M365 account should be used both in Teams Toolkit and Outlook. 
 - From Visual Studio Code only: use the `Run and Debug Activity Panel` in Visual Studio Code, select `Outlook Desktop(Edge Chromium)`, and click the `Run and Debug` green arrow button.
 
 ## Edit the manifest
 
-You can find the Teams app manifest in `./appPackage` folder. The folder contains one manifest file:
+You can find the app manifest in `./appPackage` folder. The folder contains one manifest file:
 * `manifest.template.json`: Manifest file for Teams app running locally or running remotely (After deployed to Azure).
 
 This file contains template arguments with `${{...}}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more information.
