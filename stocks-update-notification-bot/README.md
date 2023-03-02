@@ -10,7 +10,7 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 ![Stocks Update Notification Bot](images/app.gif)
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/en/), supported versions: 14, 16, 18 (preview)
+- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 

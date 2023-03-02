@@ -4,7 +4,7 @@ Azure Functions are a great way to add server-side behaviors to any Teams applic
 
 ## Prerequisites
 
-- [NodeJS](https://nodejs.org/en/)
+- [NodeJS](https://nodejs.org/)
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 

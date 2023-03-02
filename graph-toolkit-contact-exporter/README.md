@@ -9,7 +9,7 @@ Contact Exporter sample APP provides an easy way to export your teams contact in
 ![Contact Exporter Overview](images/overview.gif)
 
 ## Prerequisite
-- [NodeJS](https://nodejs.org/en/), fully tested on NodeJS 14, 16
+- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 
@@ -35,21 +35,21 @@ Contact Exporter sample APP provides an easy way to export your teams contact in
 
 ## Try the Sample with TeamsFx CLI
 > If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
-1. Install [Node.js](https://nodejs.org/en/download/) (use the latest v14 LTS release)
-1. To install the TeamsFx CLI, use the npm package manager:
+1. Install [Node.js](https://nodejs.org/en/download/)
+2. To install the TeamsFx CLI, use the npm package manager:
     ```
     npm install -g @microsoft/teamsfx-cli
     ```
-1. Clone this sample project.
-1. In the sample project folder, run provision command.
+3. Clone this sample project.
+4. In the sample project folder, run provision command.
     ```
     teamsfx provision
     ```
-1. Deploy the sample project.
+5. Deploy the sample project.
     ```
     teamsfx deploy
     ```
-1. Once your deployment is completed, You can open the project in Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
+6. Once your deployment is completed, You can open the project in Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
 
 ## Use the APP in Teams
 1. The APP will look like this when it runs for the first time.

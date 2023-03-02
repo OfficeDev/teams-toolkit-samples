@@ -1,6 +1,9 @@
 {
   "name": "share-now",
   "version": "1.0.0",
+  "engines": {
+    "node": "14 || 16 || 18"
+  },
   "private": true,
   "dependencies": {
     "@fluentui/react": "^7.115.4",

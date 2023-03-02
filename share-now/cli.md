@@ -1,22 +1,22 @@
 ## Try the Sample with TeamsFx CLI
-1. Install [Node.js](https://nodejs.org/en/download/) (use the latest v14 LTS release)
-1. To install the TeamsFx CLI, use the npm package manager:
+1. Install [Node.js](https://nodejs.org/en/download/) (use the LTS release)
+2. To install the TeamsFx CLI, use the npm package manager:
     ```
     npm install -g @microsoft/teamsfx-cli
     ```
-1. Create share-now project.
+3. Create share-now project.
     ```
     teamsfx new template share-now
     ```
-1. Provision the project to azure. You will be asked to input admin name and password of SQL.
+4. Provision the project to azure. You will be asked to input admin name and password of SQL.
     ```
     teamsfx provision
     ```
-1. Deploy.
+5. Deploy.
     ```
     teamsfx deploy
     ```
-1. Open **env/.env.dev** file, you could get the database name in `PROVISIONOUTPUT__AZURESQLOUTPUT__DATABASENAME` output. In Azure portal, find the database and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create tables:
+6. Open **env/.env.dev** file, you could get the database name in `PROVISIONOUTPUT__AZURESQLOUTPUT__DATABASENAME` output. In Azure portal, find the database and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create tables:
     ```sql
     CREATE TABLE [TeamPostEntity](
 	    [PostID] [int] PRIMARY KEY IDENTITY,
