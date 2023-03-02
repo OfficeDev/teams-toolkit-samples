@@ -1,6 +1,7 @@
 # How to use this HelloWorld In-meeting app
 
 > Important: Please be advised that access tokens are stored in sessionStorage for you by default. This can make it possible for malicious code in your app (or code pasted into a console on your page) to access APIs at the same privilege level as your client application. Please ensure you only request the minimum necessary scopes from your client application, and perform any sensitive operations from server side code that your client has to authenticate with.
+> App Caching was configured in this sample to reduce the reload time of your app during a meeting. It has limitations and available scopes, and for more details, please check [Enable app caching for your tab app](https://learn.microsoft.com/en-us/microsoftteams/platform/apps-in-teams-meetings/app-caching-for-your-tab-app).
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context. Please be advised that mgt-teamsfx-provider library in this app is currently in preview stage, please expect breaking changes in the future release.
 
@@ -46,5 +47,3 @@ After you have completed the provision and deploy steps in `Deploy the app to Az
   1. Open the `Run and Debug Activity` panel from sidebar, or use short key Ctrl+Shift+D.
   1. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the launch configuration (a dropdown selection in the upper-left corner).
   1. Press the `Start Debugging` (small green arrow) button to launch your app, the Teams web client will be automatically opened in your browser, where you will see your app running remotely from Azure.
-
-## App Caching

@@ -26,6 +26,8 @@ class Tab extends React.Component {
         });
 
         // Enable app caching in meeting's side panel.
+        // App Caching was configured in this sample to reduce the reload time of your app during a meeting. 
+        // It has limitations and available scopes, and for more details, please check https://learn.microsoft.com/en-us/microsoftteams/platform/apps-in-teams-meetings/app-caching-for-your-tab-app.
         if (context.page.frameContext === "sidePanel") {
           teamsCore.registerOnLoadHandler((context) => {
             // Use context.contentUrl to route to the correct page.
