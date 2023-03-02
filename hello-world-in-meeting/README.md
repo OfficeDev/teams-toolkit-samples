@@ -46,3 +46,5 @@ After you have completed the provision and deploy steps in `Deploy the app to Az
   1. Open the `Run and Debug Activity` panel from sidebar, or use short key Ctrl+Shift+D.
   1. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the launch configuration (a dropdown selection in the upper-left corner).
   1. Press the `Start Debugging` (small green arrow) button to launch your app, the Teams web client will be automatically opened in your browser, where you will see your app running remotely from Azure.
+
+## App Caching
