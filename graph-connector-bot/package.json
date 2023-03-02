@@ -4,6 +4,9 @@
   "description": "Microsoft Teams Toolkit graph-connector-bot sample",
   "author": "Microsoft",
   "license": "MIT",
+  "engines": {
+    "node": "14 || 16 || 18"
+  },
   "main": "./lib/index.js",
   "scripts": {
     "dev:teamsfx": "env-cmd --silent -f .localSettings npm run dev",

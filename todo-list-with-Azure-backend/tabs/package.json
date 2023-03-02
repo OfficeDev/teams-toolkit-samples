@@ -2,6 +2,9 @@
   "name": "microsoft-teams-ext",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14 || 16 || 18"
+  },
   "dependencies": {
     "@fluentui/react-northstar": "^0.62.0",
     "@microsoft/teams-js": "^2.2.0",

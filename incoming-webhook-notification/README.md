@@ -8,7 +8,7 @@ An Incoming Webhook Sample provides an easy way to send adaptive cards in Micros
 ![Incoming Webhook Overall](./images/incoming-webhook.gif)
 
 ## Prerequisite
-- [Node.js](https://nodejs.org/en/), supported versions: 14, 16, 18
+- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18
 - A [Teams Channel](https://docs.microsoft.com/en-us/microsoftteams/teams-channels-overview)
 
 ## What you will learn in this sample:

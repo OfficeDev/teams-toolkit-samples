@@ -3,6 +3,9 @@
     "version": "0.0.1",
     "author": "Microsoft",
     "license": "MIT",
+    "engines": {
+        "node": "14 || 16 || 18"
+    },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "install:bot": "cd bot && npm install",
@@ -16,6 +19,5 @@
     },
     "dependencies": {
         "concurrently": "^7.6.0"
-    },
-    "license": "MIT"
+    }
 }
