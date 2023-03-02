@@ -1,0 +1,19 @@
+# TeamsFx files
+env/.env.*
+.DS_Store
+.localSettings
+build
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+.deployment

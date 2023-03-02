@@ -1,0 +1,24 @@
+{
+    "name": "tab-and-addin",
+    "version": "0.0.1",
+    "author": "Contoso",
+    "scripts": {
+        "build:tab": "cd tab && npm run build",
+        "build:add-in": "cd add-in && npm run build",
+        "build": "npm run build:tab && npm run build:add-in",
+        "postbuild": "ncp tab/build build && ncp add-in/dist build",
+        "dev:teamsfx": "env-cmd --silent -f .localSettings npm run start:tab",
+        "install": "npm run install:add-in && npm run install:tab",
+        "install:add-in": "cd add-in && npm install",
+        "install:tab": "cd tab && npm install",
+        "start:tab": "cd tab && npm run start",
+        "start:add-in": "cd add-in && npm run start",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "@microsoft/teamsfx-cli": "^1.2.3",
+        "@microsoft/teamsfx-run-utils": "alpha",
+        "env-cmd": "^10.1.0",
+        "ncp": "^2.0.0"
+    }
+}
