@@ -1,0 +1,33 @@
+# Lines starting with '#' are comments.
+# Each line is a file pattern followed by one or more owners.
+
+# More details are here: https://help.github.com/articles/about-codeowners/
+
+# Order is important. The last matching pattern has the most precedence.
+# The folders are ordered as follows:
+
+# In each subsection folders are ordered first by depth, then alphabetically.
+# This should make it easy to add new rules without breaking existing ones.
+
+/NPM-search-connector-M365 @kimizhu
+/adaptive-card-notification @kimizhu
+/bot-sso @eriolchan
+/command-bot-with-sso @adashen
+/graph-connector-app @adashen
+/graph-connector-bot @adashen
+/graph-toolkit-contact-exporter @adashen
+/graph-toolkit-one-productivity-hub @adashen
+/graph-toolkit-productivity-hub-aspnetcore @adashen
+/hello-world-bot-with-tab @eriolchan
+/hello-world-in-meeting @eriolchan
+/hello-world-tab-with-backend @eriolchan
+/hello-world-teams-tab-and-outlook-add-in @1yefuwang1
+/incoming-webhook-notification @kimizhu
+/query-org-user-with-message-extension-sso @adashen
+/share-now @adashen
+/stocks-update-notification-bot @kimizhu
+/stocks-update-notification-bot-dotnet @kimizhu
+/todo-list-SPFx @HuihuiWu-Microsoft
+/team-central-dashboard @huimiu
+/todo-list-with-Azure-backend @adashen
+/todo-list-with-Azure-backend-M365 @kimizhu
