@@ -197,7 +197,7 @@
                 "Attach to Frontend in Outlook (Edge)",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Start Teams App Locally & Install App",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "group 2: Outlook",
                 "order": 1
@@ -210,7 +210,7 @@
                 "Attach to Frontend in Outlook (Chrome)",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Start Teams App Locally & Install App",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "group 2: Outlook",
                 "order": 2
@@ -223,7 +223,7 @@
                 "Attach to Frontend in the Microsoft 365 app (Edge)",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Start Teams App Locally & Install App",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "group 3: the Microsoft 365 app",
                 "order": 1
@@ -236,7 +236,7 @@
                 "Attach to Frontend in the Microsoft 365 app (Chrome)",
                 "Attach to Backend"
             ],
-            "preLaunchTask": "Start Teams App Locally & Install App",
+            "preLaunchTask": "Start Teams App Locally",
             "presentation": {
                 "group": "group 3: the Microsoft 365 app",
                 "order": 2
