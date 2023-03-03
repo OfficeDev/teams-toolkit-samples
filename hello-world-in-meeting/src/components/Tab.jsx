@@ -15,7 +15,7 @@ class Tab extends React.Component {
   //Learn more: https://reactjs.org/docs/react-component.html#componentdidmount
   componentDidMount(){
     app.initialize().then(() => {
-      // Notifies the frame that app initialization is successfully and is ready for user interaction.
+      // Notifies that the app initialization is successfully and is ready for user interaction.
       app.notifySuccess();
 
       // Get the user context from Teams and set it in the state
@@ -25,9 +25,9 @@ class Tab extends React.Component {
           userName: context.user.userPrincipalName
         });
 
-        // Enable app caching in meeting's side panel.
-        // App Caching was configured in this sample to reduce the reload time of your app during a meeting. 
-        // It has limitations and available scopes, and for more details, please check https://learn.microsoft.com/en-us/microsoftteams/platform/apps-in-teams-meetings/app-caching-for-your-tab-app.
+        // Enable app caching.
+        // App Caching was configured in this sample to reduce the reload time of your app in a meeting. 
+        // To learn about limitations and available scopes, please check https://learn.microsoft.com/en-us/microsoftteams/platform/apps-in-teams-meetings/app-caching-for-your-tab-app.
         if (context.page.frameContext === "sidePanel") {
           teamsCore.registerOnLoadHandler((context) => {
             // Use context.contentUrl to route to the correct page.
