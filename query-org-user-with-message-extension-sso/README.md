@@ -51,9 +51,11 @@ This is a simple search-based message extension app demonstrating how to integra
 
 ### Custom the Query Logic
 - Follow the code in `teamsBot.ts`, custom your query logic in `handleMessageExtensionQueryWithToken`.
+
 ![CustomLogic](./images/custom-query.png)
 
 - Update the scopes in `aad.manifest.json` which used by your Graph Client.
+
 ![UpdateScopes](./images/graph-scope-update.png)
 
 - If you want to see the updated results, please re-run local debug, or re-provision to update the AAD app and re-deploy the changed part.
