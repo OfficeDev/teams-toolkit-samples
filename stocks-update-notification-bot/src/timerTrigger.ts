@@ -4,7 +4,7 @@ import { AxiosInstance, BotBuilderCloudAdapter} from '@microsoft/teamsfx';
 import ConversationBot = BotBuilderCloudAdapter.ConversationBot;
 import TeamsBotInstallation = BotBuilderCloudAdapter.TeamsBotInstallation;
 import { GlobalQuote } from './cardModels';
-import { bot } from './internal/initialize';
+import { notificationApp } from './internal/initialize';
 import template from './adaptiveCards/notification-default.json'
 import { alphaVantageClient } from './apiConnections/alphaVantage';
 
@@ -18,7 +18,7 @@ const timerTrigger: AzureFunction = async function (context: Context, myTimer: a
     .then(quote => addTimestamp(quote)(timestamp))
     .then(quote => addCompanyName(quote)('Microsoft Corporation'))
     .then(quote =>
-      getInstallations(bot)
+      getInstallations(notificationApp)
         .then(targets => targets.map(target => sendCard(target)(AdaptiveCards)(template)(quote)))
     )
     .catch(err => handleError(err)(context));
@@ -73,8 +73,8 @@ const addCompanyName =
     (name: string): GlobalQuote => { return { ...quote, name } }
 
 const getInstallations =
-  (bot: ConversationBot): Promise<TeamsBotInstallation[]> =>
-    bot.notification.installations();
+  (app: ConversationBot): Promise<TeamsBotInstallation[]> =>
+    app.notification.installations();
 
 const sendCard =
   <T extends object>(target: TeamsBotInstallation) =>
