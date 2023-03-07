@@ -1,0 +1,99 @@
+.devops-body-layout {
+    display: grid;
+    gap: 1rem;
+    padding-left: 0.375rem;
+    align-content: start;
+}
+
+.devops-input-layout {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    gap: 0.875rem;
+    align-items: center;
+}
+
+.devops-input-content {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    gap: 1rem;
+    align-items: center;
+    border-radius: 4px;
+    height: 2.75rem;
+    padding-left: 1.125rem;
+    padding-right: 0.75rem;
+    border: 1px solid var(--colorNeutralStroke1);
+}
+
+.devops-input {
+    border: none;
+    border: none;
+    outline: medium;
+    height: 2.5rem;
+    font-size: 0.875rem;
+    background-color: var(--colorNeutralBackground1);
+    color: var(--colorNeutralForeground1);
+}
+
+.devops-list-layout {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.work-items-table-title-layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    gap: 0.6rem;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.work-items-table-title {
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    line-height: 1.25rem !important;
+    color: var(--colorNeutralForeground4) !important;
+}
+
+.work-items {
+    display: grid;
+    overflow-x: auto;
+    height: 100%;
+    max-height: 11rem;
+    padding-right: 2px;
+}
+
+.work-item-layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    gap: 0.6rem;
+    height: 2.375rem;
+    overflow-x: auto;
+    align-content: center;
+}
+
+.work-item-layout .span {
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    line-height: 1.25rem !important;
+    color: var(--colorNeutralForeground1) !important;
+}
+
+.work-item-title {
+    cursor: pointer;
+}
+
+.divider {
+    height: 1px;
+    background-color: var(--colorNeutralStroke2);
+}
+
+.work-item-assigned-state-layout {
+    display: grid;
+    gap: 0.25rem;
+    align-items: center;
+    grid-template-columns: max-content max-content;
+}
+
+.state-icon {
+    color: var(--colorNeutralStroke1);
+}

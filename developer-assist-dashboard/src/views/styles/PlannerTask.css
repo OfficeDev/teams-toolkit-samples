@@ -1,0 +1,105 @@
+.has-task-layout {
+  display: grid;
+  gap: 0.25rem;
+  overflow-x: hidden;
+  min-width: 18rem;
+  align-content: start;
+  padding-right: 2px;
+}
+
+.no-task-layout {
+  display: grid;
+  gap: 1.8rem;
+  overflow-x: hidden;
+  min-width: 18rem;
+}
+
+.add-btn {
+  color: var(--colorPaletteBlueBorderActive);
+  margin-left: 0.35rem;
+  padding: 0;
+}
+
+.task-input {
+  border: none;
+  border: none;
+  outline: medium;
+  height: 1.75rem;
+  margin-left: -0.35rem;
+  font-size: 0.875rem;
+  color: var(--colorNeutralForeground1);
+}
+
+input::placeholder {
+  color: var(--colorPaletteBlueBorderActive) !important;
+}
+
+.focused-color {
+  background-color: var(--colorNeutralBackground6);
+}
+
+.non-focused-color {
+  background-color: var(--colorNeutralBackground3);
+}
+
+.add-task-container {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  gap: 1rem;
+  align-items: center;
+  border-radius: 4px;
+  height: 2.25rem;
+  padding-left: 0.875rem;
+  padding-right: 0.7rem;
+  border: 1px solid var(--colorTransparentStroke);
+}
+
+.add-btn-enter {
+  border-radius: 4px;
+  width: max-content;
+  height: 1.5rem;
+  border: none;
+  font-weight: 600;
+  text-align: center;
+  background-color: var(--colorNeutralStroke1Hover);
+}
+
+.add-btn-leave {
+  border-radius: 4px;
+  width: max-content;
+  height: 1.5rem;
+  border: none;
+  font-weight: 600;
+  text-align: center;
+  background-color: var(--colorNeutralStrokeOnBrand2);
+}
+
+.div-task-item {
+  display: grid;
+  align-items: center;
+  background-color: var(--colorNeutralBackground3);
+  border-radius: 4px;
+  padding-left: 0.875rem;
+  padding-right: 0.7rem;
+  border: 1px solid var(--colorTransparentStroke);
+}
+
+.existing-task-layout {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 1rem;
+  align-items: start;
+  height: max-content;
+  overflow: hidden;
+}
+
+.task-checkbox {
+  max-width: 10rem !important;
+  align-self: center;
+}
+
+.assigned-layout {
+  align-items: end;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}

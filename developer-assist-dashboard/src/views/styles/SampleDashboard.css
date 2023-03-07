@@ -1,0 +1,14 @@
+.img-style {
+    position: absolute;
+    width: 100%;
+    margin-left: -20px;
+    margin-top: -10%;
+    z-index: -1;
+}
+
+.spinner-layout {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

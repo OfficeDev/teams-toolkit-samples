@@ -1,0 +1,24 @@
+.empty-layout {
+    display: grid;
+    height: 100%;
+    gap: 1rem;
+}
+
+.loading-layout {
+    display: grid;
+}
+
+.empty-img {
+    height: 155px;
+    justify-self: center;
+    align-self: center;
+}
+
+.empty-text {
+    justify-content: center;
+    text-align: center;
+}
+
+.widget-padding {
+    padding: 1.25rem;
+}
