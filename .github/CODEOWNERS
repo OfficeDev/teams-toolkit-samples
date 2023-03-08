@@ -9,8 +9,8 @@
 # In each subsection folders are ordered first by depth, then alphabetically.
 # This should make it easy to add new rules without breaking existing ones.
 
-/NPM-search-connector-M365 @kimizhu
-/adaptive-card-notification @kimizhu
+/NPM-search-connector-M365 @kimizhu @swatDong @kuojianlu
+/adaptive-card-notification @kimizhu @dooriya @swatDong @XiaofuHuang
 /bot-sso @eriolchan
 /command-bot-with-sso @adashen
 /graph-connector-app @adashen
@@ -22,13 +22,13 @@
 /hello-world-in-meeting @eriolchan
 /hello-world-tab-with-backend @eriolchan
 /hello-world-teams-tab-and-outlook-add-in @1yefuwang1
-/incoming-webhook-notification @kimizhu
+/incoming-webhook-notification @kimizhu @dooriya @swatDong @XiaofuHuang
 /query-org-user-with-message-extension-sso @adashen
 /share-now @adashen
-/stocks-update-notification-bot @kimizhu
-/stocks-update-notification-bot-dotnet @kimizhu
+/stocks-update-notification-bot @kimizhu @dooriya @swatDong @XiaofuHuang
+/stocks-update-notification-bot-dotnet @kimizhu @dooriya @swatDong @XiaofuHuang
 /todo-list-SPFx @HuihuiWu-Microsoft
 /team-central-dashboard @huimiu
 /todo-list-with-Azure-backend @adashen
-/todo-list-with-Azure-backend-M365 @kimizhu
+/todo-list-with-Azure-backend-M365 @kimizhu @swatDong @kuojianlu
 /.github/workflows/cd.yml @adashen @LongOddCode @IvanJobs @qinezh @wenytang-ms
