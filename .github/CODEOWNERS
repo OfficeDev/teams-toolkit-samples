@@ -12,23 +12,23 @@
 /NPM-search-connector-M365 @kimizhu
 /adaptive-card-notification @kimizhu
 /bot-sso @eriolchan
-/command-bot-with-sso @adashen
-/graph-connector-app @adashen
-/graph-connector-bot @adashen
-/graph-toolkit-contact-exporter @adashen
-/graph-toolkit-one-productivity-hub @adashen
-/graph-toolkit-productivity-hub-aspnetcore @adashen
+/command-bot-with-sso @adashen @SLdragon
+/graph-connector-app @adashen @formulahendry
+/graph-connector-bot @adashen @formulahendry
+/graph-toolkit-contact-exporter @adashen @SLdragon
+/graph-toolkit-one-productivity-hub @adashen @SLdragon
+/graph-toolkit-productivity-hub-aspnetcore @adashen @SLdragon
 /hello-world-bot-with-tab @eriolchan
 /hello-world-in-meeting @eriolchan
 /hello-world-tab-with-backend @eriolchan
 /hello-world-teams-tab-and-outlook-add-in @1yefuwang1
 /incoming-webhook-notification @kimizhu
-/query-org-user-with-message-extension-sso @adashen
-/share-now @adashen
+/query-org-user-with-message-extension-sso @adashen @wenytang-ms
+/share-now @adashen @xzf0587
 /stocks-update-notification-bot @kimizhu
 /stocks-update-notification-bot-dotnet @kimizhu
 /todo-list-SPFx @HuihuiWu-Microsoft
 /team-central-dashboard @huimiu
-/todo-list-with-Azure-backend @adashen
+/todo-list-with-Azure-backend @adashen @formulahendry
 /todo-list-with-Azure-backend-M365 @kimizhu
 /.github/workflows/cd.yml @adashen @LongOddCode @IvanJobs @qinezh @wenytang-ms
