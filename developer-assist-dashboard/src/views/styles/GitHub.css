@@ -1,0 +1,153 @@
+.github-header-icon {
+    width: 22px !important;
+    height: 22px !important;
+}
+
+.border-style {
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+}
+
+.has-issue-layout {
+    display: grid;
+    overflow-x: auto;
+    min-width: 18rem;
+    align-content: start;
+    padding-right: 2px;
+}
+
+.no-issue-layout {
+    display: grid;
+    gap: 1.8rem;
+    overflow-x: auto;
+    min-width: 18rem;
+}
+
+.issue-add-icon {
+    color: var(--colorPaletteBlueBorderActive);
+    margin-left: 0.35rem;
+    padding: 0 !important;
+}
+
+.input-issue-unfocused {
+    border: none;
+    outline: medium;
+    height: 1.75rem;
+    margin-left: -0.35rem;
+    font-size: 0.875rem;
+    background-color: var(--colorNeutralBackground3) !important;
+}
+
+.input-issue-focused {
+    border: none;
+    outline: medium;
+    height: 1.75rem;
+    margin-left: -0.35rem;
+    font-size: 0.875rem;
+    color: var(--colorNeutralForeground1) !important;
+    background-color: var(--colorNeutralBackground6) !important;
+}
+
+.input-issue-unfocused::placeholder {
+    color: var(--colorPaletteBlueBorderActive) !important;
+}
+
+.input-issue-focused::placeholder {
+    color: var(--colorPaletteBlueBorderActive) !important;
+}
+
+.div-issue-add-focused {
+    grid-template-columns: 1fr max-content !important;
+    padding-left: 1.225rem !important;
+    background-color: var(--colorNeutralBackground6) !important;
+}
+
+.div-issue-add-unfocused {
+    grid-template-columns: max-content 1fr max-content;
+}
+
+.div-issue-add-layout {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    gap: 1rem;
+    align-items: center;
+    border: 1px solid var(--colorNeutralStroke1);
+    height: 2.25rem;
+    padding-left: 0.875rem;
+    padding-right: 0.7rem;
+    background-color: var(--colorNeutralBackground3);
+}
+
+.add-btn-enter {
+    border-radius: 4px;
+    width: max-content;
+    height: 1.5rem;
+    border: none;
+    font-weight: 600;
+    text-align: center;
+    background-color: var(--colorNeutralStroke1Hover);
+}
+
+.add-btn-leave {
+    border-radius: 4px;
+    width: max-content;
+    height: 1.5rem;
+    border: none;
+    font-weight: 600;
+    text-align: center;
+    background-color: var(--colorNeutralStrokeOnBrand2);
+}
+
+.issue-item-even-layout {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.625rem 0.7rem 0.625rem 1.225rem;
+}
+
+.issue-item-odd-layout {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    gap: 1rem;
+    align-items: center;
+    background-color: var(--colorNeutralBackground2);
+    border-top: 1px solid var(--colorNeutralStencil1);
+    border-bottom: 1px solid var(--colorNeutralStencil1);
+    padding: 0.625rem 0.7rem 0.625rem 1.225rem;
+}
+
+.issue-content-layout {
+    display: grid;
+    align-content: start;
+    cursor: pointer;
+}
+
+.issue-state {
+    color: var(--colorPaletteBlueBorderActive) !important;
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+}
+
+.issue-desc {
+    font-weight: 400 !important;
+    font-size: 0.75rem !important;
+    line-height: 1.25rem !important;
+    color: var(--colorNeutralForeground3);
+    overflow-x: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.btn-issue-share {
+    align-self: self-start;
+    color: var(--colorNeutralForeground3) !important;
+    padding: 0 !important;
+}
+
+.img-issue {
+    width: 1.125rem;
+    align-self: self-start;
+}
