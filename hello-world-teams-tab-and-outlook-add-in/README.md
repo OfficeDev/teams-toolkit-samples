@@ -1,6 +1,6 @@
 # Getting Started with Hello World Teams Tab and Outlook add-in Sample
 
-# How to use this HelloWorld Teams tab and Outlook Add-in sample app
+## How to use this HelloWorld Teams tab and Outlook Add-in sample app
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
