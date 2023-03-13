@@ -1,26 +1,26 @@
 {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.14",
+    "manifestVersion": "1.15",
     "version": "1.0.0",
     "id": "${{TEAMS_APP_ID}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Teams App, Inc.",
-        "websiteUrl": "https://www.example.com",
-        "privacyUrl": "https://www.example.com/termofuse",
-        "termsOfUseUrl": "https://www.example.com/privacy"
+        "websiteUrl": "${{TAB_ENDPOINT}}",
+        "privacyUrl": "${{TAB_ENDPOINT}}/index.html#/privacy",
+        "termsOfUseUrl": "${{TAB_ENDPOINT}}/index.html#/termsofuse"
     },
     "icons": {
-        "color": "${{COLOR_ICON}}",
-        "outline": "${{OUTLINE_ICON}}"
+        "color": "color.png",
+        "outline": "outline.png"
     },
     "name": {
-        "short": "${{APP_NAME_SHORT}}",
-        "full": "${{APP_NAME_FULL}}"
+      "short": "developer-assist-dashboard-${{TEAMSFX_ENV}}",
+      "full": "Full name for developer-assist-dashboard"
     },
     "description": {
-        "short": "${{DESCRIPTION_SHORT}}",
-        "full": "${{DESCRIPTION_FULL}}"
+        "short": "Short description of developer-assist-dashboard",
+        "full": "Full description of developer-assist-dashboard"
     },
     "accentColor": "#FFFFFF",
     "bots": [],
