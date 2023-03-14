@@ -38,20 +38,7 @@ export class TeamsBot extends TeamsActivityHandler {
         if (query.parameters[0] && query.parameters[0].name === 'initialRun') {
           const graphClient = createMicrosoftGraphClientWithCredential(credential, 'User.Read');
           const profile = await graphClient.api('/me').get();
-          let image = undefined;
-          try {
-            let photoBinary = await graphClient
-              .api("/me/photo/$value")
-              .responseType(ResponseType.ARRAYBUFFER)
-              .get();
-            const buffer = Buffer.from(photoBinary);
-            const imageUri = "data:image/png;base64," + buffer.toString("base64");
-            image = CardFactory.images([imageUri]);
-          } catch (err) {
-            console.error("This user may not have personal photo!", err.message);
-          }
-          const thumbnailCard = CardFactory.thumbnailCard(profile.displayName, profile.mail, image ? image : "");
-          attachments.push(thumbnailCard);
+          await this.getUserPhotoWithGraphClient(graphClient, attachments, profile, `/me/photo/$value`);
         } else {
           const graphClient = createMicrosoftGraphClientWithCredential(credential, 'User.Read.All');
           const searchContext = query.parameters[0].value;
@@ -60,20 +47,7 @@ export class TeamsBot extends TeamsActivityHandler {
             .orderby('displayName')
             .get();
           for (const user of users.value) {
-            let image = undefined;
-            try {
-              let photoBinary = await graphClient
-                .api(`/users/${user.id}/photo/$value`)
-                .responseType(ResponseType.ARRAYBUFFER)
-                .get();
-              const buffer = Buffer.from(photoBinary);
-              const imageUri = "data:image/png;base64," + buffer.toString("base64");
-              image = CardFactory.images([imageUri]);
-            } catch (err) {
-              console.error("This user may not have personal photo!", err.message)
-            }
-            const thumbnailCard = CardFactory.thumbnailCard(user.displayName, user.mail, image ? image : "");
-            attachments.push(thumbnailCard);
+            await this.getUserPhotoWithGraphClient(graphClient, attachments, user, `/users/${user.id}/photo/$value`);
           }
         }
         return {
@@ -97,6 +71,23 @@ export class TeamsBot extends TeamsActivityHandler {
         attachments: [CardFactory.heroCard(obj.name, obj.description)],
       },
     };
+  }
+
+  private async getUserPhotoWithGraphClient(graphClient, attachments, user, apiPath) {
+    let image = undefined;
+    try {
+      let photoBinary = await graphClient
+        .api(apiPath)
+        .responseType(ResponseType.ARRAYBUFFER)
+        .get();
+      const buffer = Buffer.from(photoBinary);
+      const imageUri = "data:image/png;base64," + buffer.toString("base64");
+      image = CardFactory.images([imageUri]);
+    } catch (err) {
+      console.error("This user may not have personal photo!", err.message)
+    }
+    const thumbnailCard = CardFactory.thumbnailCard(user.displayName, user.mail, image ? image : "");
+    attachments.push(thumbnailCard);
   }
 
 }
