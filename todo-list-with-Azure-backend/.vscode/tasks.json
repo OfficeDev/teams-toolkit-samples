@@ -108,24 +108,6 @@
             },
             "presentation": {
                 "reveal": "silent"
-            },
-            "dependsOn": [
-                "Install Azure Functions binding extensions"
-            ]
-        },
-        {
-            // TeamsFx Azure Functions project depends on extra Azure Functions binding extensions for HTTP trigger authorization.
-            "label": "Install Azure Functions binding extensions",
-            "type": "shell",
-            "command": "dotnet build extensions.csproj -o ./bin --ignore-failed-sources",
-            "options": {
-                "cwd": "${workspaceFolder}/api",
-                "env": {
-                    "PATH": "${command:fx-extension.get-dotnet-path}${env:PATH}"
-                }
-            },
-            "presentation": {
-                "reveal": "silent"
             }
         }
     ]
