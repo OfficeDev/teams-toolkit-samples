@@ -57,7 +57,7 @@ Once the provisioning and deployment steps are finished, you can preview your Te
 
 ## Preview Outlook add-in
 
-Once the provisioning and deployment steps are finished, you can preview your Teams app from Visual Studio Code:
+Once the provisioning and deployment steps are finished, you can preview your Outlook add-in from Visual Studio Code:
 1. Copy the production URL from the `TAB_ENDPOINT` in env/.env.dev file.
 2. Edit webpack.config.js file and change urlProd to the value you just copied. Please note to add a '/' at the end of the URL.
 3. Run `npm run build:add-in`.
