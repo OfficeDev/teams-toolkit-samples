@@ -34,7 +34,7 @@ provision:
         - name: msteams
 
 configureApp:
-  - uses: teamsApp/validateManifest # Validate using manifest schema
+  - uses: teamsApp/validate
     with:
       manifestPath: ./appPackage/manifest.json # Path to manifest template
 
