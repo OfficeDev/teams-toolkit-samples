@@ -134,15 +134,15 @@
                                     "icons": [
                                         {
                                             "size": 16,
-                                            "file": "https://localhost:53000/assets/icon-16.png"
+                                            "url": "https://localhost:53000/assets/icon-16.png"
                                         },
                                         {
                                             "size": 32,
-                                            "file": "https://localhost:53000/assets/icon-32.png"
+                                            "url": "https://localhost:53000/assets/icon-32.png"
                                         },
                                         {
                                             "size": 80,
-                                            "file": "https://localhost:53000/assets/icon-80.png"
+                                            "url": "https://localhost:53000/assets/icon-80.png"
                                         }
                                     ],
                                     "controls": [
@@ -153,15 +153,15 @@
                                             "icons": [
                                                 {
                                                     "size": 16,
-                                                    "file": "https://localhost:53000/assets/icon-16.png"
+                                                    "url": "https://localhost:53000/assets/icon-16.png"
                                                 },
                                                 {
                                                     "size": 32,
-                                                    "file": "https://localhost:53000/assets/icon-32.png"
+                                                    "url": "https://localhost:53000/assets/icon-32.png"
                                                 },
                                                 {
                                                     "size": 80,
-                                                    "file": "https://localhost:53000/assets/icon-80.png"
+                                                    "url": "https://localhost:53000/assets/icon-80.png"
                                                 }
                                             ],
                                             "supertip": {
@@ -177,15 +177,15 @@
                                             "icons": [
                                                 {
                                                     "size": 16,
-                                                    "file": "https://localhost:53000/assets/icon-16.png"
+                                                    "url": "https://localhost:53000/assets/icon-16.png"
                                                 },
                                                 {
                                                     "size": 32,
-                                                    "file": "https://localhost:53000/assets/icon-32.png"
+                                                    "url": "https://localhost:53000/assets/icon-32.png"
                                                 },
                                                 {
                                                     "size": 80,
-                                                    "file": "https://localhost:53000/assets/icon-80.png"
+                                                    "url": "https://localhost:53000/assets/icon-80.png"
                                                 }
                                             ],
                                             "supertip": {
