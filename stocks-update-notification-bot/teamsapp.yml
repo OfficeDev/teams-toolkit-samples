@@ -56,7 +56,7 @@ deploy:
       resourceId: ${{BOT_AZURE_FUNCTION_APP_RESOURCE_ID}}
 
 publish:
-  - uses: teamsApp/validate
+  - uses: teamsApp/validateManifest # Validate using manifest schema
     with:
       manifestPath: ./appPackage/manifest.json # Path to manifest template
   - uses: teamsApp/zipAppPackage
