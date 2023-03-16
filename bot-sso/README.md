@@ -47,8 +47,6 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-|Dec 15, 2022| zhany | update to support Teams Toolkit V4.2.0|
-|Jan 30, 2023| Zhany | update to support NodeJS 18|
 |Mar 16, 2023| yukun-dong | update to v5.0.0|
 
 ## Feedback
