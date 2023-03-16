@@ -49,7 +49,7 @@ registerApp:
       # AAD_APP_TENANT_ID: the tenant id of AAD app
       # AAD_APP_OAUTH_AUTHORITY_HOST: the host of OAUTH authority of AAD app
       # AAD_APP_OAUTH_AUTHORITY: the OAUTH authority of AAD app
-      
+
   - uses: teamsApp/create # Creates a Teams app
     with:
       name: QueryOrgUserWithMESSO # Teams app name
@@ -97,3 +97,4 @@ publish:
       appPackagePath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip
   # Output: following environment variable will be persisted in current environment's .env file.
   # TEAMS_APP_PUBLISHED_APP_ID: app id in Teams tenant app catalog.
+projectId: 78ab2e0c-14a0-4ead-9e7a-d4f8f1507d9d
