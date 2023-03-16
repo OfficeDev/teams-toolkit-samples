@@ -54,7 +54,8 @@ Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-|Mar 16, 2023| yukun-dong | update to v5.0.0|
+|Apr 19, 2022| IvanJobs | update to support Teams Toolkit v4.0.0|
+|Dec 7, 2022| yukun-dong | update to support Teams Toolkit v5.0.0|
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
