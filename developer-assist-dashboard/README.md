@@ -1,6 +1,6 @@
 # Getting Started with Developer Assist Dashboard Sample
 
-> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](./../SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
 >
 > This warning will be removed when the samples are ready for production.
 
@@ -70,7 +70,7 @@ This widget displays Planner tasks including the title of the task. This widget 
 
 **To integrate Planner tasks in the dashboard, follow the instructions:**
 
-1. Visit [Microsoft Graph Explorer](aka.ms/ge), select profile icon on the right side and login with your Microsoft 365 developer account.
+1. Visit [Microsoft Graph Explorer](https://aka.ms/ge), select profile icon on the right side and login with your Microsoft 365 developer account.
     1. Type `https://graph.microsoft.com/v1.0/planner/plans` in Graph Explorer query box and select **Run query**. Copy the id of the plan you wish to use.
     1. Type `https://graph.microsoft.com/v1.0/planner/plans/{Plan-Id}/buckets` in Graph Explorer query box and replace {Plan-Id} with your **plan-id** and select **Run query**. Copy the id of the bucket you'd like to see in your dashboard.
 1. Open `./src/configs.ts` file in Developer Assist Dashboard project:
