@@ -29,35 +29,6 @@
             "botId": "${{BOT_ID}}",
             "commands": [
                 {
-                    "id": "createCard",
-                    "context": [
-                        "compose"
-                    ],
-                    "description": "Command to run action to create a Card from Compose Box",
-                    "title": "Create Card",
-                    "type": "action",
-                    "parameters": [
-                        {
-                            "name": "title",
-                            "title": "Card title",
-                            "description": "Title for the card",
-                            "inputType": "text"
-                        },
-                        {
-                            "name": "subTitle",
-                            "title": "Subtitle",
-                            "description": "Subtitle for the card",
-                            "inputType": "text"
-                        },
-                        {
-                            "name": "text",
-                            "title": "Text",
-                            "description": "Text for the card",
-                            "inputType": "textarea"
-                        }
-                    ]
-                },
-                {
                     "id": "shareMessage",
                     "context": [
                         "message"
