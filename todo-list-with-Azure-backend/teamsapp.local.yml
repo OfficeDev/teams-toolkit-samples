@@ -33,7 +33,7 @@ configureApp:
   # Output: following environment variable will be persisted in current environment's .env file.
   # AAD_APP_ACCESS_AS_USER_PERMISSION_ID: the id of access_as_user permission which is used to enable SSO
 
-  - uses: teamsApp/validate
+  - uses: teamsApp/validateManifest # Validate using manifest schema
     with:
       manifestPath: ./appPackage/manifest.json # Path to manifest template
 
@@ -54,7 +54,7 @@ deploy:
       devCert:
         trust: true
       func: true
-      # dotnet: true 
+      dotnet: true 
     # Output: following environment variable will be persisted in current environment's .env file.
     # SSL_CRT_FILE: certificate file
     # SSL_KEY_FILE: certificate key
@@ -68,6 +68,7 @@ deploy:
     with:
       args: build extensions.csproj -o ./bin --ignore-failed-sources
       workingDirectory: ./api
+      execPath: ${{DOTNET_PATH}}
 
   - uses: file/updateEnv # Generate runtime environment variables for tab
     with:

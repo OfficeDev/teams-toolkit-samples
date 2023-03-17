@@ -1,6 +1,6 @@
 # Getting Started with Hello World Teams Tab and Outlook add-in Sample
 
-# How to use this HelloWorld Teams tab and Outlook Add-in sample app
+## How to use this HelloWorld Teams tab and Outlook Add-in sample app
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
@@ -45,7 +45,7 @@ Deploy your project to Azure by following these steps:
 
 ## Preview Teams Tab
 
-Once the provisioning and deployment steps are finished, you can preview your app:
+Once the provisioning and deployment steps are finished, you can preview your Teams app:
 
 - From Visual Studio Code
 
@@ -54,6 +54,15 @@ Once the provisioning and deployment steps are finished, you can preview your ap
   1. Press the Play (green arrow) button to launch your app - now running remotely from Azure.
 
 - From TeamsFx CLI: execute `teamsfx preview --env dev` in your project directory to launch your application.
+
+## Preview Outlook add-in
+
+Once the provisioning and deployment steps are finished, you can preview your Outlook add-in from Visual Studio Code:
+1. Copy the production URL from the `TAB_ENDPOINT` in env/.env.dev file.
+2. Edit webpack.config.js file and change urlProd to the value you just copied. Please note to add a '/' at the end of the URL.
+3. Run `npm run build:add-in`.
+4. Copy `add-in\dist\manifest.dev.json` to `appPackage` folder using `npx ncp .\add-in\dist\manifest.dev.json .\appPackage\manifest.addinPreview.json`
+5. Run `npx office-addin-dev-settings sideload .\appPackage\manifest.addinPreview.json`
 
 ## Validate manifest file
 

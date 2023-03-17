@@ -15,7 +15,7 @@ const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
   clientSecret: config.clientSecret,
 };
 
-const initialLoginEndpoint =`${config.botEndpoint}/auth-start.html`;
+const initialLoginEndpoint = `${config.botEndpoint}/auth-start.html`;
 
 export class TeamsBot extends TeamsActivityHandler {
   constructor() {
@@ -29,7 +29,7 @@ export class TeamsBot extends TeamsActivityHandler {
      * If query without token, no need to implement handleMessageExtensionQueryWithSSO;
      * Otherwise, just follow the sample code below to modify the user code.
      */
-    return await handleMessageExtensionQueryWithSSO(context, oboAuthConfig, initialLoginEndpoint, ['User.Read.All', 'User.Read'], 
+    return await handleMessageExtensionQueryWithSSO(context, oboAuthConfig, initialLoginEndpoint, ['User.Read.All', 'User.Read'],
       async (token: MessageExtensionTokenResponse) => {
         // User Code
 
@@ -38,19 +38,7 @@ export class TeamsBot extends TeamsActivityHandler {
         if (query.parameters[0] && query.parameters[0].name === 'initialRun') {
           const graphClient = createMicrosoftGraphClientWithCredential(credential, 'User.Read');
           const profile = await graphClient.api('/me').get();
-          let photoBinary;
-          try {
-            photoBinary = await graphClient
-              .api("/me/photo/$value")
-              .responseType(ResponseType.ARRAYBUFFER)
-              .get();
-          } catch (err) {
-            throw err;
-          }
-          const buffer = Buffer.from(photoBinary);
-          const imageUri = "data:image/png;base64," + buffer.toString("base64");
-          const thumbnailCard = CardFactory.thumbnailCard(profile.displayName, profile.mail, CardFactory.images([imageUri]));
-          attachments.push(thumbnailCard);
+          await this.getUserPhotoWithGraphClient(graphClient, attachments, profile, `/me/photo/$value`);
         } else {
           const graphClient = createMicrosoftGraphClientWithCredential(credential, 'User.Read.All');
           const searchContext = query.parameters[0].value;
@@ -58,20 +46,8 @@ export class TeamsBot extends TeamsActivityHandler {
             .header('ConsistencyLevel', 'eventual')
             .orderby('displayName')
             .get();
-          for(const user of users.value) {
-            let photoBinary;
-            try {
-              photoBinary = await graphClient
-                .api(`/users/${user.id}/photo/$value`)
-                .responseType(ResponseType.ARRAYBUFFER)
-                .get();
-            } catch (err) {
-              throw err;
-            }
-            const buffer = Buffer.from(photoBinary);
-            const imageUri = "data:image/png;base64," + buffer.toString("base64");
-            const thumbnailCard = CardFactory.thumbnailCard(user.displayName, user.mail, CardFactory.images([imageUri]));
-            attachments.push(thumbnailCard);
+          for (const user of users.value) {
+            await this.getUserPhotoWithGraphClient(graphClient, attachments, user, `/users/${user.id}/photo/$value`);
           }
         }
         return {
@@ -95,6 +71,23 @@ export class TeamsBot extends TeamsActivityHandler {
         attachments: [CardFactory.heroCard(obj.name, obj.description)],
       },
     };
+  }
+
+  private async getUserPhotoWithGraphClient(graphClient, attachments, user, apiPath) {
+    let image = undefined;
+    try {
+      let photoBinary = await graphClient
+        .api(apiPath)
+        .responseType(ResponseType.ARRAYBUFFER)
+        .get();
+      const buffer = Buffer.from(photoBinary);
+      const imageUri = "data:image/png;base64," + buffer.toString("base64");
+      image = CardFactory.images([imageUri]);
+    } catch (err) {
+      console.error("This user may not have personal photo!", err.message)
+    }
+    const thumbnailCard = CardFactory.thumbnailCard(user.displayName, user.mail, image ? image : "");
+    attachments.push(thumbnailCard);
   }
 
 }

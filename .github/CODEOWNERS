@@ -9,26 +9,27 @@
 # In each subsection folders are ordered first by depth, then alphabetically.
 # This should make it easy to add new rules without breaking existing ones.
 
-/NPM-search-connector-M365 @kimizhu
-/adaptive-card-notification @kimizhu
-/bot-sso @eriolchan
-/command-bot-with-sso @adashen
-/graph-connector-app @adashen
-/graph-connector-bot @adashen
-/graph-toolkit-contact-exporter @adashen
-/graph-toolkit-one-productivity-hub @adashen
-/graph-toolkit-productivity-hub-aspnetcore @adashen
-/hello-world-bot-with-tab @eriolchan
-/hello-world-in-meeting @eriolchan
-/hello-world-tab-with-backend @eriolchan
-/hello-world-teams-tab-and-outlook-add-in @1yefuwang1
-/incoming-webhook-notification @kimizhu
-/query-org-user-with-message-extension-sso @adashen
-/share-now @adashen
-/stocks-update-notification-bot @kimizhu
-/stocks-update-notification-bot-dotnet @kimizhu
-/todo-list-SPFx @HuihuiWu-Microsoft
-/team-central-dashboard @huimiu
-/todo-list-with-Azure-backend @adashen
-/todo-list-with-Azure-backend-M365 @kimizhu
+/NPM-search-connector-M365 @kimizhu @swatDong @kuojianlu
+/adaptive-card-notification @kimizhu @dooriya @swatDong @XiaofuHuang
+/bot-sso @eriolchan @yukun-dong
+/command-bot-with-sso @adashen @SLdragon
+/graph-connector-app @adashen @formulahendry
+/graph-connector-bot @adashen @formulahendry
+/graph-toolkit-contact-exporter @adashen @SLdragon
+/graph-toolkit-one-productivity-hub @adashen @SLdragon
+/graph-toolkit-productivity-hub-aspnetcore @adashen @SLdragon
+/hello-world-bot-with-tab @eriolchan @hund030
+/hello-world-in-meeting @eriolchan @JerryYangKai
+/hello-world-tab-with-backend @eriolchan @hund030
+/hello-world-teams-tab-and-outlook-add-in @MSFT-yiz @1yefuwang1
+/incoming-webhook-notification @kimizhu @dooriya @swatDong @XiaofuHuang
+/query-org-user-with-message-extension-sso @adashen @wenytang-ms
+/share-now @adashen @xzf0587
+/stocks-update-notification-bot @kimizhu @dooriya @swatDong @XiaofuHuang
+/stocks-update-notification-bot-dotnet @kimizhu @dooriya @swatDong @XiaofuHuang
+/todo-list-SPFx @MSFT-yiz @HuihuiWu-Microsoft
+/team-central-dashboard @eriolchan @huimiu
+/todo-list-with-Azure-backend @adashen @formulahendry
+/todo-list-with-Azure-backend-M365 @kimizhu @swatDong @kuojianlu
+/developer-assist-dashboard @MSFT-yiz @HuihuiWu-Microsoft
 /.github/workflows/cd.yml @adashen @LongOddCode @IvanJobs @qinezh @wenytang-ms
