@@ -1,74 +1,53 @@
-# Getting Started with One Productivity Hub Sample
-
-> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
->  
-> This warning will be removed when the samples are ready for production.
+# Getting Started with One Productivity Hub
 
 One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) components and [TeamsFx Provider](https://www.npmjs.com/package/@microsoft/mgt-teamsfx-provider).
 
 ![One Productivity Hub Overview](images/oneproductivityhub-overview.gif)
 
-## Prerequisite
-
-- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18
-- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
-
-## What you will learn in this sample
-
+## This sample illustrates
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
 - How to integration TeamsFx with Microsoft Graph Toolkit library.
 
-## Try the Sample with Visual Studio Code Extension
 
-### Local Debug the Sample
+## Prerequisite to use this sample
 
-1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
-1. Open the project in Visual Studio Code.
-1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
-1. Press "F5" to open a browser window and then select your package to view one productivity hub app.
+- [Node.js](https://nodejs.org/) version 14, 16, 18
+- A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
+- [Teams Toolkit for VS Code](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
-### Provision and Deploy the Sample to Azure
+## Minimal path to awesome
+- From VSCode
+    1. Clone the repo to your local workspace or directly download the source code.
+    1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
+    1. Open the project in Visual Studio Code.
+    1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
+    1. Press "F5" to open a browser window and then select your package to view contact exporter sample app.
 
+- From CLI
+    1. Run command: `teamsfx provision --env local` .
+    1. Run command: `teamsfx deploy --env local` .
+    1. Run command: `teamsfx preview --env local` .
+
+### Deploy the app to Azure
 > If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
 
-1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to select Azure resource group to provision the sample.
-1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
-1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
+- From VSCode
+    1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to select Azure resource group to provision the sample.
+    1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
 
-## Try the Sample with TeamsFx CLI
+- From CLI
+    1. Run command: `teamsfx account login azure`.
+    1. Run command: `teamsfx provision --env dev`.
+    1. Run command: `teamsfx deploy --env dev`.
 
-> If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
+### Preview the app in Teams
+- From VSCode
+    1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
+- From CLI
+    1. Run command: `teamsfx preview --env dev`.
 
-1. Install [Node.js](https://nodejs.org/en/download/) (use the latest v14 LTS release)
-1. To install the TeamsFx CLI, use the npm package manager:
 
-    ```
-    npm install -g @microsoft/teamsfx-cli
-    ```
-
-1. To clone this sample project, run the following command:
-
-    ```
-    teamsfx new template graph-toolkit-one-productivity-hub
-    ```
-
-1. In the sample project folder, run provision command.
-
-    ```
-    teamsfx provision
-    ```
-
-1. Deploy the sample project.
-
-    ```
-    teamsfx deploy
-    ```
-
-1. Once your deployment is completed, You can open the project in Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
-
-## Use the app in Teams
+## Advanced usage of this sample
 
 1. The app will look like this when it runs for the first time. Select **Start One Productivity Hub** to enable the app for your account.
 
@@ -82,16 +61,18 @@ One Productivity Hub sample shows you how to build a tab for viewing your calend
 
     ![Select](images/oneproductivityhub.png)
 
-## Code structure
+## Known issues
+- This template has adopted [Authorization Code Flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow) to implement SSO. There's a known limitation with mobile platforms such as iOS and a few Android versions where users have to sign in again as the state was not stored due to [third party cookie being blocked by the browser](https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more).
 
-- You can check app configuration in `teamsapp.*.yml` files
-- You can check app environment information in: [env](env)
-- You will find frontend code in: [tabs/src/components](tabs/src/components)
-- You will find authentication code in: [public](tabs/public/)
+- Due to system webview limitations, users in the tenant with conditional access policies applied cannot consent permissions when conduct an OAuth flow within the Teams mobile clients, it would show error: "xxx requires you to secure this device...".
 
-## Code of Conduct
+To achieve full SSO experience, we will recommend you to implement OBO flow to pass your token to a server. See more [here](https://learn.microsoft.com/en-us/microsoftteams/platform/tabs/how-to/authentication/tab-sso-code#pass-the-access-token-to-server-side-code).
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+## Version History
+|Date| Author| Comments|
+|---|---|---|
+|Mar 17, 2023| rentu | update to support Teams Toolkit v5.0.0|
 
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+## Feedback
+We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+
