@@ -13,9 +13,9 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 ![SSO Command and Response Bot](./images/sso-command-bot.gif)
 
 ## This sample illustrates
-- Use Teams Toolkit to create a Teams bot app.
-- Use Microsoft Graph to get User info and picture in Teams app.
-- Use TeamsFx SDK to implementing SSO for Teams bot.
+- How to use Teams Toolkit to create a Teams bot app.
+- How to use Microsoft Graph to get User info and picture in Teams app.
+- How to use TeamsFx SDK to implementing SSO for Teams bot.
 
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/) version 14, 16, 18
@@ -35,7 +35,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 
 ### Deploy the app to Azure
 - From VS Code: 
-    1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
+    1. Sign in to Azure by clicking `Sign in to Azure` under the ACCOUNTS section from sidebar.
     1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
     1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
 - From TeamsFx CLI:
@@ -54,7 +54,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 If you encounter the ngrok page below when sending the `show` command to the bot, please follow the steps to solve this issue.
 ![ngrok auth page](./images/ngrok-authtoken-page.png)
 1. Stop debugging in VS Code.
-1. Sign up an ngrok account in https://dashboard.ngrok.com/signup.
+1. Sign up for an ngrok account at https://dashboard.ngrok.com/signup.
 Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
 1. Run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in VS Code terminal.
 1. Start debugging the project again by hitting the `F5` key in VS Code.
