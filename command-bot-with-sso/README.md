@@ -35,7 +35,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 
 ### Deploy the app to Azure
 - From VS Code: 
-    1. Sign in to Azure by clicking `Sign in to Azure` under the ACCOUNTS section from sidebar.
+    1. Sign in to Azure by clicking `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
     1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
     1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
 - From TeamsFx CLI:
