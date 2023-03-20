@@ -26,29 +26,36 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 ## Minimal path to awesome
 
 ### Run the app locally
-- From VS Code: 
-    1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug (Edge)` or `Debug (Chrome)`.
-- From TeamsFx CLI: 
+- From VSCode
+    1. Clone the repo to your local workspace or directly download the source code.
+    1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
+    1. Open the project in Visual Studio Code.
+    1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
+    1. Press "F5" to open a browser window and then select your package to view contact exporter sample app.
+
+- From TeamsFx CLI
     1. Run command: `teamsfx provision --env local` .
     1. Run command: `teamsfx deploy --env local` .
     1. Run command: `teamsfx preview --env local` .
 
 ### Deploy the app to Azure
-- From VS Code: 
+> If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
+
+- From VSCode
     1. Sign in to Azure by clicking `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
     1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
     1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
-- From TeamsFx CLI:
+
+- From TeamsFx CLI
     1. Run command: `teamsfx account login azure`.
     1. Run command: `teamsfx provision --env dev`.
     1. Run command: `teamsfx deploy --env dev`.
 
 ### Preview the app in Teams
-- From VS Code: 
-    1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
+- From VSCode: 
+    1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
 - From TeamsFx CLI:
     1. Run command: `teamsfx preview --env dev`.
-
 
 ## Known issues
 If you encounter the ngrok page below when sending the `show` command to the bot, please follow the steps to solve this issue.

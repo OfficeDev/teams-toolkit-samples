@@ -17,6 +17,8 @@ One Productivity Hub sample shows you how to build a tab for viewing your calend
 
 
 ## Minimal path to awesome
+
+### Run the app locally
 1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio](https://visualstudio.microsoft.com/) and install [Teams Toolkit for Visual Studio Extension](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/visual-studio-overview).
 1. Open the project in Visual Studio.

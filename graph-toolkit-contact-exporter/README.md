@@ -14,6 +14,8 @@
 - [Teams Toolkit for VS Code](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Minimal path to awesome
+
+### Run the app locally
 - From VSCode
     1. Clone the repo to your local workspace or directly download the source code.
     1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
@@ -21,7 +23,7 @@
     1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
     1. Press "F5" to open a browser window and then select your package to view contact exporter sample app.
 
-- From CLI
+- From TeamsFx CLI
     1. Run command: `teamsfx provision --env local` .
     1. Run command: `teamsfx deploy --env local` .
     1. Run command: `teamsfx preview --env local` .
@@ -30,18 +32,19 @@
 > If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
 
 - From VSCode
-    1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to select Azure resource group to provision the sample.
-    1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
+    1. Sign in to Azure by clicking `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
+    1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
+    1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
 
-- From CLI
+- From TeamsFx CLI
     1. Run command: `teamsfx account login azure`.
     1. Run command: `teamsfx provision --env dev`.
     1. Run command: `teamsfx deploy --env dev`.
 
 ### Preview the app in Teams
-- From VSCode
+- From VSCode: 
     1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
-- From CLI
+- From TeamsFx CLI:
     1. Run command: `teamsfx preview --env dev`.
 
 ## Advanced usage of this sample
