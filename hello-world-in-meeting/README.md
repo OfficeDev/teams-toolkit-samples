@@ -8,8 +8,8 @@ This App helps to enable your apps for Teams meetings and configure the apps to 
 
 ## This sample illustrates
 
-- Use Teams Toolkit to create a Teams meeting app.
-- Use Teams SDK to get context data in Teams app.
+- How to use Teams Toolkit to create a Teams meeting app.
+- How to use Teams Client Library to get context data in Teams app.
 
 ## Prerequisite to use this sample
 
@@ -50,9 +50,10 @@ After you have completed the provision and deploy steps in `Deploy the app to Az
 
 ## Version History
 
-| Date         | Author | Comments      |
-| ------------ | ------ | ------------- |
-| Mar 16, 2023 | Kai    | first version |
+| Date         | Author | Comments                               |
+| ------------ | ------ | -------------------------------------- |
+| Dec 15, 2022 | Kai    | update to support Teams Toolkit V4.2.0 |
+| Mar 16, 2023 | Kai    | update to support Teams Toolkit V5.0.0 |
 
 ## Feedback
 
