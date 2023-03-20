@@ -149,7 +149,7 @@ resource functionStorage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
   }
 }
 
-// The output will be persisted in .env.{envName}. Visit  https://aka.ms/teamsfx-actions/arm-deploy for more details.
+// The output will be persisted in .env.{envName}. Visit https://aka.ms/teamsfx-actions/arm-deploy for more details.
 output TAB_AZURE_STORAGE_RESOURCE_ID string = storage.id // used in deploy stage
 output TAB_DOMAIN string = siteDomain
 output TAB_ENDPOINT string = tabEndpoint
