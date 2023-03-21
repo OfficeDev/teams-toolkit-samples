@@ -2,7 +2,7 @@ version: 1.0.0
 
 environmentFolderPath: ./env
 
-registerApp:
+provision:
   - uses: teamsApp/create # Creates a Teams app
     with:
       name: adaptive-card-notifi-${{TEAMSFX_ENV}} # Teams app name
@@ -15,7 +15,6 @@ registerApp:
     # BOT_ID: the AAD app client id created for bot
     # SECRET_BOT_PASSWORD: the AAD app client secret created for bot
 
-provision:
   - uses: botFramework/create # Create or update the bot registration on dev.botframework.com
     with:
       botId: ${{BOT_ID}}
@@ -25,7 +24,6 @@ provision:
       channels:
         - name: msteams
 
-configureApp:
   - uses: teamsApp/validateManifest # Validate using manifest schema
     with:
       manifestPath: ./appPackage/manifest.json # Path to manifest template
