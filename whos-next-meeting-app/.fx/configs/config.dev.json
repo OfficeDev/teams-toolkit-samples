@@ -1,0 +1,10 @@
+{
+    "$schema": "https://aka.ms/teamsfx-env-config-schema",
+    "description": "Who's next (development build) Visit https://aka.ms/teamsfx-env-config to learn more about this.",
+    "manifest": {
+        "appName": {
+            "short": "Whos Next?",
+            "full": "Whos Next?"
+        }
+    }
+}
