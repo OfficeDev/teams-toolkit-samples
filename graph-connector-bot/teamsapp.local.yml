@@ -1,6 +1,6 @@
 version: 1.0.0
 
-registerApp:
+provision:
   - uses: aadApp/create # Creates a new AAD app to authenticate users if AAD_APP_CLIENT_ID environment variable is empty
     with:
       name: graph-connector-bot-aad # Note: when you run configure/aadApp, the AAD app name will be updated based on the definition of manifest. If you don't want to change the name, ensure the name in AAD manifest is same with the name defined here.
@@ -18,8 +18,6 @@ registerApp:
       name: graph-connector-bot-${{TEAMSFX_ENV}} # Teams app name
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
-
-provision:
   - uses: botAadApp/create # Creates a new AAD app for bot if BOT_ID environment variable is empty
     with:
       name: graph-connector-bot
@@ -35,8 +33,6 @@ provision:
       description: ""
       channels:
         - name: msteams
-
-configureApp:
   - uses: aadApp/update # Apply the AAD manifest to an existing AAD app. Will use the object id in manifest file to determine which AAD app to update.
     with:
       manifestPath: ./aad.manifest.json # Relative path to teamsfx folder. Environment variables in manifest will be replaced before apply to AAD app
