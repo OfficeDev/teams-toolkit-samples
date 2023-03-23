@@ -45,8 +45,8 @@ To trigger the message extension in Outlook:
 
 ## Architecture
 ### Code structure
-- You can check app configuration and environment information in: [.fx](.fx)
-- You will find bot code in: [bot](bot)
+- You can check app configuration and environment information in: [teamsapp.yml](teamsapp.yml), [teamsapp.local.yml](teamsapp.local.yml) and [env](env)
+- You will find bot code in [messageExtensionBot.js](messageExtensionBot.js) and [index.js](index.js)
 
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
