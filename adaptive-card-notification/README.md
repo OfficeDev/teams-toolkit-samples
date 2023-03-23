@@ -32,7 +32,7 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 1. Press "F5" to open a browser window and then select your package to view adaptive card notification sample app. 
 
 ## Use the App in Teams
-1. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default. For preview, the `<endpoint>` can be found in `BOT_ENDPOINT` of the file `teamsfx/.env.local`.
+1. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default. For preview, the `<endpoint>` can be found in `BOT_ENDPOINT` of the file `env/.env.local`.
 2. (Mention sample) Update the `userId` and `userName` to the user who you want to mention in the file [mentionNotificationHttpTrigger.ts](src/mentionNotificationHttpTrigger.ts).
     ```js
     const data: MentionData = {

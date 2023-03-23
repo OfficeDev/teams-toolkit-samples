@@ -58,7 +58,7 @@ Todo List app helps to manage your personal to do items. This app can be install
 
 ### Code structure
 
-- You can check app configuration and environment information in: [.fx](.fx)
+- You can check app configuration and environment information in: [teamsapp.yml](teamsapp.yml), [teamsapp.local.yml](teamsapp.local.yml) and [env](env)
 - You will find frontend code in: [tabs/src/components](tabs/src/components)
 - You will find backend code in: [api/todo](api/todo)
 - You will find MS graph client code in: [tabs/src/components/Creator.js](tabs/src/components/Creator.js)
