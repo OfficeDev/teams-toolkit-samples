@@ -18,7 +18,6 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 
 ### Run the app locally
 1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
 1. Press "F5" to open a browser window and then select your package to view contact exporter sample app.
@@ -78,7 +77,8 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-|Mar 21, 2023| junhan | update to support Teams Toolkit v5.0.0|
+| Apr 13, 2022 | junhan | update to support Teams Toolkit v4.0.0 |
+| Mar 21, 2023 | junhan | update to support Teams Toolkit v5.0.0 |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
