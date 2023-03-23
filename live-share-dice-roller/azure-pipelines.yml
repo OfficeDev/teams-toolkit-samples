@@ -1,0 +1,30 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+
+# FluidHelloWorld build for CI
+
+pr:
+- main
+
+pool: 'Lite'
+
+steps:
+- task: ComponentGovernanceComponentDetection@0
+  inputs:
+    scanType: 'Register'
+    verbosity: 'Verbose'
+    alertWarningLevel: 'High'
+- task: UseNode@1
+  displayName: Use Node 12.x
+  inputs: 
+    version: 12.x
+- task: Npm@1
+  displayName: Install
+  inputs:
+    command: 'custom'
+    customCommand: 'install'
+- task: Npm@1
+  displayName: Build
+  inputs:
+    command: 'custom'
+    customCommand: 'run build'
