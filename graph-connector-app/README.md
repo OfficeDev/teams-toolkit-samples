@@ -13,6 +13,7 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 - [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 
 ## Minimal path to awesome
 
