@@ -2,7 +2,6 @@
     "name": "dice-roller",
     "version": "1.0.0",
     "description": "Sample dice roller app.",
-    "repository": "https://github.com/microsoft/live-share-sdk",
     "license": "Microsoft",
     "author": "Microsoft",
     "scripts": {
@@ -19,11 +18,13 @@
         "@microsoft/teams-js": "^2.5.0",
         "@typescript-eslint/eslint-plugin": "^5.48.1",
         "@typescript-eslint/parser": "^5.48.1",
-        "fluid-framework": "~1.2.3"
+        "fluid-framework": "~1.2.3",
+        "vite": "^4.2.1"
     },
     "devDependencies": {
         "@fluidframework/test-client-utils": "~1.2.3",
         "buffer": "^6.0.3",
+        "env-cmd": "^10.1.0",
         "start-server-and-test": "^1.15.2"
     }
 }

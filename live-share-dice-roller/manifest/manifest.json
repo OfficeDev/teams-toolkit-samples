@@ -26,7 +26,7 @@
     "accentColor": "#FFFFFF",
     "configurableTabs": [
         {
-            "configurationUrl": "https://<<BASE_URI_DOMAIN>>/?view=config&inTeams=1&load=1",
+            "configurationUrl": "${{BOT_ENDPOINT}}/?view=config&inTeams=1&load=1",
             "canUpdateConfiguration": false,
             "scopes": [
                 "groupchat"
@@ -38,7 +38,8 @@
         }
     ],
     "validDomains": [
-        "*.ngrok.io"
+        "*.ngrok.io",
+        "${{TAB_DOMAIN}}"
     ],
     "authorization": {
         "permissions": {
