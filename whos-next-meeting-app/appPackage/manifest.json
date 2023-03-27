@@ -6,28 +6,28 @@
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Microsoft Hack Week project",
-        "websiteUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}",
-        "privacyUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__INDEXPATH}}/privacy",
-        "termsOfUseUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__INDEXPATH}}/termsofuse"
+        "websiteUrl": "${{TAB_ENDPOINT}}",
+        "privacyUrl": "${{TAB_ENDPOINT}}/index.html#/privacy",
+        "termsOfUseUrl": "${{TAB_ENDPOINT}}/index.html#/termsofuse"
     },
     "icons": {
-        "color": "resources/color.png",
-        "outline": "resources/outline.png"
+        "color": "color.png",
+        "outline": "outline.png"
     },
     "name": {
-        "short": "${{CONFIG__MANIFEST__APPNAME__SHORT}}",
-        "full": "${{CONFIG__MANIFEST__APPNAME__FULL}}"
+        "short": "Whos Next?-${{TEAMSFX_ENV}}",
+        "full": "Full name for Whos Next?"
     },
     "description": {
         "short": "Meeting app to help decide who should speak next",
-        "full": "${{CONFIG__MANIFEST__APPNAME__SHORT}} is displayed in the side panel of a Teams meeting to help decide who should speak next."
+        "full": "'Whos Next?' is displayed in the side panel of a Teams meeting to help decide who should speak next."
     },
     "accentColor": "#FFFFFF",
     "bots": [],
     "composeExtensions": [],
     "configurableTabs": [
         {
-            "configurationUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__INDEXPATH}}/config",
+            "configurationUrl": "${{TAB_ENDPOINT}}/index.html#/config",
             "canUpdateConfiguration": true,
             "scopes": [
                 "team",
