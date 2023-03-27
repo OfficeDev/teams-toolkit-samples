@@ -4,7 +4,7 @@
   "parameters": {
     "provisionParameters": {
       "value": {
-        "resourceBaseName": "inmeetingdev{{state.solution.resourceNameSuffix}}"
+        "resourceBaseName": "inmeetingdev${{RESOURCE_SUFFIX}}"
       }
     }
   }

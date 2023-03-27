@@ -2,32 +2,32 @@
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
     "manifestVersion": "1.14",
     "version": "1.0.1",
-    "id": "{{state.fx-resource-appstudio.teamsAppId}}",
+    "id": "${{TEAMS_APP_ID}}",
     "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Microsoft Hack Week project",
-        "websiteUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}",
-        "privacyUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/privacy",
-        "termsOfUseUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/termsofuse"
+        "websiteUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}",
+        "privacyUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__INDEXPATH}}/privacy",
+        "termsOfUseUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__INDEXPATH}}/termsofuse"
     },
     "icons": {
         "color": "resources/color.png",
         "outline": "resources/outline.png"
     },
     "name": {
-        "short": "{{config.manifest.appName.short}}",
-        "full": "{{config.manifest.appName.full}}"
+        "short": "${{CONFIG__MANIFEST__APPNAME__SHORT}}",
+        "full": "${{CONFIG__MANIFEST__APPNAME__FULL}}"
     },
     "description": {
         "short": "Meeting app to help decide who should speak next",
-        "full": "{{config.manifest.appName.short}} is displayed in the side panel of a Teams meeting to help decide who should speak next."
+        "full": "${{CONFIG__MANIFEST__APPNAME__SHORT}} is displayed in the side panel of a Teams meeting to help decide who should speak next."
     },
     "accentColor": "#FFFFFF",
     "bots": [],
     "composeExtensions": [],
     "configurableTabs": [
         {
-            "configurationUrl": "{{{state.fx-resource-frontend-hosting.endpoint}}}{{{state.fx-resource-frontend-hosting.indexPath}}}/config",
+            "configurationUrl": "${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT}}${{PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__INDEXPATH}}/config",
             "canUpdateConfiguration": true,
             "scopes": [
                 "team",
