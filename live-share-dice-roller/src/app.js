@@ -9,6 +9,7 @@ import { app, pages, meeting, LiveShareHost } from "@microsoft/teams-js";
 
 const searchParams = new URL(window.location).searchParams;
 const root = document.getElementById("content");
+let color = "white";
 
 // Define container schema
 
@@ -36,6 +37,11 @@ async function start() {
 
         // Get our frameContext from context of our app in Teams
         const context = await app.getContext();
+        const theme = context.app.theme;
+        console.log(theme)
+        if (theme == "default") {
+            color = "black";
+        }
         if (context.page.frameContext == "meetingStage") {
             view = "stage";
         }
@@ -77,18 +83,17 @@ async function joinContainer() {
 // STAGE VIEW
 
 const stageTemplate = document.createElement("template");
-
 stageTemplate["innerHTML"] = `
-  <style>
-    .wrapper { text-align: center; color: white }
-    .dice { font-size: 200px; }
-    .roll { font-size: 50px; }
-  </style>
-  <div class="wrapper">
-    <div class="dice"></div>
-    <button class="roll"> Roll </button>
-  </div>
-`;
+    <style>
+        .wrapper { text-align: center; color: white }
+        .dice { font-size: 200px; }
+        .roll { font-size: 50px; }
+    </style>
+    <div class="wrapper">
+        <div class="dice"></div>
+        <button class="roll"> Roll </button>
+    </div>
+    `;
 
 function renderStage(diceMap, elem) {
     elem.appendChild(stageTemplate.content.cloneNode(true));
@@ -151,19 +156,18 @@ function shareToStage() {
 
 const settingsTemplate = document.createElement("template");
 
-settingsTemplate["innerHTML"] = `
-  <style>
-    .wrapper { text-align: center; color: white }
-    .title { font-size: large; font-weight: bolder; }
-    .text { font-size: medium; }
-  </style>
-  <div class="wrapper">
-    <p class="title">Welcome to Dice Roller!</p>
-    <p class="text">Press the save button to continue.</p>
-  </div>
-`;
-
 function renderSettings(elem) {
+    settingsTemplate["innerHTML"] = `
+    <style>
+        .wrapper { text-align: center; color: ${color} }
+        .title { font-size: large; font-weight: bolder; }
+        .text { font-size: medium; }
+    </style>
+    <div class="wrapper">
+        <p class="title">Welcome to Dice Roller!</p>
+        <p class="text">Press the save button to continue.</p>
+    </div>
+    `;
     elem.appendChild(settingsTemplate.content.cloneNode(true));
 
     // Save the configurable tab
