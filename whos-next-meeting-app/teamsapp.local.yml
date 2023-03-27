@@ -3,22 +3,18 @@ version: 1.0.0
 provision:
   - uses: teamsApp/create # Creates a Teams app
     with:
-      name: ${{CONFIG__MANIFEST__APPNAME__SHORT}} # Teams app name
+      name: ${{TEAMS_APP_NAME}} # Teams app name
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
 
   - uses: script # Set env for local launch
-    name: Set PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__DOMAIN for local launch
+    name: Set TAB_DOMAIN for local launch
     with:
-      run: echo "::set-output PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__DOMAIN=localhost:53000"
+      run: echo "::set-output TAB_DOMAIN=localhost:53000"
   - uses: script # Set env for local launch
-    name: Set PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT for local launch
+    name: Set TAB_ENDPOINT for local launch
     with:
-      run: echo "::set-output PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__ENDPOINT=https://localhost:53000"
-  - uses: script # Set env for local launch
-    name: Set PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__INDEXPATH for local launch
-    with:
-      run: echo "::set-output PROVISIONOUTPUT__FRONTENDHOSTINGOUTPUT__INDEXPATH=/index.html#"
+      run: echo "::set-output TAB_ENDPOINT=https://localhost:53000"
 
   - uses: teamsApp/validateManifest # Validate using manifest schema
     with:
@@ -47,7 +43,7 @@ deploy:
 
   - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables
     with:
-      target: ./tabs/.env.teamsfx.local
+      target: ./tab/.localSettings
       envs:
         BROWSER: none
         HTTPS: true
