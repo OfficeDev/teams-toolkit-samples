@@ -38,7 +38,6 @@ async function start() {
         // Get our frameContext from context of our app in Teams
         const context = await app.getContext();
         const theme = context.app.theme;
-        console.log(theme)
         if (theme == "default") {
             color = "black";
         }
@@ -122,19 +121,19 @@ function renderStage(diceMap, elem) {
 
 const sideBarTemplate = document.createElement("template");
 
-sideBarTemplate["innerHTML"] = `
-  <style>
-    .wrapper { text-align: center; color: white }
-    .title { font-size: large; font-weight: bolder; }
-    .text { font-size: medium; }
-  </style>
-  <div class="wrapper">
-    <p class="title">Lets get started</p>
-    <p class="text">Press the share to stage button to share Dice Roller to the meeting stage.</p>
-  </div>
-`;
-
 function renderSideBar(elem) {
+    sideBarTemplate["innerHTML"] = `
+    <style>
+        .wrapper { text-align: center; color: ${color} }
+        .title { font-size: large; font-weight: bolder; }
+        .text { font-size: medium; }
+    </style>
+    <div class="wrapper">
+        <p class="title">Lets get started</p>
+        <p class="text">Press the share to stage button to share Dice Roller to the meeting stage.</p>
+    </div>
+    `;
+    
     elem.appendChild(sideBarTemplate.content.cloneNode(true));
     const shareToStageButton = document.createElement("button");
     shareToStageButton["innerHTML"] = "Share to Stage";
