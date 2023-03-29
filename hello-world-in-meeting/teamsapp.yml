@@ -52,7 +52,7 @@ deploy:
   - uses: azureStorage/deploy
     with:
       # Deploy base folder
-      artifactFolder: ./build
+      artifactFolder: build
       # The resource id of the cloud resource to be deployed to
       resourceId: ${{TAB_AZURE_STORAGE_RESOURCE_ID}}
 

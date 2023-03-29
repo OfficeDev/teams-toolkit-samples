@@ -49,7 +49,7 @@ deploy:
   - uses: azureFunctions/zipDeploy
     with:
       # deploy base folder
-      artifactFolder: ./
+      artifactFolder: .
       # can be changed to any ignore file location, leave blank will ignore nothing
       ignoreFile: .funcignore
       # the resource id of the cloud resource to be deployed to

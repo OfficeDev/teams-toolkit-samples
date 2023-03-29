@@ -69,7 +69,7 @@ deploy:
   - uses: cli/runDotnetCommand # Run dotnet command
     with:
       args: build extensions.csproj -o ./bin --ignore-failed-sources
-      workingDirectory: ./api
+      workingDirectory: api
       execPath: ${{DOTNET_PATH}}
 
   - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables for tab

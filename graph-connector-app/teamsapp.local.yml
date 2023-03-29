@@ -65,7 +65,7 @@ deploy:
   - uses: cli/runNpmCommand # Run npm command
     with:
       args: install --no-audit
-      workingDirectory: ./tabs
+      workingDirectory: tabs
 
   - uses: cli/runNpmCommand # Run npm command
     with:
