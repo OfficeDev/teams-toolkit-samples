@@ -1,77 +1,63 @@
 # Getting Started with Hello World Tab with Backend Sample (Azure)
 
-> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
->
-> This warning will be removed when the samples are ready for production.
-
 > Important: Please be advised that access tokens are stored in sessionStorage for you by default. This can make it possible for malicious code in your app (or code pasted into a console on your page) to access APIs at the same privilege level as your client application. Please ensure you only request the minimum necessary scopes from your client application, and perform any sensitive operations from server side code that your client has to authenticate with.
+
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
 Hello World Tab with Backend shows you how to build a tab app with an Azure Function as backend, how to get user login information with SSO and how to call Azure Function from frontend tab.
 
 ![Hello World Tab](images/helloWorld-tab-with-backend.gif)
+
+## This sample illustrates
+
+- Use Teams Toolkit to create a Teams tab app.
+- Use Microsoft Graph to get User info and picture in Teams app.
+- Use TeamsFx SDK to call Azure Functions.
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
-## What you will learn in this sample:
+## Minimal path to awesome
 
-- How to use TeamsFx to build frontend hosting on Azure for your tab app.
-- How to use TeamsFx to build backend hosting on Azure for your tab app.
-- How to use MS graph client in TeamsFx to get access to Microsoft 365 data.
+### Run the app locally
 
-## Try the Sample with Visual Studio Code Extension:
->Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
-1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
-1. Open the project in Visual Studio Code.
-1. Start debugging the project by hitting the `F5` key in Visual Studio Code.
+- From VS Code: 
+    1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug (Edge)` or `Debug (Chrome)`.
 
-## Edit the manifest
+- From TeamsFx CLI: 
+    1. Run command: `teamsfx provision --env local` .
+    1. Run command: `teamsfx deploy --env local` .
+    1. Run command: `teamsfx preview --env local` .
 
-You can find the Teams manifest in `./appPackage` folder. The templates contains:
-* `manifest.template.json`: Manifest file for Teams app running locally and remotely.
+### Deploy the app to Azure
 
-Both file contains template arguments with `${{...}}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
+- From VS Code: 
+    1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
+    1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
+    1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
 
-## Deploy to Azure
+- From TeamsFx CLI:
+    1. Run command: `teamsfx account login azure`.
+    1. Run command: `teamsfx provision --env dev`.
+    1. Run command: `teamsfx deploy --env dev`.
 
-Deploy your project to Azure by following these steps:
+### Preview the app in Teams
 
-| From Visual Studio Code                                                                                                                                                                                                                                                                                                                                                  | From TeamsFx CLI                                                                                                                                                                                                                    |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <ul><li>Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.</li> <li>After you signed in, select a subscription under your account.</li><li>Open the Teams Toolkit and click `Provision in the cloud` from DEPLOYMENT section or open the command palette and select: `Teams: Provision in the cloud`.</li><li>Open the Teams Toolkit and click `Deploy to the cloud` or open the command palette and select: `Teams: Deploy to the cloud`.</li></ul> | <ul> <li>Run command `teamsfx account login azure`.</li> <li>Run command `teamsfx account set --subscription <your-subscription-id>`.</li> <li> Run command `teamsfx provision`.</li> <li>Run command: `teamsfx deploy`. </li></ul> |
+- From VS Code: 
+    1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 
-> Note: Provisioning and deployment may incur charges to your Azure Subscription.
+- From TeamsFx CLI:
+    1. Run command: `teamsfx preview --env dev`.
 
-## Package
+## Version History
 
-- From Visual Studio Code: open the command palette and select `Teams: Zip Teams metadata package`.
-- Alternatively, from the command line run `teamsfx package` in the project directory.
+|Date| Author| Comments|
+|---|---|---|
+|May 18, 2022| hund030 | update to support Teams Toolkit v4.0.0|
+|Dec 8, 2022| hund030 | update to support Teams Toolkit v5.0.0|
 
-## Publish to Teams
-
-Once deployed, you may want to distribute your application to your organization's internal app store in Teams. Your app will be submitted for admin approval.
-
-- From Visual Studio Code: open the Teams Toolkit and click `Publish to Teams` or open the command palette and select: `Teams: Publish to Teams`.
-- From TeamsFx CLI: run command `teamsfx publish` in your project directory.
-
-## Architecture
-
-- The frontend is a react tab app hosted on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
-- The Backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for managing posts in the tab app.
-
-### Code structure
-
-- You can check app configuration and environment information in: [teamsfx](teamsfx)
-- You will find frontend code in: [src/components](./src/components)
-- You will find backend code in: [api/getUserProfile](api/getUserProfile)
-
-## Code of Conduct
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+## Feedback
+We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
