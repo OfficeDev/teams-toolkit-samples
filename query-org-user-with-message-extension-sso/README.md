@@ -61,21 +61,18 @@ This is a simple search-based message extension app demonstrating how to integra
 - If you want to see the updated results, please re-run local debug, or re-provision to update the AAD app and re-deploy the changed part.
 
 
-### Handle ERR_NGROK_6022 Error
-> If you encounter the ngrok page below when sending the `show` command to the bot, please follow the steps to solve this issue.
-
-![ngrok auth page](./images/ngrok-authtoken-page.png)
-1. Stop debugging in Visual Studio Code.
-2. Sign up an ngrok account in https://dashboard.ngrok.com/signup.
-3. Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
-4. Run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in Visual Studio Code terminal.
-5. Start debugging the project again by hitting the F5 key in Visual Studio Code.
-
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Known Issue
+Some developers have reported such issues without any signIn link.
+![KnownIssueError](./images/knownIssue.png)
+
+This problem is sporadic, sometimes it may only appear on a teams account.
+You may just switch another teams account, or try running this sample again later.
 
 ## Further reading
 - [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
