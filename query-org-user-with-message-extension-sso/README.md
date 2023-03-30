@@ -68,11 +68,10 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Known Issue
-Some developers have reported such issues without any signIn link.
+Some developers have reported an issue where they have seen `Unable to reach app. Please try again.`
 ![KnownIssueError](./images/knownIssue.png)
 
-This problem is sporadic, sometimes it may only appear on a teams account.
-You may just switch another teams account, or try running this sample again later.
+This could be an intermittent issue, to mitigate, try to use a different Microsoft 365 account or run this sample later.
 
 ## Further reading
 - [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
