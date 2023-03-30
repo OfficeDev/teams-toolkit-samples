@@ -8,16 +8,14 @@
 
 ![TodoList](images/ToDoListCRUD.gif)
 
-### What you will learn in this sample
+## This sample illustrates
 
 - How to create SharePoint List in the SharePoint team site and how to do CRUD operations on SharePoint List in SPFx context.
 - How to deploy your app to SharePoint App Catalog and sync the solution to Teams App Catalog.
 
-## Prerequisites
-* [NodeJS](https://nodejs.org/en/download/releases/) (Recommend LTS 16.x)
-    >  The SharePoint Framework v1.16.1 is supported on the following Node.js versions:
-    >- Node.js v16 LTS (v16.13.x - v16.18.x, aka: Gallium)
-* Setup SharePoint Environment by following the [instructions](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
+## Prerequisite to use this sample
+* [Set up SharePoint Framework development environment](https://aka.ms/teamsfx-spfx-dev-environment-setup)（Recommend to use SPFx v1.16.1）
+* An Microsoft 365 account. Get your own free Microsoft 365 tenant from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 * Use the team site in SharePoint to create a List.
     - Navigate to the [SharePoint team site](https://support.microsoft.com/en-us/office/create-a-team-site-in-sharepoint-ef10c1e7-15f3-42a3-98aa-b5972711777d), in `Home` tab, click `New` and select `List`.
     > *Note: Each Team/Channel in Teams has a corresponding team site in SharePoint. You must navigate to the target SharePoint team site of the Team/Channel in which you want to add the "Todo List" app. The team site URL ends with xx.sharepoint.com/sites/xx*. eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}`. 
@@ -25,7 +23,7 @@
     - Name the List 'To Do List'
     - Click `Add Column`, select `Single line of text`, name the column 'description'
     - Click `Add Column`, select `Yes/No`, name the column 'isCompleted', and set the default value to `No`.
-* [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
+* [Teams Toolkit for VS Code](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 * [Optional] If you want your users see only the items created by themselves, add access control to your List.
     - In List Page, click `setting` button and then choose `list setting`.
     ![ListSetting1](images/ListSetting1.png)
@@ -38,7 +36,17 @@
     - Invite the guest user and click `Share` button.
     ![invitepeople](images/invitepeople.png)
 
-## Try the Sample
+## Minimal path to awesome
+### Run the app locally
+Debug the app with Teams workbench
+
+1. In Debug mode, select `Teams workbench (Edge)` or `Teams workbench (Chrome)` and press start button. The browser will be opened and you need to sign in Teams with your Microsoft 365 account.
+![teamsworkbench](images/teamsworkbench.png)
+2. Click `Add to a team`.
+![debug](images/localdebug.png)
+3. You should see the app running in your Teams.
+![localdebug-preview](images/localdebug-preview.png)
+### Deploy the app to Azure
 >Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try sample with TeamsFx CLI](cli.md)
 
 1. Clone the repo to your local workspace or directly download the source code.
@@ -62,17 +70,7 @@
 1. You should see the app running in your Teams.
 ![appdisplay](images/appdisplay.png)
 
-## (Optional) Debug
-Debug the app with Teams workbench
-
-1. In Debug mode, select `Teams workbench (Edge)` or `Teams workbench (Chrome)` and press start button. The browser will be opened and you need to sign in Teams with your Microsoft 365 account.
-![teamsworkbench](images/teamsworkbench.png)
-2. Click `Add to a team`.
-![debug](images/localdebug.png)
-3. You should see the app running in your Teams.
-![localdebug-preview](images/localdebug-preview.png)
-
-## Use the App in Teams
+### Use the app in Teams
 1. Since SharePoint can get the context so app user doesn't need to do consent/login operation.
 2. You could add new todo item by clicking "Add Task" button.
 3. You could complete todo item by choosing the checkbox before the item.
@@ -80,25 +78,26 @@ Debug the app with Teams workbench
 5. You could delete todo item by clicking "..." and then choose "Delete" button.
 
 ## Architecture
-
 ![Tab App Flow](images/TabAppFlow.jpg)
 - The frontend is a React Tab hosted on [SharePoint](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview).
 - Backend server(including the database) is provided by [SharePoint List](https://support.microsoft.com/en-us/office/introduction-to-lists-0a1c3ace-def0-44af-b225-cfa8d92c52d7) 
 
 ## Further Reading
-
 - [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 - [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
 
-## Known Issue:
+## Known Issues
 1. Importing [msteams-ui-components-react](https://www.npmjs.com/package/msteams-ui-components-react) package will cause issues during package build:
 ![Issue](images/knownissue.png)
 2. When you want to switch accounts to test the app, and if you are using edge browser with profile mode instead of guest mode, we suggest you to switch accounts by switching  profiles in the browser. This is because if you simply log out in Teams site, SharePoint site will still use the profile account. Thus the accounts for these two sites may be not consistent and will cause error.
-    
-## Code of Conduct
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+## Version History
+|Date| Author| Comments|
+|---|---|---|
+|Mar 23, 2023| huihuiwu | update to support Teams Toolkit v5.0.0|
+|Mar 30, 2023| huihuiwu | update to support SPFx v1.16.1|
+
+## Feedback
+We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
