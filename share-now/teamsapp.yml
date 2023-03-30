@@ -113,6 +113,8 @@ deploy:
   - uses: prerequisite/install # Install dependencies
     with:
       dotnet: true
+    writeToEnvironmentFile: # Write the information of installed dependencies into environment file for the specified environment variable(s).
+      dotnetPath: DOTNET_PATH
   - uses: cli/runDotnetCommand
     with:
       workingDirectory: api
