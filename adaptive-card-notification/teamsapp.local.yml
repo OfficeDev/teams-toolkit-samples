@@ -8,12 +8,13 @@ provision:
       name: adaptive-card-notifi-${{TEAMSFX_ENV}} # Teams app name
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
-  - uses: botAadApp/create # Creates a new or reuses an existing AAD app for bot
+
+  - uses: botAadApp/create # Creates a new or reuses an existing Azure Active Directory application for bot.
     with:
-      name: adaptive-card-notifi
+      name: adaptive-card-notifi-${{TEAMSFX_ENV}} # The Azure Active Directory application's display name
     writeToEnvironmentFile:
-      botId: BOT_ID
-      botPassword: SECRET_BOT_PASSWORD
+      botId: BOT_ID # The Azure Active Directory application's client id created for bot.
+      botPassword: SECRET_BOT_PASSWORD # The Azure Active Directory application's client secret created for bot. 
 
   - uses: botFramework/create # Create or update the bot registration on dev.botframework.com
     with:
