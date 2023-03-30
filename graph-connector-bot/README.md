@@ -24,7 +24,7 @@ This sample app showcases how to build a Teams command bot that queries custom d
 1. Press "F5" to open a browser window and then select your package to view sample app. 
 1. Find the Teams package in `build\appPackage\appPackage.local.zip`.
 1. Navigate to [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and upload the Teams package.
-    > **Note**: If you are testing in a new debug session again, you need to delete the existing Teams app in Teams Admin Center and upload a new one, since the ngrok endpoint will change when you start a new debug session.
+    > **Note**: If you are testing in a new debug session again, you need to delete the existing Teams app in Teams Admin Center and upload a new one, since the tunnel endpoint will change when you start a new debug session.
 
 ### Deploy the app to Azure
 > If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin

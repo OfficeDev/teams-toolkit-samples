@@ -62,17 +62,6 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 - From TeamsFx CLI:
   1. Run command: `teamsfx preview --env dev`.
 
-## Known issues
-
-If you encounter the ngrok page below when sending the `show` command to the bot, please follow the steps to solve this issue.
-![ngrok auth page](./images/ngrok-authtoken-page.png)
-
-1. Stop debugging in VS Code.
-1. Sign up for an ngrok account at https://dashboard.ngrok.com/signup.
-   Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
-1. Run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in VS Code terminal.
-1. Start debugging the project again by hitting the `F5` key in VS Code.
-
 ## Version History
 
 | Date         | Author | Comments                               |

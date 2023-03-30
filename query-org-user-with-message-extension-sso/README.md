@@ -18,8 +18,7 @@ This is a simple search-based message extension app demonstrating how to integra
 2. Download [Visual Studio Code](https://code.visualstudio.com/) and install [Teams Toolkit Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
 3. Open the project in Visual Studio Code.
 4. Open Debug View (`Ctrl+Shift+D`) and select `Debug(Edge)` or `Debug(Chrome)` in dropdown list.
-5. Sign up an ngrok account and copy the ngrok authtoken, run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in Visual Studio Code terminal.
-6. Press `F5` finally pop up an window to login your tenant account, and install this Teams App.
+5. Press `F5` finally pop up an window to login your tenant account, and install this Teams App.
 
 ### (Optional) Provision and Deploy the Sample To Azure
 > If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
