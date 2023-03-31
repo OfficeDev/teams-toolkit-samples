@@ -31,7 +31,7 @@ Todo List app helps to manage your personal to do items. This app can be install
 ### Preview the app
 1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Run and Debug` Activity Panel.  Select a target Microsoft application where the app runs: `Launch Remote in Teams`, `Launch Remote in Outlook` or `Launch Remote in the Microsoft 365 app`.
 
-## Advanced usage of this sample
+#### Usage of this sample
 1. The app will look like this when it runs for the first time.
   ![Todo List Start Page](images/todo-list-start-page.png)
 2. For the first time to run the app, you need to consent the app to get your profile information like your avatar. Click on "Accept" button to accept the Authorization.

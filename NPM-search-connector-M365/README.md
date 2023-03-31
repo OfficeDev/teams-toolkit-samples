@@ -28,8 +28,7 @@ NPM Search Connector is a Message Extension that allows you to perform a quick s
 ### Preview the app
 1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Run and Debug` Activity Panel. Select a target Microsoft application where the app runs: `Launch Remote in Teams` or `Launch Remote in Outlook`.
 
-## Advanced usage of this sample
-### In Teams
+#### Preview the app In Teams
 To trigger the message extension in Teams, there are multiple entry points:
 - `@mention` your message extension, from the search box area.
   ![At Bot from Search](./images/at-bot-from-search.png)
@@ -38,7 +37,7 @@ To trigger the message extension in Teams, there are multiple entry points:
 - Click the `...` under compose message area, find your message extension.
   ![Open Bot via Three Dot](./images/open-bot-via-three-dot.png)
 
-### In Outlook
+#### Preview the app In Outlook
 To trigger the message extension in Outlook:
 - Click the "More apps" icon under compose email area, find your message extension.
   ![Open Bot in Outlook](./images/open-bot-in-outlook.png)
