@@ -7,8 +7,8 @@ Search based message extensions allow you to query your service and post that in
 ![npm-search-msgext](https://user-images.githubusercontent.com/10163840/229014306-bfed97bf-dc99-4be1-8523-2c09eed70cc1.gif)
 
 ## This sample illustrates
-- Use Teams Toolkit build a search based message extension.
-- Use [Codespaces](https://github.com/features/codespaces) to run and preview the app.
+- How to use Teams Toolkit build a search based message extension.
+- How to use [Codespaces](https://github.com/features/codespaces) to run and preview a message extension.
 
 ## Prerequisite to use this sample
 - A GitHub account which will be used to create a codespace with fully configured dev environments in the cloud. 
