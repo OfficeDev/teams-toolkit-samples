@@ -24,7 +24,7 @@ Now you have the ability to create a single unit of distribution for all your Mi
 
 ## Debug Outlook add-in
 - Please note that the same M365 account should be used both in Teams Toolkit and Outlook. 
-- From Visual Studio Code only: use the `Run and Debug Activity Panel` in Visual Studio Code, select `Outlook Desktop(Edge Chromium)`, and click the `Run and Debug` green arrow button.
+- From Visual Studio Code only: use the `Run and Debug Activity Panel` in Visual Studio Code, select `Debug in Outlook Desktop (Edge Chromium)`, and click the `Run and Debug` green arrow button.
 
 ## Edit the manifest
 
@@ -50,7 +50,7 @@ Once the provisioning and deployment steps are finished, you can preview your Te
 - From Visual Studio Code
 
   1. Open the `Run and Debug Activity Panel`.
-  1. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
+  1. Select `Launch Remote in Teams (Edge)` or `Launch Remote in Teams (Chrome)` from the launch configuration drop-down.
   1. Press the Play (green arrow) button to launch your app - now running remotely from Azure.
 
 - From TeamsFx CLI: execute `teamsfx preview --env dev` in your project directory to launch your application.
