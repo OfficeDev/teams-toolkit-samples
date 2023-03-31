@@ -1,12 +1,12 @@
 # Getting Started with Hello World Bot with Tab
 
-A bot, chatbot, or conversational bot is an app that responds to simple commands sent in chat and replies in meaningful ways. Examples of bots in everyday use include: bots that notify about build failures, bots that provide information about the weather or bus schedules, or provide travel information. A bot interaction can be a quick question and answer, or it can be a complex conversation. Being a cloud application, a bot can provide valuable and secure access to cloud services and corporate resources.
+A bot, chatbot, or conversational bot is an application that responds to simple commands sent in a chat and provides meaningful replies. The interaction with a bot can be a quick question and answer or a complex conversation. 
 
-This is a simple hello world application with both Bot and Tab capabilities.
+This is a simple "Hello World" application that has both Bot and Tab capabilities. The bot sends a welcome message when a new member is added, while the tab displays a welcome page.
 
 ## This sample illustrates
 
-- Use Teams Toolkit to create a Teams app with both Bot and Tab capabilities.
+- How to use Teams Toolkit to create a Teams app with both Bot and Tab capabilities.
 
 ## Prerequisites
 
@@ -38,7 +38,17 @@ This is a simple hello world application with both Bot and Tab capabilities.
     1. Run command: `teamsfx provision --env dev`.
     1. Run command: `teamsfx deploy --env dev`.
 
-## Add Single Sign On feature
+### Preview the app in Teams
+
+- From VS Code: 
+    1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
+
+- From TeamsFx CLI:
+    1. Run command: `teamsfx preview --env dev`.
+
+## Advanced usage of this sample
+
+### Add Single Sign On feature
 
 Microsoft Teams provides a mechanism by which an application can obtain the signed-in Teams user token to access Microsoft Graph (and other APIs). Teams Toolkit facilitates this interaction by abstracting some of the Azure Active Directory (AAD) flows and integrations behind some simple, high-level APIs. This enables you to add single sign-on (SSO) features easily to your Teams application.
 

@@ -10,9 +10,9 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 
 ## This sample illustrates
 
-- Use Teams Toolkit to create a Teams tab app.
-- Use Microsoft Graph to get User info and picture in Teams app.
-- Use TeamsFx SDK to call Azure Functions.
+- How to use Teams Toolkit to create a Teams tab app.
+- How to use Microsoft Graph to get User info and picture in Teams app.
+- How to use TeamsFx SDK to call Azure Functions.
 
 ## Prerequisites
 
