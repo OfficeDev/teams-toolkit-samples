@@ -1,9 +1,5 @@
 # Getting Started With Todo List Sample (SPFx)
 
-> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
->  
-> This warning will be removed when the samples are ready for production.
-
 `Todo List with SPFx` is a Todo List Manage tool for a group of people. This app is installed in Teams Team or Channel and hosted on SharePoint, members in the Team/Channel can collaborate on the same Todo List, manipulate the same set of Todo items. There is no requirement asking for an Azure account to deploy Azure resources to run this sample app.
 
 ![TodoList](images/ToDoListCRUD.gif)
@@ -50,7 +46,6 @@ Debug the app with Teams workbench
 >Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try sample with TeamsFx CLI](cli.md)
 
 1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open [./src/src/webparts/todoList/components/SharePointListManager.ts](./src/src/webparts/todoList/components/SharePointListManager.ts), navigate to line:17, set the `listname` variable to your SharePoint List name.
 1. Open the project in Visual Studio Code, click `Provision in the cloud` in DEPLOYMENT panel of Microsoft Teams Toolkit extension or open the command palette and select `Teams: Provision in the cloud`. This step will create an app in Teams App Studio.
 1. Go back to Microsoft Teams Toolkit extension, click `Deploy to the cloud` in DEPLOYMENT panel or open the command palette and select `Teams: Deploy to the cloud`.
@@ -77,11 +72,6 @@ Debug the app with Teams workbench
 4. You could update todo item by typing text in todo item list.
 5. You could delete todo item by clicking "..." and then choose "Delete" button.
 
-## Architecture
-![Tab App Flow](images/TabAppFlow.jpg)
-- The frontend is a React Tab hosted on [SharePoint](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview).
-- Backend server(including the database) is provided by [SharePoint List](https://support.microsoft.com/en-us/office/introduction-to-lists-0a1c3ace-def0-44af-b225-cfa8d92c52d7) 
-
 ## Further Reading
 - [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 - [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
@@ -96,8 +86,8 @@ Debug the app with Teams workbench
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
+|Apr 21, 2022| huihuiwu | update to support Teams Toolkit v4.0.0|
 |Mar 23, 2023| huihuiwu | update to support Teams Toolkit v5.0.0|
-|Mar 30, 2023| huihuiwu | update to support SPFx v1.16.1|
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
