@@ -8,10 +8,10 @@ Team Central Dashboard shows you how to build a tab with data chats and content 
 
 ## This sample illustrates
 
-- Use TeamsFx to embed a canvas containing multiple cards that provide an overview of data or content in your tab app.
-- Use TeamsFx to build frontend hosting on Azure for your tab app.
-- Use TeamsFx to build backend hosting on Azure for your tab app.
-- Use MS graph client in TeamsFx to get access to M365 data.
+- How to use TeamsFx to embed a canvas containing multiple cards that provide an overview of data or content in your tab app.
+- How to use TeamsFx to build frontend hosting on Azure for your tab app.
+- How to use TeamsFx to build backend hosting on Azure for your tab app.
+- How to use MS graph client in TeamsFx to get access to M365 data.
 
 ## Prerequisite to use this sample
 
@@ -26,9 +26,8 @@ Team Central Dashboard shows you how to build a tab with data chats and content 
 ### Run the app locally
 
 1. Clone the repo to your local workspace or directly download the source code.
-2. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
-3. Open the project in Visual Studio Code.
-4. Start debugging the project by hitting the `F5` key in Visual Studio Code.
+1. Open the project in Visual Studio Code.
+1. Start debugging the project by hitting the `F5` key in Visual Studio Code.
 
 > The first time you run this sample, you need to login to consent some delegated permissions. If you don't see the consent page, please check if your browser blocks the pop-up window.
 > <img src="public\popup-block.png">
@@ -81,7 +80,7 @@ This widget displays your to-do tasks. Your can input a task name and click the 
 <img src="public\task-notification.png">
 
 > To receive notifications in Microsoft Teams, you will need to consent certain permissions. Please refer to the following steps after you have run the provision or local debug at least once.
-> 
+>
 > Go to [Azure portal](https://portal.azure.com/) > Click `Azure Active Directory` > Click `App registrations` in the side bar > Click your Dashboard app > Click `API permissions` in the side bar > Click `+Add a permission` > Choose `Microsoft Graph` > Choose `Application permissions` > Find the two permissions `TeamsActivity.Send` and `TeamsAppInstallation.ReadForUser.All` > Click `Add permissions` button in the bottom > Click `✔Grant admin consent for XXX` and then click `Yes` button to finish the admin consent > Re-provision or re-run local debug.
 
 ### Your documents

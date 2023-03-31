@@ -8,10 +8,10 @@ Developer Assist Dashboard shows you how to build a tab with Azure DevOps work i
 
 ## This sample illustrates
 
-- Use TeamsFx to embed a canvas containing multiple cards that provide an overview of data or content in your tab app.
-- Use TeamsFx to build frontend hosting on Azure for your tab app.
-- Use TeamsFx to build backend hosting on Azure for your tab app.
-- Use DevOps, GitHub, and Microsoft Graph APIs in TeamsFx to get access to variety of data.
+- How to use TeamsFx to embed a canvas containing multiple cards that provide an overview of data or content in your tab app.
+- How to use TeamsFx to build frontend hosting on Azure for your tab app.
+- How to use TeamsFx to build backend hosting on Azure for your tab app.
+- How to use DevOps, GitHub, and Microsoft Graph APIs in TeamsFx to get access to variety of data.
 
 ## Prerequisite to use this sample
 
@@ -26,7 +26,6 @@ Developer Assist Dashboard shows you how to build a tab with Azure DevOps work i
 ### Run the app locally
 
 1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
 1. Update `./src/configs.ts` file with required DevOps, GitHub and Planner configurations. For more details, read [Advanced usage of this sample](#advanced-usage-of-this-sample) section.
 1. Hit the `F5` key in your keyboard. Alternatively open the `Run and Debug Activity` panel(Ctrl+Shift+D) in Visual Studio Code and click the `Run and Debug` button.
