@@ -73,7 +73,7 @@ deploy:
       # Deploy base folder
       artifactFolder: .
       # Can be changed to any ignore file location, leave blank will ignore nothing
-      ignoreFile: ./.webappignore
+      ignoreFile: .webappignore
       # The resource id of the cloud resource to be deployed to
       resourceId: ${{BOT_AZURE_APP_SERVICE_RESOURCE_ID}}
 
