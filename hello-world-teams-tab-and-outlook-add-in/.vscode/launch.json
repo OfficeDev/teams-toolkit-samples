@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Outlook Desktop (Edge Chromium)",
+            "name": "Debug in Outlook Desktop (Edge Chromium)",
             "type": "msedge",
             "request": "attach",
             "port": 9229,
@@ -12,7 +12,7 @@
             "postDebugTask": "Stop Debug"
         },
         {
-            "name": "Launch Remote (Edge)",
+            "name": "Launch Remote in Teams (Edge)",
             "type": "pwa-msedge",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${{TEAMS_APP_ID}}?installAppPackage=true&webjoin=true&${account-hint}",
@@ -23,7 +23,7 @@
             "internalConsoleOptions": "neverOpen"
         },
         {
-            "name": "Launch Remote (Chrome)",
+            "name": "Launch Remote in Teams (Chrome)",
             "type": "pwa-chrome",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${{TEAMS_APP_ID}}?installAppPackage=true&webjoin=true&${account-hint}",
@@ -58,7 +58,7 @@
     ],
     "compounds": [
         {
-            "name": "Debug (Edge)",
+            "name": "Debug in Teams (Edge)",
             "configurations": [
                 "Attach to Frontend (Edge)"
             ],
@@ -70,7 +70,7 @@
             "stopAll": true
         },
         {
-            "name": "Debug (Chrome)",
+            "name": "Debug in Teams (Chrome)",
             "configurations": [
                 "Attach to Frontend (Chrome)"
             ],
