@@ -18,7 +18,6 @@ NPM Search Connector is a Message Extension that allows you to perform a quick s
 
 ### Run the app locally
 1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
 1. Open the `Run and Debug` Activity Panel. Select a target Microsoft application where the app runs: `Debug in Teams` or `Debug in Outlook`.
 
@@ -44,18 +43,13 @@ To trigger the message extension in Outlook:
 - Click the "More apps" icon under compose email area, find your message extension.
   ![Open Bot in Outlook](./images/open-bot-in-outlook.png)
 
-## Architecture
-### Code structure
-- You can check app configuration and environment information in: [teamsapp.yml](teamsapp.yml), [teamsapp.local.yml](teamsapp.local.yml) and [env](env)
-- You will find bot code in [messageExtensionBot.js](messageExtensionBot.js) and [index.js](index.js)
-
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-| Mar 28, 2023 | kuojianlu | update to support Teams Toolkit v5.0.0 |
-| Oct 17, 2022 | swatDong | update to support Teams Toolkit v4.1.0 |
-| Apr 18, 2022 | kuojianlu | update to support Teams Toolkit v3.8.0 |
 | Nov 9, 2021 | swatDong | add to support Teams Toolkit v2.10.0 |
+| Apr 18, 2022 | kuojianlu | update to support Teams Toolkit v3.8.0 |
+| Oct 17, 2022 | swatDong | update to support Teams Toolkit v4.1.0 |
+| Mar 28, 2023 | kuojianlu | update to support Teams Toolkit v5.0.0 |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
