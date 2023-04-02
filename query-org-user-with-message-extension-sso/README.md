@@ -18,8 +18,7 @@ This is a simple search-based message extension app demonstrating how to integra
 2. Download [Visual Studio Code](https://code.visualstudio.com/) and install [Teams Toolkit Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension).
 3. Open the project in Visual Studio Code.
 4. Open Debug View (`Ctrl+Shift+D`) and select `Debug(Edge)` or `Debug(Chrome)` in dropdown list.
-5. Sign up an ngrok account and copy the ngrok authtoken, run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in Visual Studio Code terminal.
-6. Press `F5` finally pop up an window to login your tenant account, and install this Teams App.
+5. Press `F5` finally pop up an window to login your tenant account, and install this Teams App.
 
 ### (Optional) Provision and Deploy the Sample To Azure
 > If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
@@ -61,21 +60,17 @@ This is a simple search-based message extension app demonstrating how to integra
 - If you want to see the updated results, please re-run local debug, or re-provision to update the AAD app and re-deploy the changed part.
 
 
-### Handle ERR_NGROK_6022 Error
-> If you encounter the ngrok page below when sending the `show` command to the bot, please follow the steps to solve this issue.
-
-![ngrok auth page](./images/ngrok-authtoken-page.png)
-1. Stop debugging in Visual Studio Code.
-2. Sign up an ngrok account in https://dashboard.ngrok.com/signup.
-3. Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
-4. Run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in Visual Studio Code terminal.
-5. Start debugging the project again by hitting the F5 key in Visual Studio Code.
-
 ## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Known Issue
+Some developers have reported an issue where they have seen `Unable to reach app. Please try again.`
+![KnownIssueError](./images/knownIssue.png)
+
+This could be an intermittent issue, to mitigate, try to use a different Microsoft 365 account or run this sample later.
 
 ## Further reading
 - [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)

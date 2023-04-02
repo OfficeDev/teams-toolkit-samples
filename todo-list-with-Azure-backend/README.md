@@ -1,20 +1,10 @@
-# Getting Started with Todo List Sample (Azure)
-
-> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
->  
-> This warning will be removed when the samples are ready for production.
+# Getting Started with Todo List
 
 Todo List provides an easy way to manage to-do items in Teams Client. This app helps enabling task collaboration and management for your team. The frontend is a React app and the backend is hosted on Azure. You will need an Azure subscription to run the app.
 
 ![Todo Item List](images/ToDoListCRUD.gif)
 
-## Prerequisite
-- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
-- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
-- An [Azure subscription](https://azure.microsoft.com/en-us/free/)
-
-## What you will learn in this sample:
+## This sample illustrates
 
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
 - How to use TeamsFx to build backend hosting on Azure for your tab app.
@@ -22,30 +12,15 @@ Todo List provides an easy way to manage to-do items in Teams Client. This app h
 - How to use MS graph client in TeamsFx to get access to Microsoft 365 data.
 - How to use TeamsFx simple auth capability to get Teams user login information.
 
-## Try the Sample with Visual Studio Code Extension:
->Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
-1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
-1. Open the project in Visual Studio Code.
-1. Open **env/.env.dev** file, set value for `SQL_USER_NAME` and `SQL_PASSWORD`
-1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to input admin name and password of SQL. The toolkit will help you to provision Azure SQL.
-1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
-1. Open **env/.env.dev** file, you could get the database name in `PROVISIONOUTPUT__AZURESQLOUTPUT__DATABASENAME` output. [Set IP address of your computer into server-level IP firewall rule from the database overview page](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page).
-1. In Azure portal, find the database by `databaseName` and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
-    ```sql
-    CREATE TABLE Todo
-    (
-        id INT IDENTITY PRIMARY KEY,
-        description NVARCHAR(128) NOT NULL,
-        objectId NVARCHAR(36),
-        channelOrChatId NVARCHAR(128),
-        isCompleted TinyInt NOT NULL default 0,
-    )
-    ```
-1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
+## Prerequisite to use this sample
+- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
+- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
-## (Optional) Debug
+## Minimal path to awesome
 
+### Run the app locally
 To debug the project, you will need to configure an Azure SQL Database to be used locally:
 1. [Create an Azure SQL Database](https://docs.microsoft.com/en-us/azure/azure-sql/database/single-database-create-quickstart?tabs=azure-portal)
 1. [Add IP address of your computer into allowlist of firewall of Azure SQL Server](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page)
@@ -60,7 +35,7 @@ To debug the project, you will need to configure an Azure SQL Database to be use
         isCompleted TinyInt NOT NULL default 0,
     )
     ```
-1. Open **env/.env.local** file, and set the values of below config with the Azure SQL Database you just created:
+1. Open **env/.env.local.user** file, and set the values of below config with the Azure SQL Database you just created:
     ```
     SQL_ENDPOINT=
     SQL_DATABASE_NAME=
@@ -70,7 +45,33 @@ To debug the project, you will need to configure an Azure SQL Database to be use
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
 1. Press "F5" to open a browser window and then select your package to view todo list sample app. 
 
-## Use the App in Teams
+### Deploy the app to Azure
+
+>Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
+
+1. Clone the repo to your local workspace or directly download the source code.
+1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
+1. Open the project in Visual Studio Code.
+1. Open **env/.env.dev.user** file, set value for `SQL_USER_NAME` and `SQL_PASSWORD`
+1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to input admin name and password of SQL. The toolkit will help you to provision Azure SQL.
+1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
+1. Open **env/.env.dev** file, you could get the database name in `PROVISIONOUTPUT__AZURESQLOUTPUT__DATABASENAME` output. [Set IP address of your computer into server-level IP firewall rule from the database overview page](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page).
+1. In Azure portal, find the database by `databaseName` and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
+    ```sql
+    CREATE TABLE Todo
+    (
+        id INT IDENTITY PRIMARY KEY,
+        description NVARCHAR(128) NOT NULL,
+        objectId NVARCHAR(36),
+        channelOrChatId NVARCHAR(128),
+        isCompleted TinyInt NOT NULL default 0,
+    )
+    ```
+
+### Preview the app in Teams
+1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
+
+## Advanced usage of this sample
 
 1. The app will look like this when it runs for the first time.
 
@@ -83,18 +84,6 @@ To debug the project, you will need to configure an Azure SQL Database to be use
 1. You could try to update todo item by typing text in todo item list.
 1. You could try to delete todo item by clicking "..." and then choose "delete" button.
 
-## CI/CD Support
-CI/CD support for this sample is provided under folder `.github/workflows`. 
-
-There're three workflows provided:
-|File Name|Description|
-|---|---|
-|`ci.yml`|It is an example workflow for continuous integration which can be customized to meet your own requirements.|
-|`provision.yml`|It is an example workflow for provisioning resources which can be customized to meet your own requirements.|
-|`cd.yml`|It is an example workflow for continuous deployment which can be customized to meet your own requirements.|
-
-The detailed instructions can be found by clicking [teamsfx-cicd-guide](https://aka.ms/teamsfx-cicd-insider-guide).
-
 ## Architecture
 
 ![Tab App Flow](images/TabAppFlow.jpg)
@@ -102,17 +91,11 @@ The detailed instructions can be found by clicking [teamsfx-cicd-guide](https://
 - The Backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/) for managing posts in the tab app.
 - The [Azure SQL DB](https://docs.microsoft.com/en-us/azure/azure-sql/) used to persist data.
 
-### Code structure
+## Version History
+|Date| Author| Comments|
+|---|---|---|
+| Mar 10, 2022 | junhan | update to support Teams Toolkit v4.0.0 |
+| Mar 21, 2023 | junhan | update to support Teams Toolkit v5.0.0 |
 
-- You can check app configuration in `teamsapp.*.yml` files
-- You can check app environment information in: [env](env)
-- You will find frontend code in: [tabs/src/components](tabs/src/components)
-- You will find backend code in: [api/todo](api/todo)
-- You will find DB Connection code in: [api/todo/index.js](api/todo/index.js)
-- You will find MS graph client code in: [tabs/src/components/Creator.js](tabs/src/components/Creator.js)
-
-## Code of Conduct
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+## Feedback
+We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

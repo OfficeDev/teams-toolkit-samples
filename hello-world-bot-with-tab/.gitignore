@@ -1,5 +1,6 @@
 # TeamsFx files
-env/
+env/.env.local
+env/.env.*.user
 .DS_Store
 .localSettings
 build
@@ -17,6 +18,5 @@ build
 /bot/lib
 
 # misc
-.DS_Store
 .env
 .deployment
