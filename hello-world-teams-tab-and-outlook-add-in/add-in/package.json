@@ -45,7 +45,7 @@
     "html-webpack-plugin": "^5.5.0",
     "office-addin-cli": "^1.5.4",
     "office-addin-debugging": "^5.0.2",
-    "office-addin-dev-certs": "^1.11.1",
+    "office-addin-dev-certs": "^1.11.3",
     "office-addin-lint": "^2.2.4",
     "office-addin-manifest": "^1.12.1",
     "office-addin-prettier-config": "^1.2.0",
