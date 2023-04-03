@@ -73,10 +73,13 @@ deploy:
       REACT_APP_FUNC_ENDPOINT: ${{API_FUNCTION_ENDPOINT}}
     with:
       args: run build --if-present
-  - uses: azureStorage/deploy # Deploy bits to Azure Storage Static Website
+  # Deploy bits to Azure Storage Static Website
+  - uses: azureStorage/deploy
     with:
-      distributionPath: build # Deploy base folder. This folder includes manifest files for AAD app and Teams app that should be ignored using the ignoreFile.
-      resourceId: ${{TAB_AZURE_STORAGE_RESOURCE_ID}} # The resource id of the cloud resource to be deployed to
+      # Deploy base folder. This folder includes manifest files for AAD app and Teams app that should be ignored using the ignoreFile.
+      artifactFolder: build
+      # The resource id of the cloud resource to be deployed to
+      resourceId: ${{TAB_AZURE_STORAGE_RESOURCE_ID}}
   - uses: cli/runNpmCommand # Run npm command
     with:
       workingDirectory: api
@@ -93,12 +96,15 @@ deploy:
       workingDirectory: api
       args: build extensions.csproj -o bin --ignore-failed-sources
       execPath: ${{DOTNET_PATH}}
-  - uses: azureFunctions/deploy
+  # Deploy your application to Azure Functions using the zip deploy feature.
+  # For additional details, please refer to https://aka.ms/zip-deploy-to-azure-functions
+  - uses: azureFunctions/zipDeploy
     with:
+      workingDirectory: api
       # deploy base folder
-      distributionPath: api
+      artifactFolder: .
       # can be changed to any ignore file location, leave blank will ignore nothing
-      ignoreFile: api/.funcignore
+      ignoreFile: .funcignore
       # the resource id of the cloud resource to be deployed to
       resourceId: ${{API_FUNCTION_RESOURCE_ID}}
 

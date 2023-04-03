@@ -82,22 +82,22 @@ deploy:
   - uses: cli/runNpmCommand # Run npm command
     with:
       args: install --no-audit
-      workingDirectory: ./tabs
+      workingDirectory: tabs
 
   - uses: cli/runNpmCommand # Run npm command
     with:
       args: install --no-audit
-      workingDirectory: ./api
+      workingDirectory: api
 
   - uses: cli/runNpmCommand # Run npm command
     with:
       args: install --no-audit
-      workingDirectory: ./bot
+      workingDirectory: bot
 
   - uses: cli/runDotnetCommand # Run dotnet command
     with:
       args: build extensions.csproj -o ./bin --ignore-failed-sources
-      workingDirectory: ./api
+      workingDirectory: api
       execPath: ${{DOTNET_PATH}}
 
   - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables for tab
