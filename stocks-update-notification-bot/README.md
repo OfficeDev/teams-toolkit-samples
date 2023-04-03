@@ -7,8 +7,8 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 ![Stocks Update Notification Bot](images/app.gif)
 
 ## This sample illustrates
-- Use API client in TeamsFx to get access data in public API using the API Key provider.
-- Render data in an Adaptive Card.
+- How to launch and debug an app using "F5" using Teams Toolkit for Visual Studio.
+- How to use a bot in different contexts
 
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
@@ -19,7 +19,6 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 ## Minimal path to awesome
 ### Run the app locally
 1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
 1. Update local environment variables in `env/.env.local` and `env/.env.local.user`
 	

@@ -3,8 +3,8 @@ An Incoming Webhook Sample provides an easy way to send adaptive cards in Micros
 ![Incoming Webhook Overall](./images/incoming-webhook.gif)
 
 ## This sample illustrates
-- Use incoming webhook to send notification in Teams.
-- Use Adaptive Cards to send notification in Teams.
+- How to create an Incoming Webhook in Teams.
+- How to send Adaptive Cards in Teams.
 
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 14, 16, 18

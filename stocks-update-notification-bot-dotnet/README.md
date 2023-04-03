@@ -5,8 +5,8 @@ Stocks Update Notifcation Bot is a an application that can be installed in diffe
 ![Stocks Update Notification Bot Overview](images/app.gif)
 
 ## This sample illustrates
-- Use Teams Toolkit for Visual Studio to launch and debug an app
-- Use a bot in different contexts
+- How to use API client in TeamsFx to get access data in public API using the API Key provider.
+- How to render data in an Adaptive Card.
 
 ## Prerequisite to use this sample
 - [Visual Studio 2022](https://visualstudio.microsoft.com/), version 17.3 or higher.
@@ -17,7 +17,6 @@ Stocks Update Notifcation Bot is a an application that can be installed in diffe
 ## Minimal path to awesome
 ### Run the app locally
 1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio](https://visualstudio.microsoft.com/) and install [Teams Toolkit for Visual Studio Extension](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/visual-studio-overview).
 1. Open the project in Visual Studio.
 1. Right click to the project, select **Teams Toolkit > Prepare Teams App Dependencies**.
 1. Press "F5" to launch the bot 
@@ -27,7 +26,7 @@ Stocks Update Notifcation Bot is a an application that can be installed in diffe
 You can create and automatically configure cloud resources for hosting your app in Azure using Teams Toolkit.
 1. If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
 1. Select the **StocksUpdateNotificationBot > Teams Toolkit > Provision in the Cloud** menu. In the Select your subscription window, choose the Azure subscription you want to use to create resources with. Teams Toolkit will create Azure resources in this subscription but no code is deployed during this step.
-2. Select the **StocksUpdateNotificationBot > Teams Toolkit > Deploy in the Cloud** menu to deploy your project to these new resources.
+1. Select the **StocksUpdateNotificationBot > Teams Toolkit > Deploy in the Cloud** menu to deploy your project to these new resources.
 
 ### Preview the app in Teams
 1. When you install the app into Microsoft Teams, it will immediately begin to send messages every thirty seconds into the location where you have installed it. There is no additional configuration required.
