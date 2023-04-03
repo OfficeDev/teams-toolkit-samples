@@ -42,9 +42,11 @@ provision:
       appPackagePath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip # Relative path to teamsfx folder. This is the path for built zip file.
 
 deploy:
-  - uses: prerequisite/install
+  - uses: prerequisite/install # Install dependencies
     with:
       func: true
+    writeToEnvironmentFile: # Write the information of installed dependencies into environment file for the specified environment variable(s).
+      funcPath: FUNC_PATH
   - uses: cli/runNpmCommand # Run npm command
     with:
       args: install --no-audit

@@ -65,8 +65,8 @@ deploy:
   - uses: prerequisite/install # Install dependencies
     with:      
       dotnet: true
-    # Output: following environment variable will be persisted in current environment's .env file.    
-    # DOTNET_PATH: the path of the .NET binary
+    writeToEnvironmentFile: # Write the information of installed dependencies into environment file for the specified environment variable(s).
+      dotnetPath: DOTNET_PATH
 
   - uses: cli/runNpmCommand # Run npm command
     with:
