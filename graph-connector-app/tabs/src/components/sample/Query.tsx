@@ -1,7 +1,16 @@
 import "./Query.css";
 import { KeyboardEvent, useState } from "react";
-import { Input, Loader, Table } from "@fluentui/react-northstar";
-import { SearchIcon } from "@fluentui/react-icons-northstar";
+import {
+  Input,
+  Spinner,
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+} from "@fluentui/react-components";
+import { SearchRegular } from "@fluentui/react-icons";
 import { createMicrosoftGraphClient, TeamsFx } from "@microsoft/teamsfx";
 import { ConnectionId, Scopes } from "./lib/constants";
 
@@ -10,16 +19,14 @@ export function Query() {
   const [data, setData] = useState<any[]>([]);
   const [error, setError] = useState<any>("");
   const [loading, setLoading] = useState(false);
-  const header = {
-    items: [
-      "PartNumber",
-      "Name",
-      "Description",
-      "Price",
-      "Inventory",
-      "Appliances",
-    ],
-  };
+  const columns = [
+    { columnKey: "partNumber", label: "Part Number" },
+    { columnKey: "name", label: "Name" },
+    { columnKey: "description", label: "Description" },
+    { columnKey: "price", label: "Price" },
+    { columnKey: "inventory", label: "Inventory" },
+    { columnKey: "appliances", label: "Appliances" },
+  ];
 
   async function search(e: KeyboardEvent) {
     if (e.key === "Enter" && query) {
@@ -56,44 +63,12 @@ export function Query() {
           .version("beta")
           .post(searchContent);
 
-        let rows: any[] = [];
+        let items: any[] = [];
 
         if (result.value[0].hitsContainers[0].total) {
-          const items: any[] = result.value[0].hitsContainers[0].hits;
-          rows = items.map((element, index) => {
-            const properties = element.resource.properties;
-            return {
-              key: index,
-              items: [
-                {
-                  content: properties.partNumber,
-                  truncateContent: true,
-                },
-                {
-                  content: properties.name,
-                  truncateContent: true,
-                },
-                {
-                  content: properties.description,
-                  truncateContent: true,
-                },
-                {
-                  content: properties.price,
-                  truncateContent: true,
-                },
-                {
-                  content: properties.inventory,
-                  truncateContent: true,
-                },
-                {
-                  content: properties.appliances.join(","),
-                  truncateContent: true,
-                },
-              ],
-            };
-          });
+          items = result.value[0].hitsContainers[0].hits;
         }
-        setData(rows);
+        setData(items);
         setError("");
       } catch (error) {
         setError(error);
@@ -109,23 +84,45 @@ export function Query() {
         <h2>3. Query Data from Graph Connector</h2>
         <Input
           className="search"
-          inverted
           role="search"
-          icon={<SearchIcon />}
+          contentBefore={<SearchRegular />}
           placeholder="Type keyword (e.g. 'Contoso') and press 'Enter' to search"
-          iconPosition="start"
           value={query}
           onChange={(e: any) => setQuery(e.target.value)}
           onKeyDown={(e) => search(e)}
         />
         {loading && (
           <div>
-            <Loader style={{ margin: 100 }} />
+            <Spinner style={{ margin: 100 }} />
           </div>
         )}
         {!loading && !error && (
           <div>
-            <Table header={header} rows={data} aria-label="Static table" />
+            <Table arial-label="Static table">
+              <TableHeader>
+                <TableRow>
+                  {columns.map((column) => (
+                    <TableHeaderCell key={column.columnKey}>
+                      {column.label}
+                    </TableHeaderCell>
+                  ))}
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {data.map((item) => (
+                  <TableRow key={item.resource.properties.partNumber}>
+                    <TableCell>{item.resource.properties.partNumber}</TableCell>
+                    <TableCell>{item.resource.properties.name}</TableCell>
+                    <TableCell>
+                      {item.resource.properties.description}
+                    </TableCell>
+                    <TableCell>{item.resource.properties.price}</TableCell>
+                    <TableCell>{item.resource.properties.inventory}</TableCell>
+                    <TableCell>{item.resource.properties.appliances}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </div>
         )}
         {!loading && !!error && (

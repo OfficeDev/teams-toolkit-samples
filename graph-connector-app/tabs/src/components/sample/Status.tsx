@@ -1,19 +1,29 @@
-import { AcceptIcon, CloseIcon, PlayIcon } from "@fluentui/react-northstar";
+import {
+  Checkmark16Filled,
+  Dismiss16Filled,
+  Play16Filled,
+} from "@fluentui/react-icons";
 
-export function Status(props: { currentStep: number, targetStep: number, error: any, text: string }) {
+export function Status(props: {
+  currentStep: number;
+  targetStep: number;
+  error: any;
+  text: string;
+}) {
   function getRunningStauts(currentStep: number, targetStep: number) {
     if (currentStep < targetStep - 1) {
       return "";
     } else if (currentStep === targetStep - 1) {
-      return props.error ? <CloseIcon /> : <PlayIcon />;
+      return props.error ? <Dismiss16Filled /> : <Play16Filled />;
     } else {
-      return <AcceptIcon />;
+      return <Checkmark16Filled />;
     }
   }
 
   return (
     <div>
-      {getRunningStauts(props.currentStep, props.targetStep)} {props.targetStep}. {props.text}
+      {getRunningStauts(props.currentStep, props.targetStep)} {props.targetStep}
+      . {props.text}
     </div>
   );
 }

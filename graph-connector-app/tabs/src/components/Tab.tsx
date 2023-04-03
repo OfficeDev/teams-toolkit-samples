@@ -5,7 +5,15 @@ import { TeamsFxContext } from "./Context";
 export default function Tab() {
   const { themeString } = useContext(TeamsFxContext);
   return (
-    <div className={themeString === "default" ? "" : "dark"}>
+    <div
+      className={
+        themeString === "default"
+          ? "light"
+          : themeString === "dark"
+          ? "dark"
+          : "contrast"
+      }
+    >
       <Welcome />
     </div>
   );
