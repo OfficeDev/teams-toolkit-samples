@@ -18,8 +18,8 @@ provision:
   - uses: teamsApp/create # Creates a Teams app
     with:
       name: sso-command-bot-${{TEAMSFX_ENV}} # Teams app name
-    # Output: the following environment variable(s) will be persisted in the current environment's .env file.
-    # TEAMS_APP_ID: the id of Teams app
+    writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
+      teamsAppId: TEAMS_APP_ID
 
   - uses: botAadApp/create # Creates a new or reuses an existing Azure Active Directory application for bot.
     with:
@@ -59,8 +59,6 @@ provision:
   - uses: teamsApp/update # Apply the Teams app manifest to an existing Teams app in Teams Developer Portal. Will use the app id in manifest file to determine which Teams app to update.
     with:
       appPackagePath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip # Relative path to teamsfx folder. This is the path for building zip file.
-    # Output: the following environment variable will be persisted in the current environment's .env file.
-    # TEAMS_APP_ID: the id of Teams app
 
 deploy:
   - uses: cli/runNpmCommand # Run npm command
