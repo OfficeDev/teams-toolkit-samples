@@ -10,7 +10,7 @@ The app is built using the TeamsFx SDK, which provides a simple set of functions
 
 ## This sample illustrates
 - How to use Teams Toolkit build a notification app.
-- How to use [Codespaces](https://github.com/features/codespaces) to run and preview a message extension.
+- How to use [Codespaces](https://github.com/features/codespaces) to run and preview a message extension in Teams.
 
 ## Prerequisite to use this sample
 - A GitHub account which will be used to create a codespace with fully configured dev environments in the cloud. 
@@ -55,27 +55,6 @@ The app is built using the TeamsFx SDK, which provides a simple set of functions
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Codespaces)` from the launch configuration drop-down.
 - From TeamsFx CLI:
     1. Run command: `teamsfx preview --env dev`.
-
-## Code structure
-
-| Folder / File| Contents |
-| - | - |
-| `teamsapp.yml` | Main project file describes your application configuration and defines the set of actions to run in each lifecycle stages |
-| `teamsapp.local.yml`| This overrides `teamsapp.yml` with actions that enable local execution and debugging |
-| `env/`| Name / value pairs are stored in environment files and used by `teamsapp.yml` to customize the provisioning and deployment rules |
-| `.vscode/` | VSCode files for debugging |
-| `src/` | The source code for the notification Teams application |
-| `appPackage/` | Templates for the Teams application manifest |
-| `infra/` | Templates for provisioning Azure resources |
-
-The following files can be customized and demonstrate an example implementation to get you started.
-
-| File | Contents |
-| - | - |
-| `src/index.js` | Application entry point and `restify` handlers for notifications |
-| `src/teamsBot.js`| An empty teams activity handler for bot customization |
-| `src/adaptiveCards/notification-default.json` | A generated Adaptive Card that is sent to Teams |
-| `src/cardModels.js` | The default Adaptive Card data model |
 
 ## Version History
 |Date| Author| Comments|
