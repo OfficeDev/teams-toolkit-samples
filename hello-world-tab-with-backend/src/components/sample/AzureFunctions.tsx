@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Button, Loader } from "@fluentui/react-northstar";
+import { Button, Spinner } from "@fluentui/react-components";
 import { useData } from "@microsoft/teamsfx-react";
 import * as axios from "axios";
 import { BearerTokenAuthProvider, createApiClient, TeamsUserCredential } from "@microsoft/teamsfx";
@@ -17,7 +17,8 @@ async function callFunction(teamsUserCredential?: TeamsUserCredential) {
     // createApiClient(...) creates an Axios instance which uses BearerTokenAuthProvider to inject token to request header
     const apiClient = createApiClient(
       apiBaseUrl,
-      new BearerTokenAuthProvider(async () => (await teamsUserCredential.getToken(""))!.token));
+      new BearerTokenAuthProvider(async () => (await teamsUserCredential.getToken(""))!.token)
+    );
     const response = await apiClient.get(functionName);
     return response.data;
   } catch (err: unknown) {
@@ -60,12 +61,16 @@ export function AzureFunctions(props: { codePath?: string; docsUrl?: string }) {
   return (
     <div>
       <h2>Call your Azure Function</h2>
-      <p>An Azure Functions app is running. Authorize this app and click below to call it for a response:</p>
-      <Button primary content="Call Azure Function" disabled={loading} onClick={reload} />
+      <p>
+        An Azure Functions app is running. Authorize this app and click below to call it for a
+        response:
+      </p>
+      <Button appearance="primary" disabled={loading} onClick={reload}>
+        Call Azure Function
+      </Button>
       {loading && (
         <pre className="fixed">
-          {" "}
-          <Loader />{" "}
+          <Spinner />
         </pre>
       )}
       {!loading && !!data && !error && <pre className="fixed">{JSON.stringify(data, null, 2)}</pre>}
