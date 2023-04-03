@@ -80,7 +80,7 @@ The following files can be customized and demonstrate an example implementation 
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-|Apr 3, 2023| Dooriya Li | Add ME sample for codespaces |
+|Apr 3, 2023| Dooriya Li | Add notification sample for codespaces |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
