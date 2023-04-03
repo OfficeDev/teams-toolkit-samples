@@ -1,6 +1,6 @@
 # Getting Started with Hello World Tab Sample
 
-[![Open app in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=dev&repo=348288141&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fhello-world-tab-codespaces%2Fdevcontainer.json&location=WestUs2)
+[![Open app in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=dev&repo=348288141&machine=standardLinux32gb&location=WestUs2&devcontainer_path=.devcontainer%2Fhello-world-tab-codespaces%2Fdevcontainer.json)
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
@@ -9,7 +9,7 @@ Hello World Tab shows you how to build a tab app without single sign on.
 ![Hello world Tab in Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/assets/images/teams-toolkit-v2/first-tab/tab-app-localdebug.png)
 
 ## This sample illustrates
-- How to use Teams Toolkit build a notification app.
+- How to use Teams Toolkit build a Teams tab app.
 - How to use [Codespaces](https://github.com/features/codespaces) to run and preview a Tab app in Teams.
 
 ## Prerequisite to use this sample
