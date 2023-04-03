@@ -46,16 +46,6 @@
                         }
                     ]
                 }
-            ],
-            "messageHandlers": [
-                {
-                    "type": "link",
-                    "value": {
-                        "domains": [
-                            "*.botframework.com"
-                        ]
-                    }
-                }
             ]
         }
     ],
