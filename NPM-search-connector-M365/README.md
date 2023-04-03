@@ -39,7 +39,7 @@ To trigger the message extension in Teams, there are multiple entry points:
 
 #### Preview the app In Outlook
 To trigger the message extension in Outlook:
-- Click the "More apps" icon under compose email area, find your message extension.
+- Click the "Apps" icon above compose email area, find your message extension.
   ![Open Bot in Outlook](./images/open-bot-in-outlook.png)
 
 ## Version History
