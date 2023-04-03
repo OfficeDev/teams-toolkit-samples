@@ -47,20 +47,25 @@ provision:
   - uses: m365Title/acquire # Upload your app to Outlook and the Microsoft 365 app
     with:
       appPackagePath: ./build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip # Relative path to the built app package.
-    # Output: following environment variable will be persisted in current environment's .env file.
-    # M365_TITLE_ID: the id of M365 title
-    # M365_APP_ID: the app id of M365 title
+    writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
+      titleId: M365_TITLE_ID
+      appId: M365_APP_ID
 
 deploy:
   - uses: cli/runNpmCommand # Run npm command
     with:
       args: install --production
 
-  - uses: azureAppService/deploy # Deploy bits to Azure App Serivce
+  # Deploy your application to Azure App Service using the zip deploy feature.
+  # For additional details, please refer to https://aka.ms/zip-deploy-to-app-services.
+  - uses: azureAppService/zipDeploy
     with:
-      distributionPath: . # Deploy base folder
-      ignoreFile: ./.webappignore # Can be changed to any ignore file location, leave blank will ignore nothing
-      resourceId: ${{BOT_AZURE_APP_SERVICE_RESOURCE_ID}} # The resource id of the cloud resource to be deployed to
+      # Deploy base folder
+      artifactFolder: .
+      # Can be changed to any ignore file location, leave blank will ignore nothing
+      ignoreFile: .webappignore
+      # The resource id of the cloud resource to be deployed to
+      resourceId: ${{BOT_AZURE_APP_SERVICE_RESOURCE_ID}}
 
 publish:
   - uses: teamsApp/validateManifest # Validate using manifest schema
