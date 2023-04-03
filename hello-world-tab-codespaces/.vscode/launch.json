@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Preview (Codespaces)",
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "Start Teams App in Codespaces",
+            "postDebugTask": "Stop All",
+            "presentation": {
+                "group": "all",
+                "order": 1
+            },
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "name": "Launch Remote (Codespaces)",
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "Open Teams Web Client (remote)",
+            "presentation": {
+                "group": "remote",
+                "order": 1
+            },
+            "internalConsoleOptions": "neverOpen"
+        },
+    ]
+}
