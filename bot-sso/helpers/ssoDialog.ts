@@ -7,14 +7,17 @@ import {
 } from "botbuilder-dialogs";
 import {
   ActivityTypes,
+  StatePropertyAccessor,
   Storage,
   tokenExchangeOperationName,
   TurnContext,
+  UserState,
 } from "botbuilder";
 import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 import oboAuthConfig from "../authConfig";
 import config from "../config";
+import serialize from "serialize-javascript";
 
 const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
@@ -24,17 +27,14 @@ export class SSODialog extends ComponentDialog {
   private requiredScopes: string[] = ["User.Read"]; // hard code the scopes for demo purpose only
   private dedupStorage: Storage;
   private dedupStorageKeys: string[];
-  private operationWithSSO: (
-    arg0: any,
-    ssoToken: string
-  ) => Promise<any> | undefined;
+  private userStateAccessor: StatePropertyAccessor<any>;
 
   // Developer controlls the lifecycle of credential provider, as well as the cache in it.
   // In this sample the provider is shared in all conversations
-  constructor(dedupStorage: Storage) {
+  constructor(userState: UserState, dedupStorage: Storage) {
     super(DIALOG_NAME);
 
-    const initialLoginEndpoint =`https://${config.botDomain}/auth-start.html` ;
+    const initialLoginEndpoint = `https://${config.botDomain}/auth-start.html`;
 
     const dialog = new TeamsBotSsoPrompt(
       oboAuthConfig,
@@ -57,17 +57,18 @@ export class SSODialog extends ComponentDialog {
 
     this.initialDialogId = MAIN_WATERFALL_DIALOG;
     this.dedupStorage = dedupStorage;
+    this.userStateAccessor = userState.createProperty<any>('operationWithSSO');
     this.dedupStorageKeys = [];
   }
 
-  setSSOOperation(
+  async setSSOOperation(context: TurnContext,
     handler: (arg0: any, arg1: string) => Promise<any> | undefined
   ) {
-    this.operationWithSSO = handler;
+    await this.userStateAccessor.set(context, { operation: serialize(handler) });
   }
 
-  resetSSOOperation() {
-    this.operationWithSSO = undefined;
+  async resetSSOOperation(context: TurnContext) {
+    await this.userStateAccessor.delete(context);
   }
 
   /**
@@ -106,9 +107,11 @@ export class SSODialog extends ComponentDialog {
         "There is an issue while trying to sign you in and retrieve your profile photo, please type \"show\" command to login and consent permissions again."
       );
     } else {
+      const operationWithSSOString = (await this.userStateAccessor.get(stepContext.context)).operation;
+      const operationWithSSO = eval(`(${operationWithSSOString})`);
       // Once got ssoToken, run operation that depends on ssoToken
-      if (this.operationWithSSO) {
-        await this.operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+      if (operationWithSSO) {
+        await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
       }
     }
     return await stepContext.endDialog();
@@ -123,7 +126,7 @@ export class SSODialog extends ComponentDialog {
     this.dedupStorageKeys = this.dedupStorageKeys.filter(
       (key) => key.indexOf(conversationId) < 0
     );
-    this.resetSSOOperation();
+    this.resetSSOOperation(context);
   }
 
   // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.

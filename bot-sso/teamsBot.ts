@@ -18,7 +18,7 @@ const rawLearnCard = require("./adaptiveCards/learn.json");
 export class TeamsBot extends TeamsActivityHandler {
   likeCountObj: { likeCount: number };
   conversationState: BotState;
-  userState: BotState;
+  userState: UserState;
   dialog: SSODialog;
   dialogState: any;
   commandsHelper: CommandsHelper;
@@ -37,7 +37,7 @@ export class TeamsBot extends TeamsActivityHandler {
     // Create conversation and user state with in-memory storage provider.
     this.conversationState = new ConversationState(memoryStorage);
     this.userState = new UserState(memoryStorage);
-    this.dialog = new SSODialog(new MemoryStorage());
+    this.dialog = new SSODialog(this.userState,new MemoryStorage());
     this.dialogState = this.conversationState.createProperty("DialogState");
 
     this.onMessage(async (context, next) => {
