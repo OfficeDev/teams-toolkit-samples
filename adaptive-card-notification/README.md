@@ -5,8 +5,8 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 ![Adaptive Card Notification Overview](images/adaptivecard.gif)
 
 ## This sample illustrates
-- Use Teams Toolkit to build notification bot.
-- Use Adaptive Cards to send notification in Teams.
+- How to build notification bot for your app.
+- How to send Adaptive Cards in Teams.
 
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
