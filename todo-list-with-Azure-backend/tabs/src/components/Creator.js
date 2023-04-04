@@ -1,19 +1,18 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import React from 'react';
-import './Creator.css';
+import React from "react";
+import "./Creator.css";
 import { createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
-import defaultPhoto from '../images/default-photo.png'
+import defaultPhoto from "../images/default-photo.png";
 
 class Creator extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       displayName: "",
       photoObjectURL: "",
-    }
+    };
   }
 
   async componentDidMount() {
@@ -29,20 +28,26 @@ class Creator extends React.Component {
   async fetchData() {
     try {
       // Get Microsoft graph client
-      const graphClient = await createMicrosoftGraphClientWithCredential(this.props.teamsUserCredential, this.props.scope);
-      const displayName = (await graphClient.api(`/users/${this.props.objectId}`).get()).displayName;
+      const graphClient = await createMicrosoftGraphClientWithCredential(
+        this.props.teamsUserCredential,
+        this.props.scope
+      );
+      const displayName = (
+        await graphClient.api(`/users/${this.props.objectId}`).get()
+      ).displayName;
       let photoObjectURL;
       try {
-        const photoBlob = await graphClient.api(`/users/${this.props.objectId}/photo/$value`).get()
+        const photoBlob = await graphClient
+          .api(`/users/${this.props.objectId}/photo/$value`)
+          .get();
         photoObjectURL = URL.createObjectURL(photoBlob);
-      } catch (error) {
-      }
+      } catch (error) {}
       this.setState({
         displayName,
         photoObjectURL,
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -50,7 +55,14 @@ class Creator extends React.Component {
     return (
       <div className="creator">
         <div>
-          <img src={this.state.photoObjectURL ? this.state.photoObjectURL : defaultPhoto} alt="avatar" />
+          <img
+            src={
+              this.state.photoObjectURL
+                ? this.state.photoObjectURL
+                : defaultPhoto
+            }
+            alt="avatar"
+          />
         </div>
         <div className="name">{this.state.displayName}</div>
       </div>

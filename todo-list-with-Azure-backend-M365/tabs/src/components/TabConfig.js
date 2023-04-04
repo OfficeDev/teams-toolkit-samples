@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 import { app, pages } from "@microsoft/teams-js";
 
 /**
@@ -11,7 +11,7 @@ import { app, pages } from "@microsoft/teams-js";
  * make their choices and once they are done you will need to validate
  * their choices and communicate that to Teams to enable the save button.
  */
- class TabConfig extends React.Component {
+class TabConfig extends React.Component {
   render() {
     // Initialize the Microsoft Teams SDK
     app.initialize().then(() => {
@@ -22,14 +22,16 @@ import { app, pages } from "@microsoft/teams-js";
        */
       pages.config.registerOnSaveHandler((saveEvent) => {
         const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
-        pages.config.setConfig({
-          suggestedDisplayName: "Todo List",
-          entityId: "Test",
-          contentUrl: baseUrl + "/index.html#/tab",
-          websiteUrl: baseUrl + "/index.html#/tab",
-        }).then(() => {
-          saveEvent.notifySuccess();
-        });
+        pages.config
+          .setConfig({
+            suggestedDisplayName: "Todo List",
+            entityId: "Test",
+            contentUrl: baseUrl + "/index.html#/tab",
+            websiteUrl: baseUrl + "/index.html#/tab",
+          })
+          .then(() => {
+            saveEvent.notifySuccess();
+          });
       });
 
       /**

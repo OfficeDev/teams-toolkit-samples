@@ -1,0 +1,39 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+  "name": "message-extension-codespaces",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:16",
+
+  // Default workspace folder
+  "workspaceFolder": "/workspaces/TeamsFx-Samples/NPM-search-message-extension-codespaces/",
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [
+    3978
+  ],
+  "portsAttributes": {
+    "3978": {
+      "label": "bot"
+    }
+  },
+  "remoteUser": "node",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "extensions.autoUpdate": false,
+        "extensions.autoCheckUpdates": false
+      },
+      "extensions": [
+        "TeamsDevApp.ms-teams-vscode-extension@prerelease"
+      ]
+    }
+  },
+  // Install GitHub CLI
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    }
+  },
+  // Install teamsfx CLI
+  "postCreateCommand": "npm install -g @microsoft/teamsfx-cli"
+}
