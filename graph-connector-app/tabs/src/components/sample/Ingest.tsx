@@ -1,20 +1,23 @@
 import React, { useState } from "react";
-import { Button, Loader } from "@fluentui/react-northstar";
+import { Button, Spinner } from "@fluentui/react-components";
 import * as axios from "axios";
 import { apiClient } from "./lib/apiClient";
 import { ConnectionId } from "./lib/constants";
 import { Status } from "./Status";
 
-
-async function callFunction(functionName: string, method: axios.Method, params?: any, data?: any) {
+async function callFunction(
+  functionName: string,
+  method: axios.Method,
+  params?: any,
+  data?: any
+) {
   try {
-    const response = await apiClient.request(
-      {
-        url: functionName,
-        method,
-        params,
-        data,
-      });
+    const response = await apiClient.request({
+      url: functionName,
+      method,
+      params,
+      data,
+    });
     return response.data;
   } catch (err: unknown) {
     if (axios.default.isAxiosError(err)) {
@@ -49,23 +52,28 @@ export function Ingest() {
   const [loading, setLoading] = useState(false);
 
   async function ingestData() {
-
     try {
       setLoading(true);
       setError("");
       setStep(0);
-      const connectionResult = await callFunction("connection", "post", { connectionId: ConnectionId });
+      const connectionResult = await callFunction("connection", "post", {
+        connectionId: ConnectionId,
+      });
       setStep(1);
       if (!connectionResult.connectionAlreadyExists) {
-        const schemaResult = await callFunction("schema", "post", { connectionId: ConnectionId });
+        const schemaResult = await callFunction("schema", "post", {
+          connectionId: ConnectionId,
+        });
         setStep(2);
         let statusResult;
         do {
-          statusResult = await callFunction("status", "get", { location: schemaResult.location });
-        } while (statusResult.status !== "completed")
+          statusResult = await callFunction("status", "get", {
+            location: schemaResult.location,
+          });
+        } while (statusResult.status !== "completed");
       }
       setStep(3);
-      await callFunction("data", "post", { connectionId: ConnectionId })
+      await callFunction("data", "post", { connectionId: ConnectionId });
       setStep(4);
     } catch (error) {
       setError(error);
@@ -77,19 +85,59 @@ export function Ingest() {
   return (
     <div>
       <h2>2. Ingest Sample Data into Graph Connector</h2>
-      <p>An Azure Functions app is running. Click below button to ingest data from the <a href="https://github.com/microsoftgraph/msgraph-search-connector-sample/blob/main/PartsInventoryConnector/ApplianceParts.csv" target="_blank" rel="noreferrer">CSV file</a>.</p>
-      <p><strong>Note: before ingesting data, you need to do 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.All' application permissions for your AAD App in Azure Portal.</strong></p>
-      <Button primary content="Ingest Data" disabled={loading} onClick={ingestData} />
-      {loading && (
-        <Loader />
-      )}
+      <p>
+        An Azure Functions app is running. Click below button to ingest data
+        from the{" "}
+        <a
+          href="https://github.com/microsoftgraph/msgraph-search-connector-sample/blob/main/PartsInventoryConnector/ApplianceParts.csv"
+          target="_blank"
+          rel="noreferrer"
+        >
+          CSV file
+        </a>
+        .
+      </p>
+      <p>
+        <strong>
+          Note: before ingesting data, you need to do 'Admin Consent' with
+          'ExternalConnection.ReadWrite.OwnedBy' and
+          'ExternalItem.ReadWrite.All' application permissions for your AAD App
+          in Azure Portal.
+        </strong>
+      </p>
+      <Button appearance="primary" disabled={loading} onClick={ingestData}>
+        Ingest Data
+      </Button>
+      {loading && <Spinner />}
       <div style={{ marginTop: 20 }}>
-        <Status currentStep={step} targetStep={1} error={error} text="Create connection" />
-        <Status currentStep={step} targetStep={2} error={error} text="Register schema" />
-        <Status currentStep={step} targetStep={3} error={error} text="Wait for schema to be ready (It may take about several minutes for the first time, and please do not reload this page)" />
-        <Status currentStep={step} targetStep={4} error={error} text="Push all items from CSV file to current connection" />
+        <Status
+          currentStep={step}
+          targetStep={1}
+          error={error}
+          text="Create connection"
+        />
+        <Status
+          currentStep={step}
+          targetStep={2}
+          error={error}
+          text="Register schema"
+        />
+        <Status
+          currentStep={step}
+          targetStep={3}
+          error={error}
+          text="Wait for schema to be ready (It may take about several minutes for the first time, and please do not reload this page)"
+        />
+        <Status
+          currentStep={step}
+          targetStep={4}
+          error={error}
+          text="Push all items from CSV file to current connection"
+        />
       </div>
-      {!loading && !!error && <div className="error fixed">{error.toString()}</div>}
+      {!loading && !!error && (
+        <div className="error fixed">{error.toString()}</div>
+      )}
     </div>
   );
 }

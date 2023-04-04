@@ -1,29 +1,29 @@
 import { useContext } from "react";
-import { Button, Image, Loader } from "@fluentui/react-northstar";
+import { Button, Image, Spinner } from "@fluentui/react-components";
 import "./Welcome.css";
 import { Introduce } from "./Introduce";
 import { Ingest } from "./Ingest";
-import { useGraph } from "@microsoft/teamsfx-react";
+import { useGraphWithCredential } from "@microsoft/teamsfx-react";
 import { Query } from "./Query";
 import { Scopes } from "./lib/constants";
 import { TeamsFxContext } from "../Context";
 
 export function Welcome() {
-  const { teamsfx } = useContext(TeamsFxContext);
-  const { loading, error, data, reload } = useGraph(
-    async (graph, teamsfx, scope) => {
+  const { teamsUserCredential } = useContext(TeamsFxContext);
+  const { loading, error, data, reload } = useGraphWithCredential(
+    async (graph, teamsUserCredential, scope) => {
       // Call graph api directly to get user profile information
       const profile = await graph.api("/me").get();
       return { profile };
     },
-    { scope: Scopes, teamsfx: teamsfx }
+    { scope: Scopes, credential: teamsUserCredential }
   );
 
   return (
-    <div>
+    <>
       {loading && (
         <div>
-          <Loader style={{ margin: 100 }} />
+          <Spinner style={{ margin: 100 }} />
         </div>
       )}
       {!loading && data && (
@@ -45,7 +45,9 @@ export function Welcome() {
       {!loading && !data && (
         <div className="auth">
           <h2>Welcome to Graph Connector App!</h2>
-          <Button primary content="Start" disabled={loading} onClick={reload} />
+          <Button appearance="primary" disabled={loading} onClick={reload}>
+            Start
+          </Button>
         </div>
       )}
       {!loading && error && (
@@ -54,6 +56,6 @@ export function Welcome() {
           {error.toString()}
         </div>
       )}
-    </div>
+    </>
   );
 }
