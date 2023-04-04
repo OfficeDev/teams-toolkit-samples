@@ -88,7 +88,7 @@
         },
         {
             // Launch Teams web client for Codespaces F5.
-            // See https://aka.ms/teamsfx-deploy-task to know the details and how to customize the args.
+            // See https://aka.ms/teamsfx-tasks/launch-web-client to know the details and how to customize the args.
             "label": "Open Teams Web Client",
             "type": "teamsfx",
             "command": "launch-web-client",
@@ -99,7 +99,7 @@
         },
         {
             // Launch Teams web client for remove preview.
-            // See https://aka.ms/teamsfx-deploy-task to know the details and how to customize the args.
+            // See https://aka.ms/teamsfx-tasks/launch-web-client to know the details and how to customize the args.
             "label": "Open Teams Web Client (remote)",
             "type": "teamsfx",
             "command": "launch-web-client",
