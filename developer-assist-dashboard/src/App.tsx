@@ -1,6 +1,11 @@
 import "./App.css";
 
-import { HashRouter as Router, Redirect, Route } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 // https://fluentsite.z22.web.core.windows.net/quick-start
 import {
@@ -39,17 +44,13 @@ export default function App() {
         className="App"
       >
         <Router>
-          <Route exact path="/">
-            <Redirect to="/tab" />
-          </Route>
-          {
-            <>
-              <Route exact path="/privacy" component={Privacy} />
-              <Route exact path="/termsofuse" component={TermsOfUse} />
-              <Route exact path="/tab" component={SampleDashboard} />
-              <Route exact path="/config" component={TabConfig} />
-            </>
-          }
+          <Routes>
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/termsofuse" element={<TermsOfUse />} />
+            <Route path="/tab" element={<SampleDashboard />} />
+            <Route path="/config" element={<TabConfig />} />
+            <Route path="*" element={<Navigate to={"/tab"} />}></Route>
+          </Routes>
         </Router>
       </FluentProvider>
     </TeamsFxContext.Provider>
