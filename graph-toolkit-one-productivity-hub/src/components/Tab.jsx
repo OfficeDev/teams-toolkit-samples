@@ -1,14 +1,20 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 import { TeamsFx } from "@microsoft/teamsfx";
-import { Button } from "@fluentui/react-northstar"
-import { Providers, ProviderState } from '@microsoft/mgt-element';
-import {  Agenda, Todo, FileList, Person, PersonViewType } from '@microsoft/mgt-react';
-import { TeamsFxProvider } from '@microsoft/mgt-teamsfx-provider';
-import { CacheService } from '@microsoft/mgt';
+import { Button } from "@fluentui/react-components";
+import { Providers, ProviderState } from "@microsoft/mgt-element";
+import {
+  Agenda,
+  Todo,
+  FileList,
+  Person,
+  PersonViewType,
+} from "@microsoft/mgt-react";
+import { TeamsFxProvider } from "@microsoft/mgt-teamsfx-provider";
+import { CacheService } from "@microsoft/mgt";
 
 class Tab extends React.Component {
   constructor(props) {
@@ -16,26 +22,25 @@ class Tab extends React.Component {
     CacheService.clearCaches();
     this.state = {
       showLoginPage: undefined,
-    }
+    };
   }
   async componentDidMount() {
-
-     /*Define scope for the required permissions*/
-     this.scope = [
+    /*Define scope for the required permissions*/
+    this.scope = [
       "User.Read",
       "User.ReadBasic.All",
       "Calendars.Read",
       "Files.Read.All",
       "Sites.Read.All",
       "Tasks.ReadWrite",
-      "People.Read"
+      "People.Read",
     ];
 
     /*Initialize TeamsFX provider*/
     this.teamsfx = new TeamsFx();
-    const provider = new TeamsFxProvider(this.teamsfx, this.scope)
+    const provider = new TeamsFxProvider(this.teamsfx, this.scope);
     Providers.globalProvider = provider;
-   
+
     /*Check if consent is needed*/
     let consentNeeded = false;
     try {
@@ -44,9 +49,11 @@ class Tab extends React.Component {
       consentNeeded = true;
     }
     this.setState({
-      showLoginPage: consentNeeded
+      showLoginPage: consentNeeded,
     });
-    Providers.globalProvider.setState(consentNeeded ? ProviderState.SignedOut : ProviderState.SignedIn);
+    Providers.globalProvider.setState(
+      consentNeeded ? ProviderState.SignedOut : ProviderState.SignedIn
+    );
     return consentNeeded;
   }
 
@@ -55,15 +62,15 @@ class Tab extends React.Component {
       await this.teamsfx.login(this.scope);
       Providers.globalProvider.setState(ProviderState.SignedIn);
       this.setState({
-        showLoginPage: false
+        showLoginPage: false,
       });
     } catch (err) {
       if (err.message?.includes("CancelledByUser")) {
         const helpLink = "https://aka.ms/teamsfx-auth-code-flow";
-        err.message += 
-          "\nIf you see \"AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application\" " + 
+        err.message +=
+          '\nIf you see "AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application" ' +
           "in the popup window, you may be using unmatched version for TeamsFx SDK (version >= 0.5.0) and Teams Toolkit (version < 3.3.0) or " +
-          `cli (version < 0.11.0). Please refer to the help link for how to fix the issue: ${helpLink}` ;
+          `cli (version < 0.11.0). Please refer to the help link for how to fix the issue: ${helpLink}`;
       }
       alert("Login failed: " + err);
       return;
@@ -72,55 +79,60 @@ class Tab extends React.Component {
   render() {
     return (
       <div>
-        {
-        this.state.showLoginPage === false && 
-        
-        <div>
-        <div className='features-avatar'>
-          <Person personQuery="me" view={PersonViewType.threelines} ></Person>
-        </div>
-        
-        <div className="features">
-          <div className="header">
-            <div className="title">
-            <h2>One Productivity Hub</h2>
+        {this.state.showLoginPage === false && (
+          <div>
+            <div className="features-avatar">
+              <Person
+                personQuery="me"
+                view={PersonViewType.threelines}
+              ></Person>
+            </div>
 
-              <div class="row">
-                <div class="column">
-                    <h3>Calendar events</h3>
+            <div className="features">
+              <div className="header">
+                <div className="title">
+                  <h2>One Productivity Hub</h2>
+
+                  <div class="row">
+                    <div class="column">
+                      <h3>Calendar events</h3>
+                    </div>
+                    <div class="column">
+                      <h3>To-do tasks</h3>
+                    </div>
+                    <div class="column">
+                      <h3>Files</h3>
+                    </div>
+                  </div>
                 </div>
-                <div class="column">
-                  <h3>To-do tasks</h3>
+              </div>
+              <div class="row" className="content">
+                <div class="column" className="mgt-col">
+                  <Agenda></Agenda>
                 </div>
-                <div class="column">
-                  <h3>Files</h3>
+                <div class="column" className="mgt-col">
+                  <Todo></Todo>
+                </div>
+                <div class="column" className="mgt-col">
+                  <FileList></FileList>
                 </div>
               </div>
             </div>
-          </div>    
-          <div class="row" className="content"> 
-                  <div class="column" className="mgt-col">
-                    <Agenda></Agenda>
-                  </div>
-                  <div class="column" className="mgt-col">
-                    <Todo></Todo>
-                  </div>
-                  <div class="column" className="mgt-col">
-                    <FileList></FileList>
-                  </div>             
           </div>
-        </div>
-        </div>  
-        }
-        {
-        this.state.showLoginPage === true && 
-        <div className="auth">
-        <h3>Welcome to One Productivity Hub app!</h3>
-        <p>Please click on "Start One Productivity Hub" and consent permissions to use the app.</p> 
-        <Button primary onClick={() => this.loginBtnClick()}>Start One Productivity Hub</Button>
-        </div>
-        }
-      </div> 
+        )}
+        {this.state.showLoginPage === true && (
+          <div className="auth">
+            <h3>Welcome to One Productivity Hub app!</h3>
+            <p>
+              Please click on "Start One Productivity Hub" and consent
+              permissions to use the app.
+            </p>
+            <Button appearance="primary" onClick={() => this.loginBtnClick()}>
+              Start One Productivity Hub
+            </Button>
+          </div>
+        )}
+      </div>
     );
   }
 }
