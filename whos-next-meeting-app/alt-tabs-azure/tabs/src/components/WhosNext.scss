@@ -1,7 +1,7 @@
 $main: #363628;
 $heading: #808080;
 $first: #5b5fc7;
-$second: #E22C80;
+$second: #e22c80;
 $third: #64afac;
 $background: #f7f5f6;
 
@@ -13,7 +13,7 @@ $background: #f7f5f6;
 body {
   background: $background;
   color: $main;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: center;
   width: auto;
@@ -134,7 +134,7 @@ button {
   width: 90%; /* was a pixel width */
 
   &:hover {
-    transition: .7s all ease;
+    transition: 0.7s all ease;
     color: $second;
     animation: 0.4s bounce infinite;
   }
@@ -199,14 +199,13 @@ button {
 
 /* •·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•·•· */
 
-
 .reveal-text,
 .reveal-text::after {
   animation-delay: var(--animation-delay, 2s);
   animation-iteration-count: var(--iterations, 1);
   animation-duration: var(--duration, 800ms);
   animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
 .reveal-text {
@@ -233,9 +232,7 @@ button {
     pointer-events: none;
     animation-name: text-revealer;
   }
-
 }
-
 
 @keyframes clip-text {
   from {
@@ -247,9 +244,7 @@ button {
   }
 }
 
-
 @keyframes text-revealer {
-
   0%,
   50% {
     transform-origin: 0 50%;
@@ -259,7 +254,6 @@ button {
   100% {
     transform-origin: 100% 50%;
   }
-
 
   60% {
     transform: scaleX(1);
