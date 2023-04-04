@@ -37,11 +37,19 @@ export class Collaboration extends Widget<ICollaborationState> {
         {this.state.data?.map((item: CollaborationModel) => {
           return (
             <div key={`colla-container-${item.id}`} className="collo-display">
-              <Image key={`colla-img-${item.id}`} src={item.img} width="100%" shape="rounded" />
+              <Image
+                key={`colla-img-${item.id}`}
+                src={item.img}
+                width="100%"
+                shape="rounded"
+              />
               <Text key={`colla-title-${item.id}`} className="colla-title">
                 {item.title}
               </Text>
-              <Text key={`colla-description-${item.id}`} className="colla-description">
+              <Text
+                key={`colla-description-${item.id}`}
+                className="colla-description"
+              >
                 {item.description}
               </Text>
               <div key={`colla-footer-${item.id}`} className="footer-layout">
@@ -55,7 +63,10 @@ export class Collaboration extends Widget<ICollaborationState> {
                   key={`colla-circle-${item.id}`}
                   className="colorNeutralForeground3"
                 />
-                <Text key={`colla-time-${item.id}`} className="colorNeutralForeground3">
+                <Text
+                  key={`colla-time-${item.id}`}
+                  className="colorNeutralForeground3"
+                >
                   {item.updateTime}
                 </Text>
               </div>

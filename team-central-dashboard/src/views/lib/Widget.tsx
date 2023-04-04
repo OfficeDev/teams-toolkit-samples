@@ -33,8 +33,13 @@ export abstract class Widget<T> extends Component<{}, T & WidgetState> {
    */
   render() {
     return (
-      <div className={mergeStyles(widgetStyle.root, this.genClassName())} style={this.genStyle()}>
-        {this.headerContent() && <div className={widgetStyle.header}>{this.headerContent()}</div>}
+      <div
+        className={mergeStyles(widgetStyle.root, this.genClassName())}
+        style={this.genStyle()}
+      >
+        {this.headerContent() && (
+          <div className={widgetStyle.header}>{this.headerContent()}</div>
+        )}
         {this.state.loading !== false && this.loadingContent() !== undefined ? (
           this.loadingContent()
         ) : (
@@ -109,6 +114,8 @@ export abstract class Widget<T> extends Component<{}, T & WidgetState> {
    * @returns className for styling the widget
    */
   private genClassName(): string {
-    return typeof this.stylingWidget() === "string" ? (this.stylingWidget() as string) : "";
+    return typeof this.stylingWidget() === "string"
+      ? (this.stylingWidget() as string)
+      : "";
   }
 }

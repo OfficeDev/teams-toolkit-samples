@@ -66,7 +66,9 @@ export default class MyDashboard extends Dashboard {
   async checkIsConsentNeeded() {
     let needConsent = false;
     try {
-      await TeamsUserCredentialContext.getInstance().getCredential().getToken(scope);
+      await TeamsUserCredentialContext.getInstance()
+        .getCredential()
+        .getToken(scope);
     } catch (error) {
       needConsent = true;
     }
