@@ -4,10 +4,8 @@ import { app, pages } from "@microsoft/teams-js";
 
 // Tab configuration page
 class WhosNextConfig extends React.Component {
-
   componentDidMount() {
     app.initialize().then(async () => {
-
       //  When the user clicks "Save", save the updated configuration
       pages.config.registerOnSaveHandler(async (saveEvent) => {
         const baseUrl = `https://${window.location.hostname}:${window.location.port}`;
@@ -22,22 +20,22 @@ class WhosNextConfig extends React.Component {
 
       // OK all set up, enable the "save" button
       pages.config.setValidityState(true);
-
     });
   }
 
-
   render() {
-
     return (
       <div>
         <h1>Tab Configuration</h1>
         <div>
-          <br />There are no configuration options for the Who's Next tab. Please click "Save" to set up your tab.
           <br />
-          <br />Nothing to see here folks!
+          There are no configuration options for the Who's Next tab. Please
+          click "Save" to set up your tab.
+          <br />
+          <br />
+          Nothing to see here folks!
         </div>
-      </div >
+      </div>
     );
   }
 }

@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fluentui/react-northstar": "^0.62.0",
+    "@fluentui/react-components": "^9.18.0",
     "@fluidframework/azure-client": "~1.0.1",
     "@fluidframework/test-client-utils": "~1.0.1",
     "@microsoft/live-share": "^1.0.0-preview.4",
     "@microsoft/teams-js": "^2.8.0-beta.0",
     "fluid-framework": "~1.0.1",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-responsive": "^8.2.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^4.0.3"
+    "react-router-dom": "^6.8.0",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
