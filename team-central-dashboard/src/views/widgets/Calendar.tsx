@@ -44,7 +44,9 @@ export class Calendar extends Widget<ICalendarState> {
             <div className="today-layout">
               <Text className="today-text">{moment().format("ll")}</Text>
               <Text className="meeting-summary">
-                {`You have ${this.state.meetings?.length ?? 0} meetings today. The upcoming events`}
+                {`You have ${
+                  this.state.meetings?.length ?? 0
+                } meetings today. The upcoming events`}
               </Text>
             </div>
 
@@ -52,7 +54,10 @@ export class Calendar extends Widget<ICalendarState> {
               return (
                 <div key="div-meeting-item" className="meeting-item-layout">
                   <div key="div-divider" className="meeting-divider" />
-                  <div key="div-meeting-content" className="meeting-content-layout">
+                  <div
+                    key="div-meeting-content"
+                    className="meeting-content-layout"
+                  >
                     <Text key="text-meeting-title" className="meeting-title">
                       {item.title}
                     </Text>
@@ -95,7 +100,9 @@ export class Calendar extends Widget<ICalendarState> {
         iconPosition="after"
         size="small"
         className={widgetStyle.footerBtn}
-        onClick={() => window.open("https://outlook.office.com/calendar/view/day")}
+        onClick={() =>
+          window.open("https://outlook.office.com/calendar/view/day")
+        }
       >
         View calendar
       </Button>
@@ -111,6 +118,10 @@ export class Calendar extends Widget<ICalendarState> {
   }
 
   private getMeetingTime = (item: CalendarModel) => {
-    return extractTime(item.startTime.dateTime) + " - " + extractTime(item.endTime.dateTime);
+    return (
+      extractTime(item.startTime.dateTime) +
+      " - " +
+      extractTime(item.endTime.dateTime)
+    );
   };
 }

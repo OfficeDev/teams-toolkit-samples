@@ -27,7 +27,10 @@ import {
 
 import { TEAMS_SVG } from "../../common/constants";
 import { DocumentModel } from "../../models/documentModel";
-import { getDocuments, getIconByFileType } from "../../services/documentService";
+import {
+  getDocuments,
+  getIconByFileType,
+} from "../../services/documentService";
 import { EmptyThemeImg } from "../components/EmptyThemeImg";
 import { Widget } from "../lib/Widget";
 import { widgetStyle } from "../lib/Widget.styles";
@@ -44,7 +47,9 @@ export class Documents extends Widget<IDocumentState> {
 
   protected headerContent(): JSX.Element | undefined {
     return (
-      <div className={mergeStyles(widgetStyle.headerWithoutIcon, "header-padding")}>
+      <div
+        className={mergeStyles(widgetStyle.headerWithoutIcon, "header-padding")}
+      >
         <Text className={widgetStyle.headerText}>Your documents</Text>
         <Button icon={<MoreHorizontal32Regular />} appearance="transparent" />
       </div>
@@ -64,12 +69,16 @@ export class Documents extends Widget<IDocumentState> {
                 onMouseOver={() => this.mouseOver(i)}
                 onMouseLeave={() => this.mouseLeave()}
               >
-                {i !== 0 && <div key={`divider-${item.id}`} className="doc-divider" />}
+                {i !== 0 && (
+                  <div key={`divider-${item.id}`} className="doc-divider" />
+                )}
                 <div
                   key={`div-content-${item.id}`}
                   className={mergeStyles(
                     "doc-item-content",
-                    i === this.state.activeIndex ? "doc-item-active" : "doc-item-non-active"
+                    i === this.state.activeIndex
+                      ? "doc-item-active"
+                      : "doc-item-non-active"
                   )}
                 >
                   <div
@@ -101,7 +110,9 @@ export class Documents extends Widget<IDocumentState> {
                           <MenuTrigger key={`menu-trigger-${item.id}`}>
                             <MenuItem
                               key={`menu-item-${item.id}`}
-                              icon={<Image src={getIconByFileType(item.type)} />}
+                              icon={
+                                <Image src={getIconByFileType(item.type)} />
+                              }
                             >
                               Open in
                             </MenuItem>
@@ -118,13 +129,17 @@ export class Documents extends Widget<IDocumentState> {
                               <MenuItem
                                 key={`menu-desktop-${item.id}`}
                                 onClick={() => window.open(item.webDavurl)}
-                                icon={<Image src={getIconByFileType(item.type)} />}
+                                icon={
+                                  <Image src={getIconByFileType(item.type)} />
+                                }
                               >
                                 Desktop app
                               </MenuItem>
                               <MenuItem
                                 key={`menu-browser-${item.id}`}
-                                icon={<Image src={getIconByFileType(item.type)} />}
+                                icon={
+                                  <Image src={getIconByFileType(item.type)} />
+                                }
                                 onClick={() => window.open(item.weburl)}
                               >
                                 Browser
@@ -143,7 +158,9 @@ export class Documents extends Widget<IDocumentState> {
                         <MenuItem
                           key={`menu-copy-${item.id}`}
                           icon={<Link24Regular />}
-                          onClick={() => navigator.clipboard.writeText(item.weburl!)}
+                          onClick={() =>
+                            navigator.clipboard.writeText(item.weburl!)
+                          }
                         >
                           Copy link
                         </MenuItem>

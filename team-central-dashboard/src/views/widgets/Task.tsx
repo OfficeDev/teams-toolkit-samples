@@ -4,7 +4,13 @@ import "../styles/Task.css";
 import React from "react";
 
 import { mergeStyles } from "@fluentui/react";
-import { Button, Checkbox, Image, Spinner, Text } from "@fluentui/react-components";
+import {
+  Button,
+  Checkbox,
+  Image,
+  Spinner,
+  Text,
+} from "@fluentui/react-components";
 import {
   Add20Filled,
   ArrowRight16Filled,
@@ -63,7 +69,11 @@ export class Task extends Widget<ITaskState> {
         <Text key="text-task-title" className={widgetStyle.headerText}>
           Your tasks
         </Text>
-        <Button key="bt-task-more" icon={<MoreHorizontal32Regular />} appearance="transparent" />
+        <Button
+          key="bt-task-more"
+          icon={<MoreHorizontal32Regular />}
+          appearance="transparent"
+        />
       </div>
     );
   }
@@ -87,7 +97,11 @@ export class Task extends Widget<ITaskState> {
                       themeString === "contrast" ? "border-style" : ""
                     )}
                   >
-                    <Checkbox key={`cb-task-${item.id}`} shape="circular" label={item.name} />
+                    <Checkbox
+                      key={`cb-task-${item.id}`}
+                      shape="circular"
+                      label={item.name}
+                    />
                     <Button
                       key={`bt-task-${item.id}`}
                       icon={<Star24Regular />}
@@ -170,7 +184,9 @@ export class Task extends Widget<ITaskState> {
         />
         {this.state.inputFocused && (
           <button
-            className={this.state.addBtnOver ? "add-btn-enter" : "add-btn-leave"}
+            className={
+              this.state.addBtnOver ? "add-btn-enter" : "add-btn-leave"
+            }
             onClick={() => {
               this.onAddButtonClick();
             }}
