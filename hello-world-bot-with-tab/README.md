@@ -1,6 +1,6 @@
 # Getting Started with Hello World Bot with Tab
 
-A bot, chatbot, or conversational bot is an application that responds to simple commands sent in a chat and provides meaningful replies. The interaction with a bot can be a quick question and answer or a complex conversation. 
+A bot, chatbot, or conversational bot is an application that responds to simple commands sent in a chat and provides meaningful replies. The interaction with a bot can be a quick question and answer or a complex conversation.
 
 This is a simple "Hello World" application that has both Bot and Tab capabilities. The bot sends a welcome message when a new member is added, while the tab displays a welcome page.
 
@@ -18,17 +18,17 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
 
 ### Run the app locally
 
-- From VS Code: 
+- From VS Code:
     1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug (Edge)` or `Debug (Chrome)`.
 
-- From TeamsFx CLI: 
+- From TeamsFx CLI:
     1. Run command: `teamsfx provision --env local` .
     1. Run command: `teamsfx deploy --env local` .
     1. Run command: `teamsfx preview --env local` .
 
 ### Deploy the app to Azure
 
-- From VS Code: 
+- From VS Code:
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
     1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
     1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
@@ -40,7 +40,7 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
 
 ### Preview the app in Teams
 
-- From VS Code: 
+- From VS Code:
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 
 - From TeamsFx CLI:
@@ -58,7 +58,7 @@ Please follow this [document](https://aka.ms/teamsfx-add-sso) to add single sign
 
 |Date| Author| Comments|
 |---|---|---|
-|Dec 9, 2022| hund030 | update to support Teams Toolkit v5.0.0|
+|Dec 9, 2022| hund030 | Onboard sample in Teams Toolkit V5.0.0|
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
