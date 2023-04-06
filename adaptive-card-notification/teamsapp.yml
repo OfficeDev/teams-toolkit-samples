@@ -10,7 +10,7 @@ provision:
     writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
       teamsAppId: TEAMS_APP_ID
       
-  - uses: botAadApp/create # Creates a new AAD app for Bot Registration.
+  - uses: botAadApp/create # Creates a new or reuses an existing Azure Active Directory application for bot.
     with:
       name: adaptive-card-notifi-${{TEAMSFX_ENV}} # The Azure Active Directory application's display name
     writeToEnvironmentFile:
