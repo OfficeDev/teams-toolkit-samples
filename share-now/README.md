@@ -136,6 +136,8 @@ This sample app consists of a personal tab and a message extension used to manag
 |Date| Author| Comments|
 |---|---|---|
 |May 13 2021| xzf0587 | onboard |
+|May 18, 2022| xzf0587 | update to support Teams Toolkit v4.0.0|
 |Apr 3, 2023| xzf0587 | update to support Teams Toolkit v5.0.0|
+
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
