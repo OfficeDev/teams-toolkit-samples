@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Privacy from "./Privacy";
 import TermsOfUse from "./TermsOfUse";
 import Tab from "./WhosNext";
@@ -13,10 +13,12 @@ import "./App.css";
 export default function App() {
   return (
     <Router>
-      <Route exact path="/privacy" component={Privacy} />
-      <Route exact path="/termsofuse" component={TermsOfUse} />
-      <Route exact path="/config" component={WhosNextConfig} />
-      <Route exact path="/tab" component={Tab} />
+      <Routes>
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/termsofuse" element={<TermsOfUse />} />
+        <Route path="/tab" element={<Tab />} />
+        <Route path="/config" element={<WhosNextConfig />} />
+      </Routes>
     </Router>
   );
 }

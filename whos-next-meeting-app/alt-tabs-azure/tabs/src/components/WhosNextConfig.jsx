@@ -2,14 +2,12 @@ import React from "react";
 import "./App.css";
 import { app, pages } from "@microsoft/teams-js";
 
-import FluidService from "../services/fluidAzure.js"
+import FluidService from "../services/fluidAzure.js";
 
 // Tab configuration page
 class WhosNextConfig extends React.Component {
-
   componentDidMount() {
     app.initialize().then(async () => {
-
       let containerId;
 
       // Get the container id, which is saved as the tab's entity ID
@@ -20,7 +18,7 @@ class WhosNextConfig extends React.Component {
       }
 
       this.setState({
-        containerId: containerId
+        containerId: containerId,
       });
 
       //  When the user clicks "Save", save the updated configuration
@@ -37,24 +35,19 @@ class WhosNextConfig extends React.Component {
 
       // OK all set up, enable the "save" button
       pages.config.setValidityState(true);
-
     });
   }
 
-
   render() {
-
     return (
       <div>
         <h1>Tab Configuration</h1>
         <div>
-          {this.state?.containerId ? 
-            `We have configured container ${this.state.containerId} for this tab. Please click the Save button to continue.`
-            :
-            "Loading ..."
-          }
+          {this.state?.containerId
+            ? `We have configured container ${this.state.containerId} for this tab. Please click the Save button to continue.`
+            : "Loading ..."}
         </div>
-      </div >
+      </div>
     );
   }
 }
