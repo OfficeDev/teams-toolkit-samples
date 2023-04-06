@@ -36,7 +36,7 @@ This sample app showcases how to build a Teams command bot that queries custom d
 1. Use Teams Toolkit to [submit the Teams app to the Teams Admin Center](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#publish-to-your-organization).
 1. [Approve the Teams app for publishing to your organization's app store](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#admin-approval-for-teams-apps).
 
-## Advanced usage of this sample
+#### Usage of this sample
 1. Navigate to 'Graph Connector' section of the Teams app in [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and click 'Grant permissions'.
 
     ![Grant permissions](images/grant-permission.png)
@@ -52,10 +52,6 @@ This sample app showcases how to build a Teams command bot that queries custom d
     ![Query](images/query.png)
 
 1. In 'Graph Connector' section of Teams Admin Center, you could toggle the 'Connection status' to turn off Graph connector, then the connection will be deleted.
-
-## Architecture
-
-![Architecture](images/architecture.drawio.png)
 
 ## Version History
 |Date| Author| Comments|
