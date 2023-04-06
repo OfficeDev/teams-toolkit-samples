@@ -31,7 +31,7 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 ### Preview the app in Teams
 1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
 
-## Advanced usage of this sample
+#### Usage of this sample
 1. The APP will look like this when it runs for the first time.
 
     ![Login Page](images/start.png)
@@ -67,13 +67,6 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 1. You could try to query data from custom Graph Connector.
 
     ![Query](images/query.png)
-
-## Architecture
-
-![Architecture](images/architecture.drawio.png)
-
-- The frontend is a React tab app hosted on [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
-- The backend server is hosted on [Azure Function](https://docs.microsoft.com/en-us/azure/azure-functions/).
 
 ## Version History
 |Date| Author| Comments|
