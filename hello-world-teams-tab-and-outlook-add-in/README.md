@@ -14,7 +14,7 @@ Now you have the ability to create a single unit of distribution for all your Mi
 - Edge or Chrome installed for debugging Teams Tab. Edge installed for debugging Outlook add-in.
 - Outlook for Windows: Beta Channel, Build 16320 or higher. 
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) Pre-release version or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) latest version or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Minimal path to awesome
 ### Debug Teams Tab
