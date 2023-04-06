@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Remote (Codespaces)",
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "Open Teams Web Client (remote)",
+            "presentation": {
+                "group": "remote",
+                "order": 1
+            },
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "name": "Attach to Local Service",
+            "type": "node",
+            "request": "attach",
+            "port": 9239,
+            "restart": true,
+            "presentation": {
+                "group": "all",
+                "hidden": true
+            },
+            "internalConsoleOptions": "neverOpen"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Debug (Codespaces)",
+            "configurations": [
+                "Attach to Local Service"
+            ],
+            "preLaunchTask": "Start Teams App in Codespaces",
+            "presentation": {
+                "group": "all",
+                "order": 1
+            },
+            "stopAll": true
+        }
+    ]
+}

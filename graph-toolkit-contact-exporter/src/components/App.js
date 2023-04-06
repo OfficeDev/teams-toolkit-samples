@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import React from 'react';
-import './App.css';
-import * as microsoftTeams from '@microsoft/teams-js';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import React from "react";
+import "./App.css";
+import * as microsoftTeams from "@microsoft/teams-js";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
-import Privacy from './about/Privacy';
-import TermsOfUse from './about/TermsOfUse';
-import Tab from './Tab';
-import TabConfig from './TabConfig';
+import Privacy from "./about/Privacy";
+import TermsOfUse from "./about/TermsOfUse";
+import Tab from "./Tab";
+import TabConfig from "./TabConfig";
 
 /**
  * The main app which handles the initialization and routing
@@ -20,16 +20,16 @@ function App() {
   if (microsoftTeams) {
     return (
       <Router>
-        <Route exact path='/privacy' component={Privacy} />
-        <Route exact path='/termsofuse' component={TermsOfUse} />
-        <Route exact path='/tab' component={Tab} />
-        <Route exact path='/config' component={TabConfig} />
+        <Routes>
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/termsofuse" element={<TermsOfUse />} />
+          <Route path="/tab" element={<Tab />} />
+          <Route path="/config" element={<TabConfig />} />
+        </Routes>
       </Router>
     );
   } else {
-    return (
-      <h3>Microsoft Teams SDK not found.</h3>
-    );
+    return <h3>Microsoft Teams SDK not found.</h3>;
   }
 }
 

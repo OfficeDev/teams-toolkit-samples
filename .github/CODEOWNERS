@@ -10,6 +10,7 @@
 # This should make it easy to add new rules without breaking existing ones.
 
 /NPM-search-connector-M365 @kimizhu @swatDong @kuojianlu
+/NPM-search-message-extension-codespaces @kimizhu @dooriya @qinezh
 /adaptive-card-notification @kimizhu @dooriya @swatDong @XiaofuHuang
 /bot-sso @eriolchan @yukun-dong
 /command-bot-with-sso @adashen @SLdragon
@@ -20,16 +21,18 @@
 /graph-toolkit-productivity-hub-aspnetcore @adashen @SLdragon
 /hello-world-bot-with-tab @eriolchan @hund030
 /hello-world-in-meeting @eriolchan @JerryYangKai
+/hello-world-tab-codespaces @kimizhu @dooriya @qinezh
 /hello-world-tab-with-backend @eriolchan @hund030
-/hello-world-teams-tab-and-outlook-add-in @MSFT-yiz @1yefuwang1
+/hello-world-teams-tab-and-outlook-add-in @MSFT-yiz @1yefuwang1 @HuihuiWu-Microsoft
 /incoming-webhook-notification @kimizhu @dooriya @swatDong @XiaofuHuang
+/notification-codespaces @kimizhu @dooriya @qinezh
 /query-org-user-with-message-extension-sso @adashen @wenytang-ms
 /share-now @adashen @xzf0587
 /stocks-update-notification-bot @kimizhu @dooriya @swatDong @XiaofuHuang
 /stocks-update-notification-bot-dotnet @kimizhu @dooriya @swatDong @XiaofuHuang
 /todo-list-SPFx @MSFT-yiz @HuihuiWu-Microsoft
-/team-central-dashboard @eriolchan @huimiu
+/team-central-dashboard @eriolchan @huimiu @hund030 @JerryYangKai
 /todo-list-with-Azure-backend @adashen @formulahendry
 /todo-list-with-Azure-backend-M365 @kimizhu @swatDong @kuojianlu
-/developer-assist-dashboard @MSFT-yiz @HuihuiWu-Microsoft
+/developer-assist-dashboard @eriolchan @huimiu @hund030 @JerryYangKai
 /.github/workflows/cd.yml @adashen @LongOddCode @IvanJobs @qinezh @wenytang-ms

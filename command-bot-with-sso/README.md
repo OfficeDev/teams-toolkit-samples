@@ -1,92 +1,74 @@
-# Build Bots for Teams
+# Getting Started with Command Bot with SSO
 
 A bot, chatbot, or conversational bot is an app that responds to simple commands sent in chat and replies in meaningful ways. Examples of bots in everyday use include: bots that notify about build failures, bots that provide information about the weather or bus schedules, or provide travel information. A bot interaction can be a quick question and answer, or it can be a complex conversation. Being a cloud application, a bot can provide valuable and secure access to cloud services and corporate resources.
 
 This is a simple command bot that implements single sign-on feature to retrieve profile and photo for currently signed-in user using Bot Framework SDK, TeamsFx SDK and Microsoft Graph API, and the commands can be found as below:
 
-| command | response | sso command |
-| - | - | - |
-| helloworld | helloworld adaptive card message | false |
-| profile | user profile information from Microsoft Graph API | true |
-| photo | user photo image from Microsoft Graph API| true |
+| command    | response                                          | sso command |
+| ---------- | ------------------------------------------------- | ----------- |
+| helloworld | helloworld adaptive card message                  | false       |
+| profile    | user profile information from Microsoft Graph API | true        |
+| photo      | user photo image from Microsoft Graph API         | true        |
 
 ![SSO Command and Response Bot](./images/sso-command-bot.gif)
 
-## Prerequisites
+## This sample illustrates
 
-- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18
-- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- How to use Teams Toolkit to create a Teams bot app.
+- How to use Microsoft Graph to get User info and picture in Teams app.
+- How to use TeamsFx SDK to implementing SSO for Teams bot.
 
-## Debug
+## Prerequisite to use this sample
 
-Clone this repo, navigate to `command-bot-with-sso/` folder. Start debugging the project by hitting the `F5` key in Visual Studio Code. Alternatively use the `Run and Debug Activity Panel` in Visual Studio Code and click the `Start Debugging` green arrow button.
+- [Node.js](https://nodejs.org/) version 14, 16, 18
+- A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
+- [Teams Toolkit for VS Code](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
-If you encounter the ngrok page below when sending the `helloworld`/`profile`/`photo` command to the bot, please follow the steps to solve this issue.
+## Minimal path to awesome
 
-1. Stop debugging in Visual Studio Code.
-2. Sign up an ngrok account in https://dashboard.ngrok.com/signup.
-3. Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
-4. Run `npx ngrok authtoken <your-personal-ngrok-authtoken>` in Visual Studio Code terminal.
-5. Start debugging the project again by hitting the F5 key in Visual Studio Code.
+### Run the app locally
 
-![ngrok auth page](./images/ngrok-authtoken-page.png)
+- From VSCode
 
-## Edit the manifest
+  1. Clone the repo to your local workspace or directly download the source code.
+  1. Open the project in Visual Studio Code.
+  1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
+  1. Press "F5" to open a browser window and then select your package to view contact exporter sample app.
 
-You can find the Teams manifest in `templates/appPackage/manifest.json`. It contains template arguments with `{...}` statements which will be replaced at build time. You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more.
+- From TeamsFx CLI
+  1. Run command: `teamsfx provision --env local` .
+  1. Run command: `teamsfx deploy --env local` .
+  1. Run command: `teamsfx preview --env local` .
 
-## Edit Azure AD manifest
+### Deploy the app to Azure
 
-You can find the Azure AD manifest in `templates/appPackage/aad.template.json`, and this file can help you manage Azure AD app for SSO. Follow this [document](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/aad-manifest-customization) to update Azure AD manifest if you want to customize AD app.
+> If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
 
-## Deploy to Azure
+- From VSCode
 
-Deploy your project to Azure by following these steps:
+  1. Sign in to Azure by clicking `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
+  1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
+  1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
 
-| From Visual Studio Code | Using TeamsFx CLI |
-| :- | :- |
-| <ul><li>Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.</li> <li>After you signed in, select a subscription under your account.</li><li>Open the command palette and select: `Teams: Provision in the cloud`.</li><li>Open the command palette and select: `Teams: Deploy to the cloud`.</li></ul> | <ul> <li>Run command `teamsfx account login azure`.</li> <li>Run command `teamsfx account set --subscription <your-subscription-id>`.</li> <li> Run command `teamsfx provision`.</li> <li>Run command: `teamsfx deploy`. </li></ul> |
+- From TeamsFx CLI
+  1. Run command: `teamsfx account login azure`.
+  1. Run command: `teamsfx provision --env dev`.
+  1. Run command: `teamsfx deploy --env dev`.
 
-> Note: Provisioning and deployment may incur charges to your Azure Subscription.
+### Preview the app in Teams
 
-## Preview
+- From VSCode:
+  1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
+- From TeamsFx CLI:
+  1. Run command: `teamsfx preview --env dev`.
 
-Once the provisioning and deployment steps are finished, you can preview your app:
+## Version History
 
-1. From Visual Studio Code, open the `Run and Debug Activity Panel`.
-1. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
-1. Press the Play (green arrow) button to launch your app - now running remotely from Azure.
+| Date         | Author | Comments                               |
+| ------------ | ------ | -------------------------------------- |
+| Sep 20, 2022 | rentu  | update to support Teams Toolkit v4.0.0 |
+| Mar 17, 2023 | rentu  | update to support Teams Toolkit v5.0.0 |
 
-## Validate manifest file
+## Feedback
 
-To check that your manifest file is valid:
-
-- From Visual Studio Code: open the command palette and select: `Teams: Validate manifest file`.
-- From TeamsFx CLI: run command `teamsfx validate` in your project directory.
-
-## Build
-
-- From Visual Studio Code: open the command palette and select `Teams: Zip Teams metadata package`.
-- Alternatively, from the command line run `teamsfx build` in the project directory.
-
-## Publish to Teams
-
-Once deployed, you may want to distribute your application to your organization's internal app store in Teams. Your app will be submitted for admin approval.
-
-- From Visual Studio Code: open the command palette and select: `Teams: Publish to Teams`.
-- From TeamsFx CLI: run command `teamsfx publish` in your project directory.
-
-## Further reading
-
-- [Bot Basics](https://docs.microsoft.com/azure/bot-service/bot-builder-basics?view=azure-bot-service-4.0)
-- [Bot Framework Documentation](https://docs.botframework.com/)
-- [Azure Bot Service Introduction](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-- [Single sign-on (SSO) support for bots](https://docs.microsoft.com/en-us/microsoftteams/platform/bots/how-to/authentication/auth-aad-sso-bots#:~:text=%20Develop%20an%20SSO%20Teams%20bot%20%201,token%20is%20a%20normal%20POST%20message...%20More%20)
-- [Dialogs in the Bot Framework SDK](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-dialog?view=azure-bot-service-4.0)
-
-## Code of Conduct
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

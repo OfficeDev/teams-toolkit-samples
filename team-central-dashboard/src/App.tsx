@@ -1,6 +1,11 @@
 import "./App.css";
 
-import { HashRouter as Router, Redirect, Route } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 import {
   FluentProvider,
@@ -31,15 +36,13 @@ export default function App() {
         className="app"
       >
         <Router>
-          <Route exact path="/">
-            <Redirect to="/tab" />
-          </Route>
-          <>
-            <Route exact path="/privacy" component={Privacy} />
-            <Route exact path="/termsofuse" component={TermsOfUse} />
-            <Route exact path="/tab" component={MyDashboard} />
-            <Route exact path="/config" component={TabConfig} />
-          </>
+          <Routes>
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/termsofuse" element={<TermsOfUse />} />
+            <Route path="/tab" element={<MyDashboard />} />
+            <Route path="/config" element={<TabConfig />} />
+            <Route path="*" element={<Navigate to={"/tab"} />}></Route>
+          </Routes>
         </Router>
       </FluentProvider>
     </TeamsFxContext.Provider>

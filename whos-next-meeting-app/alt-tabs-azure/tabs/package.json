@@ -1,0 +1,50 @@
+{
+  "name": "teamsfx-template-tab",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fluentui/react-components": "^9.18.0",
+    "@fluidframework/azure-client": "~1.0.1",
+    "@fluidframework/test-client-utils": "~1.0.1",
+    "@microsoft/teams-js": "^2.8.0-beta.0",
+    "fluid-framework": "~1.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-responsive": "^8.2.0",
+    "react-router-dom": "^6.8.0",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "env-cmd": "^10.1.0"
+  },
+  "scripts": {
+    "dev:teamsfx": "env-cmd --silent -f .env.teamsfx.local npm run start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build:teamsfx": "cross-env-shell \"env-cmd -f .env.teamsfx.${TEAMS_FX_ENV} npm run build\"",
+    "build:teamsfx:dev": "cross-env TEAMS_FX_ENV=dev npm run build:teamsfx",
+    "eject": "react-scripts eject",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "localService": "npx @fluidframework/azure-local-service@latest"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": "."
+}

@@ -63,7 +63,11 @@ export class Dashboard extends Component<any, IDashboardState> {
    * Define thie dashboard default layout, you can edit the code here to customize your dashboard layout.
    */
   render() {
-    let root = dashboardStyle(this.state.isMobile, this.rowHeights(), this.columnWidths());
+    let root = dashboardStyle(
+      this.state.isMobile,
+      this.rowHeights(),
+      this.columnWidths()
+    );
     return (
       <div
         ref={this.ref}
@@ -123,6 +127,8 @@ export class Dashboard extends Component<any, IDashboardState> {
    * @returns className for styling the dashboard
    */
   private genClassName(): string {
-    return typeof this.styingDashboard() === "string" ? (this.styingDashboard() as string) : "";
+    return typeof this.styingDashboard() === "string"
+      ? (this.styingDashboard() as string)
+      : "";
   }
 }

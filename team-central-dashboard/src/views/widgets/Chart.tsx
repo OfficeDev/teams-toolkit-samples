@@ -3,7 +3,13 @@ import "../styles/Chart.css";
 import * as d3 from "d3-format";
 
 import { AreaChart, IChartProps } from "@fluentui/react-charting";
-import { Avatar, Button, Text, ToggleButton, tokens } from "@fluentui/react-components";
+import {
+  Avatar,
+  Button,
+  Text,
+  ToggleButton,
+  tokens,
+} from "@fluentui/react-components";
 import {
   ArrowMaximize20Regular,
   ArrowRight16Filled,
@@ -68,10 +74,26 @@ export class Chart extends Widget<IChartWidgetState> {
           Area chart
         </Text>
         <div key="div-chart-actions" className="action-layout">
-          <Button key="bt-chart-search" icon={<Search20Regular />} appearance="transparent" />
-          <Button key="bt-chart-max" icon={<ArrowMaximize20Regular />} appearance="transparent" />
-          <Button key="bt-chart-setting" icon={<Settings20Regular />} appearance="transparent" />
-          <Button key="bt-chart-more" icon={<MoreHorizontal32Regular />} appearance="transparent" />
+          <Button
+            key="bt-chart-search"
+            icon={<Search20Regular />}
+            appearance="transparent"
+          />
+          <Button
+            key="bt-chart-max"
+            icon={<ArrowMaximize20Regular />}
+            appearance="transparent"
+          />
+          <Button
+            key="bt-chart-setting"
+            icon={<Settings20Regular />}
+            appearance="transparent"
+          />
+          <Button
+            key="bt-chart-more"
+            icon={<MoreHorizontal32Regular />}
+            appearance="transparent"
+          />
         </div>
       </div>
     );
@@ -168,27 +190,50 @@ export class Chart extends Widget<IChartWidgetState> {
 
           <div key="div-table-content" className="table-content-layout">
             <div key="div-table-column" className="table-column">
-              <Text key="text-table-header-title" className="min-width-18 table-header">
+              <Text
+                key="text-table-header-title"
+                className="min-width-18 table-header"
+              >
                 Title
               </Text>
-              <Text key="text-table-header-assigned" className="min-width-8 table-header">
+              <Text
+                key="text-table-header-assigned"
+                className="min-width-8 table-header"
+              >
                 Assigned To
               </Text>
-              <Text key="text-table-header-owner" className="min-width-8 table-header">
+              <Text
+                key="text-table-header-owner"
+                className="min-width-8 table-header"
+              >
                 PM Owner
               </Text>
-              <Text key="text-table-header-priority" className="min-width-4 table-header">
+              <Text
+                key="text-table-header-priority"
+                className="min-width-4 table-header"
+              >
                 Priority
               </Text>
-              <Text key="text-table-header-state" className="min-width-4 table-header">
+              <Text
+                key="text-table-header-state"
+                className="min-width-4 table-header"
+              >
                 State
               </Text>
             </div>
             {tableData.map((item: TableModel, index) => {
               return (
-                <div key={`div-table-content-${item.id}`} className="column-divider-layout">
-                  {index !== 0 && <div key={`table-divider-${item.id}`} className="divider" />}
-                  <div key={`div-table-column-${item.id}`} className="table-column">
+                <div
+                  key={`div-table-content-${item.id}`}
+                  className="column-divider-layout"
+                >
+                  {index !== 0 && (
+                    <div key={`table-divider-${item.id}`} className="divider" />
+                  )}
+                  <div
+                    key={`div-table-column-${item.id}`}
+                    className="table-column"
+                  >
                     <div key={`div-table-title-${item.id}`} className="title">
                       <ChevronRight20Regular key={`icon-chevron-${item.id}`} />
                       {index !== 3 ? (
@@ -208,18 +253,28 @@ export class Chart extends Widget<IChartWidgetState> {
                         image={{ src: `${item.assignedAvatar}` }}
                         size={16}
                       />
-                      <Text key={`text-assigned-${item.id}`}>{item.assignedName}</Text>
+                      <Text key={`text-assigned-${item.id}`}>
+                        {item.assignedName}
+                      </Text>
                     </div>
-                    <div key={`div-table-avatar2-${item.id}`} className="avatar">
+                    <div
+                      key={`div-table-avatar2-${item.id}`}
+                      className="avatar"
+                    >
                       <Avatar
                         key={`avatar-owner-${item.id}`}
                         name={item.ownerName}
                         image={{ src: `${item.ownerAvatar}` }}
                         size={16}
                       />
-                      <Text key={`text-owner-${item.id}`}>{item.ownerName}</Text>
+                      <Text key={`text-owner-${item.id}`}>
+                        {item.ownerName}
+                      </Text>
                     </div>
-                    <Text key={`text-priority-${item.id}`} className="min-width-4">
+                    <Text
+                      key={`text-priority-${item.id}`}
+                      className="min-width-4"
+                    >
                       {item.priority}
                     </Text>
                     <div key={`div-state-${item.id}`} className="state-layout">

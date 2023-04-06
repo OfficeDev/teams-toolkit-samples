@@ -1,6 +1,5 @@
-## Try the Sample with TeamsFx CLI
-1. Install [Node.js](https://nodejs.org/en/download/)
-1. To install the TeamsFx CLI, use the npm package manager:
+## Minimal path to awesome
+1. Install TeamsFx CLI using the npm package manager:
     ```
     npm install -g @microsoft/teamsfx-cli
     ```
