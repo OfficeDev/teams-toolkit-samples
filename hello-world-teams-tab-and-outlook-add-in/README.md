@@ -69,7 +69,7 @@ Once the provisioning and deployment steps are finished, you can preview your Ou
 
 To check that your manifest file is valid:
 
-- From Visual Studio Code: open the command palette and select: `Teams: Validate manifest file`.
+- From Visual Studio Code: open the command palette and select: `Teams: Validate Application` and select `Validate using manifest schema`.
 - From TeamsFx CLI: run command `teamsfx validate` in your project directory.
 
 ### Package
