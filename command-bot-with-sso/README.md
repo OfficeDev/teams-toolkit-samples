@@ -36,6 +36,14 @@ This is a simple command bot that implements single sign-on feature to retrieve 
   1. Press "F5" to open a browser window and then select your package to view contact exporter sample app.
 
 - From TeamsFx CLI
+  1. Install [ngrok](https://ngrok.com/download).
+  1. Sign up an ngrok account in https://dashboard.ngrok.com/signup. Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
+  1. Start your local tunnel service by running the command `ngrok http 3978 --authtoken=<your-personal-ngrok-authtoken>`.
+  1. In the `env/.env.local` file, fill in the values for `BOT_DOMAIN` and `BOT_ENDPOINT` with your ngrok URL.
+     ```
+     BOT_DOMAIN=sample-id.ngrok.io
+     BOT_ENDPOINT=http://sample-id.ngrok.io
+     ```
   1. Run command: `teamsfx provision --env local` .
   1. Run command: `teamsfx deploy --env local` .
   1. Run command: `teamsfx preview --env local` .
