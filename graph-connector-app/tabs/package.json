@@ -6,6 +6,7 @@
   },
   "private": true,
   "dependencies": {
+    "@fluentui/react": "^8.107.4",
     "@fluentui/react-components": "^9.18.0",
     "@fluentui/react-icons": "^2.0.195",
     "@microsoft/microsoft-graph-client": "^3.0.1",
