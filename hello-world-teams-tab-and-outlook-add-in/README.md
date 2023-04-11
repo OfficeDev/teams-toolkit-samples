@@ -67,7 +67,7 @@ Once the provisioning and deployment steps are finished, you can preview your Ou
 
 ### Validate manifest file
 
-Knonw issue: manifest validation is not supported for now.
+Known issue: manifest validation is not supported for now.
 
 To check that your manifest file is valid:
 
