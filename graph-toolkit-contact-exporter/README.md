@@ -85,7 +85,7 @@ To achieve full SSO experience, we will recommend you to implement OBO flow to p
 
 | Date         | Author | Comments                               |
 | ------------ | ------ | -------------------------------------- |
-| May 18, 2023 | rentu  | update to support Teams Toolkit v4.0.0 |
+| May 18, 2022 | rentu  | update to support Teams Toolkit v4.0.0 |
 | Mar 17, 2023 | rentu  | update to support Teams Toolkit v5.0.0 |
 
 ## Feedback
