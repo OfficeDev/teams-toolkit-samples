@@ -67,6 +67,8 @@ Once the provisioning and deployment steps are finished, you can preview your Ou
 
 ### Validate manifest file
 
+Knonw issue: manifest validation is not supported for now.
+
 To check that your manifest file is valid:
 
 - From Visual Studio Code: open the command palette and select: `Teams: Validate Application` and select `Validate using manifest schema`.
@@ -82,6 +84,7 @@ To check that your manifest file is valid:
 |Date| Author| Comments|
 |---|---|---|
 |March 13, 2023| yefuwang | onboard |
+|April 11, 2023 | yufuwang |  |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
