@@ -84,7 +84,7 @@ To check that your manifest file is valid:
 |Date| Author| Comments|
 |---|---|---|
 |March 13, 2023| yefuwang | onboard |
-|April 11, 2023 | yufuwang |  |
+|April 11, 2023 | yufuwang | comment out manifest validation |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
