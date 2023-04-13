@@ -1,11 +1,6 @@
 import "./App.css";
 
-import {
-  HashRouter as Router,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { HashRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 
 import {
   FluentProvider,
@@ -15,17 +10,18 @@ import {
 } from "@fluentui/react-components";
 import { useTeamsFx } from "@microsoft/teamsfx-react";
 
+import MyDashboard from "./dashboards/MyDashboard";
 import { TeamsFxContext } from "./internal/context";
-import MyDashboard from "./views/dashboards/MyDashboard";
-import Privacy from "./views/Privacy";
-import TabConfig from "./views/TabConfig";
-import TermsOfUse from "./views/TermsOfUse";
+import Privacy from "./Privacy";
+import TabConfig from "./TabConfig";
+import TermsOfUse from "./TermsOfUse";
 
 export default function App() {
   const { themeString } = useTeamsFx();
   return (
     <TeamsFxContext.Provider value={{ themeString }}>
       <FluentProvider
+        id="fluent-provider"
         theme={
           themeString === "dark"
             ? teamsDarkTheme
@@ -33,7 +29,6 @@ export default function App() {
             ? teamsHighContrastTheme
             : teamsLightTheme
         }
-        className="app"
       >
         <Router>
           <Routes>
@@ -41,7 +36,7 @@ export default function App() {
             <Route path="/termsofuse" element={<TermsOfUse />} />
             <Route path="/tab" element={<MyDashboard />} />
             <Route path="/config" element={<TabConfig />} />
-            <Route path="*" element={<Navigate to={"/tab"} />}></Route>
+            <Route path="*" element={<Navigate to={"/tab"} />} />
           </Routes>
         </Router>
       </FluentProvider>

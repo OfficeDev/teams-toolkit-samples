@@ -1,8 +1,6 @@
 import "../styles/Common.css";
 import "../styles/Document.css";
 
-import { CSSProperties } from "react";
-
 import { mergeStyles } from "@fluentui/react";
 import {
   Button,
@@ -24,39 +22,33 @@ import {
   MoreHorizontal16Filled,
   MoreHorizontal32Regular,
 } from "@fluentui/react-icons";
+import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 
-import { TEAMS_SVG } from "../../common/constants";
-import { DocumentModel } from "../../models/documentModel";
-import {
-  getDocuments,
-  getIconByFileType,
-} from "../../services/documentService";
+import { TEAMS_SVG } from "../common/constants";
 import { EmptyThemeImg } from "../components/EmptyThemeImg";
-import { Widget } from "../lib/Widget";
-import { widgetStyle } from "../lib/Widget.styles";
+import { DocumentModel } from "../models/documentModel";
+import { getDocuments, getIconByFileType } from "../services/documentService";
 
 interface IDocumentState {
   activeIndex: number;
   documents?: DocumentModel[];
 }
 
-export class Documents extends Widget<IDocumentState> {
-  protected async getData(): Promise<IDocumentState> {
+export class Documents extends BaseWidget<any, IDocumentState> {
+  override async getData(): Promise<IDocumentState> {
     return { documents: await getDocuments(), activeIndex: -1 };
   }
 
-  protected headerContent(): JSX.Element | undefined {
+  override header(): JSX.Element | undefined {
     return (
-      <div
-        className={mergeStyles(widgetStyle.headerWithoutIcon, "header-padding")}
-      >
-        <Text className={widgetStyle.headerText}>Your documents</Text>
+      <div id="no-icon-header">
+        <Text>Your documents</Text>
         <Button icon={<MoreHorizontal32Regular />} appearance="transparent" />
       </div>
     );
   }
 
-  protected bodyContent(): JSX.Element | undefined {
+  override body(): JSX.Element | undefined {
     const hasDocument = this.state.documents?.length !== 0;
     return (
       <div className={hasDocument ? "has-doc-layout" : "no-doc-layout"}>
@@ -69,77 +61,45 @@ export class Documents extends Widget<IDocumentState> {
                 onMouseOver={() => this.mouseOver(i)}
                 onMouseLeave={() => this.mouseLeave()}
               >
-                {i !== 0 && (
-                  <div key={`divider-${item.id}`} className="doc-divider" />
-                )}
+                {i !== 0 && <div className="doc-divider" />}
                 <div
-                  key={`div-content-${item.id}`}
                   className={mergeStyles(
                     "doc-item-content",
-                    i === this.state.activeIndex
-                      ? "doc-item-active"
-                      : "doc-item-non-active"
+                    i === this.state.activeIndex ? "doc-item-active" : "doc-item-non-active"
                   )}
                 >
-                  <div
-                    key={`div-doc-info-${item.id}`}
-                    className="doc-info-layout"
-                    onClick={() => window.open(item.weburl)}
-                  >
-                    <Image
-                      key={`img-${item.id}`}
-                      src={getIconByFileType(item.type)}
-                      width="28px"
-                      height="28px"
-                    />
-                    <Label key={`label-${item.id}`} weight="semibold">
-                      {item.name}
-                    </Label>
+                  <div className="doc-info-layout" onClick={() => window.open(item.weburl)}>
+                    <Image src={getIconByFileType(item.type)} width="28px" height="28px" />
+                    <Label weight="semibold">{item.name}</Label>
                   </div>
-                  <Menu key={`menu-more-${item.id}`}>
-                    <MenuTrigger key={`menu-more-trigger-${item.id}`}>
-                      <MenuButton
-                        key={`menu-more-button-${item.id}`}
-                        appearance="transparent"
-                        icon={<MoreHorizontal16Filled />}
-                      />
+                  <Menu>
+                    <MenuTrigger>
+                      <MenuButton appearance="transparent" icon={<MoreHorizontal16Filled />} />
                     </MenuTrigger>
-                    <MenuPopover key={`menu-pop-${item.id}`}>
-                      <MenuList key={`menu-list-${item.id}`}>
-                        <Menu key={`menu-${item.id}`}>
-                          <MenuTrigger key={`menu-trigger-${item.id}`}>
-                            <MenuItem
-                              key={`menu-item-${item.id}`}
-                              icon={
-                                <Image src={getIconByFileType(item.type)} />
-                              }
-                            >
+                    <MenuPopover>
+                      <MenuList>
+                        <Menu>
+                          <MenuTrigger>
+                            <MenuItem icon={<Image src={getIconByFileType(item.type)} />}>
                               Open in
                             </MenuItem>
                           </MenuTrigger>
-                          <MenuPopover key={`menu-open-pop-${item.id}`}>
-                            <MenuList key={`menu-open-list-${item.id}`}>
+                          <MenuPopover>
+                            <MenuList>
                               <MenuItem
-                                key={`menu-teams-${item.id}`}
                                 icon={<Image src={TEAMS_SVG} width="20px" />}
                                 onClick={() => window.open(item.teamsurl)}
                               >
                                 Teams
                               </MenuItem>
                               <MenuItem
-                                key={`menu-desktop-${item.id}`}
                                 onClick={() => window.open(item.webDavurl)}
-                                icon={
-                                  <Image src={getIconByFileType(item.type)} />
-                                }
+                                icon={<Image src={getIconByFileType(item.type)} />}
                               >
                                 Desktop app
                               </MenuItem>
                               <MenuItem
-                                key={`menu-browser-${item.id}`}
-                                icon={
-                                  <Image src={getIconByFileType(item.type)} />
-                                }
+                                icon={<Image src={getIconByFileType(item.type)} />}
                                 onClick={() => window.open(item.weburl)}
                               >
                                 Browser
@@ -149,18 +109,14 @@ export class Documents extends Widget<IDocumentState> {
                         </Menu>
 
                         <MenuItem
-                          key={`menu-download-${item.id}`}
                           icon={<ArrowDownload24Regular />}
                           onClick={() => window.open(item.webDavurl)}
                         >
                           Download
                         </MenuItem>
                         <MenuItem
-                          key={`menu-copy-${item.id}`}
                           icon={<Link24Regular />}
-                          onClick={() =>
-                            navigator.clipboard.writeText(item.weburl!)
-                          }
+                          onClick={() => navigator.clipboard.writeText(item.weburl!)}
                         >
                           Copy link
                         </MenuItem>
@@ -174,23 +130,20 @@ export class Documents extends Widget<IDocumentState> {
         ) : (
           <div className="empty-layout">
             <EmptyThemeImg />
-            <Text weight="semibold" className="empty-text">
-              Once you have a document, you'll find it here
-            </Text>
+            <Text>Once you have a document, you'll find it here</Text>
           </div>
         )}
       </div>
     );
   }
 
-  protected footerContent(): JSX.Element | undefined {
+  override footer(): JSX.Element | undefined {
     return this.state.documents?.length !== 0 ? (
       <Button
         appearance="transparent"
         icon={<ArrowRight16Filled />}
         iconPosition="after"
         size="small"
-        className={mergeStyles(widgetStyle.footerBtn, "footer-margin")}
         onClick={() => window.open("https://www.office.com/mycontent")}
       >
         View all
@@ -198,7 +151,7 @@ export class Documents extends Widget<IDocumentState> {
     ) : undefined;
   }
 
-  protected loadingContent(): JSX.Element | undefined {
+  override loading(): JSX.Element | undefined {
     return (
       <div className="loading-layout">
         <Spinner label="Loading..." labelPosition="below" />
@@ -206,8 +159,8 @@ export class Documents extends Widget<IDocumentState> {
     );
   }
 
-  protected stylingWidget(): CSSProperties | string {
-    return "doc-no-padding";
+  override styling(): IWidgetClassNames {
+    return { root: "doc-no-padding", header: "doc-header", footer: "doc-footer" };
   }
 
   mouseOver = (i: number) => {

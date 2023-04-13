@@ -1,7 +1,3 @@
-.header-padding {
-  padding: 0.75rem 1.25rem 0 1.25rem;
-}
-
 .has-doc-layout {
   display: grid;
   align-content: start;
@@ -54,10 +50,18 @@
   align-items: center;
 }
 
-.footer-margin {
-  margin: 0px 1.25rem 1.25rem 1.25rem !important;
-}
-
 .doc-no-padding {
   padding: 0;
+}
+
+.doc-header {
+  padding: 1.25rem 1.25rem 0rem 1.25rem;
+}
+
+.doc-footer {
+  padding: 0rem 1.25rem 1.25rem 1.25rem;
+}
+
+.doc-footer button {
+  color: var(--colorBrandForeground1);
 }

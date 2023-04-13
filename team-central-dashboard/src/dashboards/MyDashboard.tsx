@@ -1,13 +1,10 @@
 import "../styles/MyDashboard.css";
 
-import { CSSProperties } from "react";
-
 import { Image, Spinner } from "@fluentui/react-components";
+import { BaseDashboard } from "@microsoft/teamsfx-react";
 
-import { loginAction } from "../../internal/login";
-import { TeamsUserCredentialContext } from "../../internal/singletonContext";
-import { Dashboard } from "../lib/Dashboard";
-import { oneColumn } from "../lib/Dashboard.styles";
+import { loginAction } from "../internal/login";
+import { TeamsUserCredentialContext } from "../internal/singletonContext";
 import { Calendar } from "../widgets/Calendar";
 import { Chart } from "../widgets/Chart";
 import { Collaboration } from "../widgets/Collaboration";
@@ -16,15 +13,15 @@ import { Task } from "../widgets/Task";
 
 const scope = ["Files.Read", "Tasks.ReadWrite", "Calendars.Read"];
 
-export default class MyDashboard extends Dashboard {
-  protected dashboardLayout(): JSX.Element | undefined {
+export default class MyDashboard extends BaseDashboard<any, any> {
+  override layout(): JSX.Element | undefined {
     return (
       <>
         {this.state.showLogin === false ? (
           <>
             <Image className="img-style" src="bg.png" />
             <Chart />
-            <div className={oneColumn()}>
+            <div className="one-column">
               <Calendar />
               <Task />
             </div>
@@ -40,8 +37,8 @@ export default class MyDashboard extends Dashboard {
     );
   }
 
-  protected columnWidths(): string | undefined {
-    return "7fr 3fr";
+  override styling(): string {
+    return "dashboard";
   }
 
   async componentDidMount() {
@@ -52,23 +49,10 @@ export default class MyDashboard extends Dashboard {
     this.setState({ showLogin: false });
   }
 
-  protected customiseDashboardStyle(): CSSProperties | undefined {
-    return this.state.showLogin === false
-      ? {
-          marginTop: "5%",
-        }
-      : {
-          padding: 0,
-          marginTop: 0,
-        };
-  }
-
   async checkIsConsentNeeded() {
     let needConsent = false;
     try {
-      await TeamsUserCredentialContext.getInstance()
-        .getCredential()
-        .getToken(scope);
+      await TeamsUserCredentialContext.getInstance().getCredential().getToken(scope);
     } catch (error) {
       needConsent = true;
     }

@@ -1,3 +1,13 @@
+.dashboard {
+  grid-template-columns: 7fr 3fr;
+}
+
+.one-column {
+  display: grid;
+  row-gap: var(--spacingVerticalXL);
+  grid-template-rows: 1fr 1fr;
+}
+
 .img-style {
   position: absolute;
   width: 100%;
