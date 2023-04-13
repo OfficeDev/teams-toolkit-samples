@@ -77,7 +77,7 @@ deploy:
 
   - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables for tab
     with:
-      target: ./.localSettings
+      target: ./.localConfigs
       envs:
         BROWSER: none
         HTTPS: true
@@ -91,7 +91,7 @@ deploy:
 
   - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables for backend
     with:
-      target: ./api/.localSettings
+      target: ./api/.localConfigs
       envs:
         M365_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
         M365_CLIENT_SECRET: ${{SECRET_AAD_APP_CLIENT_SECRET}}

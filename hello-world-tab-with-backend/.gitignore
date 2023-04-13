@@ -5,7 +5,7 @@ env/.env.local
 .DS_Store
 build
 .deployment
-.localSettings
+.localConfigs
 
 # dependencies
 /node_modules

@@ -2,7 +2,7 @@
 env/.env.local
 env/.env.*.user
 .DS_Store
-.localSettings
+.localConfigs
 build
 
 # dependencies
