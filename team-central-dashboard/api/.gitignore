@@ -15,4 +15,4 @@ local.settings.json
 .DS_Store
 
 # Local data
-.localSettings
+.localConfigs

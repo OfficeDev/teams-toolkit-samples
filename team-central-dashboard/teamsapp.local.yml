@@ -84,7 +84,7 @@ deploy:
 
   - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables for tab
     with:
-      target: ./.localSettings
+      target: ./.localConfigs
       envs:
         BROWSER: none
         HTTPS: true
@@ -99,7 +99,7 @@ deploy:
 
   - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables for backend
     with:
-      target: ./api/.localSettings
+      target: ./api/.localConfigs
       envs:
         TEAMS_APP_ID: ${{TEAMS_APP_ID}}
         M365_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
