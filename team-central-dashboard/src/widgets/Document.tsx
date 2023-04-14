@@ -160,7 +160,7 @@ export class Documents extends BaseWidget<any, IDocumentState> {
   }
 
   override styling(): IWidgetClassNames {
-    return { root: "doc-no-padding", header: "doc-header", footer: "doc-footer" };
+    return { root: "doc-no-padding", header: "doc-header", footer: "doc-footer footer-btn" };
   }
 
   mouseOver = (i: number) => {

@@ -12,7 +12,7 @@ import {
   MoreHorizontal32Regular,
   Star24Regular,
 } from "@fluentui/react-icons";
-import { BaseWidget } from "@microsoft/teamsfx-react";
+import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 
 import { EmptyThemeImg } from "../components/EmptyThemeImg";
 import { TeamsFxContext } from "../internal/context";
@@ -98,6 +98,10 @@ export class Task extends BaseWidget<any, ITaskState> {
         View all
       </Button>
     ) : undefined;
+  }
+
+  override styling(): IWidgetClassNames {
+    return { footer: "footer-btn" };
   }
 
   override loading(): JSX.Element | undefined {

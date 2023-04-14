@@ -9,7 +9,7 @@ import {
   CalendarLtr24Regular,
   MoreHorizontal32Regular,
 } from "@fluentui/react-icons";
-import { BaseWidget } from "@microsoft/teamsfx-react";
+import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 
 import { extractTime } from "../common/dateUtils";
 import { CalendarModel } from "../models/calendarModel";
@@ -79,7 +79,6 @@ export class Calendar extends BaseWidget<any, ICalendarState> {
   override footer(): JSX.Element | undefined {
     return (
       <Button
-        id="footer-transparent-button"
         appearance="transparent"
         icon={<ArrowRight16Filled />}
         iconPosition="after"
@@ -89,6 +88,10 @@ export class Calendar extends BaseWidget<any, ICalendarState> {
         View calendar
       </Button>
     );
+  }
+
+  override styling(): IWidgetClassNames {
+    return { footer: "footer-btn" };
   }
 
   override loading(): JSX.Element | undefined {

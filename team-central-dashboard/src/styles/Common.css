@@ -2,16 +2,12 @@
   grid-template-columns: 1fr max-content;
 }
 
-#footer-transparent-button {
-  color: var(--colorBrandForeground1);
-}
-
 .empty-layout {
   display: grid;
   gap: 1rem;
 }
 
-.empty-layout svg {
+.empty-layout img {
   height: 120px;
   justify-self: center;
 }
@@ -26,6 +22,7 @@
   display: grid;
 }
 
-.widget-padding {
-  padding: 0.75rem 1.25rem 1rem 1.25rem;
+.footer-btn button {
+  color: var(--colorBrandForeground1);
+  padding: 0;
 }

@@ -27,7 +27,7 @@ import {
   tableData,
 } from "../services/chartService";
 import ProgressBar from "../components/Progress";
-import { BaseWidget } from "@microsoft/teamsfx-react";
+import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 
 interface IChartWidgetState {
   dayRange: DayRange;
@@ -181,7 +181,6 @@ export class Chart extends BaseWidget<any, IChartWidgetState> {
   override footer(): JSX.Element | undefined {
     return (
       <Button
-        id="footer-transparent-button"
         appearance="transparent"
         icon={<ArrowRight16Filled />}
         iconPosition="after"
@@ -191,6 +190,10 @@ export class Chart extends BaseWidget<any, IChartWidgetState> {
         View query
       </Button>
     );
+  }
+
+  override styling(): IWidgetClassNames {
+    return { footer: "footer-btn" };
   }
 
   private retriveChartsData(r: DayRange): IChartProps {

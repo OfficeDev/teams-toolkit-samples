@@ -7,7 +7,7 @@ import {
   MoreHorizontal32Regular,
   Share20Regular,
 } from "@fluentui/react-icons";
-import { BaseWidget } from "@microsoft/teamsfx-react";
+import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 
 import { CollaborationModel } from "../models/collaborationModel";
 import { getCollaborationData } from "../services/collaborationService";
@@ -41,7 +41,7 @@ export class Collaboration extends BaseWidget<any, ICollaborationState> {
               <Text className="description">{item.description}</Text>
               <div>
                 <Button icon={<Share20Regular />} appearance="transparent" className="share-btn" />
-                <CircleSmall20Filled className="dot"/>
+                <CircleSmall20Filled className="dot" />
                 <Text className="time">{item.updateTime}</Text>
               </div>
             </div>
@@ -54,7 +54,6 @@ export class Collaboration extends BaseWidget<any, ICollaborationState> {
   override footer(): JSX.Element | undefined {
     return (
       <Button
-        id="footer-transparent-button"
         appearance="transparent"
         icon={<ArrowRight16Filled />}
         iconPosition="after"
@@ -63,5 +62,9 @@ export class Collaboration extends BaseWidget<any, ICollaborationState> {
         View all
       </Button>
     );
+  }
+
+  override styling(): IWidgetClassNames {
+    return { footer: "footer-btn" };
   }
 }
