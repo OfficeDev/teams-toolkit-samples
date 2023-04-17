@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://developer.microsoft.com/json-schemas/teams-toolkit/teamsapp-yaml/1.0.0/yaml.schema.json
 version: 1.0.0
 
 environmentFolderPath: ./env
@@ -29,7 +30,7 @@ provision:
       errorPage: error.html
     # Output: N/A
 
-  - uses: teamsApp/validate
+  - uses: teamsApp/validateManifest
     with:
       manifestPath: ./manifest/manifest.json # Path to manifest template
   - uses: teamsApp/zipAppPackage # Build Teams app package with latest env value
@@ -52,11 +53,11 @@ deploy:
       args: run build --if-present
   - uses: azureStorage/deploy # Deploy bits to Azure Storage Static Website
     with:
-      distributionPath: ./build # Deploy base folder
+      artifactFolder: ./build # Deploy base folder
       resourceId: ${{TAB_AZURE_STORAGE_RESOURCE_ID}} # The resource id of the cloud resource to be deployed to
 
 publish:
-  - uses: teamsApp/validate
+  - uses: teamsApp/validateManifest
     with:
       manifestPath: ./manifest/manifest.json # Path to manifest template
   - uses: teamsApp/zipAppPackage
@@ -72,6 +73,6 @@ publish:
   - uses: teamsApp/publishAppPackage # Publish the app to Teams Admin Center (https://admin.teams.microsoft.com/policies/manage-apps) for review and approval
     with:
       appPackagePath: ./build/manifest/appPackage.${{TEAMSFX_ENV}}.zip
-  # Output: following environment variable will be persisted in current environment's .env file.
-  # TEAMS_APP_PUBLISHED_APP_ID: app id in Teams tenant app catalog.
+    writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
+      publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
 projectId: 963cc876-e24a-4fcf-9fa6-4fba1b6e3f2d
