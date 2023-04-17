@@ -2,14 +2,15 @@ version: 1.0.0
 
 environmentFolderPath: ./env
 
-registerApp:
+provision:
   - uses: teamsApp/create # Creates a Teams app
     with:
       name: live-share-dice-roller-${{TEAMSFX_ENV}} # Teams app name
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
+    writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
+      teamsAppId: TEAMS_APP_ID
 
-configureApp:
   - uses: file/updateEnv # Generate env to .env file
     with:
       envs:
