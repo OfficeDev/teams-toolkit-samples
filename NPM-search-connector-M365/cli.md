@@ -7,6 +7,12 @@
     ```
     teamsfx new template npm-search-connector-m365
     ```
+1. For local env, install [ngrok](https://ngrok.com/download) and start your local tunnel service by running the command `ngrok http 3978`.
+1. For local env, fill in the values for `BOT_DOMAIN` and `BOT_ENDPOINT` with your ngrok URL in the `env/.env.local` file.
+   ```
+   BOT_DOMAIN=sample-id.ngrok.io
+   BOT_ENDPOINT=http://sample-id.ngrok.io
+   ```
 1. Provision.
     ```
     teamsfx provision --env <env>

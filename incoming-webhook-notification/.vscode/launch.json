@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "Attach to Incoming Webhook",
-            "type": "pwa-node",
+            "type": "node",
             "request": "attach",
             "port": 9239,
             "restart": true,

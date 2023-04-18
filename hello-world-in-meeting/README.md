@@ -4,7 +4,7 @@ This App helps to enable your apps for Teams meetings and configure the apps to 
 
 ![side panel](/hello-world-in-meeting/images/sidepanel.png)
 
-> App Caching was configured in this sample to reduce the reload time of your app in a meeting. To learn about limitations and available scopes, please check [Enable app caching for your tab app](https://learn.microsoft.com/en-us/microsoftteams/platform/apps-in-teams-meetings/app-caching-for-your-tab-app).
+> App Caching was configured in this sample to reduce the reload time of your app in a meeting. To learn about limitations and available scopes, please check [Enable app caching for your tab app](https://aka.ms/teamsfx-app-caching).
 
 ## This sample illustrates
 
