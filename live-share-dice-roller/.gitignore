@@ -1,3 +1,8 @@
+env/.env.local
+.DS_Store
+.localSettings
+build
+
 dist
 node_modules
 *.log

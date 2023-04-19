@@ -1,21 +1,26 @@
+# yaml-language-server: $schema=https://developer.microsoft.com/json-schemas/teams-toolkit/teamsapp-yaml/1.0.0/yaml.schema.json
 version: 1.0.0
 
 environmentFolderPath: ./env
 
-registerApp:
+provision:
   - uses: teamsApp/create # Creates a Teams app
     with:
       name: live-share-dice-roller-${{TEAMSFX_ENV}} # Teams app name
     # Output: following environment variable will be persisted in current environment's .env file.
     # TEAMS_APP_ID: the id of Teams app
+    writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
+      teamsAppId: TEAMS_APP_ID
 
-configureApp:
-  - uses: file/updateEnv # Generate env to .env file
+  - uses: script # Set TAB_DOMAIN for local launch
+    name: Set TAB_DOMAIN for local launch
     with:
-      envs:
-        TAB_DOMAIN: localhost:3000
-        TAB_ENDPOINT: https://localhost:3000
-  - uses: teamsApp/validate
+      run: echo "set-teamsfx-env TAB_DOMAIN=localhost:3000"
+  - uses: script # Set TAB_ENDPOINT for local launch
+    name: Set TAB_ENDPOINT for local launch
+    with:
+      run: echo "set-teamsfx-env TAB_ENDPOINT=https://localhost:3000"
+  - uses: teamsApp/validateManifest
     with:
       manifestPath: ./manifest/manifest.json # Path to manifest template
   - uses: teamsApp/zipAppPackage # Build Teams app package with latest env value
@@ -30,7 +35,7 @@ configureApp:
     # TEAMS_APP_ID: the id of Teams app
 
 deploy:
-  - uses: prerequisite/install # Install dependencies
+  - uses: devTool/install # Install dependencies
     with:
       devCert:
         trust: true
@@ -46,7 +51,7 @@ deploy:
     with:
       args: run build
 
-  - uses: file/updateEnv # Generate runtime environment variables
+  - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables
     with:
       target: ./.localSettings
       envs:
