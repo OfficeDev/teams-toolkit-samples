@@ -1,7 +1,6 @@
 import "../styles/Common.css";
 import "../styles/Document.css";
 
-import { mergeStyles } from "@fluentui/react";
 import {
   Button,
   Image,
@@ -63,10 +62,9 @@ export class Documents extends BaseWidget<any, IDocumentState> {
               >
                 {i !== 0 && <div className="doc-divider" />}
                 <div
-                  className={mergeStyles(
-                    "doc-item-content",
+                  className={`doc-item-content ${
                     i === this.state.activeIndex ? "doc-item-active" : "doc-item-non-active"
-                  )}
+                  }`}
                 >
                   <div className="doc-info-layout" onClick={() => window.open(item.weburl)}>
                     <Image src={getIconByFileType(item.type)} width="28px" height="28px" />

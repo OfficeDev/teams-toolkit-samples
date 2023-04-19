@@ -8,17 +8,17 @@ import "isomorphic-fetch";
 
 import { Context, HttpRequest } from "@azure/functions";
 import { Client } from "@microsoft/microsoft-graph-client";
-import { 
+import {
+  createMicrosoftGraphClient,
   createMicrosoftGraphClientWithCredential,
+  IdentityType,
   OnBehalfOfCredentialAuthConfig,
   OnBehalfOfUserCredential,
   TeamsFx,
-  IdentityType,
-  createMicrosoftGraphClient 
 } from "@microsoft/teamsfx";
 
-import { getInstallationId } from "./getInstallationId";
 import config from "../config";
+import { getInstallationId } from "./getInstallationId";
 
 interface Response {
   status: number;
@@ -95,10 +95,13 @@ export default async function run(
       },
     };
   }
-  
+
   try {
     // do sth here, to call activity notification api
-    const graphClient_userId: Client = await createMicrosoftGraphClientWithCredential(oboCredential, ["User.Read"]);
+    const graphClient_userId: Client = await createMicrosoftGraphClientWithCredential(
+      oboCredential,
+      ["User.Read"]
+    );
     const userProfile = await graphClient_userId.api("/me").get();
     const userId = userProfile["id"];
     // get installationId
