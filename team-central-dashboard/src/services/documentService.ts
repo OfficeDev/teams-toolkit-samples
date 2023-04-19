@@ -6,30 +6,6 @@ import { FilesType } from "../common/filesType";
 import { TeamsUserCredentialContext } from "../internal/singletonContext";
 import { DocumentModel } from "../models/documentModel";
 
-/**
- * @returns :
- * {
- *   "name": string,
- *   "webUrl": string, // use it to open the file in the browser
- *   "createdBy": {
- *      "user": {
- *        "email": string,
- *        "displayName": string
- *      }
- *   },
- *   "lastModifiedBy": {
- *      "user": {
- *        "email": string,
- *        "displayName": string
- *      }
- *   },
- *   "remoteItem": {
- *     "...": ...,
- *     "webDavUrl": string // use it to open the file in the corresponded desktop app
- *     "...": ...
- *   }
- * }
- */
 export function generateTeamsUrl(obj: any): string {
   let url = "https://teams.microsoft.com/l/file/";
   // fileId

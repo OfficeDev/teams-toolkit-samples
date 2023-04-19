@@ -1,8 +1,5 @@
 import { Client } from "@microsoft/microsoft-graph-client";
-import {
-  createMicrosoftGraphClientWithCredential,
-  TeamsUserCredential,
-} from "@microsoft/teamsfx";
+import { createMicrosoftGraphClientWithCredential, TeamsUserCredential } from "@microsoft/teamsfx";
 
 import { TeamsUserCredentialContext } from "../internal/singletonContext";
 import { CalendarModel } from "../models/calendarModel";
@@ -10,7 +7,7 @@ import { CalendarModel } from "../models/calendarModel";
 export async function getCalendar(): Promise<CalendarModel[]> {
   var credential: TeamsUserCredential;
   try {
-    credential = TeamsUserCredentialContext.getInstance().getCredential();    
+    credential = TeamsUserCredentialContext.getInstance().getCredential();
     const graphClient: Client = createMicrosoftGraphClientWithCredential(credential, [
       "Calendars.Read",
     ]);
@@ -36,7 +33,6 @@ export async function getCalendar(): Promise<CalendarModel[]> {
     return calendarItems.reverse();
   } catch (e) {
     console.log(e);
-    alert(e);
     throw e;
   }
 }

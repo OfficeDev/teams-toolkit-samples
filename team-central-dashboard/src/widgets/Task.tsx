@@ -39,7 +39,7 @@ export class Task extends BaseWidget<any, ITaskState> {
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
-  async getData(): Promise<ITaskState> {
+  override async getData(): Promise<ITaskState> {
     return {
       tasks: await getTasks(),
       inputFocused: false,

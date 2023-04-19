@@ -13,7 +13,9 @@ import {
   Settings20Regular,
   Trophy20Regular,
 } from "@fluentui/react-icons";
+import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 
+import ProgressBar from "../components/Progress";
 import { DayRange, DayRangeModel } from "../models/dayRangeModel";
 import { TableModel } from "../models/tableModel";
 import {
@@ -26,8 +28,6 @@ import {
   dayRangeData,
   tableData,
 } from "../services/chartService";
-import ProgressBar from "../components/Progress";
-import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 
 interface IChartWidgetState {
   dayRange: DayRange;
