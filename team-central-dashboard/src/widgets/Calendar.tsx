@@ -91,7 +91,7 @@ export class Calendar extends BaseWidget<any, ICalendarState> {
   }
 
   override styling(): IWidgetClassNames {
-    return { footer: "footer-btn" };
+    return { root: "concise-root", footer: "footer-btn" };
   }
 
   override loading(): JSX.Element | undefined {

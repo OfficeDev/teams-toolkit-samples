@@ -65,6 +65,6 @@ export class Collaboration extends BaseWidget<any, ICollaborationState> {
   }
 
   override styling(): IWidgetClassNames {
-    return { footer: "footer-btn" };
+    return { root: "concise-root", footer: "footer-btn" };
   }
 }

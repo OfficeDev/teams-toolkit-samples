@@ -101,7 +101,7 @@ export class Task extends BaseWidget<any, ITaskState> {
   }
 
   override styling(): IWidgetClassNames {
-    return { footer: "footer-btn" };
+    return { root: "concise-root", footer: "footer-btn" };
   }
 
   override loading(): JSX.Element | undefined {

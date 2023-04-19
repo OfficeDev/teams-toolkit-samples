@@ -1,3 +1,7 @@
+.concise-root {
+  padding: 1rem 1.25rem
+}
+
 #no-icon-header {
   grid-template-columns: 1fr max-content;
 }
