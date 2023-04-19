@@ -9,7 +9,8 @@ provision:
       name: team-central-dashboard-aad # Note: when you run aadApp/update, the AAD app name will be updated based on the definition in manifest. If you don't want to change the name, make sure the name in AAD manifest is the same with the name defined here.
       generateClientSecret: true # If the value is false, the action will not generate client secret for you
       signInAudience: "AzureADMyOrg" # Authenticate users with a Microsoft work or school account in your organization's Azure AD tenant (for example, single tenant).
-    writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
+    writeToEnvironmentFile:
+      # Write the information of created resources into environment file for the specified environment variable(s).
       clientId: AAD_APP_CLIENT_ID
       clientSecret: SECRET_AAD_APP_CLIENT_SECRET # Environment variable that starts with `SECRET_` will be stored to the .env.{envName}.user environment file
       objectId: AAD_APP_OBJECT_ID
@@ -20,7 +21,8 @@ provision:
   - uses: teamsApp/create # Creates a Teams app
     with:
       name: team-central-dashboard-${{TEAMSFX_ENV}} # Teams app name
-    writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
+    writeToEnvironmentFile:
+      # Write the information of created resources into environment file for the specified environment variable(s).
       teamsAppId: TEAMS_APP_ID
   - uses: arm/deploy # Deploy given ARM templates parallelly.
     with:
@@ -37,7 +39,7 @@ provision:
       storageResourceId: ${{TAB_AZURE_STORAGE_RESOURCE_ID}}
       indexPage: index.html
       errorPage: error.html
-    
+
   - uses: aadApp/update
     with:
       manifestPath: "./aad.manifest.json"
@@ -59,10 +61,11 @@ provision:
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip # Relative path to teamsfx folder. This is the path for built zip file.
 
 deploy:
-  - uses: prerequisite/install # Install dependencies
-    with:      
+  - uses: devTool/install # Install dependencies
+    with:
       dotnet: true
-    writeToEnvironmentFile: # Write the information of installed dependencies into environment file for the specified environment variable(s).
+    writeToEnvironmentFile:
+      # Write the information of installed dependencies into environment file for the specified environment variable(s).
       dotnetPath: DOTNET_PATH
 
   - uses: cli/runNpmCommand # Run npm command
@@ -124,5 +127,6 @@ publish:
   - uses: teamsApp/publishAppPackage # Publish the app to Teams Admin Center (https://admin.teams.microsoft.com/policies/manage-apps) for review and approval
     with:
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
-    writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
+    writeToEnvironmentFile:
+      # Write the information of created resources into environment file for the specified environment variable(s).
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
