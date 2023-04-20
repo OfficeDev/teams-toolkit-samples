@@ -1,6 +1,6 @@
 # Getting Started with Hello World Tab with Backend Sample (Azure)
 
-> Important: Please be advised that access tokens are stored in sessionStorage for you by default. This can make it possible for malicious code in your app (or code pasted into a console on your page) to access APIs at the same privilege level as your client application. Please ensure you only request the minimum necessary scopes from your client application, and perform any sensitive operations from server side code that your client has to authenticate with.
+> Important: This sample implements OBO Flow (https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) as authentication mechanism in Azure Function to retrive access token and call Graph to get user info.
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
@@ -11,8 +11,8 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 ## This sample illustrates
 
 - How to use Teams Toolkit to create a Teams tab app.
-- How to use Microsoft Graph to get User info and picture in Teams app.
 - How to use TeamsFx SDK to call Azure Functions.
+- How to use TeamsFx SDK in Azure Function to call Graph to get user info.
 
 ## Prerequisites
 
