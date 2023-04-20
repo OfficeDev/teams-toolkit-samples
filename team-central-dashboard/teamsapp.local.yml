@@ -20,22 +20,13 @@ provision:
     writeToEnvironmentFile: # Write the information of created resources into environment file for the specified environment variable(s).
       teamsAppId: TEAMS_APP_ID  
 
-  - uses: script # Set TAB_DOMAIN for local launch
-    name: Set TAB_DOMAIN for local launch
+  - uses: script # Set required variables for local launch
     with:
-      run: echo "::set-teamsfx-env TAB_DOMAIN=localhost:53000"
-  - uses: script # Set TAB_ENDPOINT for local launch
-    name: Set TAB_ENDPOINT for local launch
-    with:
-      run: echo "::set-teamsfx-env TAB_ENDPOINT=https://localhost:53000"
-  - uses: script # Set FUNC_NAME for local launch
-    name: Set FUNC_NAME for local launch
-    with:
-      run: echo "::set-teamsfx-env FUNC_NAME=finishTaskNotification"
-  - uses: script # Set FUNC_ENDPOINT for local launch
-    name: Set FUNC_ENDPOINT for local launch
-    with:
-      run: echo "::set-teamsfx-env FUNC_ENDPOINT=http://localhost:7071"
+      run:
+        echo "::set-teamsfx-env TAB_DOMAIN=localhost:53000";
+        echo "::set-teamsfx-env TAB_ENDPOINT=https://localhost:53000";
+        echo "::set-teamsfx-env FUNC_NAME=finishTaskNotification";
+        echo "::set-teamsfx-env FUNC_ENDPOINT=http://localhost:7071";
         
   - uses: aadApp/update
     with:
