@@ -34,9 +34,17 @@ interface IDocumentState {
 }
 
 export class Documents extends BaseWidget<any, IDocumentState> {
-  override async getData(): Promise<IDocumentState> {
-    return { documents: await getDocuments(), activeIndex: -1 };
+override async getData(): Promise<IDocumentState> {
+  try {
+    const documents = await getDocuments();
+    return { documents, activeIndex: -1 };
+  } catch (error) {
+    console.error(error);
+    return { documents: [], activeIndex: -1 };
+  } finally {
+    this.setState({ loading: false });
   }
+}
 
   override header(): JSX.Element | undefined {
     return (

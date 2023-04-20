@@ -21,7 +21,15 @@ interface ICalendarState {
 
 export class Calendar extends BaseWidget<any, ICalendarState> {
   override async getData(): Promise<ICalendarState> {
-    return { meetings: await getCalendar() };
+    try {
+      const meetings = await getCalendar();
+      return { meetings };
+    } catch (error) {
+      console.error(error);
+      return { meetings: [] };
+    } finally {
+      this.setState({ loading: false });
+    }
   }
 
   override header(): JSX.Element | undefined {

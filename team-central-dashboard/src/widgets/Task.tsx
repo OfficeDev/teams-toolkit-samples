@@ -40,11 +40,15 @@ export class Task extends BaseWidget<any, ITaskState> {
   }
 
   override async getData(): Promise<ITaskState> {
-    return {
-      tasks: await getTasks(),
-      inputFocused: false,
-      addBtnOver: false,
-    };
+    try {
+      const tasks = await getTasks();
+      return { tasks, inputFocused: false, addBtnOver: false };
+    } catch (error) {
+      console.error(error);
+      return { tasks: [], inputFocused: false, addBtnOver: false };
+    } finally {
+      this.setState({ loading: false });
+    }
   }
 
   override header(): JSX.Element | undefined {
