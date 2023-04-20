@@ -38,7 +38,7 @@ export default class MyDashboard extends BaseDashboard<any, any> {
   }
 
   override styling(): string {
-    return "dashboard";
+    return this.state.isMobile === true ? "dashboard-mobile" : "dashboard";
   }
 
   async componentDidMount() {

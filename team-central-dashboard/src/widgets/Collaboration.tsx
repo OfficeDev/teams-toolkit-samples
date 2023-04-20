@@ -32,11 +32,11 @@ export class Collaboration extends BaseWidget<any, ICollaborationState> {
 
   override body(): JSX.Element | undefined {
     return (
-      <div className="colla-body">
+      <div className="colla-content">
         {this.state.data?.map((item: CollaborationModel) => {
           return (
             <div key={`colla-container-${item.id}`} className="collo-item">
-              <Image src={item.img} width="100%" shape="rounded" />
+              <Image src={item.img} shape="rounded" />
               <Text className="title">{item.title}</Text>
               <Text className="description">{item.description}</Text>
               <div>
@@ -65,6 +65,6 @@ export class Collaboration extends BaseWidget<any, ICollaborationState> {
   }
 
   override styling(): IWidgetClassNames {
-    return { root: "concise-root", footer: "footer-btn" };
+    return { root: "concise-root", body: "colla-body", footer: "footer-btn" };
   }
 }
