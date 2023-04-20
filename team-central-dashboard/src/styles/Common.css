@@ -11,10 +11,11 @@
   row-gap: var(--spacingVerticalL);
   align-content: center;
   justify-content: center;
+  min-height: 12rem;
 }
 
 .empty-layout img {
-  height: 100px;
+  width: 120px;
   justify-self: center;
 }
 
