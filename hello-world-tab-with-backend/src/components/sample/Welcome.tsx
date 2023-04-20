@@ -10,7 +10,6 @@ import {
 import "./Welcome.css";
 import { EditCode } from "./EditCode";
 import { AzureFunctions } from "./AzureFunctions";
-import { Graph } from "./Graph";
 import { CurrentUser } from "./CurrentUser";
 import { useData } from "@microsoft/teamsfx-react";
 import { Deploy } from "./Deploy";

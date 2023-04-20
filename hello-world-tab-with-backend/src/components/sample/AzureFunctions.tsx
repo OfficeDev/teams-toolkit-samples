@@ -8,7 +8,7 @@ import config from "./lib/config";
 
 const functionName = config.apiName || "myFunc";
 
-async function callFunction(teamsUserCredential?: TeamsUserCredential) {
+async function callFunction(teamsUserCredential: TeamsUserCredential) {
   try {
     const apiBaseUrl = config.apiEndpoint + "/api/";
     // createApiClient(...) creates an Axios instance which uses BearerTokenAuthProvider to inject token to request header
