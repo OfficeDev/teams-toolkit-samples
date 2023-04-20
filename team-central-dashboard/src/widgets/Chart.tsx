@@ -74,7 +74,7 @@ export class Chart extends BaseWidget<any, IChartWidgetState> {
 
   override body(): JSX.Element | undefined {
     return (
-      <div className="body-layout">
+      <>
         <div className="legend">
           <div className="item">
             <Text className="bold">Feb 1, 2020</Text>
@@ -174,7 +174,7 @@ export class Chart extends BaseWidget<any, IChartWidgetState> {
             })}
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -193,7 +193,7 @@ export class Chart extends BaseWidget<any, IChartWidgetState> {
   }
 
   override styling(): IWidgetClassNames {
-    return { footer: "footer-btn" };
+    return { body: "body-layout", footer: "footer-btn" };
   }
 
   private retriveChartsData(r: DayRange): IChartProps {
