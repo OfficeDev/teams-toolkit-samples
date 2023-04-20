@@ -3,6 +3,11 @@
   grid-template-columns: 7fr 3fr;
 }
 
+.dashboard-mobile {
+  padding: 64px 20px 20px;
+  grid-template-columns: 1fr;
+}
+
 .one-column {
   display: grid;
   row-gap: var(--spacingVerticalXL);
