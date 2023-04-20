@@ -79,7 +79,7 @@ export function AzureFunctions(props: { codePath?: string; docsUrl?: string }) {
       </p>
       {!loading && !data && (
         <Button appearance="primary" disabled={loading} onClick={reload}>
-          Call Azure Function
+          Authorize and call Azure Function
         </Button>
       )}
       {loading && (
