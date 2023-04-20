@@ -2,6 +2,9 @@
     "name": "tab-and-addin",
     "version": "0.0.1",
     "author": "Contoso",
+    "engines": {
+        "node": "16 || 18"
+    },
     "scripts": {
         "build:tab": "cd tab && npm run build",
         "build:add-in": "cd add-in && npm run build",

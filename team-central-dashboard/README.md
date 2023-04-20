@@ -15,7 +15,7 @@ Team Central Dashboard shows you how to build a tab with data chats and content 
 
 ## Prerequisite to use this sample
 
-- [NodeJS](https://nodejs.org/), fully tested on NodeJS 14, 16, 18 (preview)
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 

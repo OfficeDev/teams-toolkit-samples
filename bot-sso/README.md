@@ -12,7 +12,7 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
 - Use TeamsFx SDK to implementing SSO for Teams bot.
 
 ## Prerequisite to use this sample
-- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
 - [Teams Toolkit for VS Code](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 

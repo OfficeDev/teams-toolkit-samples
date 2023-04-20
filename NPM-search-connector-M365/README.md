@@ -8,7 +8,7 @@ NPM Search Connector is a Message Extension that allows you to perform a quick s
 - How to use Teams Toolkit to build a message extension app that runs across Microsoft 365 including Teams and Outlook (Web)
 
 ## Prerequisite to use this sample
-- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
 - Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)

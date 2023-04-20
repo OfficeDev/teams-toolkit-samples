@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "14 || 16 || 18"
+    "node": "16 || 18"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.18.0",
