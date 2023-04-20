@@ -66,7 +66,6 @@ export function Welcome(props: { showFunction?: boolean; environment?: string })
               <div>
                 <EditCode showFunction={showFunction} />
                 <CurrentUser userName={userName} />
-                <Graph />
                 {showFunction && <AzureFunctions />}
               </div>
             )}
