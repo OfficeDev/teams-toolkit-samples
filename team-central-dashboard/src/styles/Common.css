@@ -8,7 +8,9 @@
 
 .empty-layout {
   display: grid;
-  gap: 1rem;
+  row-gap: var(--spacingVerticalL);
+  align-content: center;
+  justify-content: center;
 }
 
 .empty-layout img {

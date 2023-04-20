@@ -4,7 +4,7 @@
 
 .colla-content {
   display: grid;
-  gap: 0.75rem;
+  column-gap: var(--spacingHorizontalM);
   grid-template-columns: repeat(4, 1fr);
   overflow-x: scroll;
   white-space: nowrap;
@@ -21,13 +21,13 @@
 
 .collo-item .title {
   font-weight: var(--fontWeightSemibold);
-  font-size: 0.75rem;
+  font-size: var(--fontSizeBase200);
   line-height: 1rem;
   margin-top: 0.5rem;
 }
 
 .collo-item .description {
-  font-size: 0.75rem;
+  font-size: var(--fontSizeBase200);
   line-height: 1rem;
   margin-bottom: 1.125rem;
   color: var(--colorNeutralForeground3);

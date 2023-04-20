@@ -1,6 +1,6 @@
 .has-task-layout {
   display: grid;
-  gap: 0.25rem;
+  row-gap: var(--spacingVerticalXS);
   overflow-x: hidden;
   min-width: 18rem;
   align-content: start;
@@ -8,9 +8,7 @@
 
 .no-task-layout {
   display: grid;
-  gap: 1.8rem;
-  overflow-x: hidden;
-  min-width: 18rem;
+  height: 100%;
 }
 
 .add-btn {
@@ -24,7 +22,7 @@
   outline: medium;
   height: 1.75rem;
   margin-left: -0.35rem;
-  font-size: 0.875rem;
+  font-size: var(--fontSizeBase300);
   color: var(--colorNeutralForeground1);
 }
 
@@ -49,7 +47,7 @@
 }
 
 .add-btn-enter {
-  border-radius: 4px;
+  border-radius: var(--borderRadiusMedium);
   width: max-content;
   height: 1.5rem;
   border: none;
@@ -59,7 +57,7 @@
 }
 
 .add-btn-leave {
-  border-radius: 4px;
+  border-radius: var(--borderRadiusMedium);
   width: max-content;
   height: 1.5rem;
   border: none;
@@ -71,7 +69,7 @@
 .task-item {
   display: grid;
   grid-template-columns: 1fr max-content;
-  column-gap: var(--spacingVerticalL);
+  column-gap: var(--spacingHorizontalL);
   align-items: center;
   background-color: var(--colorNeutralBackground3);
   border-radius: var(--borderRadiusMedium);

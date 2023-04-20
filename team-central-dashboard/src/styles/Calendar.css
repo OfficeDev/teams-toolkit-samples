@@ -1,6 +1,6 @@
 .has-meeting-layout {
   display: grid;
-  gap: 1.25rem;
+  row-gap: var(--spacingVerticalXL);
   overflow-x: hidden;
   min-width: 18rem;
   grid-template-rows: repeat(2, max-content);
@@ -10,15 +10,11 @@
 .no-meeting-layout {
   display: grid;
   height: 100%;
-  justify-content: center;
-  align-content: center;
-  overflow-x: hidden;
-  min-width: 18rem;
 }
 
 .today-layout {
   display: grid;
-  gap: 0.25rem;
+  row-gap: var(--spacingVerticalXS);
 }
 
 .today-layout span{
@@ -34,7 +30,7 @@
 .meeting-item {
   display: grid;
   grid-template-columns: max-content 1fr min-content;
-  gap: 0.625rem;
+  column-gap: var(--spacingVerticalMNudge);
 }
 
 .meeting-item .divider {
@@ -47,7 +43,7 @@
 
 .meeting-item .content {
   display: grid;
-  gap: 0.25rem;
+  row-gap: var(--spacingVerticalXS);
   grid-template-rows: repeat(3, max-content);
 }
 
@@ -58,13 +54,13 @@
 
 .meeting-item .content .time {
   line-height: 1rem;
-  font-size: 0.875rem;
+  font-size: var(--fontSizeBase300);
   color: var(--colorNeutralStrokeAccessible);
 }
 
 .meeting-item .content .location {
   line-height: 1rem;
-  font-size: 0.75rem;
+  font-size: var(--fontSizeBase200);
   color: var(--colorNeutralStrokeAccessible);
 }
 
