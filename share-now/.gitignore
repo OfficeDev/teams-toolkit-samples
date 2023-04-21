@@ -19,3 +19,6 @@ lib
 .DS_Store
 .env
 .deployment
+
+# Dev tool directories
+/devTools/
