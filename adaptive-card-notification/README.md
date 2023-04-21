@@ -9,7 +9,7 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 - How to send Adaptive Cards in Teams.
 
 ## Prerequisite to use this sample
-- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
 - [Teams Toolkit for VS Code](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
