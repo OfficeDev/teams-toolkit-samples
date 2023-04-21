@@ -58,7 +58,7 @@ override async getData(): Promise<IDocumentState> {
   override body(): JSX.Element | undefined {
     const hasDocument = this.state.documents?.length !== 0;
     return (
-      <div className={hasDocument ? "has-doc-layout" : "no-doc-layout"}>
+      <div className={hasDocument ? "has-doc-layout" : ""}>
         {hasDocument ? (
           this.state.documents?.map((item: DocumentModel, i) => {
             return (

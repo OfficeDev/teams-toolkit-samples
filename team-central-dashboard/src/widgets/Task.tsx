@@ -68,7 +68,7 @@ export class Task extends BaseWidget<any, ITaskState> {
   override body(): JSX.Element | undefined {
     const hasTask = this.state.tasks?.length !== 0;
     return (
-      <div className={hasTask ? "has-task-layout" : "no-task-layout"}>
+      <div className={hasTask ? "has-task-layout" : ""}>
         {this.inputLayout()}
         {hasTask ? (
           this.state.tasks?.map((item: TaskModel) => {

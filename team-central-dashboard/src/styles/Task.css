@@ -6,11 +6,6 @@
   align-content: start;
 }
 
-.no-task-layout {
-  display: grid;
-  height: 100%;
-}
-
 .add-btn {
   color: var(--colorBrandForeground1);
   margin-left: 0.35rem;
@@ -37,7 +32,7 @@
 .add-task {
   display: grid;
   grid-template-columns: max-content 1fr max-content;
-  column-gap: 1rem;
+  column-gap: var(--spacingHorizontalL);
   align-items: center;
   border-radius: var(--borderRadiusMedium);
   border: 1px solid var(--colorTransparentStroke);

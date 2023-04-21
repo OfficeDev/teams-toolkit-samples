@@ -7,11 +7,6 @@
   align-content: start;
 }
 
-.no-meeting-layout {
-  display: grid;
-  height: 100%;
-}
-
 .today-layout {
   display: grid;
   row-gap: var(--spacingVerticalXS);
@@ -30,7 +25,7 @@
 .meeting-item {
   display: grid;
   grid-template-columns: max-content 1fr min-content;
-  column-gap: var(--spacingVerticalMNudge);
+  column-gap: var(--spacingHorizontalMNudge);
 }
 
 .meeting-item .divider {

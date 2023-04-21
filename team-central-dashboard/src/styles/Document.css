@@ -5,11 +5,6 @@
   min-width: 18rem;
 }
 
-.no-doc-layout {
-  display: grid;
-  height: 100%;
-}
-
 .doc-container {
   display: grid;
   height: max-content;

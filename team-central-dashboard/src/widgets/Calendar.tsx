@@ -45,7 +45,7 @@ export class Calendar extends BaseWidget<any, ICalendarState> {
   override body(): JSX.Element | undefined {
     const hasMeeting = this.state.meetings?.length !== 0;
     return (
-      <div className={hasMeeting ? "has-meeting-layout" : "no-meeting-layout"}>
+      <div className={hasMeeting ? "has-meeting-layout" : ""}>
         {hasMeeting ? (
           <>
             <div className="today-layout">

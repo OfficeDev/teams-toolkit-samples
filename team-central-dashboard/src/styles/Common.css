@@ -8,6 +8,7 @@
 
 .empty-layout {
   display: grid;
+  height: 100%;
   row-gap: var(--spacingVerticalL);
   align-content: center;
   justify-content: center;
