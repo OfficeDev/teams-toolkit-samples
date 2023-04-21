@@ -4,7 +4,7 @@
     "description": "",
     "author": "",
     "engines": {
-        "node": "14 || 16 || 18"
+        "node": "16 || 18"
     },
     "scripts": {
         "install:api": "cd api && npm install",

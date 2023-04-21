@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-    "node": "14 || 16 || 18"
+    "node": "16 || 18"
   },
   "scripts": {
     "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run dev",
