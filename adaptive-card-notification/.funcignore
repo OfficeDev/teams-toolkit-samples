@@ -20,3 +20,4 @@ teamsapp.yml
 teamsapp.*.yml
 /env/
 /script/
+/devTools/
