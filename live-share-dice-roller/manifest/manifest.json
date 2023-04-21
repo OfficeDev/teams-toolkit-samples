@@ -1,0 +1,66 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.12/MicrosoftTeams.schema.json",
+    "version": "1.0.1",
+    "manifestVersion": "1.12",
+    "id": "${{TEAMS_APP_ID}}",
+    "packageName": "com.microsoft.teams.livesharediceroller",
+    "name": {
+        "short": "DiceRollerLiveShare",
+        "full": "Dice Roller Live Share"
+    },
+    "developer": {
+        "name": "Your name here",
+        "mpnId": "",
+        "websiteUrl": "https://www.example.com",
+        "privacyUrl": "https://www.example.com/PrivacyStatement",
+        "termsOfUseUrl": "https://www.example.com/TermsOfUse"
+    },
+    "description": {
+        "short": "Live Share version of Dice Roller",
+        "full": "Dice Roller that uses Live Share for sync'ing distributed data-structures"
+    },
+    "icons": {
+        "outline": "outline.png",
+        "color": "color.png"
+    },
+    "accentColor": "#FFFFFF",
+    "configurableTabs": [
+        {
+            "configurationUrl": "${{BOT_ENDPOINT}}/?view=config&inTeams=1&load=1",
+            "canUpdateConfiguration": false,
+            "scopes": [
+                "groupchat"
+            ],
+            "context": [
+                "meetingSidePanel",
+                "meetingStage"
+            ]
+        }
+    ],
+    "validDomains": [
+        "*.ngrok.io",
+        "${{TAB_DOMAIN}}"
+    ],
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "MeetingStage.Write.Chat",
+                    "type": "Delegated"
+                },
+                {
+                    "name": "ChannelMeetingStage.Write.Group",
+                    "type": "Delegated"
+                },
+                {
+                    "name": "LiveShareSession.ReadWrite.Chat",
+                    "type": "Delegated"
+                },
+                {
+                    "name": "LiveShareSession.ReadWrite.Group",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    }
+}
