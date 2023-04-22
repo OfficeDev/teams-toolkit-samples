@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "resourceBaseName": {
-      "value": "tab${{RESOURCE_SUFFIX}}"
+      "value": "diceroller${{RESOURCE_SUFFIX}}"
     },
     "storageSku": {
       "value": "Standard_LRS"
