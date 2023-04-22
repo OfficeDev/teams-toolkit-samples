@@ -25,12 +25,16 @@ provision:
     writeToEnvironmentFile:
       teamsAppId: TEAMS_APP_ID
 
-  - uses: botAadApp/create # Creates a new or reuses an existing Azure Active Directory application for bot.
+  # Create or reuse an existing Azure Active Directory application for bot.
+  - uses: botAadApp/create
     with:
-      name: share-now-${{TEAMSFX_ENV}} # The Azure Active Directory application's display name
+      # The Azure Active Directory application's display name
+      name: share-now-${{TEAMSFX_ENV}}
     writeToEnvironmentFile:
-      botId: BOT_ID # The Azure Active Directory application's client id created for bot.
-      botPassword: SECRET_BOT_PASSWORD # The Azure Active Directory application's client secret created for bot.
+      # The Azure Active Directory application's client id created for bot.
+      botId: BOT_ID
+      # The Azure Active Directory application's client secret created for bot.
+      botPassword: SECRET_BOT_PASSWORD
 
   - uses: botFramework/create # Create or update the bot registration on dev.botframework.com
     with:
@@ -43,8 +47,7 @@ provision:
 
   - uses: script # Set TAB_DOMAIN and TAB_ENDPOINT for local launch
     with:
-      run:
-        echo "::set-teamsfx-env TAB_DOMAIN=localhost:53000";
+      run: echo "::set-teamsfx-env TAB_DOMAIN=localhost:53000";
         echo "::set-teamsfx-env TAB_ENDPOINT=https://localhost:53000";
 
   - uses: aadApp/update # Apply the AAD manifest to an existing AAD app. Will use the object id in manifest file to determine which AAD app to update.
