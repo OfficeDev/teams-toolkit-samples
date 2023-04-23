@@ -53,10 +53,10 @@ export function AzureFunctions(props: { codePath?: string; docsUrl?: string }) {
     ...props,
   };
   const teamsUserCredential = useContext(TeamsFxContext).teamsUserCredential;
-  if (!teamsUserCredential) {
-    throw new Error("TeamsFx SDK is not initialized.");
-  }
   const { loading, data, error, reload } = useData(async () => {
+    if (!teamsUserCredential) {
+      throw new Error("TeamsFx SDK is not initialized.");
+    }
     if (needConsent) {
       await teamsUserCredential!.login(["User.Read"]);
       setNeedConsent(false);
@@ -77,11 +77,14 @@ export function AzureFunctions(props: { codePath?: string; docsUrl?: string }) {
         An Azure Functions app is running. Authorize this app and click below to call it for a
         response:
       </p>
-      {!loading && !data && (
+      {!loading && (
         <Button appearance="primary" disabled={loading} onClick={reload}>
           Authorize and call Azure Function
         </Button>
       )}
+      <p>
+        If user has already consented before, they will see a blank page pop up and close automatically.
+      </p>
       {loading && (
         <pre className="fixed">
           <Spinner />
