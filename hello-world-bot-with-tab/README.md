@@ -10,7 +10,7 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version after 4.0.0 or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
@@ -22,6 +22,12 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
     1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug (Edge)` or `Debug (Chrome)`.
 
 - From TeamsFx CLI:
+    1. Install [ngrok](https://ngrok.com/download) and start your local tunnel service by running the command `ngrok http 3978`.
+    1. In the `env/.env.local` file, fill in the values for `BOT_DOMAIN` and `BOT_ENDPOINT` with your ngrok URL.
+       ```
+       BOT_DOMAIN=sample-id.ngrok.io
+       BOT_ENDPOINT=http://sample-id.ngrok.io
+       ```
     1. Run command: `teamsfx provision --env local` .
     1. Run command: `teamsfx deploy --env local` .
     1. Run command: `teamsfx preview --env local` .

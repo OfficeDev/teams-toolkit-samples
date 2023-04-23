@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "Hosted workbench (Edge)",
-            "type": "pwa-msedge",
+            "type": "msedge",
             "request": "launch",
             "url": "https://enter-your-SharePoint-site/_layouts/workbench.aspx",
             "webRoot": "${workspaceRoot}/SPFx",
@@ -27,7 +27,7 @@
         },
         {
             "name": "Hosted workbench (Chrome)",
-            "type": "pwa-chrome",
+            "type": "chrome",
             "request": "launch",
             "url": "https://enter-your-SharePoint-site/_layouts/workbench.aspx",
             "webRoot": "${workspaceRoot}/SPFx",
@@ -51,7 +51,7 @@
         },
         {
             "name": "Start Teams workbench (Edge)",
-            "type": "pwa-msedge",
+            "type": "msedge",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${{local:TEAMS_APP_ID}}?installAppPackage=true&webjoin=true&${account-hint}",
             "webRoot": "${workspaceRoot}/SPFx",
@@ -70,7 +70,7 @@
         },
         {
             "name": "Start Teams workbench (Chrome)",
-            "type": "pwa-chrome",
+            "type": "chrome",
             "request": "launch",
             "url": "https://teams.microsoft.com/l/app/${{local:TEAMS_APP_ID}}?installAppPackage=true&webjoin=true&${account-hint}",
             "webRoot": "${workspaceRoot}/SPFx",

@@ -76,7 +76,7 @@ resource webAppSettings 'Microsoft.Web/sites/config@2021-02-01' = {
   name: '${webAppName}/appsettings'
   properties: {
     WEBSITE_NODE_DEFAULT_VERSION: '~18'
-    SCM_SCRIPT_GENERATOR_ARGS: '--node'
+    WEBSITE_RUN_FROM_PACKAGE: '1'
     BOT_ID: botAadAppClientId
     BOT_PASSWORD: botAadAppClientSecret
     BOT_DOMAIN: webApp.properties.defaultHostName

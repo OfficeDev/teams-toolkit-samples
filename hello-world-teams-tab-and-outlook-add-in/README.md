@@ -10,7 +10,7 @@ Now you have the ability to create a single unit of distribution for all your Mi
 
 ## Prerequisites to use this sample
 
-- [NodeJS](https://nodejs.org/en/): version 16 or 18.
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
 - Edge or Chrome installed for debugging Teams Tab. Edge installed for debugging Outlook add-in.
 - Outlook for Windows: Beta Channel, Build 16320 or higher. 
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
@@ -67,9 +67,11 @@ Once the provisioning and deployment steps are finished, you can preview your Ou
 
 ### Validate manifest file
 
+Known issue: manifest validation is not supported for now.
+
 To check that your manifest file is valid:
 
-- From Visual Studio Code: open the command palette and select: `Teams: Validate manifest file`.
+- From Visual Studio Code: open the command palette and select: `Teams: Validate Application` and select `Validate using manifest schema`.
 - From TeamsFx CLI: run command `teamsfx validate` in your project directory.
 
 ### Package
@@ -82,6 +84,7 @@ To check that your manifest file is valid:
 |Date| Author| Comments|
 |---|---|---|
 |March 13, 2023| yefuwang | onboard |
+|April 11, 2023 | yufuwang | comment out manifest validation |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

@@ -1,7 +1,7 @@
 const config = {
   botId: process.env.BOT_ID,
   botPassword: process.env.BOT_PASSWORD,
-  botEndpoint: process.env.BOT_ENDPOINT,
+  botDomain: process.env.BOT_DOMAIN,
   authorityHost: process.env.AAD_APP_OAUTH_AUTHORITY_HOST,
   clientId: process.env.AAD_APP_CLIENT_ID,
   tenantId: process.env.AAD_APP_TENANT_ID,

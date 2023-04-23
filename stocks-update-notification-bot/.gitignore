@@ -22,8 +22,11 @@ appsettings.json
 _storage_emulator
 
 # Local data
-.localSettings
+.localConfigs
 .notification.localstore.json
 
 # production
 /build
+
+# Dev tool directories
+/devTools/

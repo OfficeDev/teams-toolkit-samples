@@ -2,12 +2,15 @@
     "name": "tab-and-addin",
     "version": "0.0.1",
     "author": "Contoso",
+    "engines": {
+        "node": "16 || 18"
+    },
     "scripts": {
         "build:tab": "cd tab && npm run build",
         "build:add-in": "cd add-in && npm run build",
         "build": "npm run build:tab && npm run build:add-in",
         "postbuild": "ncp tab/build build && ncp add-in/dist build",
-        "dev:teamsfx": "env-cmd --silent -f .localSettings npm run start:tab",
+        "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run start:tab",
         "install": "npm run install:add-in && npm run install:tab",
         "install:add-in": "cd add-in && npm install",
         "install:tab": "cd tab && npm install",

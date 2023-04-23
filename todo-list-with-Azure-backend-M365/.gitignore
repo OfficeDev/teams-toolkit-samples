@@ -2,7 +2,7 @@
 env/.env.*.user
 env/.env.local
 .DS_Store
-.localSettings
+.localConfigs
 build
 
 # dependencies
@@ -18,3 +18,6 @@ build
 .DS_Store
 .env
 .deployment
+
+# Dev tool directories
+/devTools/

@@ -11,7 +11,7 @@ Graph Toolkit Contact Exporter sample APP provides an easy way to export your te
 
 ## Prerequisite to use this sample
 
-- [Node.js](https://nodejs.org/) version 14, 16, 18
+- [Node.js](https://nodejs.org/) version 16, 18
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
 - [Teams Toolkit for VS Code](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
@@ -85,7 +85,7 @@ To achieve full SSO experience, we will recommend you to implement OBO flow to p
 
 | Date         | Author | Comments                               |
 | ------------ | ------ | -------------------------------------- |
-| May 18, 2023 | rentu  | update to support Teams Toolkit v4.0.0 |
+| May 18, 2022 | rentu  | update to support Teams Toolkit v4.0.0 |
 | Mar 17, 2023 | rentu  | update to support Teams Toolkit v5.0.0 |
 
 ## Feedback

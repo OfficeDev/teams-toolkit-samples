@@ -8,6 +8,7 @@ import { SharePointListManager } from './SharePointListManager';
 import { Checkbox, ContextualMenu, PrimaryButton, TextField, DirectionalHint, DefaultButton } from 'office-ui-fabric-react';
 import Profile from './Profile';
 import './TodoList.module.css';
+import NoItem from '../images/no-item.png';
 
 export default class TodoList extends React.Component<ITodoListProps, ITodoListState> {
   private _sharePointListManager: SharePointListManager;
@@ -37,12 +38,13 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
 
   public async componentDidMount(): Promise<void> {
     // Get user photo and get to-do list items after the component is mounted.
-    Promise.all([this._getItems()]);
+    await Promise.all([this._getItems()]);
   }
 
   private _handleInputChange(index: number, property: string, value: string | boolean): void {
     const tmp: ISPItem[] = JSON.parse(JSON.stringify(this.state.items));
-    tmp[index][property] = value;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (tmp[index] as any)[property] = value;
     this.setState({
       items: tmp,
     });
@@ -50,7 +52,7 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
 
   private async _onDeleteItem(id: number): Promise<void> {
     await this._sharePointListManager.DeleteItem(id);
-    this._getItems();
+    await this._getItems();
   }
 
   private async _onAddItem(): Promise<void> {
@@ -58,7 +60,7 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
     this.setState({
       newItemDescription: '',
     });
-    this._getItems();
+    await this._getItems();
   }
 
   private async _onCompletionStatusChange(id: number, index: number, isCompleted: boolean): Promise<void> {
@@ -78,8 +80,8 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
           <div className="is-completed">
           <Checkbox
             checked={this.state.items[index].isCompleted}
-            onChange={(e, selectedOption) => {
-              this._onCompletionStatusChange(item.Id, index, selectedOption);
+            onChange={async (e, selectedOption) => {
+              await this._onCompletionStatusChange(item.Id, index, selectedOption);
             }}
             className="is-completed-input"
           />
@@ -88,10 +90,10 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
           <TextField
             value={this.state.items[index].description}
             onChange={(e, v) => this._handleInputChange(index, "description", v)}
-            onKeyDown={(e) => {
+            onKeyDown={ async (e) => {
               if (e.key === 'Enter') {
                 (e.target as HTMLInputElement).blur();
-                this._onUpdateItem(item.Id, this.state.items[index].description);
+                await this._onUpdateItem(item.Id, this.state.items[index].description);
               }
             }}
             onBlur={() => this._onUpdateItem(item.Id, this.state.items[index].description)}
@@ -118,6 +120,7 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
                   icon: 'Delete',
                   name: 'Delete',
                   onClick: () => {
+                    // eslint-disable-next-line @typescript-eslint/no-floating-promises
                     this._onDeleteItem(this.state.selectItemID);
                     this.setState({ selectItemID: -1 });
                   },
@@ -180,14 +183,14 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
                   type="text"
                   value={this.state.newItemDescription}
                   onChange={(e, v) => this.setState({ newItemDescription: v })}
-                  onKeyDown={(e) => {
+                  onKeyDown={async (e) => {
                     if (e.key === 'Enter') {
-                      this._onAddItem();
+                      await this._onAddItem();
                     }
                   }}
-                  onBlur={() => {
+                  onBlur={async () => {
                     if (this.state.newItemDescription) {
-                      this._onAddItem();
+                      await this._onAddItem();
                     }
                     this.setState({
                       isAddingItem: false,
@@ -203,7 +206,7 @@ export default class TodoList extends React.Component<ITodoListProps, ITodoListS
 
             {!this.state.items.length && !this.state.isAddingItem && <div className="no-item">
               <div>
-                <img src={require('../images/no-item.png')} alt="no item" />
+                <img src={NoItem} alt="no item" />
               </div>
               <div>
                 <h2>No tasks</h2>
