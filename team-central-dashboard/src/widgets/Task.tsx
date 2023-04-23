@@ -23,6 +23,7 @@ interface ITaskState {
   tasks?: TaskModel[];
   inputFocused?: boolean;
   addBtnOver?: boolean;
+  addBtnClicked?: boolean;
 }
 
 export class Task extends BaseWidget<any, ITaskState> {
@@ -152,6 +153,7 @@ export class Task extends BaseWidget<any, ITaskState> {
         {this.state.inputFocused && (
           <button
             className={this.state.addBtnOver ? "add-btn-enter" : "add-btn-leave"}
+            disabled={this.state.addBtnClicked === true}
             onClick={() => {
               this.onAddButtonClick();
             }}
@@ -178,12 +180,14 @@ export class Task extends BaseWidget<any, ITaskState> {
 
   private onAddButtonClick = async () => {
     if (this.inputRef.current && this.inputRef.current.value.length > 0) {
+      this.setState({ addBtnClicked: true });
       const tasks: TaskModel[] = await addTask(this.inputRef.current.value);
       this.setState({
         tasks: tasks,
         inputFocused: false,
         addBtnOver: false,
         loading: false,
+        addBtnClicked: false,
       });
       this.inputRef.current.value = "";
     }
