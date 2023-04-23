@@ -76,7 +76,7 @@ deploy:
       TEAMS_APP_ID: ${{TEAMS_APP_ID}}
       REACT_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
       REACT_APP_START_LOGIN_PAGE_URL: ${{TAB_ENDPOINT}}/auth-start.html
-      REACT_APP_FUNC_NAME: finishTaskNotification
+      REACT_APP_FUNC_NAME: callGraph
       REACT_APP_FUNC_ENDPOINT: ${{API_FUNCTION_ENDPOINT}}
     with:
       args: run build --if-present

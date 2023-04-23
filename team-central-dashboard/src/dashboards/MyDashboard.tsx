@@ -11,7 +11,7 @@ import { Collaboration } from "../widgets/Collaboration";
 import { Documents } from "../widgets/Document";
 import { Task } from "../widgets/Task";
 
-const scope = ["Files.Read", "Tasks.ReadWrite", "Calendars.Read"];
+const scope = ["Files.Read", "Tasks.ReadWrite", "Calendars.Read", "User.Read"];
 
 export default class MyDashboard extends BaseDashboard<any, any> {
   override layout(): JSX.Element | undefined {

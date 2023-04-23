@@ -4,23 +4,29 @@ import { BearerTokenAuthProvider, createApiClient } from "@microsoft/teamsfx";
 
 import { TeamsUserCredentialContext } from "../internal/singletonContext";
 
-const functionName = process.env.REACT_APP_FUNC_NAME || "myFunc";
-export let taskName: string;
+type Method = axios.Method;
 
-export async function callFunction(params?: string) {
-  taskName = params || "";
+export async function callFunction(method: Method, functionName: string, params?: any, data?: any) {
   const credential = TeamsUserCredentialContext.getInstance().getCredential();
   if (!credential) {
     throw new Error("TeamsFx SDK is not initialized.");
   }
   try {
     const apiBaseUrl = process.env.REACT_APP_FUNC_ENDPOINT + "/api/";
-    // createApiClient(...) creates an Axios instance which uses BearerTokenAuthProvider to inject token to request header
+    // creates an Axios instance which uses BearerTokenAuthProvider to inject token to request header
     const apiClient = createApiClient(
       apiBaseUrl,
       new BearerTokenAuthProvider(async () => (await credential.getToken(""))!.token)
     );
-    const response = await apiClient.get(functionName);
+
+    let response: any;
+    response = await apiClient.request({
+      method,
+      url: functionName,
+      params,
+      data,
+    });
+
     return response.data;
   } catch (err: unknown) {
     if (axios.default.isAxiosError(err)) {

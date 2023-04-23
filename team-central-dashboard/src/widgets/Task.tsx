@@ -17,7 +17,6 @@ import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 import { EmptyThemeImg } from "../components/EmptyThemeImg";
 import { TeamsFxContext } from "../internal/context";
 import { TaskModel } from "../models/taskModel";
-import { callFunction } from "../services/callFunction";
 import { addTask, getTasks } from "../services/taskService";
 
 interface ITaskState {
@@ -186,7 +185,6 @@ export class Task extends BaseWidget<any, ITaskState> {
         addBtnOver: false,
         loading: false,
       });
-      callFunction(this.inputRef.current.value);
       this.inputRef.current.value = "";
     }
   };
