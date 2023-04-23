@@ -82,9 +82,6 @@ export function AzureFunctions(props: { codePath?: string; docsUrl?: string }) {
           Authorize and call Azure Function
         </Button>
       )}
-      <p>
-        If user has already consented before, they will see a blank page pop up and close automatically.
-      </p>
       {loading && (
         <pre className="fixed">
           <Spinner />
