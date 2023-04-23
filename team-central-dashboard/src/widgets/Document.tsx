@@ -34,17 +34,17 @@ interface IDocumentState {
 }
 
 export class Documents extends BaseWidget<any, IDocumentState> {
-override async getData(): Promise<IDocumentState> {
-  try {
-    const documents = await getDocuments();
-    return { documents, activeIndex: -1 };
-  } catch (error) {
-    console.error(error);
-    return { documents: [], activeIndex: -1 };
-  } finally {
-    this.setState({ loading: false });
+  override async getData(): Promise<IDocumentState> {
+    try {
+      const documents = await getDocuments();
+      return { documents, activeIndex: -1 };
+    } catch (error) {
+      console.error(error);
+      return { documents: [], activeIndex: -1 };
+    } finally {
+      this.setState({ loading: false });
+    }
   }
-}
 
   override header(): JSX.Element | undefined {
     return (
@@ -169,6 +169,9 @@ override async getData(): Promise<IDocumentState> {
     return { root: "doc-no-padding", header: "doc-header", footer: "doc-footer footer-btn" };
   }
 
+  // This function is called when the mouse hovers over a document item.
+  // It updates the state to set the active index to the index of the hovered item,
+  // and sets loading to false.
   mouseOver = (i: number) => {
     this.setState({
       activeIndex: i,
@@ -177,6 +180,9 @@ override async getData(): Promise<IDocumentState> {
     });
   };
 
+  // This function is called when the mouse leaves a document item.
+  // It updates the state to set the active index to -1 (no item is active),
+  // and sets loading to false.
   mouseLeave = () => {
     this.setState({
       activeIndex: -1,

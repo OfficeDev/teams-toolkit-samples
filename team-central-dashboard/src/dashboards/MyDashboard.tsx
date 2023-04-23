@@ -49,11 +49,17 @@ export default class MyDashboard extends BaseDashboard<any, any> {
     this.setState({ showLogin: false });
   }
 
-  async checkIsConsentNeeded() {
+  /**
+   * Checks if user consent is needed for the specified scopes.
+   * @returns {Promise<boolean>} A Promise that resolves to true if user consent is needed, false otherwise.
+   */
+  async checkIsConsentNeeded(): Promise<boolean> {
     let needConsent = false;
     try {
+      // Try to get a token for the specified scopes using the TeamsUserCredentialContext singleton instance.
       await TeamsUserCredentialContext.getInstance().getCredential().getToken(scope);
     } catch (error) {
+      // If an error occurs, it means user consent is needed.
       needConsent = true;
     }
     return needConsent;

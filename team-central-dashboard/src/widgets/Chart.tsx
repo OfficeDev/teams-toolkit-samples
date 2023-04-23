@@ -196,7 +196,13 @@ export class Chart extends BaseWidget<any, IChartWidgetState> {
     return { body: "body-layout", footer: "footer-btn" };
   }
 
+  /**
+   * Retrieves chart data based on the selected day range.
+   * @param r The selected day range.
+   * @returns The chart data.
+   */
   private retriveChartsData(r: DayRange): IChartProps {
+    // Define chart points based on the selected day range.
     const chartPoints = [
       {
         legend: "Line 1",
@@ -219,6 +225,7 @@ export class Chart extends BaseWidget<any, IChartWidgetState> {
         color: "#D9DBDB",
       },
     ];
+    // Define chart data.
     const chartData = {
       chartTitle: "Area chart multiple example",
       lineChartData: chartPoints,

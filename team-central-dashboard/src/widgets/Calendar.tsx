@@ -15,6 +15,7 @@ import { extractTime } from "../common/dateUtils";
 import { CalendarModel } from "../models/calendarModel";
 import { getCalendar } from "../services/calendarService";
 
+// Defining the state interface for the Calendar widget
 interface ICalendarState {
   meetings?: CalendarModel[];
 }
@@ -110,6 +111,11 @@ export class Calendar extends BaseWidget<any, ICalendarState> {
     );
   }
 
+  /**
+   * A private method that takes a CalendarModel object and returns a formatted string representing the meeting time.
+   * @param item The CalendarModel object representing the meeting.
+   * @returns A string representing the meeting time in the format "start time - end time".
+   */
   private getMeetingTime = (item: CalendarModel) => {
     return extractTime(item.startTime.dateTime) + " - " + extractTime(item.endTime.dateTime);
   };
