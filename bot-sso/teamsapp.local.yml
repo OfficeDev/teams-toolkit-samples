@@ -36,7 +36,8 @@ provision:
       # The Azure Active Directory application's client secret created for bot.
       botPassword: SECRET_BOT_PASSWORD
 
-  - uses: botFramework/create # Create or update the bot registration on dev.botframework.com
+  # Create or update the bot registration on dev.botframework.com
+  - uses: botFramework/create
     with:
       botId: ${{BOT_ID}}
       name: sso-bot
@@ -81,7 +82,8 @@ deploy:
   - uses: cli/runNpmCommand # Run npm command
     with:
       args: install --no-audit
-  - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables
+  # Generate runtime environment variables
+  - uses: file/createOrUpdateEnvironmentFile
     with:
       target: ./.localConfigs
       envs:

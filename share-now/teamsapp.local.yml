@@ -36,7 +36,8 @@ provision:
       # The Azure Active Directory application's client secret created for bot.
       botPassword: SECRET_BOT_PASSWORD
 
-  - uses: botFramework/create # Create or update the bot registration on dev.botframework.com
+  # Create or update the bot registration on dev.botframework.com
+  - uses: botFramework/create
     with:
       botId: ${{BOT_ID}}
       name: share-now-bot
@@ -82,7 +83,8 @@ provision:
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
 
 deploy:
-  - uses: devTool/install # Install development tool(s)
+  # Install development tool(s)
+  - uses: devTool/install
     with:
       devCert:
         trust: true
@@ -90,7 +92,9 @@ deploy:
         version: ~4.0.4670
         symlinkDir: ./devTools/func
       dotnet: true
-    writeToEnvironmentFile: # Write the information of installed development tool(s) into environment file for the specified environment variable(s).
+    # Write the information of installed development tool(s) into environment
+    # file for the specified environment variable(s).
+    writeToEnvironmentFile:
       sslCertFile: SSL_CRT_FILE
       sslKeyFile: SSL_KEY_FILE
       funcPath: FUNC_PATH
@@ -117,7 +121,8 @@ deploy:
       workingDirectory: api
       execPath: ${{DOTNET_PATH}}
 
-  - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables for tab
+  # Generate runtime environment variables for tab
+  - uses: file/createOrUpdateEnvironmentFile
     with:
       target: ./tabs/.localConfigs
       envs:
@@ -131,7 +136,8 @@ deploy:
         REACT_APP_FUNC_ENDPOINT: http://localhost:7071
         REACT_APP_FUNC_NAME: posts
 
-  - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables
+  # Generate runtime environment variables
+  - uses: file/createOrUpdateEnvironmentFile
     with:
       target: ./bot/.localConfigs
       envs:
@@ -142,7 +148,8 @@ deploy:
         SQL_USER_NAME: ${{SQL_USER_NAME}}
         SQL_PASSWORD: ${{SQL_PASSWORD}}
 
-  - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables for backend
+  # Generate runtime environment variables for backend
+  - uses: file/createOrUpdateEnvironmentFile
     with:
       target: ./api/.localConfigs
       envs:

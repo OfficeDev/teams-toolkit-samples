@@ -25,14 +25,16 @@ provision:
       # The Azure Active Directory application's client secret created for bot.
       botPassword: SECRET_BOT_PASSWORD
 
-  - uses: file/createOrUpdateJsonFile # Generate runtime appsettings to JSON file
+  # Generate runtime appsettings to JSON file
+  - uses: file/createOrUpdateJsonFile
     with:
       target: ./appsettings.Development.json
       appsettings:
         BOT_ID: ${{BOT_ID}}
         BOT_PASSWORD: ${{SECRET_BOT_PASSWORD}}
 
-  - uses: botFramework/create # Create or update the bot registration on dev.botframework.com
+  # Create or update the bot registration on dev.botframework.com
+  - uses: botFramework/create
     with:
       botId: ${{BOT_ID}}
       name: stocks-update-notif-bot
