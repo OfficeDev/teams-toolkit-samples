@@ -4,16 +4,20 @@
  */
 
 // Import polyfills for fetch required by msgraph-sdk-javascript.
-import 'isomorphic-fetch';
+import "isomorphic-fetch";
 
-import { Context, HttpRequest } from '@azure/functions';
-import { Client } from '@microsoft/microsoft-graph-client';
+import { Context, HttpRequest } from "@azure/functions";
+import { Client } from "@microsoft/microsoft-graph-client";
 import {
-    createMicrosoftGraphClient, createMicrosoftGraphClientWithCredential, IdentityType,
-    OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential, TeamsFx
-} from '@microsoft/teamsfx';
+  createMicrosoftGraphClient,
+  createMicrosoftGraphClientWithCredential,
+  IdentityType,
+  OnBehalfOfCredentialAuthConfig,
+  OnBehalfOfUserCredential,
+  TeamsFx,
+} from "@microsoft/teamsfx";
 
-import config from '../config';
+import config from "../config";
 
 // Define a Response interface with a status number and a body object that can contain any key-value pairs.
 interface Response {
