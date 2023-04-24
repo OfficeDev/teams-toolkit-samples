@@ -73,7 +73,7 @@ export class Task extends BaseWidget<any, ITaskState> {
         {hasTask ? (
           this.state.tasks?.map((item: TaskModel) => {
             return (
-              <div className="task-item">
+              <div key={`div-task-item-${item.id}`} className="task-item">
                 <Checkbox shape="circular" label={item.name} />
                 <Button icon={<Star24Regular />} appearance="transparent" />
               </div>
@@ -125,6 +125,7 @@ export class Task extends BaseWidget<any, ITaskState> {
     document.removeEventListener("mousedown", this.handleClickOutside);
   }
 
+  // This function returns the JSX for the input layout
   private inputLayout(): JSX.Element | undefined {
     return (
       <div
@@ -167,6 +168,7 @@ export class Task extends BaseWidget<any, ITaskState> {
     );
   }
 
+  // This function handles the click outside of the input div
   private handleClickOutside(event: any) {
     if (!this.inputDivRef.current?.contains(event.target)) {
       this.setState({
@@ -178,6 +180,7 @@ export class Task extends BaseWidget<any, ITaskState> {
     }
   }
 
+  // This function handles the add button click
   private onAddButtonClick = async () => {
     if (this.inputRef.current && this.inputRef.current.value.length > 0) {
       this.setState({ addBtnClicked: true });
@@ -193,6 +196,7 @@ export class Task extends BaseWidget<any, ITaskState> {
     }
   };
 
+  // This function sets the inputFocused state to true
   private inputFocusedState = () => {
     this.setState({
       tasks: this.state.tasks,
@@ -202,6 +206,7 @@ export class Task extends BaseWidget<any, ITaskState> {
     });
   };
 
+  // This function sets the addBtnOver state to true
   private mouseEnterState = () => {
     this.setState({
       tasks: this.state.tasks,
@@ -211,6 +216,7 @@ export class Task extends BaseWidget<any, ITaskState> {
     });
   };
 
+  // This function sets the addBtnOver state to false
   private mouseLeaveState = () => {
     this.setState({
       tasks: this.state.tasks,

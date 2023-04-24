@@ -4,19 +4,16 @@
  */
 
 // Import polyfills for fetch required by msgraph-sdk-javascript.
-import "isomorphic-fetch";
+import 'isomorphic-fetch';
 
-import { Context, HttpRequest } from "@azure/functions";
+import { Context, HttpRequest } from '@azure/functions';
+import { Client } from '@microsoft/microsoft-graph-client';
 import {
-  createMicrosoftGraphClient,
-  createMicrosoftGraphClientWithCredential,
-  IdentityType,
-  OnBehalfOfCredentialAuthConfig,
-  OnBehalfOfUserCredential,
-  TeamsFx,
-} from "@microsoft/teamsfx";
+    createMicrosoftGraphClient, createMicrosoftGraphClientWithCredential, IdentityType,
+    OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential, TeamsFx
+} from '@microsoft/teamsfx';
 
-import config from "../config";
+import config from '../config';
 
 // Define a Response interface with a status number and a body object that can contain any key-value pairs.
 interface Response {
@@ -279,35 +276,8 @@ async function createTask(oboCredential: OnBehalfOfUserCredential, reqData: any)
   // Import the TeamsFx SDK and create a new instance for the app identity
   let teamsfxApp = new TeamsFx(IdentityType.App);
 
-  // Create a Microsoft Graph client using the app identity and the default scope
-  const appGraphClient = createMicrosoftGraphClient(teamsfxApp, [".default"]);
-
-  // Get user ID
-  const userProfile = await graphClient.api("/me").get();
-  const userId = userProfile["id"];
-
-  // Construct the API path to retrieve the app installation information
-  const apiPath = `/users/${userId}/teamwork/installedApps?$expand=teamsApp,teamsAppDefinition&$filter=teamsApp/externalId eq '${config.teamsAppId}'`;
-  const appInstallationInfo = await appGraphClient.api(apiPath).get();
-
-  // Extract the installation ID from the app installation info
-  const appArray = appInstallationInfo["value"][0];
-  const installationId = appArray["id"];
-
-  // Create the post body for the activity notification
-  let postbody = {
-    topic: {
-      source: "entityUrl",
-      value: `https://graph.microsoft.com/v1.0/users/${userId}/teamwork/installedApps/${installationId}`,
-    },
-    activityType: "taskCreated",
-    previewText: {
-      content: "Task Created",
-    },
-  };
-
-  // Send the activity notification to the user's Teams activity feed
-  await appGraphClient.api("users/" + userId + "/teamwork/sendActivityNotification").post(postbody);
+  // Send an activity notification to the user's Teams activity feed
+  sendActivityNotification(teamsfxApp, graphClient);
 
   // Get the tasks from the to-do list that are not completed and limit the results to 3
   const { value: tasksInfo } = await graphClient
@@ -324,6 +294,50 @@ async function createTask(oboCredential: OnBehalfOfUserCredential, reqData: any)
   }));
 
   return tasks;
+}
+
+/**
+ * Sends an activity notification to the user's Teams activity feed.
+ *
+ * @param {TeamsFx} teamsfxApp - The TeamsFx instance for the app identity.
+ * @param {Client} graphClient - The Microsoft Graph client.
+ */
+async function sendActivityNotification(teamsfxApp: TeamsFx, graphClient: Client) {
+  try {
+    // Create a Microsoft Graph client using the app identity and the default scope
+    const appGraphClient = createMicrosoftGraphClient(teamsfxApp, [".default"]);
+
+    // Get user ID
+    const userProfile = await graphClient.api("/me").get();
+    const userId = userProfile["id"];
+
+    // Construct the API path to retrieve the app installation information
+    const apiPath = `/users/${userId}/teamwork/installedApps?$expand=teamsApp,teamsAppDefinition&$filter=teamsApp/externalId eq '${config.teamsAppId}'`;
+    const appInstallationInfo = await appGraphClient.api(apiPath).get();
+
+    // Extract the installation ID from the app installation info
+    const appArray = appInstallationInfo["value"][0];
+    const installationId = appArray["id"];
+
+    // Create the post body for the activity notification
+    let postbody = {
+      topic: {
+        source: "entityUrl",
+        value: `https://graph.microsoft.com/v1.0/users/${userId}/teamwork/installedApps/${installationId}`,
+      },
+      activityType: "taskCreated",
+      previewText: {
+        content: "Task Created",
+      },
+    };
+
+    // Send the activity notification to the user's Teams activity feed
+    await appGraphClient
+      .api("users/" + userId + "/teamwork/sendActivityNotification")
+      .post(postbody);
+  } catch (error) {
+    console.error("sendActivityNotification error: ", error);
+  }
 }
 
 /**
