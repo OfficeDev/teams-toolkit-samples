@@ -12,9 +12,9 @@ Now you have the ability to create a single unit of distribution for all your Mi
 
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - Edge or Chrome installed for debugging Teams Tab. Edge installed for debugging Outlook add-in.
-- Outlook for Windows: Beta Channel, Build 16320 or higher. 
+- Outlook for Windows: Beta Channel, Build 16320 or higher.
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) latest version or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Minimal path to awesome
 ### Debug Teams Tab
@@ -24,7 +24,7 @@ Now you have the ability to create a single unit of distribution for all your Mi
 - From TeamsFx CLI: Start debugging the project by executing the command `teamsfx preview --env local` in your project directory.
 
 ### Debug Outlook add-in
-- Please note that the same M365 account should be used both in Teams Toolkit and Outlook. 
+- Please note that the same M365 account should be used both in Teams Toolkit and Outlook.
 - From Visual Studio Code only: use the `Run and Debug Activity Panel` in Visual Studio Code, select `Debug in Outlook Desktop (Edge Chromium)`, and click the `Run and Debug` green arrow button.
 
 ### Edit the manifest

@@ -13,7 +13,7 @@ This sample app showcases how to build a Teams command bot that queries custom d
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - An Microsoft 365 account with admin permission. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Minimal path to awesome
 
@@ -21,7 +21,7 @@ This sample app showcases how to build a Teams command bot that queries custom d
 1. Clone the repo to your local workspace or directly download the source code.
 1. Open the project in Visual Studio Code.
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
-1. Press "F5" to open a browser window and then select your package to view sample app. 
+1. Press "F5" to open a browser window and then select your package to view sample app.
 1. Find the Teams package in `build\appPackage\appPackage.local.zip`.
 1. Navigate to [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and upload the Teams package.
     > **Note**: If you are testing in a new debug session again, you need to delete the existing Teams app in Teams Admin Center and upload a new one, since the tunnel endpoint will change when you start a new debug session.
