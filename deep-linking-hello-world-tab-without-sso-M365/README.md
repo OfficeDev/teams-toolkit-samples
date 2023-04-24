@@ -11,14 +11,14 @@ This sample app shows, how to use new Teams SDK V2 capabilities to simplify the 
 
 2. App to Hub Scenarios
     - Deeplinking from outside app
-    - Navigating from within the hub 
+    - Navigating from within the hub
 
 ![Hello World Deeplinking Tab](images/deeplink-without-SSO.gif)
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version after 4.0.0 or [TeamsFx CLI](https://aka.ms/teamsfx-cli) version after 0.10.2
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli) version after 0.10.2
 
 ## What you will learn in this sample:
 
