@@ -187,39 +187,6 @@ async function handleRequest(
 }
 
 /**
- * Retrieves the tasks that are not completed from the user's to-do list.
- *
- * @param {OnBehalfOfUserCredential} oboCredential - The on-behalf-of user credential.
- * @returns {Promise<TaskModel[]>} - A promise that resolves with an array of tasks.
- */
-async function getTasksInfo(oboCredential: OnBehalfOfUserCredential) {
-  // Create a Microsoft Graph client with the provided credential and required permissions
-  const graphClient = createMicrosoftGraphClientWithCredential(oboCredential, ["Tasks.ReadWrite"]);
-
-  // Get the user's to-do lists
-  const { value: tasklists } = await graphClient.api("/me/todo/lists").get();
-
-  // Get the ID of the first to-do list
-  const { id: todoTaskListId } = tasklists[0];
-
-  // Get the tasks from the to-do list that are not completed and limit the results to 3
-  const { value: tasksInfo } = await graphClient
-    .api(`/me/todo/lists/${todoTaskListId}/tasks?$filter=status ne 'completed'&$top=3`)
-    .get();
-
-  // Map the tasks to a simpler format
-  const tasks = tasksInfo.map(({ id, title, status, importance, content }) => ({
-    id,
-    name: title,
-    status,
-    importance,
-    content,
-  }));
-
-  return tasks;
-}
-
-/**
  * Retrieves the user's calendar events for the current day.
  *
  * @param {OnBehalfOfUserCredential} oboCredential - The on-behalf-of user credential.
@@ -251,6 +218,39 @@ async function getCalendarEvents(oboCredential: OnBehalfOfUserCredential) {
     .reverse();
 
   return calendarItems;
+}
+
+/**
+ * Retrieves the tasks that are not completed from the user's to-do list.
+ *
+ * @param {OnBehalfOfUserCredential} oboCredential - The on-behalf-of user credential.
+ * @returns {Promise<TaskModel[]>} - A promise that resolves with an array of tasks.
+ */
+async function getTasksInfo(oboCredential: OnBehalfOfUserCredential) {
+  // Create a Microsoft Graph client with the provided credential and required permissions
+  const graphClient = createMicrosoftGraphClientWithCredential(oboCredential, ["Tasks.ReadWrite"]);
+
+  // Get the user's to-do lists
+  const { value: tasklists } = await graphClient.api("/me/todo/lists").get();
+
+  // Get the ID of the first to-do list
+  const { id: todoTaskListId } = tasklists[0];
+
+  // Get the tasks from the to-do list that are not completed and limit the results to 3
+  const { value: tasksInfo } = await graphClient
+    .api(`/me/todo/lists/${todoTaskListId}/tasks?$filter=status ne 'completed'&$top=3`)
+    .get();
+
+  // Map the tasks to a simpler format
+  const tasks = tasksInfo.map(({ id, title, status, importance, content }) => ({
+    id,
+    name: title,
+    status,
+    importance,
+    content,
+  }));
+
+  return tasks;
 }
 
 /**
