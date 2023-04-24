@@ -13,7 +13,7 @@ Todo List app helps to manage your personal to do items. This app can be install
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
-- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Minimal path to awesome
 > Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
@@ -25,7 +25,7 @@ Todo List app helps to manage your personal to do items. This app can be install
 1. Open the `Run and Debug` Activity Panel. Select a target Microsoft application where the app runs: `Debug in Teams`, `Debug in Outlook` or `Debug in the Microsoft 365 app`.
 
 ### Deploy the app to Azure
-1. Open the command palette and select `Teams: Provision in the cloud`. 
+1. Open the command palette and select `Teams: Provision in the cloud`.
 1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
 
 ### Preview the app

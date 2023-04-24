@@ -10,7 +10,6 @@ import {
 import "./Welcome.css";
 import { EditCode } from "./EditCode";
 import { AzureFunctions } from "./AzureFunctions";
-import { Graph } from "./Graph";
 import { CurrentUser } from "./CurrentUser";
 import { useData } from "@microsoft/teamsfx-react";
 import { Deploy } from "./Deploy";
@@ -66,7 +65,6 @@ export function Welcome(props: { showFunction?: boolean; environment?: string })
               <div>
                 <EditCode showFunction={showFunction} />
                 <CurrentUser userName={userName} />
-                <Graph />
                 {showFunction && <AzureFunctions />}
               </div>
             )}

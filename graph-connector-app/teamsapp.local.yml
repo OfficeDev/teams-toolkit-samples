@@ -57,11 +57,14 @@ provision:
       appPackagePath: build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip # Relative path to teamsfx folder. This is the path for built zip file.
 
 deploy:
-  - uses: devTool/install # Install development tool(s)
+  # Install development tool(s)
+  - uses: devTool/install
     with:
       devCert:
         trust: true
-    writeToEnvironmentFile: # Write the information of installed development tool(s) into environment file for the specified environment variable(s).
+    # Write the information of installed development tool(s) into environment
+    # file for the specified environment variable(s).
+    writeToEnvironmentFile:
       sslCertFile: SSL_CRT_FILE
       sslKeyFile: SSL_KEY_FILE
 
@@ -75,7 +78,8 @@ deploy:
       args: install --no-audit
       workingDirectory: api
 
-  - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables for tab
+  # Generate runtime environment variables for tab
+  - uses: file/createOrUpdateEnvironmentFile
     with:
       target: ./tabs/.localConfigs
       envs:
@@ -89,7 +93,8 @@ deploy:
         REACT_APP_FUNC_NAME: data
         REACT_APP_FUNC_ENDPOINT: ${{FUNC_ENDPOINT}}
 
-  - uses: file/createOrUpdateEnvironmentFile # Generate runtime environment variables for backend
+  # Generate runtime environment variables for backend
+  - uses: file/createOrUpdateEnvironmentFile
     with:
       target: ./api/.localConfigs
       envs:

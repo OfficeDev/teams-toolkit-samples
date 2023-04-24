@@ -14,14 +14,14 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
-- [Teams Toolkit for VS Code](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Minimal path to awesome
 
 ### Run the app locally
-- From VS Code: 
+- From VS Code:
     1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug (Edge)` or `Debug (Chrome)`.
-- From TeamsFx CLI: 
+- From TeamsFx CLI:
     1. Install [ngrok](https://ngrok.com/download).
     1. Sign up an ngrok account in https://dashboard.ngrok.com/signup. Copy your personal ngrok authtoken from https://dashboard.ngrok.com/get-started/your-authtoken.
     1. Start your local tunnel service by running the command `ngrok http 3978 --authtoken=<your-personal-ngrok-authtoken>`.
@@ -35,7 +35,7 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
     1. Run command: `teamsfx preview --env local` .
 
 ### Deploy the app to Azure
-- From VS Code: 
+- From VS Code:
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
     1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
     1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
@@ -45,7 +45,7 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
     1. Run command: `teamsfx deploy --env dev`.
 
 ### Preview the app in Teams
-- From VS Code: 
+- From VS Code:
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 - From TeamsFx CLI:
     1. Run command: `teamsfx preview --env dev`.

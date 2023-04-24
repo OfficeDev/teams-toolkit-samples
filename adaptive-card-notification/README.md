@@ -11,7 +11,7 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
-- [Teams Toolkit for VS Code](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
 ## Minimal path to awesome
@@ -21,7 +21,7 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 1. Clone the repo to your local workspace or directly download the source code.
 1. Open the project in Visual Studio Code.
 1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
-1. Press "F5" to open a browser window and then select your package to view adaptive card notification sample app. 
+1. Press "F5" to open a browser window and then select your package to view adaptive card notification sample app.
 1. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default. It can be found in `BOT_ENDPOINT` of the file `env/.env.local`.
 1. Send a POST request to the http trigger, you will receive the adaptive card message in Teams. The trigger can be addressable with the following route:
     - Default adaptive card: `<endpoint>/api/default-notification`
@@ -32,7 +32,7 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 
 ### Deploy the app to Azure
 1. Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-1. Open the command palette and select `Teams: Provision in the cloud`. 
+1. Open the command palette and select `Teams: Provision in the cloud`.
 1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
 
 ### Preview the app in Teams
