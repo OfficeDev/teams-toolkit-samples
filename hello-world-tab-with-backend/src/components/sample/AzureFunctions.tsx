@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button, Spinner } from "@fluentui/react-components";
 import { useData } from "@microsoft/teamsfx-react";
 import * as axios from "axios";
@@ -8,10 +8,7 @@ import config from "./lib/config";
 
 const functionName = config.apiName || "myFunc";
 
-async function callFunction(teamsUserCredential?: TeamsUserCredential) {
-  if (!teamsUserCredential) {
-    throw new Error("TeamsFx SDK is not initialized.");
-  }
+async function callFunction(teamsUserCredential: TeamsUserCredential) {
   try {
     const apiBaseUrl = config.apiEndpoint + "/api/";
     // createApiClient(...) creates an Axios instance which uses BearerTokenAuthProvider to inject token to request header
@@ -49,14 +46,29 @@ async function callFunction(teamsUserCredential?: TeamsUserCredential) {
 }
 
 export function AzureFunctions(props: { codePath?: string; docsUrl?: string }) {
+  const [needConsent, setNeedConsent] = useState(false);
   const { codePath, docsUrl } = {
     codePath: `api/${functionName}/index.ts`,
     docsUrl: "https://aka.ms/teamsfx-azure-functions",
     ...props,
   };
   const teamsUserCredential = useContext(TeamsFxContext).teamsUserCredential;
-  const { loading, data, error, reload } = useData(() => callFunction(teamsUserCredential), {
-    autoLoad: false,
+  const { loading, data, error, reload } = useData(async () => {
+    if (!teamsUserCredential) {
+      throw new Error("TeamsFx SDK is not initialized.");
+    }
+    if (needConsent) {
+      await teamsUserCredential!.login(["User.Read"]);
+      setNeedConsent(false);
+    }
+    try {
+      const functionRes = await callFunction(teamsUserCredential);
+      return functionRes;
+    } catch (error: any) {
+      if (error.message.includes("The application may not be authorized.")) {
+        setNeedConsent(true);
+      }
+    }
   });
   return (
     <div>
@@ -65,9 +77,11 @@ export function AzureFunctions(props: { codePath?: string; docsUrl?: string }) {
         An Azure Functions app is running. Authorize this app and click below to call it for a
         response:
       </p>
-      <Button appearance="primary" disabled={loading} onClick={reload}>
-        Call Azure Function
-      </Button>
+      {!loading && (
+        <Button appearance="primary" disabled={loading} onClick={reload}>
+          Authorize and call Azure Function
+        </Button>
+      )}
       {loading && (
         <pre className="fixed">
           <Spinner />
