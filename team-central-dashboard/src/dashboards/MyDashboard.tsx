@@ -1,30 +1,27 @@
 import "../styles/MyDashboard.css";
 
-import { CSSProperties } from "react";
-
 import { Image, Spinner } from "@fluentui/react-components";
+import { BaseDashboard } from "@microsoft/teamsfx-react";
 
-import { loginAction } from "../../internal/login";
-import { TeamsUserCredentialContext } from "../../internal/singletonContext";
-import { Dashboard } from "../lib/Dashboard";
-import { oneColumn } from "../lib/Dashboard.styles";
+import { loginAction } from "../internal/login";
+import { TeamsUserCredentialContext } from "../internal/singletonContext";
 import { Calendar } from "../widgets/Calendar";
 import { Chart } from "../widgets/Chart";
 import { Collaboration } from "../widgets/Collaboration";
 import { Documents } from "../widgets/Document";
 import { Task } from "../widgets/Task";
 
-const scope = ["Files.Read", "Tasks.ReadWrite", "Calendars.Read"];
+const scope = ["Files.Read", "Tasks.ReadWrite", "Calendars.Read", "User.Read"];
 
-export default class MyDashboard extends Dashboard {
-  protected dashboardLayout(): JSX.Element | undefined {
+export default class MyDashboard extends BaseDashboard<any, any> {
+  override layout(): JSX.Element | undefined {
     return (
       <>
         {this.state.showLogin === false ? (
           <>
             <Image className="img-style" src="bg.png" />
             <Chart />
-            <div className={oneColumn()}>
+            <div className="one-column">
               <Calendar />
               <Task />
             </div>
@@ -40,8 +37,8 @@ export default class MyDashboard extends Dashboard {
     );
   }
 
-  protected columnWidths(): string | undefined {
-    return "7fr 3fr";
+  override styling(): string {
+    return this.state.isMobile === true ? "dashboard-mobile" : "dashboard";
   }
 
   async componentDidMount() {
@@ -52,24 +49,17 @@ export default class MyDashboard extends Dashboard {
     this.setState({ showLogin: false });
   }
 
-  protected customiseDashboardStyle(): CSSProperties | undefined {
-    return this.state.showLogin === false
-      ? {
-          marginTop: "5%",
-        }
-      : {
-          padding: 0,
-          marginTop: 0,
-        };
-  }
-
-  async checkIsConsentNeeded() {
+  /**
+   * Checks if user consent is needed for the specified scopes.
+   * @returns {Promise<boolean>} A Promise that resolves to true if user consent is needed, false otherwise.
+   */
+  async checkIsConsentNeeded(): Promise<boolean> {
     let needConsent = false;
     try {
-      await TeamsUserCredentialContext.getInstance()
-        .getCredential()
-        .getToken(scope);
+      // Try to get a token for the specified scopes using the TeamsUserCredentialContext singleton instance.
+      await TeamsUserCredentialContext.getInstance().getCredential().getToken(scope);
     } catch (error) {
+      // If an error occurs, it means user consent is needed.
       needConsent = true;
     }
     return needConsent;

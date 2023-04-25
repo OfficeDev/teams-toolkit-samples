@@ -1,19 +1,6 @@
-.header-padding {
-  padding: 0.75rem 1.25rem 0 1.25rem;
-}
-
 .has-doc-layout {
   display: grid;
   align-content: start;
-  overflow-x: hidden;
-  min-width: 18rem;
-}
-
-.no-doc-layout {
-  display: grid;
-  height: 100%;
-  justify-content: center;
-  align-content: center;
   overflow-x: hidden;
   min-width: 18rem;
 }
@@ -32,7 +19,7 @@
 .doc-item-content {
   display: grid;
   grid-template-columns: 1fr max-content;
-  gap: 1rem;
+  column-gap: var(--spacingHorizontalL);
   align-items: center;
   height: 2.75rem;
   padding-left: 1.25rem;
@@ -50,14 +37,18 @@
 .doc-info-layout {
   display: grid;
   grid-template-columns: max-content 1fr;
-  gap: 1rem;
+  column-gap: var(--spacingHorizontalL);
   align-items: center;
-}
-
-.footer-margin {
-  margin: 0px 1.25rem 1.25rem 1.25rem !important;
 }
 
 .doc-no-padding {
   padding: 0;
+}
+
+.doc-header {
+  padding: 1rem 1.25rem 0rem 1.25rem;
+}
+
+.doc-footer {
+  padding: 0rem 1.25rem 1.25rem 1.25rem;
 }

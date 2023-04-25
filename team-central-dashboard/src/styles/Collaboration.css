@@ -1,0 +1,54 @@
+.colla-body {
+  overflow-x: hidden;
+}
+
+.colla-content {
+  display: grid;
+  column-gap: var(--spacingHorizontalM);
+  grid-template-columns: repeat(4, 1fr);
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.collo-item {
+  display: grid;
+  min-width: 12.5rem;
+}
+
+.collo-item img {
+  width: 100%;  
+} 
+
+.collo-item .title {
+  font-weight: var(--fontWeightSemibold);
+  font-size: var(--fontSizeBase200);
+  line-height: 1rem;
+  margin-top: 0.5rem;
+}
+
+.collo-item .description {
+  font-size: var(--fontSizeBase200);
+  line-height: 1rem;
+  margin-bottom: 1.125rem;
+  color: var(--colorNeutralForeground3);
+  margin-top: 0.25rem;
+}
+
+.collo-item div {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 8fr min-content max-content 2fr;
+}
+
+.collo-item div button {
+  justify-content: start;
+  padding: 0;
+}
+
+.collo-item div .dot {
+  color: var(--colorNeutralForeground3);
+}
+
+.collo-item div .time {
+  color: var(--colorNeutralForeground3);
+}

@@ -8,12 +8,13 @@
       "methods": [
         "get",
         "post"
-      ]
+      ],
+      "route": "callGraph"
     },
     {
       "type": "http",
       "direction": "out",
-      "name": "res"
+      "name": "$return"
     },
     {
       "direction": "in",
@@ -21,5 +22,5 @@
       "type": "TeamsFx"
     }
   ],
-  "scriptFile": "../dist/finishTaskNotification/index.js"
+  "scriptFile": "../dist/callGraph/index.js"
 }

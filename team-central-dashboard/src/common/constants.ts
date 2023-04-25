@@ -1,7 +1,4 @@
-export const ASSET_URL =
-  "https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/";
-export const SVG_POWER_POINT = "/powerpoint_logo.svg";
-export const SVG_EXCEL = "/excel_logo.svg";
+// URLs for the SVG logos for PowerPoint, Excel, Visio, Word, and Teams
 export const VISIO_SVG =
   "https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/visio_16x1.svg";
 export const WORD_SVG =
