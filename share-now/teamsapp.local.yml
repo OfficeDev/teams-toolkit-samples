@@ -100,17 +100,20 @@ deploy:
       funcPath: FUNC_PATH
       dotnetPath: DOTNET_PATH
 
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       args: install --no-audit
       workingDirectory: tabs
 
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       args: install --no-audit
       workingDirectory: api
 
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       args: install --no-audit
       workingDirectory: bot
