@@ -62,11 +62,15 @@ deploy:
     with:
       devCert:
         trust: true
+      func:
+        version: ~4.0.4670
+        symlinkDir: ./devTools/func
     # Write the information of installed development tool(s) into environment
     # file for the specified environment variable(s).
     writeToEnvironmentFile:
       sslCertFile: SSL_CRT_FILE
       sslKeyFile: SSL_KEY_FILE
+      funcPath: FUNC_PATH
 
   - uses: cli/runNpmCommand # Run npm command
     with:
