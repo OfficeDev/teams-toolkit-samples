@@ -84,4 +84,3 @@ publish:
     writeToEnvironmentFile:
       # Write the information of created resources into environment file for the specified environment variable(s).
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
-projectId: 836fd3d2-1be1-4ac5-8e0f-a7ec242f5dd2

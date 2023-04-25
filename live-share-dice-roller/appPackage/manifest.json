@@ -1,12 +1,12 @@
 {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.12/MicrosoftTeams.schema.json",
     "version": "1.0.1",
-    "manifestVersion": "1.12",
+    "manifestVersion": "1.16",
     "id": "${{TEAMS_APP_ID}}",
     "packageName": "com.microsoft.teams.livesharediceroller",
     "name": {
-        "short": "DiceRollerLiveShare",
-        "full": "Dice Roller Live Share"
+        "short": "DiceRollerLiveShare-${{TEAMSFX_ENV}}",
+        "full": "Dice Roller Live Share - ${{TEAMSFX_ENV}}"
     },
     "developer": {
         "name": "Your name here",
