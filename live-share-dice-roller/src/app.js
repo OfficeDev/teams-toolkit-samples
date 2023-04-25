@@ -55,7 +55,8 @@ async function start() {
                 const diceState = container.initialObjects.diceState;
                 // You can optionally declare what roles you want to be able to change state
                 const allowedRoles = [UserMeetingRole.organizer, UserMeetingRole.presenter];
-                await diceState.initialize(allowedRoles);
+                // Initialize diceState with initial state of 1 and allowed roles 
+                await diceState.initialize(1, allowedRoles);
                 renderStage(diceState, root);
             } catch (error) {
                 renderError(root, error);
@@ -101,12 +102,11 @@ function renderStage(diceState, elem) {
 
     // Set the value at our dataKey with a random number between 1 and 6.
     rollButton.onclick = () =>
-        diceState.changeState(`${Math.floor(Math.random() * 6) + 1}`);
+        diceState.set(Math.floor(Math.random() * 6) + 1);
 
     // Get the current value of the shared data to update the view whenever it changes.
     const updateDice = () => {
-        // If diceState.state is not already set, we use a default value of 1
-        const diceValue = diceState.state ? parseInt(diceState.state) : 1;
+        const diceValue = diceState.state;
         // Unicode 0x2680-0x2685 are the sides of a dice (⚀⚁⚂⚃⚄⚅)
         dice.textContent = String.fromCodePoint(0x267f + diceValue);
         dice.style.color = `hsl(${diceValue * 60}, 70%, 30%)`;
