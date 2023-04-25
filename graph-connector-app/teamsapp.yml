@@ -120,7 +120,7 @@ deploy:
     with:
       workingDirectory: api
       artifactFolder: .
-      # can be changed to any ignore file location, leave blank will ignore nothing
+      # Ignore file location, leave blank will ignore nothing
       ignoreFile: .funcignore
       # the resource id of the cloud resource to be deployed to
       resourceId: ${{API_FUNCTION_RESOURCE_ID}}
