@@ -55,10 +55,12 @@ provision:
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
 
 deploy:
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       args: install --production
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       args: run build --if-present
   # Deploy bits to Azure Storage Static Website

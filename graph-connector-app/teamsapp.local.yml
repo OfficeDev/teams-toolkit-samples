@@ -72,12 +72,14 @@ deploy:
       sslKeyFile: SSL_KEY_FILE
       funcPath: FUNC_PATH
 
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       args: install --no-audit
       workingDirectory: tabs
 
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       args: install --no-audit
       workingDirectory: api

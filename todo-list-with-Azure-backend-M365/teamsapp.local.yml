@@ -92,7 +92,8 @@ deploy:
       funcPath: FUNC_PATH
       dotnetPath: DOTNET_PATH
 
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       workingDirectory: .
       args: install --no-audit

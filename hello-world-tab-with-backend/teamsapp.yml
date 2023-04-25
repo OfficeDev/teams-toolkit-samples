@@ -68,10 +68,12 @@ provision:
       appPackagePath: build/appPackage/appPackage.${{TEAMSFX_ENV}}.zip # Relative path to teamsfx folder. This is the path for built zip file.
 
 deploy:
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       args: install
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     env:
       REACT_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
       REACT_APP_START_LOGIN_PAGE_URL: ${{TAB_ENDPOINT}}/auth-start.html
@@ -86,11 +88,13 @@ deploy:
       artifactFolder: build
       # The resource id of the cloud resource to be deployed to
       resourceId: ${{TAB_AZURE_STORAGE_RESOURCE_ID}}
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       workingDirectory: api
       args: install
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       workingDirectory: api
       args: run build --if-present
@@ -108,13 +112,13 @@ deploy:
       args: build extensions.csproj -o bin --ignore-failed-sources
       execPath: ${{DOTNET_PATH}}
   # Deploy your application to Azure Functions using the zip deploy feature.
-  # For additional details, please refer to https://aka.ms/zip-deploy-to-azure-functions
+  # For additional details, see at https://aka.ms/zip-deploy-to-azure-functions
   - uses: azureFunctions/zipDeploy
     with:
       workingDirectory: api
       # deploy base folder
       artifactFolder: .
-      # can be changed to any ignore file location, leave blank will ignore nothing
+      # Ignore file location, leave blank will ignore nothing
       ignoreFile: .funcignore
       # the resource id of the cloud resource to be deployed to
       resourceId: ${{API_FUNCTION_RESOURCE_ID}}
