@@ -5,7 +5,9 @@ walkthrough of this example and how it works, check out the [tutorial documentat
 
 ## Requirements
 
-Node 12.17+
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
+- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Run the app locally
 
@@ -23,10 +25,10 @@ Deploy your project to Azure by following these steps:
 
 - Open Teams Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
 - After you signed in, select a subscription under your account. The Teams Toolkit will use this subscription to provision Azure resources to host you app.
-- Open the Teams Toolkit and click `Provision in the cloud` in the `DEVELOPMENT` section.
-  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Provision in the cloud` command.
-- Open the Teams Toolkit and click `Deploy to the cloud` in the `DEVELOPMENT` section.
-  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Deploy to the cloud` command.
+- Open the Teams Toolkit and click `Provision` in the `LIFECYLE` section.
+  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Provision` command.
+- Open the Teams Toolkit and click `Deploy` in the `LIFECYLE` section.
+  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Deploy` command.
 
 > Note: Provision Azure cloud resources and deploy to Azure may cause charges to your Azure Subscription.
 
