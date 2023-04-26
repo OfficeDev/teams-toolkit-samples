@@ -90,7 +90,8 @@ deploy:
       args: install --no-audit
       workingDirectory: api
 
-  - uses: cli/runDotnetCommand # Run dotnet command
+  # TeamsFx Azure Functions project depends on extra Azure Functions binding extensions for HTTP trigger authorization.
+  - uses: cli/runDotnetCommand
     with:
       args: build extensions.csproj -o ./bin --ignore-failed-sources
       workingDirectory: api
