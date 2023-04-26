@@ -1,0 +1,121 @@
+.github-body {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    max-height: 16rem;
+    overflow-y: hidden;
+}
+
+.issue-create {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    gap: 1rem;
+    align-items: center;
+    border: 1px solid var(--colorNeutralStroke1);
+    height: 2.25rem;
+    padding-left: 0.875rem;
+    padding-right: 0.7rem;
+    background-color: var(--colorNeutralBackground3);
+}
+
+.issue-create-focused {
+    grid-template-columns: 1fr max-content;
+    padding-left: 1.225rem;
+    background-color: var(--colorNeutralBackground6);
+}
+
+.issue-create .icon {
+    color: var(--colorPaletteBlueBorderActive);
+    margin-left: 0.35rem;
+    padding: 0;
+}
+
+.issue-create .add-btn {
+    border-radius: 4px;
+    width: max-content;
+    height: 1.5rem;
+    border: none;
+    font-weight: 600;
+    text-align: center;
+    background-color: var(--colorNeutralStrokeOnBrand2);
+}
+
+.issues {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.add-btn:hover {    
+    background-color: var(--colorNeutralStroke1Hover);
+}
+
+.input-issue {
+    border: none;
+    outline: medium;
+    height: 1.75rem;
+    margin-left: -0.35rem;
+    font-size: 0.875rem;
+}
+
+.input-issue-unfocused {    
+    background-color: var(--colorNeutralBackground3);
+}
+
+.input-issue-focused {   
+    color: var(--colorNeutralForeground1);
+    background-color: var(--colorNeutralBackground6);
+}
+
+.input-issue-unfocused::placeholder {
+    color: var(--colorPaletteBlueBorderActive);
+}
+
+.input-issue-focused::placeholder {
+    color: var(--colorPaletteBlueBorderActive);
+}
+
+.issues .item {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    column-gap: var(--spacingHorizontalL);
+    align-items: center;
+    padding: 0.625rem 0.7rem 0.625rem 1.225rem;
+}
+
+.issues .item-odd {
+    background-color: var(--colorNeutralBackground2);
+    border-top: 1px solid var(--colorNeutralStencil1);
+    border-bottom: 1px solid var(--colorNeutralStencil1);
+}
+
+.issues .item img {
+    width: 1.125rem;
+    align-self: self-start;
+}
+
+.issues .item div {
+    cursor: pointer;
+}
+
+.issues .item div .state {
+    color: var(--colorPaletteBlueBorderActive);
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.issues .item div .desc {
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    color: var(--colorNeutralForeground3);
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.issues .item button {
+    align-self: self-start;
+    color: var(--colorNeutralForeground3);
+    padding: 0;
+}
+

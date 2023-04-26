@@ -1,0 +1,78 @@
+.planner-layout {
+  display: grid;
+  gap: 0.25rem;
+  overflow-x: hidden;
+  min-width: 18rem;
+  align-content: start;
+  padding-right: 2px;
+}
+
+input::placeholder {
+  color: var(--colorPaletteBlueBorderActive);
+}
+
+.planner-layout .item {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  align-items: start;
+  column-gap: var(--spacingHorizontalS);
+  border-radius: 4px;
+  padding-left: 0.875rem;
+  padding-right: 0.7rem;
+  border: 1px solid var(--colorTransparentStroke);
+  background-color: var(--colorNeutralBackground3);
+}
+
+.planner-layout .add-task {
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;  
+  height: 2.25rem;
+}
+
+.add-task .icon {
+  display: grid;
+  width: calc(16px + 2 * var(--spacingHorizontalS));
+  justify-items: center;
+}
+.add-task .icon svg {
+  color: var(--colorPaletteBlueBorderActive);
+}
+
+.add-task .task-input {
+  border: none;
+  outline: medium;
+  height: 1.75rem;
+  margin-left: -0.35rem;
+  font-size: 0.875rem;
+  color: var(--colorNeutralForeground1);
+  background-color: var(--colorNeutralBackground3);
+}
+
+.add-task button {
+  border-radius: 4px;
+  width: max-content;
+  height: 1.5rem;
+  border: none;
+  font-weight: 600;
+  text-align: center;
+  background-color: var(--colorNeutralStrokeOnBrand2);
+}
+
+.add-task button:hover {
+  background-color: var(--colorNeutralStroke1Hover);
+}
+
+.planner-layout .focused {
+  background-color: var(--colorNeutralBackground6);
+}
+
+.item .task-checkbox {
+  max-width: 10rem;
+  align-self: center;
+}
+
+.item .assigned-layout {
+  align-items: end;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}

@@ -8,17 +8,18 @@
     display: grid;
 }
 
-.empty-img {
+.empty-layout img {
     height: 155px;
     justify-self: center;
     align-self: center;
 }
 
-.empty-text {
+.empty-layout span {
     justify-content: center;
     text-align: center;
 }
 
-.widget-padding {
-    padding: 1.25rem;
-}
+.footer-btn button {
+    color: var(--colorBrandForeground1);
+    padding: 0;
+  }
