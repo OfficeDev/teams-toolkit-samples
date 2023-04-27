@@ -9,13 +9,7 @@ import { DevOps } from "../widgets/DevOps";
 import { GithubIssues } from "../widgets/GitHubIssues";
 import { PlannerTask } from "../widgets/PlannerTask";
 
-const scope = [
-  "Tasks.ReadWrite",
-  "Group.ReadWrite.All",
-  "ExternalItem.Read.All",
-  "Sites.ReadWrite.All",
-  "User.Read.All",
-];
+const scope = ["Tasks.ReadWrite", "Group.ReadWrite.All"];
 
 export default class SampleDashboard extends BaseDashboard<any, any> {
   override layout(): JSX.Element | undefined {
@@ -31,17 +25,17 @@ export default class SampleDashboard extends BaseDashboard<any, any> {
             <PlannerTask />
           </>
         ) : (
-          // <div className="spinner-layout">
-          //   <Spinner size="huge" />
-          // </div>
-          <>
-            <Image className="img-style" src="bg.png" />
-            <div className="one-column">
-              <DevOps />
-              <GithubIssues />
-            </div>
-            <PlannerTask />
-          </>
+          <div className="spinner-layout">
+            <Spinner size="huge" />
+          </div>
+          // <>
+          //   <Image className="img-style" src="bg.png" />
+          //   <div className="one-column">
+          //     <DevOps />
+          //     <GithubIssues />
+          //   </div>
+          //   <PlannerTask />
+          // </>
         )}
       </>
     );

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://developer.microsoft.com/json-schemas/teams-toolkit/teamsapp-yaml/1.0.0/yaml.schema.json
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.0.0/yaml.schema.json
 version: 1.0.0
 
 provision:
@@ -30,6 +30,8 @@ provision:
       run:
         echo "::set-teamsfx-env TAB_DOMAIN=localhost:53000";
         echo "::set-teamsfx-env TAB_ENDPOINT=https://localhost:53000";
+        echo "::set-teamsfx-env FUNC_NAME=callService";
+        echo "::set-teamsfx-env FUNC_ENDPOINT=http://localhost:7071";
 
   - uses: aadApp/update # Apply the AAD manifest to an existing AAD app. Will use the object id in manifest file to determine which AAD app to update.
     with:
@@ -80,15 +82,35 @@ deploy:
     with:
       devCert:
         trust: true
+      func:
+        version: ~4.0.4670
+        symlinkDir: ./devTools/func
+      dotnet: true
     # Write the information of installed development tool(s) into environment
     # file for the specified environment variable(s).
     writeToEnvironmentFile:
       sslCertFile: SSL_CRT_FILE
       sslKeyFile: SSL_KEY_FILE
+      dotnetPath: DOTNET_PATH
+      funcPath: FUNC_PATH
 
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       args: install --no-audit
+  
+  # Run npm command
+  - uses: cli/runNpmCommand
+    with:
+      args: install --no-audit
+      workingDirectory: api
+  
+  # TeamsFx Azure Functions project depends on extra Azure Functions binding extensions for HTTP trigger authorization.
+  - uses: cli/runDotnetCommand
+    with:
+      args: build extensions.csproj -o ./bin --ignore-failed-sources
+      workingDirectory: api
+      execPath: ${{DOTNET_PATH}}
 
   # Generate runtime environment variables
   - uses: file/createOrUpdateEnvironmentFile
@@ -103,3 +125,25 @@ deploy:
         SSL_KEY_FILE: ${{SSL_KEY_FILE}}
         REACT_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
         REACT_APP_START_LOGIN_PAGE_URL: ${{TAB_ENDPOINT}}/auth-start.html
+        REACT_APP_FUNC_NAME: ${{FUNC_NAME}}
+        REACT_APP_FUNC_ENDPOINT: ${{FUNC_ENDPOINT}}
+  
+  # Generate runtime environment variables for backend
+  - uses: file/createOrUpdateEnvironmentFile
+    with:
+      target: ./api/.localConfigs
+      envs:
+        TEAMS_APP_ID: ${{TEAMS_APP_ID}}
+        M365_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
+        M365_CLIENT_SECRET: ${{SECRET_AAD_APP_CLIENT_SECRET}}
+        M365_TENANT_ID: ${{AAD_APP_TENANT_ID}}
+        M365_AUTHORITY_HOST: ${{AAD_APP_OAUTH_AUTHORITY_HOST}}
+        DEVOPS_ORGANIZATION_NAME: ${{DEVOPS_ORGANIZATION_NAME}}
+        DEVOPS_PROJECT_NAME: ${{DEVOPS_PROJECT_NAME}}
+        DEVOPS_ACCESS_TOKEN: ${{SECRET_DEVOPS_ACCESS_TOKEN}}
+        GITHUB_ACCESS_TOKEN: ${{SECRET_GITHUB_ACCESS_TOKEN}}
+        GITHUB_REPO_NAME: ${{GITHUB_REPO_NAME}}
+        GITHUB_REPO_OWNER: ${{GITHUB_REPO_OWNER}}
+        PLANNER_PLAN_ID: ${{PLANNER_PLAN_ID}}
+        ALLOWED_APP_IDS: 1fec8e78-bce4-4aaf-ab1b-5451cc387264;5e3ce6c0-2b1f-4285-8d4b-75ee78787346;0ec893e0-5785-4de6-99da-4ed124e5296c;4345a7b9-9a63-4910-a426-35363201d503;4765445b-32c6-49b0-83e6-1d93765276ca;d3590ed6-52b3-4102-aeff-aad2292ab01c;00000002-0000-0ff1-ce00-000000000000;bc59ab01-8403-45c6-8796-ac3ef710b3e3
+
