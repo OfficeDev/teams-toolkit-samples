@@ -5,6 +5,7 @@ const config = {
   githubAccessToken: process.env.GITHUB_ACCESS_TOKEN,
   githubRepoName: process.env.GITHUB_REPO_NAME,
   githubRepoOwner: process.env.GITHUB_REPO_OWNER,
+  plannerGroupId: process.env.PLANNER_GROUP_ID,
   plannerPlanId: process.env.PLANNER_PLAN_ID,
   authorityHost: process.env.M365_AUTHORITY_HOST,
   tenantId: process.env.M365_TENANT_ID,

@@ -67,21 +67,19 @@ export class DevOps extends BaseWidget<any, IWorkItemState> {
                         window.open(item.url, "_blank");
                       }}
                     >
-                      <Text>{item.fields.title}</Text>
-                      <Text>{item.fields.workItemType}</Text>
-                      <div className="assigned">
+                      <Text>{item.title}</Text>
+                      <Text>{item.workItemType}</Text>
+                      <div>
                         <Avatar
-                          name={item.fields.assigendTo?.displayName}
-                          image={{
-                            src: `${item.fields.assigendTo?.links?.avatar?.href}`,
-                          }}
+                          name={item.assignedToName}
+                          image={{ src: `${item.assignedToAvatar}` }}
                           size={16}
                         />
-                        <Text>{item.fields.assigendTo?.displayName}</Text>
+                        <Text>{item.assignedToName}</Text>
                       </div>
                       <div className="state">
                         <CircleSmall20Filled className="icon" />
-                        <Text>{item.fields.state}</Text>
+                        <Text>{item.state}</Text>
                       </div>
                     </div>
                   </div>

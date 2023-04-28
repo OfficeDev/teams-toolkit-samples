@@ -7,8 +7,8 @@
 import "isomorphic-fetch";
 
 import { Context, HttpRequest } from "@azure/functions";
-import { Octokit } from "octokit";
-import { Client } from "@microsoft/microsoft-graph-client";
+import { Octokit } from "@octokit/core";
+import { Client, ResponseType } from "@microsoft/microsoft-graph-client";
 import {
   createMicrosoftGraphClientWithCredential,
   OnBehalfOfCredentialAuthConfig,
@@ -16,6 +16,7 @@ import {
 } from "@microsoft/teamsfx";
 
 import config from "../config";
+import { Blob } from "buffer";
 
 interface Response {
   status: number;
@@ -125,78 +126,82 @@ async function handleRequest(
   switch (`${serviceType}:${method}`) {
     // If serviceType is "devops" and method is "GET"
     case "devops:GET": {
-      const items = await getDevops();
-      return { items: items };
+      return { items: await getDevops() };
     }
+    // If serviceType is "github" and method is "GET"
     case "github:GET": {
-      const issues = await getIssues();
-      return { issues: issues };
+      return { issues: await getIssues() };
     }
     // If serviceType is "github" and method is "POST"
     case "github:POST": {
-      const issues = await createIssue(reqData);
-      return { issues: issues };
+      return { issues: await createIssue(reqData) };
     }
     // If serviceType is "planner" and method is "GET"
     case "planner:GET": {
-      // Call getPlanner function to get tasks
-      const tasks = await getPlanner(oboCredential);
-      return { tasks: tasks };
+      return { tasks: await getPlanner(oboCredential) };
     }
     // If serviceType is "planner" and method is "POST"
     case "planner:POST": {
       // Call createPlannerTask function to create a task
       await createPlannerTask(oboCredential, reqData);
-      const tasks = await getPlanner(oboCredential);
-      return tasks;
+      return { tasks: await getPlanner(oboCredential) };
+    }
+    default: {
+      // If serviceType or method is invalid, throw an error
+      throw new Error("Invalid serviceType or method.");
     }
   }
 }
 
+/**
+ * Retrieves work items from Azure DevOps.
+ * @returns An array of work items.
+ */
 async function getDevops(): Promise<any> {
-  const response = await fetch(
-    `https://dev.azure.com/${config.devopsOrgName}/${config.devopsProjectName}/_apis/wit/workitems?ids=1,2,3,4,5&api-version=7.0`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8;",
-        Authorization: `Basic ${btoa(`Basic:${config.devopsAccessToken}`)}`,
-      },
-    }
-  );
+  // Construct the URL to retrieve work items.
+  const url = `https://dev.azure.com/${config.devopsOrgName}/${config.devopsProjectName}/_apis/wit/workitems?ids=1,2,3,4,5&api-version=7.0`;
 
+  // Encode the access token for authentication.
+  const auth = Buffer.from(`:${config.devopsAccessToken}`).toString("base64");
+
+  // Set the headers for the request.
+  const headers = { Authorization: `Basic ${auth}` };
+
+  // Send the request to retrieve work items.
+  const response = await fetch(url, { headers });
+
+  // Parse the response as JSON.
   const data = await response.json();
-  const devopsValue = data.value;
 
-  return devopsValue.map((obj) => ({
-    id: obj.id,
-    url: obj.url,
-    fields: {
-      title: obj.fields["System.Title"],
-      workItemType: obj.fields["System.WorkItemType"],
-      assignedTo: {
-        displayName: obj.fields["System.AssignedTo"]?.displayName || "",
-        links: {
-          avatar: {
-            href: obj.fields["System.AssignedTo"]?._links.avatar.href || "",
-          },
-        },
-      },
-      state: obj.fields["System.State"],
-    },
+  // Map the work items to a simpler format.
+  return data.value.map(({ id, url, fields }) => ({
+    id,
+    url,
+    title: fields["System.Title"],
+    workItemType: fields["System.WorkItemType"],
+    assignedToName: fields["System.AssignedTo"]?.displayName || "",
+    assignedToAvatar: fields["System.AssignedTo"]?._links.avatar.href || "",
+    state: fields["System.State"],
   }));
 }
 
+/**
+ * Retrieves issues from a GitHub repository.
+ * @returns An array of issues.
+ */
 async function getIssues(): Promise<any> {
+  // Create a new Octokit instance with the GitHub access token.
   const octokit = new Octokit({
     auth: config.githubAccessToken,
   });
 
+  // Send a GET request to retrieve issues from the specified repository.
   const { data } = await octokit.request("GET /repos/{owner}/{repo}/issues", {
     owner: config.githubRepoOwner,
     repo: config.githubRepoName,
   });
 
+  // Map the issues to a simpler format.
   return data.map((issue) => ({
     state: issue.state,
     url: issue.html_url,
@@ -205,15 +210,20 @@ async function getIssues(): Promise<any> {
   }));
 }
 
-async function createIssue(reqData: any) {
+/**
+ * Creates a new GitHub issue with the specified title.
+ * @param issueTitle The title of the new issue.
+ */
+async function createIssue(issueTitle: any) {
   const octokit = new Octokit({
     auth: config.githubAccessToken,
   });
 
+  // Send a POST request to create a new issue in the specified repository.
   await octokit.request("POST /repos/{owner}/{repo}/issues", {
     owner: config.githubRepoOwner,
     repo: config.githubRepoName,
-    title: reqData,
+    title: issueTitle,
   });
 }
 
@@ -222,21 +232,24 @@ async function getPlanner(oboCredential: OnBehalfOfUserCredential): Promise<any>
     "Tasks.ReadWrite",
     "Group.ReadWrite.All",
   ]);
-  const { value: tasksInfo } = await graphClient
-    .api(`/planner/plans/${config.plannerPlanId}/tasks?$top=4`)
+
+  const { value: tasksData } = await graphClient
+    .api(`/planner/plans/${config.plannerPlanId}/tasks?$top=8`)
     .get();
+
   const tasks = await Promise.all(
-    tasksInfo.map(async (obj) => {
-      const { id, title: name, priority, percentComplete, assignments } = obj;
-      const assigned = await Promise.all(
-        assignments.slice(0, 2).map(async ({ userId }) => await getUser(oboCredential, userId))
-      );
-      const overAssigned = await Promise.all(
-        assignments.slice(2).map(async ({ userId }) => await getUser(oboCredential, userId))
-      );
-      return { id, name, priority, percentComplete, assigned, overAssigned };
+    tasksData.map(async (task: any) => {
+      const { id, title, priority, percentComplete, assignments } = task;
+      const assignMap = new Map(Object.entries(assignments || {}));
+      const [assigned, overAssigned] = [[], []];
+      for (const [userId] of assignMap) {
+        const assignInfo = await getUser(oboCredential, userId as string);
+        (assigned.length < 2 ? assigned : overAssigned).push(assignInfo);
+      }
+      return { id, title, priority, percentComplete, assigned, overAssigned };
     })
   );
+
   return tasks;
 }
 
@@ -257,9 +270,28 @@ async function createPlannerTask(
   return resp;
 }
 
+/**
+ * Retrieves information about a user from Microsoft Graph API.
+ * @param oboCredential The OnBehalfOfUserCredential object for authentication.
+ * @param userId The ID of the user to retrieve information for.
+ * @returns An object containing the user's ID, display name, and avatar (if available).
+ */
 async function getUser(oboCredential: OnBehalfOfUserCredential, userId: string): Promise<any> {
   const graphClient = createMicrosoftGraphClientWithCredential(oboCredential, ["User.Read.All"]);
+
+  // Send a GET request to retrieve the user's display name.
   const { displayName } = await graphClient.api(`/users/${userId}`).get();
-  const userAvatar = await graphClient.api(`/users/${userId}/photo/$value`).get();
-  return { userId, displayName, userAvatar };
+
+  let avatar: string | undefined;
+  try {
+    // Send a GET request to retrieve the user's avatar.
+    const blob = await graphClient
+      .api(`/users/${userId}/photo/$value`)
+      .responseType(ResponseType.ARRAYBUFFER)
+      .get();
+    avatar = `data:image/jpeg;base64,${Buffer.from(blob).toString("base64")}`;
+  } catch (error) {}
+
+  // Return an object containing the user's ID, display name, and avatar (if available).
+  return { userId, displayName, avatar };
 }

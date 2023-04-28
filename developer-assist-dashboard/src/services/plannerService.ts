@@ -12,7 +12,12 @@ export async function getTasks(): Promise<TaskModel[]> {
 
 export async function addTask(title: string): Promise<TaskModel[]> {
   try {
-    const respData = await callFunction("POST", "planner", { title: title });
+    const respData = await callFunction(
+      "POST",
+      "callService",
+      { serviceType: "planner" },
+      { title: title }
+    );
     return respData["tasks"];
   } catch (e) {
     throw e;

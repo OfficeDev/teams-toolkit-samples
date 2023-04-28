@@ -23,7 +23,6 @@ import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 import { EmptyThemeImg, getImageByTheme } from "../components/ThemeImg";
 import { TaskAssignedToModel, TaskModel } from "../models/plannerTaskModel";
 import { addTask, getTasks } from "../services/plannerService";
-import { GROUP_ID, PLAN_ID } from "../configs";
 
 interface ITaskState {
   tasks?: TaskModel[];
@@ -90,7 +89,7 @@ export class PlannerTask extends BaseWidget<any, ITaskState> {
           this.state.tasks?.map((item: TaskModel) => {
             return (
               <div key={`div-planner-item-${item.id}`} className="item">
-                <Checkbox shape="circular" label={item.name} className="task-checkbox" />
+                <Checkbox shape="circular" label={item.title} className="task-checkbox" />
                 {this.assignedToLayout(item)}
               </div>
             );
@@ -117,7 +116,7 @@ export class PlannerTask extends BaseWidget<any, ITaskState> {
           size="small"
           onClick={() =>
             window.open(
-              `https://tasks.office.com/5b37c6.onmicrosoft.com/Home/Planner/#/plantaskboard?groupId=${GROUP_ID}&planId=${PLAN_ID}`,
+              `https://tasks.office.com/5b37c6.onmicrosoft.com/Home/Planner/#/plantaskboard?groupId=${process.env.PLANNER_GROUP_ID}&planId=${process.env.PLANNER_PLAN_ID}`,
               "_blank"
             )
           } // navigate to detailed page
@@ -145,32 +144,34 @@ export class PlannerTask extends BaseWidget<any, ITaskState> {
   private assignedToLayout = (item: TaskModel): JSX.Element | undefined => {
     return (
       <div className="assigned-layout">
-        {item.assignments !== undefined && item.assignments.length > 0 && (
+        {item.assigned !== undefined && item.assigned.length > 0 && (
           <AvatarGroup layout="stack">
-            {item.assignments?.map((assignItem: TaskAssignedToModel) => {
-              return (
+            {item.assigned?.map((assignItem: TaskAssignedToModel) => {
+              return assignItem.avatar ? (
                 <AvatarGroupItem
-                  name={assignItem.userDisplayName}
+                  name={assignItem.displayName}
                   key={`avatar-${item.id}-${assignItem.userId}`}
-                  image={{
-                    src: this.handleAvatar(assignItem.userAvatar),
-                  }}
+                  image={{ src: assignItem.avatar }}
+                />
+              ) : (
+                <AvatarGroupItem
+                  name={assignItem.displayName}
+                  key={`avatar-${item.id}-${assignItem.userId}`}
                 />
               );
             })}
-            {item.overAssignments !== undefined && item.overAssignments.length > 0 && (
+            {item.overAssigned !== undefined && item.overAssigned.length > 0 && (
               <AvatarGroupPopover>
-                {item.overAssignments.map((overItem: TaskAssignedToModel) => {
-                  const imgSrc = this.handleAvatar(overItem.userAvatar);
-                  return imgSrc !== "" ? (
+                {item.overAssigned.map((overItem: TaskAssignedToModel) => {
+                  return overItem.avatar ? (
                     <AvatarGroupItem
-                      name={overItem.userDisplayName}
+                      name={overItem.displayName}
                       key={`avatar-${item.id}-${overItem.userId}`}
-                      image={{ src: imgSrc }}
+                      image={{ src: overItem.avatar }}
                     />
                   ) : (
                     <AvatarGroupItem
-                      name={overItem.userDisplayName}
+                      name={overItem.displayName}
                       key={`avatar-${item.id}-${overItem.userId}`}
                     />
                   );
@@ -210,14 +211,6 @@ export class PlannerTask extends BaseWidget<any, ITaskState> {
       inputFocused: true,
       loading: false,
     });
-  };
-
-  private handleAvatar = (blob: any) => {
-    try {
-      return blob ? URL.createObjectURL(blob) : "";
-    } catch (e) {
-      return "";
-    }
   };
 
   async componentDidMount() {
