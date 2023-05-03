@@ -31,6 +31,8 @@ export class DevOps extends BaseWidget<any, IWorkItemState> {
     } catch (error) {
       console.error("Get Devops Data Error: ", error);
       return { devOpsData: [] };
+    } finally {
+      this.setState({ loading: false });
     }
   }
 
@@ -89,7 +91,7 @@ export class DevOps extends BaseWidget<any, IWorkItemState> {
           </div>
         ) : (
           <div className="empty-layout">
-            <Image src="open-ai-empty.svg" className="empty-img" />
+            <Image src="empty.svg" className="empty-img" />
           </div>
         )}
       </>
@@ -106,7 +108,7 @@ export class DevOps extends BaseWidget<any, IWorkItemState> {
           size="small"
           onClick={() =>
             window.open(
-              "https://dev.azure.com/DemoContosoOrg/ContosoProject/_workitems/recentlyupdated/",
+              `https://dev.azure.com/${process.env.DEVOPS_ORGANIZATION_NAME}/${process.env.DEVOPS_PROJECT_NAME}/_workitems/recentlyupdated/`,
               "_blank"
             )
           }

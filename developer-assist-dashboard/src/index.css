@@ -4,9 +4,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
@@ -14,7 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-body::-webkit-scrollbar {
-  width: 0px !important;
-  background: transparent; /* make scrollbar transparent */
+::-webkit-scrollbar {
+  display: none;
 }

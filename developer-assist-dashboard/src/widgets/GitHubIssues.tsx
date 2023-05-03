@@ -12,13 +12,13 @@ import {
 } from "@fluentui/react-icons";
 import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 
-import { EmptyThemeImg, getImageByTheme } from "../components/ThemeImg";
+import { getImageByTheme } from "../components/ThemeImg";
 import { githubIssuesModel } from "../models/githubIssuesModel";
 import { createIssue, getIssues } from "../services/githubService";
 
 interface IIssueState {
   issues?: githubIssuesModel[];
-  loading: boolean;
+  loading?: boolean;
   inputFocused?: boolean;
 }
 
@@ -42,12 +42,14 @@ export class GithubIssues extends BaseWidget<any, IIssueState> {
   }
 
   override async getData(): Promise<IIssueState> {
-    return {
-      issues: await getIssues(),
-      // issues: [],
-      inputFocused: false,
-      loading: false,
-    };
+    try {
+      return { issues: await getIssues() };
+    } catch (err) {
+      console.error(err);
+      return { issues: [] };
+    } finally {
+      this.setState({ inputFocused: false, loading: false });
+    }
   }
 
   override header(): JSX.Element | undefined {
@@ -100,7 +102,10 @@ export class GithubIssues extends BaseWidget<any, IIssueState> {
           iconPosition="after"
           size="small"
           onClick={() =>
-            window.open("https://github.com/aycabasDemo/ContosoProject/issues", "_blank")
+            window.open(
+              `https://github.com/${process.env.GITHUB_REPO_OWNER}/${process.env.GITHUB_REPO_NAME}/issues`,
+              "_blank"
+            )
           }
         >
           View on GitHub

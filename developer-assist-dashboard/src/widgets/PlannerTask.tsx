@@ -9,6 +9,7 @@ import {
   AvatarGroupPopover,
   Button,
   Checkbox,
+  Image,
   Spinner,
   Text,
 } from "@fluentui/react-components";
@@ -20,13 +21,13 @@ import {
 } from "@fluentui/react-icons";
 import { BaseWidget, IWidgetClassNames } from "@microsoft/teamsfx-react";
 
-import { EmptyThemeImg, getImageByTheme } from "../components/ThemeImg";
+import { getImageByTheme } from "../components/ThemeImg";
 import { TaskAssignedToModel, TaskModel } from "../models/plannerTaskModel";
 import { addTask, getTasks } from "../services/plannerService";
 
 interface ITaskState {
   tasks?: TaskModel[];
-  loading: boolean;
+  loading?: boolean;
   inputFocused?: boolean;
 }
 
@@ -48,11 +49,14 @@ export class PlannerTask extends BaseWidget<any, ITaskState> {
   }
 
   override async getData(): Promise<ITaskState> {
-    return {
-      tasks: await getTasks(),
-      inputFocused: false,
-      loading: false,
-    };
+    try {
+      return { tasks: await getTasks() };
+    } catch (err) {
+      console.error(err);
+      return { tasks: [] };
+    } finally {
+      this.setState({ inputFocused: false, loading: false });
+    }
   }
 
   override header(): JSX.Element | undefined {
@@ -68,7 +72,7 @@ export class PlannerTask extends BaseWidget<any, ITaskState> {
   override body(): JSX.Element | undefined {
     const hasTask = this.state.tasks?.length !== 0;
     return (
-      <div className={hasTask ? "planner-layout" : ""}>
+      <div className={"planner-layout"}>
         <div
           ref={this.inputDivRef}
           className={this.state.inputFocused ? "item add-task focused" : "item add-task"}
@@ -96,7 +100,7 @@ export class PlannerTask extends BaseWidget<any, ITaskState> {
           })
         ) : (
           <div className="empty-layout">
-            <EmptyThemeImg />
+            <Image src="empty.svg" />
             <Text weight="semibold" className="empty-text">
               Once you have a task, you'll find it here
             </Text>
@@ -107,6 +111,7 @@ export class PlannerTask extends BaseWidget<any, ITaskState> {
   }
 
   override footer(): JSX.Element | undefined {
+    const t = process.env.PLANNER_PLAN_ID;
     if (!this.state.loading && this.state.tasks?.length !== 0) {
       return (
         <Button

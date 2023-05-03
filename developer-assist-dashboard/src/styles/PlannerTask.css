@@ -5,6 +5,7 @@
   min-width: 18rem;
   align-content: start;
   padding-right: 2px;
+  height: 100%;
 }
 
 input::placeholder {

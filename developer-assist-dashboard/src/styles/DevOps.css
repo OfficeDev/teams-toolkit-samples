@@ -1,63 +1,63 @@
 .devops-body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .devops {
-    display: grid;
-    row-gap: var(--spacingVerticalM);
-    align-content: start;
-    overflow-x: auto;
-    white-space: nowrap;
+  display: grid;
+  row-gap: var(--spacingVerticalM);
+  align-content: start;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .devops span {
-    font-size: var(--fontSizeBase300);
-    line-height: var(--lineHeightBase300);
-    color: var(--colorNeutralForeground4);
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  font-size: var(--fontSizeBase300);
+  line-height: var(--lineHeightBase300);
+  color: var(--colorNeutralForeground4);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .devops .title {
-    display: grid;
-    grid-template-columns: minmax(20rem, 1fr) 4rem 10rem 6rem;
-    column-gap: var(--spacingHorizontalMNudge);
-    align-items: center;
-    padding-right: var(--spacingHorizontalSNudge);
+  display: grid;
+  grid-template-columns: minmax(20rem, 1fr) 4rem 10rem 6rem;
+  column-gap: var(--spacingHorizontalMNudge);
+  align-items: center;
+  padding-right: var(--spacingHorizontalSNudge);
 }
 
 .devops .content {
-    display: grid;
-    height: 100%;
-    max-height: 11rem;
-    padding-right: var(--spacingHorizontalSNudge);
+  display: grid;
+  height: 100%;
+  max-height: 11rem;
+  padding-right: var(--spacingHorizontalSNudge);
 }
 
 .devops .content .divider {
-    height: 1px;
-    background-color: var(--colorNeutralStroke2);
+  height: 1px;
+  background-color: var(--colorNeutralStroke2);
 }
 
 .devops .content .items {
-    display: grid;
-    grid-template-columns: minmax(20rem, 1fr) 4rem 10rem 6rem;
-    column-gap: var(--spacingHorizontalMNudge);
-    height: 2.375rem;
-    align-content: center;
-    cursor: pointer
+  display: grid;
+  grid-template-columns: minmax(20rem, 1fr) 4rem 10rem 6rem;
+  column-gap: var(--spacingHorizontalMNudge);
+  height: 2.375rem;
+  align-content: center;
+  cursor: pointer;
 }
 
 .devops .content .items div {
-    display: grid;
-    gap: var(--spacingHorizontalXS);
-    align-items: center;
-    grid-template-columns: repeat(2, max-content);
+  display: grid;
+  gap: var(--spacingHorizontalXS);
+  align-items: center;
+  grid-template-columns: repeat(2, max-content);
 }
 
 .devops .content .items span {
-    color: var(--colorNeutralForeground1);
+  color: var(--colorNeutralForeground1);
 }
 
 .devops .content .items .state .icon {
-    color: var(--colorNeutralStroke1);
+  color: var(--colorNeutralStroke1);
 }

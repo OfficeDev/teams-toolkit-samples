@@ -37,6 +37,7 @@ export default function App() {
   return (
     <TeamsFxContext.Provider value={{ themeString, teamsUserCredential }}>
       <FluentProvider
+        id="App"
         theme={
           themeString === "dark"
             ? teamsDarkTheme
@@ -44,7 +45,6 @@ export default function App() {
             ? teamsHighContrastTheme
             : teamsLightTheme
         }
-        className="App"
       >
         {!loading && (
           <Router>

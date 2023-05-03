@@ -17,9 +17,11 @@
 .img-style {
   position: absolute;
   width: 100%;
-  margin-left: -20px;
-  margin-top: -10%;
+  margin-left: -20px;  
+  margin-top: -64px;
   z-index: -1;
+  max-height: 216px;
+  min-height: 120px;
 }
 
 .spinner-layout {

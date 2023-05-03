@@ -28,6 +28,27 @@
     },
     "teamsAppId": {
       "value": "${{TEAMS_APP_ID}}"
+    },
+    "devopsOrgName": {
+      "value": "${{DEVOPS_ORGANIZATION_NAME}}"
+    },
+    "devopsProjectName": {
+      "value": "${{DEVOPS_PROJECT_NAME}}"
+    },
+    "devopsAccessToken": {
+      "value": "${{SECRET_DEVOPS_ACCESS_TOKEN}}"
+    },
+    "githubAccessToken": {
+      "value": "${{SECRET_GITHUB_ACCESS_TOKEN}}"
+    },
+    "githubRepoName": {
+      "value": "${{GITHUB_REPO_NAME}}"
+    },
+    "githubRepoOwner": {
+      "value": "${{GITHUB_REPO_OWNER}}"
+    },
+    "plannerPlanId": {
+      "value": "${{PLANNER_PLAN_ID}}"
     }
   }
 }

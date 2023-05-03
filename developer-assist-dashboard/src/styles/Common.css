@@ -1,25 +1,27 @@
 .empty-layout {
-    display: grid;
-    height: 100%;
-    gap: 1rem;
+  display: grid;
+  height: 100%;
+  align-content: center;
+  justify-content: center;
+  min-height: 12rem;
 }
 
 .loading-layout {
-    display: grid;
+  display: grid;
 }
 
 .empty-layout img {
-    height: 155px;
-    justify-self: center;
-    align-self: center;
+  height: 120px;
+  justify-self: center;
 }
 
 .empty-layout span {
-    justify-content: center;
-    text-align: center;
+  font-weight: var(--fontWeightSemibold);
+  justify-content: center;
+  text-align: center;
 }
 
 .footer-btn button {
-    color: var(--colorBrandForeground1);
-    padding: 0;
-  }
+  color: var(--colorBrandForeground1);
+  padding: 0;
+}

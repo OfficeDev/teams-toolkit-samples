@@ -16,7 +16,6 @@ import {
 } from "@microsoft/teamsfx";
 
 import config from "../config";
-import { Blob } from "buffer";
 
 interface Response {
   status: number;
