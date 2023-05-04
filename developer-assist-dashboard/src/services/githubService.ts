@@ -23,7 +23,12 @@ export async function getIssues(): Promise<githubIssuesModel[]> {
  */
 export async function createIssue(title: string): Promise<githubIssuesModel[]> {
   try {
-    const respData = await callFunction("POST", "github", { title: title });
+    const respData = await callFunction(
+      "POST",
+      "callService",
+      { serviceType: "github" },
+      { title: title }
+    );
     return respData["issues"];
   } catch (e) {
     throw e;

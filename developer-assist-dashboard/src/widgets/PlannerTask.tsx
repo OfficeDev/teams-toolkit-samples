@@ -111,7 +111,6 @@ export class PlannerTask extends BaseWidget<any, ITaskState> {
   }
 
   override footer(): JSX.Element | undefined {
-    const t = process.env.PLANNER_PLAN_ID;
     if (!this.state.loading && this.state.tasks?.length !== 0) {
       return (
         <Button

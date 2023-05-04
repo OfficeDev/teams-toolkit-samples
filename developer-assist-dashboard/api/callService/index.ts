@@ -7,13 +7,13 @@
 import "isomorphic-fetch";
 
 import { Context, HttpRequest } from "@azure/functions";
-import { Octokit } from "@octokit/core";
 import { Client, ResponseType } from "@microsoft/microsoft-graph-client";
 import {
   createMicrosoftGraphClientWithCredential,
   OnBehalfOfCredentialAuthConfig,
   OnBehalfOfUserCredential,
 } from "@microsoft/teamsfx";
+import { Octokit } from "@octokit/core";
 
 import config from "../config";
 
@@ -133,7 +133,8 @@ async function handleRequest(
     }
     // If serviceType is "github" and method is "POST"
     case "github:POST": {
-      return { issues: await createIssue(reqData) };
+      await createIssue(reqData);
+      return { issues: await getIssues() };
     }
     // If serviceType is "planner" and method is "GET"
     case "planner:GET": {
@@ -161,10 +162,13 @@ async function getDevops(): Promise<any> {
   const url = `https://dev.azure.com/${config.devopsOrgName}/${config.devopsProjectName}/_apis/wit/workitems?ids=1,2,3,4,5&api-version=7.0`;
 
   // Encode the access token for authentication.
-  const auth = Buffer.from(`:${config.devopsAccessToken}`).toString("base64");
+  const auth = Buffer.from(`Basic:${config.devopsAccessToken}`).toString("base64");
 
   // Set the headers for the request.
-  const headers = { Authorization: `Basic ${auth}` };
+  const headers = {
+    Authorization: `Basic ${auth}`,
+    "Content-Type": "application/json; charset=utf-8;",
+  };
 
   // Send the request to retrieve work items.
   const response = await fetch(url, { headers });
@@ -211,9 +215,9 @@ async function getIssues(): Promise<any> {
 
 /**
  * Creates a new GitHub issue with the specified title.
- * @param issueTitle The title of the new issue.
+ * @param reqData An object containing the title of the new task.
  */
-async function createIssue(issueTitle: any) {
+async function createIssue(reqData: any) {
   const octokit = new Octokit({
     auth: config.githubAccessToken,
   });
@@ -222,7 +226,7 @@ async function createIssue(issueTitle: any) {
   await octokit.request("POST /repos/{owner}/{repo}/issues", {
     owner: config.githubRepoOwner,
     repo: config.githubRepoName,
-    title: issueTitle,
+    title: reqData.title,
   });
 }
 
@@ -271,7 +275,7 @@ async function getPlanner(oboCredential: OnBehalfOfUserCredential): Promise<any>
 /**
  * Creates a new task in a Planner plan.
  * @param oboCredential The OnBehalfOfUserCredential object for authentication.
- * @param reqData An object containing the title and assignments of the new task.
+ * @param reqData An object containing the title of the new task.
  * @returns The response from the POST request to create the new task.
  */
 async function createPlannerTask(
