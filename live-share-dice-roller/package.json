@@ -2,7 +2,6 @@
     "name": "dice-roller",
     "version": "1.0.0",
     "description": "Sample dice roller app.",
-    "repository": "https://github.com/microsoft/live-share-sdk",
     "license": "Microsoft",
     "author": "Microsoft",
     "scripts": {
@@ -11,7 +10,6 @@
         "start:client": "vite",
         "start:https": "vite src --config vite.https-config.js",
         "start:server": "npx tinylicious@latest",
-        "start-https": "start-server-and-test start:server 7070 start:https",
         "start": "start-server-and-test start:server 7070 start:client",
         "doctor": "eslint src/**/*.{j,t}s{,x} --fix --no-error-on-unmatched-pattern"
     },
