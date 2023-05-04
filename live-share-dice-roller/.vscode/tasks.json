@@ -79,13 +79,13 @@
         {
             "label": "Start application",
             "dependsOn": [
-                "Start frontend"
+                "Start web server"
             ]
         },
         {
-            "label": "Start frontend",
+            "label": "Start web server",
             "type": "shell",
-            "command": "npm start",
+            "command": "npm run start:client",
             "isBackground": true,
             "options": {
                 "cwd": "${workspaceFolder}"
