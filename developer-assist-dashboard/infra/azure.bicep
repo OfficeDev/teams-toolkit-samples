@@ -17,6 +17,19 @@ param serverfarmsName string = resourceBaseName
 param functionAppName string = resourceBaseName
 param functionStorageName string = '${resourceBaseName}api'
 param teamsAppId string
+
+param devopsOrgName string
+param devopsProjectName string
+@secure()
+param devopsAccessToken string
+@secure()
+param githubAccessToken string
+param githubRepoName string
+param githubRepoOwner string
+param plannerGroupId string
+param plannerPlanId string
+param plannerBucketId string
+
 var oauthAuthority = uri(aadAppOauthAuthorityHost, aadAppTenantId)
 
 var teamsMobileOrDesktopAppClientId = '1fec8e78-bce4-4aaf-ab1b-5451cc387264'
@@ -123,6 +136,42 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
         {
           name: 'TEAMS_APP_ID'
           value: teamsAppId
+        }
+        {
+          name: 'DEVOPS_ORGANIZATION_NAME'
+          value: devopsOrgName
+        }
+        {
+          name: 'DEVOPS_PROJECT_NAME'
+          value: devopsProjectName
+        }
+        {
+          name: 'DEVOPS_ACCESS_TOKEN'
+          value: devopsAccessToken
+        }
+        {
+          name: 'GITHUB_ACCESS_TOKEN'
+          value: githubAccessToken
+        }
+        {
+          name: 'GITHUB_REPO_NAME'
+          value: githubRepoName
+        }
+        {
+          name: 'GITHUB_REPO_OWNER'
+          value: githubRepoOwner
+        }
+        {
+          name: 'PLANNER_GROUP_ID'
+          value: plannerGroupId
+        }
+        {
+          name: 'PLANNER_PLAN_ID'
+          value: plannerPlanId
+        }
+        {
+          name: 'PLANNER_BUCKET_ID'
+          value: plannerBucketId
         }
       ]
       ftpsState: 'FtpsOnly'

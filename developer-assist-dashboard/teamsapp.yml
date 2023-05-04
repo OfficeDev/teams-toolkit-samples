@@ -86,6 +86,15 @@ provision:
       appId: M365_APP_ID
 
 deploy:
+  # Install development tool(s)
+  - uses: devTool/install
+    with:      
+      dotnet: true
+    # Write the information of installed development tool(s) into environment
+    # file for the specified environment variable(s).
+    writeToEnvironmentFile:
+      dotnetPath: DOTNET_PATH
+      
   - uses: cli/runNpmCommand # Run npm command
     with:
       args: install

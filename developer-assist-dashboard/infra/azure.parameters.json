@@ -47,8 +47,14 @@
     "githubRepoOwner": {
       "value": "${{GITHUB_REPO_OWNER}}"
     },
+    "plannerGroupId": {
+      "value": "${{PLANNER_GROUP_ID}}"
+    },
     "plannerPlanId": {
       "value": "${{PLANNER_PLAN_ID}}"
+    },
+    "plannerBucketId": {
+      "value": "${{PLANNER_BUCKET_ID}}"
     }
   }
 }

@@ -226,23 +226,39 @@ async function createIssue(issueTitle: any) {
   });
 }
 
+/**
+ * Retrieves the top 8 tasks from a Planner plan.
+ * @param oboCredential The OnBehalfOfUserCredential object for authentication.
+ * @returns An array of tasks, each containing the task ID, title, priority, percent complete, assigned users, and over-assigned users.
+ */
+/**
+ * Retrieves the top 8 tasks from a Planner plan.
+ * @param oboCredential The OnBehalfOfUserCredential object for authentication.
+ * @returns An array of tasks, each containing the task ID, title, priority, percent complete, assigned users, and over-assigned users.
+ */
 async function getPlanner(oboCredential: OnBehalfOfUserCredential): Promise<any> {
+  // Create a Microsoft Graph client with the provided credentials and permissions.
   const graphClient = createMicrosoftGraphClientWithCredential(oboCredential, [
     "Tasks.ReadWrite",
     "Group.ReadWrite.All",
   ]);
 
+  // Retrieve the top 8 tasks from the specified Planner plan.
   const { value: tasksData } = await graphClient
     .api(`/planner/plans/${config.plannerPlanId}/tasks?$top=8`)
     .get();
 
+  // Map the tasks to a simpler format.
   const tasks = await Promise.all(
     tasksData.map(async (task: any) => {
       const { id, title, priority, percentComplete, assignments } = task;
       const assignMap = new Map(Object.entries(assignments || {}));
       const [assigned, overAssigned] = [[], []];
       for (const [userId] of assignMap) {
+        // Get information about the user assigned to the task.
         const assignInfo = await getUser(oboCredential, userId as string);
+
+        // Add the user to the assigned or over-assigned list, depending on how many users are already assigned.
         (assigned.length < 2 ? assigned : overAssigned).push(assignInfo);
       }
       return { id, title, priority, percentComplete, assigned, overAssigned };
@@ -252,20 +268,33 @@ async function getPlanner(oboCredential: OnBehalfOfUserCredential): Promise<any>
   return tasks;
 }
 
+/**
+ * Creates a new task in a Planner plan.
+ * @param oboCredential The OnBehalfOfUserCredential object for authentication.
+ * @param reqData An object containing the title and assignments of the new task.
+ * @returns The response from the POST request to create the new task.
+ */
 async function createPlannerTask(
   oboCredential: OnBehalfOfUserCredential,
   reqData: any
 ): Promise<any> {
+  // Create a Microsoft Graph client with the provided credentials and permissions.
   const graphClient: Client = createMicrosoftGraphClientWithCredential(oboCredential, [
     "Tasks.ReadWrite",
     "Group.ReadWrite.All",
   ]);
+
+  // Create a task object with the provided title and assignments.
   const task = {
     planId: config.plannerPlanId,
+    bucketId: reqData.assignments,
     title: reqData.title,
-    assignments: reqData.assignments,
   };
+
+  // Send a POST request to create a new task in the specified Planner plan.
   const resp = await graphClient.api(`/planner/tasks`).post(task);
+
+  // Return the response from the POST request.
   return resp;
 }
 
