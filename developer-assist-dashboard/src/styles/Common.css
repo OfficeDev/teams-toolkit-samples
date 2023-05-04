@@ -1,0 +1,27 @@
+.empty-layout {
+  display: grid;
+  height: 100%;
+  align-content: center;
+  justify-content: center;
+  min-height: 12rem;
+}
+
+.loading-layout {
+  display: grid;
+}
+
+.empty-layout img {
+  height: 120px;
+  justify-self: center;
+}
+
+.empty-layout span {
+  font-weight: var(--fontWeightSemibold);
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-btn button {
+  color: var(--colorBrandForeground1);
+  padding: 0;
+}

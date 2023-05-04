@@ -7,6 +7,54 @@
     },
     "storageSku": {
       "value": "Standard_LRS"
-    }   
+    },
+    "aadAppClientId": {
+      "value": "${{AAD_APP_CLIENT_ID}}"
+    },
+    "aadAppClientSecret": {
+      "value": "${{SECRET_AAD_APP_CLIENT_SECRET}}"
+    },
+    "aadAppTenantId": {
+      "value": "${{AAD_APP_TENANT_ID}}"
+    },
+    "aadAppOauthAuthorityHost": {
+      "value": "${{AAD_APP_OAUTH_AUTHORITY_HOST}}"
+    },
+    "functionAppSKU": {
+      "value": "B1"
+    },
+    "functionStorageSKU": {
+      "value": "Standard_LRS"
+    },
+    "teamsAppId": {
+      "value": "${{TEAMS_APP_ID}}"
+    },
+    "devopsOrgName": {
+      "value": "${{DEVOPS_ORGANIZATION_NAME}}"
+    },
+    "devopsProjectName": {
+      "value": "${{DEVOPS_PROJECT_NAME}}"
+    },
+    "devopsAccessToken": {
+      "value": "${{SECRET_DEVOPS_ACCESS_TOKEN}}"
+    },
+    "githubAccessToken": {
+      "value": "${{SECRET_GITHUB_ACCESS_TOKEN}}"
+    },
+    "githubRepoName": {
+      "value": "${{GITHUB_REPO_NAME}}"
+    },
+    "githubRepoOwner": {
+      "value": "${{GITHUB_REPO_OWNER}}"
+    },
+    "plannerGroupId": {
+      "value": "${{PLANNER_GROUP_ID}}"
+    },
+    "plannerPlanId": {
+      "value": "${{PLANNER_PLAN_ID}}"
+    },
+    "plannerBucketId": {
+      "value": "${{PLANNER_BUCKET_ID}}"
+    }
   }
 }
