@@ -130,14 +130,15 @@ function renderSideBar(elem) {
     </style>
     <div class="wrapper">
         <p class="title">Lets get started</p>
-        <p class="text">Press the share to stage button to share Dice Roller to the meeting stage.</p>
+        <p class="text">Press the share to meeting button to share Dice Roller to the meeting stage.</p>
+        <button class="share"> Share to meeting </button>
     </div>
     `;
     elem.appendChild(sideBarTemplate.content.cloneNode(true));
-    const shareToStageButton = document.createElement("button");
-    shareToStageButton["innerHTML"] = "Share to Stage";
-    shareToStageButton.onclick = shareToStage;
-    elem.appendChild(shareToStageButton);
+    const shareButton = elem.querySelector(".share");
+
+    // Set the value at our dataKey with a random number between 1 and 6.
+    shareButton.onclick = shareToStage;
 }
 
 function shareToStage() {
