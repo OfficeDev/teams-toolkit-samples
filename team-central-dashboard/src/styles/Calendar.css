@@ -1,0 +1,66 @@
+.has-meeting-layout {
+  display: grid;
+  row-gap: var(--spacingVerticalXL);
+  overflow-x: hidden;
+  min-width: 18rem;
+  grid-template-rows: repeat(2, max-content);
+  align-content: start;
+}
+
+.today-layout {
+  display: grid;
+  row-gap: var(--spacingVerticalXS);
+}
+
+.today-layout span{
+  font-weight: var(--fontWeightRegular);
+  line-height: var(--lineHeightBase200);
+  font-size: var(--fontSizeBase200);
+}
+
+.today-layout #time {
+  font-weight: var(--fontWeightBold);  
+}
+
+.meeting-item {
+  display: grid;
+  grid-template-columns: max-content 1fr min-content;
+  column-gap: var(--spacingHorizontalMNudge);
+}
+
+.meeting-item .divider {
+  display: grid;
+  width: 6px;
+  height: 1fr;
+  border-radius: 3px;
+  background-color: var(--colorBrandStroke1);
+}
+
+.meeting-item .content {
+  display: grid;
+  row-gap: var(--spacingVerticalXS);
+  grid-template-rows: repeat(3, max-content);
+}
+
+.meeting-item .content .title {
+  line-height: 1.5rem;
+  font-size: var(--fontSizeBase400);
+}
+
+.meeting-item .content .time {
+  line-height: 1rem;
+  font-size: var(--fontSizeBase300);
+  color: var(--colorNeutralStrokeAccessible);
+}
+
+.meeting-item .content .location {
+  line-height: 1rem;
+  font-size: var(--fontSizeBase200);
+  color: var(--colorNeutralStrokeAccessible);
+}
+
+.meeting-item button{
+  align-self: start;
+  min-width: 3.375rem;
+  font-weight: var(--fontWeightMedium);
+}

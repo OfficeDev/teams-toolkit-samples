@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://developer.microsoft.com/json-schemas/teams-toolkit/teamsapp-yaml/1.0.0/yaml.schema.json
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.0.0/yaml.schema.json
 version: 1.0.0
 
 environmentFolderPath: ./env
@@ -63,12 +63,12 @@ deploy:
     with:
       args: run build --if-present
   # Deploy your application to Azure Functions using the zip deploy feature.
-  # For additional details, please refer to https://aka.ms/zip-deploy-to-azure-functions
+  # For additional details, see at https://aka.ms/zip-deploy-to-azure-functions
   - uses: azureFunctions/zipDeploy
     with:
       # deploy base folder
       artifactFolder: .
-      # can be changed to any ignore file location, leave blank will ignore nothing
+      # Ignore file location, leave blank will ignore nothing
       ignoreFile: .funcignore
       # the resource id of the cloud resource to be deployed to
       resourceId: ${{BOT_AZURE_FUNCTION_APP_RESOURCE_ID}}

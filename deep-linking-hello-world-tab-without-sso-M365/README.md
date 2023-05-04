@@ -11,7 +11,7 @@ This sample app shows, how to use new Teams SDK V2 capabilities to simplify the 
 
 2. App to Hub Scenarios
     - Deeplinking from outside app
-    - Navigating from within the hub 
+    - Navigating from within the hub
 
 ![Hello World Deeplinking Tab](images/deeplink-without-SSO.gif)
 ## Prerequisites

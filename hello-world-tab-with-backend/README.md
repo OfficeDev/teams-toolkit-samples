@@ -16,7 +16,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 # Note
 - This sample has adopted [On-Behalf-Of Flow](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) to implement SSO.
@@ -29,17 +29,17 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 
 ### Run the app locally
 
-- From VS Code: 
+- From VS Code:
     1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug (Edge)` or `Debug (Chrome)`.
 
-- From TeamsFx CLI: 
+- From TeamsFx CLI:
     1. Run command: `teamsfx provision --env local` .
     1. Run command: `teamsfx deploy --env local` .
     1. Run command: `teamsfx preview --env local` .
 
 ### Deploy the app to Azure
 
-- From VS Code: 
+- From VS Code:
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
     1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
     1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
@@ -51,7 +51,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 
 ### Preview the app in Teams
 
-- From VS Code: 
+- From VS Code:
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 
 - From TeamsFx CLI:

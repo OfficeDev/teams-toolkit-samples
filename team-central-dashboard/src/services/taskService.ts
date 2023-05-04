@@ -1,68 +1,33 @@
-import { Client } from "@microsoft/microsoft-graph-client";
-import { createMicrosoftGraphClientWithCredential, TeamsUserCredential } from "@microsoft/teamsfx";
-
-import { TeamsUserCredentialContext } from "../internal/singletonContext";
 import { TaskModel } from "../models/taskModel";
+import { callFunction } from "./callFunction";
 
+/**
+ * Retrieves tasks from the server.
+ * @returns An array of TaskModel objects.
+ */
 export async function getTasks(): Promise<TaskModel[]> {
-  let credential: TeamsUserCredential;
   try {
-    credential = TeamsUserCredentialContext.getInstance().getCredential();
-    const graphClient: Client = createMicrosoftGraphClientWithCredential(credential, [
-      "Tasks.ReadWrite",
-    ]);
-    const tasklists = await graphClient.api("/me/todo/lists").get();
-    const myFirstTaskList = tasklists["value"][0];
-    const todoTaskListId: string = myFirstTaskList["id"];
-    const resp = await graphClient
-      .api(`/me/todo/lists/${todoTaskListId}/tasks?$filter=status ne 'completed'&$top=3`)
-      .get();
-    const tasksInfo = resp["value"];
-    let tasks: TaskModel[] = [];
-    for (const obj of tasksInfo) {
-      const tmp: TaskModel = {
-        id: obj["id"],
-        name: obj["title"],
-        status: obj["status"],
-        importance: obj["importance"],
-        content: obj["content"],
-      };
-      tasks.push(tmp);
-    }
-    return tasks;
+    const respData = await callFunction("GET", "callGraph", { graphType: "task" });
+    return respData["taskResult"];
   } catch (e) {
     throw e;
   }
 }
 
+/**
+ * Adds a new task to the server.
+ * @param title The title of the new task.
+ * @returns An array of TaskModel objects.
+ */
 export async function addTask(title: string): Promise<TaskModel[]> {
   try {
-    let credential: TeamsUserCredential;
-    credential = TeamsUserCredentialContext.getInstance().getCredential();
-
-    const graphClient: Client = createMicrosoftGraphClientWithCredential(credential, [
-      "Tasks.ReadWrite",
-    ]);
-    const tasklists = await graphClient.api("/me/todo/lists").get();
-    const myFirstTaskList = tasklists["value"][0];
-    const todoTaskListId: string = myFirstTaskList["id"];
-    await graphClient.api("/me/todo/lists/" + todoTaskListId + "/tasks").post({ title: title });
-    const tasks = await graphClient
-      .api(`/me/todo/lists/${todoTaskListId}/tasks?$filter=status ne 'completed'&$top=3`)
-      .get();
-    const tasksInfo = tasks["value"];
-    let taskResult: TaskModel[] = [];
-    for (const obj of tasksInfo) {
-      const tmp: TaskModel = {
-        id: obj["id"],
-        name: obj["title"],
-        status: obj["status"],
-        importance: obj["importance"],
-        content: obj["content"],
-      };
-      taskResult.push(tmp);
-    }
-    return taskResult;
+    const respData = await callFunction(
+      "POST",
+      "callGraph",
+      { graphType: "task" },
+      { taskTitle: title }
+    );
+    return respData["taskResult"];
   } catch (e) {
     throw e;
   }

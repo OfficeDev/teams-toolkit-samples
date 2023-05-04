@@ -1,11 +1,7 @@
 import "./App.css";
 
-import {
-  HashRouter as Router,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { useEffect } from "react";
+import { HashRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 
 import {
   FluentProvider,
@@ -13,19 +9,31 @@ import {
   teamsHighContrastTheme,
   teamsLightTheme,
 } from "@fluentui/react-components";
-import { useTeamsFx } from "@microsoft/teamsfx-react";
+import { app } from "@microsoft/teams-js";
+import { useTeamsUserCredential } from "@microsoft/teamsfx-react";
 
+import MyDashboard from "./dashboards/MyDashboard";
 import { TeamsFxContext } from "./internal/context";
-import MyDashboard from "./views/dashboards/MyDashboard";
-import Privacy from "./views/Privacy";
-import TabConfig from "./views/TabConfig";
-import TermsOfUse from "./views/TermsOfUse";
+import Privacy from "./Privacy";
+import TabConfig from "./TabConfig";
+import TermsOfUse from "./TermsOfUse";
 
 export default function App() {
-  const { themeString } = useTeamsFx();
+  const { loading, themeString } = useTeamsUserCredential({
+    initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL!,
+    clientId: process.env.REACT_APP_CLIENT_ID!,
+  });
+  useEffect(() => {
+    loading &&
+      app.initialize().then(() => {
+        // Hide the loading indicator.
+        app.notifySuccess();
+      });
+  }, [loading]);
   return (
     <TeamsFxContext.Provider value={{ themeString }}>
       <FluentProvider
+        id="fluent-provider"
         theme={
           themeString === "dark"
             ? teamsDarkTheme
@@ -33,17 +41,18 @@ export default function App() {
             ? teamsHighContrastTheme
             : teamsLightTheme
         }
-        className="app"
       >
-        <Router>
-          <Routes>
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/termsofuse" element={<TermsOfUse />} />
-            <Route path="/tab" element={<MyDashboard />} />
-            <Route path="/config" element={<TabConfig />} />
-            <Route path="*" element={<Navigate to={"/tab"} />}></Route>
-          </Routes>
-        </Router>
+        {!loading && (
+          <Router>
+            <Routes>
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/termsofuse" element={<TermsOfUse />} />
+              <Route path="/tab" element={<MyDashboard />} />
+              <Route path="/config" element={<TabConfig />} />
+              <Route path="*" element={<Navigate to={"/tab"} />} />
+            </Routes>
+          </Router>
+        )}
       </FluentProvider>
     </TeamsFxContext.Provider>
   );

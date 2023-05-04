@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://developer.microsoft.com/json-schemas/teams-toolkit/teamsapp-yaml/1.0.0/yaml.schema.json
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.0.0/yaml.schema.json
 version: 1.0.0
 
 environmentFolderPath: ./env
@@ -79,7 +79,8 @@ provision:
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
 
 deploy:
-  - uses: cli/runNpmCommand # Run npm command
+  # Run npm command
+  - uses: cli/runNpmCommand
     with:
       args: install --no-audit
 
@@ -90,7 +91,7 @@ deploy:
       envs:
         BOT_ID: ${{BOT_ID}}
         BOT_PASSWORD: ${{SECRET_BOT_PASSWORD}}
-        BOT_ENDPOINT: ${{BOT_ENDPOINT}}
+        BOT_DOMAIN: ${{BOT_DOMAIN}}
         AAD_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
         AAD_APP_CLIENT_SECRET: ${{SECRET_AAD_APP_CLIENT_SECRET}}
         AAD_APP_TENANT_ID: ${{AAD_APP_TENANT_ID}}
