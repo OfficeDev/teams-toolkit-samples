@@ -1,15 +1,32 @@
+// Interface for a task
 export interface TaskModel {
-    id: string;
-    name: string;
-    percentComplete?: string;
-    priority?: string;
-    createdDateTime?: string;
-    assignments?: TaskAssignedToModel[];
-    overAssignments?: TaskAssignedToModel[];
+  // Unique identifier for the task
+  id: string;
+
+  // Title of the task
+  title: string;
+
+  // Percentage of completion for the task (optional)
+  percentComplete?: string;
+
+  // Priority of the task (optional)
+  priority?: string;
+
+  // Array of users assigned to the task
+  assigned?: TaskAssignedToModel[];
+
+  // Array of users over-assigned to the task
+  overAssigned?: TaskAssignedToModel[];
 }
 
+// Interface for a user assigned to a task
 export interface TaskAssignedToModel {
-    userId: string;
-    userDisplayName: string;
-    userAvatar: any;
+  // Unique identifier for the user
+  userId: string;
+
+  // Display name of the user
+  displayName: string;
+
+  // Avatar of the user
+  avatar: any;
 }

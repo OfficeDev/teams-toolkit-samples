@@ -4,6 +4,7 @@ node_modules
 .DS_Store
 .env.teamsfx.local
 .env.teamsfx.dev
+appPackage/build
 
 subscriptionInfo.json
 build

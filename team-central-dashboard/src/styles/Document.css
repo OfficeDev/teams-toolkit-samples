@@ -1,0 +1,54 @@
+.has-doc-layout {
+  display: grid;
+  align-content: start;
+  overflow-x: hidden;
+  min-width: 18rem;
+}
+
+.doc-container {
+  display: grid;
+  height: max-content;
+  align-content: center;
+}
+
+.doc-divider {
+  height: 1px;
+  background: var(--colorNeutralStroke2);
+}
+
+.doc-item-content {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  column-gap: var(--spacingHorizontalL);
+  align-items: center;
+  height: 2.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.doc-item-active {
+  background-color: var(--colorNeutralBackground5Hover);
+}
+
+.doc-item-non-active {
+  background-color: var(--colorNeutralBackground1);
+}
+
+.doc-info-layout {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: var(--spacingHorizontalL);
+  align-items: center;
+}
+
+.doc-no-padding {
+  padding: 0;
+}
+
+.doc-header {
+  padding: 1rem 1.25rem 0rem 1.25rem;
+}
+
+.doc-footer {
+  padding: 0rem 1.25rem 1.25rem 1.25rem;
+}

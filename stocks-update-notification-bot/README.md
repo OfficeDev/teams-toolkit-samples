@@ -11,9 +11,9 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 - How to use a bot in different contexts
 
 ## Prerequisite to use this sample
-- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 
 ## Minimal path to awesome
@@ -21,7 +21,7 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 1. Clone the repo to your local workspace or directly download the source code.
 1. Open the project in Visual Studio Code.
 1. Update local environment variables in `env/.env.local` and `env/.env.local.user`
-	
+
 	 For the HTTP request to the public API to be succesful, the following environment variables need to be configured in the `env/.env.local` and `env/.env.local.user` files.
 
 	 ```sh
@@ -41,7 +41,7 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 
 ### Preview the app in Teams
 1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
-  
+
 ## Version History
 | Date         | Author        | Comments                               |
 | ------------ | ------------- | -------------------------------------- |

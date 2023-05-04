@@ -10,10 +10,10 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 - How to use Microsoft Graph API to build a custom Graph Connector.
 
 ## Prerequisite to use this sample
-- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Minimal path to awesome
 
@@ -45,7 +45,7 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
     1. Find the client id from the value of `AAD_APP_CLIENT_ID` in `env\.env.xxx` file (e.g. `.env.local` for local environment, `.env.dev` for dev environment).
 
     1. Sign in to Azure Portal with Microsoft 365 account.
-    
+
     1. In 'App registrations' blade of Azure Active Directory in Azure Portal, search the client id to find the AAD Application.
 
         ![Search Client ID](images/search-client-id.png)
@@ -54,7 +54,7 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 
         ![Admin Consent](images/admin-consent.png)
 
-1. You could try to ingest data into custom Graph Connector. 
+1. You could try to ingest data into custom Graph Connector.
 
     > **Note**: It may take about several minutes for the first time.
 

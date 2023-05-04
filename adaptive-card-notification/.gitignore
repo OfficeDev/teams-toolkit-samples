@@ -5,6 +5,7 @@ out
 # TeamsFx files
 env/.env.*.user
 env/.env.local
+appPackage/build
 
 # Dependency directories
 node_modules
@@ -31,3 +32,6 @@ _storage_emulator
 
 # production
 /build
+
+# Dev tool directories
+/devTools/

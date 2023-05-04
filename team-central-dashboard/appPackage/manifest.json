@@ -65,5 +65,6 @@
                 "templateText": "{actor} created task"
             }
         ]
-    }
+    },
+    "showLoadingIndicator": true
 }

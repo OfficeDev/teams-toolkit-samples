@@ -4,6 +4,7 @@ env/.env.local
 .DS_Store
 .localConfigs
 build
+appPackage/build
 
 # dependencies
 /node_modules
@@ -18,3 +19,6 @@ build
 .DS_Store
 .env
 .deployment
+
+# Dev tool directories
+/devTools/

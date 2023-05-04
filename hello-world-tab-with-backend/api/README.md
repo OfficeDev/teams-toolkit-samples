@@ -4,9 +4,9 @@ Azure Functions are a great way to add server-side behaviors to any Teams applic
 
 ## Prerequisites
 
-- [NodeJS](https://nodejs.org/)
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Develop
 
@@ -45,7 +45,7 @@ By default, Teams Toolkit and TeamsFx CLI will provision an Azure function app w
 - Sign in to [Azure Portal](https://azure.microsoft.com/).
 - Find your application's resource group and Azure Function app resource. The resource group name and the Azure function app name are stored in your project configuration file `.fx/env.*.json`. You can find them by searching the key `resourceGroupName` and `functionAppName` in that file.
 - After enter the home page of the Azure function app, you can find a navigation item called `Configuration` under `settings` group.
-- Click `Configuration`, you would see a list of settings. Then click `WEBSITE_NODE_DEFAULT_VERSION` and update the value to `~14` or `~16` according to your requirement.
+- Click `Configuration`, you would see a list of settings. Then click `WEBSITE_NODE_DEFAULT_VERSION` and update the value to `~16` or `~18` according to your requirement.
 - After Click `OK` button, don't forget to click `Save` button on the top of the page.
 
 Then following requests sent to the Azure function app will be handled by new node runtime version.

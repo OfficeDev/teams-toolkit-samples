@@ -4,9 +4,12 @@
     "description": "",
     "author": "",
     "engines": {
-        "node": "14 || 16 || 18"
+        "node": "16 || 18"
     },
     "scripts": {
+        "dev:teamsfx": "concurrently \"npm run start:tabs\" \"npm run start:api\"",
+        "start:api": "cd api && npm run dev:teamsfx",
+        "start:tabs": "cd tabs && npm run dev:teamsfx",
         "install:api": "cd api && npm install",
         "install:tabs": "cd tabs && npm install",
         "install": "concurrently \"npm run install:api\" \"npm run install:tabs\"",

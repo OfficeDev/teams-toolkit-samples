@@ -4,7 +4,7 @@
 
 This application runs in the sidebar of a Teams meeting and assists in deciding who will speak next. Anyone who wishes to speak can enter their name to be added to the list of speakers. When it's time for the next speaker, the "Next Speaker" button will advance to display the new speaker at the top. There are also buttons for removing names (if someone has to leave the meeting, for example) and for shuffling the names randomly.
 
-This application illustrates the use of Teams Live Share SDK and the Fluid Framework. The Live Share SDK provides a secure connection to a Fluid Relay service hosted in Microsoft 365. Each instance of the service is isolated to the current meeting automatically. The Fluid Relay Service, along with the Fluid Framework SDK, synchronizes the list of names across everyone who is using the app. This is not screen sharing - it's keeping a JavaScript object structure in sync among all attendees, and a small React user interface is displaying the data locally. 
+This application illustrates the use of Teams Live Share SDK and the Fluid Framework. The Live Share SDK provides a secure connection to a Fluid Relay service hosted in Microsoft 365. Each instance of the service is isolated to the current meeting automatically. The Fluid Relay Service, along with the Fluid Framework SDK, synchronizes the list of names across everyone who is using the app. This is not screen sharing - it's keeping a JavaScript object structure in sync among all attendees, and a small React user interface is displaying the data locally.
 
 ![whos next image](./assets/WhosNext.gif)
 
@@ -17,7 +17,7 @@ This application illustrates the use of Teams Live Share SDK and the Fluid Frame
 👀 Here is a quick look of how the app works!
 
 ⚙️They used [Teams Toolkit](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/teams-toolkit-fundamentals?pivots=visual-studio-code), a VS Code extension to create their base teams app from a sample meeting app available in the toolkit itself.
-Then they used [Fluid Framework](https://fluidframework.com/docs/) to synchronize the view for each attendee. 
+Then they used [Fluid Framework](https://fluidframework.com/docs/) to synchronize the view for each attendee.
 
 ⚠️ If you can upload a Teams app, you can run this. It doesn't require any Azure AD permission or other administrative consent.
 
@@ -26,7 +26,6 @@ Then they used [Fluid Framework](https://fluidframework.com/docs/) to synchroniz
 - [NodeJS](https://nodejs.org/en/) version as required by Teams Toolkit (v14 or v16 at the time of this sample)
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. Please don't develop in production; you can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
-
 
 ## Version history
 
@@ -59,7 +58,7 @@ Follow the instructions to [create a meeting in Microsoft Teams](https://support
 - Clone or download the repository to your local machine
 - Ensure Teams Toolkit and a supported version of node are installed
 - Within the "whos-next-meeting" folder, run `npm install` to install the developer and server-side dependencies
-- In Visual Studio Code: Start debugging the project by hitting the `F5` key in your keyboard. 
+- In Visual Studio Code: Start debugging the project by hitting the `F5` key in your keyboard.
   - Alternatively open the `Run and Debug Activity` panel(Ctrl+Shift+D) in Visual Studio Code and click the `Run and Debug` green arrow button.
 - The Teams web client will launch in your browser. Select `Add to a meeting`, then select the meeting you just created. (It may take a few minutes to appear on the list)
 - Click `Set up a tab` in the next step, it will take you to the meeting configuration page.

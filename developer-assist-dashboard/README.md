@@ -15,9 +15,9 @@ Developer Assist Dashboard shows you how to build a tab with Azure DevOps work i
 
 ## Prerequisite to use this sample
 
-- [NodeJS](https://nodejs.org/), fully tested on NodeJS 14, 16, 18
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
 ## Minimal path to awesome
 
@@ -27,7 +27,7 @@ Developer Assist Dashboard shows you how to build a tab with Azure DevOps work i
 
 1. Clone the repo to your local workspace or directly download the source code.
 1. Open the project in Visual Studio Code.
-1. Update `./src/configs.ts` file with required DevOps, GitHub and Planner configurations. For more details, read [Advanced usage of this sample](#advanced-usage-of-this-sample) section.
+1. Update `./env/.env.local.user` and `./env/.env.dev.user` files with required DevOps, GitHub and Planner configurations. For more details, read [Advanced usage of this sample](#advanced-usage-of-this-sample) section.
 1. Hit the `F5` key in your keyboard. Alternatively open the `Run and Debug Activity` panel(Ctrl+Shift+D) in Visual Studio Code and click the `Run and Debug` button.
 
 > The first time you run this sample, you need to login to consent some delegated permissions. If you don't see the consent page, please check if your browser blocks the pop-up window.
@@ -63,9 +63,9 @@ This widget displays DevOps Work Items including the title, type, assigned to an
 
 1. Login to [Azure DevOps](https://dev.azure.com/) and select the project you want to configure in the Developer Assist Dashboard. Copy the `organization name` and `project name` from the project url.
 1. In Azure DevOps, select **User settings** and then select **Personal access token**. Select **+ New token** to create a new personal access token, give a name to your token, select **Read** permission for Work Items and **Create**.
-1. Open `./src/configs.ts` file in Developer Assist Dashboard project:
-   - Add the values of **ORGANIZATION_NAME** and **PROJECT_NAME** with your `organization name` and `project name`.
-   - Add the value of **DEVOPS_PERSONAL_ACCESS_TOKEN** with your personal access token.
+1. Open `./env/.env.local.user` and `./env/.env.dev.user` files in Developer Assist Dashboard project:
+   - Add the values of **DEVOPS_ORGANIZATION_NAME** and **DEVOPS_PROJECT_NAME** with your `organization name` and `project name`.
+   - Add the value of **SECRET_DEVOPS_ACCESS_TOKEN** with your personal access token.
 
 ### GitHub Issues
 
@@ -75,9 +75,9 @@ This widget displays GitHub issues including the title, status and the url of th
 **To integrate GitHub issues in the dashboard, follow the instructions:**
 
 1. Login to [GitHub](https://github.com/) and select **Settings > Developer settings > Personal access token**. Select **Generate new token** to create new personal access token. Give a name to your token, select the repositories you want to access. Under `Repository permissions`, give **Read and write** access to **Issues**.
-1. Open `./src/configs.ts` file in Developer Assist Dashboard project:
-   - Add the value of **GITHUB_PERSONAL_ACCESS_TOKEN** with your personal access token.
-   - Add the values of **REPOSITORY_OWNER_NAME** and **REPOSITORY_NAME** with your GitHub username and your repository name.
+1. Open `./env/.env.local.user` and `./env/.env.dev.user` files in Developer Assist Dashboard project:
+   - Add the value of **SECRET_GITHUB_ACCESS_TOKEN** with your personal access token.
+   - Add the values of **GITHUB_REPO_NAME** and **GITHUB_REPO_OWNER** with your GitHub username and your repository name.
 
 ### Planner Tasks
 
@@ -90,9 +90,10 @@ This widget displays Planner tasks including the title of the task. This widget 
 1. Visit [Microsoft Graph Explorer](https://aka.ms/ge), select profile icon on the right side and login with your Microsoft 365 developer account.
    1. Type `https://graph.microsoft.com/v1.0/planner/plans` in Graph Explorer query box and select **Run query**. Copy the id of the plan you wish to use.
    1. Type `https://graph.microsoft.com/v1.0/planner/plans/{Plan-Id}/buckets` in Graph Explorer query box and replace {Plan-Id} with your **plan-id** and select **Run query**. Copy the id of the bucket you'd like to see in your dashboard.
-1. Open `./src/configs.ts` file in Developer Assist Dashboard project:
-   - Add the value of **PLAN_ID** with your plan id.
-   - Add the value of **BUCKET_ID** with your bucket id.
+1. Open `./env/.env.local.user` and `./env/.env.dev.user` files in Developer Assist Dashboard project:
+   - Add the value of **PlANNER_GROUP_ID** with your plan id.
+   - Add the value of **PLANNER_PLAN_ID** with your plan id.
+   - Add the value of **PLANNER_BUCKET_ID** with your bucket id.
 
 ## Version History
 

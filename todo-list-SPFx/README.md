@@ -14,12 +14,12 @@
 * An Microsoft 365 account. Get your own free Microsoft 365 tenant from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 * Use the team site in SharePoint to create a List.
     - Navigate to the [SharePoint team site](https://support.microsoft.com/en-us/office/create-a-team-site-in-sharepoint-ef10c1e7-15f3-42a3-98aa-b5972711777d), in `Home` tab, click `New` and select `List`.
-    > *Note: Each Team/Channel in Teams has a corresponding team site in SharePoint. You must navigate to the target SharePoint team site of the Team/Channel in which you want to add the "Todo List" app. The team site URL ends with xx.sharepoint.com/sites/xx*. eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}`. 
+    > *Note: Each Team/Channel in Teams has a corresponding team site in SharePoint. You must navigate to the target SharePoint team site of the Team/Channel in which you want to add the "Todo List" app. The team site URL ends with xx.sharepoint.com/sites/xx*. eg. `https://{your-tenant-name}.sharepoint.com/sites/{your-team-name}`.
     > In case you want to create a List in subsite of the team site, you will need manual steps to change the site url in *[./src/src/webparts/todoList/components/SharePointListManager.ts](./src/src/webparts/todoList/components/SharePointListManager.ts).*
     - Name the List 'To Do List'
     - Click `Add Column`, select `Single line of text`, name the column 'description'
     - Click `Add Column`, select `Yes/No`, name the column 'isCompleted', and set the default value to `No`.
-* [Teams Toolkit for VS Code](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+* [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 * [Optional] If you want your users see only the items created by themselves, add access control to your List.
     - In List Page, click `setting` button and then choose `list setting`.
     ![ListSetting1](images/ListSetting1.png)
@@ -58,7 +58,7 @@ Debug the app with Teams workbench
     ![Publish](images/Publish.png)
 
     It may take a few minutes to publish the Teams app.
-1. Login to Teams using your Microsoft 365 tenant admin account, same account you are using to create SharePoint environment and logging to VS Code extension. You will see your app in the `Apps - Built for your org`. 
+1. Login to Teams using your Microsoft 365 tenant admin account, same account you are using to create SharePoint environment and logging to VS Code extension. You will see your app in the `Apps - Built for your org`.
 ![addapp](images/addapp.png)
 1. Add the app to your Teams.
 ![addtoateam](images/addtoateam.png)

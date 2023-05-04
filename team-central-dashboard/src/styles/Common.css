@@ -1,0 +1,36 @@
+.concise-root {
+  padding: 1rem 1.25rem
+}
+
+#no-icon-header {
+  grid-template-columns: 1fr max-content;
+}
+
+.empty-layout {
+  display: grid;
+  height: 100%;
+  row-gap: var(--spacingVerticalL);
+  align-content: center;
+  justify-content: center;
+  min-height: 12rem;
+}
+
+.empty-layout img {
+  width: 120px;
+  justify-self: center;
+}
+
+.empty-layout span {
+  font-weight: var(--fontWeightSemibold);
+  justify-content: center;
+  text-align: center;
+}
+
+.loading-layout {
+  display: grid;
+}
+
+.footer-btn button {
+  color: var(--colorBrandForeground1);
+  padding: 0;
+}
