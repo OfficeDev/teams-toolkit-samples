@@ -37,7 +37,7 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 
 ### Preview the app in Teams
 1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
-2. Get the endpoint of the trigger. The `<endpoint>` can be found in `BOT_ENDPOINT` of the file `env/.env.dev`.
+2. Get the endpoint of the trigger. The `<endpoint>` can be found in `BOT_FUNCTION_ENDPOINT` of the file `env/.env.dev`.
 3. Send a POST request to the http trigger, you will receive the adaptive card message in Teams. The trigger can be addressable with the following route:
     - Default adaptive card: `<endpoint>/api/default-notification`
     - Columnset adaptive card: `<endpoint>/api/columnset-notification`
