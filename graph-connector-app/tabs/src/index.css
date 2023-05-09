@@ -11,3 +11,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #eeeeee;
 }
+
+@media only screen and (max-width: 768px) {
+  body {
+    width: fit-content;
+  }
+}
