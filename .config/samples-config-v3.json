@@ -234,6 +234,23 @@
             "time": "5 min to run",
             "configuration": "Manual configurations required",
             "suggested": false
+        },
+        {
+            "id": "teams-chef-bot",
+            "title": "Teams Chef Bot",
+            "shortDescription": "Demonstrates how to build bot with GPT.",
+            "fullDescription": "This is a conversational bot for Microsoft Teams that impersonates a Chef to help you you cook Teams apps.",
+            "tags": [
+                "Bot",
+                "TS",
+                "GPT"
+            ],
+            "time": "5min to run",
+            "configuration": "Manual configurations required",
+            "suggested": false,
+            "url": "https://github.com/OfficeDev/teams-chef-sample/tree/main/teams-chef-bot",
+            "packageLink": "https://github.com/OfficeDev/teams-chef-sample/archive/refs/heads/main.zip",
+            "relativePath": "teams-chef-sample-main/teams-chef-bot"
         }
     ]
 }
