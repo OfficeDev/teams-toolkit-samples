@@ -1,6 +1,6 @@
 # Getting Started with NPM Search Message Extension Sample
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=v3&repo=348288141&machine=basicLinux32gb&location=WestUs2&devcontainer_path=.devcontainer%2Fnpm-search-message-extension-codespaces%2Fdevcontainer.json)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=v3&repo=348288141&machine=basicLinux32gb&location=WestUs2&devcontainer_path=.devcontainer%2Fnpm-search-message-extension-codespaces%2Fdevcontainer.json&resume=1)
 
 Search based message extensions allow you to query your service and post that information in the form of a card, right into your message. This sample allows you to perform a quick search to NPM Registry for a package and insert package details into conversations for sharing with your co-workers. 
 
