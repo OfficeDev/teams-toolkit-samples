@@ -93,8 +93,8 @@ export class AxiosJWTDecorator {
     config?: AxiosRequestConfig
   ): Promise<AxiosRequestConfig> {
     const authConfig: TeamsUserCredentialAuthConfig = {
-      clientId: process.env.REACT_APP_CLIENT_ID!,
-      initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL!,
+      clientId: process.env.REACT_APP_CLIENT_ID ?? "",
+      initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL ?? "",
     };
     
     const credential = new TeamsUserCredential(authConfig);

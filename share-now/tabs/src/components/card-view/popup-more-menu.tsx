@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import * as React from "react";
-import { Popup } from "@fluentui/react-northstar";
+import { Popup, PopupProps } from "@fluentui/react-northstar";
 import { MoreIcon } from "@fluentui/react-icons-northstar";
 import { IDiscoverPost } from "./discover-wrapper-page";
 import MoreMenuContent from "./more-menu-content";
@@ -48,7 +48,7 @@ const PopupMoreMenu: React.FunctionComponent<IPopupMoreMenu> = props => {
 
   return (
     <Popup
-      onOpenChange={(e, { open }:any) => setMenuOpen(open)}
+      onOpenChange={(_, props?: PopupProps) => setMenuOpen(props?.open ?? false)}
       open={menuOpen}
       content={
         <MoreMenuContent cardDetails={props.cardDetails} onCancel={onCancel} onEditSubmit={onEditSubmit} onMenuItemClick={onItemClick} />
