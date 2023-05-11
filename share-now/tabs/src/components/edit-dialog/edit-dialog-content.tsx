@@ -382,7 +382,7 @@ class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEd
               </Flex>
               <Flex gap="gap.smaller" className="input-label-space-between">
                 <Flex.Item>
-                  <Input maxLength={Resources.postTitleMaxLength} placeholder={this.localize("titlePlaceholder")} fluid value={this.state.postDetails.title} onChange={(event: any) => this.onHeadingChange(event.target.value)} />
+                  <Input maxLength={Resources.postTitleMaxLength} placeholder={this.localize("titlePlaceholder")} fluid value={this.state.postDetails.title} onChange={(event: {target}) => this.onHeadingChange(event.target.value)} />
                 </Flex.Item>
               </Flex>
 
@@ -394,7 +394,7 @@ class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEd
               </Flex>
               <Flex gap="gap.smaller" className="text-area input-label-space-between">
                 <Flex.Item>
-                  <TextArea maxLength={Resources.postDesriptionMaxLength} placeholder={this.localize("descriptionPlaceholder")} fluid className="text-area" value={this.state.postDetails.description} onChange={(event: any) => this.onDescriptionChange(event.target.value)} />
+                  <TextArea maxLength={Resources.postDesriptionMaxLength} placeholder={this.localize("descriptionPlaceholder")} fluid className="text-area" value={this.state.postDetails.description} onChange={(event: {target}) => this.onDescriptionChange(event.target.value)} />
                 </Flex.Item>
               </Flex>
 
@@ -406,7 +406,7 @@ class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEd
               </Flex>
               <Flex gap="gap.smaller" className="input-label-space-between">
                 <Flex.Item>
-                  <Input maxLength={Resources.postContentUrlMaxLength} placeholder={this.localize("linkPlaceholder")} fluid value={this.state.postDetails.contentUrl} onChange={(event: any) => this.onLinkChange(event.target.value)} />
+                  <Input maxLength={Resources.postContentUrlMaxLength} placeholder={this.localize("linkPlaceholder")} fluid value={this.state.postDetails.contentUrl} onChange={(event: {target}) => this.onLinkChange(event.target.value)} />
                 </Flex.Item>
               </Flex>
 
@@ -419,7 +419,7 @@ class EditItemDialogContent extends React.Component<IEditDialogContentProps, IEd
                 </Flex.Item>
               </Flex>
               <Flex gap="gap.smaller" vAlign="center" className="input-label-space-between">
-                <Input maxLength={Resources.tagMaxLength} placeholder={this.localize("tagPlaceholder")} fluid value={this.state.tag} onKeyDown={this.onTagKeyDown} onChange={(event: any) => this.onTagChange(event.target.value)} />
+                <Input maxLength={Resources.tagMaxLength} placeholder={this.localize("tagPlaceholder")} fluid value={this.state.tag} onKeyDown={this.onTagKeyDown} onChange={(event: {target}) => this.onTagChange(event.target.value)} />
                 <Flex.Item push>
                   <div></div>
                 </Flex.Item>

@@ -58,5 +58,8 @@
     "@types/react-dom": "^16.8.0",
     "@types/react-router-dom": "^5.3.3",
     "env-cmd": "^10.1.0"
+  },
+  "overrides": {
+    "autoprefixer": "10.4.5"
   }
 }
