@@ -11,7 +11,7 @@
 1. For local env, fill in the values for `BOT_DOMAIN` and `BOT_ENDPOINT` with your ngrok URL in the `env/.env.local` file.
    ```
    BOT_DOMAIN=sample-id.ngrok.io
-   BOT_ENDPOINT=http://sample-id.ngrok.io
+   BOT_ENDPOINT=https://sample-id.ngrok.io
    ```
 1. Provision.
     ```
