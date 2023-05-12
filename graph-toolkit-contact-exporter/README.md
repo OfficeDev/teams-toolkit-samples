@@ -38,7 +38,7 @@ Graph Toolkit Contact Exporter sample APP provides an easy way to export your te
 - From VSCode
 
   1. Sign in to Azure by clicking `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-  1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
+  1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
   1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
 
 - From TeamsFx CLI

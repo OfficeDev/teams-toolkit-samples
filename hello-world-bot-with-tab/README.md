@@ -36,7 +36,7 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
 
 - From VS Code:
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-    1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
+    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
     1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
 
 - From TeamsFx CLI:
