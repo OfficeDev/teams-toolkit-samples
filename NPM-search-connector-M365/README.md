@@ -22,7 +22,7 @@ NPM Search Connector is a Message Extension that allows you to perform a quick s
 1. Open the `Run and Debug` Activity Panel. Select a target Microsoft application where the app runs: `Debug in Teams` or `Debug in Outlook`.
 
 ### Deploy the app to Azure
-1. Open the command palette and select `Teams: Provision in the cloud`.
+1. Open the command palette and select `Teams: Provision`.
 1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
 
 ### Preview the app

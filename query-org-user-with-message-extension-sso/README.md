@@ -23,7 +23,7 @@ This is a simple search-based message extension app demonstrating how to integra
 ### Deploy the app to Azure
 Deploy your project to Azure by following these steps:
 1. Open Teams Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
-2. Open Teams Toolkit and click `Teams: Provision in the cloud` in the `DEVELOPMENT` section. Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Provision in the cloud` command.
+2. Open Teams Toolkit and click `Provision` in the `LIFECYCLE` section. Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Provision` command.
 3. Open the Teams Toolkit and click `Deploy to the cloud` in the `DEVELOPMENT` section. Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Deploy to the cloud` command.
 > Note: Provision Azure cloud resources and deploy to Azure may cause charges to your Azure Subscription.
 ### Preview the app in Teams

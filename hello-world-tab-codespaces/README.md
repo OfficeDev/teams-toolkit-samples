@@ -35,7 +35,7 @@ Hello World Tab shows you how to build a tab app without single sign on.
 - From VS Code: 
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
     1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
-    1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
+    1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 - From TeamsFx CLI:
     1. Run command: `teamsfx account login azure`.
     1. Run command: `teamsfx provision --env dev`.

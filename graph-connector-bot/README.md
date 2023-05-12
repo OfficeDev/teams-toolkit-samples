@@ -28,7 +28,7 @@ This sample app showcases how to build a Teams command bot that queries custom d
 
 ### Deploy the app to Azure
 > If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
-1. Open the command palette and select `Teams: Provision in the cloud`. You will be asked to select Azure resource group to provision the sample.
+1. Open the command palette and select `Teams: Provision`. You will be asked to select Azure resource group to provision the sample.
 1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
 
 ### Preview the app in Teams
