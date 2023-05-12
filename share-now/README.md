@@ -23,7 +23,7 @@ Share Now promotes the exchange of information between colleagues by enabling us
 1. Open the project in Visual Studio Code.
 1. Open **env/.env.dev.user** file, set value for `SQL_USER_NAME` and `SQL_PASSWORD`.
 1. Open the command palette and select: `Teams: Provision`. The toolkit will help you to provision Azure SQL.
-1. Once provision is completed, open the command palette and select: `Teams: Deploy to the cloud`.
+1. Once provision is completed, open the command palette and select: `Teams: Deploy`.
 1. Open **env/.env.dev** file, you could get the database name in `PROVISIONOUTPUT__AZURESQLOUTPUT__DATABASENAME` output. [Set IP address of your computer into server-level IP firewall rule from the database overview page](https://docs.microsoft.com/en-us/azure/azure-sql/database/firewall-configure#from-the-database-overview-page).
 1. In Azure portal, find the database by `databaseName` and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create a table:
     ```sql

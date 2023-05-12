@@ -23,7 +23,7 @@ NPM Search Connector is a Message Extension that allows you to perform a quick s
 
 ### Deploy the app to Azure
 1. Open the command palette and select `Teams: Provision`.
-1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
+1. Once provision is completed, open the command palette and select `Teams: Deploy`.
 
 ### Preview the app
 1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open the `Run and Debug` Activity Panel. Select a target Microsoft application where the app runs: `Launch Remote in Teams` or `Launch Remote in Outlook`.
