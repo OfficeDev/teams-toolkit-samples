@@ -30,8 +30,7 @@
             "configurationUrl": "${{TAB_ENDPOINT}}/index.html#/config",
             "canUpdateConfiguration": true,
             "scopes": [
-                "team",
-                "groupChat"
+                "team"
             ]
         }
     ],
