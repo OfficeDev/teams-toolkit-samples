@@ -84,5 +84,5 @@
         "${{TAB_DOMAIN}}",
         "${{BOT_DOMAIN}}"
     ],
-    "showLoadingIndicator": true
+    "showLoadingIndicator": false
 }
