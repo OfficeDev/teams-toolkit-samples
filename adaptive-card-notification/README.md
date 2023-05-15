@@ -32,8 +32,8 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 
 ### Deploy the app to Azure
 1. Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-1. Open the command palette and select `Teams: Provision in the cloud`.
-1. Once provision is completed, open the command palette and select `Teams: Deploy to the cloud`.
+1. Open the command palette and select `Teams: Provision`.
+1. Once provision is completed, open the command palette and select `Teams: Deploy`.
 
 ### Preview the app in Teams
 1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
