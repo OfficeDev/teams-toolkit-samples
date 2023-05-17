@@ -42,7 +42,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
   1. In the `env/.env.local` file, fill in the values for `BOT_DOMAIN` and `BOT_ENDPOINT` with your ngrok URL.
      ```
      BOT_DOMAIN=sample-id.ngrok.io
-     BOT_ENDPOINT=http://sample-id.ngrok.io
+     BOT_ENDPOINT=https://sample-id.ngrok.io
      ```
   1. Run command: `teamsfx provision --env local` .
   1. Run command: `teamsfx deploy --env local` .
@@ -55,8 +55,8 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 - From VSCode
 
   1. Sign in to Azure by clicking `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-  1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
-  1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
+  1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
+  1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 
 - From TeamsFx CLI
   1. Run command: `teamsfx account login azure`.

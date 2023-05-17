@@ -1,6 +1,6 @@
 # Getting Started with NPM Search Message Extension Sample
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=dev&repo=348288141&machine=basicLinux32gb&location=WestUs2&devcontainer_path=.devcontainer%2Fnpm-search-message-extension-codespaces%2Fdevcontainer.json)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=v3&repo=348288141&machine=basicLinux32gb&location=WestUs2&devcontainer_path=.devcontainer%2Fnpm-search-message-extension-codespaces%2Fdevcontainer.json&resume=1)
 
 Search based message extensions allow you to query your service and post that information in the form of a card, right into your message. This sample allows you to perform a quick search to NPM Registry for a package and insert package details into conversations for sharing with your co-workers. 
 
@@ -32,8 +32,8 @@ Search based message extensions allow you to query your service and post that in
 ### Deploy the app to Azure
 - From VS Code: 
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-    1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
-    1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
+    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
+    1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 - From TeamsFx CLI:
     1. Run command: `teamsfx account login azure`.
     1. Run command: `teamsfx provision --env dev`.

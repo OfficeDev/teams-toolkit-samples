@@ -25,7 +25,7 @@ Stocks Update Notifcation Bot is a an application that can be installed in diffe
 ### Deploy the app to Azure
 You can create and automatically configure cloud resources for hosting your app in Azure using Teams Toolkit.
 1. If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
-1. Select the **StocksUpdateNotificationBot > Teams Toolkit > Provision in the Cloud** menu. In the Select your subscription window, choose the Azure subscription you want to use to create resources with. Teams Toolkit will create Azure resources in this subscription but no code is deployed during this step.
+1. Select the **StocksUpdateNotificationBot > Teams Toolkit > Provision** menu. In the Select your subscription window, choose the Azure subscription you want to use to create resources with. Teams Toolkit will create Azure resources in this subscription but no code is deployed during this step.
 1. Select the **StocksUpdateNotificationBot > Teams Toolkit > Deploy in the Cloud** menu to deploy your project to these new resources.
 
 ### Preview the app in Teams

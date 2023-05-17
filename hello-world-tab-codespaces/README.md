@@ -1,6 +1,6 @@
 # Getting Started with Hello World Tab Sample
 
-[![Open app in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=dev&repo=348288141&machine=standardLinux32gb&location=WestUs2&devcontainer_path=.devcontainer%2Fhello-world-tab-codespaces%2Fdevcontainer.json)
+[![Open app in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=v3&repo=348288141&machine=standardLinux32gb&location=WestUs2&devcontainer_path=.devcontainer%2Fhello-world-tab-codespaces%2Fdevcontainer.json&resume=1)
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
@@ -34,8 +34,8 @@ Hello World Tab shows you how to build a tab app without single sign on.
 ### Deploy the app to Azure
 - From VS Code: 
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-    1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
-    1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
+    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
+    1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 - From TeamsFx CLI:
     1. Run command: `teamsfx account login azure`.
     1. Run command: `teamsfx provision --env dev`.

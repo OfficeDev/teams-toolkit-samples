@@ -20,11 +20,11 @@
     "login": "office-addin-dev-settings m365-account login",
     "logout": "office-addin-dev-settings m365-account logout",
     "prettier": "office-addin-lint prettier",
-    "start": "office-addin-debugging start ../build/AppPackage/appPackage.local.zip",
-    "start:desktop": "office-addin-debugging start ../build/AppPackage/appPackage.local.zip desktop",
-    "start:web": "office-addin-debugging start ../build/AppPackage/appPackage.local.zip web",
-    "stop": "office-addin-debugging stop ../build/AppPackage/manifest.local.json",
-    "validate": "office-addin-manifest validate ../build/AppPackage/manifest.local.json",
+    "start": "office-addin-debugging start ../appPackage/build/appPackage.local.zip",
+    "start:desktop": "office-addin-debugging start ../appPackage/build/appPackage.local.zip desktop",
+    "start:web": "office-addin-debugging start ../appPackage/build/appPackage.local.zip web",
+    "stop": "office-addin-debugging stop ../appPackage/build/manifest.local.json",
+    "validate": "office-addin-manifest validate ../appPackage/build/manifest.local.json",
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {

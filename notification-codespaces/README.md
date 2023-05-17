@@ -1,6 +1,6 @@
 # Getting Started with Notification Sample
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=dev&repo=348288141&machine=basicLinux32gb&location=WestUs2&devcontainer_path=.devcontainer%2Fnotification-codespaces%2Fdevcontainer.json)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=v3&repo=348288141&machine=basicLinux32gb&location=WestUs2&devcontainer_path=.devcontainer%2Fnotification-codespaces%2Fdevcontainer.json&resume=1)
 
 This sample showcases an app that send a message to Teams with Adaptive Cards triggered by a HTTP post request. You can further extend the sample to consume, transform and post events to individual, chat or channel in Teams.
 
@@ -43,8 +43,8 @@ The app is built using the TeamsFx SDK, which provides a simple set of functions
 ### Deploy the app to Azure
 - From VS Code: 
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-    1. Click `Provision in the Cloud` from `DEPLOYMENT` section or open the command palette and select: `Teams: Provision in the Cloud`.
-    1. Click `Deploy to the Cloud` or open the command palette and select: `Teams: Deploy to the Cloud`.
+    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
+    1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 - From TeamsFx CLI:
     1. Run command: `teamsfx account login azure`.
     1. Run command: `teamsfx provision --env dev`.
