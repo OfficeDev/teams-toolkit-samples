@@ -23,7 +23,7 @@
         "extensions.autoCheckUpdates": false
       },
       "extensions": [
-        "TeamsDevApp.ms-teams-vscode-extension@prerelease"
+        "TeamsDevApp.ms-teams-vscode-extension"
       ]
     }
   },
