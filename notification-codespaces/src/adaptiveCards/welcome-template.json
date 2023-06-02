@@ -1,0 +1,44 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.4",
+    "body": [
+      {
+        "type": "TextBlock",
+        "text": "Get started using Advocacy in Teams",
+        "size": "Large",
+        "weight": "Bolder",
+        "style": "heading",
+        "wrap": true
+      },
+      {
+        "type": "TextBlock",
+        "text": "Sprinklr Advocacy",
+        "isSubtle": true,
+        "color": "Accent",
+        "weight": "Bolder",
+        "size": "Small",
+        "spacing": "None"
+      },
+      {
+        "type": "TextBlock",
+        "text": "Here are some of the things you can do:\r- Set up personal notifications to stay up to date with the content being shared on Advocacy\r- View, Like, Comment and Share new content from teams\r- Get notified when you earn points",
+        "isSubtle": true,
+        "wrap": true
+      }
+    ],
+    "actions": [
+      {
+        "type": "Action.OpenUrl",
+        "title": "Sign In",
+        "url": "${notificationUrl}"
+      },
+      {
+        "type": "Action.Execute",
+        "title": "Take a Tour",
+        "verb": "tour",
+        "fallback": "Action.Submit",
+        "tooltip": "Click here to see the tour."
+      }
+    ]
+  }

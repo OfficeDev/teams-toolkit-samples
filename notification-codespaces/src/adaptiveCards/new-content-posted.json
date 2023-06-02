@@ -1,0 +1,61 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.4",
+    "body": [
+      {
+        "type": "TextBlock",
+        "text": "${title}",
+        "size": "Large",
+        "weight": "Bolder",
+        "style": "heading",
+        "wrap": true
+      },
+      {
+        "type": "TextBlock",
+        "text": "${appName}",
+        "isSubtle": true,
+        "color": "Accent",
+        "weight": "Bolder",
+        "size": "Small",
+        "spacing": "None"
+      },
+      {
+        "type": "TextBlock",
+        "text": "${description}",
+        "isSubtle": true,
+        "wrap": true
+      },
+      {
+        "type": "Image",
+        "url": "https://qa4-cdata-app.sprinklr.com/DAM/0/9e53e924-f0fe-46c6-827b-43b3a0265a58-383799432/advocacy_400002_1685518999974.jpg",
+        "altText": "Ferrari Image",
+        "width": "stretch"
+      }
+    ],
+    "actions": [
+      {
+        "type": "Action.OpenUrl",
+        "title": "View Original Post",
+        "url": "${notificationUrl}"
+      },
+      {
+        "type": "Action.OpenUrl",
+        "title": "Share",
+        "url": "${notificationUrl}"
+      },
+      {
+        "type": "Action.Execute",
+        "title": "Like",
+        "verb": "userlike",
+        "fallback": "Action.Submit",
+        "tooltip": "Click here to like the post."
+      },
+      {
+        "type": "Action.OpenUrl",
+        "title": "Comment",
+        "url": "${notificationUrl}",
+        "tooltip": "Add comment on this post."
+      }
+    ]
+  }

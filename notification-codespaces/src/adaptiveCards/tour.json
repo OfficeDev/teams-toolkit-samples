@@ -1,0 +1,34 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.4",
+    "body": [
+        {
+            "type": "Image",
+            "url": "${imageUrl}",
+            "altText": "Ferrari Image",
+            "width": "stretch"
+        },
+      {
+        "type": "TextBlock",
+        "text": "${title}",
+        "size": "Large",
+        "weight": "Bolder",
+        "style": "heading",
+        "wrap": true
+      },
+      {
+        "type": "TextBlock",
+        "text": "${description}",
+        "isSubtle": true,
+        "wrap": true
+      }
+    ],
+    "actions": [
+      {
+        "type": "Action.OpenUrl",
+        "title": "${buttonText}",
+        "url": "${notificationUrl}"
+      }
+    ]
+  }

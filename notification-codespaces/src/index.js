@@ -1,4 +1,6 @@
 const notificationTemplate = require("./adaptiveCards/notification-default.json");
+const newContentPostedNotificationTemplate = require("./adaptiveCards/new-content-posted.json");
+const gamificationNotificationTempalte = require("./adaptiveCards/gamification-points-earned.json");
 const { notificationApp } = require("./internal/initialize");
 const { AdaptiveCards } = require("@microsoft/adaptivecards-tools");
 const { TeamsBot } = require("./teamsBot");
@@ -88,10 +90,58 @@ server.post(
   }
 );
 
+// curl -X POST http://localhost:3978/api/notification/newContentPosted
+server.post(
+  "/api/notification/newContentPosted",
+  restify.plugins.queryParser(),
+  restify.plugins.bodyParser(), // Add more parsers if needed
+  async (req, res) => {
+    for (const target of await notificationApp.notification.installations()) {
+      await target.sendAdaptiveCard(
+        AdaptiveCards.declare(newContentPostedNotificationTemplate).render({
+          title: "New Content Posted!",
+          appName: "Sprinklr Advocacy",
+          description: `This is a sample notification for content being posted from Advocacy site.`,
+          notificationUrl: "https://579d299c-2e66-4f5d-a199-720758b14096.qa4-advocacy-client.sprinklr.com/content/ADVOCACY_205_6476fa9812a2131c0b3f622e?referrer=MS_TEAMS",
+          imageUrl: "https://qa4-cdata-app.sprinklr.com/DAM/0/9e53e924-f0fe-46c6-827b-43b3a0265a58-383799432/advocacy_400002_1685518999974.jpg",
+        })
+      );
+    }
+
+    res.json({});
+  }
+);
+
+// curl -X POST http://localhost:3978/api/notification/gamification
+server.post(
+  "/api/notification/gamification",
+  restify.plugins.queryParser(),
+  restify.plugins.bodyParser(), // Add more parsers if needed
+  async (req, res) => {
+    for (const target of await notificationApp.notification.installations()) {
+      await target.sendAdaptiveCard(
+        AdaptiveCards.declare(gamificationNotificationTempalte).render({
+          title: "Points earned!",
+          appName: "Sprinklr Advocacy",
+          description: `Congratulation! You have earned 8 points for sharing on social channel.`,
+          notificationUrl: "https://579d299c-2e66-4f5d-a199-720758b14096.qa4-advocacy-client.sprinklr.com/content/ADVOCACY_205_6476fa9812a2131c0b3f622e?referrer=MS_TEAMS",
+        })
+      );
+    }
+
+    res.json({});
+  }
+);
+
+
+
 // Bot Framework message handler.
 const teamsBot = new TeamsBot();
 server.post("/api/messages", async (req, res) => {
+  console.log("User typed message mohan");
   await notificationApp.requestHandler(req, res, async (context) => {
     await teamsBot.run(context);
   });
 });
+
+
