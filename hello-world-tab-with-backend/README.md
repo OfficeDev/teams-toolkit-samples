@@ -6,6 +6,8 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 
 ![Hello World Tab](images/helloWorld-tab-with-backend.gif)
 
+> Note: This sample will only provision [single tenant](https://learn.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Azure Active Directory app. For multi-tenant support, please refer to this [wiki](https://aka.ms/teamsfx-multi-tenant).
+
 ## This sample illustrates
 
 - How to use Teams Toolkit to create a Teams tab app.

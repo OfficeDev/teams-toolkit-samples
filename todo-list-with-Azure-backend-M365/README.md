@@ -3,6 +3,8 @@ Todo List app helps to manage your personal to do items. This app can be install
 
 ![Todo Item List](images/todo-list-M365.gif)
 
+> Note: This sample will only provision [single tenant](https://learn.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Azure Active Directory app. For multi-tenant support, please refer to this [wiki](https://aka.ms/teamsfx-multi-tenant).
+
 ## This sample illustrates
 - How to use Teams Toolkit to build frontend hosting on Azure for your tab app.
 - How to use Teams Toolkit to build backend hosting on Azure for your tab app.

@@ -4,6 +4,8 @@ Graph Toolkit Contact Exporter sample APP provides an easy way to export your te
 
 ![Contact Exporter Overview](images/overview.gif)
 
+> Note: This sample will only provision [single tenant](https://learn.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Azure Active Directory app. For multi-tenant support, please refer to this [wiki](https://aka.ms/teamsfx-multi-tenant).
+
 ## This sample illustrates
 
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.

@@ -4,6 +4,8 @@ Share Now promotes the exchange of information between colleagues by enabling us
 
 ![Share Now](images/shareNow.gif)
 
+> Note: This sample will only provision [single tenant](https://learn.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Azure Active Directory app. For multi-tenant support, please refer to this [wiki](https://aka.ms/teamsfx-multi-tenant).
+
 ## This sample illustrates
 - How to build frontend hosting on Azure for your tab app.
 - How to build backend hosting on Azure for your tab app.

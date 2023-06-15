@@ -6,6 +6,8 @@ Developer Assist Dashboard shows you how to build a tab with Azure DevOps work i
 
 <https://user-images.githubusercontent.com/36196437/223398461-e3f5a521-6439-407c-a458-584c769f730b.mp4>
 
+> Note: This sample will only provision [single tenant](https://learn.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Azure Active Directory app. For multi-tenant support, please refer to this [wiki](https://aka.ms/teamsfx-multi-tenant).
+
 ## This sample illustrates
 
 - How to use TeamsFx to embed a canvas containing multiple cards that provide an overview of data or content in your tab app.
