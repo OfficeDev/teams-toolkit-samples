@@ -12,6 +12,8 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 
 ![SSO Command and Response Bot](./images/sso-command-bot.gif)
 
+> Note: SSO for command bot only supports personal chat. This bot may not work if you add it to a team or a group chat.
+
 ## This sample illustrates
 
 - How to use Teams Toolkit to create a Teams bot app.
