@@ -62,9 +62,9 @@ export class SSODialog extends ComponentDialog {
   }
 
   async setSSOOperation(context: TurnContext,
-    handler: string
+    commandName: string
   ) {
-    await this.userStateAccessor.set(context, handler);
+    await this.userStateAccessor.set(context, commandName);
   }
 
   async resetSSOOperation(context: TurnContext) {
@@ -107,7 +107,7 @@ export class SSODialog extends ComponentDialog {
         "There is an issue while trying to sign you in and retrieve your profile photo, please type \"show\" command to login and consent permissions again."
       );
     } else {
-      const SSOCommandName = (await this.userStateAccessor.get(stepContext.context));
+      const SSOCommandName = await this.userStateAccessor.get(stepContext.context);
       // Once got ssoToken, run operation that depends on ssoToken
       if (SSOCommandName) {
         const operationWithSSO = SSOCommandMap.get(SSOCommandName);
