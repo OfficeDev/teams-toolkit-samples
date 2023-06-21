@@ -34,7 +34,7 @@ export class SSODialog extends ComponentDialog {
   constructor(userState: UserState, dedupStorage: Storage) {
     super(DIALOG_NAME);
 
-    const initialLoginEndpoint =`https://${config.botDomain}/auth-start.html` ;
+    const initialLoginEndpoint = `https://${config.botDomain}/auth-start.html`;
 
     const dialog = new TeamsBotSsoPrompt(
       oboAuthConfig,
