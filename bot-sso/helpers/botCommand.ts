@@ -50,7 +50,7 @@ export class SSOCommand extends BotCommand {
   async run(parameters: any): Promise<any> {
     this.validateParameters(parameters);
     const ssoDialog = parameters.ssoDialog;
-    ssoDialog.setSSOOperation(this.operationWithSSOToken);
+    await ssoDialog.setSSOOperation(parameters.context,this.constructor.name);
     await ssoDialog.run(parameters.context, parameters.dialogState);
   }
 }
