@@ -247,10 +247,7 @@
             ],
             "time": "5min to run",
             "configuration": "Manual configurations required",
-            "suggested": false,
-            "url": "https://github.com/OfficeDev/teams-chef-sample/tree/main/teams-chef-bot",
-            "packageLink": "https://github.com/OfficeDev/teams-chef-sample/archive/refs/heads/main.zip",
-            "relativePath": "teams-chef-sample-main/teams-chef-bot"
+            "suggested": false
         }
     ]
 }
