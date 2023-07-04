@@ -19,5 +19,4 @@ tsconfig.json
 /node_modules/typescript
 /appPackage/
 /infra/
-/teamsfx/
-/templates/
+/images/

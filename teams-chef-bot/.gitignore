@@ -1,0 +1,14 @@
+.env
+.deployment
+*.zip
+
+# TeamsFx files
+env/.env.*.user
+env/.env.local
+build
+appPackage/build
+.localSettings
+.notification.localstore.json
+
+/node_modules
+/lib
