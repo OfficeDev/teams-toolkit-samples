@@ -6,18 +6,18 @@ import {
   ComponentDialog,
 } from "botbuilder-dialogs";
 import {
+  Activity,
   ActivityTypes,
-  StatePropertyAccessor,
   Storage,
   tokenExchangeOperationName,
   TurnContext,
-  UserState,
 } from "botbuilder";
 import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 import oboAuthConfig from "../authConfig";
 import config from "../config";
 import { SSOCommandMap } from "../commands";
+import { MatchTerm } from "./botCommand";
 
 const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
@@ -27,11 +27,10 @@ export class SSODialog extends ComponentDialog {
   private requiredScopes: string[] = ["User.Read"]; // hard code the scopes for demo purpose only
   private dedupStorage: Storage;
   private dedupStorageKeys: string[];
-  private userStateAccessor: StatePropertyAccessor<any>;
 
   // Developer controlls the lifecycle of credential provider, as well as the cache in it.
   // In this sample the provider is shared in all conversations
-  constructor(userState: UserState, dedupStorage: Storage) {
+  constructor(dedupStorage: Storage) {
     super(DIALOG_NAME);
 
     const initialLoginEndpoint = `https://${config.botDomain}/auth-start.html`;
@@ -57,18 +56,7 @@ export class SSODialog extends ComponentDialog {
 
     this.initialDialogId = MAIN_WATERFALL_DIALOG;
     this.dedupStorage = dedupStorage;
-    this.userStateAccessor = userState.createProperty<any>('operationWithSSO');
     this.dedupStorageKeys = [];
-  }
-
-  async setSSOOperation(context: TurnContext,
-    commandName: string
-  ) {
-    await this.userStateAccessor.set(context, commandName);
-  }
-
-  async resetSSOOperation(context: TurnContext) {
-    await this.userStateAccessor.delete(context);
   }
 
   /**
@@ -88,6 +76,9 @@ export class SSODialog extends ComponentDialog {
   }
 
   async ssoStep(stepContext: any) {
+    const turnContext = stepContext.context as TurnContext;
+    const text = this.getActivityText(turnContext.activity);
+    stepContext.options.commandMessage = text;
     return await stepContext.beginDialog(TEAMS_SSO_PROMPT_ID);
   }
 
@@ -102,16 +93,21 @@ export class SSODialog extends ComponentDialog {
 
   async executeOperationWithSSO(stepContext: any) {
     const tokenResponse = stepContext.result;
+    const commandMessage = stepContext.options.commandMessage;
     if (!tokenResponse || !tokenResponse.ssoToken) {
       await stepContext.context.sendActivity(
         "There is an issue while trying to sign you in and retrieve your profile photo, please type \"show\" command to login and consent permissions again."
       );
     } else {
-      const SSOCommandName = await this.userStateAccessor.get(stepContext.context);
       // Once got ssoToken, run operation that depends on ssoToken
-      if (SSOCommandName) {
-        const operationWithSSO = SSOCommandMap.get(SSOCommandName);
-        await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+      if (commandMessage) {
+        for (const key of SSOCommandMap.keys()) {
+          if (this.expressionMatchesText(key, commandMessage)) {
+            const operationWithSSO = SSOCommandMap.get(key);
+            await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+            return await stepContext.endDialog();
+          }
+        }
       }
     }
     return await stepContext.endDialog();
@@ -126,7 +122,6 @@ export class SSODialog extends ComponentDialog {
     this.dedupStorageKeys = this.dedupStorageKeys.filter(
       (key) => key.indexOf(conversationId) < 0
     );
-    this.resetSSOOperation(context);
   }
 
   // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.
@@ -175,5 +170,34 @@ export class SSODialog extends ComponentDialog {
       );
     }
     return `${channelId}/${conversationId}/${value.id}`;
+  }
+
+  private getActivityText(activity: Activity): string {
+    let text = activity.text;
+    const removedMentionText = TurnContext.removeRecipientMention(activity);
+    if (removedMentionText) {
+      text = removedMentionText
+        .toLowerCase()
+        .replace(/\n|\r\n/g, "")
+        .trim();
+    }
+    return text;
+  }
+
+  private expressionMatchesText(matchPatterns: MatchTerm[],userInput: string): RegExpExecArray | boolean {
+    let matchResult: RegExpExecArray | boolean;	   
+    for (const pattern of matchPatterns) {	
+      if (typeof pattern == "string") {	
+        matchResult = new RegExp(pattern).exec(userInput);	
+      } else if (pattern instanceof RegExp) {	
+        matchResult = pattern.exec(userInput);	
+      } else {	
+        matchResult = pattern(userInput);	
+      }	
+      if (matchResult) {	
+        return matchResult;	
+      }	
+    }	
+    return false;	
   }
 }
