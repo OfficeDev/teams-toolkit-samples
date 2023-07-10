@@ -77,8 +77,7 @@ export class SSODialog extends ComponentDialog {
 
   async ssoStep(stepContext: any) {
     const turnContext = stepContext.context as TurnContext;
-    const text = this.getActivityText(turnContext.activity);
-    stepContext.options.commandMessage = text;
+    stepContext.options.commandMessage = this.getActivityText(turnContext.activity);
     return await stepContext.beginDialog(TEAMS_SSO_PROMPT_ID);
   }
 
