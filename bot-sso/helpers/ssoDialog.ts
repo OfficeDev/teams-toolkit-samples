@@ -16,8 +16,7 @@ import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 import oboAuthConfig from "../authConfig";
 import config from "../config";
-import { SSOCommands } from "../commands";
-import { MatchTerm } from "./botCommand";
+import { SSOCommandMap, SSOCommands } from "../commands";
 
 const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
@@ -99,15 +98,10 @@ export class SSODialog extends ComponentDialog {
       return await stepContext.endDialog();
     }
     // Once got ssoToken, run operation that depends on ssoToken
-    const commandMessage = stepContext.options.commandMessage;
-    if (commandMessage) {
-      for (const SSOCommand of SSOCommands) {
-        if (this.expressionMatchesText(SSOCommand.matchPatterns, commandMessage)) {
-          const operationWithSSO = SSOCommand.operationWithSSOToken;
-          await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
-          return await stepContext.endDialog();
-        }
-      }
+    const operationWithSSO = SSOCommandMap.get(stepContext.options.commandMessage);
+    if (operationWithSSO) {
+      await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+      return await stepContext.endDialog();
     }
     return await stepContext.endDialog();
   }
@@ -181,22 +175,5 @@ export class SSODialog extends ComponentDialog {
         .trim();
     }
     return text;
-  }
-
-  private expressionMatchesText(matchPatterns: MatchTerm[], userInput: string): RegExpExecArray | boolean {
-    let matchResult: RegExpExecArray | boolean;
-    for (const pattern of matchPatterns) {
-      if (typeof pattern == "string") {
-        matchResult = new RegExp(pattern).exec(userInput);
-      } else if (pattern instanceof RegExp) {
-        matchResult = pattern.exec(userInput);
-      } else {
-        matchResult = pattern(userInput);
-      }
-      if (matchResult) {
-        return matchResult;
-      }
-    }
-    return false;
   }
 }
