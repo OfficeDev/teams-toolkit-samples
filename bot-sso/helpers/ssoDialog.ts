@@ -92,20 +92,20 @@ export class SSODialog extends ComponentDialog {
 
   async executeOperationWithSSO(stepContext: any) {
     const tokenResponse = stepContext.result;
-    const commandMessage = stepContext.options.commandMessage;
     if (!tokenResponse || !tokenResponse.ssoToken) {
       await stepContext.context.sendActivity(
         "There is an issue while trying to sign you in and retrieve your profile photo, please type \"show\" command to login and consent permissions again."
       );
-    } else {
-      // Once got ssoToken, run operation that depends on ssoToken
-      if (commandMessage) {
-        for (const SSOCommand of SSOCommands) {
-          if (this.expressionMatchesText(SSOCommand.matchPatterns, commandMessage)) {
-            const operationWithSSO = SSOCommand.operationWithSSOToken;
-            await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
-            return await stepContext.endDialog();
-          }
+      return await stepContext.endDialog();
+    }
+    // Once got ssoToken, run operation that depends on ssoToken
+    const commandMessage = stepContext.options.commandMessage;
+    if (commandMessage) {
+      for (const SSOCommand of SSOCommands) {
+        if (this.expressionMatchesText(SSOCommand.matchPatterns, commandMessage)) {
+          const operationWithSSO = SSOCommand.operationWithSSOToken;
+          await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+          return await stepContext.endDialog();
         }
       }
     }
