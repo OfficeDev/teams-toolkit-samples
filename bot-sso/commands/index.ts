@@ -12,8 +12,3 @@ export const commands: BotCommand[] = [
 export const SSOCommands: SSOCommand[] = [
   new ShowUserProfile(),
 ];
-
-export const SSOCommandMap: Map<MatchTerm[], any> = new Map();
-SSOCommands.forEach((command) => {
-  SSOCommandMap.set(command.matchPatterns, command.operationWithSSOToken);
-});

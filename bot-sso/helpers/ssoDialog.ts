@@ -16,7 +16,7 @@ import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 import oboAuthConfig from "../authConfig";
 import config from "../config";
-import { SSOCommandMap } from "../commands";
+import { SSOCommands } from "../commands";
 import { MatchTerm } from "./botCommand";
 
 const DIALOG_NAME = "SSODialog";
@@ -100,9 +100,9 @@ export class SSODialog extends ComponentDialog {
     } else {
       // Once got ssoToken, run operation that depends on ssoToken
       if (commandMessage) {
-        for (const key of SSOCommandMap.keys()) {
-          if (this.expressionMatchesText(key, commandMessage)) {
-            const operationWithSSO = SSOCommandMap.get(key);
+        for (const SSOCommand of SSOCommands) {
+          if (this.expressionMatchesText(SSOCommand.matchPatterns, commandMessage)) {
+            const operationWithSSO = SSOCommand.operationWithSSOToken;
             await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
             return await stepContext.endDialog();
           }
