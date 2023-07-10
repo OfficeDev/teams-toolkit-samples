@@ -184,20 +184,20 @@ export class SSODialog extends ComponentDialog {
     return text;
   }
 
-  private expressionMatchesText(matchPatterns: MatchTerm[],userInput: string): RegExpExecArray | boolean {
-    let matchResult: RegExpExecArray | boolean;	   
-    for (const pattern of matchPatterns) {	
-      if (typeof pattern == "string") {	
-        matchResult = new RegExp(pattern).exec(userInput);	
-      } else if (pattern instanceof RegExp) {	
-        matchResult = pattern.exec(userInput);	
-      } else {	
-        matchResult = pattern(userInput);	
-      }	
-      if (matchResult) {	
-        return matchResult;	
-      }	
-    }	
-    return false;	
+  private expressionMatchesText(matchPatterns: MatchTerm[], userInput: string): RegExpExecArray | boolean {
+    let matchResult: RegExpExecArray | boolean;
+    for (const pattern of matchPatterns) {
+      if (typeof pattern == "string") {
+        matchResult = new RegExp(pattern).exec(userInput);
+      } else if (pattern instanceof RegExp) {
+        matchResult = pattern.exec(userInput);
+      } else {
+        matchResult = pattern(userInput);
+      }
+      if (matchResult) {
+        return matchResult;
+      }
+    }
+    return false;
   }
 }
