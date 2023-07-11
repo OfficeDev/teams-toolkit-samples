@@ -7,12 +7,15 @@
     ```
     teamsfx new template npm-search-connector-m365
     ```
-1. For local env, install [ngrok](https://ngrok.com/download) and start your local tunnel service by running the command `ngrok http 3978`.
-1. For local env, fill in the values for `BOT_DOMAIN` and `BOT_ENDPOINT` with your ngrok URL in the `env/.env.local` file.
-   ```
-   BOT_DOMAIN=sample-id.ngrok.io
-   BOT_ENDPOINT=https://sample-id.ngrok.io
-   ```
+1. For local env, start your local tunnel service.
+    1. Install [dev tunnel cli](https://aka.ms/teamsfx-install-dev-tunnel).
+    1. Login with your M365 Account using the command `devtunnel user login`.
+    1. Start your local tunnel service by running the command `devtunnel host -p 3978 --protocol http --allow-anonymous`.
+    1. In the `env/.env.local` file, fill in the values for `BOT_DOMAIN` and `BOT_ENDPOINT` with your dev tunnel URL.
+       ```
+       BOT_DOMAIN=sample-id-3978.devtunnels.ms
+       BOT_ENDPOINT=https://sample-id-3978.devtunnels.ms
+       ```
 1. Provision.
     ```
     teamsfx provision --env <env>
