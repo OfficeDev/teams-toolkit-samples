@@ -92,17 +92,14 @@ export class SSODialog extends ComponentDialog {
   async executeOperationWithSSO(stepContext: any) {
     const tokenResponse = stepContext.result;
     if (!tokenResponse || !tokenResponse.ssoToken) {
-      await stepContext.context.sendActivity(
-        "There is an issue while trying to sign you in and retrieve your profile photo, please type \"show\" command to login and consent permissions again."
-      );
-      return await stepContext.endDialog();
+      throw new Error("There is an issue while trying to sign you in and run your command. Please try again.");
     }
     // Once got ssoToken, run operation that depends on ssoToken
     const operationWithSSO = SSOCommandMap.get(stepContext.options.commandMessage);
-    if (operationWithSSO) {
-      await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
-      return await stepContext.endDialog();
+    if (!operationWithSSO) {
+      throw new Error("Can not get sso operation. Please try again.");
     }
+    await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
     return await stepContext.endDialog();
   }
 

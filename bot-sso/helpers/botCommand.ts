@@ -1,5 +1,5 @@
 export abstract class BotCommand {
-  public matchPatterns: string;
+  public commandMessage: string;
 
   abstract run(parameters: any): any;
 
@@ -8,7 +8,7 @@ export abstract class BotCommand {
   }
 
   public expressionMatchesText(userInput: string): boolean {
-    return userInput === this.matchPatterns;
+    return userInput === this.commandMessage;
   }
 
 }

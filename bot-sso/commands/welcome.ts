@@ -5,7 +5,7 @@ const rawWelcomeCard = require("../adaptiveCards/welcome.json");
 export class WelcomeCommand extends BotCommand {
   constructor() {
     super();
-    this.matchPatterns = 'welcome';
+    this.commandMessage = 'welcome';
   }
 
   async run(parameters: any): Promise<any> {

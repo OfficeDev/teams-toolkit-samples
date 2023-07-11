@@ -10,7 +10,7 @@ import oboAuthConfig from "../authConfig";
 export class ShowUserProfile extends SSOCommand {
   constructor() {
     super();
-    this.matchPatterns = 'show';
+    this.commandMessage = 'show';
     this.operationWithSSOToken = this.showUserInfo;
   }
 
