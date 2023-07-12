@@ -17,6 +17,3 @@ tsconfig.json
 /node_modules/.bin
 /node_modules/ts-node
 /node_modules/typescript
-/appPackage/
-/infra/
-/teamsfx/

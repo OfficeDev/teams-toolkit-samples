@@ -37,6 +37,9 @@ class TabConfig extends React.Component {
        * dialog.
        */
       pages.config.setValidityState(true);
+
+      // Hide the loading indicator.
+      app.notifySuccess();
     });
 
     return (
