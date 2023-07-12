@@ -8,15 +8,16 @@ import {
 import {
   Activity,
   ActivityTypes,
+  StatePropertyAccessor,
   Storage,
   tokenExchangeOperationName,
   TurnContext,
 } from "botbuilder";
 import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
-import oboAuthConfig from "../authConfig";
-import config from "../config";
-import { SSOCommandMap } from "../commands";
+import oboAuthConfig from "./authConfig";
+import config from "./config";
+import { SSOCommandMap } from "./commands";
 
 const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
@@ -63,7 +64,7 @@ export class SSODialog extends ComponentDialog {
    * If no dialog is active, it will start the default dialog.
    * @param {*} dialogContext
    */
-  async run(context: TurnContext, dialogState: any) {
+  async run(context: TurnContext, dialogState: StatePropertyAccessor) {
     const dialogSet = new DialogSet(dialogState);
     dialogSet.add(this);
 

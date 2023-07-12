@@ -1,13 +1,6 @@
-import { BotCommand, SSOCommand } from "../helpers/botCommand";
-import { LearnCommand } from "./learn";
+import { SSOCommand } from "./SSOCommand";
 import { ShowUserProfile } from "./showUserProfile";
-import { WelcomeCommand } from "./welcome";
 
-export const commands: BotCommand[] = [
-  new LearnCommand(),
-  new ShowUserProfile(),
-  new WelcomeCommand(),
-];
 
 export const SSOCommands: SSOCommand[] = [
   new ShowUserProfile(),

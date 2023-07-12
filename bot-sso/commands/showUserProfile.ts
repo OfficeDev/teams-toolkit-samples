@@ -4,17 +4,16 @@ import {
   createMicrosoftGraphClientWithCredential,
   OnBehalfOfUserCredential,
 } from "@microsoft/teamsfx";
-import { SSOCommand } from "../helpers/botCommand";
+import { SSOCommand } from "./SSOCommand";
 import oboAuthConfig from "../authConfig";
 
 export class ShowUserProfile extends SSOCommand {
   constructor() {
     super();
     this.commandMessage = 'show';
-    this.operationWithSSOToken = this.showUserInfo;
   }
 
-  async showUserInfo(context: TurnContext, ssoToken: string) {
+  async operationWithSSOToken(context: TurnContext, ssoToken: string) {
     await context.sendActivity("Retrieving user information from Microsoft Graph ...");
 
     // Call Microsoft Graph half of user
