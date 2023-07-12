@@ -5,7 +5,7 @@ const rawLearnCard = require("../adaptiveCards/learn.json");
 export class LearnCommand extends BotCommand {
   constructor() {
     super();
-    this.matchPatterns = [/^\s*learn\s*/];
+    this.commandMessage = 'learn';
   }
 
   validateParameters(parameters: any): boolean {
