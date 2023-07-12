@@ -1,16 +1,8 @@
-import { TurnContext, StatePropertyAccessor } from "botbuilder";
-import { SSODialog } from "../ssoDialog";
+import { TurnContext } from "botbuilder";
 
-
-export abstract class SSOCommand {
-  public commandMessage: string;
-  public async operationWithSSOToken(
+export interface SSOCommand {
+  commandMessage: string;
+  operationWithSSOToken(
     context: TurnContext, ssoToken: string
-  ): Promise<any> | undefined {
-
-  }
-
-  async run(context: TurnContext, dialog: SSODialog, dialogState: StatePropertyAccessor<any>): Promise<any> {
-    await dialog.run(context, dialogState);
-  }
+  ): Promise<any> | undefined;
 }

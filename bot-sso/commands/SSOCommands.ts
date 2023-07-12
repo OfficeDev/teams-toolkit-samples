@@ -6,6 +6,6 @@ export const SSOCommands: SSOCommand[] = [
   new ShowUserProfile(),
 ];
 
-export const SSOCommandMap: Map<string, any> = new Map(
-  SSOCommands.map((command) => [command.commandMessage, command.operationWithSSOToken])
+export const SSOCommandMap: Map<string, SSOCommand> = new Map(
+  SSOCommands.map((command) => [command.commandMessage, command])
 );

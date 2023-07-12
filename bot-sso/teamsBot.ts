@@ -8,7 +8,7 @@ import {
   StatePropertyAccessor,
 } from "botbuilder";
 import { SSODialog } from "./ssoDialog";
-import { SSOCommands } from "./commands";
+import { SSOCommandMap } from "./commands/SSOCommands";
 
 export class TeamsBot extends TeamsActivityHandler {
   conversationState: ConversationState;
@@ -44,13 +44,9 @@ export class TeamsBot extends TeamsActivityHandler {
       }
 
       // Trigger command by IM text
-      for (let command of SSOCommands) {
-        if (command.commandMessage === txt) {
-          await command.run(context, this.dialog, this.dialogState);
-          break;
-        }
+      if (SSOCommandMap.get(txt)) {
+        await this.dialog.run(context, this.dialogState);
       }
-
       // By calling next() you ensure that the next BotHandler is run.
       await next();
     });

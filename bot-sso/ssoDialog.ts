@@ -14,10 +14,9 @@ import {
   TurnContext,
 } from "botbuilder";
 import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
-import "isomorphic-fetch";
 import oboAuthConfig from "./authConfig";
 import config from "./config";
-import { SSOCommandMap } from "./commands";
+import { SSOCommandMap } from "./commands/SSOCommands";
 
 const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
@@ -96,11 +95,11 @@ export class SSODialog extends ComponentDialog {
       throw new Error("There is an issue while trying to sign you in and run your command. Please try again.");
     }
     // Once got ssoToken, run operation that depends on ssoToken
-    const operationWithSSO = SSOCommandMap.get(stepContext.options.commandMessage);
-    if (!operationWithSSO) {
+    const SSOCommand = SSOCommandMap.get(stepContext.options.commandMessage);
+    if (!SSOCommand) {
       throw new Error("Can not get sso operation. Please try again.");
     }
-    await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+    await SSOCommand.operationWithSSOToken(stepContext.context, tokenResponse.ssoToken);
     return await stepContext.endDialog();
   }
 
