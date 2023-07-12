@@ -14,5 +14,5 @@ export const SSOCommands: SSOCommand[] = [
 ];
 
 export const SSOCommandMap: Map<string, any> = new Map(
-  SSOCommands.map((command) => [command.matchPatterns, command.operationWithSSOToken])
+  SSOCommands.map((command) => [command.commandMessage, command.operationWithSSOToken])
 );
