@@ -18,21 +18,35 @@ const httpTrigger: AzureFunction = async function (
   context: Context,
   req: HttpRequest
 ): Promise<void> {
-  for (const target of await notificationApp.notification.installations()) {
-    await target.sendAdaptiveCard(
-      AdaptiveCards.declare<MentionData>(notificationTemplate).render(data)
-    );
-
-    /** List all members then notify each member
-    for (const member of await target.members()) {
-      data.userId = member.account.email;
-      data.userName = member.account.name;
+  const pageSize = 100;
+  let continuationToken: string | undefined;
+  do {
+    const pagedInstallations = await notificationApp.notification.getPagedInstallations(pageSize, continuationToken);
+    continuationToken = pagedInstallations.continuationToken;
+    const targets = pagedInstallations.data;
+    for (const target of targets) {
       await target.sendAdaptiveCard(
         AdaptiveCards.declare<MentionData>(notificationTemplate).render(data)
       );
+
+      /** List all members then notify each member
+      const memberPageSize = 10;
+      let memberContinuationToken: string | undefined;
+      do {
+        const pagedMembers = await target.getPagedMembers(memberPageSize, memberContinuationToken);
+        memberContinuationToken = pagedMembers.continuationToken;
+        const members = pagedMembers.data;
+        for (const member of members) {
+          data.userId = member.account.email;
+          data.userName = member.account.name;
+          await target.sendAdaptiveCard(
+            AdaptiveCards.declare<MentionData>(notificationTemplate).render(data)
+          );
+        }
+      } while (memberContinuationToken);
+      */
     }
-    */
-  }
+  } while (continuationToken);
 
   context.res = {};
 };
