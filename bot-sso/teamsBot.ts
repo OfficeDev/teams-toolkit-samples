@@ -8,7 +8,7 @@ import {
   StatePropertyAccessor,
 } from "botbuilder";
 import { SSODialog } from "./ssoDialog";
-import { SSOCommandMap } from "./commands/SSOCommands";
+import { SSOCommandMap } from "./commands/SSOCommandMap";
 
 export class TeamsBot extends TeamsActivityHandler {
   conversationState: ConversationState;

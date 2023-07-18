@@ -17,7 +17,7 @@ import "isomorphic-fetch";
 import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import oboAuthConfig from "./authConfig";
 import config from "./config";
-import { SSOCommandMap } from "./commands/SSOCommands";
+import { SSOCommandMap } from "./commands/SSOCommandMap";
 
 const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
