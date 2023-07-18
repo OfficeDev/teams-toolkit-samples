@@ -4,7 +4,6 @@ import {
   createMicrosoftGraphClientWithCredential,
   OnBehalfOfUserCredential,
 } from "@microsoft/teamsfx";
-import "isomorphic-fetch";
 import { SSOCommand } from "./SSOCommand";
 import oboAuthConfig from "../authConfig";
 

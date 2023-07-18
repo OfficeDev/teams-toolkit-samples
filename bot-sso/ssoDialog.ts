@@ -13,6 +13,7 @@ import {
   tokenExchangeOperationName,
   TurnContext,
 } from "botbuilder";
+import "isomorphic-fetch";
 import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import oboAuthConfig from "./authConfig";
 import config from "./config";
