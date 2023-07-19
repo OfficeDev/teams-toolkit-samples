@@ -42,14 +42,6 @@
                     ],
                     "commands": [
                         {
-                            "title": "welcome",
-                            "description": "Resend welcome card of this Bot"
-                        },
-                        {
-                            "title": "learn",
-                            "description": "Learn about Adaptive Card and Bot Command"
-                        },
-                        {
                             "title": "show",
                             "description": "Show user profile using Single Sign On feature"
                         }

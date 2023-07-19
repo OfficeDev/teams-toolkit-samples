@@ -4,17 +4,13 @@ import {
   createMicrosoftGraphClientWithCredential,
   OnBehalfOfUserCredential,
 } from "@microsoft/teamsfx";
-import { SSOCommand } from "../helpers/botCommand";
+import { SSOCommand } from "./SSOCommand";
 import oboAuthConfig from "../authConfig";
 
-export class ShowUserProfile extends SSOCommand {
-  constructor() {
-    super();
-    this.commandMessage = 'show';
-    this.operationWithSSOToken = this.showUserInfo;
-  }
+export class ShowUserProfile implements SSOCommand {
+  commandMessage = 'show';
 
-  async showUserInfo(context: TurnContext, ssoToken: string) {
+  async operationWithSSOToken(context: TurnContext, ssoToken: string) {
     await context.sendActivity("Retrieving user information from Microsoft Graph ...");
 
     // Call Microsoft Graph half of user
@@ -25,8 +21,7 @@ export class ShowUserProfile extends SSOCommand {
     const me = await graphClient.api("/me").get();
     if (me) {
       await context.sendActivity(
-        `You're logged in as ${me.displayName} (${me.userPrincipalName})${
-          me.jobTitle ? `; your job title is: ${me.jobTitle}` : ""
+        `You're logged in as ${me.displayName} (${me.userPrincipalName})${me.jobTitle ? `; your job title is: ${me.jobTitle}` : ""
         }.`
       );
 
@@ -54,4 +49,5 @@ export class ShowUserProfile extends SSOCommand {
       );
     }
   }
+
 }

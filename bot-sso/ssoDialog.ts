@@ -8,15 +8,16 @@ import {
 import {
   Activity,
   ActivityTypes,
+  StatePropertyAccessor,
   Storage,
   tokenExchangeOperationName,
   TurnContext,
 } from "botbuilder";
-import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
-import oboAuthConfig from "../authConfig";
-import config from "../config";
-import { SSOCommandMap } from "../commands";
+import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
+import oboAuthConfig from "./authConfig";
+import config from "./config";
+import { SSOCommandMap } from "./commands/SSOCommandMap";
 
 const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
@@ -63,7 +64,7 @@ export class SSODialog extends ComponentDialog {
    * If no dialog is active, it will start the default dialog.
    * @param {*} dialogContext
    */
-  async run(context: TurnContext, dialogState: any) {
+  async run(context: TurnContext, dialogState: StatePropertyAccessor) {
     const dialogSet = new DialogSet(dialogState);
     dialogSet.add(this);
 
@@ -95,11 +96,11 @@ export class SSODialog extends ComponentDialog {
       throw new Error("There is an issue while trying to sign you in and run your command. Please try again.");
     }
     // Once got ssoToken, run operation that depends on ssoToken
-    const operationWithSSO = SSOCommandMap.get(stepContext.options.commandMessage);
-    if (!operationWithSSO) {
+    const SSOCommand = SSOCommandMap.get(stepContext.options.commandMessage);
+    if (!SSOCommand) {
       throw new Error("Can not get sso operation. Please try again.");
     }
-    await operationWithSSO(stepContext.context, tokenResponse.ssoToken);
+    await SSOCommand.operationWithSSOToken(stepContext.context, tokenResponse.ssoToken);
     return await stepContext.endDialog();
   }
 
