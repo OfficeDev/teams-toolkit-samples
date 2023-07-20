@@ -2,32 +2,22 @@ import {
   TeamsActivityHandler,
   TurnContext,
   SigninStateVerificationQuery,
-  BotState,
-  AdaptiveCardInvokeValue,
-  AdaptiveCardInvokeResponse,
   MemoryStorage,
   ConversationState,
   UserState,
+  StatePropertyAccessor,
 } from "botbuilder";
-import { Utils } from "./helpers/utils";
-import { SSODialog } from "./helpers/ssoDialog";
-import { CommandsHelper } from "./helpers/commandHelper";
-const rawWelcomeCard = require("./adaptiveCards/welcome.json");
-const rawLearnCard = require("./adaptiveCards/learn.json");
+import { SSODialog } from "./ssoDialog";
+import { SSOCommandMap } from "./commands/SSOCommandMap";
 
 export class TeamsBot extends TeamsActivityHandler {
-  likeCountObj: { likeCount: number };
-  conversationState: BotState;
-  userState: BotState;
+  conversationState: ConversationState;
+  userState: UserState;
   dialog: SSODialog;
-  dialogState: any;
-  commandsHelper: CommandsHelper;
+  dialogState: StatePropertyAccessor;
 
   constructor() {
     super();
-
-    // record the likeCount
-    this.likeCountObj = { likeCount: 0 };
 
     // Define the state store for your bot.
     // See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
@@ -54,13 +44,9 @@ export class TeamsBot extends TeamsActivityHandler {
       }
 
       // Trigger command by IM text
-      await CommandsHelper.triggerCommand(txt, {
-        context: context,
-        ssoDialog: this.dialog,
-        dialogState: this.dialogState,
-        likeCount: this.likeCountObj,
-      });
-
+      if (SSOCommandMap.get(txt)) {
+        await this.dialog.run(context, this.dialogState);
+      }
       // By calling next() you ensure that the next BotHandler is run.
       await next();
     });
@@ -69,32 +55,12 @@ export class TeamsBot extends TeamsActivityHandler {
       const membersAdded = context.activity.membersAdded;
       for (let cnt = 0; cnt < membersAdded.length; cnt++) {
         if (membersAdded[cnt].id) {
-          const card = Utils.renderAdaptiveCard(rawWelcomeCard);
-          await context.sendActivity({ attachments: [card] });
+          await context.sendActivity("Welcome to the sso bot sample!");
           break;
         }
       }
       await next();
     });
-  }
-
-  // Invoked when an action is taken on an Adaptive Card. The Adaptive Card sends an event to the Bot and this
-  // method handles that event.
-  async onAdaptiveCardInvoke(
-    context: TurnContext,
-    invokeValue: AdaptiveCardInvokeValue
-  ): Promise<AdaptiveCardInvokeResponse> {
-    // The verb "userlike" is sent from the Adaptive Card defined in adaptiveCards/learn.json
-    if (invokeValue.action.verb === "userlike") {
-      this.likeCountObj.likeCount++;
-      const card = Utils.renderAdaptiveCard(rawLearnCard, this.likeCountObj);
-      await context.updateActivity({
-        type: "message",
-        id: context.activity.replyToId,
-        attachments: [card],
-      });
-      return { statusCode: 200, type: undefined, value: undefined };
-    }
   }
 
   async run(context: TurnContext) {

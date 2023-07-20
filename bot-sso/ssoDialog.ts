@@ -6,15 +6,18 @@ import {
   ComponentDialog,
 } from "botbuilder-dialogs";
 import {
+  Activity,
   ActivityTypes,
+  StatePropertyAccessor,
   Storage,
   tokenExchangeOperationName,
   TurnContext,
 } from "botbuilder";
-import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
-import oboAuthConfig from "../authConfig";
-import config from "../config";
+import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
+import oboAuthConfig from "./authConfig";
+import config from "./config";
+import { SSOCommandMap } from "./commands/SSOCommandMap";
 
 const DIALOG_NAME = "SSODialog";
 const MAIN_WATERFALL_DIALOG = "MainWaterfallDialog";
@@ -24,17 +27,13 @@ export class SSODialog extends ComponentDialog {
   private requiredScopes: string[] = ["User.Read"]; // hard code the scopes for demo purpose only
   private dedupStorage: Storage;
   private dedupStorageKeys: string[];
-  private operationWithSSO: (
-    arg0: any,
-    ssoToken: string
-  ) => Promise<any> | undefined;
 
   // Developer controlls the lifecycle of credential provider, as well as the cache in it.
   // In this sample the provider is shared in all conversations
   constructor(dedupStorage: Storage) {
     super(DIALOG_NAME);
 
-    const initialLoginEndpoint =`https://${config.botDomain}/auth-start.html` ;
+    const initialLoginEndpoint = `https://${config.botDomain}/auth-start.html`;
 
     const dialog = new TeamsBotSsoPrompt(
       oboAuthConfig,
@@ -60,22 +59,12 @@ export class SSODialog extends ComponentDialog {
     this.dedupStorageKeys = [];
   }
 
-  setSSOOperation(
-    handler: (arg0: any, arg1: string) => Promise<any> | undefined
-  ) {
-    this.operationWithSSO = handler;
-  }
-
-  resetSSOOperation() {
-    this.operationWithSSO = undefined;
-  }
-
   /**
    * The run method handles the incoming activity (in the form of a DialogContext) and passes it through the dialog system.
    * If no dialog is active, it will start the default dialog.
    * @param {*} dialogContext
    */
-  async run(context: TurnContext, dialogState: any) {
+  async run(context: TurnContext, dialogState: StatePropertyAccessor) {
     const dialogSet = new DialogSet(dialogState);
     dialogSet.add(this);
 
@@ -87,6 +76,8 @@ export class SSODialog extends ComponentDialog {
   }
 
   async ssoStep(stepContext: any) {
+    const turnContext = stepContext.context as TurnContext;
+    stepContext.options.commandMessage = this.getActivityText(turnContext.activity);
     return await stepContext.beginDialog(TEAMS_SSO_PROMPT_ID);
   }
 
@@ -102,15 +93,14 @@ export class SSODialog extends ComponentDialog {
   async executeOperationWithSSO(stepContext: any) {
     const tokenResponse = stepContext.result;
     if (!tokenResponse || !tokenResponse.ssoToken) {
-      await stepContext.context.sendActivity(
-        "There is an issue while trying to sign you in and retrieve your profile photo, please type \"show\" command to login and consent permissions again."
-      );
-    } else {
-      // Once got ssoToken, run operation that depends on ssoToken
-      if (this.operationWithSSO) {
-        await this.operationWithSSO(stepContext.context, tokenResponse.ssoToken);
-      }
+      throw new Error("There is an issue while trying to sign you in and run your command. Please try again.");
     }
+    // Once got ssoToken, run operation that depends on ssoToken
+    const SSOCommand = SSOCommandMap.get(stepContext.options.commandMessage);
+    if (!SSOCommand) {
+      throw new Error("Can not get sso operation. Please try again.");
+    }
+    await SSOCommand.operationWithSSOToken(stepContext.context, tokenResponse.ssoToken);
     return await stepContext.endDialog();
   }
 
@@ -123,7 +113,6 @@ export class SSODialog extends ComponentDialog {
     this.dedupStorageKeys = this.dedupStorageKeys.filter(
       (key) => key.indexOf(conversationId) < 0
     );
-    this.resetSSOOperation();
   }
 
   // If a user is signed into multiple Teams clients, the Bot might receive a "signin/tokenExchange" from each client.
@@ -172,5 +161,17 @@ export class SSODialog extends ComponentDialog {
       );
     }
     return `${channelId}/${conversationId}/${value.id}`;
+  }
+
+  private getActivityText(activity: Activity): string {
+    let text = activity.text;
+    const removedMentionText = TurnContext.removeRecipientMention(activity);
+    if (removedMentionText) {
+      text = removedMentionText
+        .toLowerCase()
+        .replace(/\n|\r\n/g, "")
+        .trim();
+    }
+    return text;
   }
 }
