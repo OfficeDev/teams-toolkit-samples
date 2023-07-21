@@ -18,8 +18,7 @@ var administratorLogin = contains(provisionParameters, 'azureSqlAdmin') ? provis
 var administratorLoginPassword = contains(provisionParameters, 'azureSqlAdminPassword') ? provisionParameters['azureSqlAdminPassword'] : ''
 var oauthAuthority = uri(m365OauthAuthorityHost, m365TenantId)
 var tabAppDomain = provisionOutputs.frontendHostingOutput.value.domain
-var tabAppEndpoint = provisionOutputs.frontendHostingOutput.value.endpoint 
-var botId = provisionParameters['botAadAppClientId']
+var tabAppEndpoint = provisionOutputs.frontendHostingOutput.value.endpoint
 var m365ApplicationIdUri = 'api://${tabAppDomain}/${m365ClientId}'
 
 var teamsMobileOrDesktopAppClientId = '1fec8e78-bce4-4aaf-ab1b-5451cc387264'
@@ -30,6 +29,7 @@ var outlookDesktopAppClientId = 'd3590ed6-52b3-4102-aeff-aad2292ab01c'
 var outlookWebAppClientId = '00000002-0000-0ff1-ce00-000000000000'
 var authorizedClientApplicationIds = '${teamsMobileOrDesktopAppClientId};${teamsWebAppClientId};${officeWebAppClientId1};${officeWebAppClientId2};${outlookDesktopAppClientId};${outlookWebAppClientId}'
 
+var allowedClientApplications = '["${m365ClientId}","${teamsMobileOrDesktopAppClientId}","${teamsWebAppClientId}","${officeWebAppClientId1}","${officeWebAppClientId2}","${outlookDesktopAppClientId}","${outlookWebAppClientId}"]'
 var currentAllowedOrigins = empty(currentConfigs.cors) ? [] : currentConfigs.cors.allowedOrigins
 
 resource appConfig 'Microsoft.Web/sites/config@2021-02-01' = {
@@ -38,8 +38,8 @@ resource appConfig 'Microsoft.Web/sites/config@2021-02-01' = {
   properties: {
     cors: {
       allowedOrigins: union(currentAllowedOrigins, [
-        tabAppEndpoint
-      ])
+          tabAppEndpoint
+        ])
     }
   }
 }
@@ -48,6 +48,7 @@ resource appSettings 'Microsoft.Web/sites/config@2021-02-01' = {
   properties: union({
     API_ENDPOINT: provisionOutputs.functionOutput.value.functionEndpoint
     ALLOWED_APP_IDS: authorizedClientApplicationIds
+    WEBSITE_AUTH_AAD_ACL: '{"allowed_client_applications": ${allowedClientApplications}}}'
     M365_CLIENT_ID: m365ClientId
     M365_CLIENT_SECRET: m365ClientSecret
     M365_TENANT_ID: m365TenantId
