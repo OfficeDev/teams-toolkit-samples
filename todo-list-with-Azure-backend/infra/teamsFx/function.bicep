@@ -28,6 +28,7 @@ var officeWebAppClientId2 = '4765445b-32c6-49b0-83e6-1d93765276ca'
 var outlookDesktopAppClientId = 'd3590ed6-52b3-4102-aeff-aad2292ab01c'
 var outlookWebAppClientId = '00000002-0000-0ff1-ce00-000000000000'
 var authorizedClientApplicationIds = '${teamsMobileOrDesktopAppClientId};${teamsWebAppClientId};${officeWebAppClientId1};${officeWebAppClientId2};${outlookDesktopAppClientId};${outlookWebAppClientId}'
+var allowedClientApplications = '["${m365ClientId}","${teamsMobileOrDesktopAppClientId}","${teamsWebAppClientId}","${officeWebAppClientId1}","${officeWebAppClientId2}","${outlookDesktopAppClientId}","${outlookWebAppClientId}"]'
 
 var currentAllowedOrigins = empty(currentConfigs.cors) ? [] : currentConfigs.cors.allowedOrigins
 
@@ -57,6 +58,7 @@ resource appSettings 'Microsoft.Web/sites/config@2021-02-01' = {
     SQL_ENDPOINT: provisionOutputs.azureSqlOutput.value.sqlEndpoint
     SQL_USER_NAME: administratorLogin
     SQL_PASSWORD: administratorLoginPassword
+    WEBSITE_AUTH_AAD_ACL: '{"allowed_client_applications": ${allowedClientApplications}}}'
   }, currentAppSettings)
 }
 
