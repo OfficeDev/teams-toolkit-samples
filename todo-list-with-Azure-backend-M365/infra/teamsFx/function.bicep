@@ -33,6 +33,7 @@ var outlookDesktopAppClientId = 'd3590ed6-52b3-4102-aeff-aad2292ab01c'
 var outlookWebAppClientId1 = '00000002-0000-0ff1-ce00-000000000000'
 var outlookWebAppClientId2 = 'bc59ab01-8403-45c6-8796-ac3ef710b3e3'
 var authorizedClientApplicationIds = '${teamsMobileOrDesktopAppClientId};${teamsWebAppClientId};${officeWebAppClientId1};${officeWebAppClientId2};${officeDesktopAppClientId};${outlookDesktopAppClientId};${outlookWebAppClientId1};${outlookWebAppClientId2}'
+var allowedClientApplications = '["${m365ClientId}","${teamsMobileOrDesktopAppClientId}","${teamsWebAppClientId}","${officeWebAppClientId1}","${officeWebAppClientId2}","${officeDesktopAppClientId}","${outlookDesktopAppClientId}","${outlookWebAppClientId1}","${outlookWebAppClientId2}"]'
 
 var currentAllowedOrigins = empty(currentConfigs.cors) ? [] : currentConfigs.cors.allowedOrigins
 
@@ -58,6 +59,7 @@ resource appSettings 'Microsoft.Web/sites/config@2021-02-01' = {
     M365_AUTHORITY_HOST: m365OauthAuthorityHost // AAD authority host
     M365_APPLICATION_ID_URI: m365ApplicationIdUri // Application ID URI of AAD application
     IDENTITY_ID: provisionOutputs.identityOutput.value.identityClientId // User assigned identity id, the identity is used to access other Azure resources
+    WEBSITE_AUTH_AAD_ACL: '{"allowed_client_applications": ${allowedClientApplications}}}'
   }, currentAppSettings) // Merge new settings with existing settings
 }
 
