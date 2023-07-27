@@ -1,5 +1,6 @@
-# yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.0.0/yaml.schema.json
-version: 1.0.0
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.1.1/yaml.schema.json
+version: 1.1.1
+sampleTag: TeamsFx-Samples:command-bot-with-sso
 
 provision:
   - uses: aadApp/create # Creates a new Azure Active Directory (AAD) app to authenticate users if the environment variable that stores clientId is empty

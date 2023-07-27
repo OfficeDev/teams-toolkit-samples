@@ -1,5 +1,6 @@
-# yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.0.0/yaml.schema.json
-version: 1.0.0
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.1.1/yaml.schema.json
+version: 1.1.1
+sampleTag: TeamsFx-Samples:hello-world-tab-with-backend
 
 environmentFolderPath: ./env
 
