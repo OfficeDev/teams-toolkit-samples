@@ -6,7 +6,7 @@
             "title": "Tab App with Azure Backend",
             "shortDescription": "A Hello World app of Microsoft Teams Tab app which has a backend service",
             "fullDescription": "This is a Hello World app of Microsoft Teams Tab app which accomplishes very simple function like single-sign on. You can run this app locally or deploy it to Microsoft Azure. This app has a Tab frontend and a backend service using Azure Function.",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -26,7 +26,7 @@
             "title": "Contact Exporter using Graph Toolkit",
             "shortDescription": "Contact Exporter app of Microsoft Teams Tab app.",
             "fullDescription": "Contact Exporter app can export your teams contact info to Excel files, and it is using Microsoft Graph Toolkit as UI component. This app only has a Tab frontend.",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -45,7 +45,7 @@
             "title": "Bot App with SSO Enabled",
             "shortDescription": "A Hello World app of Microsoft Teams Bot app with SSO",
             "fullDescription": "This is an extended Hello World app of Microsoft Teams Bot app demonstrating how to integrate with Bot Framework SDK, TeamsFx SDK, and Graph SDK to implement SSO (Single Sign-On) feature that retrieves profile photos for currently signed-in users.",
-            "type": [
+            "types": [
                 "Bot"
             ],
             "tags": [
@@ -66,7 +66,7 @@
             "title": "Todo List with SPFx",
             "shortDescription": "Todo List app hosting on SharePoint",
             "fullDescription": "Todo List with SPFx is a Todo List for individuals to manage his/her personal to-do items. This app is hosted on Sharepoint. There is no requirements to deploy Azure resources.",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -86,7 +86,7 @@
             "title": "My First Meeting App",
             "shortDescription": "A template for apps using only in the context of a Teams meeting",
             "fullDescription": "My first meeting app is a simple template to show how to build a tab app that can be installed and used in a meeting, in all of meeting lifecycles: pre-meeting chat, in-meeting, post-meeting chat. This sample contains tab as side panel, meeting chat tab, or meeting details tab. The template also includes simple codes to fetch meeting info and user profile.",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -105,7 +105,7 @@
             "title": "Todo List (Works in Teams, Outlook and Office)",
             "shortDescription": "Todo List app that runs across Microsoft 365 including Teams, Outlook and Office",
             "fullDescription": "Todo List app helps to manage personal to do items and also runs across Microsoft 365, including Teams, Outlook and Office. The frontend is a React app and the backend is an Azure Function. You can optionally deploy and host the app in Azure.",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -127,7 +127,7 @@
             "title": "NPM Search Connector",
             "shortDescription": "Search and Share an NPM Package in Teams and Outlook (Web)",
             "fullDescription": "NPM Search Connector is a Message Extension that runs across Microsoft 365 including Teams and Outlook (Web). It allows you to perform a quick search for a NPM package and insert package details into conversations for easy sharing. The front end is built with Adaptive Cards and the backend is an Azure Bot Service.",
-            "type": [
+            "types": [
                 "Message extension"
             ],
             "tags": [
@@ -147,7 +147,7 @@
             "title": "Proactive Messaging",
             "shortDescription": "Demonstrates how to send proactive messages to users.",
             "fullDescription": "This is a sample which shows how to save user's conversation reference information to send proactive reminder message using Bots.",
-            "type": [
+            "types": [
                 "Bot"
             ],
             "tags": [
@@ -167,7 +167,7 @@
             "title": "Adaptive Card Notification",
             "shortDescription": "Demonstrates how to send adaptive card notification to users.",
             "fullDescription": "This is a sample which shows how to send notification with different adaptive cards using Bots.",
-            "type": [
+            "types": [
                 "Bot"
             ],
             "tags": [
@@ -186,7 +186,7 @@
             "title": "Incoming Webhook Notification",
             "shortDescription": "Demonstrates how to send notification via Incoming Webhook.",
             "fullDescription": "This is a sample which shows how to send notification via Incoming Webhook in Microsoft Teams channels.",
-            "type": [
+            "types": [
                 "Bot"
             ],
             "tags": [
@@ -205,7 +205,7 @@
             "title": "Stocks Update",
             "shortDescription": "Keep up to date with the latest stock price in Microsoft Teams.",
             "fullDescription": "This sample demonstrates how a Notification Bot can be used to call an external API using API Key authentication, on a pre-defined schedule of every 30 seconds, to obtain the latest stock information and render the results as an Adaptive Card.",
-            "type": [
+            "types": [
                 "Bot"
             ],
             "tags": [
@@ -226,7 +226,7 @@
             "title": "Org User Search Connector",
             "shortDescription": "Query Org User with Message Extension SSO",
             "fullDescription": "This is a simple search-based message extension app demonstrating how to integrate with Bot Framework SDK, TeamsFx SDK and Microsoft Graph API to implement a feature that queries organization's user with single sign on (SSO) capability.",
-            "type": [
+            "types": [
                 "Message extension"
             ],
             "tags": [
@@ -245,7 +245,7 @@
             "title": "Team Central Dashboard",
             "shortDescription": "A single dashboard displaying data chats and content from Microsoft Graph to accelerate team collaboration and personal productivity.",
             "fullDescription": "A single dashboard displaying data chats and content from Microsoft Graph to accelerate team collaboration and personal productivity.",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -266,7 +266,7 @@
             "title": "Graph Connector App",
             "shortDescription": "Showcases how to build custom Graph Connector",
             "fullDescription": "This sample app showcases how to build custom Graph Connector with Azure Functions and query data using Microsoft Graph Client and TeamsFx SDK.",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -287,7 +287,7 @@
             "title": "One Productivity Hub using Graph Toolkit",
             "shortDescription": "Microsoft Teams tab with SSO to view calendar events, to-do tasks and file folders.",
             "fullDescription": "One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using Microsoft Graph Toolkit components and TeamsFx provider. You can run this app locally or deploy it to Microsoft Azure.",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -307,7 +307,7 @@
             "title": "Todo List with backend on Azure",
             "shortDescription": "Todo List app with Azure Function backend and Azure SQL database",
             "fullDescription": "Todo List provides an easy way to manage to-do items in Teams Client. This app helps enabling task collaboration and management for your team. The frontend is a React app and the backend is hosted on Azure. You will need an Azure subscription to run the app.",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -329,7 +329,7 @@
             "title": "Share Now",
             "shortDescription": "Knowledge sharing app contains a Tab and a Message extension",
             "fullDescription": "Share Now promotes the exchange of information between colleagues by enabling users to share content within the Teams environment. Users engage the app to share items of interest, discover new shared content, set preferences, and bookmark favorites for later reading.",
-            "type": [
+            "types": [
                 "Tab",
                 "Message extension"
             ],
@@ -350,7 +350,7 @@
             "title": "Hello World Teams Tab and Outlook add-in",
             "shortDescription": "A hello world project that contains both Teams Tab and Outlook add-in capability",
             "fullDescription": "A hello world project that contains both Teams Tab and Outlook add-in capability",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -369,7 +369,7 @@
             "title": "Set signature using Outlook add-in",
             "shortDescription": "An Outlook add-in that sets signature for the user",
             "fullDescription": "An Outlook add-in that sets signature for the user",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -388,7 +388,7 @@
             "title": "Developer Assist Dashboard",
             "shortDescription": "A dashboard that integrates with Azure DevOps, Github issues and Planner tasks that accelerates developer productivity.",
             "fullDescription": "A dashboard that integrates with Azure DevOps, Github issues and Planner tasks that accelerates developer productivity.",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -408,7 +408,7 @@
             "title": "Dice Roller in meeting",
             "shortDescription": "This sample introduces Microsoft Live Share and Azure Fluid Relay to enable a shared experience between multiple users.",
             "fullDescription": "Microsoft Live Share is a collaboration tool that enables you to share your experience with others in real time. Azure Fluid Relay is a part of this service. The diceroller example is a simple app that allows multiple users to roll a dice and see the results. This sample is a great way to get started with Live Share and Fluid.",
-            "type": [
+            "types": [
                 "Tab"
             ],
             "tags": [
@@ -429,7 +429,7 @@
             "title": "Teams Chef Bot",
             "shortDescription": "Demonstrates how to build bot with Microsoft Teams AI Library.",
             "fullDescription": "This is a conversational bot for Microsoft Teams that impersonates a Chef to help you you cook Teams apps.",
-            "type": [
+            "types": [
                 "Bot"
             ],
             "tags": [
