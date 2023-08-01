@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.14",
+  "packageName": "Productivity dashboard",
+  "id": "41ff62e1-b123-46fb-9694-f1b54918df88",
+  "version": "1.0.3",
+  "developer": {
+    "name": "SPFx + Teams Dev",
+    "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+    "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
+  },
+  "name": {
+    "short": "Productivity dashboard"
+  },
+  "description": {
+    "short": "Productivity dashboard",
+    "full": "Productivity dashboard"
+  },
+  "icons": {
+    "outline": "41ff62e1-b123-46fb-9694-f1b54918df88_outline.png",
+    "color": "41ff62e1-b123-46fb-9694-f1b54918df88_color.png"
+  },
+  "accentColor": "#004578",
+    "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=41ff62e1-b123-46fb-9694-f1b54918df88%26forceLocale={locale}",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team"
+      ]
+    }
+  ],
+    "staticTabs": [
+    {
+      "entityId": "41ff62e1-b123-46fb-9694-f1b54918df88",
+      "name": "Productivity dashboard",
+      "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=41ff62e1-b123-46fb-9694-f1b54918df88%26forceLocale={locale}",
+      "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
+      "scopes": ["personal"]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}

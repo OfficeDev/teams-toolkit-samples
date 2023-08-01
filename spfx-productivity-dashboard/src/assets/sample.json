@@ -1,0 +1,80 @@
+[
+  {
+    "name": "pnp-spfx-reference-scenarios-spfx-productivity-dashboard",
+    "source": "pnp",
+    "title": "One Productivity Hub powered by SharePoint Framework",
+    "shortDescription": "This is a demo application that helps you keep track of your activities planned for the day.",
+    "url": "https://github.com/pnp/spfx-reference-scenarios/tree/main/samples/spfx-productivity-dashboard",
+    "longDescription": [
+      "This is a demo application that helps you keep track of your activities planned for the day."
+    ],
+    "creationDateTime": "2022-11-01",
+    "updateDateTime": "2022-11-01",
+    "products": [
+      "SharePoint",
+      "Viva",
+      "Microsoft Teams",
+      "AzureAD",
+      "Microsoft Graph"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "TypeScript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.16.0-beta.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/spfx-reference-scenarios/raw/main/samples/spfx-productivity-dashboard/assets/screenshot.png",
+        "alt": "One Productivity Hub powered by SharePoint Framework"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "waldekmastykarz",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/waldekmastykarz.png",
+        "name": "Waldek Mastykarz",
+        "twitter": "waldekm"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build a SharePoint web part with the Microsoft Graph Toolkit",
+        "description": "Using Microsoft Graph Toolkit in SharePoint Framework solutions to connect to Microsoft Graph",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-web-part-microsoft-graph-toolkit?WT.mc_id=m365-80548-wmastyka"
+      },
+      {
+        "name": "Microsoft Graph Toolkit overview",
+        "description": "Retrieving data from Microsoft 365 using Microsoft Graph and Microsoft Graph Toolkit",
+        "url": "https://learn.microsoft.com/graph/toolkit/overview?WT.mc_id=m365-80548-wmastyka"
+      },
+      {
+        "name": "Getting started with SharePoint Framework",
+        "description": "Introduction about how to develop Microsoft 365 extensions using SharePoint Framework.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant?WT.mc_id=m365-80548-wmastyka"
+      },
+      {
+        "name": "Build for Microsoft Teams using SharePoint Framework",
+        "description": "How to build Microsoft Teams applications using SharePoint Framework",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview?WT.mc_id=m365-80548-wmastyka"
+      },
+      {
+        "name": "Use Microsoft Graph Toolkit in your web parts",
+        "description": "Build a SharePoint web part with the Microsoft Graph Toolkit",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-web-part-microsoft-graph-toolkit?WT.mc_id=m365-80548-wmastyka"
+      },
+      {
+        "name": "Use Microsoft Graph in your solution",
+        "description": "How to use Microsoft Graph in your SharePoint Framework solutions",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis?WT.mc_id=m365-80548-wmastyka"
+      }
+    ]
+  }
+]
