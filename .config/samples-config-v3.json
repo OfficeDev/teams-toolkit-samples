@@ -56,7 +56,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/bot-sso.gif",
+            "gifPath": "images/preview.gif",
             "minimumToolkitVersion": "5.0.0",
             "suggested": false
         },
