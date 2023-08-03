@@ -279,7 +279,8 @@
             "tags": [
                 "Tab",
                 "JS",
-                "SSO"
+                "SSO",
+                "Graph Toolkit"
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
