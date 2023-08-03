@@ -11,12 +11,12 @@
         "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
     },
     "name": {
-        "short": "spfx-productivity-dashboard-${{TEAMSFX_ENV}}",
-        "full": "Full name for spfx-productivity-dashboard"
+        "short": "SPFx productivity dashboard",
+        "full": "Full name for SPFx productivity dashboard"
     },
     "description": {
-        "short": "Short description of spfx-productivity-dashboard",
-        "full": "Full description of spfx-productivity-dashboard"
+        "short": "Short description of SPFx productivity dashboard",
+        "full": "Full description of SPFx productivity dashboard"
     },
     "icons": {
         "color": "color.png",

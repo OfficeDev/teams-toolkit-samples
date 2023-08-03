@@ -11,11 +11,12 @@
         "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
     },
     "name": {
-        "short": "Productivity dashboard"
+        "short": "SPFx productivity dashboard",
+        "full": "Full name for SPFx productivity dashboard"
     },
     "description": {
-        "short": "Productivity dashboard",
-        "full": "Productivity dashboard"
+        "short": "Short description of SPFx productivity dashboard",
+        "full": "Full description of SPFx productivity dashboard"
     },
     "icons": {
         "color": "color.png",
