@@ -1,6 +1,7 @@
 import { BotBuilderCloudAdapter } from "@microsoft/teamsfx";
 import ConversationBot = BotBuilderCloudAdapter.ConversationBot;
 import config from "./config";
+import { BlobStore } from "../store/blobStore";
 
 // Create bot.
 export const notificationApp = new ConversationBot({
@@ -14,7 +15,7 @@ export const notificationApp = new ConversationBot({
   // Enable notification
   notification: {
     enabled: true,
-    // uncomment following line to use your own blob storage
-    // storage: new BlobsStorage("{your-connection-string}", "{your-container-name}"),
+    // uncomment following line to use your own blob store
+    // store: new BlobStore("{your-connection-string}", "{your-container-name}"),
   },
 });

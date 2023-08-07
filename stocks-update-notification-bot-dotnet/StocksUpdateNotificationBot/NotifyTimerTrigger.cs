@@ -56,7 +56,15 @@ namespace StocksUpdateNotificationBot
                 var cardTemplate = await File.ReadAllTextAsync(adaptiveCardFilePath, cancellationToken);
 
                 // Get bot installation
-                var installations = await _conversation.Notification.GetInstallationsAsync(cancellationToken);
+                var installations = new List<TeamsBotInstallation>();
+                var pageSize = 100;
+                string continuationToken = null;
+                do
+                {
+                    var pagedInstallations = await _conversation.Notification.GetPagedInstallationsAsync(pageSize, continuationToken, cancellationToken);
+                    continuationToken = pagedInstallations.ContinuationToken;
+                    installations.AddRange(pagedInstallations.Data);
+                } while (!string.IsNullOrEmpty(continuationToken));
 
                 foreach (var installation in installations)
                 {
