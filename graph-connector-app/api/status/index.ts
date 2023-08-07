@@ -7,7 +7,8 @@
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import { Client } from "@microsoft/microsoft-graph-client";
-import { AppCredential, AppCredentialAuthConfig, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
+import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
+import { AppCredential, AppCredentialAuthConfig } from "@microsoft/teamsfx";
 import config from "../config";
 
 interface Response {
@@ -22,7 +23,7 @@ const authConfig: AppCredentialAuthConfig = {
   clientId: config.clientId,
   tenantId: config.tenantId,
   clientSecret: config.clientSecret,
-}
+};
 
 /**
  * @param {Context} context - The Azure Functions context object.
@@ -59,7 +60,16 @@ export default async function run(
 
   // Query status of schema
   try {
-    let graphClient: Client = createMicrosoftGraphClientWithCredential(appCredential);
+    // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+    const authProvider = new TokenCredentialAuthenticationProvider(
+      appCredential,
+      {
+        scopes: ["https://graph.microsoft.com/.default"],
+      }
+    );
+    let graphClient: Client = Client.initWithMiddleware({
+      authProvider: authProvider,
+    });
     const location = req.query.location;
     const result = await graphClient.api(location).get();
     res.body.status = result.status;
@@ -68,8 +78,7 @@ export default async function run(
     return {
       status: e?.statusCode ?? 500,
       body: {
-        error:
-          "Failed to check connection schema status: " + e.toString(),
+        error: "Failed to check connection schema status: " + e.toString(),
       },
     };
   }
