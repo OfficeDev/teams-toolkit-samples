@@ -56,14 +56,14 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
     };
     ```
 1. Use Azure Blob Storage to persist notification connections
-   This sample provides an implementation of `NotificationTargetStorage` at `src/storage/blobsStorage.ts`, which connects to Azure Blob Storage to persist notification connections.
+   This sample provides an implementation of `NotificationTargetStorage` at `src/storage/blobsStore.ts`, which connects to Azure Blob Storage to persist notification connections.
 
-   To try it, uncomment the `notification.storage` settings of your bot in `src/internal/initialize.ts`, then enter your own connection string and container name.
+   To try it, uncomment the `notification.store` settings of your bot in `src/internal/initialize.ts`, then enter your own connection string and container name.
     ``` typescript
     ...
       notification: {
         enabled: true,
-        storage: new BlobsStorage("{your-connection-string}", "{your-container-name}"),
+        store: new BlobStore("{your-connection-string}", "{your-container-name}"),
       },
     ...
     ```
