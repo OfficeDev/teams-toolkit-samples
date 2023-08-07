@@ -1,10 +1,12 @@
+import { TeamsActivityHandler, CardFactory, TurnContext } from "botbuilder";
+import { ResponseType, Client } from "@microsoft/microsoft-graph-client";
+import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
 import {
-  TeamsActivityHandler,
-  CardFactory,
-  TurnContext
-} from "botbuilder";
-import { ResponseType } from "@microsoft/microsoft-graph-client";
-import { MessageExtensionTokenResponse, handleMessageExtensionQueryWithSSO, OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
+  MessageExtensionTokenResponse,
+  handleMessageExtensionQueryWithSSO,
+  OnBehalfOfCredentialAuthConfig,
+  OnBehalfOfUserCredential,
+} from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 import config from "./config";
 
@@ -23,41 +25,83 @@ export class TeamsBot extends TeamsActivityHandler {
   }
 
   // Search.
-  public async handleTeamsMessagingExtensionQuery(context: TurnContext, query: any): Promise<any> {
+  public async handleTeamsMessagingExtensionQuery(
+    context: TurnContext,
+    query: any
+  ): Promise<any> {
     /**
      * User Code Here.
      * If query without token, no need to implement handleMessageExtensionQueryWithSSO;
      * Otherwise, just follow the sample code below to modify the user code.
      */
-    return await handleMessageExtensionQueryWithSSO(context, oboAuthConfig, initialLoginEndpoint, ['User.Read.All', 'User.Read'],
+    return await handleMessageExtensionQueryWithSSO(
+      context,
+      oboAuthConfig,
+      initialLoginEndpoint,
+      ["User.Read.All", "User.Read"],
       async (token: MessageExtensionTokenResponse) => {
         // User Code
 
-        const credential = new OnBehalfOfUserCredential(token.ssoToken, oboAuthConfig);
+        const credential = new OnBehalfOfUserCredential(
+          token.ssoToken,
+          oboAuthConfig
+        );
         const attachments = [];
-        if (query.parameters[0] && query.parameters[0].name === 'initialRun') {
-          const graphClient = createMicrosoftGraphClientWithCredential(credential, 'User.Read');
-          const profile = await graphClient.api('/me').get();
-          await this.getUserPhotoWithGraphClient(graphClient, attachments, profile, `/me/photo/$value`);
+        if (query.parameters[0] && query.parameters[0].name === "initialRun") {
+          // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+          const authProvider = new TokenCredentialAuthenticationProvider(
+            credential,
+            {
+              scopes: ["User.Read"],
+            }
+          );
+          // Initialize Graph client instance with authProvider
+          const graphClient = Client.initWithMiddleware({
+            authProvider: authProvider,
+          });
+          const profile = await graphClient.api("/me").get();
+          await this.getUserPhotoWithGraphClient(
+            graphClient,
+            attachments,
+            profile,
+            `/me/photo/$value`
+          );
         } else {
-          const graphClient = createMicrosoftGraphClientWithCredential(credential, 'User.Read.All');
+          // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+          const authProvider = new TokenCredentialAuthenticationProvider(
+            credential,
+            {
+              scopes: ["User.Read.All"],
+            }
+          );
+          // Initialize Graph client instance with authProvider
+          const graphClient = Client.initWithMiddleware({
+            authProvider: authProvider,
+          });
           const searchContext = query.parameters[0].value;
-          let users = await graphClient.api(`/users?$search="displayName:${searchContext}"&$count=true`)
-            .header('ConsistencyLevel', 'eventual')
-            .orderby('displayName')
+          let users = await graphClient
+            .api(`/users?$search="displayName:${searchContext}"&$count=true`)
+            .header("ConsistencyLevel", "eventual")
+            .orderby("displayName")
             .get();
           for (const user of users.value) {
-            await this.getUserPhotoWithGraphClient(graphClient, attachments, user, `/users/${user.id}/photo/$value`);
+            await this.getUserPhotoWithGraphClient(
+              graphClient,
+              attachments,
+              user,
+              `/users/${user.id}/photo/$value`
+            );
           }
         }
         return {
           composeExtension: {
-            type: 'result',
-            attachmentLayout: 'list',
-            attachments: attachments
-          }
+            type: "result",
+            attachmentLayout: "list",
+            attachments: attachments,
+          },
         };
-      });
+      }
+    );
   }
 
   public async handleTeamsMessagingExtensionSelectItem(
@@ -73,7 +117,12 @@ export class TeamsBot extends TeamsActivityHandler {
     };
   }
 
-  private async getUserPhotoWithGraphClient(graphClient, attachments, user, apiPath) {
+  private async getUserPhotoWithGraphClient(
+    graphClient,
+    attachments,
+    user,
+    apiPath
+  ) {
     let image = undefined;
     try {
       let photoBinary = await graphClient
@@ -84,10 +133,13 @@ export class TeamsBot extends TeamsActivityHandler {
       const imageUri = "data:image/png;base64," + buffer.toString("base64");
       image = CardFactory.images([imageUri]);
     } catch (err) {
-      console.error("This user may not have personal photo!", err.message)
+      console.error("This user may not have personal photo!", err.message);
     }
-    const thumbnailCard = CardFactory.thumbnailCard(user.displayName, user.mail, image ? image : "");
+    const thumbnailCard = CardFactory.thumbnailCard(
+      user.displayName,
+      user.mail,
+      image ? image : ""
+    );
     attachments.push(thumbnailCard);
   }
-
 }
