@@ -8,13 +8,12 @@ import "isomorphic-fetch";
 
 import { Context, HttpRequest } from "@azure/functions";
 import { Client } from "@microsoft/microsoft-graph-client";
+import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
 import {
-  createMicrosoftGraphClient,
-  createMicrosoftGraphClientWithCredential,
-  IdentityType,
+  AppCredential,
+  AppCredentialAuthConfig,
   OnBehalfOfCredentialAuthConfig,
   OnBehalfOfUserCredential,
-  TeamsFx,
 } from "@microsoft/teamsfx";
 
 import config from "../config";
@@ -44,7 +43,6 @@ enum FilesType {
  * This function initializes the teamsfx SDK with the configuration and calls these APIs:
  * - new OnBehalfOfUserCredential(accessToken, oboAuthConfig) - Construct OnBehalfOfUserCredential instance with the received SSO token and initialized configuration.
  * - getUserInfo() - Get the user's information from the received SSO token.
- * - createMicrosoftGraphClientWithCredential() - Get a graph client to access user's Microsoft 365 data.
  *
  * The response contains multiple message blocks constructed into a JSON object, including:
  * - An echo of the request body.
@@ -123,7 +121,12 @@ export default async function run(
 
   try {
     // Call the appropriate function based on the graphType and method.
-    const result = await handleRequest(oboCredential, graphType, method, reqData);
+    const result = await handleRequest(
+      oboCredential,
+      graphType,
+      method,
+      reqData
+    );
     res.body = { ...res.body, ...result };
   } catch (e) {
     context.log.error(e);
@@ -193,7 +196,18 @@ async function handleRequest(
  * @returns A promise that resolves with an array of calendar events.
  */
 async function getCalendarEvents(oboCredential: OnBehalfOfUserCredential) {
-  const graphClient = createMicrosoftGraphClientWithCredential(oboCredential, ["Calendars.Read"]);
+  // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+  const authProvider = new TokenCredentialAuthenticationProvider(
+    oboCredential,
+    {
+      scopes: ["Calendars.Read"],
+    }
+  );
+
+  // Initialize Graph client instance with authProvider
+  const graphClient = Client.initWithMiddleware({
+    authProvider: authProvider,
+  });
 
   // Set the end of the day to 23:59:59.999
   const endOfDay = new Date();
@@ -227,8 +241,18 @@ async function getCalendarEvents(oboCredential: OnBehalfOfUserCredential) {
  * @returns {Promise<TaskModel[]>} - A promise that resolves with an array of tasks.
  */
 async function getTasksInfo(oboCredential: OnBehalfOfUserCredential) {
-  // Create a Microsoft Graph client with the provided credential and required permissions
-  const graphClient = createMicrosoftGraphClientWithCredential(oboCredential, ["Tasks.ReadWrite"]);
+  // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+  const authProvider = new TokenCredentialAuthenticationProvider(
+    oboCredential,
+    {
+      scopes: ["Tasks.ReadWrite"],
+    }
+  );
+
+  // Initialize Graph client instance with authProvider
+  const graphClient = Client.initWithMiddleware({
+    authProvider: authProvider,
+  });
 
   // Get the user's to-do lists
   const { value: tasklists } = await graphClient.api("/me/todo/lists").get();
@@ -238,7 +262,9 @@ async function getTasksInfo(oboCredential: OnBehalfOfUserCredential) {
 
   // Get the tasks from the to-do list that are not completed and limit the results to 3
   const { value: tasksInfo } = await graphClient
-    .api(`/me/todo/lists/${todoTaskListId}/tasks?$filter=status ne 'completed'&$top=3`)
+    .api(
+      `/me/todo/lists/${todoTaskListId}/tasks?$filter=status ne 'completed'&$top=3`
+    )
     .get();
 
   // Map the tasks to a simpler format
@@ -260,11 +286,22 @@ async function getTasksInfo(oboCredential: OnBehalfOfUserCredential) {
  * @param {any} reqData - The request data containing the task title.
  * @returns A promise that resolves with an array of tasks.
  */
-async function createTask(oboCredential: OnBehalfOfUserCredential, reqData: any) {
-  const graphClient = createMicrosoftGraphClientWithCredential(oboCredential, [
-    "Tasks.ReadWrite",
-    "User.Read",
-  ]);
+async function createTask(
+  oboCredential: OnBehalfOfUserCredential,
+  reqData: any
+) {
+  // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+  const authProvider = new TokenCredentialAuthenticationProvider(
+    oboCredential,
+    {
+      scopes: ["Tasks.ReadWrite", "User.Read"],
+    }
+  );
+
+  // Initialize Graph client instance with authProvider
+  const graphClient = Client.initWithMiddleware({
+    authProvider: authProvider,
+  });
 
   // Get the user's to-do lists
   const { value: tasklists } = await graphClient.api("/me/todo/lists").get();
@@ -278,14 +315,22 @@ async function createTask(oboCredential: OnBehalfOfUserCredential, reqData: any)
     .post({ title: reqData.taskTitle });
 
   // Import the TeamsFx SDK and create a new instance for the app identity
-  let teamsfxApp = new TeamsFx(IdentityType.App);
+  const authConfig: AppCredentialAuthConfig = {
+    authorityHost: config.authorityHost,
+    clientId: config.clientId,
+    tenantId: config.tenantId,
+    clientSecret: config.clientSecret,
+  };
+  const appCredential: AppCredential = new AppCredential(authConfig);
 
   // Send an activity notification to the user's Teams activity feed
-  sendActivityNotification(teamsfxApp, graphClient);
+  sendActivityNotification(appCredential, graphClient);
 
   // Get the tasks from the to-do list that are not completed and limit the results to 3
   const { value: tasksInfo } = await graphClient
-    .api(`/me/todo/lists/${todoTaskListId}/tasks?$filter=status ne 'completed'&$top=3`)
+    .api(
+      `/me/todo/lists/${todoTaskListId}/tasks?$filter=status ne 'completed'&$top=3`
+    )
     .get();
 
   // Map the tasks to a simpler format
@@ -306,10 +351,21 @@ async function createTask(oboCredential: OnBehalfOfUserCredential, reqData: any)
  * @param {TeamsFx} teamsfxApp - The TeamsFx instance for the app identity.
  * @param {Client} graphClient - The Microsoft Graph client.
  */
-async function sendActivityNotification(teamsfxApp: TeamsFx, graphClient: Client) {
+async function sendActivityNotification(
+  appCredential: AppCredential,
+  graphClient: Client
+) {
   try {
-    // Create a Microsoft Graph client using the app identity and the default scope
-    const appGraphClient = createMicrosoftGraphClient(teamsfxApp, [".default"]);
+    // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+    const authProvider = new TokenCredentialAuthenticationProvider(
+      appCredential,
+      {
+        scopes: ["https://graph.microsoft.com/.default"],
+      }
+    );
+    let appGraphClient: Client = Client.initWithMiddleware({
+      authProvider: authProvider,
+    });
 
     // Get user ID
     const userProfile = await graphClient.api("/me").get();
@@ -351,11 +407,24 @@ async function sendActivityNotification(teamsfxApp: TeamsFx, graphClient: Client
  * @returns A promise that resolves with an array of files.
  */
 async function getFiles(oboCredential: OnBehalfOfUserCredential) {
-  const graphClient = createMicrosoftGraphClientWithCredential(oboCredential, ["Calendars.Read"]);
+  // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+  const authProvider = new TokenCredentialAuthenticationProvider(
+    oboCredential,
+    {
+      scopes: ["Calendars.Read"],
+    }
+  );
+
+  // Initialize Graph client instance with authProvider
+  const graphClient = Client.initWithMiddleware({
+    authProvider: authProvider,
+  });
 
   // Get the user's recently accessed files
   const { value: driveInfo } = await graphClient
-    .api("/me/drive/recent?$top=5&$select=id,name,webUrl,createdBy,lastModifiedBy,remoteItem")
+    .api(
+      "/me/drive/recent?$top=5&$select=id,name,webUrl,createdBy,lastModifiedBy,remoteItem"
+    )
     .get();
 
   // Map the files to a simpler format
@@ -401,7 +470,12 @@ async function getFiles(oboCredential: OnBehalfOfUserCredential) {
  * @param {Object} param0 - The file information.
  * @returns {string} - The Teams URL.
  */
-function generateTeamsUrl({ webUrl, mimeType, webDavUrl, sharepointIds }): string {
+function generateTeamsUrl({
+  webUrl,
+  mimeType,
+  webDavUrl,
+  sharepointIds,
+}): string {
   let url = "https://teams.microsoft.com/l/file/";
 
   // Get the file ID from the web URL
@@ -426,7 +500,9 @@ function generateTeamsUrl({ webUrl, mimeType, webDavUrl, sharepointIds }): strin
       fileTypeString = "vsd";
       break;
     default:
-      fileTypeString = mimeType.substring(mimeType.indexOf("application/" + 12));
+      fileTypeString = mimeType.substring(
+        mimeType.indexOf("application/" + 12)
+      );
       break;
   }
   url += "fileType=" + fileTypeString;
@@ -436,7 +512,9 @@ function generateTeamsUrl({ webUrl, mimeType, webDavUrl, sharepointIds }): strin
   url += "&objectUrl=" + encodedObjectURL;
 
   // Encode the base URL and add it to the URL
-  const encodedBaseUrl = sharepointIds.replace(/:/g, "%3A").replace(/\//g, "%2F");
+  const encodedBaseUrl = sharepointIds
+    .replace(/:/g, "%3A")
+    .replace(/\//g, "%2F");
   url += "&baseUrl=" + encodedBaseUrl;
 
   return url;
