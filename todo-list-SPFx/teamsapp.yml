@@ -1,6 +1,8 @@
-# yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.1.1/yaml.schema.json
-version: 1.1.1
-sampleTag: TeamsFx-Samples:todo-list-SPFx
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.2/yaml.schema.json
+version: v1.2
+
+additionalMetadata:
+  sampleTag: TeamsFx-Samples:todo-list-SPFx
 
 environmentFolderPath: ./env
 
