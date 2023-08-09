@@ -1,27 +1,33 @@
-import { ResponseType } from "@microsoft/microsoft-graph-client";
+import { ResponseType, Client } from "@microsoft/microsoft-graph-client";
+import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
 import { CardFactory, TurnContext } from "botbuilder";
-import {
-  createMicrosoftGraphClientWithCredential,
-  OnBehalfOfUserCredential,
-} from "@microsoft/teamsfx";
-import { SSOCommand } from "../helpers/botCommand";
+import { OnBehalfOfUserCredential } from "@microsoft/teamsfx";
+import { SSOCommand } from "./SSOCommand";
 import oboAuthConfig from "../authConfig";
 
-export class ShowUserProfile extends SSOCommand {
-  constructor() {
-    super();
-    this.commandMessage = 'show';
-    this.operationWithSSOToken = this.showUserInfo;
-  }
+export class ShowUserProfile implements SSOCommand {
+  commandMessage = "show";
 
-  async showUserInfo(context: TurnContext, ssoToken: string) {
-    await context.sendActivity("Retrieving user information from Microsoft Graph ...");
+  async operationWithSSOToken(context: TurnContext, ssoToken: string) {
+    await context.sendActivity(
+      "Retrieving user information from Microsoft Graph ..."
+    );
 
     // Call Microsoft Graph half of user
     const oboCredential = new OnBehalfOfUserCredential(ssoToken, oboAuthConfig);
-    const graphClient = createMicrosoftGraphClientWithCredential(oboCredential, [
-      "User.Read",
-    ]);
+
+    // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+    const authProvider = new TokenCredentialAuthenticationProvider(
+      oboCredential,
+      {
+        scopes: ["User.Read"],
+      }
+    );
+
+    // Initialize Graph client instance with authProvider
+    const graphClient = Client.initWithMiddleware({
+      authProvider: authProvider,
+    });
     const me = await graphClient.api("/me").get();
     if (me) {
       await context.sendActivity(

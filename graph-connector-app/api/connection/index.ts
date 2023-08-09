@@ -2,7 +2,8 @@
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import { Client } from "@microsoft/microsoft-graph-client";
-import { AppCredential, AppCredentialAuthConfig, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
+import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
+import { AppCredential, AppCredentialAuthConfig } from "@microsoft/teamsfx";
 import config from "../config";
 
 interface Response {
@@ -15,7 +16,7 @@ const authConfig: AppCredentialAuthConfig = {
   clientId: config.clientId,
   tenantId: config.tenantId,
   clientSecret: config.clientSecret,
-}
+};
 
 type TeamsfxContext = { [key: string]: any };
 
@@ -37,7 +38,7 @@ export default async function run(
   const res: Response = {
     status: 200,
     body: {
-      connectionAlreadyExists: false
+      connectionAlreadyExists: false,
     },
   };
 
@@ -58,27 +59,36 @@ export default async function run(
 
   // Create connection
   try {
-    const graphClient: Client = createMicrosoftGraphClientWithCredential(appCredential);
-    await graphClient.api("/external/connections")
-      .post({
-        "id": connectionId,
-        "name": "Sample connection",
-        "description": "Sample connection description"
-      });
+    // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+    const authProvider = new TokenCredentialAuthenticationProvider(
+      appCredential,
+      {
+        scopes: ["https://graph.microsoft.com/.default"],
+      }
+    );
+    const graphClient: Client = Client.initWithMiddleware({
+      authProvider: authProvider,
+    });
+    await graphClient.api("/external/connections").post({
+      id: connectionId,
+      name: "Sample connection",
+      description: "Sample connection description",
+    });
   } catch (e) {
     if (e?.statusCode === 409) {
       res.body.connectionAlreadyExists = true;
-    }
-    else {
+    } else {
       context.log.error(e);
-      let error = "Failed to create a connection for Graph connector: " + e.toString();
+      let error =
+        "Failed to create a connection for Graph connector: " + e.toString();
       if (e?.statusCode === 401) {
-        error += " -- Please make sure you have done 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.All' application permissions for your AAD App";
+        error +=
+          " -- Please make sure you have done 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.All' application permissions for your AAD App";
       }
       return {
         status: e?.statusCode ?? 500,
         body: {
-          error
+          error,
         },
       };
     }

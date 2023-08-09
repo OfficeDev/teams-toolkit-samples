@@ -2,7 +2,8 @@
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import { Client, ResponseType } from "@microsoft/microsoft-graph-client";
-import { AppCredential, AppCredentialAuthConfig, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
+import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
+import { AppCredential, AppCredentialAuthConfig } from "@microsoft/teamsfx";
 import config from "../config";
 
 interface Response {
@@ -15,7 +16,7 @@ const authConfig: AppCredentialAuthConfig = {
   clientId: config.clientId,
   tenantId: config.tenantId,
   clientSecret: config.clientSecret,
-}
+};
 
 type TeamsfxContext = { [key: string]: any };
 
@@ -56,76 +57,85 @@ export default async function run(
 
   // Register schema
   try {
-    const graphClient: Client = createMicrosoftGraphClientWithCredential(appCredential);
-    const result = await graphClient.api(`/external/connections/${connectionId}/schema`)
+    // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+    const authProvider = new TokenCredentialAuthenticationProvider(
+      appCredential,
+      {
+        scopes: ["https://graph.microsoft.com/.default"],
+      }
+    );
+    const graphClient: Client = Client.initWithMiddleware({
+      authProvider: authProvider,
+    });
+    const result = await graphClient
+      .api(`/external/connections/${connectionId}/schema`)
       .responseType(ResponseType.RAW)
       .post({
-        "baseType": "microsoft.graph.externalItem",
-        "properties": [
+        baseType: "microsoft.graph.externalItem",
+        properties: [
           {
-            "name": "partNumber",
-            "type": "int64",
-            "isSearchable": false,
-            "isRetrievable": true,
-            "isQueryable": true,
-            "labels": [],
-            "aliases": []
+            name: "partNumber",
+            type: "int64",
+            isSearchable: false,
+            isRetrievable: true,
+            isQueryable: true,
+            labels: [],
+            aliases: [],
           },
           {
-            "name": "name",
-            "type": "string",
-            "isSearchable": true,
-            "isRetrievable": true,
-            "isQueryable": true,
-            "labels": [],
-            "aliases": []
+            name: "name",
+            type: "string",
+            isSearchable: true,
+            isRetrievable: true,
+            isQueryable: true,
+            labels: [],
+            aliases: [],
           },
           {
-            "name": "description",
-            "type": "string",
-            "isSearchable": true,
-            "isRetrievable": true,
-            "isQueryable": false,
-            "labels": [],
-            "aliases": []
+            name: "description",
+            type: "string",
+            isSearchable: true,
+            isRetrievable: true,
+            isQueryable: false,
+            labels: [],
+            aliases: [],
           },
           {
-            "name": "price",
-            "type": "double",
-            "isSearchable": false,
-            "isRetrievable": true,
-            "isQueryable": true,
-            "labels": [],
-            "aliases": []
+            name: "price",
+            type: "double",
+            isSearchable: false,
+            isRetrievable: true,
+            isQueryable: true,
+            labels: [],
+            aliases: [],
           },
           {
-            "name": "inventory",
-            "type": "int64",
-            "isSearchable": false,
-            "isRetrievable": true,
-            "isQueryable": true,
-            "labels": [],
-            "aliases": []
+            name: "inventory",
+            type: "int64",
+            isSearchable: false,
+            isRetrievable: true,
+            isQueryable: true,
+            labels: [],
+            aliases: [],
           },
           {
-            "name": "appliances",
-            "type": "stringCollection",
-            "isSearchable": true,
-            "isRetrievable": true,
-            "isQueryable": true,
-            "labels": [],
-            "aliases": []
+            name: "appliances",
+            type: "stringCollection",
+            isSearchable: true,
+            isRetrievable: true,
+            isQueryable: true,
+            labels: [],
+            aliases: [],
           },
-        ]
+        ],
       });
-    res.body.location = result.headers.get('Location');
+    res.body.location = result.headers.get("Location");
   } catch (e) {
     context.log.error(e);
     return {
       status: e?.statusCode ?? 500,
       body: {
-        error:
-          "Failed to register a schema for connection: " + e.toString(),
+        error: "Failed to register a schema for connection: " + e.toString(),
       },
     };
   }

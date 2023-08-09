@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "productivity-dashboard-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/productivityDashboard/ProductivityDashboardWebPart.js",
+          "manifest": "./src/webparts/productivityDashboard/ProductivityDashboardWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ProductivityDashboardWebPartStrings": "lib/webparts/productivityDashboard/loc/{locale}.js"
+  }
+}

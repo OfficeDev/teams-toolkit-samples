@@ -2,10 +2,11 @@
 import "isomorphic-fetch";
 import { Context, HttpRequest } from "@azure/functions";
 import { Client } from "@microsoft/microsoft-graph-client";
-import { AppCredential, AppCredentialAuthConfig, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
+import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
+import { AppCredential, AppCredentialAuthConfig } from "@microsoft/teamsfx";
 import { readFile } from "fs/promises";
 import * as path from "path";
-import { parse } from 'csv-parse/sync';
+import { parse } from "csv-parse/sync";
 import config from "../config";
 
 interface Response {
@@ -18,7 +19,7 @@ const authConfig: AppCredentialAuthConfig = {
   clientId: config.clientId,
   tenantId: config.tenantId,
   clientSecret: config.clientSecret,
-}
+};
 
 type TeamsfxContext = { [key: string]: any };
 
@@ -59,35 +60,53 @@ export default async function run(
 
   // Ingest data
   try {
-    const csvFileContent = (await readFile(path.join(context.executionContext.functionDirectory, "assets", "ApplianceParts.csv"))).toString();
+    const csvFileContent = (
+      await readFile(
+        path.join(
+          context.executionContext.functionDirectory,
+          "assets",
+          "ApplianceParts.csv"
+        )
+      )
+    ).toString();
     const records = parse(csvFileContent, {
       columns: true,
-      skip_empty_lines: true
+      skip_empty_lines: true,
     });
-    const graphClient: Client = createMicrosoftGraphClientWithCredential(appCredential);
+    // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+    const authProvider = new TokenCredentialAuthenticationProvider(
+      appCredential,
+      {
+        scopes: ["https://graph.microsoft.com/.default"],
+      }
+    );
+    const graphClient: Client = Client.initWithMiddleware({
+      authProvider: authProvider,
+    });
     for (const item of records) {
-      await graphClient.api(`/external/connections/${connectionId}/items/${item.PartNumber}`)
+      await graphClient
+        .api(`/external/connections/${connectionId}/items/${item.PartNumber}`)
         .put({
-          "acl": [
+          acl: [
             {
-              "type": "everyone",
-              "value": "c5f19b2d-0a77-454a-9b43-abf298c3b34e",
-              "accessType": "grant"
-            }
+              type: "everyone",
+              value: "c5f19b2d-0a77-454a-9b43-abf298c3b34e",
+              accessType: "grant",
+            },
           ],
-          "properties": {
-            "partNumber": Number(item.PartNumber),
-            "name": item.Name,
-            "description": item.Description,
-            "price": Number(item.Price),
-            "inventory": Number(item.Inventory),
-            "appliances": item.Appliances.split(";"),
-            "appliances@odata.type": "Collection(String)"
+          properties: {
+            partNumber: Number(item.PartNumber),
+            name: item.Name,
+            description: item.Description,
+            price: Number(item.Price),
+            inventory: Number(item.Inventory),
+            appliances: item.Appliances.split(";"),
+            "appliances@odata.type": "Collection(String)",
           },
-          "content": {
-            "type": "text",
-            "value": item.Description
-          }
+          content: {
+            type: "text",
+            value: item.Description,
+          },
         });
     }
   } catch (e) {
@@ -95,8 +114,7 @@ export default async function run(
     return {
       status: e?.statusCode ?? 500,
       body: {
-        error:
-          "Failed to ingest items: " + e.toString(),
+        error: "Failed to ingest items: " + e.toString(),
       },
     };
   }

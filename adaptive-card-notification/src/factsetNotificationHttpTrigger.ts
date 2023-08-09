@@ -21,11 +21,18 @@ const httpTrigger: AzureFunction = async function (
   context: Context,
   req: HttpRequest
 ): Promise<void> {
-  for (const target of await notificationApp.notification.installations()) {
-    await target.sendAdaptiveCard(
-      AdaptiveCards.declare<FactsetData>(notificationTemplate).render(data)
-    );
-  }
+  const pageSize = 100;
+  let continuationToken: string | undefined;
+  do {
+    const pagedInstallations = await notificationApp.notification.getPagedInstallations(pageSize, continuationToken);
+    continuationToken = pagedInstallations.continuationToken;
+    const targets = pagedInstallations.data;
+    for (const target of targets) {
+      await target.sendAdaptiveCard(
+        AdaptiveCards.declare<FactsetData>(notificationTemplate).render(data)
+      );
+    }
+  } while (continuationToken);
 
   context.res = {};
 };

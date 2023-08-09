@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.17.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.0-beta.2",
+    "libraryName": "spfx-productivity-dashboard",
+    "libraryId": "a6240e42-f9f6-49a9-b642-b16cac87b013",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spfx-productivity-dashboard",
+    "solutionShortDescription": "spfx-productivity-dashboard description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
