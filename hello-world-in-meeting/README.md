@@ -2,7 +2,7 @@
 
 This App helps to enable your apps for Teams meetings and configure the apps to be available in the meeting scope. This app covers show Teams context in meeting detail view, chat view and side panel.
 
-![side panel](/hello-world-in-meeting/images/sidepanel.png)
+![side panel](images/sidepanel.png)
 
 > App Caching was configured in this sample to reduce the reload time of your app in a meeting. To learn about limitations and available scopes, please check [Enable app caching for your tab app](https://aka.ms/teamsfx-app-caching).
 
