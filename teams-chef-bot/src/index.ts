@@ -12,7 +12,8 @@ import {
     CloudAdapter,
     ConfigurationBotFrameworkAuthentication,
     ConfigurationServiceClientCredentialFactory,
-    MemoryStorage
+    MemoryStorage,
+    TurnContext
 } from 'botbuilder';
 
 const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(
@@ -29,7 +30,7 @@ const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(
 const adapter = new CloudAdapter(botFrameworkAuthentication);
 
 // Catch-all for errors.
-const onTurnErrorHandler = async (context, error) => {
+const onTurnErrorHandler = async (context: TurnContext, error: any) => {
     // This check writes out errors to console log .vs. app insights.
     // NOTE: In production environment, you should consider logging this to Azure
     //       application insights.
@@ -61,7 +62,15 @@ server.listen(process.env.port || process.env.PORT || 3978, () => {
     console.log('\nTo test your bot in Teams, sideload the app manifest.json within Teams Apps.');
 });
 
-import { Application, ConversationHistory, DefaultPromptManager, DefaultTurnState, OpenAIModerator, OpenAIPlanner, AI } from '@microsoft/botbuilder-m365';
+import {
+    AI,
+    Application,
+    ConversationHistory,
+    DefaultPromptManager,
+    DefaultTurnState,
+    OpenAIModerator,
+    OpenAIPlanner
+} from '@microsoft/teams-ai';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ConversationState {}
@@ -94,17 +103,20 @@ const app = new Application<ApplicationTurnState>({
     }
 });
 
-app.ai.action(AI.FlaggedInputActionName, async (context, state, data) => {
-    await context.sendActivity(`I'm sorry your message was flagged: ${JSON.stringify(data)}`);
-    return false;
-});
+app.ai.action(
+    AI.FlaggedInputActionName,
+    async (context: TurnContext, state: ApplicationTurnState, data: Record<string, any>) => {
+        await context.sendActivity(`I'm sorry your message was flagged: ${JSON.stringify(data)}`);
+        return false;
+    }
+);
 
-app.ai.action(AI.FlaggedOutputActionName, async (context, state, data) => {
+app.ai.action(AI.FlaggedOutputActionName, async (context: TurnContext, state: ApplicationTurnState, data: any) => {
     await context.sendActivity(`I'm not allowed to talk about such things.`);
     return false;
 });
 
-app.message('/history', async (context, state) => {
+app.message('/history', async (context: TurnContext, state: ApplicationTurnState) => {
     const history = ConversationHistory.toString(state, 2000, '\n\n');
     await context.sendActivity(history);
 });
@@ -112,7 +124,6 @@ app.message('/history', async (context, state) => {
 // Listen for incoming server requests.
 server.post('/api/messages', async (req, res) => {
     // Route received a request to adapter for processing
-    console.warn("Adapter.progress starting..")
     await adapter.process(req, res as any, async (context) => {
         // Dispatch to application for routing
         await app.run(context);
