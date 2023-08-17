@@ -4,6 +4,7 @@
             "id": "hello-world-tab-with-backend",
             "onboardDate": "2021-11-30",
             "title": "Tab App with Azure Backend",
+            "shortId": "helloworld-backend",
             "shortDescription": "A Hello World app of Microsoft Teams Tab app which has a backend service",
             "fullDescription": "This is a Hello World app of Microsoft Teams Tab app which accomplishes very simple function like single-sign on. You can run this app locally or deploy it to Microsoft Azure. This app has a Tab frontend and a backend service using Azure Function.",
             "types": [
@@ -21,6 +22,7 @@
         },
         {
             "id": "graph-toolkit-contact-exporter",
+            "shortId": "contact-exporter",
             "onboardDate": "2021-11-30",
             "title": "Contact Exporter using Graph Toolkit",
             "shortDescription": "Contact Exporter app of Microsoft Teams Tab app.",
@@ -39,6 +41,7 @@
         },
         {
             "id": "bot-sso",
+            "shortId": "sso-bot",
             "onboardDate": "2021-10-19",
             "title": "Bot App with SSO Enabled",
             "shortDescription": "A Hello World app of Microsoft Teams Bot app with SSO",
@@ -59,6 +62,7 @@
         },
         {
             "id": "todo-list-SPFx",
+            "shortId": "todo-spfx",
             "onboardDate": "2021-05-06",
             "title": "Todo List with SPFx",
             "shortDescription": "Todo List app hosting on SharePoint",
@@ -78,6 +82,7 @@
         },
         {
             "id": "hello-world-in-meeting",
+            "shortId": "helloworld-meeting",
             "onboardDate": "2022-04-08",
             "title": "My First Meeting App",
             "shortDescription": "A template for apps using only in the context of a Teams meeting",
@@ -96,6 +101,7 @@
         },
         {
             "id": "todo-list-with-Azure-backend-M365",
+            "shortId": "todo-backend-m365",
             "onboardDate": "2021-11-09",
             "title": "Todo List (Works in Teams, Outlook and Office)",
             "shortDescription": "Todo List app that runs across Microsoft 365 including Teams, Outlook and Office",
@@ -117,6 +123,7 @@
         },
         {
             "id": "NPM-search-connector-M365",
+            "shortId": "npm-search-m365",
             "onboardDate": "2021-11-09",
             "title": "NPM Search Connector",
             "shortDescription": "Search and Share an NPM Package in Teams and Outlook (Web)",
@@ -136,6 +143,7 @@
         },
         {
             "id": "bot-proactive-messaging-teamsfx",
+            "shortId": "proactive-messaging",
             "onboardDate": "2022-08-01",
             "title": "Proactive Messaging",
             "shortDescription": "Demonstrates how to send proactive messages to users.",
@@ -155,6 +163,7 @@
         },
         {
             "id": "adaptive-card-notification",
+            "shortId": "ac-notification",
             "onboardDate": "2022-03-28",
             "title": "Adaptive Card Notification",
             "shortDescription": "Demonstrates how to send adaptive card notification to users.",
@@ -173,6 +182,7 @@
         },
         {
             "id": "incoming-webhook-notification",
+            "shortId": "webhook-notification",
             "onboardDate": "2022-03-31",
             "title": "Incoming Webhook Notification",
             "shortDescription": "Demonstrates how to send notification via Incoming Webhook.",
@@ -191,6 +201,7 @@
         },
         {
             "id": "stocks-update-notification-bot",
+            "shortId": "stocks-notification",
             "onboardDate": "2022-08-08",
             "title": "Stocks Update",
             "shortDescription": "Keep up to date with the latest stock price in Microsoft Teams.",
@@ -211,6 +222,7 @@
         },
         {
             "id": "query-org-user-with-message-extension-sso",
+            "shortId": "query-user-sso",
             "onboardDate": "2022-09-20",
             "title": "Org User Search Connector",
             "shortDescription": "Query Org User with Message Extension SSO",
@@ -229,6 +241,7 @@
         },
         {
             "id": "team-central-dashboard",
+            "shortId": "central-dashboard",
             "onboardDate": "2022-09-20",
             "title": "Team Central Dashboard",
             "shortDescription": "A single dashboard displaying data chats and content from Microsoft Graph to accelerate team collaboration and personal productivity.",
@@ -249,6 +262,7 @@
         },
         {
             "id": "graph-connector-app",
+            "shortId": "graph-connector",
             "onboardDate": "2022-04-18",
             "title": "Graph Connector App",
             "shortDescription": "Showcases how to build custom Graph Connector",
@@ -269,6 +283,7 @@
         },
         {
             "id": "graph-toolkit-one-productivity-hub",
+            "shortId": "graph-ttk-hub",
             "onboardDate": "2022-07-27",
             "title": "One Productivity Hub using Graph Toolkit",
             "shortDescription": "Microsoft Teams tab with SSO to view calendar events, to-do tasks and file folders.",
@@ -289,6 +304,7 @@
         },
         {
             "id": "todo-list-with-Azure-backend",
+            "shortId": "todo-backend",
             "onboardDate": "2021-05-06",
             "title": "Todo List with backend on Azure",
             "shortDescription": "Todo List app with Azure Function backend and Azure SQL database",
@@ -310,6 +326,7 @@
         },
         {
             "id": "share-now",
+            "shortId": "share-now",
             "onboardDate": "2021-05-17",
             "title": "Share Now",
             "shortDescription": "Knowledge sharing app contains a Tab and a Message extension",
@@ -330,6 +347,7 @@
         },
         {
             "id": "hello-world-teams-tab-and-outlook-add-in",
+            "shortId": "helloworld-outlook",
             "onboardDate": "2023-03-02",
             "title": "Hello World Teams Tab and Outlook add-in",
             "shortDescription": "A hello world project that contains both Teams Tab and Outlook add-in capability",
@@ -348,6 +366,7 @@
         },
         {
             "id": "outlook-add-in-set-signature",
+            "shortId": "signature-outlook",
             "onboardDate": "2023-05-04",
             "title": "Set signature using Outlook add-in",
             "shortDescription": "An Outlook add-in that sets signature for the user",
@@ -366,6 +385,7 @@
         },
         {
             "id": "developer-assist-dashboard",
+            "shortId": "dev-assist-dashboard",
             "onboardDate": "2023-03-07",
             "title": "Developer Assist Dashboard",
             "shortDescription": "A dashboard that integrates with Azure DevOps, Github issues and Planner tasks that accelerates developer productivity.",
@@ -385,6 +405,7 @@
         },
         {
             "id": "live-share-dice-roller",
+            "shortId": "dice-roller",
             "onboardDate": "2023-04-27",
             "title": "Dice Roller in meeting",
             "shortDescription": "This sample introduces Microsoft Live Share and Azure Fluid Relay to enable a shared experience between multiple users.",
@@ -405,6 +426,7 @@
         },
         {
             "id": "teams-chef-bot",
+            "shortId": "chef-bot",
             "onboardDate": "2023-06-25",
             "title": "Teams Chef Bot",
             "shortDescription": "Demonstrates how to build bot with Microsoft Teams AI Library.",
@@ -424,6 +446,7 @@
         },
         {
             "id": "spfx-productivity-dashboard",
+            "shortId": "spfx-dashboard",
             "onboardDate": "2023-08-09",
             "title": "One Productivity Hub using Graph Toolkit with SPFx",
             "shortDescription": "Microsoft Teams tab powered by SharePoint Framework to view calendar events, to-do tasks and file folders.",
