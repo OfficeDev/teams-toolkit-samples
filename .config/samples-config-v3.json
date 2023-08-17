@@ -222,7 +222,7 @@
         },
         {
             "id": "query-org-user-with-message-extension-sso",
-            "shortId": "query-user-sso-me",
+            "shortId": "query-user-sso",
             "onboardDate": "2022-09-20",
             "title": "Org User Search Connector",
             "shortDescription": "Query Org User with Message Extension SSO",
@@ -241,7 +241,7 @@
         },
         {
             "id": "team-central-dashboard",
-            "shortId": "central-dashboard-tab",
+            "shortId": "central-dashboard",
             "onboardDate": "2022-09-20",
             "title": "Team Central Dashboard",
             "shortDescription": "A single dashboard displaying data chats and content from Microsoft Graph to accelerate team collaboration and personal productivity.",
@@ -262,7 +262,7 @@
         },
         {
             "id": "graph-connector-app",
-            "shortId": "graph-connector-tab",
+            "shortId": "graph-connector",
             "onboardDate": "2022-04-18",
             "title": "Graph Connector App",
             "shortDescription": "Showcases how to build custom Graph Connector",
@@ -283,7 +283,7 @@
         },
         {
             "id": "graph-toolkit-one-productivity-hub",
-            "shortId": "graph-ttk-hub-tab",
+            "shortId": "graph-ttk-hub",
             "onboardDate": "2022-07-27",
             "title": "One Productivity Hub using Graph Toolkit",
             "shortDescription": "Microsoft Teams tab with SSO to view calendar events, to-do tasks and file folders.",
@@ -366,7 +366,7 @@
         },
         {
             "id": "outlook-add-in-set-signature",
-            "shortId": "signature-outlook-tab",
+            "shortId": "signature-outlook",
             "onboardDate": "2023-05-04",
             "title": "Set signature using Outlook add-in",
             "shortDescription": "An Outlook add-in that sets signature for the user",
@@ -385,7 +385,7 @@
         },
         {
             "id": "developer-assist-dashboard",
-            "shortId": "dev-assist-dashboard-tab",
+            "shortId": "dev-assist-dashboard",
             "onboardDate": "2023-03-07",
             "title": "Developer Assist Dashboard",
             "shortDescription": "A dashboard that integrates with Azure DevOps, Github issues and Planner tasks that accelerates developer productivity.",
@@ -405,7 +405,7 @@
         },
         {
             "id": "live-share-dice-roller",
-            "shortId": "dice-roller-tab",
+            "shortId": "dice-roller",
             "onboardDate": "2023-04-27",
             "title": "Dice Roller in meeting",
             "shortDescription": "This sample introduces Microsoft Live Share and Azure Fluid Relay to enable a shared experience between multiple users.",
@@ -446,7 +446,7 @@
         },
         {
             "id": "spfx-productivity-dashboard",
-            "shortId": "spfx-dashboard-tab",
+            "shortId": "spfx-dashboard",
             "onboardDate": "2023-08-09",
             "title": "One Productivity Hub using Graph Toolkit with SPFx",
             "shortDescription": "Microsoft Teams tab powered by SharePoint Framework to view calendar events, to-do tasks and file folders.",
