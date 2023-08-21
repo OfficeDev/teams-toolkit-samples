@@ -18,6 +18,7 @@
             "time": "5min to run",
             "configuration": "Ready for debug",
             "gifPath": "images/helloWorld-tab-with-backend.gif",
+            "maximumToolkitVersion": "5.0",
             "suggested": true
         },
         {
@@ -37,6 +38,7 @@
             "time": "5min to run",
             "configuration": "Ready for debug",
             "gifPath": "images/overview.gif",
+            "maximumToolkitVersion": "5.0",
             "suggested": true
         },
         {
@@ -58,6 +60,7 @@
             "time": "5min to run",
             "configuration": "Ready for debug",
             "gifPath": "images/preview.gif",
+            "maximumToolkitVersion": "5.0",
             "suggested": false
         },
         {
@@ -78,6 +81,7 @@
             "time": "1hr to run",
             "configuration": "Manual configurations required",
             "gifPath": "images/ToDoListCRUD.gif",
+            "maximumToolkitVersion": "5.0",
             "suggested": false
         },
         {
@@ -97,6 +101,7 @@
             "time": "30min to run",
             "configuration": "Ready for debug",
             "gifPath": "images/preview.png",
+            "maximumToolkitVersion": "5.0",
             "suggested": false
         },
         {
