@@ -1,5 +1,6 @@
-# Getting Started with Hello World Deeplinking Tab Without SSO Sample
->
+# Getting Started with Hello World Deeplinking Tab Without SSO Sample [Going to be deprecated]
+> [Important!]This sample is supported to run in Teams Toolkit version 4.x.x, not supported in Teams Toolkit V5.0.0 or later, and it's going to be deprecated very soon in several months.
+
 > We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
 >
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
