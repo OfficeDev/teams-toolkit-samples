@@ -16,11 +16,6 @@ export interface ISettingsService {
     Load: () => Promise<RetailSettings>;
 
     /**
-     * Retrieves the Teams App Id for deep linking
-     */
-    GetTeamsAppId: () => Promise<string>;
-
-    /**
      * Checks if the current user is an admin in the app catalog
      * @returns True if the current user is an admin, false otherwise
      */

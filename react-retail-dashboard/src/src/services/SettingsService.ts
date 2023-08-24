@@ -64,14 +64,6 @@ export class SettingsService implements ISettingsService {
     }
 
     /**
-     * Retrieves the Teams App Id for deep linking
-    */
-    public async GetTeamsAppId(): Promise<string> {
-        const manifest: { id: string } = await require("../../teams/manifest.json");
-        return manifest.id;
-    }
-
-    /**
      * Checks if the current user is an admin in the app catalog
      */
     public async UserIsAppCatalogAdmin(): Promise<boolean> {
