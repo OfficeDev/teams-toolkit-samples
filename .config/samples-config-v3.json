@@ -17,7 +17,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/helloWorld-tab-with-backend.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": true
         },
         {
@@ -36,7 +36,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/overview.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": true
         },
         {
@@ -57,7 +57,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/preview.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -77,7 +77,7 @@
             ],
             "time": "1hr to run",
             "configuration": "Manual configurations required",
-            "gifPath": "images/ToDoListCRUD.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -118,7 +118,7 @@
             ],
             "time": "30min to run",
             "configuration": "Manual configurations required",
-            "gifPath": "images/preview.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -138,7 +138,7 @@
             ],
             "time": "45min to run",
             "configuration": "Manual configurations required",
-            "gifPath": "images/preview.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -177,7 +177,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/adaptivecard.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -196,7 +196,7 @@
             ],
             "time": "5min to run",
             "configuration": "Manual configurations required",
-            "gifPath": "images/incoming-webhook.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -217,7 +217,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/app.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -236,7 +236,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/preview.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -257,7 +257,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/team-central-dashboard.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -278,7 +278,7 @@
             ],
             "time": "10min to run",
             "configuration": "Manual configurations required",
-            "gifPath": "images/graph-connector-app-demo.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -299,7 +299,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/oneproductivityhub-overview.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -321,7 +321,7 @@
             ],
             "time": "30min to run",
             "configuration": "Manual configurations required",
-            "gifPath": "images/ToDoListCRUD.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -342,7 +342,7 @@
             ],
             "time": "30min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/shareNow.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -361,7 +361,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/preview.png",
+            "gifPath": "assets/sampleDemo.png",
             "suggested": false
         },
         {
@@ -421,7 +421,7 @@
             ],
             "time": "5 min to run",
             "configuration": "Manual configurations required",
-            "gifPath": "images/preview.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
@@ -441,7 +441,7 @@
             ],
             "time": "5min to run",
             "configuration": "Manual configurations required",
-            "gifPath": "assets/preview.gif",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
