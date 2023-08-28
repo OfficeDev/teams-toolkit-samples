@@ -31,7 +31,6 @@ type TeamsfxContext = { [key: string]: any };
  *
  * This function initializes the teamsfx SDK with the configuration and calls these APIs:
  * - getUserInfo() - Get the user's information from the received SSO token.
- * - createMicrosoftGraphClient() - Get a graph client to access user's Microsoft 365 data.
  *
  * The response contains multiple message blocks constructed into a JSON object, including:
  * - An echo of the request body.

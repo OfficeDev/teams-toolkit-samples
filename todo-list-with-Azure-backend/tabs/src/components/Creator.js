@@ -3,7 +3,8 @@
 
 import React from "react";
 import "./Creator.css";
-import { createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
+import { Client } from "@microsoft/microsoft-graph-client";
+import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
 import defaultPhoto from "../images/default-photo.png";
 
 class Creator extends React.Component {
@@ -27,11 +28,17 @@ class Creator extends React.Component {
 
   async fetchData() {
     try {
-      // Get Microsoft graph client
-      const graphClient = await createMicrosoftGraphClientWithCredential(
+      // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+      const authProvider = new TokenCredentialAuthenticationProvider(
         this.props.teamsUserCredential,
-        this.props.scope
+        {
+          scopes: this.props.scope,
+        }
       );
+      // Initialize the Graph client
+      const graphClient = Client.initWithMiddleware({
+        authProvider: authProvider,
+      });
       const displayName = (
         await graphClient.api(`/users/${this.props.objectId}`).get()
       ).displayName;
