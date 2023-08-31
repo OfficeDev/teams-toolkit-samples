@@ -57,7 +57,7 @@ Here's the functions used in this sample:
 | `waitSendingFinishActivity` | Activity      | It will check the active message count in Service Bus Queue and wait until all items are processed                                                  |
 
 The following image illustrates the architecture of functions interecting with Azure services.
-![architecture](./architecture.jpg)
+![architecture](./assets/architecture.jpg)
 
 ### Performance Tuning
 
