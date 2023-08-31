@@ -1,0 +1,10 @@
+{
+  "bindings": [
+    {
+      "name": "startTime",
+      "type": "orchestrationTrigger",
+      "direction": "in"
+    }
+  ],
+  "scriptFile": "../dist/src/functions/sendNotificationsOrchestrator.js"
+}
