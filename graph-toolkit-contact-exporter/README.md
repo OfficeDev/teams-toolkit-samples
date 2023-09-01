@@ -2,7 +2,7 @@
 
 Graph Toolkit Contact Exporter sample APP provides an easy way to export your teams contact info to Excel file. This APP is using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) as UI component.
 
-![Contact Exporter Overview](images/overview.gif)
+![Contact Exporter Overview](assets/sampleDemo.gif)
 
 > Note: This sample will only provision [single tenant](https://learn.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Azure Active Directory app. For multi-tenant support, please refer to this [wiki](https://aka.ms/teamsfx-multi-tenant).
 

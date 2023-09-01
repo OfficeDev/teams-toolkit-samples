@@ -1,6 +1,6 @@
 # Getting Started with Incoming Webhook Notification
 An Incoming Webhook Sample provides an easy way to send adaptive cards in Microsoft Teams channels. The webhooks are used as tools to track and notify.
-![Incoming Webhook Overall](./images/incoming-webhook.gif)
+![Incoming Webhook Overall](./assets/sampleDemo.gif)
 
 ## This sample illustrates
 - How to create an Incoming Webhook in Teams.
