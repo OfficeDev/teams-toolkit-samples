@@ -38,7 +38,7 @@ async function copy() {
     .byPage({ maxPageSize: 1000 })
     .next();
 
-  for (let i = 269; i < 300; i++) {
+  for (let i = 0; i < 30; i++) {
     console.log(`Generating # ${i}k messages`);
     for (let j = 0; j < 10; j++) {
       const tableActions: any = [];
