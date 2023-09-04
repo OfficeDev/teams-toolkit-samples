@@ -2,8 +2,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-import fs from "fs";
-import { exit } from "process";
+const fs = require("fs");
+const exit = require("process").exit;
 
 const mandatoryFields = [
   "id",
