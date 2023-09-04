@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const TEAMS_APP_ID = "<TEAMS_APP_ID>";
-const AUTH_TOKEN = "<GRAPH_AUTH_TOKEN>";
+const ACCESS_TOKEN = "<GRAPH_ACCESS_TOKEN>";
 
 let index = 0;
 
@@ -10,7 +10,7 @@ async function getUserList() {
   const getUsers = axios.create({
     baseURL: "https://graph.microsoft.com/v1.0/users?$top=999",
     headers: {
-      Authorization: AUTH_TOKEN,
+      Authorization: ACCESS_TOKEN,
     },
   });
   try {
@@ -21,7 +21,7 @@ async function getUserList() {
       let getUsersByPage = axios.create({
         baseURL: userList.data["@odata.nextLink"],
         headers: {
-          Authorization: AUTH_TOKEN,
+          Authorization: ACCESS_TOKEN,
         },
       });
       userListByPage = await getUsersByPage({});
@@ -44,7 +44,7 @@ async function asyncPool(poolLimit, TargetArray) {
   const installApp = axios.create({
     baseURL: "https://graph.microsoft.com/v1.0/users",
     headers: {
-      Authorization: AUTH_TOKEN,
+      Authorization: ACCESS_TOKEN,
     },
   });
   for (index = 0; index < TargetArray.length; index++) {
@@ -105,8 +105,8 @@ async function main() {
   let startTime = new Date();
   let userList = await getUserList();
 
-  // Create at most 30 Axios post in the same time
-  await asyncPool(30, userList);
+  // Create at most 5 Axios post in the same time
+  await asyncPool(5, userList);
   let endTime = new Date();
   console.log("Total User: " + index);
   console.log(

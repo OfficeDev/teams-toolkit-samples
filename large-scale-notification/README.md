@@ -11,11 +11,11 @@ This sample demonstrates the architecture of a Teams notfication bot app created
 
 ## Install Teams App for all users
 
-1. Visit https://admin.teams.microsoft.com/. Click "Manage apps" under "Teams apps" and find the app with name "notification-scale-demo-dev".
+1. Visit https://admin.teams.microsoft.com/. Click "Manage apps" under "Teams apps" and find the app with name "large-scale-notifi-dev".
 2. Click the app and click "Publish" to approve the request.
 3. Copy "App Id" in app details page and paste it to variable `TEAMS_APP_ID` in `script/installAppForUsers.js`.
 4. Visit https://developer.microsoft.com/en-us/graph/graph-explorer. Click "Modify permissions" and consent "TeamsAppInstallation.ReadWriteForUser".
-5. Copy the "Access token" and paste it to variable `AUTH_TOKEN` in `script/installAppForUsers.js`.
+5. Copy the "Access token" and paste it to variable `ACCESS_TOKEN` in `script/installAppForUsers.js`.
 6. Run command in project folder: `node script/installAppForUsers.js`.
 7. Check the provisioned Azure Storage Account Table `installation` for installation records.
 

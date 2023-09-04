@@ -1,10 +1,6 @@
 import { BotBuilderCloudAdapter } from "@microsoft/teamsfx";
 
-import {
-  storageAccount,
-  storageAccountKey,
-  installationMockTableName,
-} from "../consts";
+import { storageAccount, storageAccountKey, storageTableName } from "../consts";
 import config from "./config";
 import { TableStore } from "./tableStore";
 
@@ -21,10 +17,6 @@ export const notificationApp = new ConversationBot({
   // Enable notification
   notification: {
     enabled: true,
-    store: new TableStore(
-      storageAccount,
-      storageAccountKey,
-      installationMockTableName
-    ),
+    store: new TableStore(storageAccount, storageAccountKey, storageTableName),
   },
 });
