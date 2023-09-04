@@ -40,18 +40,19 @@ jobs:
 
       - name: Sample Validation Tool
         run: |
+          # This script runs the validation tool against all samples in the samples-config-v3.json file.
+          # External samples are excluded from the validation.
           exceptions=("incoming-webhook-notification")
-          samples=`jq ".samples | .[] | select(has(\"downloadUrl\") | not) | .id" .config/samples-config-v3.json | xargs -n1 echo`
+          samples=`jq -r ".samples | .[] | select(has(\"downloadUrl\") | not) | .id" .config/samples-config-v3.json`
           validationFailed="validation failed"
           validationResult=true
           while IFS= read -r line; do
-            if [[ ${exceptions[@]} =~ $line ]]
+            if [[ ! ${exceptions[@]} =~ $line ]]
             then
-              echo "skip $line"
-            else
               result=`node ./validation-tool/validator.cjs -p $line`
               if grep -q "$validationFailed" <<< "$result"; then
-                echo "$line validation failed"
+                printf "\nSample '$line' validation failed.\n"
+                echo "$result"
                 validationResult=false
               fi
             fi
