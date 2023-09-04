@@ -1,0 +1,61 @@
+name: Sample Validation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - dev
+  push:
+    branches:
+      - dev
+
+jobs:
+  sample-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Pull Request
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+      - name: Checkout Branch
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+          repository: ${{ github.repository }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Validate Sample Config
+        run: |
+          npx ts-node validation-tool/validate-config.ts .config/samples-config-v3.json
+          exit $?
+
+      - name: Sample Validation Tool
+        run: |
+          exceptions=("incoming-webhook-notification")
+          samples=`jq ".samples | .[] | select(has(\"downloadUrl\") | not) | .id" .config/samples-config-v3.json | xargs -n1 echo`
+          validationFailed="validation failed"
+          validationResult=true
+          while IFS= read -r line; do
+            if [[ ${exceptions[@]} =~ $line ]]
+            then
+              echo "skip $line"
+            else
+              result=`node ./validation-tool/validator.cjs -p $line`
+              if grep -q "$validationFailed" <<< "$result"; then
+                echo "$line validation failed"
+                validationResult=false
+              fi
+            fi
+          done <<< "$samples"
+          if [ "$validationResult" = false ]; then
+            exit 1
+          fi

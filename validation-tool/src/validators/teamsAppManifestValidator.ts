@@ -6,6 +6,7 @@ import path from "path";
 import { Result } from "../resultType";
 
 const MANIFEST_VERSION = "1.16";
+const MANIFEST_PREVIEW_VERSION = "devPreview";
 
 /**
  * Rule 1: Manifest id is referencing placeholder from env: ${{TEAMS_APP_ID}}
@@ -44,6 +45,8 @@ export default async function validateTeamsAppManifest(projectDir: string): Prom
   }
   if (jsonData.manifestVersion === MANIFEST_VERSION) {
     result.passed.push(`Manifest version is aligned with Teams Toolkit.`);
+  } else if (jsonData.manifestVersion === MANIFEST_PREVIEW_VERSION) {
+    result.warning.push(`Manifest version(${MANIFEST_PREVIEW_VERSION}) is using preview version.`);
   } else {
     result.failed.push(`Manifest version(${jsonData.manifestVersion}) is NOT aligned with Teams Toolkit(${MANIFEST_VERSION}).`);
   }
