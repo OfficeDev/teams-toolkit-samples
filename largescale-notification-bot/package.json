@@ -1,7 +1,7 @@
 {
-  "name": "notification-scale-demo",
+  "name": "large-scale-notification",
   "version": "1.0.0",
-  "description": "Microsoft Teams Toolkit Notification Bot Sample",
+  "description": "Microsoft Teams Toolkit Large Scale Notification Bot Sample",
   "engines": {
     "node": "16 || 18"
   },

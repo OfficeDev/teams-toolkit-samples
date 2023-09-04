@@ -24,7 +24,7 @@
       "value": "installation"
     },
     "botDisplayName": {
-      "value": "notification-scale-demo"
+      "value": "large-scale-notification"
     },
     "serviceBusQueueName": {
       "value": "notification-messages"

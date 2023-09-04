@@ -1,7 +1,10 @@
-# yaml-language-server: $schema=https://aka.ms/teams-toolkit/1.0.0/yaml.schema.json
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.2/yaml.schema.json
 # Visit https://aka.ms/teamsfx-v5.0-guide for details on this file
 # Visit https://aka.ms/teamsfx-actions for details on actions
-version: 1.0.0
+version: v1.2
+
+additionalMetadata:
+  sampleTag: TeamsFx-Samples:large-scale-notification
 
 environmentFolderPath: ./env
 
@@ -11,7 +14,7 @@ provision:
   - uses: teamsApp/create
     with:
       # Teams app name
-      name: notification-scale-demo-${{TEAMSFX_ENV}}
+      name: large-scale-notifi-${{TEAMSFX_ENV}}
     # Write the information of created resources into environment file for
     # the specified environment variable(s).
     writeToEnvironmentFile:
@@ -21,7 +24,7 @@ provision:
   - uses: botAadApp/create
     with:
       # The Azure Active Directory application's display name
-      name: notification-scale-demo-${{TEAMSFX_ENV}}
+      name: large-scale-notifi-${{TEAMSFX_ENV}}
     writeToEnvironmentFile:
       # The Azure Active Directory application's client id created for bot.
       botId: BOT_ID
@@ -132,4 +135,3 @@ publish:
     # the specified environment variable(s).
     writeToEnvironmentFile:
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
-projectId: ee966965-1774-4bb2-b5af-24ef5976547a
