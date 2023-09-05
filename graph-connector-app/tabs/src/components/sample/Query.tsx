@@ -11,8 +11,11 @@ import {
   TableHeaderCell,
 } from "@fluentui/react-components";
 import { SearchRegular } from "@fluentui/react-icons";
-import { createMicrosoftGraphClient, TeamsFx } from "@microsoft/teamsfx";
+import { TeamsUserCredential } from "@microsoft/teamsfx";
+import { Client } from "@microsoft/microsoft-graph-client";
+import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
 import { ConnectionId, Scopes } from "./lib/constants";
+import config from "./lib/config";
 
 export function Query() {
   const [query, setQuery] = useState("");
@@ -55,8 +58,23 @@ export function Query() {
       };
 
       try {
-        const teamsfx = new TeamsFx();
-        const graph = createMicrosoftGraphClient(teamsfx, Scopes);
+        const credential = new TeamsUserCredential({
+          initiateLoginEndpoint: config.initiateLoginEndpoint,
+          clientId: config.clientId,
+        });
+        
+        // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+        const authProvider = new TokenCredentialAuthenticationProvider(
+          credential,
+          {
+            scopes: Scopes,
+          }
+        );
+
+        // Initialize Graph client instance with authProvider
+        const graph = Client.initWithMiddleware({
+          authProvider: authProvider,
+        });
 
         const result = await graph
           .api("/search/query")
