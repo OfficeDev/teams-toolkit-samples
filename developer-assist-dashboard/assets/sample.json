@@ -4,7 +4,7 @@
     "source": "officeDev",
     "title": "Developer Assist Dashboard",
     "shortDescription": "A dashboard style tab app embedded in Microsoft Teams and Outlook.",
-    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/developer-assist-dashboard",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/v3/developer-assist-dashboard",
     "longDescription": [
       "A dashboard that integrates with Azure DevOps, Github issues and Planner tasks that accelerates developer productivity."
     ],
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://devblogs.microsoft.com/microsoft365dev/wp-content/uploads/sites/73/2023/03/dash.png",
+        "url": "https://github.com/OfficeDev/TeamsFx-Samples/blob/v3/developer-assist-dashboard/images/preview.png",
         "alt": "Developer Assist Dashboard"
       }
     ],
