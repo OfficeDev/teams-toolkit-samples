@@ -79,7 +79,7 @@ You can customize the tag you used for your sample, the recommended number of ta
 
 Please be noted that you are the maintainer of your sample. You're responsible for updating your sample to make it work in Teams Toolkit under following circumstances:
 
-- Upgrade the sample to new version when there's breaking change in new Teams Toolkit releases. If not upgrade, treat it as deprecated.  
+- Upgrade the sample to new version when there's breaking change in new Teams Toolkit releases.
 - Fix bugs that are related to sample business logic.
 
 When we found issues of sample or miration needed, we'll trigger email to sample contributor to inform you to maintain. If not upgraded or fixed in a certain time, we'll treat it as deprecated.
