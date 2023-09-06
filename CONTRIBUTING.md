@@ -21,7 +21,10 @@ To give you an overview of the process to contribute to our samples repo, you wi
 Before your start, you might want to know whether you will need to commit your source code to our repo. In most of cases, your Teams sample source code will need to be commited to our repo, especially when you are an individual contributor. In some special cases if you are our partner team who maintains Teams samples repo as well, your source code can be resides in your own open source repo. We will reference to your repo and expose your sample to Teams Toolkit sample gallery.
 
 Some explaination of how to perform each step in above process:
-1. Submit your source code by creating a pull request to our repo, a typical project is in below structure. Make sure you have the `sampleDemo.gif` and `README.md` files included in your source code.
+1. Submit your source code by creating a pull request to our repo (target `dev` branch by default), a typical project is in below structure. Make sure you have the `sampleDemo.gif` and `README.md` files included in your source code. 
+
+> You can run the [Sample Validatioin Tool](https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/validation-tool) before raising the PR to make sure your sample satisfies our requirements.
+
 ```
 - sampleTeamsProject
   - appPackage 
@@ -72,6 +75,14 @@ You can customize the tag you used for your sample, the recommended number of ta
 
 3. The things request you to do are almost done. Then we will triage the samples onboarding tickets daily, a PM and a Engineer in our team will be assigned to help you review the source code together with the meta data you provided in the ticket. Please keep an eye on your ticket and update your samples accordingly if there is any updating request during the review.
 
+## How to maintain your sample
+
+Please be noted that you are the maintainer of your sample. You're responsible for updating your sample to make it work in Teams Toolkit under following circumstances:
+
+- Upgrade the sample to new version when there's breaking change in new Teams Toolkit releases. If not upgrade, treat it as deprecated.  
+- Fix bugs that are related to sample business logic.
+
+When we found issues of sample or miration needed, we'll trigger email to sample contributor to inform you to maintain. If not upgraded or fixed in a certain time, we'll treat it as deprecated.
    
 # Code of Conduct
 
