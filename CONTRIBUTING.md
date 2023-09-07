@@ -32,13 +32,12 @@ Some explaination of how to perform each step in above process:
       - manifest.json
       - outline.png 
   - env 
-  - infra
   - src 
   - assets
       - sampleDemo.gif
   - README.md
   - teamsapp.yml 
-  - web.config 
+  - teamsapp.local.yml
 ```
 The sampleDemo.gif is a very short gif illustrating what users will see after the app is running, and demonstrating major usage of the sample. The gif can also be a static screenshot of the sample if you want.
 > Suggested size of gif/pic is *1600x920/800x460* (If you have it with other sizes, please keep same image ratio for other sizes and don't forget to consider the resolution. Your gif or pics must fit the entire Teams client UI into the image.
