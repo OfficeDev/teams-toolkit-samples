@@ -1,0 +1,69 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-tab-developer-assist-dashboard",
+    "source": "officeDev",
+    "title": "Developer Assist Dashboard",
+    "shortDescription": "A dashboard style tab app embedded in Microsoft Teams and Outlook.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/developer-assist-dashboard",
+    "longDescription": [
+      "A dashboard that integrates with Azure DevOps, Github issues and Planner tasks that accelerates developer productivity."
+    ],
+    "creationDateTime": "2023-03-08",
+    "updateDateTime": "2022-08-28",
+    "products": [
+      "Teams",
+      "Outlook"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "typescript"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "tab"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/developer-assist-dashboard/images/preview.png",
+        "alt": "Developer Assist Dashboard"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "aycabas",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36196437?v=4",
+        "name": "Ayca Bas"
+      }
+    ],
+    "references": [
+    {
+        "name":"Build a developer dashboard for Microsoft Teams and Outlook",
+        "url": "https://devblogs.microsoft.com/microsoft365dev/build-a-developer-assist-dashboard-using-teams-toolkit-for-visual-studio-code-v5-0-pre-release/"
+    },  
+    {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]
