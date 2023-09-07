@@ -82,6 +82,21 @@ deploy:
     with:
       args: install --no-audit
 
+  - uses: file/createOrUpdateEnvironmentFile
+    with: 
+      target: ./env/.env.${{TEAMSFX_ENV}}
+      envs: 
+        STORAGE_ACCOUNT_NAME: devstoreaccount1
+        STORAGE_ACCOUNT_URL: http://127.0.0.1:10002/devstoreaccount1
+        INSTALLATION_TABLE_NAME: localtable
+
+  - uses: file/createOrUpdateEnvironmentFile
+    with: 
+      target: ./env/.env.${{TEAMSFX_ENV}}.user
+      envs: 
+        SECRET_STORAGE_ACCOUNT_KEY: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+        
+
   # Generate runtime environment variables
   - uses: file/createOrUpdateEnvironmentFile
     with:
@@ -89,3 +104,8 @@ deploy:
       envs:
         BOT_ID: ${{BOT_ID}}
         BOT_PASSWORD: ${{SECRET_BOT_PASSWORD}}
+        SERVICE_BUS_QUEUE_NAME: ${{SERVICE_BUS_QUEUE_NAME}}
+        STORAGE_ACCOUNT_NAME: devstoreaccount1
+        STORAGE_ACCOUNT_URL: http://127.0.0.1:10002/devstoreaccount1
+        INSTALLATION_TABLE_NAME: localtable
+        STORAGE_ACCOUNT_KEY: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==

@@ -3,6 +3,7 @@ export const serviceBusQueueConnectionString =
 export const serviceBusMessageQueueName = process.env.SERVICE_BUS_QUEUE_NAME;
 
 export const storageAccount = process.env.STORAGE_ACCOUNT_NAME;
+export const storageAccountURL = process.env.STORAGE_ACCOUNT_URL;
 export const storageAccountKey = process.env.STORAGE_ACCOUNT_KEY;
 export const storageTableName = process.env.INSTALLATION_TABLE_NAME;
 export const installationMockTableName =

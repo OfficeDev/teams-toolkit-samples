@@ -17,6 +17,7 @@ export class TableStore implements ConversationReferenceStore {
 
   constructor(
     storageAccountName: string,
+    storageAccountURL: string,
     storageAccountKey: string,
     storageTableName: string
   ) {
@@ -26,9 +27,10 @@ export class TableStore implements ConversationReferenceStore {
     );
 
     this.client = new TableClient(
-      `https://${storageAccountName}.table.core.windows.net`,
+      `${storageAccountURL}`,
       `${storageTableName}`,
-      sharedKeyCredential
+      sharedKeyCredential,
+      { allowInsecureConnection: true }
     );
   }
 

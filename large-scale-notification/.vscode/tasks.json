@@ -109,7 +109,7 @@
                 }
             },
             "dependsOn": [
-                "Start Azurite emulator",
+                "Create emulated table storage",
                 "Compile typescript"
             ]
         },
@@ -139,6 +139,21 @@
             "presentation": {
                 "reveal": "silent"
             }
+        },
+        {
+            "label": "Create emulated table storage",
+            "type": "shell",
+            "command": "npx ts-node ./script/createTableForLocalDebug.ts",
+            "isBackground": true,
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "dependsOn": [
+                "Start Azurite emulator"
+            ]
         },
         {
             "label": "Compile typescript",

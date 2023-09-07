@@ -194,6 +194,7 @@ output SERVICE_BUS_ENDPOINT string = 'Endpoint=sb://${serviceBusNamespaceName}.s
 output SECRET_SERVICE_BUS_ACCESS_KEY string = listKeys('${serviceBusNamespace.id}/AuthorizationRules/RootManageSharedAccessKey', serviceBusNamespace.apiVersion).primaryKey
 output SERVICE_BUS_QUEUE_NAME string = serviceBusQueue.name
 output STORAGE_ACCOUNT_NAME string = storage.name
+output STORAGE_ACCOUNT_URL = 'https://${storage.name}.table.core.windows.net'
 output SECRET_STORAGE_ACCOUNT_KEY string = listKeys(storage.id, storage.apiVersion).keys[0].value
 output INSTALLATION_TABLE_NAME string = storageTableName
 output INSTALLATION_MOCK_TABLE_NAME string = '${storageTableName}mock'
