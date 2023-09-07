@@ -159,6 +159,10 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
           value: storage.name
         }
         {
+          name: 'STORAGE_ACCOUNT_URL'
+          value: 'https://${storage.name}.table.core.windows.net'
+        }
+        {
           name: 'STORAGE_ACCOUNT_KEY'
           value: listKeys(storage.id, storage.apiVersion).keys[0].value
         }

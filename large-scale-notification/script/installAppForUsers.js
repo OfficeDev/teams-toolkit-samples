@@ -79,7 +79,12 @@ async function asyncPool(poolLimit, TargetArray) {
       //   .then((res) => {
       //     for (const app of res.data.value) {
       //       if (app.teamsApp.id == TEAMS_APP_ID) {
-      //         console.log("Delete " + app.teamsApp.displayName + " with id " + app.teamsApp.id);
+      //         console.log(
+      //           "Delete " +
+      //             app.teamsApp.displayName +
+      //             " with id " +
+      //             app.teamsApp.id
+      //         );
       //         installApp.delete(
       //           "/" + target.id + "/teamwork/installedApps/" + app.id
       //         );
