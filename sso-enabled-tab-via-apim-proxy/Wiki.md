@@ -20,7 +20,11 @@ SSO Enabled Tab via APIM Proxy shows you how to build a single-page Tab app with
 
 ## Benefits
 
-1. 
+1. This sample is an single page application, which can avoid login issue on mobile platform by implementing OBO Flow.
+
+1. Secure your app by only using Access Token inside API Management.
+
+1. Easily integrate with Graph Toolkit to access Graph in the Teams app.
 
 # Architecture
 
@@ -59,7 +63,9 @@ Follow below instructions to create an Azure API Management for local debugging.
       * tenantId: value of `AAD_APP_TENANT_ID`
       * scope: "User.Read"
     - Click on `APIs` in the left panel, click on `Add API` and select `HTTP`
-    - Fill in the blanks to create your API. For `API URL Suffix`, you can fill in `v1.0`.
+    - Fill in the blanks to create your API.
+      * For `Web Serivce URL`, fill in `https://graph.microsoft.com/`.
+      * For `API URL Suffix`, leave it blank.
     - Select `All operations`, select `Add Policy` as shown below. Add the following CORS policy:
      ![API Policy](./images/API%20Policy.png)
       ```
