@@ -4,6 +4,19 @@ This sample demonstrates the architecture of a Teams notfication bot app created
 
 # How to run this project
 
+## Run the app locally
+To debug the project, you will need to configure an Azure Service Bus to be used locally:
+1. [Create a Service Bus namespace in the Azure portal](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal#create-a-namespace-in-the-azure-portal)
+2. On the homepage of Service Bus namespace, click `Shared access policies` under `Settings`, and then click on `RootManageSharedAccessKey` and copy the value of `Primary Connection String`.
+![Copy the Value of Service Bus Connection String](./assets/ServiceBusConnectionString.png)
+3. Open **local.settings.json** file, and paste the copied value to `SERVICE_BUS_CONNECTION_STRING`.
+4. Create a queue with max delivery count set to 1.
+![Service Bus Queue](./assets/ServiceBusQueue.png)
+5. Open **env/.env.local** file, and set the value of `SERVICE_BUS_QUEUE_NAME` with the name of queue you just created.
+6. Press "F5" to open a browser window and then select your package to view adaptive card notification sample app.
+7. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default.
+8. Visit `http://localhost:3978/api/notification` to trigger the sending function and visit `statusQueryGetUri` in the returned json object to get sending status.
+
 ## Execute lifecycle commands
 
 1. To create the Azure resources and deploy the code to Azure Function, select `Provision` and `Deploy` from the Teams Toolkit sidebar.
