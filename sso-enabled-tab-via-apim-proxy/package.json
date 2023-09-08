@@ -1,5 +1,5 @@
 {
-  "name": "graph-toolkit-contact-exporter",
+  "name": "sso-enabled-tab-via-apim-proxy",
   "version": "0.1.0",
   "engines": {
     "node": "16 || 18"

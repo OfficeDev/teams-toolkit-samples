@@ -14,7 +14,7 @@ body,
 }
 
 .features {
-  min-height: 95vh;
+  min-height: 20vh;
   margin: 20px;
   background-color: #fff;
   box-shadow: 0px 1.2px 3.6px rgba(0, 0, 0, 0.11),
@@ -40,30 +40,8 @@ body,
   width: 100%;
 }
 
-.people-picker-area {
-  padding: 20px;
-}
-
 .fui-TableCellLayout__main {
   overflow: hidden;
-}
-
-.table-area {
-  margin: 20px;
-  padding-bottom: 100px;
-  height: 200px;
-  overflow: scroll;
-  border: #8a8886;
-  border-style: solid;
-}
-
-.export-btn-container {
-  overflow: auto;
-}
-
-.export-btn {
-  float: right;
-  padding: 20px;
 }
 
 a {

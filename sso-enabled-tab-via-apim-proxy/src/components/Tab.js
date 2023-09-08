@@ -11,10 +11,12 @@ import {
   Person,
   PersonViewType,
 } from "@microsoft/mgt-react";
-import { CacheService } from "@microsoft/mgt";
+import { CacheService, ProxyProvider } from "@microsoft/mgt";
 import config from "./lib/config";
 
 import { TeamsUserCredential } from "@microsoft/teamsfx";
+import axios from "axios";
+import { PersonCardInteraction } from "@microsoft/mgt-react/dist/es6";
 
 class Tab extends React.Component {
   constructor(props) {
@@ -111,6 +113,7 @@ class Tab extends React.Component {
                   <Person
                     personQuery="me"
                     view={PersonViewType.threelines}
+                    personCardInteraction={PersonCardInteraction.hover}
                   ></Person>
                 </div>
               </div>
@@ -120,7 +123,7 @@ class Tab extends React.Component {
 
         {this.state.showLoginPage === true && (
           <div className="auth">
-            <h2>Welcome to Contact Exporter App!</h2>
+            <h2>SSO Enabled Tab via APIM proxy</h2>
             <Button appearance="primary" onClick={() => this.loginBtnClick()}>
               Start
             </Button>
