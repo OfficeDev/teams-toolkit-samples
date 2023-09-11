@@ -5,17 +5,19 @@ This sample demonstrates the architecture of a Teams notfication bot app created
 # How to run this project
 
 ## Run the app locally
+
 To debug the project, you will need to configure an Azure Service Bus to be used locally:
-1. [Create a Service Bus namespace in the Azure portal](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal#create-a-namespace-in-the-azure-portal)
-2. On the homepage of Service Bus namespace, click `Shared access policies` under `Settings`, and then click on `RootManageSharedAccessKey` and copy the value of `Primary Connection String`.
-![Copy the Value of Service Bus Connection String](./assets/ServiceBusConnectionString.png)
-3. Open **local.settings.json** file, and paste the copied value to `SERVICE_BUS_CONNECTION_STRING`.
-4. Create a queue with max delivery count set to 1.
-![Service Bus Queue](./assets/ServiceBusQueue.png)
+
+1. [Create a Service Bus namespace in the Azure portal](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal#create-a-namespace-in-the-azure-portal).
+2. Navigate to the homepage of your Service Bus namespace. Under the `Settings` section, select `Shared access policies`. Then, click on `RootManageSharedAccessKey` and copy the `Primary Connection String` value.
+   ![Copy the Value of Service Bus Connection String](./assets/ServiceBusConnectionString.png)
+3. Open **local.settings.json** file and insert the connection string value you copied earlier into the `SERVICE_BUS_CONNECTION_STRING` field.
+4. Return to the homepage of your Service Bus namespace and select "+ Queue". Proceed to create a queue with the "Max delivery count" configured to 1.
+   ![Service Bus Queue](./assets/ServiceBusQueue.png)
 5. Open **env/.env.local** file, and set the value of `SERVICE_BUS_QUEUE_NAME` with the name of queue you just created.
-6. Press "F5" to open a browser window and then select your package to view adaptive card notification sample app.
+6. Press "F5" to open a browser window and then select your package to view the large scale notification bot app.
 7. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default.
-8. Visit `http://localhost:3978/api/notification` to trigger the sending function and visit `statusQueryGetUri` in the returned json object to get sending status.
+8. Navigate to `http://localhost:3978/api/notification` to activate the sending function. Then, access the `statusQueryGetUri` in the returned JSON object to retrieve the sending status.
 
 ## Execute lifecycle commands
 
@@ -44,13 +46,6 @@ Since there are usually at most 25 users in Microsoft 365 E3/E5 subscription in 
 
 1. Visit `https://{BOT_FUNCTION_ENDPOINT}/api/notification` in browser. This will trigger the function to send notifications.
 2. Check the link of `statusQueryGetUri` in returned json object, it reflects the sending status of this invocation.
-
-## Extra: tradeoff between readability and speed
-
-The activity function `getUserAndEnqueueSendMessageTask.ts` combines the functions of `getUsersActivity.ts` and `enqueueSendMessageTask.ts`. This way, it can perform more tasks in one function and avoid switching contexts. This improves the speed of sending messages to a large number of users (more than 100K) by reducing the overhead of context switching. However, this approach trades off code readability for performance. It also increases the chance of sending duplicate messages to users if the activity function fails.
-
-1. Replace the content of `sendMessageOrchestrator.ts` with `sendMessageOrchestrator2.ts`.
-2. Trigger send notification function as previous steps.
 
 ## Architecture
 
@@ -86,9 +81,10 @@ Here's the variables in `src/consts.ts` that users can change to tune the perfor
 
 ### Bot Framework Rate Limit
 
-As stated in this [document](https://learn.microsoft.com/en-us/microsoftteams/platform/bots/how-to/rate-limit#per-bot-per-thread-limit), the throughput of a single bot app in theory is 180k/hour.
+As stated in this [document](https://learn.microsoft.com/en-us/microsoftteams/platform/bots/how-to/rate-limit#per-bot-per-thread-limit), the throughput of a single bot app in theory is 180k/hour. However, if tested with
 
-> The global limit per app per tenant is 50 Requests Per Second (RPS). Hence, the total number of bot messages per second must not cross the thread limit.
+> 1. The thread limit of 3600 seconds and 1800 operations applies only if multiple bot messages are sent to a single user.
+> 2. The global limit per app per tenant is 50 Requests Per Second (RPS). Hence, the total number of bot messages per second must not cross the thread limit.
 
 ### Azure Storage Table
 
