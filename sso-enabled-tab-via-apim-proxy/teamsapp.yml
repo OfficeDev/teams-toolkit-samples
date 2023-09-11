@@ -87,6 +87,8 @@ deploy:
       REACT_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
       REACT_APP_START_LOGIN_PAGE_URL: ${{TAB_ENDPOINT}}/auth-start.html
       REACT_APP_APIM_ENDPOINT: ${{APIM_ENDPOINT}}
+      REACT_APP_APIM_GRAPH_PROXY: ${{APIM_GRAPH_PROXY}}
+      REACT_APP_APIM_CHECKCONSENT: ${{APIM_CHECK_CONSNET}}
     with:
       args: run build
   # Deploy bits to Azure Storage Static Website

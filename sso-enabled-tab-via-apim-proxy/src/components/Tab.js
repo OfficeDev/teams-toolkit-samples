@@ -10,13 +10,13 @@ import { Providers, ProviderState } from "@microsoft/mgt-element";
 import {
   Person,
   PersonViewType,
+  PersonCardInteraction
 } from "@microsoft/mgt-react";
 import { CacheService, ProxyProvider } from "@microsoft/mgt";
 import config from "./lib/config";
 
 import { TeamsUserCredential } from "@microsoft/teamsfx";
 import axios from "axios";
-import { PersonCardInteraction } from "@microsoft/mgt-react/dist/es6";
 
 class Tab extends React.Component {
   constructor(props) {
@@ -35,10 +35,10 @@ class Tab extends React.Component {
   }
 
   async initGraphToolkit(credential) {
-    const ssoToken = (await credential.getToken("")).token;
     Providers.globalProvider = new ProxyProvider(
-      config.apimEndpoint,
+      `${config.apimEndpoint}/${config.apimGraphProxy}`,
       async () => {
+        const ssoToken = (await credential.getToken("")).token;
         return {
           Authorization: `Bearer ${ssoToken}`,
         }
@@ -79,11 +79,14 @@ class Tab extends React.Component {
     let consentNeeded = false;
     const ssoToken = (await credential.getToken("")).token;
     try {
-      await axios.get(`${config.apimEndpoint}/v1.0/me`, {
-        headers: {
-          Authorization: `Bearer ${ssoToken}`,
+      await axios.get(
+        `${config.apimEndpoint}/${config.apimCheckConsent}`,
+        {
+          headers: {
+            Authorization: `Bearer ${ssoToken}`,
+          }
         }
-      });
+      );
     } catch (error) {
       consentNeeded = true;
     }
@@ -125,7 +128,7 @@ class Tab extends React.Component {
           <div className="auth">
             <h2>SSO Enabled Tab via APIM proxy</h2>
             <Button appearance="primary" onClick={() => this.loginBtnClick()}>
-              Start
+              Consent and log in
             </Button>
           </div>
         )}
