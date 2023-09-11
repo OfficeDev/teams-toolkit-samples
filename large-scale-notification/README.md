@@ -18,6 +18,7 @@ To debug the project, you will need to configure an Azure Service Bus to be used
 6. Press "F5" to open a browser window and then select your package to view the large scale notification bot app.
 7. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default.
 8. Navigate to `http://localhost:3978/api/notification` to activate the sending function. Then, access the `statusQueryGetUri` in the returned JSON object to retrieve the sending status.
+9. \[Optional\] Once your app is running locally, you can utilize Azure Storage Explorer to inspect the data in your local storage table. Visit https://learn.microsoft.com/en-us/azure/storage/common/storage-explorer-emulators for more information.
 
 ## Execute lifecycle commands
 
@@ -71,20 +72,25 @@ The following image illustrates the architecture of functions interecting with A
 
 Here's the variables in `src/consts.ts` that users can change to tune the performance:
 
-| Variable             | Usage                                                                   |
-| -------------------- | ----------------------------------------------------------------------- |
-| RPS                  | The sending speed of notification message                               |
-| batchSendingInterval | Time(second) to wait before sending the next batch of messages to queue |
-| maxPageSize          | Paginated result size when querying from table storage                  |
+| Variable             | Usage                                                                                |
+| -------------------- | ------------------------------------------------------------------------------------ |
+| RPS                  | The sending speed of notification message                                            |
+| batchSendingInterval | Time(second) to wait before sending the next batch of messages to queue              |
+| maxPageSize          | Paginated result size when querying from table storage                               |
+| iterateTime          | The count of task enqueueing iterations before obtaining the subsequent queue status |
+
+By default, the RPS is set to 50, the `batchSendingInterval` is 1, the `maxPageSize` is 500, and the `iterateTime` is 3. The performance, when evaluated with a large tenant consists of 1500 users and 300K messages, averages roughly 173K/h, subject to slight fluctuations.
+
+## Cost Estimation
 
 ## Limitation
 
 ### Bot Framework Rate Limit
 
-As stated in this [document](https://learn.microsoft.com/en-us/microsoftteams/platform/bots/how-to/rate-limit#per-bot-per-thread-limit), the throughput of a single bot app in theory is 180k/hour. However, if tested with
+As stated in this [document](https://learn.microsoft.com/en-us/microsoftteams/platform/bots/how-to/rate-limit#per-bot-per-thread-limit), the throughput of a single bot app in theory is 180k/hour.
 
-> 1. The thread limit of 3600 seconds and 1800 operations applies only if multiple bot messages are sent to a single user.
-> 2. The global limit per app per tenant is 50 Requests Per Second (RPS). Hence, the total number of bot messages per second must not cross the thread limit.
+> - The thread limit of 3600 seconds and 1800 operations applies only if multiple bot messages are sent to a single user.
+> - The global limit per app per tenant is 50 Requests Per Second (RPS). Hence, the total number of bot messages per second must not cross the thread limit.
 
 ### Azure Storage Table
 
