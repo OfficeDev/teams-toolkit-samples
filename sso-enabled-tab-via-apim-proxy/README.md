@@ -4,8 +4,9 @@ Microsoft Teams supports the ability to run web-based UI inside "custom tabs" th
 
 SSO Enabled Tab via APIM Proxy shows you how to build a tab app with Graph Toolkit as frontend and Azure API Management as proxy to get user login information with SSO.
 
-![SSO Enabled Tab via APIM Proxy](Add Image)
+With this sample, you can achieve the SSO feature in your tab app using OBO (on-behalf-of) flow without building a dedicated backend service.
 
+![SSO Enabled Tab via APIM Proxy](./assets/sso-enabled-tab-via-apim-proxy.gif)
 
 ## This sample illustrates
 
@@ -31,7 +32,7 @@ SSO Enabled Tab via APIM Proxy shows you how to build a tab app with Graph Toolk
 
 ## Getting Started
 
-You can follow the steps [here](TODO) for how to run this app.
+You can follow the steps [here](https://aka.ms/teamsfx-sso-tab-via-apim) for how to run this app.
 
 ## References
 
