@@ -119,15 +119,22 @@ The recommended SKUs for a production environment are:
 
 - `notifyHttpTrigger`
   - 1 invocation \* 30 messages/month = 30 invocations
-  - 128Mb \*
+  - 128Mb \* 490
 - `sendNotifications`
   - 1 invocation \* 30 messages/month = 30 invocations
+    129
 - `enqueueTasksForInstallations`
   - 1 invocation \* (9M messages / (500 entities \* 3 iterations)) = 6000 invocations
+    29460 29423 29595 29544 29349 29872 29417 29376 29466 29428 29533 29378 29364 29371 29564 29651 29376
 - `sendNotificationQueueTrigger`
   - 1 invocation \* 9M messages = 9M invocations
+    250-500ms
 - `waitSendingFinishActivity`
   - 1 invocation \* 30 messages/month = 30 invocations
+    2023-09-13T09:18:06.012 [Information] Executing 'Functions.waitSendingFinish' (Reason='(null)', Id=5a0f12d0-5a98-41a4-ade9-0162752a9146)
+    2023-09-13T09:18:06.025 [Warning] [waitSendingFinishActivity] checking.
+    2023-09-13T09:18:06.025 [Warning] [waitSendingFinishActivity] active messages: 68
+    2023-09-13T09:18:11.034 [Information] Executed 'Functions.waitSendingFinish' (Succeeded, Id=5a0f12d0-5a98-41a4-ade9-0162752a9146, Duration=5022ms)
 
 ## Limitation
 
