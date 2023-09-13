@@ -32,7 +32,7 @@ This is a dashboard sample based on demo sample data that shows you how to creat
 
 ### Run the app locally
 
-1. In Debug mode, select one of the debug configurations (`Hosted workbench`, `Teams workbench`, `Outlook workbench` and `The Microsoft 365 app workbench` are supported) and press start button. The browser will be opened and you need to sign in with your Microsoft 365 account.
+1. In Debug mode, select one of the debug configurations (`SharePoint workbench`, `Teams workbench`, `Outlook workbench` and `The Microsoft 365 app workbench` are supported) and press start button. The browser will be opened and you need to sign in with your Microsoft 365 account.
 2. Click `Add` if you selected `Teams workbench` in previous step.
 3. You should see the app running in your selected hub:
 ![teams-hosted](assets/teams-hosted.png)
