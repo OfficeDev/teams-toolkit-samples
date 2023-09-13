@@ -83,6 +83,52 @@ By default, the RPS is set to 50, the `batchSendingInterval` is 1, the `maxPageS
 
 ## Cost Estimation
 
+### Assumptions
+
+The estimate below assumes:
+
+- 300K users in the tenant
+- 1 message sent to all users every day (~30/month)
+- `maxPageSize` set to 500 and `iterateTime` set to 3
+
+> The minor expense associated with the initial installation of the app, which involves data transactions in the storage table, is not taken into account in the estimation.
+
+### SKU Recommendations
+
+The recommended SKUs for a production environment are:
+
+- Service Bus: Standard
+- Storage Account: Standard LRS
+- Azure Functions: Dynamic
+
+### Estimate Load
+
+**Number of messages sent**: 300K users \* 30 messages/month = 9M messages
+
+**Data Storage**: ~450MiB (Installation data of 300K users)
+
+**Table Data Transactions**: 1 read \* 9M messages = 9M reads
+
+**Service Bus Executions**: (1 write + 1 read)/ messages \* 9M messages = 18M executions
+
+**Azure Functions**:
+
+> For the calculation of Gb-sec pricing, please note that the minimum memory size is 128 Mb and the minimum execution time is 100 ms. You can refer to the formula provided below for further details.
+>
+> `(Memory Size \* Execution Time \* Execution Count)/1024000.`
+
+- `notifyHttpTrigger`
+  - 1 invocation \* 30 messages/month = 30 invocations
+  - 128Mb \*
+- `sendNotifications`
+  - 1 invocation \* 30 messages/month = 30 invocations
+- `enqueueTasksForInstallations`
+  - 1 invocation \* (9M messages / (500 entities \* 3 iterations)) = 6000 invocations
+- `sendNotificationQueueTrigger`
+  - 1 invocation \* 9M messages = 9M invocations
+- `waitSendingFinishActivity`
+  - 1 invocation \* 30 messages/month = 30 invocations
+
 ## Limitation
 
 ### Bot Framework Rate Limit
@@ -94,7 +140,7 @@ As stated in this [document](https://learn.microsoft.com/en-us/microsoftteams/pl
 
 ### Azure Storage Table
 
-This sample uses continuation token to retrieve paged results. The maxium page size is 1000([doc](https://learn.microsoft.com/en-us/rest/api/storageservices/Query-Entities?redirectedfrom=MSDN#remarks)).
+This sample uses continuation token to retrieve paged results. According to the [document](https://learn.microsoft.com/en-us/rest/api/storageservices/Query-Entities?redirectedfrom=MSDN#remarks), the maxium page size is 1000.
 
 ### Azure Durable Function
 
