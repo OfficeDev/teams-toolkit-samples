@@ -9,7 +9,7 @@ import standard from "figlet/importable-fonts/Standard.js";
 import { outputResult } from "./util";
 import validateEnvFiles from "./validators/envValidator";
 import validateFolderStructure from "./validators/folderStructureValidator";
-import validateGif from "./validators/gifValidator";
+import validateImage from "./validators/imageValidator";
 import validatePackageJson from "./validators/packageJsonValidator";
 import validateTeamsAppManifest from "./validators/teamsAppManifestValidator";
 import validateTeamsAppYaml from "./validators/teamsAppYamlValidator";
@@ -22,7 +22,7 @@ const validators = [
   validateTeamsAppYaml,
   validateTeamsAppManifest,
   validateEnvFiles,
-  validateGif,
+  validateImage,
   validatePackageJson,
 ];
 
