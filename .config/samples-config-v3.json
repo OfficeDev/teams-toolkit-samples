@@ -490,15 +490,16 @@
             "shortId": "tab-apim",
             "onboardDate": "2023-09-15",
             "title": "SSO Enabled Tab via APIM Proxy",
-            "shortDescription": "An SSO enbled app of Microsoft Teams Tab app using APIM as proxy",
-            "fullDescription": "This is a tab app with Graph Toolkit as frontend and Azure API Management as proxy to get user login information with SSO",
+            "shortDescription": "An SSO-enabled Microsoft Teams Tab app using APIM as a proxy.",
+            "fullDescription": "This is a Microsoft Teams tab app that can display user login information with SSO. This app uses Graph Toolkit as the frontend and Azure API Management as a proxy.",
             "types": [
               "Tab"
             ],
             "tags": [
               "Tab",
               "JS",
-              "API Management"
+              "API Management",
+              "SSO"
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
