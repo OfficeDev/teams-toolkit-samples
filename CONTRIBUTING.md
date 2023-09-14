@@ -44,7 +44,7 @@ The sampleDemo.gif is a very short gif illustrating what users will see after th
 
 The README.md file basically describe what's the sample, how to run it and so on. Here is a [README Template](https://github.com/OfficeDev/TeamsFx-Samples/blob/zhany-readme-template/README_template.md) which you can follow to create one.
 
-2. [Log a Issue ticket](https://github.com/OfficeDev/TeamsFx-Samples/issues/new) in our repo using below template, you will need to provide meta data of your sample in your ticket.
+2. [Log a Issue ticket](https://github.com/OfficeDev/TeamsFx-Samples/issues/new?assignees=summzhan&labels=&projects=&template=new-sample-onboard-request.md&title=%5BSample+Onboard+Request%5D+Your+sample+name) in our repo using below template, you will need to provide meta data of your sample in your ticket.
 
 3. The things request you to do are almost done. Then we will triage the samples onboarding tickets daily, a PM and a Engineer in our team will be assigned to help you review the source code together with the meta data you provided in the ticket. Please keep an eye on your ticket and update your samples accordingly if there is any updating request during the review.
 
