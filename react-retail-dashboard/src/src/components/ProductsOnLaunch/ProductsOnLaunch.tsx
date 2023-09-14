@@ -29,7 +29,7 @@ export class ProductsOnLaunch extends React.Component<IProductsOnLaunchProps, IP
             currentProduct: productsOnLaunch[0]
         });
 
-        this.timer = setInterval(async () => {
+        this.timer = window.setInterval(async () => {
 
             if (this.state.products) {
                 // Set the current index
