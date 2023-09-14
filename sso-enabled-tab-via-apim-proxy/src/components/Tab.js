@@ -51,7 +51,7 @@ class Tab extends React.Component {
       initiateLoginEndpoint: config.initiateLoginEndpoint,
       clientId: config.clientId,
     });
-    this.scope = ["User.Read"];
+    this.scope = config.scope;
   }
 
   async loginBtnClick() {

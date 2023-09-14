@@ -1,5 +1,4 @@
 param resourceBaseName string
-param storageSku string
 param apimServiceSku string
 param publisherEmail string
 param publisherName string
@@ -101,7 +100,7 @@ resource apimNamedValuesClientSecret 'Microsoft.ApiManagement/service/namedValue
     displayName: 'clientSecret'
     value: '${aadAppClientSecret}'
     tags: []
-    secret: false
+    secret: true
   }
 }
 
