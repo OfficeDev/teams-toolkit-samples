@@ -15,7 +15,7 @@ const mandatoryFields = [
   "tags",
   "time",
   "configuration",
-  "gifPath",
+  "thumbnailPath",
   "suggested",
 ];
 
