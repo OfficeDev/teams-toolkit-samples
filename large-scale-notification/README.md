@@ -83,7 +83,7 @@ By default, the RPS is set to 50, the `batchSendingInterval` is 1, the `maxPageS
 
 ## Cost Estimation
 
-### Assumptions
+### Assumptions and SKUs
 
 The estimate below assumes:
 
@@ -91,50 +91,69 @@ The estimate below assumes:
 - 1 message sent to all users every day (~30/month)
 - `maxPageSize` set to 500 and `iterateTime` set to 3
 
-> The minor expense associated with the initial installation of the app, which involves data transactions in the storage table, is not taken into account in the estimation.
-
-### SKU Recommendations
-
-The recommended SKUs for a production environment are:
+The SKUs used for a production environment are:
 
 - Service Bus: Standard
 - Storage Account: Standard LRS
 - Azure Functions: Dynamic
 
-### Estimate Load
+> The minor expense associated with the initial installation of the app, which involves data transactions in the storage table, is not taken into account in the estimation.
 
-**Number of messages sent**: 300K users \* 30 messages/month = 9M messages
+### Estimate Load and Cost
 
-**Data Storage**: ~450MiB (Installation data of 300K users)
+**Number of messages sent**
 
-**Table Data Transactions**: 1 read \* 9M messages = 9M reads
+- 300K users \* 30 messages/month = 9M messages
 
-**Service Bus Executions**: (1 write + 1 read)/ messages \* 9M messages = 18M executions
+**Storage Account**
 
-**Azure Functions**:
+- Table: ~0.26GB (Record the installation data of 300K users)
+  - 0.26GB \* $0.045 per GB = $0.01
+- Table Data Transactions: 1 read \* 9M messages = 9M reads
+  - 900 Transaction Units(10000 transactions) \* $0.00036 = $0.32
 
-> For the calculation of Gb-sec pricing, please note that the minimum memory size is 128 Mb and the minimum execution time is 100 ms. You can refer to the formula provided below for further details.
+**Service Bus**
+
+- (1 write + 1 read)/ messages \* 9M messages = 18M Operations
+  - Base charge: $0.0135/hour \* 24 \* 30 = $9.72
+  - Operation charge: (18M - 13M) \* $0.80 per million operations = $4.00
+
+**Azure Functions**
+
+> For the calculation of Gb-sec pricing, please note that the minimum memory size is 128 MB and the minimum execution time is 100 ms. You can refer to the formula provided below for further details.
 >
 > `(Memory Size \* Execution Time \* Execution Count)/1024000.`
 
 - `notifyHttpTrigger`
-  - 1 invocation \* 30 messages/month = 30 invocations
-  - 128Mb \* 490
+  - 1 execution \* 30 messages/month = 30 executions
+  - (128MB \* 500ms \* 30)/1024000 = 1.875 GB-sec
 - `sendNotifications`
-  - 1 invocation \* 30 messages/month = 30 invocations
-    129
+  - 1 execution \* 30 messages/month = 30 executions
+    (128MB \* 13000ms \* 30)/1024000 = 48.75 GB-sec
 - `enqueueTasksForInstallations`
-  - 1 invocation \* (9M messages / (500 entities \* 3 iterations)) = 6000 invocations
-    29460 29423 29595 29544 29349 29872 29417 29376 29466 29428 29533 29378 29364 29371 29564 29651 29376
+  - 1 execution \* (9M messages / (500 entities \* 3 iterations)) = 6000 executions
+  - (256MB \* 30000ms \* 6000)/1024000 = 450000 GB-sec
 - `sendNotificationQueueTrigger`
-  - 1 invocation \* 9M messages = 9M invocations
-    250-500ms
+  - 1 execution \* 9M messages = 9M executions
+  - (128MB \* 400ms \* 9000000)/1024000 = 450560 GB-sec
 - `waitSendingFinishActivity`
-  - 1 invocation \* 30 messages/month = 30 invocations
-    2023-09-13T09:18:06.012 [Information] Executing 'Functions.waitSendingFinish' (Reason='(null)', Id=5a0f12d0-5a98-41a4-ade9-0162752a9146)
-    2023-09-13T09:18:06.025 [Warning] [waitSendingFinishActivity] checking.
-    2023-09-13T09:18:06.025 [Warning] [waitSendingFinishActivity] active messages: 68
-    2023-09-13T09:18:11.034 [Information] Executed 'Functions.waitSendingFinish' (Succeeded, Id=5a0f12d0-5a98-41a4-ade9-0162752a9146, Duration=5022ms)
+  - 1 execution \* 30 messages/month = 30 executions
+  - (128MB \* 5000ms \* 30)/1024000 = 18.75 GB-sec
+- Total Executions: 30 + 30 + 6000 + 9M + 30 = 9.0069M executions
+  - (9.0069M - 1M) \* $0.20 per million executions = $1.60
+- Execution Time: 1.875 + 48.75 + 450000 + 450560 + 18.75 = 901629.375 GB-sec
+  - (901629.375 GB-sec - 400000 GB-sec) \* $0.000016/GB-sec = $8.03
+
+### Estimated Cost
+
+> **IMPORTANT**: This is only an estimate, your actual costs may vary depending on the usage.
+
+| Resource                | Tier         | Load                     | Monthly Price          |
+| ----------------------- | ------------ | ------------------------ | ---------------------- |
+| Storage account (Table) | Standard_LRS | <1GB data, 9M operations | $0.01 + $0.32 = $0.33  |
+| Service Bus             | Standard     | 18M operations           | $9.72 + $4.00 = $13.72 |
+| Azure Functions         | Consumption  | 9M executions            | $1.60 + $8.03 = $9.63  |
+| **Total**               |              |                          | $23.68                 |
 
 ## Limitation
 
