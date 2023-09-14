@@ -101,7 +101,6 @@
             "time": "30min to run",
             "configuration": "Ready for debug",
             "thumbnailPath": "images/thumbnail.png",
-            "gifPath": "images/thumbnail.png",
             "suggested": false
         },
         {
