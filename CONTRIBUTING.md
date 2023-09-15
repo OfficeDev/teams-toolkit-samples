@@ -43,7 +43,7 @@ Some explaination of how to perform each step in above process:
 The thumbnail.png is a static screenshot of the sample illustrating what users will see after the app is running. The sampleDemo.gif is a dynamic and very short gif demonstrating major usage of the sample.
 > Suggested size of pic/gif is *1600x920/800x460* (If you have it with other sizes, please keep same image ratio for other sizes and don't forget to consider the resolution. Your gif or pics must fit the entire Teams client UI into the image.
 
-The README.md file basically describe what's the sample, how to run it and so on. Here is a [README Template](https://github.com/OfficeDev/TeamsFx-Samples/blob/zhany-readme-template/README_template.md) which you can follow to create one.
+The README.md file basically describe what's the sample, how to run it and so on. Here is a [README Template](./README_template.md) which you can follow to create one.
 
 2. [Log an issue ticket](https://github.com/OfficeDev/TeamsFx-Samples/issues/new?assignees=summzhan&labels=&projects=&template=new-sample-onboard-request.md&title=%5BSample+Onboard+Request%5D+Your+sample+name) in our repo using below template, you will need to provide meta data of your sample in your ticket.
 
