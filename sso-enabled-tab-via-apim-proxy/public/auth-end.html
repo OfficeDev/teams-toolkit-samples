@@ -10,9 +10,11 @@
 </head>
 
 <body>
-    <script src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"
-        integrity="sha384-mhp2E+BLMiZLe7rDIzj19WjgXJeI32NkPvrvvZBrMi5IvWup/1NUfS5xuYN5S3VT"
-        crossorigin="anonymous"></script>
+  <script 
+    src="https://res.cdn.office.net/teams-js/2.0.0/js/MicrosoftTeams.min.js"
+    integrity="sha384-QtTBFeFlfRDZBfwHJHYQp7MdLJ2C3sfAEB1Qpy+YblvjavBye+q87TELpTnvlXw4"
+    crossorigin="anonymous"
+  ></script>
     <script type="text/javascript">
         microsoftTeams.initialize();
         let hashParams = getHashParameters();
@@ -33,12 +35,11 @@
                     message: JSON.stringify(hashParams)
                 }));
             } else {
-                // Success -- return code information to the parent page.
-                var redirectUri = location.protocol + '//' + location.host + location.pathname;
+                // Success -- return to the parent page.
+                // Sending empty result will cause error, so hardcode success here.
                 var result = JSON.stringify({
-                    redirectUri: redirectUri
-                });
-
+                  success: true,
+                })
                 microsoftTeams.authentication.notifySuccess(result);
             }
         } else {
