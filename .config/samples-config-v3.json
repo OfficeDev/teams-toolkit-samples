@@ -521,7 +521,8 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "assets/sso-enabled-tab-via-apim-proxy.gif",
+            "gifPath": "assets/sampleDemo.gif",
+            "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
         }
     ]
