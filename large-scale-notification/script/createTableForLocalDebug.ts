@@ -3,6 +3,7 @@ import {
   AzureNamedKeyCredential,
 } from "@azure/data-tables";
 
+// Well-known storage account and key used by the legacy Azure Storage Emulator and Azurite
 const account = "devstoreaccount1";
 const accountKey =
   "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==";
