@@ -5,9 +5,9 @@ import mock from "mock-fs";
 import fs from "fs-extra";
 import path from "path";
 
-import validateGif from "../../src/validators/gifValidator";
+import validateImage from "../../src/validators/imageValidator";
 
-describe('validateGif()', () => {
+describe('validateImage()', () => {
   afterEach(() => {
     mock.restore();
   });
@@ -18,11 +18,11 @@ describe('validateGif()', () => {
       },
     });
 
-    const result = await validateGif(path.join(process.cwd(), "testFolder"));
-    expect(result.name).toEqual("GIF Demo File");
+    const result = await validateImage(path.join(process.cwd(), "testFolder"));
+    expect(result.name).toEqual("Image Files");
     expect(result.failed.length).toBe(0);
     expect(result.passed.length).toBe(0);
-    expect(result.warning.length).toBe(1);
+    expect(result.warning.length).toBe(2);
   });
 
   test('valid GIF', async () => {
@@ -35,11 +35,11 @@ describe('validateGif()', () => {
       },
     });
 
-    const result = await validateGif(path.join(process.cwd(), "testFolder"));
-    expect(result.name).toEqual("GIF Demo File");
+    const result = await validateImage(path.join(process.cwd(), "testFolder"));
+    expect(result.name).toEqual("Image Files");
     expect(result.failed.length).toBe(0);
     expect(result.passed.length).toBe(1);
-    expect(result.warning.length).toBe(0);
+    expect(result.warning.length).toBe(1);
   });
 
   test('invalid GIF', async () => {
@@ -52,10 +52,10 @@ describe('validateGif()', () => {
       },
     });
 
-    const result = await validateGif(path.join(process.cwd(), "testFolder"));
-    expect(result.name).toEqual("GIF Demo File");
+    const result = await validateImage(path.join(process.cwd(), "testFolder"));
+    expect(result.name).toEqual("Image Files");
     expect(result.failed.length).toBe(1);
     expect(result.passed.length).toBe(0);
-    expect(result.warning.length).toBe(0);
+    expect(result.warning.length).toBe(1);
   });
 });

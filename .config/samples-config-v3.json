@@ -17,6 +17,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": true
         },
@@ -36,6 +37,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": true
         },
@@ -57,6 +59,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -77,6 +80,7 @@
             ],
             "time": "1hr to run",
             "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -96,7 +100,7 @@
             ],
             "time": "30min to run",
             "configuration": "Ready for debug",
-            "gifPath": "images/preview.png",
+            "thumbnailPath": "images/thumbnail.png",
             "suggested": false
         },
         {
@@ -118,6 +122,7 @@
             ],
             "time": "30min to run",
             "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -138,6 +143,7 @@
             ],
             "time": "45min to run",
             "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -157,6 +163,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
+            "thumbnailPath": "images/send-proactive-messages.gif",
             "gifPath": "images/send-proactive-messages.gif",
             "suggested": false,
             "downloadUrl": "https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-proactive-messaging-teamsfx"
@@ -177,6 +184,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -196,6 +204,7 @@
             ],
             "time": "5min to run",
             "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -217,6 +226,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -236,6 +246,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -257,6 +268,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -278,6 +290,7 @@
             ],
             "time": "10min to run",
             "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -299,6 +312,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -321,6 +335,7 @@
             ],
             "time": "30min to run",
             "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -342,6 +357,7 @@
             ],
             "time": "30min to run",
             "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -361,7 +377,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "assets/sampleDemo.png",
+            "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
         },
         {
@@ -379,7 +395,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "assets/outlook-set-signature-overview.png",
+            "thumbnailPath": "assets/outlook-set-signature-overview.png",
             "suggested": false,
             "downloadUrl": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-set-signature"
         },
@@ -400,7 +416,7 @@
             ],
             "time": "15min to run",
             "configuration": "Manual configurations required",
-            "gifPath": "images/preview.png",
+            "thumbnailPath": "images/preview.png",
             "suggested": false
         },
         {
@@ -421,6 +437,7 @@
             ],
             "time": "5 min to run",
             "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -441,6 +458,7 @@
             ],
             "time": "5min to run",
             "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
@@ -462,7 +480,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "src/assets/screenshot.png",
+            "thumbnailPath": "src/assets/screenshot.png",
             "suggested": false
         },
         {
@@ -482,7 +500,29 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "gifPath": "assets/screenshot.png",
+            "thumbnailPath": "assets/screenshot.png",
+            "suggested": false
+        },
+        {
+            "id": "sso-enabled-tab-via-apim-proxy",
+            "shortId": "tab-apim",
+            "onboardDate": "2023-09-15",
+            "title": "SSO Enabled Tab via APIM Proxy",
+            "shortDescription": "An SSO-enabled Microsoft Teams Tab app using APIM as a proxy.",
+            "fullDescription": "This is a Microsoft Teams tab app that can display user login information with SSO. This app uses Graph Toolkit as the frontend and Azure API Management as a proxy.",
+            "types": [
+              "Tab"
+            ],
+            "tags": [
+              "Tab",
+              "JS",
+              "API Management",
+              "SSO"
+            ],
+            "time": "5min to run",
+            "configuration": "Ready for debug",
+            "gifPath": "assets/sampleDemo.gif",
+            "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
         }
     ]
