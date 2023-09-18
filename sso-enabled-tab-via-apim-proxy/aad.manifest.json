@@ -96,14 +96,6 @@
         {
             "url": "${{TAB_ENDPOINT}}/auth-end.html",
             "type": "Web"
-        },
-        {
-            "url": "${{TAB_ENDPOINT}}/auth-end.html?clientId=${{AAD_APP_CLIENT_ID}}",
-            "type": "Spa"
-        },
-        {
-            "url": "${{TAB_ENDPOINT}}/blank-auth-end.html",
-            "type": "Spa"
         }
     ]
 }
