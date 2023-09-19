@@ -19,9 +19,6 @@ Your sample name. E.g., "Hello World Sample"
 **Description:**
 One or two sentences to introduce this sample.
 
-**Onboard Date:**
-Estimated date to go online and show in Teams Toolkit sample gallery. E.g., 2023/11/01 or as soon as possible.
-
 **Tags:**
 You can give your samples a set of tags so that users can easily locate your sample from a group of samples. Those tags can be:
 - the programming languages you used, e.g. "JS", "TS", "C#" etc.
