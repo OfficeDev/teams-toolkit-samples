@@ -4,7 +4,7 @@ Microsoft Teams supports the ability to run web-based UI inside "custom tabs" th
 
 Hello World Tab with Backend shows you how to build a tab app with an Azure Function as backend, how to get user login information with SSO and how to call Azure Function from frontend tab.
 
-![Hello World Tab](images/helloWorld-tab-with-backend.gif)
+![Hello World Tab](assets/sampleDemo.gif)
 
 > Note: This sample will only provision [single tenant](https://learn.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Azure Active Directory app. For multi-tenant support, please refer to this [wiki](https://aka.ms/teamsfx-multi-tenant).
 
