@@ -101,6 +101,7 @@
             "time": "30min to run",
             "configuration": "Ready for debug",
             "thumbnailPath": "images/thumbnail.png",
+            "gifPath": "images/thumbnail.png",
             "suggested": false
         },
         {
@@ -378,6 +379,7 @@
             "time": "5min to run",
             "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/thumbnail.png",
             "suggested": false
         },
         {
@@ -396,6 +398,7 @@
             "time": "5min to run",
             "configuration": "Ready for debug",
             "thumbnailPath": "assets/outlook-set-signature-overview.png",
+            "gifPath": "assets/outlook-set-signature-overview.png",
             "suggested": false,
             "downloadUrl": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-set-signature"
         },
@@ -417,6 +420,7 @@
             "time": "15min to run",
             "configuration": "Manual configurations required",
             "thumbnailPath": "images/preview.png",
+            "gifPath": "images/preview.png",
             "suggested": false
         },
         {
@@ -481,6 +485,7 @@
             "time": "5min to run",
             "configuration": "Ready for debug",
             "thumbnailPath": "src/assets/screenshot.png",
+            "gifPath": "src/assets/screenshot.png",
             "suggested": false
         },
         {
@@ -501,6 +506,7 @@
             "time": "5min to run",
             "configuration": "Ready for debug",
             "thumbnailPath": "assets/screenshot.png",
+            "gifPath": "assets/screenshot.png",
             "suggested": false
         },
         {
