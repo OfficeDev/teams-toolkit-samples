@@ -5,9 +5,11 @@ on:
   pull_request:
     branches:
       - dev
+      - v3
   push:
     branches:
       - dev
+      - v3
 
 jobs:
   sample-validation:
@@ -38,7 +40,7 @@ jobs:
           node validation-tool/validate-config.js .config/samples-config-v3.json
           exit $?
 
-      - name: Sample Validation Tool
+      - name: Run Sample Validation Tool Based on Sample Config
         run: |
           # This script runs the validation tool against all samples in the samples-config-v3.json file.
           # External samples are excluded from the validation.
@@ -60,3 +62,23 @@ jobs:
           if [ "$validationResult" = false ]; then
             exit 1
           fi
+
+      - name: Get Changed Folders
+        id: get_changed_folders
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'dev' }}
+        uses: Stockopedia/action-get-changed-files@v1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          ignore: "**/+(.github)"
+          foldersOnly: true
+          format: json
+
+      - name: Echo changed files
+        run: echo ${{ steps.get_changed_folders.outputs.changed }}
+
+      - name: Run Sample Validation Tool on New Sample
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'dev' }}
+        run: |
+          # This script runs the validation tool against all samples in the samples-config-v3.json file.
+          # External samples are excluded from the validation.
+          # result=`node ./validation-tool/validator.cjs -p $line`
