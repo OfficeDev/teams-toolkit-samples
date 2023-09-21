@@ -73,9 +73,6 @@ jobs:
           foldersOnly: true
           format: json
 
-      - name: Echo changed files
-        run: echo ${{ steps.get_changed_folders.outputs.changed }}
-
       - name: Run Sample Validation Tool on New Sample
         if: ${{ github.event_name == 'pull_request' }}
         run: |
