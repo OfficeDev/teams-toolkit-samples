@@ -82,7 +82,7 @@ jobs:
           # This script runs the validation tool against changed samples in the pull request.
           # External samples are excluded from the validation.
           exceptions=("incoming-webhook-notification")
-          samples=`jq -r ".[]" <<< "${{ steps.get_changed_folders.outputs.changed }}"`
+          samples=`jq -r ".[]" <<< '${{ steps.get_changed_folders.outputs.changed }}'`
           validationFailed="validation failed"
           validationResult=true
           while IFS= read -r line; do
