@@ -5,9 +5,11 @@ on:
   pull_request:
     branches:
       - dev
+      - v3
   push:
     branches:
       - dev
+      - v3
 
 jobs:
   sample-validation:
@@ -38,12 +40,46 @@ jobs:
           node validation-tool/validate-config.js .config/samples-config-v3.json
           exit $?
 
-      - name: Sample Validation Tool
+      - name: Run Sample Validation Tool Based on Sample Config
         run: |
           # This script runs the validation tool against all samples in the samples-config-v3.json file.
           # External samples are excluded from the validation.
           exceptions=("incoming-webhook-notification")
           samples=`jq -r ".samples | .[] | select(has(\"downloadUrl\") | not) | .id" .config/samples-config-v3.json`
+          validationFailed="validation failed"
+          validationResult=true
+          while IFS= read -r line; do
+            if [[ ! ${exceptions[@]} =~ $line ]]
+            then
+              result=`node ./validation-tool/validator.cjs -p $line`
+              if grep -q "$validationFailed" <<< "$result"; then
+                printf "\nSample '$line' validation failed.\n"
+                echo "$result"
+                validationResult=false
+              fi
+            fi
+          done <<< "$samples"
+          if [ "$validationResult" = false ]; then
+            exit 1
+          fi
+
+      - name: Get Changed Folders
+        id: get_changed_folders
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: Stockopedia/action-get-changed-files@v1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          ignore: "**/+(.github)"
+          foldersOnly: true
+          format: json
+
+      - name: Run Sample Validation Tool on New Sample
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          # This script runs the validation tool against changed samples in the pull request.
+          # External samples are excluded from the validation.
+          exceptions=("incoming-webhook-notification")
+          samples=`jq -r ".[]" <<< '${{ steps.get_changed_folders.outputs.changed }}'`
           validationFailed="validation failed"
           validationResult=true
           while IFS= read -r line; do
