@@ -2,7 +2,7 @@
 
 `One Productivity Hub using Graph Toolkit with SPFx` is a demo application that helps you keep track of your activities planned for the day. The application is built using the SharePoint Framework and runs in Microsoft Teams, Outlook, Microsoft 365 app, and SharePoint. It uses Microsoft Graph Toolkit to connect to Microsoft Graph and display data from Microsoft 365.
 
-![SPFxProductivityDashboard](assets/screenshot.png)
+![SPFxProductivityDashboard](src/assets/screenshot.png)
 
 ## This sample illustrates
 
