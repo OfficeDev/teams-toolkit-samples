@@ -1,0 +1,73 @@
+.productivityDashboard {
+  .features {
+    margin: 20px;
+    background-color: #FFF;
+    box-shadow: 0px 1.2px 3.6px rgba(0, 0, 0, 0.11), 0px 6.4px 14.4px rgba(0, 0, 0, 0.13);
+    border-radius: 4px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .header {
+    display: flex;
+    background-color: #f0f0f0;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+
+  .title {
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 100%;
+  }
+
+  .title h2 {
+    font-size: 24px;
+    padding-left: 5px;
+    display: inline;
+    font-weight: 600;
+  }
+
+  .title h3 {
+    background: transparent;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    color: #8A8886;
+    font-weight: 600;
+  }
+
+  .mgtCol {
+    background: transparent;
+    overflow: hidden;
+    padding: 5px;
+    margin-top: 5px;
+  }
+
+  .mgtCol:hover {
+    overflow-y: auto;
+  }
+}
+
+:global {
+  mgt-person {
+    margin-top: 20px;
+    margin-left: 20px;
+    --avatar-size: 60px;
+    --font-family: 'Segoe UI';
+    --font-size: 20px;
+    --font-weight: 700;
+    --color: black;
+    --text-transform: none;
+    --line2-font-size: 14px;
+    --line2-font-weight: 400;
+    --line2-color: #8A8886;
+    --line2-text-transform: none;
+  }
+}

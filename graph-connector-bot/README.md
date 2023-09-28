@@ -33,8 +33,7 @@ This sample app showcases how to build a Teams command bot that queries custom d
 
 ### Preview the app in Teams
 1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
-1. Use Teams Toolkit to [submit the Teams app to the Teams Admin Center](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#publish-to-your-organization).
-1. [Approve the Teams app for publishing to your organization's app store](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#admin-approval-for-teams-apps).
+1. Use Teams Toolkit to [publish your Teams app to your organization](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#publish-to-your-organization).
 
 #### Usage of this sample
 1. Navigate to 'Graph Connector' section of the Teams app in [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and click 'Grant permissions'.

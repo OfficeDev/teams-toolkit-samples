@@ -1,0 +1,98 @@
+name: Sample Validation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - dev
+      - v3
+  push:
+    branches:
+      - dev
+      - v3
+
+jobs:
+  sample-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Pull Request
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+      - name: Checkout Branch
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+          repository: ${{ github.repository }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Validate Sample Config
+        run: |
+          node validation-tool/validate-config.js .config/samples-config-v3.json
+          exit $?
+
+      - name: Run Sample Validation Tool Based on Sample Config
+        run: |
+          # This script runs the validation tool against all samples in the samples-config-v3.json file.
+          # External samples are excluded from the validation.
+          exceptions=("incoming-webhook-notification")
+          samples=`jq -r ".samples | .[] | select(has(\"downloadUrl\") | not) | .id" .config/samples-config-v3.json`
+          validationFailed="validation failed"
+          validationResult=true
+          while IFS= read -r line; do
+            if [[ ! ${exceptions[@]} =~ $line ]]
+            then
+              result=`node ./validation-tool/validator.cjs -p $line`
+              if grep -q "$validationFailed" <<< "$result"; then
+                printf "\nSample '$line' validation failed.\n"
+                echo "$result"
+                validationResult=false
+              fi
+            fi
+          done <<< "$samples"
+          if [ "$validationResult" = false ]; then
+            exit 1
+          fi
+
+      - name: Get Changed Folders
+        id: get_changed_folders
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: Stockopedia/action-get-changed-files@v1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          ignore: "**/+(.github)"
+          foldersOnly: true
+          format: json
+
+      - name: Run Sample Validation Tool on New Sample
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          # This script runs the validation tool against changed samples in the pull request.
+          # External samples are excluded from the validation.
+          exceptions=("incoming-webhook-notification")
+          samples=`jq -r ".[]" <<< '${{ steps.get_changed_folders.outputs.changed }}'`
+          validationFailed="validation failed"
+          validationResult=true
+          while IFS= read -r line; do
+            if [[ ! ${exceptions[@]} =~ $line ]]
+            then
+              result=`node ./validation-tool/validator.cjs -p $line`
+              if grep -q "$validationFailed" <<< "$result"; then
+                printf "\nSample '$line' validation failed.\n"
+                echo "$result"
+                validationResult=false
+              fi
+            fi
+          done <<< "$samples"
+          if [ "$validationResult" = false ]; then
+            exit 1
+          fi

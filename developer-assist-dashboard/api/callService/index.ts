@@ -8,8 +8,8 @@ import "isomorphic-fetch";
 
 import { Context, HttpRequest } from "@azure/functions";
 import { Client, ResponseType } from "@microsoft/microsoft-graph-client";
+import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
 import {
-  createMicrosoftGraphClientWithCredential,
   OnBehalfOfCredentialAuthConfig,
   OnBehalfOfUserCredential,
 } from "@microsoft/teamsfx";
@@ -30,9 +30,7 @@ type TeamsfxContext = { [key: string]: any };
  * Before trigger this function, teamsfx binding would process the SSO token and generate teamsfx configuration.
  *
  * This function initializes the teamsfx SDK with the configuration and calls these APIs:
- * - TeamsFx().setSsoToken() - Construct teamsfx instance with the received SSO token and initialized configuration.
  * - getUserInfo() - Get the user's information from the received SSO token.
- * - createMicrosoftGraphClient() - Get a graph client to access user's Microsoft 365 data.
  *
  * The response contains multiple message blocks constructed into a JSON object, including:
  * - An echo of the request body.
@@ -100,7 +98,12 @@ export default async function run(
 
   try {
     // Call the appropriate function based on the graphType and method.
-    const result = await handleRequest(oboCredential, serviceType, method, reqData);
+    const result = await handleRequest(
+      oboCredential,
+      serviceType,
+      method,
+      reqData
+    );
     res.body = { ...res.body, ...result };
   } catch (e) {
     context.log.error(e);
@@ -162,7 +165,9 @@ async function getDevops(): Promise<any> {
   const url = `https://dev.azure.com/${config.devopsOrgName}/${config.devopsProjectName}/_apis/wit/workitems?ids=1,2,3,4,5&api-version=7.0`;
 
   // Encode the access token for authentication.
-  const auth = Buffer.from(`Basic:${config.devopsAccessToken}`).toString("base64");
+  const auth = Buffer.from(`Basic:${config.devopsAccessToken}`).toString(
+    "base64"
+  );
 
   // Set the headers for the request.
   const headers = {
@@ -240,12 +245,21 @@ async function createIssue(reqData: any) {
  * @param oboCredential The OnBehalfOfUserCredential object for authentication.
  * @returns An array of tasks, each containing the task ID, title, priority, percent complete, assigned users, and over-assigned users.
  */
-async function getPlanner(oboCredential: OnBehalfOfUserCredential): Promise<any> {
-  // Create a Microsoft Graph client with the provided credentials and permissions.
-  const graphClient = createMicrosoftGraphClientWithCredential(oboCredential, [
-    "Tasks.ReadWrite",
-    "Group.ReadWrite.All",
-  ]);
+async function getPlanner(
+  oboCredential: OnBehalfOfUserCredential
+): Promise<any> {
+  // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+  const authProvider = new TokenCredentialAuthenticationProvider(
+    oboCredential,
+    {
+      scopes: ["Tasks.ReadWrite", "Group.ReadWrite.All"],
+    }
+  );
+
+  // Initialize Graph client instance with authProvider
+  const graphClient = Client.initWithMiddleware({
+    authProvider: authProvider,
+  });
 
   // Retrieve the top 8 tasks from the specified Planner plan.
   const { value: tasksData } = await graphClient
@@ -282,11 +296,18 @@ async function createPlannerTask(
   oboCredential: OnBehalfOfUserCredential,
   reqData: any
 ): Promise<any> {
-  // Create a Microsoft Graph client with the provided credentials and permissions.
-  const graphClient: Client = createMicrosoftGraphClientWithCredential(oboCredential, [
-    "Tasks.ReadWrite",
-    "Group.ReadWrite.All",
-  ]);
+  // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+  const authProvider = new TokenCredentialAuthenticationProvider(
+    oboCredential,
+    {
+      scopes: ["Tasks.ReadWrite", "Group.ReadWrite.All"],
+    }
+  );
+
+  // Initialize Graph client instance with authProvider
+  const graphClient = Client.initWithMiddleware({
+    authProvider: authProvider,
+  });
 
   // Create a task object with the provided title and assignments.
   const task = {
@@ -308,8 +329,22 @@ async function createPlannerTask(
  * @param userId The ID of the user to retrieve information for.
  * @returns An object containing the user's ID, display name, and avatar (if available).
  */
-async function getUser(oboCredential: OnBehalfOfUserCredential, userId: string): Promise<any> {
-  const graphClient = createMicrosoftGraphClientWithCredential(oboCredential, ["User.Read.All"]);
+async function getUser(
+  oboCredential: OnBehalfOfUserCredential,
+  userId: string
+): Promise<any> {
+  // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
+  const authProvider = new TokenCredentialAuthenticationProvider(
+    oboCredential,
+    {
+      scopes: ["User.Read.All"],
+    }
+  );
+
+  // Initialize Graph client instance with authProvider
+  const graphClient = Client.initWithMiddleware({
+    authProvider: authProvider,
+  });
 
   // Send a GET request to retrieve the user's display name.
   const { displayName } = await graphClient.api(`/users/${userId}`).get();
