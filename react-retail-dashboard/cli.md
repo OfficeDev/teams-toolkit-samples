@@ -10,7 +10,7 @@
 3. Create react-retail-dashboard project.
 
     ```
-    teamsfx new template react-retail-dashboard
+    teamsfx new sample react-retail-dashboard --interactive false
     ```
 
 4. Provision the project to create an app in Teams App Studio.

@@ -5,7 +5,7 @@
     ```
 1. Create npm-search-connector-m365 project.
     ```
-    teamsfx new template npm-search-connector-m365
+    teamsfx new sample npm-search-connector-m365 --interactive false
     ```
 1. For local env, start your local tunnel service.
     1. Install [dev tunnel cli](https://aka.ms/teamsfx-install-dev-tunnel).

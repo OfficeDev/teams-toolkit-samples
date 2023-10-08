@@ -7,7 +7,7 @@
     ```
 1. Create hello-world-tab project.
     ```
-    teamsfx new template hello-world-tab-with-backend
+    teamsfx new sample hello-world-tab-with-backend --interactive false
     ```
 1. Provision the project to Azure.
     ```
