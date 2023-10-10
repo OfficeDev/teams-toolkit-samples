@@ -6,7 +6,7 @@
     ```
 1. Create todo-list project.
     ```
-    teamsfx new template todo-list-with-Azure-backend
+    teamsfx new sample todo-list-with-Azure-backend --interactive false
     ```
 1. Provision the project to azure. You will be asked to input admin name and password of SQL.
     ```

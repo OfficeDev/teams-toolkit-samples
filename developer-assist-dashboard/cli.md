@@ -7,7 +7,7 @@
     ```
 1. Create dev-assist-dashboard project.
     ```
-    teamsfx new template dev-assist-dashboard
+    teamsfx new sample dev-assist-dashboard --interactive false
     ```
 1. Provision the project to Azure.
     ```
