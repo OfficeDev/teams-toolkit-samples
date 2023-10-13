@@ -11,7 +11,7 @@
         "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
     },
     "name": {
-        "short": "react-retail-dashboard-${{TEAMSFX_ENV}}",
+        "short": "react-retail-dashboard${{APP_NAME_SUFFIX}}",
         "full": "Full name for react-retail-dashboard"
     },
     "description": {

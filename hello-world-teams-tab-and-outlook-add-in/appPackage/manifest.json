@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "Contoso-${{TEAMSFX_ENV}}",
+        "short": "Contoso${{APP_NAME_SUFFIX}}",
         "full": "Full name for Contoso"
     },
     "description": {

@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "graph-connector-bot-${{TEAMSFX_ENV}}",
+        "short": "graph-connector-bot${{APP_NAME_SUFFIX}}",
         "full": "full name for graph-connector-bot"
     },
     "description": {

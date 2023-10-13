@@ -14,7 +14,7 @@ provision:
   - uses: teamsApp/create
     with:
       # Teams app name
-      name: npm-search-msgext-${{TEAMSFX_ENV}}
+      name: npm-search-msgext${{APP_NAME_SUFFIX}}
     writeToEnvironmentFile:
       # Write the information of created resources into environment file for the specified environment variable(s).
       teamsAppId: TEAMS_APP_ID
@@ -23,7 +23,7 @@ provision:
   - uses: botAadApp/create
     with:
       # The Azure Active Directory application's display name
-      name: npm-search-msgext-${{TEAMSFX_ENV}}
+      name: npm-search-msgext${{APP_NAME_SUFFIX}}
     writeToEnvironmentFile:
       # The Azure Active Directory application's client id created for bot.
       botId: BOT_ID
