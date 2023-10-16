@@ -29,8 +29,8 @@ To debug the project, you will need to configure an Azure Service Bus to be used
 
 1. Visit https://admin.teams.microsoft.com/. Click "Manage apps" under "Teams apps" and find the app with name "large-scale-notifi-dev".
 2. Click the app and click "Publish" to approve the request.
-3. Copy "App Id" in app details page and paste it to variable `TEAMS_APP_ID` in `script/installAppForUsers.js`.
-4. Visit https://developer.microsoft.com/en-us/graph/graph-explorer. Click "Modify permissions" and consent "TeamsAppInstallation.ReadWriteForUser".
+3. Copy "App Id" in **app details page** and paste it to variable `TEAMS_APP_ID` in `script/installAppForUsers.js`.
+4. Visit https://developer.microsoft.com/en-us/graph/graph-explorer. Click "Modify permissions" and consent "TeamsAppInstallation.ReadWriteForUser" & "TeamsAppInstallation.ReadWriteAndConsentForUser".
 5. Copy the "Access token" and paste it to variable `ACCESS_TOKEN` in `script/installAppForUsers.js`.
 6. Run command in project folder: `node script/installAppForUsers.js`.
 7. Check the provisioned Azure Storage Account Table `installation` for installation records.
@@ -42,6 +42,8 @@ Since there are usually at most 25 users in Microsoft 365 E3/E5 subscription in 
 1. Copy the value of `STORAGE_ACCOUNT_NAME` in `env/.env.dev` and paste it to variable `storageAccount` in `script/mockInstallationData.ts`.
 2. Copy the value of `SECRET_STORAGE_ACCOUNT_KEY` in `env/.env.dev.user` by clicking "Decrypt secret" and paste it to variable `storageAccountKey` in `script/mockInstallationData.ts`.
 3. Run command in project root folder: `npx ts-node script/mockInstallationData.ts`.
+4. Update `storageTableName` in `src/internal/initialize.ts` to `installationMockTableName`.
+5. Deploy the code to Azure Function by selecting `Deploy` from the Teams Toolkit sidebar. Your app should now use the mock data.
 
 ## Trigger send notification function
 
