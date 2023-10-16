@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "sso-command-bot-${{TEAMSFX_ENV}}",
+        "short": "sso-command-bot${{APP_NAME_SUFFIX}}",
         "full": "full name for sso-command-bot"
     },
     "description": {

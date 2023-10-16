@@ -31,7 +31,7 @@ provision:
   - uses: teamsApp/create
     with:
       # Teams app name
-      name: spfx-productivity-dashboard-${{TEAMSFX_ENV}}
+      name: spfx-productivity-dashboard${{APP_NAME_SUFFIX}}
     # Write the information of created resources into environment file for
     # the specified environment variable(s).
     writeToEnvironmentFile:

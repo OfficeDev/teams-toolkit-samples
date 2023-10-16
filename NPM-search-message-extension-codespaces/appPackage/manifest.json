@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "npm-search-msgext-${{TEAMSFX_ENV}}",
+        "short": "npm-search-msgext${{APP_NAME_SUFFIX}}",
         "full": "full name for npm-search-msgext"
     },
     "description": {

@@ -19,7 +19,7 @@ provision:
   - uses: botAadApp/create
     with:
       # The Azure Active Directory application's display name
-      name: npmSearchConnector-${{TEAMSFX_ENV}}
+      name: npmSearchConnector${{APP_NAME_SUFFIX}}
     writeToEnvironmentFile:
       # The Azure Active Directory application's client id created for bot.
       botId: BOT_ID

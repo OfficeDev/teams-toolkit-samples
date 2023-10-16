@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "sso-tab-via-apim-${{TEAMSFX_ENV}}",
+        "short": "sso-tab-via-apim${{APP_NAME_SUFFIX}}",
         "full": "Full name for sso-enabled-tab-via-apim-proxy"
     },
     "description": {

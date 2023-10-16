@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "team-central-dashboard-${{TEAMSFX_ENV}}",
+        "short": "team-central-dashboard${{APP_NAME_SUFFIX}}",
         "full": "Full name for team-central-dashboard"
     },
     "description": {

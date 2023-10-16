@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "one-productivity-hub-${{TEAMSFX_ENV}}",
+        "short": "one-productivity-hub${{APP_NAME_SUFFIX}}",
         "full": "Full name for one-productivity-hub"
     },
     "description": {
