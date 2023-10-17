@@ -530,6 +530,29 @@
             "gifPath": "assets/sampleDemo.gif",
             "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
+        },
+        {
+            "id": "large-scale-notification",
+            "shortId": "large-notification",
+            "onboardDate": "2023-10-17",
+            "title": "Large Scale Notification Bot",
+            "shortDescription": "An SSO-enabled Microsoft Teams Tab app using APIM as a proxy.",
+            "fullDescription": "This sample demonstrates the architecture of a Teams notfication bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant.",
+            "types": [
+              "Bot"
+            ],
+            "tags": [
+              "Bot",
+              "TS",
+              "Azure Durable Function",
+              "Notification",
+              "Large user scale"
+            ],
+            "time": "30min to run",
+            "configuration": "Manual configurations required",
+            "gifPath": "assets/thumbnail.png",
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
         }
     ]
 }
