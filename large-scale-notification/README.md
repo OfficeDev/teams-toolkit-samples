@@ -30,6 +30,7 @@ To debug the project, you will need to configure an Azure Service Bus to be used
 1. Visit https://admin.teams.microsoft.com/. Click "Manage apps" under "Teams apps" and find the app with name "large-scale-notifi-dev".
 2. Click the app and click "Publish" to approve the request.
 3. Copy "App Id" in **app details page** and paste it to variable `TEAMS_APP_ID` in `script/installAppForUsers.js`.
+   ![Copy App Id in App Detail Page](./assets/appDetailPage.png)
 4. Visit https://developer.microsoft.com/en-us/graph/graph-explorer. Click "Modify permissions" and consent "TeamsAppInstallation.ReadWriteForUser" & "TeamsAppInstallation.ReadWriteAndConsentForUser".
 5. Copy the "Access token" and paste it to variable `ACCESS_TOKEN` in `script/installAppForUsers.js`.
 6. Run command in project folder: `node script/installAppForUsers.js`.
