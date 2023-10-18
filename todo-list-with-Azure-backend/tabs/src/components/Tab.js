@@ -280,7 +280,7 @@ class Tab extends React.Component {
         </div>
         <Creator
           objectId={item.objectId}
-          teamsUserCredential={this.credential}
+          credential={this.credential}
           scope={this.scope}
         />
         <div className="action">
