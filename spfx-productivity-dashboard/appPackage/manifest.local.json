@@ -11,7 +11,7 @@
         "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
     },
     "name": {
-        "short": "SPFx productivity dashboard${{APP_NAME_SUFFIX}}",
+        "short": "SPFxProductivityDashboard${{APP_NAME_SUFFIX}}",
         "full": "Full name for SPFx productivity dashboard"
     },
     "description": {
