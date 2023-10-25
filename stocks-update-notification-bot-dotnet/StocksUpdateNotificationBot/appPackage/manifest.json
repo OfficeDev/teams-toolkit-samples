@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "stocks-update-notif-bot",
+        "short": "stocks-update-notif-bot${{APP_NAME_SUFFIX}}",
         "full": "Full name for stocks-update-notif-bot"
     },
     "description": {

@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-      "short": "dev-assist-dashboard-${{TEAMSFX_ENV}}",
+      "short": "dev-assist-dashboard${{APP_NAME_SUFFIX}}",
       "full": "Full name for dev-assist-dashboard"
     },
     "description": {

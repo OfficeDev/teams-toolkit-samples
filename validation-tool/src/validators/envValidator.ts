@@ -31,7 +31,7 @@ export default async function validateEnvFiles(projectDir: string): Promise<Resu
     const mappings = Object.entries(envData).map(([key, value]) => ({ name: key, value: value }));
     let validEnv = true;
     for (const kv of mappings) {
-      if (kv.name === "TEAMSFX_ENV" || kv.name === "TEAMS_APP_NAME") {
+      if (kv.name === "TEAMSFX_ENV" || kv.name === "APP_NAME_SUFFIX" || kv.name === "TEAMS_APP_NAME") {
         continue;
       } else if (kv.value !== '') {
         result.failed.push(`${envFile}: ${kv.name} should NOT have value.`);

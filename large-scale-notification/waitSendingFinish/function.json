@@ -1,0 +1,10 @@
+{
+  "bindings": [
+    {
+      "name": "input",
+      "type": "activityTrigger",
+      "direction": "in"
+    }
+  ],
+  "scriptFile": "../dist/src/functions/waitSendingFinishActivity.js"
+}

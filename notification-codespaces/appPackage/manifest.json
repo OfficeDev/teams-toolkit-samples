@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "notification-app-${{TEAMSFX_ENV}}",
+        "short": "notification-app${{APP_NAME_SUFFIX}}",
         "full": "Full name for notification-app"
     },
     "description": {

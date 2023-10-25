@@ -12,7 +12,7 @@ environmentFolderPath: ./env
 provision:
   - uses: teamsApp/create # Creates a Teams app
     with:
-      name: BasicBlazorTabApp-${{TEAMSFX_ENV}} # Teams app name
+      name: BasicBlazorTabApp${{APP_NAME_SUFFIX}} # Teams app name
     writeToEnvironmentFile:
       # Write the information of created resources into environment file for the specified environment variable(s).
       teamsAppId: TEAMS_APP_ID

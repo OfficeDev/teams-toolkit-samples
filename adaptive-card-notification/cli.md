@@ -7,7 +7,7 @@
     ```
 1. Create adaptive-card-notification project.
     ```
-    teamsfx new template adaptive-card-notification
+    teamsfx new sample adaptive-card-notification --interactive false
     ```
 1. Provision the project to Azure.
     ```

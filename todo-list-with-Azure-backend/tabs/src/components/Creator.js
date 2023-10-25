@@ -30,7 +30,7 @@ class Creator extends React.Component {
     try {
       // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
       const authProvider = new TokenCredentialAuthenticationProvider(
-        this.props.teamsUserCredential,
+        this.props.credential,
         {
           scopes: this.props.scope,
         }

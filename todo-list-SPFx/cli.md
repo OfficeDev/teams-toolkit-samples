@@ -6,7 +6,7 @@
     ```
 3. Create todo-list-SPFx project.
     ```
-    teamsfx new template todo-list-SPFx
+    teamsfx new sample todo-list-SPFx --interactive false
     ```
 4. Provision the project to create an app in Teams App Studio.
     ```

@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "hello-world-tab-${{TEAMSFX_ENV}}",
+        "short": "hello-world-tab${{APP_NAME_SUFFIX}}",
         "full": "Full name for hello-world-tab"
     },
     "description": {

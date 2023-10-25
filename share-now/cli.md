@@ -6,7 +6,7 @@
     ```
 3. Create share-now project.
     ```
-    teamsfx new template share-now
+    teamsfx new sample share-now --interactive false
     ```
 4. Provision the project to azure. You will be asked to input admin name and password of SQL.
     ```

@@ -10,7 +10,7 @@
 3. Create spfx-productivity-dashboard project.
 
     ```
-    teamsfx new template spfx-productivity-dashboard
+    teamsfx new sample spfx-productivity-dashboard --interactive false
     ```
 
 4. Provision the project to create an app in Teams App Studio.

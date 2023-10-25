@@ -7,7 +7,7 @@
     ```
 1. Create team-central-dashboard project.
     ```
-    teamsfx new template team-central-dashboard
+    teamsfx new sample team-central-dashboard --interactive false
     ```
 1. Provision the project to Azure.
     ```
