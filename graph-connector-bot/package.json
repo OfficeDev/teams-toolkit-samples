@@ -21,7 +21,6 @@
     "url": "https://github.com"
   },
   "dependencies": {
-    "@azure/msal-node": "^1.14.6",
     "@microsoft/microsoft-graph-client": "^3.0.1",
     "@microsoft/teamsfx": "^2.0.0",
     "adaptive-expressions": "^4.18.0",
