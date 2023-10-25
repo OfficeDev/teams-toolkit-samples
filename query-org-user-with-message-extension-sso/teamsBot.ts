@@ -1,10 +1,11 @@
 import {
   TeamsActivityHandler,
   CardFactory,
-  TurnContext
+  TurnContext,
+  AppBasedLinkQuery
 } from "botbuilder";
 import { ResponseType } from "@microsoft/microsoft-graph-client";
-import { MessageExtensionTokenResponse, handleMessageExtensionQueryWithSSO, OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
+import { MessageExtensionTokenResponse, handleMessageExtensionQueryWithSSO, handleMessageExtensionLinkQueryWithSSO, OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential, createMicrosoftGraphClientWithCredential } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 import config from "./config";
 
@@ -56,6 +57,36 @@ export class TeamsBot extends TeamsActivityHandler {
             attachmentLayout: 'list',
             attachments: attachments
           }
+        };
+      });
+  }
+
+  public async handleTeamsAppBasedLinkQuery(context: TurnContext, query: AppBasedLinkQuery): Promise<any> {
+    return await handleMessageExtensionLinkQueryWithSSO(context,
+      oboAuthConfig,
+      initialLoginEndpoint,
+      ["User.Read.All", "User.Read"],
+      async (token: MessageExtensionTokenResponse) => {
+        const credential = new OnBehalfOfUserCredential(
+          token.ssoToken,
+          oboAuthConfig
+        );
+        const attachments = [];
+        // Initialize Graph client instance with authProvider
+        const graphClient = createMicrosoftGraphClientWithCredential(credential, 'User.Read.All');
+        const profile = await graphClient.api("/me").get();
+        await this.getUserPhotoWithGraphClient(
+          graphClient,
+          attachments,
+          profile,
+          `/me/photo/$value`
+        );
+        return {
+          composeExtension: {
+            type: "result",
+            attachmentLayout: "list",
+            attachments: attachments,
+          },
         };
       });
   }
