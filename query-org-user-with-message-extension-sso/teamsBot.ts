@@ -1,4 +1,4 @@
-import { TeamsActivityHandler, CardFactory, TurnContext } from "botbuilder";
+import { TeamsActivityHandler, CardFactory, TurnContext, AppBasedLinkQuery } from "botbuilder";
 import { ResponseType, Client } from "@microsoft/microsoft-graph-client";
 import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
 import {
@@ -6,6 +6,7 @@ import {
   handleMessageExtensionQueryWithSSO,
   OnBehalfOfCredentialAuthConfig,
   OnBehalfOfUserCredential,
+  handleMessageExtensionLinkQueryWithSSO
 } from "@microsoft/teamsfx";
 import "isomorphic-fetch";
 import config from "./config";
@@ -115,6 +116,44 @@ export class TeamsBot extends TeamsActivityHandler {
         attachments: [CardFactory.heroCard(obj.name, obj.description)],
       },
     };
+  }
+
+  public async handleTeamsAppBasedLinkQuery(context: TurnContext, query: AppBasedLinkQuery): Promise<any> {
+    return await handleMessageExtensionLinkQueryWithSSO(context,
+      oboAuthConfig,
+      initialLoginEndpoint,
+      ["User.Read.All", "User.Read"],
+      async (token: MessageExtensionTokenResponse) => {
+        const credential = new OnBehalfOfUserCredential(
+          token.ssoToken,
+          oboAuthConfig
+        );
+        const attachments = [];
+        const authProvider = new TokenCredentialAuthenticationProvider(
+          credential,
+          {
+            scopes: ["User.Read"],
+          }
+        );
+        // Initialize Graph client instance with authProvider
+        const graphClient = Client.initWithMiddleware({
+          authProvider: authProvider,
+        });
+        const profile = await graphClient.api("/me").get();
+        await this.getUserPhotoWithGraphClient(
+          graphClient,
+          attachments,
+          profile,
+          `/me/photo/$value`
+        );
+        return {
+          composeExtension: {
+            type: "result",
+            attachmentLayout: "list",
+            attachments: attachments,
+          },
+        };
+      });
   }
 
   private async getUserPhotoWithGraphClient(
