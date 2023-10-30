@@ -169,7 +169,7 @@
             "suggested": false,
             "downloadUrlInfo": {
                 "owner": "OfficeDev",
-                "repo": "Microsoft-Teams-Samples",
+                "repository": "Microsoft-Teams-Samples",
                 "ref": "main",
                 "dir": "samples/bot-proactive-messaging-teamsfx"
             }
@@ -407,7 +407,7 @@
             "suggested": false,
             "downloadUrlInfo": {
                 "owner": "OfficeDev",
-                "repo": "Office-Add-in-samples",
+                "repository": "Office-Add-in-samples",
                 "ref": "main",
                 "dir": "Samples/outlook-set-signature"
             }
