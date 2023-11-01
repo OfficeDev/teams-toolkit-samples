@@ -1,0 +1,54 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "${title}",
+      "size": "Large",
+      "weight": "Bolder",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${appName}",
+      "isSubtle": true,
+      "color": "Accent",
+      "weight": "Bolder",
+      "size": "Small",
+      "spacing": "None"
+    },
+    {
+      "type": "TextBlock",
+      "text": "${description}",
+      "isSubtle": true,
+      "wrap": true
+    },
+    {
+      "$data": "${factSet}",
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "Prop1:",
+          "value": "[${property1}](${property1})"
+        },
+        {
+          "title": "Prop2:",
+          "value": "${property2}"
+        },
+        {
+          "title": "Prop3:",
+          "value": "${property3}"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "View Details",
+      "url": "${notificationUrl}"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "TextBlock",
+      "weight": "Bolder",
+      "size": "Large",
+      "color": "accent",
+      "text": "Contoso Incident Management"
+    },
+    {
+      "type": "Input.Text",
+      "label": "Title",
+      "id": "incidentTitle",
+      "placeholder": "Enter title...",
+      "isRequired": true,
+      "errorMessage": "Incident title is required"
+    },
+    {
+      "type": "Input.Text",
+      "label": "Description",
+      "id": "incidentDescription",
+      "placeholder": "Enter description...",
+      "value": " ",
+      "isMultiline": true
+    },
+    {
+      "type": "Input.Date",
+      "label": "Incident Start",
+      "id": "incidentStart",
+      "value": "2022-09-01"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "incidentLocation",
+      "style": "expanded",
+      "label": "Location",
+      "isMultiSelect": false,
+      "value": "Contoso Redmond",
+      "choices": [
+        {
+          "title": "Contoso Redmond",
+          "value": "Contoso Redmond"
+        },
+        {
+          "title": "Contoso San Jose",
+          "value": "Contoso San Jose"
+        },
+        {
+          "title": "Contoso New York",
+          "value": "Contoso New York"
+        },
+        {
+          "title": "Contoso Chicago",
+          "value": "Contoso Chicago"
+        }
+      ]
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "incidentCategory",
+      "label": "Category",
+      "isMultiSelect": true,
+      "style": "expanded",
+      "choices": [
+        {
+          "title": "Crimes",
+          "value": "Crimes"
+        },
+        {
+          "title": "Threats and Violations",
+          "value": "Threats and Violations"
+        },
+        {
+          "title": "Harassment and Discrimination",
+          "value": "Harassment and Discrimination"
+        },
+        {
+          "title": "IT Security Incidents",
+          "value": "IT Security Incidents"
+        }
+      ]
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "incidentSeverity",
+      "style": "compact",
+      "label": "Severity",
+      "value": "Moderate",
+      "choices": [
+        {
+          "title": "Low",
+          "value": "Low"
+        },
+        {
+          "title": "Moderate",
+          "value": "Moderate"
+        },
+        {
+          "title": "High",
+          "value": "High"
+        },
+        {
+          "title": "Critical",
+          "value": "Critical"
+        }
+      ]
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "label": "Assigned To",
+      "choices.data": {
+        "type": "Data.Query",
+        "dataset": "graph.microsoft.com/users"
+      },
+      "id": "assignedToUserId",
+      "isRequired": true,
+      "isMultiSelect": true,
+      "errorMessage": "Assignee is required"
+    },
+    {
+      "type": "ActionSet",
+      "actions": [
+        {
+          "type": "Action.Execute",
+          "verb": "assignIncident",
+          "title": "Submit"
+        }
+      ]
+    }
+  ]
+}
