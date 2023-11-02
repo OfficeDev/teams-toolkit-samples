@@ -44,6 +44,18 @@ Please find below demo manifest which is deployed on Microsoft Azure and you can
 
 ## To try this sample
 
+### Use Teams Toolkit
+
+1) Activate your desired virtual environment.
+
+1) Install dependencies by running `pip install -r requirements.txt` in the project folder.
+
+1) Signin your `M365` and `Azure` accounts with Teams Toolkit.
+
+1) Press `F5` to local debug this sample app.
+
+### Manually
+
 > Note these instructions are for running the sample on your local machine, the tunnelling solution is required because
 the Teams service needs to call into the bot.
 
