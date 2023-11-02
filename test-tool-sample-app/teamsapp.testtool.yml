@@ -4,7 +4,7 @@
 version: v1.3
 
 additionalMetadata:
-  sampleTag: TeamsFx-Samples:test-tool-sample-bot
+  sampleTag: TeamsFx-Samples:test-tool-sample-app
 
 deploy:
   # Install development tool(s)
@@ -25,4 +25,4 @@ deploy:
       target: ./.localConfigs.testTool
       envs:
         TEAMSAPPTESTER_PORT: ${{TEAMSAPPTESTER_PORT}}
-        TEAMSFX_NOTIFICATION_STORE_FILENAME: ".notification.testtool.json"
+        TEAMSFX_NOTIFICATION_STORE_FILENAME: ${{TEAMSFX_NOTIFICATION_STORE_FILENAME}}
