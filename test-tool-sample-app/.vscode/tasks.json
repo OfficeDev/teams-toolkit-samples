@@ -9,7 +9,7 @@
             "dependsOn": [
                 "Validate prerequisites (Test Tool)",
                 "Deploy (Test Tool)",
-                "Start application for Test Tool",
+                "Start application (Test Tool)",
                 "Start Test Tool",
             ],
             "dependsOrder": "sequence"
@@ -43,7 +43,7 @@
             }
         },
         {
-            "label": "Start application for Test Tool",
+            "label": "Start application (Test Tool)",
             "type": "shell",
             "command": "npm run dev:teamsfx:testtool",
             "isBackground": true,
