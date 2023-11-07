@@ -2,6 +2,11 @@
 
 This sample app comprehensively demonstrates the features supported by the Teams App Test Tool, which is a good starting point to try Teams App Test Tool.
 
+The sample app includes common development scenarios when building Teams bot applications:
+* Send proactive notifications.
+* Trigger a chat command and receive a response.
+* Trigger an Adaptive Card actions.
+
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) latest pre-release version.
