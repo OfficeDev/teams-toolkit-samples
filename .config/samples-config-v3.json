@@ -184,7 +184,7 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "thumbnailPath": "images/send-proactive-messages.gif",
+            "thumbnailPath": "images/thumbnail.png",
             "gifPath": "images/send-proactive-messages.gif",
             "suggested": false,
             "downloadUrlInfo": {
