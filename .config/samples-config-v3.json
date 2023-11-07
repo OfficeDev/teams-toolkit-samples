@@ -583,6 +583,27 @@
             "gifPath": "assets/thumbnail.png",
             "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
+        },
+        {
+            "id": "graph-connector-bot",
+            "shortId": "graph-connector-bot",
+            "onboardDate": "2023-11-07",
+            "title": "Graph Connector Bot",
+            "shortDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.",
+            "fullDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.",
+            "types": [
+              "Bot"
+            ],
+            "tags": [
+              "Bot",
+              "TS",
+              "Microsoft Graph connectors"
+            ],
+            "time": "30min to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false
         }
     ]
 }
