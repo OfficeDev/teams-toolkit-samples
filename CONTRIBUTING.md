@@ -23,7 +23,7 @@ Before your start, you might want to know whether you will need to commit your s
 Some explaination of how to perform each step in above process:
 1. Submit your source code by creating a pull request to our repo (target `dev` branch by default), a typical project is in below structure. Make sure you have the `thumbnail.png` and `README.md` files included in your source code. 
 
-> You can run the [Sample Validatioin Tool](https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/validation-tool) before raising the PR to make sure your sample satisfies our requirements.
+> You can run the [Sample Validation Tool](https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/validation-tool) before raising the PR to make sure your sample satisfies our requirements.
 
 ```
 - sampleTeamsProject

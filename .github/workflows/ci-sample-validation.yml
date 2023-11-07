@@ -45,7 +45,7 @@ jobs:
           # This script runs the validation tool against all samples in the samples-config-v3.json file.
           # External samples are excluded from the validation.
           exceptions=("incoming-webhook-notification")
-          samples=`jq -r ".samples | .[] | select(has(\"downloadUrl\") | not) | .id" .config/samples-config-v3.json`
+          samples=`jq -r ".samples | .[] | select(has(\"downloadUrlInfo\") | not) | .id" .config/samples-config-v3.json`
           validationFailed="validation failed"
           validationResult=true
           while IFS= read -r line; do
