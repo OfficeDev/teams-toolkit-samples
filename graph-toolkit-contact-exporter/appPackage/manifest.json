@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "contact-exporter-${{TEAMSFX_ENV}}",
+        "short": "contact-exporter${{APP_NAME_SUFFIX}}",
         "full": "Full name for graph-toolkit-contact-exporter"
     },
     "description": {

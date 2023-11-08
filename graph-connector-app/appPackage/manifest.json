@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "graph-connector-app-${{TEAMSFX_ENV}}",
+        "short": "graph-connector-app${{APP_NAME_SUFFIX}}",
         "full": "Full name for graph-connector-app"
     },
     "description": {

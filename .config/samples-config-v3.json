@@ -1,4 +1,24 @@
 {
+    "filterOptions": {
+        "capabilities": [
+            "Tab",
+            "Bot",
+            "Message Extension",
+            "Meeting"
+        ],
+        "languages": [
+            "JavaScript",
+            "TypeScript"
+        ],
+        "technologies": [
+            "Azure",
+            "Adaptive Cards",
+            "SSO",
+            "SPFx",
+            "Outlook",
+            "Graph"
+        ]
+    },
     "samples": [
         {
             "id": "hello-world-tab-with-backend",
@@ -164,10 +184,15 @@
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
-            "thumbnailPath": "images/send-proactive-messages.gif",
+            "thumbnailPath": "images/thumbnail.png",
             "gifPath": "images/send-proactive-messages.gif",
             "suggested": false,
-            "downloadUrl": "https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-proactive-messaging-teamsfx"
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/bot-proactive-messaging-teamsfx"
+            }
         },
         {
             "id": "adaptive-card-notification",
@@ -400,7 +425,12 @@
             "thumbnailPath": "assets/outlook-set-signature-overview.png",
             "gifPath": "assets/outlook-set-signature-overview.png",
             "suggested": false,
-            "downloadUrl": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-set-signature"
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Office-Add-in-samples",
+                "ref": "main",
+                "dir": "Samples/outlook-set-signature"
+            }
         },
         {
             "id": "developer-assist-dashboard",
@@ -529,6 +559,50 @@
             "configuration": "Ready for debug",
             "gifPath": "assets/sampleDemo.gif",
             "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "large-scale-notification",
+            "shortId": "large-notification",
+            "onboardDate": "2023-10-17",
+            "title": "Large Scale Notification Bot",
+            "shortDescription": "An SSO-enabled Microsoft Teams Tab app using APIM as a proxy.",
+            "fullDescription": "This sample demonstrates the architecture of a Teams notfication bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant.",
+            "types": [
+              "Bot"
+            ],
+            "tags": [
+              "Bot",
+              "TS",
+              "Azure Durable Function",
+              "Notification",
+              "Large user scale"
+            ],
+            "time": "30min to run",
+            "configuration": "Manual configurations required",
+            "gifPath": "assets/thumbnail.png",
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "graph-connector-bot",
+            "shortId": "graph-connector-bot",
+            "onboardDate": "2023-11-07",
+            "title": "Graph Connector Bot",
+            "shortDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.",
+            "fullDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.",
+            "types": [
+              "Bot"
+            ],
+            "tags": [
+              "Bot",
+              "TS",
+              "Microsoft Graph connectors"
+            ],
+            "time": "30min to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         }
     ]

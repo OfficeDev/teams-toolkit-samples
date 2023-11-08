@@ -14,7 +14,7 @@ provision:
   - uses: teamsApp/create
     with:
       # Teams app name
-      name: Contoso-${{TEAMSFX_ENV}}
+      name: Contoso${{APP_NAME_SUFFIX}}
     writeToEnvironmentFile:
       # Write the information of created resources into environment file for the specified environment variable(s).
       teamsAppId: TEAMS_APP_ID

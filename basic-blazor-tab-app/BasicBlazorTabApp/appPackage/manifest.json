@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "BasicBlazorTabApp-${{TEAMSFX_ENV}}",
+        "short": "BasicBlazorTabApp${{APP_NAME_SUFFIX}}",
         "full": "Full name for BasicBlazorTabApp"
     },
     "description": {

@@ -5,7 +5,7 @@
     ```
 1. Create todo-list-with-azure-backend-m365 project.
     ```
-    teamsfx new template todo-list-with-azure-backend-m365
+    teamsfx new sample todo-list-with-azure-backend-m365 --interactive false
     ```
 1. Provision.
     ```

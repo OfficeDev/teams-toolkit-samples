@@ -16,7 +16,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "Contoso Retail Dashboard",
+        "short": "Contoso Retail Dashboard${{APP_NAME_SUFFIX}}",
         "full": "Contoso Retail Dashboard"
     },
     "description": {

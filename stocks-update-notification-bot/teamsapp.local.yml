@@ -10,7 +10,7 @@ provision:
   # Creates a Teams app
   - uses: teamsApp/create
     with:
-      name: stocks-update-notif-bot-${{TEAMSFX_ENV}} # Teams app name
+      name: stocks-update-notif-bot${{APP_NAME_SUFFIX}} # Teams app name
     # Write the information of created resources into environment file for
     # the specified environment variable(s).
     writeToEnvironmentFile:
@@ -20,7 +20,7 @@ provision:
   - uses: botAadApp/create
     with:
       # The Azure Active Directory application's display name
-      name: stocks-update-notif-bot-${{TEAMSFX_ENV}}
+      name: stocks-update-notif-bot${{APP_NAME_SUFFIX}}
     writeToEnvironmentFile:
       # The Azure Active Directory application's client id created for bot.
       botId: BOT_ID
@@ -68,7 +68,7 @@ deploy:
   - uses: devTool/install
     with:
       func:
-        version: ~4.0.4670
+        version: ~4.0.5174
         symlinkDir: ./devTools/func
     # Write the information of installed development tool(s) into environment
     # file for the specified environment variable(s).

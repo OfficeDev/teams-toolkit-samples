@@ -1,0 +1,84 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Show all available commands",
+      "size": "Large",
+      "weight": "bolder",
+      "color": "accent",
+      "wrap": true
+    },
+      {
+          "type": "Table",
+          "columns": [
+              {
+                  "width": 1
+              },
+              {
+                  "width": 2
+              }
+          ],
+          "rows": [
+              {
+                  "type": "TableRow",
+                  "cells": [
+                      {
+                          "type": "TableCell",
+                          "items": [
+                              {
+                                  "type": "TextBlock",
+                                  "text": "Bot Command",
+                                  "wrap": true,
+                                  "weight": "bolder"
+                              }
+                          ]
+                      },
+                      {
+                          "type": "TableCell",
+                          "items": [
+                              {
+                                  "type": "TextBlock",
+                                  "text": "Description",
+                                  "wrap": true,
+                                  "weight": "bolder"
+                              }
+                          ]
+                      }
+                  ],
+                  "style": "accent"
+              },
+              {
+                  "type": "TableRow",
+                  "$data": "${data}",
+                  "cells": [
+                      {
+                          "type": "TableCell",
+                          "items": [
+                              {
+                                  "type": "TextBlock",
+                                  "text": "${command}",
+                                  "weight": "bolder",
+                                  "wrap": true
+                              }
+                          ]
+                      },
+                      {
+                          "type": "TableCell",
+                          "items": [
+                              {
+                                  "type": "TextBlock",
+                                  "text": "${description}",
+                                  "wrap": true
+                              }
+                          ]
+                      }
+                  ]
+              }
+          ],
+          "gridStyle": "accent"
+      }
+  ]
+}

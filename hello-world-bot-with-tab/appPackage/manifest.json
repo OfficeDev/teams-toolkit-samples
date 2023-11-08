@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "hello-world-bot-with-tab",
+        "short": "hello-world-bot-with-tab${{APP_NAME_SUFFIX}}",
         "full": "Full name for hello-world-bot-with-tab"
     },
     "description": {
