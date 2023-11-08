@@ -11,7 +11,8 @@
     "creationDateTime": "2021-11-30",
     "updateDateTime": "2023-10-13",
     "products": [
-      "Teams"
+      "Teams",
+      "TeamsToolkit"
     ],
     "metadata": [
       {
