@@ -7,8 +7,9 @@
             "Meeting"
         ],
         "languages": [
-            "JavaScript",
-            "TypeScript"
+            "TS",
+            "JS",
+            "Python"
         ],
         "technologies": [
             "Azure",
