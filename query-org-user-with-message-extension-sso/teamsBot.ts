@@ -109,7 +109,7 @@ export class TeamsBot extends TeamsActivityHandler {
     return await handleMessageExtensionLinkQueryWithSSO(context,
       oboAuthConfig,
       initialLoginEndpoint,
-      ["User.Read.All", "User.Read"],
+      ["User.Read"],
       async (token: MessageExtensionTokenResponse) => {
         const credential = new OnBehalfOfUserCredential(
           token.ssoToken,
