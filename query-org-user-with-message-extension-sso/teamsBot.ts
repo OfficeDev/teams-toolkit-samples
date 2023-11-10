@@ -1,9 +1,10 @@
-import { TeamsActivityHandler, CardFactory, TurnContext } from "botbuilder";
+import { TeamsActivityHandler, CardFactory, TurnContext, AppBasedLinkQuery } from "botbuilder";
 import { ResponseType, Client } from "@microsoft/microsoft-graph-client";
 import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
 import {
   MessageExtensionTokenResponse,
   handleMessageExtensionQueryWithSSO,
+  handleMessageExtensionLinkQueryWithSSO,
   OnBehalfOfCredentialAuthConfig,
   OnBehalfOfUserCredential,
 } from "@microsoft/teamsfx";
@@ -102,6 +103,44 @@ export class TeamsBot extends TeamsActivityHandler {
         };
       }
     );
+  }
+
+  public async handleTeamsAppBasedLinkQuery(context: TurnContext, query: AppBasedLinkQuery): Promise<any> {
+    return await handleMessageExtensionLinkQueryWithSSO(context,
+      oboAuthConfig,
+      initialLoginEndpoint,
+      ["User.Read"],
+      async (token: MessageExtensionTokenResponse) => {
+        const credential = new OnBehalfOfUserCredential(
+          token.ssoToken,
+          oboAuthConfig
+        );
+        const attachments = [];
+        const authProvider = new TokenCredentialAuthenticationProvider(
+          credential,
+          {
+            scopes: ["User.Read"],
+          }
+        );
+        // Initialize Graph client instance with authProvider
+        const graphClient = Client.initWithMiddleware({
+          authProvider: authProvider,
+        });
+        const profile = await graphClient.api("/me").get();
+        await this.getUserPhotoWithGraphClient(
+          graphClient,
+          attachments,
+          profile,
+          `/me/photo/$value`
+        );
+        return {
+          composeExtension: {
+            type: "result",
+            attachmentLayout: "list",
+            attachments: attachments,
+          },
+        };
+      });
   }
 
   public async handleTeamsMessagingExtensionSelectItem(
