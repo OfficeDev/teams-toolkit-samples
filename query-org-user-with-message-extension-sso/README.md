@@ -40,7 +40,7 @@ After you have completed the provision and deploy steps in `Deploy the app to Az
 
 ![CustomLogic](./images/custom-query.png)
 
-- Update the scopes in `aad.manifest.json` which used by your Graph Client.
+- Update the scopes in `appPackage/aad.manifest.json` which used by your Graph Client.
 
 ![UpdateScopes](./images/graph-scope-update.png)
 
@@ -49,7 +49,7 @@ After you have completed the provision and deploy steps in `Deploy the app to Az
 
 ![CustomLogicLink](./images/custom-link-unfurling.png)
 
-- Update the `domains` in `aad.manifest.json` which triggers the preview card.
+- Update the `domains` in `appPackage/aad.manifest.json` which triggers the preview card.
 
 ![UpdateDomain](./images/custom-domain-link.png)
 
