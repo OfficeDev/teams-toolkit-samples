@@ -1,0 +1,77 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-tab-todo-list-SPFx",
+    "source": "officeDev",
+    "title": "Todo List with SPFx",
+    "shortDescription": "Todo List app hosting on SharePoint.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/todo-list-SPFx",
+    "longDescription": [
+      "Todo List with SPFx is a Todo List for individuals to manage his/her personal to-do items. This app is hosted on Sharepoint. There is no requirements to deploy Azure resources."
+    ],
+    "creationDateTime": "2021-05-06",
+    "updateDateTime": "2023-10-13",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "typescript"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "tab"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/todo-list-SPFx/assets/thumbnail.png",
+        "alt": "Todo List with SPFx"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "HuihuiWu-Microsoft",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/73154171?v=4",
+        "name": "HuihuiWu-Microsoft"
+      }
+    ],
+    "references": [  
+      {
+        "name": "Getting started with SharePoint Framework",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant"
+      },
+      {
+        "name": "Building for Microsoft teams",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview"
+      },
+      {
+        "name": "Publish SharePoint Framework applications to the Marketplace",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview"
+      },
+    {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]

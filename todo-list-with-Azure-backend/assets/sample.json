@@ -1,0 +1,65 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-tab-todo-list-with-Azure-backend",
+    "source": "officeDev",
+    "title": "Todo List with backend on Azure",
+    "shortDescription": "Todo List app with Azure Function backend and Azure SQL database.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/todo-list-with-Azure-backend",
+    "longDescription": [
+      "Todo List provides an easy way to manage to-do items in Teams Client. This app helps enabling task collaboration and management for your team. The frontend is a React app and the backend is hosted on Azure. You will need an Azure subscription to run the app."
+    ],
+    "creationDateTime": "2021-05-06",
+    "updateDateTime": "2023-10-24",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "javascript"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "tab"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/todo-list-with-Azure-backend/assets/thumbnail.png",
+        "alt": "Todo List with backend on Azure"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "formulahendry",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/1050213?v=4",
+        "name": "Jun Han"
+      }
+    ],
+    "references": [  
+    {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]
