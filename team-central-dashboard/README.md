@@ -4,7 +4,7 @@ Microsoft Teams supports the ability to run web-based UI inside "custom tabs" th
 
 Team Central Dashboard shows you how to build a tab with data chats and content from Microsoft Graph to accelerate team collaboration and personal productivity.
 
-![team-central-dashboard](images/team-central-dashboard.gif)
+![team-central-dashboard](assets/sampleDemo.gif)
 
 > Note: This sample will only provision [single tenant](https://learn.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Azure Active Directory app. For multi-tenant support, please refer to this [wiki](https://aka.ms/teamsfx-multi-tenant).
 
