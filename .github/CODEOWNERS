@@ -30,14 +30,14 @@
 /share-now @adashen @xzf0587
 /stocks-update-notification-bot @kimizhu @dooriya @swatDong @XiaofuHuang
 /stocks-update-notification-bot-dotnet @kimizhu @dooriya @swatDong @XiaofuHuang
-/todo-list-SPFx @MSFT-yiz @HuihuiWu-Microsoft
+/todo-list-SPFx @MSFT-yiz @HuihuiWu-Microsoft @yuqizhou77
 /team-central-dashboard @eriolchan @huimiu @hund030 @JerryYangKai
 /todo-list-with-Azure-backend @adashen @formulahendry
 /todo-list-with-Azure-backend-M365 @kimizhu @swatDong @kuojianlu
 /developer-assist-dashboard @eriolchan @huimiu @hund030 @JerryYangKai
-/whos-next-meeting-app @MSFT-yiz @HuihuiWu-Microsoft
-/teams-chef-bot @MSFT-yiz @HuihuiWu-Microsoft
-/spfx-productivity-dashboard @MSFT-yiz @HuihuiWu-Microsoft
-/react-retail-dashboard @MSFT-yiz @HuihuiWu-Microsoft
-/.config/samples-config-v3.json @HuihuiWu-Microsoft @wenytang-ms @tecton
+/whos-next-meeting-app @MSFT-yiz @HuihuiWu-Microsoft @tecton
+/teams-chef-bot @MSFT-yiz @HuihuiWu-Microsoft @tecton
+/spfx-productivity-dashboard @MSFT-yiz @HuihuiWu-Microsoft @yuqizhou77
+/react-retail-dashboard @MSFT-yiz @HuihuiWu-Microsoft @tecton @yuqizhou77
+/.config/samples-config-v3.json @HuihuiWu-Microsoft @wenytang-ms @tecton @MSFT-yiz @KennethBWSong @LongOddCode
 /.github/workflows/cd.yml @adashen @LongOddCode @Siglud @qinezh @wenytang-ms
