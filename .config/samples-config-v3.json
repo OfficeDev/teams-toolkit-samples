@@ -26,14 +26,14 @@
             "title": "Tab App with Azure Backend",
             "shortId": "helloworld-backend",
             "shortDescription": "A Hello World app of Microsoft Teams Tab app which has a backend service",
-            "fullDescription": "This is a Hello World app of Microsoft Teams Tab app which accomplishes very simple function like single-sign on. You can run this app locally or deploy it to Microsoft Azure. This app has a Tab frontend and a backend service using Azure Function.",
+            "fullDescription": "This is a Hello World app of Microsoft Teams Tab app which accomplishes very simple function like single-sign on. You can run this app locally or deploy it to Microsoft Azure. This app has a Tab frontend and a backend service using Azure Functions.",
             "types": [
                 "Tab"
             ],
             "tags": [
                 "Tab",
                 "TS",
-                "Azure Function"
+                "Azure Functions"
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
@@ -136,7 +136,7 @@
             ],
             "tags": [
                 "React",
-                "Azure Function",
+                "Azure Functions",
                 "JS",
                 "Outlook",
                 "Office"
@@ -247,7 +247,7 @@
             "tags": [
                 "Bot",
                 "TS",
-                "Azure Function",
+                "Azure Functions",
                 "API Key"
             ],
             "time": "5min to run",
@@ -289,7 +289,7 @@
             "tags": [
                 "Tab",
                 "TS",
-                "Azure Function",
+                "Azure Functions",
                 "SSO"
             ],
             "time": "5min to run",
@@ -310,7 +310,7 @@
             ],
             "tags": [
                 "Tab",
-                "Azure Function",
+                "Azure Functions",
                 "TS",
                 "SSO"
             ],
@@ -347,14 +347,14 @@
             "shortId": "todo-backend",
             "onboardDate": "2021-05-06",
             "title": "Todo List with backend on Azure",
-            "shortDescription": "Todo List app with Azure Function backend and Azure SQL database",
+            "shortDescription": "Todo List app with Azure Functions backend and Azure SQL database",
             "fullDescription": "Todo List provides an easy way to manage to-do items in Teams Client. This app helps enabling task collaboration and management for your team. The frontend is a React app and the backend is hosted on Azure. You will need an Azure subscription to run the app.",
             "types": [
                 "Tab"
             ],
             "tags": [
                 "React",
-                "Azure Function",
+                "Azure Functions",
                 "Azure SQL",
                 "JS",
                 "CI/CD"
@@ -574,7 +574,7 @@
             "tags": [
               "Bot",
               "TS",
-              "Azure Durable Function",
+              "Azure Durable Functions",
               "Notification",
               "Large User Scale"
             ],
