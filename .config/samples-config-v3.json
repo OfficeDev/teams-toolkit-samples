@@ -33,7 +33,7 @@
             "tags": [
                 "Tab",
                 "TS",
-                "Azure function"
+                "Azure Function"
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
@@ -136,7 +136,7 @@
             ],
             "tags": [
                 "React",
-                "Azure function",
+                "Azure Function",
                 "JS",
                 "Outlook",
                 "Office"
@@ -247,7 +247,7 @@
             "tags": [
                 "Bot",
                 "TS",
-                "Azure function",
+                "Azure Function",
                 "API Key"
             ],
             "time": "5min to run",
@@ -289,7 +289,7 @@
             "tags": [
                 "Tab",
                 "TS",
-                "Azure function",
+                "Azure Function",
                 "SSO"
             ],
             "time": "5min to run",
@@ -310,7 +310,7 @@
             ],
             "tags": [
                 "Tab",
-                "Azure function",
+                "Azure Function",
                 "TS",
                 "SSO"
             ],
@@ -354,7 +354,7 @@
             ],
             "tags": [
                 "React",
-                "Azure function",
+                "Azure Function",
                 "Azure SQL",
                 "JS",
                 "CI/CD"
