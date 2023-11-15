@@ -33,6 +33,6 @@
       "version": "latest"
     }
   },
-  // Install teamsfx CLI
-  "postCreateCommand": "npm install -g @microsoft/teamsfx-cli"
+  // Install teamsapp CLI
+  "postCreateCommand": "npm install -g @microsoft/teamsapp-cli"
 }
