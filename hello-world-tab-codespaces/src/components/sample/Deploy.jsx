@@ -20,7 +20,7 @@ export function Deploy(props) {
         provision" or apply "Teams: Provision" in Command palette.
       </p>
       <p>
-        To deploy your app, you can either use our CLI command "teamsfx deploy"
+        To deploy your app, you can either use our CLI command "teamsapp deploy"
         or apply "Teams: Deploy" in Command palette.
       </p>
       <Image src="deploy.png" />

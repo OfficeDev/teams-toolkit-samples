@@ -27,7 +27,7 @@ jobs:
           password: ${{secrets.AZURE_SERVICE_PRINCIPAL_PASSWORD}}
           tenant: ${{secrets.AZURE_TENANT_ID}}
 
-      # We suggest to do the `teamsfx provision` step manually or in a separate workflow. The following steps are for your reference.
+      # We suggest to do the `teamsapp provision` step manually or in a separate workflow. The following steps are for your reference.
       # After provisioning, you should commit necessary files into the repository which is automated in this workflow.
       - name: Provision hosting environment
         uses: OfficeDev/teamsfx-cli-action@v1

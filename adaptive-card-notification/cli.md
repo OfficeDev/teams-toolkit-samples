@@ -3,17 +3,17 @@
 1. Install [Node.js](https://nodejs.org/en/download/) (Recommend LTS 16.x)
 1. To install the TeamsFx CLI, use the npm package manager:
     ```
-    npm install -g @microsoft/teamsfx-cli
+    npm install -g @microsoft/teamsapp-cli
     ```
 1. Create adaptive-card-notification project.
     ```
-    teamsfx new sample adaptive-card-notification --interactive false
+    teamsapp new sample adaptive-card-notification --interactive false
     ```
 1. Provision the project to Azure.
     ```
-    teamsfx provision
+    teamsapp provision
     ```
 1. Deploy.
     ```
-    teamsfx deploy
+    teamsapp deploy
     ```

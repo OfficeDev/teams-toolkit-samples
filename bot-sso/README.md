@@ -30,9 +30,9 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
       BOT_DOMAIN=sample-id-3978.devtunnels.ms
       BOT_ENDPOINT=https://sample-id-3978.devtunnels.ms
       ```
-    1. Run command: `teamsfx provision --env local` .
-    1. Run command: `teamsfx deploy --env local` .
-    1. Run command: `teamsfx preview --env local` .
+    1. Run command: `teamsapp provision --env local` .
+    1. Run command: `teamsapp deploy --env local` .
+    1. Run command: `teamsapp preview --env local` .
 
 ### Deploy the app to Azure
 - From VS Code:
@@ -40,15 +40,15 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
     1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
     1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 - From TeamsFx CLI:
-    1. Run command: `teamsfx account login azure`.
-    1. Run command: `teamsfx provision --env dev`.
-    1. Run command: `teamsfx deploy --env dev`.
+    1. Run command: `teamsapp auth login azure`.
+    1. Run command: `teamsapp provision --env dev`.
+    1. Run command: `teamsapp deploy --env dev`.
 
 ### Preview the app in Teams
 - From VS Code:
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 - From TeamsFx CLI:
-    1. Run command: `teamsfx preview --env dev`.
+    1. Run command: `teamsapp preview --env dev`.
 
 ## Version History
 |Date| Author| Comments|
