@@ -659,6 +659,33 @@
                 "ref": "main",
                 "dir": "samples/msgext-search/python"
             }
+        },
+        {
+            "id": "gc-nodejs-typescript-food-catalog",
+            "shortId": "gc-food-catalog",
+            "onboardDate": "2023-11-15",
+            "title": "Ingest Custom API Data into Microsoft 365 with a Microsoft Graph Connector",
+            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph.",
+            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content on a schedule. It also includes the simplified admin experience which means that admins can toggle the connector on and off from the Microsoft Teams admin center.",
+            "types": [
+              "Tab"
+            ],
+            "tags": [
+              "TS",
+              "Microsoft Graph Connectors",
+              "Azure Functions"
+            ],
+            "time": "5min to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/ttk_thumb.png",
+            "gifPath": "assets/ttk.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "pnp",
+                "repository": "graph-connectors-samples",
+                "ref": "main",
+                "dir": "samples/nodejs-typescript-food-catalog"
+            }
         }
     ]
 }
