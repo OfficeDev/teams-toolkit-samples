@@ -26,14 +26,14 @@
             "title": "Tab App with Azure Backend",
             "shortId": "helloworld-backend",
             "shortDescription": "A Hello World app of Microsoft Teams Tab app which has a backend service",
-            "fullDescription": "This is a Hello World app of Microsoft Teams Tab app which accomplishes very simple function like single-sign on. You can run this app locally or deploy it to Microsoft Azure. This app has a Tab frontend and a backend service using Azure Function.",
+            "fullDescription": "This is a Hello World app of Microsoft Teams Tab app which accomplishes very simple function like single-sign on. You can run this app locally or deploy it to Microsoft Azure. This app has a Tab frontend and a backend service using Azure Functions.",
             "types": [
                 "Tab"
             ],
             "tags": [
                 "Tab",
                 "TS",
-                "Azure function"
+                "Azure Functions"
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
@@ -115,7 +115,7 @@
                 "Tab"
             ],
             "tags": [
-                "Meeting extension",
+                "Meeting Extension",
                 "JS"
             ],
             "time": "30min to run",
@@ -136,7 +136,7 @@
             ],
             "tags": [
                 "React",
-                "Azure function",
+                "Azure Functions",
                 "JS",
                 "Outlook",
                 "Office"
@@ -155,10 +155,10 @@
             "shortDescription": "Search and Share an NPM Package in Teams and Outlook (Web)",
             "fullDescription": "NPM Search Connector is a Message Extension that runs across Microsoft 365 including Teams and Outlook (Web). It allows you to perform a quick search for a NPM package and insert package details into conversations for easy sharing. The front end is built with Adaptive Cards and the backend is an Azure Bot Service.",
             "types": [
-                "Message extension"
+                "Message Extension"
             ],
             "tags": [
-                "Message extension",
+                "Message Extension",
                 "JS",
                 "Outlook"
             ],
@@ -247,7 +247,7 @@
             "tags": [
                 "Bot",
                 "TS",
-                "Azure function",
+                "Azure Functions",
                 "API Key"
             ],
             "time": "5min to run",
@@ -262,12 +262,12 @@
             "onboardDate": "2022-09-20",
             "title": "Org User Search Connector",
             "shortDescription": "Query Org User with Message Extension SSO",
-            "fullDescription": "This is a simple search-based message extension app demonstrating how to integrate with Bot Framework SDK, TeamsFx SDK and Microsoft Graph API to implement a feature that queries organization's user with single sign on (SSO) capability.",
+            "fullDescription": "This is a simple search-based Message Extension app demonstrating how to integrate with Bot Framework SDK, TeamsFx SDK and Microsoft Graph API to implement a feature that queries organization's user with single sign on (SSO) capability.",
             "types": [
-                "Message extension"
+                "Message Extension"
             ],
             "tags": [
-                "Message extension",
+                "Message Extension",
                 "SSO"
             ],
             "time": "5min to run",
@@ -289,7 +289,7 @@
             "tags": [
                 "Tab",
                 "TS",
-                "Azure function",
+                "Azure Functions",
                 "SSO"
             ],
             "time": "5min to run",
@@ -310,7 +310,7 @@
             ],
             "tags": [
                 "Tab",
-                "Azure function",
+                "Azure Functions",
                 "TS",
                 "SSO"
             ],
@@ -347,14 +347,14 @@
             "shortId": "todo-backend",
             "onboardDate": "2021-05-06",
             "title": "Todo List with backend on Azure",
-            "shortDescription": "Todo List app with Azure Function backend and Azure SQL database",
+            "shortDescription": "Todo List app with Azure Functions backend and Azure SQL database",
             "fullDescription": "Todo List provides an easy way to manage to-do items in Teams Client. This app helps enabling task collaboration and management for your team. The frontend is a React app and the backend is hosted on Azure. You will need an Azure subscription to run the app.",
             "types": [
                 "Tab"
             ],
             "tags": [
                 "React",
-                "Azure function",
+                "Azure Functions",
                 "Azure SQL",
                 "JS",
                 "CI/CD"
@@ -370,15 +370,15 @@
             "shortId": "share-now",
             "onboardDate": "2021-05-17",
             "title": "Share Now",
-            "shortDescription": "Knowledge sharing app contains a Tab and a Message extension",
+            "shortDescription": "Knowledge sharing app contains a Tab and a Message Extension",
             "fullDescription": "Share Now promotes the exchange of information between colleagues by enabling users to share content within the Teams environment. Users engage the app to share items of interest, discover new shared content, set preferences, and bookmark favorites for later reading.",
             "types": [
                 "Tab",
-                "Message extension"
+                "Message Extension"
             ],
             "tags": [
                 "Tab",
-                "Message extension",
+                "Message Extension",
                 "TS"
             ],
             "time": "30min to run",
@@ -399,7 +399,7 @@
             ],
             "tags": [
                 "Tab",
-                "Outlook add-in"
+                "Outlook Add-in"
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
@@ -418,7 +418,7 @@
                 "Tab"
             ],
             "tags": [
-                "Outlook add-in"
+                "Outlook Add-in"
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
@@ -574,9 +574,9 @@
             "tags": [
               "Bot",
               "TS",
-              "Azure Durable Function",
+              "Azure Durable Functions",
               "Notification",
-              "Large user scale"
+              "Large User Scale"
             ],
             "time": "30min to run",
             "configuration": "Manual configurations required",
@@ -597,7 +597,7 @@
             "tags": [
               "Bot",
               "TS",
-              "Microsoft Graph connectors"
+              "Microsoft Graph Connectors"
             ],
             "time": "30min to run",
             "configuration": "Manual configurations required",
