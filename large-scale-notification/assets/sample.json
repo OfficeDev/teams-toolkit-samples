@@ -3,10 +3,10 @@
     "name": "officedev-teamsfx-samples-bot-large-scale-notification",
     "source": "officeDev",
     "title": "Large Scale Notification Bot",
-    "shortDescription": "An SSO-enabled Microsoft Teams Tab app using APIM as a proxy.",
+    "shortDescription": "This sample demonstrates the architecture of a Teams notfication bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant.",
     "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/large-scale-notification",
     "longDescription": [
-      "This sample demonstrates the architecture of a Teams notfication bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant."
+      "This sample demonstrates the architecture of a Teams notfication bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant. This app relies on Azure services such as Azure Durable Functions and Service Bus Queue to handle high volume and speed of notification messaging."
     ],
     "creationDateTime": "2023-10-17",
     "updateDateTime": "2023-10-24",
