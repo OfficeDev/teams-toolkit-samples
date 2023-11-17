@@ -100,7 +100,7 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
         }
         {
           name: 'WEBSITE_AUTH_AAD_ACL'
-          value: '{"allowed_client_applications": ${allowedClientApplications}}}'
+          value: '{"allowed_client_applications": ${allowedClientApplications}}'
         }
         {
           name: 'M365_CLIENT_ID'
