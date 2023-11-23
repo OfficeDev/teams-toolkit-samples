@@ -1,0 +1,74 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-bot-stocks-update-notification-bot-dotnet",
+    "source": "officeDev",
+    "title": "Stocks Update Notification Bot using .NET",
+    "shortDescription": "A Teams bot app that sends stock messages as Adaptive Cards",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/stocks-update-notification-bot-dotnet",
+    "longDescription": [
+      "Stocks Update Notifcation Bot is a an application that can be installed in different Microsoft Teams contexts, personal, group chat, or teams channel, which sends a message on a pre-defined schedule as an Adaptive Card to locations where it is installed."
+    ],
+    "creationDateTime": "2022-10-24",
+    "updateDateTime": "2023-10-16",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "C#"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "bot"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/stocks-update-notification-bot-dotnet/assets/thumbnail.png",
+        "alt": "Thumbnail of stocks update notification bot using .NET"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "garrytrinder",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/11563347?v=4",
+        "name": "Garry Trinder"
+      },
+      {
+        "gitHubAccount": "XiaofuHuang",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/49138419?v=4",
+        "name": "Xiaofu Huang"
+      }
+    ],
+    "references": [
+      {
+        "name": "Teams Toolkit Visual Studio Overview",
+        "url": "https://aka.ms/teams-toolkit-vs-docs"
+      },
+      {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]
