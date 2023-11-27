@@ -1,0 +1,69 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-tab-basic-blazor-tab-app",
+    "source": "officeDev",
+    "title": "Basic Blazor Tab App using .NET",
+    "shortDescription": "A Teams tab app built using the Blazor web framework",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/basic-blazor-tab-app",
+    "longDescription": [
+      "Blazor is a feature of ASP.NET for building interactive web UIs. The Basic Blazor Tab App is a Teams Tab App built using the Blazor web framework, which supports both personal tab and configurable tab functionalities."
+    ],
+    "creationDateTime": "2023-06-06",
+    "updateDateTime": "2023-11-15",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "C#"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "tab"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/basic-blazor-tab-app/assets/thumbnail.png",
+        "alt": "Thumbnail of basic blazor tab app using .NET"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "hund030",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/26134943?v=4",
+        "name": "Zhijie Huang"
+      }
+    ],
+    "references": [
+      {
+        "name": "Teams Toolkit Visual Studio Overview",
+        "url": "https://aka.ms/teams-toolkit-vs-docs"
+      },
+      {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]
