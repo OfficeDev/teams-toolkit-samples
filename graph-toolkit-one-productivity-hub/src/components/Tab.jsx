@@ -3,7 +3,7 @@
 
 import React from "react";
 import "./App.css";
-import { TeamsFx } from "@microsoft/teamsfx";
+import { TeamsUserCredential } from "@microsoft/teamsfx";
 import { Button } from "@fluentui/react-components";
 import { Providers, ProviderState } from "@microsoft/mgt-element";
 import {
@@ -15,11 +15,13 @@ import {
 } from "@microsoft/mgt-react";
 import { TeamsFxProvider } from "@microsoft/mgt-teamsfx-provider";
 import { CacheService } from "@microsoft/mgt";
+import config from "./lib/config";
 
 class Tab extends React.Component {
   constructor(props) {
     super(props);
-    CacheService.clearCaches();
+    const cacheId = Providers.getCacheId();
+    CacheService.clearCacheById(cacheId);
     this.state = {
       showLoginPage: undefined,
     };
@@ -37,14 +39,17 @@ class Tab extends React.Component {
     ];
 
     /*Initialize TeamsFX provider*/
-    this.teamsfx = new TeamsFx();
-    const provider = new TeamsFxProvider(this.teamsfx, this.scope);
+    this.credential = new TeamsUserCredential({
+      initiateLoginEndpoint: config.initiateLoginEndpoint,
+      clientId: config.clientId,
+    });
+    const provider = new TeamsFxProvider(this.credential, this.scope);
     Providers.globalProvider = provider;
 
     /*Check if consent is needed*/
     let consentNeeded = false;
     try {
-      await this.teamsfx.getCredential().getToken(this.scope);
+      await this.credential.getToken(this.scope);
     } catch (error) {
       consentNeeded = true;
     }
@@ -59,7 +64,7 @@ class Tab extends React.Component {
 
   async loginBtnClick() {
     try {
-      await this.teamsfx.login(this.scope);
+      await this.credential.login(this.scope);
       Providers.globalProvider.setState(ProviderState.SignedIn);
       this.setState({
         showLoginPage: false,
