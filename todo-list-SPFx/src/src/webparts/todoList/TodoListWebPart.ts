@@ -13,7 +13,7 @@ import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import * as strings from "TodoListWebPartStrings";
 import TodoList from "./components/TodoList";
 import { ITodoListProps } from "./components/ITodoListProps";
-import { initializeIcons } from "office-ui-fabric-react/lib/Icons";
+import { initializeIcons } from "@fluentui/react/lib/Icons";
 
 export interface ITodoListWebPartProps {
   description: string;
