@@ -1,3 +1,15 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+name: One Productivity Hub using Graph Toolkit
+urlFragment: officedev-teamsfx-samples-tab-graph-toolkit-one-productivity-hub
+description: Microsoft Teams tab with SSO to view calendar events, to-do tasks and file folders.
+extensions:
+  createdDate: "2022-07-27"
+---
 # Getting Started with One Productivity Hub
 
 One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) components and [TeamsFx Provider](https://www.npmjs.com/package/@microsoft/mgt-teamsfx-provider).

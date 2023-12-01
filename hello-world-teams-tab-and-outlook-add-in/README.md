@@ -1,3 +1,15 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+name: Hello World Teams Tab and Outlook add-in
+urlFragment: officedev-teamsfx-samples-tab-hello-world-teams-tab-and-outlook-add-in
+description: A hello world project that contains both Teams Tab and Outlook add-in capability.
+extensions:
+  createdDate: "2023-03-02"
+---
 # Getting Started with Hello World Teams Tab and Outlook add-in Sample
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.

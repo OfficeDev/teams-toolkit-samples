@@ -1,3 +1,15 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+name: Share Now
+urlFragment: officedev-teamsfx-samples-tab-share-now
+description: Knowledge sharing app contains a Tab and a Message extension.
+extensions:
+  createdDate: "2021-05-17"
+---
 # Getting Started With Share Now Sample
 
 Share Now promotes the exchange of information between colleagues by enabling users to share content within the Teams environment. Users engage the app to share items of interest and discover new shared content.

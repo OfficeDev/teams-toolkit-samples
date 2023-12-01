@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office-sp
+name: Todo List with SPFx
+urlFragment: officedev-teamsfx-samples-tab-todo-list-SPFx
+description: Todo List app hosting on SharePoint.
+extensions:
+  createdDate: "2021-05-06"
+---
 # Getting Started With Todo List Sample (SPFx)
 
 `Todo List with SPFx` is a Todo List Manage tool for a group of people. This app is installed in Teams Team or Channel and hosted on SharePoint, members in the Team/Channel can collaborate on the same Todo List, manipulate the same set of Todo items. There is no requirement asking for an Azure account to deploy Azure resources to run this sample app.

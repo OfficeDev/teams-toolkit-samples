@@ -1,3 +1,15 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+name: Stocks Update
+urlFragment: officedev-teamsfx-samples-bot-stocks-update-notification-bot
+description: Keep up to date with the latest stock price in Microsoft Teams.
+extensions:
+  createdDate: "2022-08-08"
+---
 # Getting Started with Stocks Update Notification Bot
 
 Bots can be used to deliver pro-active messages into different Microsoft Teams contexts, such as a personal bot chat, one to one or group chat, or a channel conversation.
