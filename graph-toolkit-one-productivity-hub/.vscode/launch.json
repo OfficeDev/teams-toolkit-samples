@@ -48,7 +48,7 @@
     ],
     "compounds": [
         {
-            "name": "Debug (Edge)",
+            "name": "Debug in Teams (Edge)",
             "configurations": [
                 "Attach to Frontend (Edge)"
             ],
@@ -60,7 +60,7 @@
             "stopAll": true
         },
         {
-            "name": "Debug (Chrome)",
+            "name": "Debug in Teams (Chrome)",
             "configurations": [
                 "Attach to Frontend (Chrome)"
             ],
