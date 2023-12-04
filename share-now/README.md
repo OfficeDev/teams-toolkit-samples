@@ -101,7 +101,7 @@ To debug the project, you will need to configure an Azure SQL Database to be use
     SQL_USER_NAME=
     SQL_PASSWORD=
     ```
-1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
+1. Open Debug View (`Ctrl+Shift+D`) and select "Debug in Teams (Edge)" or "Debug in Teams (Chrome)" in dropdown list.
 1. Press "F5" to open a browser window and then select your package to view share now sample app.
 
 

@@ -20,7 +20,7 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
 
 ### Run the app locally
 - From VS Code:
-    1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug (Edge)` or `Debug (Chrome)`.
+    1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug in Teams (Edge)` or `Debug in Teams (Chrome)`.
 - From TeamsFx CLI:
    1. Install [dev tunnel cli](https://aka.ms/teamsfx-install-dev-tunnel).
    1. Login with your M365 Account using the command `devtunnel user login`.

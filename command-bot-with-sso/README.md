@@ -32,7 +32,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 
   1. Clone the repo to your local workspace or directly download the source code.
   1. Open the project in Visual Studio Code.
-  1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
+  1. Open Debug View (`Ctrl+Shift+D`) and select "Debug in Teams (Edge)" or "Debug in Teams (Chrome)" in dropdown list.
   1. Press "F5" to open a browser window and then select your package to view contact exporter sample app.
 
 - From TeamsFx CLI
