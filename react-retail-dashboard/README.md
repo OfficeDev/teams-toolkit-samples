@@ -11,7 +11,7 @@ This is a dashboard sample based on demo sample data that shows you how to creat
 
 ## Prerequisite to use this sample
 
-- [Set up SharePoint Framework development environment](https://aka.ms/teamsfx-spfx-dev-environment-setup)（Recommend to use SPFx v1.17.4）
+- [Set up SharePoint Framework development environment](https://aka.ms/teamsfx-spfx-dev-environment-setup)（Recommend to use SPFx v1.18.2）
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
 
@@ -50,6 +50,7 @@ You could set up your own back-end REST API project as Azure Function to use rea
 
 |Date| Author| Comments|
 |---|---|---|
+|Dec 6, 2023| yuqizhou77 | Upgraded to SPFx 1.18.2|
 |Sep 15, 2023| huihuiwu | Onboard to Teams Toolkit|
 
 ## Feedback
