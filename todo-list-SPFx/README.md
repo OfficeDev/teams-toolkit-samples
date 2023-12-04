@@ -86,6 +86,7 @@ Debug the app with Teams workbench
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
+|Dec 6, 2023| yuqizhou77 | update to SPFx 1.18.2
 |Apr 21, 2022| huihuiwu | update to support Teams Toolkit v4.0.0|
 |Mar 23, 2023| huihuiwu | update to support Teams Toolkit v5.0.0|
 
