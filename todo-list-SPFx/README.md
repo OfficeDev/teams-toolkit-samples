@@ -86,9 +86,9 @@ Debug the app with Teams workbench
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-|Dec 6, 2023| yuqizhou77 | update to SPFx 1.18.2
-|Apr 21, 2022| huihuiwu | update to support Teams Toolkit v4.0.0|
-|Mar 23, 2023| huihuiwu | update to support Teams Toolkit v5.0.0|
+|Apr 21, 2022| huihuiwu | Update to support Teams Toolkit v4.0.0|
+|Mar 23, 2023| huihuiwu | Update to support Teams Toolkit v5.0.0|
+|Dec 5, 2023| yuqzho | Upgrade to SPFx 1.18.2 |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
