@@ -41,6 +41,7 @@
 
 |Date| Author| Comments|
 |---|---|---|
+| Dec 5, 2023 | Yuqi Zhou | Upgraded to SPFx 1.18.2 |
 |Aug 09, 2023| huihuiwu | Onboard to Teams Toolkit |
 
 ## Feedback
