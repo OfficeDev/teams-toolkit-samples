@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: My First Meeting App
 urlFragment: officedev-teamsfx-samples-tab-hello-world-in-meeting
 description: A template for apps using only in the context of a Teams meeting.

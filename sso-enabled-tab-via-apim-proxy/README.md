@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: SSO Enabled Tab via APIM Proxy
 urlFragment: officedev-teamsfx-samples-tab-sso-enabled-tab-via-apim-proxy
 description: An SSO-enabled Microsoft Teams Tab app using APIM as a proxy.

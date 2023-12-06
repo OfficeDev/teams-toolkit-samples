@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Org User Search Connector
 urlFragment: officedev-teamsfx-samples-me-query-org-user-with-message-extension-sso
 description: Query Org User with Message Extension SSO.

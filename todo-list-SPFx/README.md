@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 - office-sp
 name: Todo List with SPFx
 urlFragment: officedev-teamsfx-samples-tab-todo-list-SPFx

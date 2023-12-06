@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Contact Exporter using Graph Toolkit
 urlFragment: officedev-teamsfx-samples-tab-graph-toolkit-contact-exporter
 description: Contact Exporter app of Microsoft Teams Tab app.

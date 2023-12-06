@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Incoming Webhook Notification
 urlFragment: officedev-teamsfx-samples-bot-incoming-webhook-notification
 description: This is a sample which shows how to send notification via Incoming Webhook in Microsoft Teams channels.

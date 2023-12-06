@@ -4,7 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
-- microsoft-365
+- office
 name: Todo List (Works in Teams, Outlook and Office)
 urlFragment: officedev-teamsfx-samples-tab-todo-list-with-Azure-backend-M365
 description: Todo List app that runs across Microsoft 365 including Teams, Outlook and Office.

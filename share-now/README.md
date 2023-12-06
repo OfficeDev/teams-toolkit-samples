@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Share Now
 urlFragment: officedev-teamsfx-samples-tab-share-now
 description: Knowledge sharing app contains a Tab and a Message extension.

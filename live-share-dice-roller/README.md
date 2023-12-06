@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Dice Roller in meeting
 urlFragment: officedev-teamsfx-samples-tab-live-share-dice-roller
 description: This sample introduces Microsoft Live Share and Azure Fluid Relay to enable a shared experience between multiple users.

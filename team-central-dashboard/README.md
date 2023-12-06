@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Team Central Dashboard
 urlFragment: officedev-teamsfx-samples-tab-team-central-dashboard
 description: A single dashboard displaying data chats and content from Microsoft Graph to accelerate team collaboration and personal productivity.

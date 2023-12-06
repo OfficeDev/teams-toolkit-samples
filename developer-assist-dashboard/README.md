@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Developer Assist Dashboard
 urlFragment: officedev-teamsfx-samples-tab-developer-assist-dashboard
 description: A dashboard that integrates with Azure DevOps, Github issues and Planner tasks that accelerates developer productivity.

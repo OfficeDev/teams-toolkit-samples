@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Large Scale Notification Bot
 urlFragment: officedev-teamsfx-samples-bot-large-scale-notification
 description: This sample demonstrates a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users.

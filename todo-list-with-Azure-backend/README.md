@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Todo List with backend on Azure
 urlFragment: officedev-teamsfx-samples-tab-todo-list-with-Azure-backend
 description: Todo List app with Azure Function backend and Azure SQL database.

@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Teams Chef Bot
 urlFragment: officedev-teamsfx-samples-bot-teams-chef-bot
 description: This is a conversational bot for Microsoft Teams that impersonates a Chef to help you you cook Teams apps.

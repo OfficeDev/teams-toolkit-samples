@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Stocks Update
 urlFragment: officedev-teamsfx-samples-bot-stocks-update-notification-bot
 description: Keep up to date with the latest stock price in Microsoft Teams.

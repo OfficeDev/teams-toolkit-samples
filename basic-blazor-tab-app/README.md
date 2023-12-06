@@ -4,6 +4,7 @@ languages:
 - csharp
 products:
 - office-teams
+- office
 name: Basic Blazor Tab App using .NET
 urlFragment: officedev-teamsfx-samples-tab-basic-blazor-tab-app
 description: A Teams tab app built using the Blazor web framework

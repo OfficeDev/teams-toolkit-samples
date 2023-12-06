@@ -4,6 +4,7 @@ languages:
 - csharp
 products:
 - office-teams
+- office
 name: Stocks Update Notification Bot using .NET
 urlFragment: officedev-teamsfx-samples-bot-stocks-update-notification-bot-dotnet
 description: A Teams bot app that sends stock messages as Adaptive Cards

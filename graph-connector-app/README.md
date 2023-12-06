@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Graph Connector App
 urlFragment: officedev-teamsfx-samples-tab-graph-connector-app
 description: This sample app showcases how to build custom Graph Connector with Azure Functions and query data using Microsoft Graph Client and TeamsFx SDK.

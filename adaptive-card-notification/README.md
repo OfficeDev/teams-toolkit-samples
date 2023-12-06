@@ -4,7 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
-- bot-service
+- office
 name: Adaptive Card Notification
 urlFragment: officedev-teamsfx-samples-bot-adaptive-card-notification
 description: This is a sample which shows how to send notification with different adaptive cards using Bots.

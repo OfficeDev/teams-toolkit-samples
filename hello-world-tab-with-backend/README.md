@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Tab App with Azure Backend
 urlFragment: officedev-teamsfx-samples-tab-hello-world-tab-with-backend
 description: A Hello World app of Microsoft Teams Tab app which has a backend service.

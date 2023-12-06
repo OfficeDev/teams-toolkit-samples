@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: One Productivity Hub using Graph Toolkit
 urlFragment: officedev-teamsfx-samples-tab-graph-toolkit-one-productivity-hub
 description: Microsoft Teams tab with SSO to view calendar events, to-do tasks and file folders.

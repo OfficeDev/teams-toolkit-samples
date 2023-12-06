@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Hello World Teams Tab and Outlook add-in
 urlFragment: officedev-teamsfx-samples-tab-hello-world-teams-tab-and-outlook-add-in
 description: A hello world project that contains both Teams Tab and Outlook add-in capability.

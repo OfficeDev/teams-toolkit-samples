@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: NPM Search Connector
 urlFragment: officedev-teamsfx-samples-me-NPM-search-connector-M365
 description: Search and Share an NPM Package in Teams and Outlook (Web).

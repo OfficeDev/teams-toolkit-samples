@@ -4,6 +4,7 @@ languages:
 - typescript
 products:
 - office-teams
+- office
 name: Bot App with SSO Enabled
 urlFragment: officedev-teamsfx-samples-bot-bot-sso
 description: A Hello World app of Microsoft Teams Bot app with SSO
