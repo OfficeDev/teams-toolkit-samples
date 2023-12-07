@@ -17,7 +17,7 @@ The sample app includes common development scenarios when building Teams bot app
 ### Run the app locally
 1. Clone the repo to your local workspace or directly download the source code.
 1. Open the project in Visual Studio Code.
-1. Open Debug View (`Ctrl+Shift+D`) and select "Debug in Test Tool" in dropdown list.
+1. Open Debug View (`Ctrl+Shift+D`) and select "Debug in Test Tool (Preview)" in dropdown list.
 1. Press "F5" to launch the Teams App Test Tool.
 1. Type `help` command into input box. Bot will response the list of commands available in this sample.
 
