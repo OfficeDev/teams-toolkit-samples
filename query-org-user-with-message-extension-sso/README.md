@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: Org User Search Connector
+urlFragment: officedev-teamsfx-samples-me-query-org-user-with-message-extension-sso
+description: Query Org User with Message Extension SSO.
+extensions:
+  createdDate: "2022-09-20"
+---
 # Getting Start with Query Org User with Message Extension SSO
 This is a simple search-based message extension app demonstrating how to integrate with Bot Framework SDK, TeamsFx SDK and Microsoft Graph API to implement a feature that queries organization's user with single sign on (SSO) capability.
 

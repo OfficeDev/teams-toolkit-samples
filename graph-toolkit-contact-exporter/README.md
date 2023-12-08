@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: Contact Exporter using Graph Toolkit
+urlFragment: officedev-teamsfx-samples-tab-graph-toolkit-contact-exporter
+description: Contact Exporter app of Microsoft Teams Tab app.
+extensions:
+  createdDate: "2021-11-30"
+---
 # Getting Started with Graph Toolkit Contact Exporter
 
 Graph Toolkit Contact Exporter sample APP provides an easy way to export your teams contact info to Excel file. This APP is using [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) as UI component.

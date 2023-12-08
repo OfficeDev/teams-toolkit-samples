@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: Todo List (Works in Teams, Outlook and Office)
+urlFragment: officedev-teamsfx-samples-tab-todo-list-with-Azure-backend-M365
+description: Todo List app that runs across Microsoft 365 including Teams, Outlook and Office.
+extensions:
+  createdDate: "2021-11-09"
+---
 # Getting Started with Todo List
 Todo List app helps to manage your personal to do items. This app can be installed and used not only in your Teams client, but also Outlook client and the Microsoft 365 app. The frontend is a React app and the backend is an Azure Function. You can deploy and host the app in Azure.
 

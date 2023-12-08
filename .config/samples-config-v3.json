@@ -566,8 +566,8 @@
             "shortId": "large-notification",
             "onboardDate": "2023-10-17",
             "title": "Large Scale Notification Bot",
-            "shortDescription": "This sample demonstrates the architecture of a Teams notfication bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant.",
-            "fullDescription": "This sample demonstrates the architecture of a Teams notfication bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant. This app relies on Azure services such as Azure Durable Functions and Service Bus Queue to handle high volume and speed of notification messaging.",
+            "shortDescription": "This sample demonstrates the architecture of a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant.",
+            "fullDescription": "This sample demonstrates the architecture of a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant. This app relies on Azure services such as Azure Durable Functions and Service Bus Queue to handle high volume and speed of notification messaging.",
             "types": [
               "Bot"
             ],

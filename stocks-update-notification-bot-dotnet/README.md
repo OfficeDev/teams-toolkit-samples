@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- csharp
+products:
+- office-teams
+- office
+name: Stocks Update Notification Bot using .NET
+urlFragment: officedev-teamsfx-samples-bot-stocks-update-notification-bot-dotnet
+description: A Teams bot app that sends stock messages as Adaptive Cards
+extensions:
+  createdDate: "2022-10-24"
+---
 # Getting Started with Stocks Update Notification Bot
 
 Stocks Update Notifcation Bot is a an application that can be installed in different Microsoft Teams contexts, personal, group chat, or teams channel, which sends a message on a pre-defined schedule as an Adaptive Card to locations where it is installed.

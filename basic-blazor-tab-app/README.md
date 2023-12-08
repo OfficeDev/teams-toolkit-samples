@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- csharp
+products:
+- office-teams
+- office
+name: Basic Blazor Tab App using .NET
+urlFragment: officedev-teamsfx-samples-tab-basic-blazor-tab-app
+description: A Teams tab app built using the Blazor web framework
+extensions:
+  createdDate: "2023-06-06"
+---
 # Getting Started with Basic Blazor Tab App
 
 Blazor is a feature of ASP.NET for building interactive web UIs. The Basic Blazor Tab App is a Teams Tab App built using the Blazor web framework, which supports both personal tab and configurable tab functionalities.

@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: Graph Connector Bot
+urlFragment: officedev-teamsfx-samples-bot-graph-connector-bot
+description: This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.
+extensions:
+  createdDate: "2023-11-07"
+---
 # Getting Started with Graph Connector Bot
 
 This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.

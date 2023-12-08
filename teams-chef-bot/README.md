@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: Teams Chef Bot
+urlFragment: officedev-teamsfx-samples-bot-teams-chef-bot
+description: This is a conversational bot for Microsoft Teams that impersonates a Chef to help you you cook Teams apps.
+extensions:
+  createdDate: "2023-06-25"
+---
 # Microsoft Teams Conversational Bot with Teams AI Library: Teams Chef
 
 This is a conversational bot for Microsoft Teams that impersonates a chef to help you cook Teams apps. The bot uses the text-davinci-003 model to chat with Teams users and respond in a polite and respectful manner, staying within the scope of the conversation.

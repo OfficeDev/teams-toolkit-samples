@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: Todo List with backend on Azure
+urlFragment: officedev-teamsfx-samples-tab-todo-list-with-Azure-backend
+description: Todo List app with Azure Function backend and Azure SQL database.
+extensions:
+  createdDate: "2021-05-06"
+---
 # Getting Started with Todo List
 
 Todo List provides an easy way to manage to-do items in Teams Client. This app helps enabling task collaboration and management for your team. The frontend is a React app and the backend is hosted on Azure. You will need an Azure subscription to run the app.

@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: Team Central Dashboard
+urlFragment: officedev-teamsfx-samples-tab-team-central-dashboard
+description: A single dashboard displaying data chats and content from Microsoft Graph to accelerate team collaboration and personal productivity.
+extensions:
+  createdDate: "2022-09-20"
+---
 # Getting Started with Team Central Dashboard
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
