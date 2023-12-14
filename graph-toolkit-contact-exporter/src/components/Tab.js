@@ -186,7 +186,6 @@ class Tab extends React.Component {
                   <PeoplePicker
                     userType="user"
                     selectionChanged={handleInputChange}
-                    placeholder="Typing name to select people to view contact info"
                   ></PeoplePicker>
                 </div>
 
