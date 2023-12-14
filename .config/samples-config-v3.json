@@ -604,6 +604,33 @@
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
+        },
+        {
+            "id": "reddit-link-unfurling",
+            "shortId": "reddit-link-unfurling",
+            "onboardDate": "2023-12-12",
+            "title": "Format Reddit Link into Adaptive Card",
+            "shortDescription": "This sample application showcases how to build a Teams application (Link Unfurling, a type of Message Extension) that can format the Reddit link into an Adaptive Card when a user pastes a Reddit link into the compose message area.",
+            "fullDescription": "This sample application showcases how to build a Teams application (Link Unfurling, a type of Message Extension) that can format the Reddit link into an Adaptive Card when a user pastes a Reddit link into the compose message area.",
+            "types": [
+              "Message Extension"
+            ],
+            "tags": [
+              "Message Extension",
+              "JS",
+              "Link Unfurling"
+            ],
+            "time": "10 mins to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "doc/image/link.png",
+            "gifPath": "doc/image/link.png",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/msgext-link-unfurling-reddit/nodejs"
+            }
         }
     ]
 }
