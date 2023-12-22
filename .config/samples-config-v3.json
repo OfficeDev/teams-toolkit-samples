@@ -7,8 +7,9 @@
             "Meeting"
         ],
         "languages": [
-            "JavaScript",
-            "TypeScript"
+            "TS",
+            "JS",
+            "Python"
         ],
         "technologies": [
             "Azure",
@@ -59,7 +60,7 @@
             "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
-            "suggested": true
+            "suggested": false
         },
         {
             "id": "bot-sso",
@@ -494,7 +495,7 @@
             "configuration": "Manual configurations required",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
+            "suggested": true
         },
         {
             "id": "spfx-productivity-dashboard",
@@ -582,7 +583,7 @@
             "configuration": "Manual configurations required",
             "gifPath": "assets/thumbnail.png",
             "thumbnailPath": "assets/thumbnail.png",
-            "suggested": false
+            "suggested": true
         },
         {
             "id": "graph-connector-bot",
@@ -604,6 +605,87 @@
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
+        },
+        {
+            "id": "bot-conversation-python",
+            "shortId": "bot-conversation-py",
+            "onboardDate": "2023-11-08",
+            "title": "Teams Conversation Bot using Python",
+            "shortDescription": "This sample shows how to incorporate basic conversational flow into a Teams application.",
+            "fullDescription": "This bot has been created using Bot Framework. This sample shows how to incorporate basic conversational flow into a Teams application. It also illustrates a few of the Teams specific calls you can make from your bot.",
+            "types": [
+              "Bot"
+            ],
+            "tags": [
+              "Python",
+              "Bot",
+              "Bot Framework"
+            ],
+            "time": "5min to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "Images/2.WelcomeCard.PNG",
+            "gifPath": "Images/BotConversation.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/bot-conversation/python"
+            }
+        },
+        {
+            "id": "msgext-search-python",
+            "shortId": "msgext-search-py",
+            "onboardDate": "2023-11-08",
+            "title": "Teams Messaging Extensions Search using Python",
+            "shortDescription": "This sample illustrates how to build a Search-based Messaging Extension.",
+            "fullDescription": "There are two basic types of Messaging Extension in Teams: Search-based and Action-based. This sample illustrates how to build a Search-based Messaging Extension.",
+            "types": [
+              "Bot"
+            ],
+            "tags": [
+              "Python",
+              "Message extension",
+              "Bot Framework"
+            ],
+            "time": "5min to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "Images/9-mention-Search-Result.png",
+            "gifPath": "Images/msgext-search.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/msgext-search/python"
+            }
+        },
+        {
+            "id": "gc-nodejs-typescript-food-catalog",
+            "shortId": "gc-food-catalog",
+            "onboardDate": "2023-11-15",
+            "title": "Ingest Custom API Data into Microsoft 365 with a Microsoft Graph Connector",
+            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph.",
+            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content on a schedule. It also includes the simplified admin experience which means that admins can toggle the connector on and off from the Microsoft Teams admin center.",
+            "types": [
+              "Tab"
+            ],
+            "tags": [
+              "TS",
+              "Microsoft Graph Connectors",
+              "Azure Functions"
+            ],
+            "time": "5min to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/ttk_thumb.png",
+            "gifPath": "assets/ttk.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "pnp",
+                "repository": "graph-connectors-samples",
+                "ref": "main",
+                "dir": "samples/nodejs-typescript-food-catalog"
+            }
         },
         {
             "id": "reddit-link-unfurling",
