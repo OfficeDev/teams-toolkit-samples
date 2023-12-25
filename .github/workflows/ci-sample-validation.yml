@@ -5,11 +5,11 @@ on:
   pull_request:
     branches:
       - dev
-      - v3
+      - main
   push:
     branches:
       - dev
-      - v3
+      - main
 
 jobs:
   sample-validation:
