@@ -1,0 +1,65 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-tab-live-share-dice-roller",
+    "source": "officeDev",
+    "title": "Dice Roller in meeting",
+    "shortDescription": "This sample introduces Microsoft Live Share and Azure Fluid Relay to enable a shared experience between multiple users.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/live-share-dice-roller",
+    "longDescription": [
+      "Microsoft Live Share is a collaboration tool that enables you to share your experience with others in real time. Azure Fluid Relay is a part of this service. The diceroller example is a simple app that allows multiple users to roll a dice and see the results. This sample is a great way to get started with Live Share and Fluid."
+    ],
+    "creationDateTime": "2023-04-27",
+    "updateDateTime": "2023-10-26",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "javascript"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "tab"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/live-share-dice-roller/assets/thumbnail.png",
+        "alt": "Dice Roller in meeting"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "stephaniewhoo",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/30057729?v=4",
+        "name": "stephaniewhoo"
+      }
+    ],
+    "references": [  
+    {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]

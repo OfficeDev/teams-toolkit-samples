@@ -1,0 +1,65 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-bot-stocks-update-notification-bot",
+    "source": "officeDev",
+    "title": "Stocks Update",
+    "shortDescription": "Keep up to date with the latest stock price in Microsoft Teams.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/stocks-update-notification-bot",
+    "longDescription": [
+      "This sample demonstrates how a Notification Bot can be used to call an external API using API Key authentication, on a pre-defined schedule of every 30 seconds, to obtain the latest stock information and render the results as an Adaptive Card."
+    ],
+    "creationDateTime": "2022-08-08",
+    "updateDateTime": "2023-10-24",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "typescript"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "bot"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/stocks-update-notification-bot/assets/thumbnail.png",
+        "alt": "Stocks Update"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "garrytrinder",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/11563347?v=4",
+        "name": "Garry Trinder"
+      }
+    ],
+    "references": [  
+    {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]

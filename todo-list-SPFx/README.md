@@ -1,3 +1,17 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+- office-sp
+name: Todo List with SPFx
+urlFragment: officedev-teamsfx-samples-tab-todo-list-SPFx
+description: Todo List app hosting on SharePoint.
+extensions:
+  createdDate: "2021-05-06"
+---
 # Getting Started With Todo List Sample (SPFx)
 
 `Todo List with SPFx` is a Todo List Manage tool for a group of people. This app is installed in Teams Team or Channel and hosted on SharePoint, members in the Team/Channel can collaborate on the same Todo List, manipulate the same set of Todo items. There is no requirement asking for an Azure account to deploy Azure resources to run this sample app.
@@ -10,7 +24,7 @@
 - How to deploy your app to SharePoint App Catalog and sync the solution to Teams App Catalog.
 
 ## Prerequisite to use this sample
-* [Set up SharePoint Framework development environment](https://aka.ms/teamsfx-spfx-dev-environment-setup)（Recommend to use SPFx v1.16.1）
+* [Set up SharePoint Framework development environment](https://aka.ms/teamsfx-spfx-dev-environment-setup)（Recommend to use SPFx v1.18.2）
 * An Microsoft 365 account. Get your own free Microsoft 365 tenant from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 * Use the team site in SharePoint to create a List.
     - Navigate to the [SharePoint team site](https://support.microsoft.com/en-us/office/create-a-team-site-in-sharepoint-ef10c1e7-15f3-42a3-98aa-b5972711777d), in `Home` tab, click `New` and select `List`.
@@ -86,8 +100,9 @@ Debug the app with Teams workbench
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-|Apr 21, 2022| huihuiwu | update to support Teams Toolkit v4.0.0|
-|Mar 23, 2023| huihuiwu | update to support Teams Toolkit v5.0.0|
+|Apr 21, 2022| huihuiwu | Update to support Teams Toolkit v4.0.0|
+|Mar 23, 2023| huihuiwu | Update to support Teams Toolkit v5.0.0|
+|Dec 5, 2023| yuqzho | Upgrade to SPFx 1.18.2 |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

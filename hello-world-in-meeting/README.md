@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: My First Meeting App
+urlFragment: officedev-teamsfx-samples-tab-hello-world-in-meeting
+description: A template for apps using only in the context of a Teams meeting.
+extensions:
+  createdDate: "2022-04-08"
+---
 # Getting Started with HelloWorld In-meeting app
 
 This App helps to enable your apps for Teams meetings and configure the apps to be available in the meeting scope. This app covers show Teams context in meeting detail view, chat view and side panel.

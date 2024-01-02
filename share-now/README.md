@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: Share Now
+urlFragment: officedev-teamsfx-samples-tab-share-now
+description: Knowledge sharing app contains a Tab and a Message extension.
+extensions:
+  createdDate: "2021-05-17"
+---
 # Getting Started With Share Now Sample
 
 Share Now promotes the exchange of information between colleagues by enabling users to share content within the Teams environment. Users engage the app to share items of interest and discover new shared content.
@@ -101,7 +114,7 @@ To debug the project, you will need to configure an Azure SQL Database to be use
     SQL_USER_NAME=
     SQL_PASSWORD=
     ```
-1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
+1. Open Debug View (`Ctrl+Shift+D`) and select "Debug in Teams (Edge)" or "Debug in Teams (Chrome)" in dropdown list.
 1. Press "F5" to open a browser window and then select your package to view share now sample app.
 
 

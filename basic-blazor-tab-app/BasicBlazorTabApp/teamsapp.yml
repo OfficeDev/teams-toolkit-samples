@@ -8,7 +8,7 @@ additionalMetadata:
 
 environmentFolderPath: ./env
 
-# Triggered when 'teamsfx provision' is executed
+# Triggered when 'teamsapp provision' is executed
 provision:
   - uses: teamsApp/create # Creates a Teams app
     with:
@@ -42,7 +42,7 @@ provision:
     with:
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip # Relative path to this file. This is the path for built zip file.
 
-# Triggered when 'teamsfx deploy' is executed
+# Triggered when 'teamsapp deploy' is executed
 deploy:
   - uses: cli/runDotnetCommand
     with:

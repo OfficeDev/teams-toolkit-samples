@@ -1,0 +1,65 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-tab-graph-toolkit-contact-exporter",
+    "source": "officeDev",
+    "title": "Contact Exporter using Graph Toolkit",
+    "shortDescription": "Contact Exporter app of Microsoft Teams Tab app.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/graph-toolkit-contact-exporter",
+    "longDescription": [
+      "Contact Exporter app can export your teams contact info to Excel files, and it is using Microsoft Graph Toolkit as UI component. This app only has a Tab frontend."
+    ],
+    "creationDateTime": "2021-11-30",
+    "updateDateTime": "2023-10-13",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "javascript"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "tab"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/graph-toolkit-contact-exporter/assets/thumbnail.png",
+        "alt": "Contact Exporter using Graph Toolkit"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "SLdragon",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/5545529?v=4",
+        "name": "rentu"
+      }
+    ],
+    "references": [  
+    {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]

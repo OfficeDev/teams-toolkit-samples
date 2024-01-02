@@ -5,7 +5,7 @@ import * as React from 'react';
 import { ITodoListProps } from './ITodoListProps';
 import { ISPItem, ITodoListState } from './ITodoListState';
 import { SharePointListManager } from './SharePointListManager';
-import { Checkbox, ContextualMenu, PrimaryButton, TextField, DirectionalHint, DefaultButton } from 'office-ui-fabric-react';
+import { Checkbox, ContextualMenu, PrimaryButton, TextField, DirectionalHint, DefaultButton } from '@fluentui/react';
 import Profile from './Profile';
 import './TodoList.module.css';
 import NoItem from '../images/no-item.png';

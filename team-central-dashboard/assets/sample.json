@@ -1,0 +1,65 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-tab-team-central-dashboard",
+    "source": "officeDev",
+    "title": "Team Central Dashboard",
+    "shortDescription": "A single dashboard displaying data chats and content from Microsoft Graph to accelerate team collaboration and personal productivity.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/team-central-dashboard",
+    "longDescription": [
+      "A single dashboard displaying data chats and content from Microsoft Graph to accelerate team collaboration and personal productivity."
+    ],
+    "creationDateTime": "2022-09-20",
+    "updateDateTime": "2023-10-24",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "typescript"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "tab"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/team-central-dashboard/assets/thumbnail.png",
+        "alt": "Team Central Dashboard"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "huimiu",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/107838226?v=4",
+        "name": "Hui Miao"
+      }
+    ],
+    "references": [  
+    {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]

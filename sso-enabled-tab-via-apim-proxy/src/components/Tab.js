@@ -21,7 +21,8 @@ import axios from "axios";
 class Tab extends React.Component {
   constructor(props) {
     super(props);
-    CacheService.clearCaches();
+    const cacheId = Providers.getCacheId();
+    CacheService.clearCacheById(cacheId);
 
     this.state = {
       showLoginPage: undefined,

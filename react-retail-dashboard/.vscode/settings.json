@@ -1,3 +1,6 @@
 {
-    "debug.onTaskErrors": "abort"
+    "debug.onTaskErrors": "abort",
+    "files.exclude": {
+        "**/jest-output": true
+    }
 }

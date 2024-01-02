@@ -32,7 +32,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 
   1. Clone the repo to your local workspace or directly download the source code.
   1. Open the project in Visual Studio Code.
-  1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
+  1. Open Debug View (`Ctrl+Shift+D`) and select "Debug in Teams (Edge)" or "Debug in Teams (Chrome)" in dropdown list.
   1. Press "F5" to open a browser window and then select your package to view contact exporter sample app.
 
 - From TeamsFx CLI
@@ -44,9 +44,9 @@ This is a simple command bot that implements single sign-on feature to retrieve 
      BOT_DOMAIN=sample-id-3978.devtunnels.ms
      BOT_ENDPOINT=https://sample-id-3978.devtunnels.ms
      ```
-  1. Run command: `teamsfx provision --env local` .
-  1. Run command: `teamsfx deploy --env local` .
-  1. Run command: `teamsfx preview --env local` .
+  1. Run command: `teamsapp provision --env local` .
+  1. Run command: `teamsapp deploy --env local` .
+  1. Run command: `teamsapp preview --env local` .
 
 ### Deploy the app to Azure
 
@@ -59,16 +59,16 @@ This is a simple command bot that implements single sign-on feature to retrieve 
   1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 
 - From TeamsFx CLI
-  1. Run command: `teamsfx account login azure`.
-  1. Run command: `teamsfx provision --env dev`.
-  1. Run command: `teamsfx deploy --env dev`.
+  1. Run command: `teamsapp auth login azure`.
+  1. Run command: `teamsapp provision --env dev`.
+  1. Run command: `teamsapp deploy --env dev`.
 
 ### Preview the app in Teams
 
 - From VSCode:
   1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
 - From TeamsFx CLI:
-  1. Run command: `teamsfx preview --env dev`.
+  1. Run command: `teamsapp preview --env dev`.
 
 ## Version History
 

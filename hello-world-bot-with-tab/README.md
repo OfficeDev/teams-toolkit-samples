@@ -19,7 +19,7 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
 ### Run the app locally
 
 - From VS Code:
-    1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug (Edge)` or `Debug (Chrome)`.
+    1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug in Teams (Edge)` or `Debug in Teams (Chrome)`.
 
 - From TeamsFx CLI:
     1. Install [dev tunnel cli](https://aka.ms/teamsfx-install-dev-tunnel).
@@ -30,9 +30,9 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
        BOT_DOMAIN=sample-id-3978.devtunnels.ms
        BOT_ENDPOINT=https://sample-id-3978.devtunnels.ms
        ```
-    1. Run command: `teamsfx provision --env local` .
-    1. Run command: `teamsfx deploy --env local` .
-    1. Run command: `teamsfx preview --env local` .
+    1. Run command: `teamsapp provision --env local` .
+    1. Run command: `teamsapp deploy --env local` .
+    1. Run command: `teamsapp preview --env local` .
 
 ### Deploy the app to Azure
 
@@ -42,9 +42,9 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
     1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 
 - From TeamsFx CLI:
-    1. Run command: `teamsfx account login azure`.
-    1. Run command: `teamsfx provision --env dev`.
-    1. Run command: `teamsfx deploy --env dev`.
+    1. Run command: `teamsapp auth login azure`.
+    1. Run command: `teamsapp provision --env dev`.
+    1. Run command: `teamsapp deploy --env dev`.
 
 ### Preview the app in Teams
 
@@ -52,7 +52,7 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 
 - From TeamsFx CLI:
-    1. Run command: `teamsfx preview --env dev`.
+    1. Run command: `teamsapp preview --env dev`.
 
 ## Advanced usage of this sample
 

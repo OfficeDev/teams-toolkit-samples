@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: NPM Search Connector
+urlFragment: officedev-teamsfx-samples-me-NPM-search-connector-M365
+description: Search and Share an NPM Package in Teams and Outlook (Web).
+extensions:
+  createdDate: "2021-11-09"
+---
 # Getting Started with Npm Search Connector
 NPM Search Connector is a Message Extension that allows you to perform a quick search to NPM Registry for a package and insert package details into conversations for sharing with your co-workers. The front end is built with Adaptive Cards to render NPM package details and the backend is an Azure Bot Service handling search queries and communication between the server workload and the clients, including Teams and Outlook (Web Client).
 

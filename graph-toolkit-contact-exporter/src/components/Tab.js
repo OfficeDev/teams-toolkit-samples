@@ -33,7 +33,8 @@ import { TeamsUserCredential } from "@microsoft/teamsfx";
 class Tab extends React.Component {
   constructor(props) {
     super(props);
-    CacheService.clearCaches();
+    const cacheId = Providers.getCacheId();
+    CacheService.clearCacheById(cacheId);
 
     this.state = {
       showLoginPage: undefined,
@@ -185,7 +186,6 @@ class Tab extends React.Component {
                   <PeoplePicker
                     userType="user"
                     selectionChanged={handleInputChange}
-                    placeholder="Typing name to select people to view contact info"
                   ></PeoplePicker>
                 </div>
 

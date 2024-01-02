@@ -1,0 +1,65 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-bot-large-scale-notification",
+    "source": "officeDev",
+    "title": "Large Scale Notification Bot",
+    "shortDescription": "This sample demonstrates the architecture of a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/large-scale-notification",
+    "longDescription": [
+      "This sample demonstrates the architecture of a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant. This app relies on Azure services such as Azure Durable Functions and Service Bus Queue to handle high volume and speed of notification messaging."
+    ],
+    "creationDateTime": "2023-10-17",
+    "updateDateTime": "2023-10-24",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "typescript"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "bot"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/large-scale-notification/assets/thumbnail.png",
+        "alt": "Large Scale Notification Bot"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "yiqing-zhao",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/45935381?v=4",
+        "name": "Yiqing Zhao"
+      }
+    ],
+    "references": [  
+    {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]

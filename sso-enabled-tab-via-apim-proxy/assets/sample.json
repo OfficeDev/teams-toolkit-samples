@@ -1,0 +1,73 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-tab-sso-enabled-tab-via-apim-proxy",
+    "source": "officeDev",
+    "title": "SSO Enabled Tab via APIM Proxy",
+    "shortDescription": "An SSO-enabled Microsoft Teams Tab app using APIM as a proxy.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/sso-enabled-tab-via-apim-proxy",
+    "longDescription": [
+      "This is a Microsoft Teams tab app that can display user login information with SSO. This app uses Graph Toolkit as the frontend and Azure API Management as a proxy."
+    ],
+    "creationDateTime": "2023-09-15",
+    "updateDateTime": "2023-10-13",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "javascript"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "tab"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/sso-enabled-tab-via-apim-proxy/assets/thumbnail.png",
+        "alt": "SSO Enabled Tab via APIM Proxy"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "KennethBWSong",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/63089166?v=4",
+        "name": "Bowen Song"
+      }
+    ],
+    "references": [  
+      {
+        "name": "Extend a Teams personal tabs across Microsoft 365",
+        "url": "https://docs.microsoft.com/microsoftteams/platform/m365-apps/extend-m365-teams-personal-tab?tabs=manifest-teams-toolkit"
+      },
+      {
+        "name": "TeamsFx SDK",
+        "url": "https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-sdk"
+      },
+      {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]

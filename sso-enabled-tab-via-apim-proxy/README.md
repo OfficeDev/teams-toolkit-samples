@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: SSO Enabled Tab via APIM Proxy
+urlFragment: officedev-teamsfx-samples-tab-sso-enabled-tab-via-apim-proxy
+description: An SSO-enabled Microsoft Teams Tab app using APIM as a proxy.
+extensions:
+  createdDate: "2023-09-15"
+---
 # Getting Started with SSO Enabled Tab via APIM Proxy Sample (Azure)
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.

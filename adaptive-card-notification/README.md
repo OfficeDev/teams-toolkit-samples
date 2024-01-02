@@ -1,3 +1,17 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: Adaptive Card Notification
+urlFragment: officedev-teamsfx-samples-bot-adaptive-card-notification
+description: This is a sample which shows how to send notification with different adaptive cards using Bots.
+extensions:
+ createdDate: "2022-03-28"
+---
+
 # Getting Started with Adaptive Card Notification
 
 Adaptive Card Notification provides an easy way to send notification in Teams. The front end is built with Adaptive Cards to render notification details, the bot framework service is an Azure Bot Service handling search queries and communication between the server workload and the client and the backend is hosted in Azure Functions providing notification trigger and message handler.
@@ -20,7 +34,7 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 ### Run the app locally
 1. Clone the repo to your local workspace or directly download the source code.
 1. Open the project in Visual Studio Code.
-1. Open Debug View (`Ctrl+Shift+D`) and select "Debug (Edge)" or "Debug (Chrome)" in dropdown list.
+1. Open Debug View (`Ctrl+Shift+D`) and select "Debug in Teams (Edge)" or "Debug in Teams (Chrome)" in dropdown list.
 1. Press "F5" to open a browser window and then select your package to view adaptive card notification sample app.
 1. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default. It can be found in `BOT_ENDPOINT` of the file `env/.env.local`.
 1. Send a POST request to the http trigger, you will receive the adaptive card message in Teams. The trigger can be addressable with the following route:

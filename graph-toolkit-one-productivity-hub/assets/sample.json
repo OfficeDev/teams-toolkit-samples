@@ -1,0 +1,65 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-tab-graph-toolkit-one-productivity-hub",
+    "source": "officeDev",
+    "title": "One Productivity Hub using Graph Toolkit",
+    "shortDescription": "Microsoft Teams tab with SSO to view calendar events, to-do tasks and file folders.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/graph-toolkit-one-productivity-hub",
+    "longDescription": [
+      "One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using Microsoft Graph Toolkit components and TeamsFx provider. You can run this app locally or deploy it to Microsoft Azure."
+    ],
+    "creationDateTime": "2022-07-27",
+    "updateDateTime": "2023-10-18",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "javascript"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "tab"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/graph-toolkit-one-productivity-hub/assets/thumbnail.png",
+        "alt": "One Productivity Hub using Graph Toolkit"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "aycabas",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36196437?v=4",
+        "name": "Ayca Bas"
+      }
+    ],
+    "references": [  
+    {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]

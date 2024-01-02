@@ -1,0 +1,65 @@
+[
+  {
+    "name": "officedev-teamsfx-samples-tab-hello-world-in-meeting",
+    "source": "officeDev",
+    "title": "My First Meeting App",
+    "shortDescription": "A template for apps using only in the context of a Teams meeting.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/hello-world-in-meeting",
+    "longDescription": [
+      "My first meeting app is a simple template to show how to build a tab app that can be installed and used in a meeting, in all of meeting lifecycles: pre-meeting chat, in-meeting, post-meeting chat. This sample contains tab as side panel, meeting chat tab, or meeting details tab. The template also includes simple codes to fetch meeting info and user profile."
+    ],
+    "creationDateTime": "2022-04-08",
+    "updateDateTime": "2023-10-13",
+    "products": [
+      "Teams",
+      "TeamsToolkit"
+    ],
+    "metadata": [
+      {
+        "key": "TEAMS-SAMPLE-SOURCE",
+        "value": "OfficeDev"
+      },
+      {
+        "key": "TEAMS-SERVER-LANGUAGE",
+        "value": "javascript"
+      },
+      {
+        "key": "TEAMS-FEATURES",
+        "value": "tab"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/hello-world-in-meeting/images/thumbnail.png",
+        "alt": "My First Meeting App"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "JerryYangKai",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/53805504?v=4",
+        "name": "JerryYang"
+      }
+    ],
+    "references": [  
+    {
+        "name": "Teams developer documentation",
+        "url": "https://aka.ms/TeamsPlatformDocs"
+      },
+      {
+        "name": "Teams developer questions",
+        "url": "https://aka.ms/TeamsPlatformFeedback"
+      },
+      {
+        "name": "Teams development videos from Microsoft",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-microsoft"
+      },
+      {
+        "name": "Teams development videos from the community",
+        "url": "https://aka.ms/sample-ref-teams-vids-from-community"
+      }
+    ]
+  }
+]

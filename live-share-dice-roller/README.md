@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- typescript
+products:
+- office-teams
+- office
+name: Dice Roller in meeting
+urlFragment: officedev-teamsfx-samples-tab-live-share-dice-roller
+description: This sample introduces Microsoft Live Share and Azure Fluid Relay to enable a shared experience between multiple users.
+extensions:
+  createdDate: "2023-04-27"
+---
 # Dice Roller - Live Share sample
 
 This repository contains a simple app that enables all connected clients to roll a dice and view the result. For a
