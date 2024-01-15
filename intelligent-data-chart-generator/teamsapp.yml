@@ -3,6 +3,9 @@
 # Visit https://aka.ms/teamsfx-actions for details on actions
 version: v1.3
 
+additionalMetadata:
+  sampleTag: TeamsFx-Samples:intelligent-data-chart-generator
+
 environmentFolderPath: ./env
 
 provision:
