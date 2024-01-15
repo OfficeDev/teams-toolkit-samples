@@ -104,7 +104,7 @@ async function handleRequest(reqData: any): Promise<any> {
  * @returns A list of autocompletion suggestions.
  */
 async function sqlCompletion(body: string): Promise<string> {
-  const completionResp = await callOAI(
+  const completionResp = await callOpenAI(
     constructRquest(body, sqlPrompt, sqlExample)
   );
   return completionResp.message.content;
@@ -158,7 +158,7 @@ function getExample(exampleData: any[]): Example[] {
  * @param request - The request object to be sent to the OpenAI API.
  * @returns The response object from the OpenAI API.
  */
-async function callOAI(request: any) {
+async function callOpenAI(request: any) {
   const authProvider = new ApiKeyProvider(
     "api-key",
     config.oaiApiKey,

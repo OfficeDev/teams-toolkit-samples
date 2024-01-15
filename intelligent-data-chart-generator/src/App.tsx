@@ -18,10 +18,7 @@ import { app } from "@microsoft/teams-js";
 import { useTeamsUserCredential } from "@microsoft/teamsfx-react";
 
 import { TeamsFxContext } from "./internal/context";
-import Privacy from "./Privacy";
 import Tab from "./Tab";
-import TabConfig from "./TabConfig";
-import TermsOfUse from "./TermsOfUse";
 
 export default function App() {
   const { loading, themeString } = useTeamsUserCredential({
@@ -50,10 +47,7 @@ export default function App() {
         {!loading && (
           <Router>
             <Routes>
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/termsofuse" element={<TermsOfUse />} />
               <Route path="/tab" element={<Tab />} />
-              <Route path="/config" element={<TabConfig />} />
               <Route path="*" element={<Navigate to={"/tab"} />} />
             </Routes>
           </Router>
