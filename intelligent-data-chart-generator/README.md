@@ -6,14 +6,14 @@ products:
   - office-teams
 name: Intelligent Data Chart Generator
 urlFragment: officedev-teamsfx-samples-intelligent-data-chart-generator
-description: Leveraging the Azure OpenAI and Azure SQL to enable data visualization through verbal descriptions.
+description: Intelligent Microsoft Teams Tab app visualizing data charts based on human-language description. Powered by Azure OpenAI and Azure SQL.
 extensions:
   createdDate: "2024-01-08"
 ---
 
 # Getting Started with Intelligent Data Chart Generator
 
-This is a Microsoft Teams Tab app which can generate charts based on the verbal descriptions leveraging Azure OpenAI and Azure SQL. Users can articulate their data preferences orally, and the app translates these spoken commands into visual representations, providing a seamless and intuitive experience for accessing and interpreting data.
+This intelligent Microsoft Teams Tab app is powered by Azure OpenAI, which helps users generating data charts based on users' description of the data chart in human language. There is an input box where users tell the Tab app what data chart they want to generate, and the app interprets user's requirements then generate visual charts. The data is from Azure SQL. This sample demonstrates how to build a seamless and intuitive experience for accessing and interpreting data.
 
 ![Intelligent Chart](assets/sampleDemo.gif)
 
