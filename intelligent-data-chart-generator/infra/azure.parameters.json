@@ -29,17 +29,17 @@
     "teamsAppId": {
       "value": "${{TEAMS_APP_ID}}"
     },
-    "oaiEndpoint": {
-      "value": "${{SECRET_OAI_ENDPOINT}}"
+    "openAIEndpoint": {
+      "value": "${{SECRET_OPENAI_ENDPOINT}}"
     },
-    "oaiDeploymentName": {
-      "value": "${{SECRET_OAI_DEPLOYMENT_NAME}}"
+    "openAIDeploymentName": {
+      "value": "${{SECRET_OPENAI_DEPLOYMENT_NAME}}"
     },
-    "oaiApiKey": {
-      "value": "${{SECRET_OAI_API_KEY}}"
+    "openAIApiKey": {
+      "value": "${{SECRET_OPENAI_API_KEY}}"
     },
-    "oaiChatCompletionUrl": {
-      "value": "${{OAI_CHAT_COMPLETION_URL}}"
+    "openAIChatCompletionUrl": {
+      "value": "${{OPENAI_CHAT_COMPLETION_URL}}"
     },
     "sqlUser": {
       "value": "${{SQL_USER}}"

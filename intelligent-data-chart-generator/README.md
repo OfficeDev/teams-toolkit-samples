@@ -44,9 +44,9 @@ This is a Microsoft Teams Tab app which can generate charts based on the verbal 
 3. Update the `.env.local.user` file to add your Azure OpenAI configuration. Your configuration should look like this:
 
    ```
-   SECRET_OAI_ENDPOINT=https://<your-instance-name>.openai.azure.com/
-   SECRET_OAI_DEPLOYMENT_NAME=<your-deployment-name>
-   SECRET_OAI_API_KEY=<your-api-key>
+   SECRET_OPENAI_ENDPOINT=https://<your-instance-name>.openai.azure.com/
+   SECRET_OPENAI_DEPLOYMENT_NAME=<your-deployment-name>
+   SECRET_OPENAI_API_KEY=<your-api-key>
    ```
 
    > If you have not created an Azure OpenAI resource or deployed a model, please follow [this tutorial](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource?pivots=web-portal) to create one.

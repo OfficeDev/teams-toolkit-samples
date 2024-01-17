@@ -161,11 +161,11 @@ function getExample(exampleData: any[]): Example[] {
 async function callOpenAI(request: any) {
   const authProvider = new ApiKeyProvider(
     "api-key",
-    config.oaiApiKey,
+    config.openAIApiKey,
     ApiKeyLocation.Header
   );
   const apiClient: AxiosInstance = createApiClient(
-    `${config.oaiEndpoint}openai/deployments/${config.oaiDeploymentName}`,
+    `${config.openAIEndpoint}openai/deployments/${config.openAIDeploymentName}`,
     authProvider
   );
   const resp = await apiClient.post(config.chatCompletionUrl, request);

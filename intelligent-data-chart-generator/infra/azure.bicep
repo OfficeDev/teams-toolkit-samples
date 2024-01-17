@@ -13,7 +13,7 @@ param serverfarmsName string = resourceBaseName
 param functionAppName string = resourceBaseName
 param functionStorageName string = '${resourceBaseName}api'
 param teamsAppId string
-param oaiChatCompletionUrl string
+param openAIChatCompletionUrl string
 param sqlUser string
 param sqlServer string
 param sqlDatabase string
@@ -21,11 +21,11 @@ param sqlDatabase string
 @secure()
 param aadAppClientSecret string
 @secure()
-param oaiEndpoint string
+param openAIEndpoint string
 @secure()
-param oaiDeploymentName string
+param openAIDeploymentName string
 @secure()
-param oaiApiKey string
+param openAIApiKey string
 @secure()
 param sqlPassword string
 
@@ -143,20 +143,20 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
           value: '{"allowed_client_applications": [${allowedClientApplications}]}'
         }
         {
-          name: 'OAI_ENDPOINT'
-          value: oaiEndpoint
+          name: 'OPENAI_ENDPOINT'
+          value: openAIEndpoint
         }
         {
-          name: 'OAI_DEPLOYMENT_NAME'
-          value: oaiDeploymentName
+          name: 'OPENAI_DEPLOYMENT_NAME'
+          value: openAIDeploymentName
         }
         {
-          name: 'OAI_API_KEY'
-          value: oaiApiKey
+          name: 'OPENAI_API_KEY'
+          value: openAIApiKey
         }
         {
-          name: 'OAI_CHAT_COMPLETION_URL'
-          value: oaiChatCompletionUrl
+          name: 'OPENAI_CHAT_COMPLETION_URL'
+          value: openAIChatCompletionUrl
         }
         {
           name: 'SQL_USER'
