@@ -713,6 +713,33 @@
                 "ref": "main",
                 "dir": "samples/msgext-link-unfurling-reddit/nodejs"
             }
+        },
+        {
+            "id": "meetings-live-code-interview",
+            "shortId": "live-code-interview",
+            "onboardDate": "2023-12-18",
+            "title": "Live Coding Interview",
+            "shortDescription": "This sample demos live coding in a teams meeting stage using live share SDK. The tab is loaded as side panel which contains various coding questions.",
+            "fullDescription": "This sample demos live coding in a teams meeting stage using live share SDK. The tab is loaded as side panel which contains various coding questions.",
+            "types": [
+              "Meeting"
+            ],
+            "tags": [
+              "Meeting Extension",
+              "JS",
+              "Live Share SDK"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/meetings-live-code-interview/nodejs"
+            }
         }
     ]
 }
