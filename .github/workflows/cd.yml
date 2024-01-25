@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Validate CD branch
-        if: ${{ github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/release' && github.ref != 'refs/heads/v3' }}
+        if: ${{ github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/release' && github.ref != 'refs/heads/main' }}
         run: |
           echo It's not allowed to run CD on other branch except release.
           exit 1
@@ -38,4 +38,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
           INITIAL_VERSION: ${{ steps.get-latest-tag.outputs.tag }}
-          RELEASE_BRANCHES: "v3"
+          RELEASE_BRANCHES: "main"
