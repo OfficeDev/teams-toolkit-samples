@@ -89,6 +89,39 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
 - From TeamsFx CLI:
   1. Run command: `teamsfx preview --env dev`.
 
+## Deploying on Azure Kubernetes Service
+
+You can deploy a containerized Teams App on a Kubernetes cluster. This assumes that you have an existing Azure Kubernetes Service connected to your Azure Container Registry, which hosts your container images. If you do not have one, please refer to this tutorial to create one: [AKS Tutorials](https://learn.microsoft.com/azure/aks/tutorial-kubernetes-prepare-app).
+
+The following steps are provided as an example:
+
+1. Install dependency for setting up TLS. Refer to [Create an ingress controller](https://learn.microsoft.com/azure/aks/ingress-basic?tabs=azure-cli) and [Use TLS with Let's Encrypt certificates](https://learn.microsoft.com/azure/aks/ingress-tls?tabs=azure-cli#use-tls-with-lets-encrypt-certificates).
+    ```
+    helm install ingress-nginx ingress-nginx/ingress-nginx --create-namespace --namespace $NAMESPACE
+    helm install cert-manager jetstack/cert-manager --namespace $NAMESPACE --set installCRDs=true --set nodeSelector."kubernetes\.io/os"=linux
+    ```
+2. Update the DNS for the ingress public IP.
+    ```
+    > kubectl get services --namespace $NAMESPACE -w ingress-nginx-controller
+
+    NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S)
+    ingress-nginx-controller LoadBalancer $CLUSTER_IP $EXTERNAL_IP 80:32514/TCP,443:32226/TCP
+
+    > PUBLICIPID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$EXTERNAL_IP')].[id]" --output tsv)
+    > az network public-ip update --ids $PUBLICIPID --dns-name $DNSLABEL
+    > az network public-ip show --ids $PUBLICIPID --query "[dnsSettings.fqdn]" --output tsv
+
+    $DNSLABEL.$REGION.cloudapp.azure.com
+    ```
+3. Create a secret that serves as environment variables with the following command. Make sure to fill in the values in [.env.dev-secrets](./deploy/env/.env.dev-secrets) beforehand.
+    ```
+    kubectl create secret generic dev-secrets --from-env-file ./deploy/env/.env.dev-secrets -n $NAMESPACE
+    ```
+4. Update the hostname and your email in the [sso-bot.yaml](./deploy/sso-bot.yaml) and apply it.
+    ```
+    kubectl apply -f deploy/sso-bot.yaml -n $NAMESPACE
+    ```
+
 ## Further reading
 
 - [How Microsoft Teams bots work](https://docs.microsoft.com/azure/bot-service/bot-builder-basics-teams?view=azure-bot-service-4.0&tabs=javascript)
@@ -98,7 +131,7 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
 
 | Date         | Author     | Comments                               |
 | ------------ | ---------- | -------------------------------------- |
-| Jan 17, 2024  | hund030    | Onboard sample in Teams Toolkit V5.0.0 |
+| Jan 17, 2024  | hund030   | Onboard sample in Teams Toolkit V5.0.0 |
 
 ## Feedback
 
