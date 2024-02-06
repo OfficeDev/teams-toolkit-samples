@@ -2,7 +2,7 @@ import React from "react";
 
 export function EditCode(props: { tabCodeEntry?: string }) {
   const { tabCodeEntry } = {
-    tabCodeEntry: "tabs/src/index.tsx",
+    tabCodeEntry: "tab/src/index.tsx",
     ...props,
   };
   return (
