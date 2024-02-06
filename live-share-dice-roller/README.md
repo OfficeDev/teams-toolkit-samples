@@ -45,16 +45,6 @@ Deploy your project to Azure by following these steps:
 
 > Note: Provision Azure cloud resources and deploy to Azure may cause charges to your Azure Subscription.
 
-## Preview the app in Teams client
-
-After you have completed the provision and deploy steps in `Deploy the app to Azure` section, you can preview your app in Teams client by following steps below:
-
-- In Visual Studio Code
-
-  1. Open the `Run and Debug Activity` panel from sidebar, or use short key Ctrl+Shift+D.
-  1. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the launch configuration (a dropdown selection in the upper-left corner).
-  1. Press the `Start Debugging` (small green arrow) button to launch your app, the Teams web client will be automatically opened in your browser, where you will see your app running remotely from Azure.
-
 ## Test it out
 
 1. Schedule a meeting for testing from calendar in Teams.

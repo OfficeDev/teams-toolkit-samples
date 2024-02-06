@@ -64,17 +64,6 @@ Share Now promotes the exchange of information between colleagues by enabling us
     )
     GO
     ```
-### Preview the app in Teams
-1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
-1. The app will look like this when it runs for the first time:
-
-	![Share Now](images/StartPage.png)
-
-1. You can add new content by clicking "Suggest content" button.
-1. You can update content created by you by clicking "..." and then choose "update" button.
-1. You can delete content created by you by clicking "..." and then choose "delete" button.
-1. You can add/delete your vote for the content by click the icon ![vote icon](images/voteIconME.png) in the content.
-1. You can search all/posted-by-me contents in compose box or command box by filtering based on title or tags of content and share with your colleagues.
 
 ### (Optional) Run the app locally
 To debug the project, you will need to configure an Azure SQL Database to be used locally:

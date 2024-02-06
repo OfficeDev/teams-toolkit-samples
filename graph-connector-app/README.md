@@ -43,9 +43,6 @@ This sample app showcases how to build custom Graph Connector with Azure Functio
 1. Open the command palette and select `Teams: Provision`. You will be asked to select Azure resource group to provision the sample.
 1. Once provision is completed, open the command palette and select `Teams: Deploy`.
 
-### Preview the app in Teams
-1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
-
 #### Usage of this sample
 1. The APP will look like this when it runs for the first time.
 
