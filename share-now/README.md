@@ -64,7 +64,7 @@ Share Now promotes the exchange of information between colleagues by enabling us
     )
     GO
     ```
-### Preview the app in Teams
+### Launch the app in Teams
 1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
 1. The app will look like this when it runs for the first time:
 

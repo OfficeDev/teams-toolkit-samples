@@ -45,7 +45,7 @@ Deploy your project to Azure by following these steps:
 
 > Note: Provision Azure cloud resources and deploy to Azure may cause charges to your Azure Subscription.
 
-## Preview the app in Teams client
+## Launch the app in Teams client
 
 After you have completed the provision and deploy steps in `Deploy the app to Azure` section, you can preview your app in Teams client by following steps below:
 
