@@ -97,7 +97,12 @@ The following steps are provided as an example:
 
 1. Install dependency for setting up TLS. Refer to [Create an ingress controller](https://learn.microsoft.com/azure/aks/ingress-basic?tabs=azure-cli) and [Use TLS with Let's Encrypt certificates](https://learn.microsoft.com/azure/aks/ingress-tls?tabs=azure-cli#use-tls-with-lets-encrypt-certificates).
     ```
-    helm install ingress-nginx ingress-nginx/ingress-nginx --create-namespace --namespace $NAMESPACE
+    helm install ingress-nginx ingress-nginx/ingress-nginx --create-namespace --namespace $NAMESPACE \
+        --set controller.nodeSelector."kubernetes\.io/os"=linux  \
+        --set defaultBackend.nodeSelector."kubernetes\.io/os"=linux  \
+        --set controller.healthStatus=true \
+        --set controller.service.externalTrafficPolicy=Local \
+        --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz  \
     helm install cert-manager jetstack/cert-manager --namespace $NAMESPACE --set installCRDs=true --set nodeSelector."kubernetes\.io/os"=linux
     ```
 2. Update the DNS for the ingress public IP.

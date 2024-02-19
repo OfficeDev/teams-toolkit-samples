@@ -17,6 +17,7 @@ spec:
           image: basicbotacr.azurecr.io/sso-bot
           ports:
             - containerPort: 80
+          imagePullPolicy: Always
           envFrom:
             - secretRef:
                 name: dev-secrets
@@ -58,7 +59,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
 spec:
-  ingressClassName: webapprouting.kubernetes.azure.com
+  ingressClassName: nginx
   tls:
   - hosts:
     - <host>
