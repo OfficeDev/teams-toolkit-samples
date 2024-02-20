@@ -125,7 +125,7 @@ The following steps are provided as an example:
         subscriptionId: ${{AZURE_SUBSCRIPTION_ID}} 
         resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}} 
         templates:
-          - path: ./infra/botRegistration/azureBot.bicep
+          - path: ./infra/botRegistration/azurebot.bicep
             parameters: ./infra/botRegistration/azurebot.parameters.json
             deploymentName: Create-resources-for-bot
         bicepCliVersion: v0.9.1
