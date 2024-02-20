@@ -105,7 +105,7 @@ The following steps are provided as an example:
         --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz  \
     helm install cert-manager jetstack/cert-manager --namespace $NAMESPACE --set installCRDs=true --set nodeSelector."kubernetes\.io/os"=linux
     ```
-2. Update the DNS for the ingress public IP.
+1. Update the DNS for the ingress public IP.
     ```
     > kubectl get services --namespace $NAMESPACE -w ingress-nginx-controller
 
@@ -118,14 +118,27 @@ The following steps are provided as an example:
 
     $DNSLABEL.$REGION.cloudapp.azure.com
     ```
-3. Create a secret that serves as environment variables with the following command. Make sure to fill in the values in [.env.dev-secrets](./deploy/env/.env.dev-secrets) beforehand.
+1. Fill the BOT_DOMAIN value in [.env.${envName}](./env/.env.dev) with your FQDN. Update the `arm/deploy` action as the following in [teamsapp.yml](./teamsapp.yml) since you do not need other Azure resources, and run `provision` command of Teams Toolkit to create a Teams app and a bot registration.
+    ```
+  - uses: arm/deploy 
+    with:
+      subscriptionId: ${{AZURE_SUBSCRIPTION_ID}} 
+      resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}} 
+      templates:
+        - path: ./infra/botRegistration/azureBot.bicep
+          parameters: ./infra/botRegistration/azurebot.parameters.json
+          deploymentName: Create-resources-for-bot
+      bicepCliVersion: v0.9.1
+    ```
+1. Create a secret that serves as environment variables with the following command. Make sure to fill in the values in [.env.dev-secrets](./deploy/env/.env.dev-secrets) beforehand. You can find the values in [.env.${envName}](./env/.env.dev) and [.env.${envName}.user](./env/.env.dev.user) after provisioning.
     ```
     kubectl create secret generic dev-secrets --from-env-file ./deploy/env/.env.dev-secrets -n $NAMESPACE
     ```
-4. Update the hostname and your email in the [sso-bot.yaml](./deploy/sso-bot.yaml) and apply it.
+1. Update the hostname and your email in the [sso-bot.yaml](./deploy/sso-bot.yaml) and apply it.
     ```
     kubectl apply -f deploy/sso-bot.yaml -n $NAMESPACE
     ```
+1. In VS Code `Run and Debug` panel, select the `Launch Remote` configuration and press F5 to preview the Teams bot application that deployed on AKS.
 
 ## Further reading
 
