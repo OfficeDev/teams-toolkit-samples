@@ -120,15 +120,15 @@ The following steps are provided as an example:
     ```
 1. Fill the BOT_DOMAIN value in [.env.${envName}](./env/.env.dev) with your FQDN. Update the `arm/deploy` action as the following in [teamsapp.yml](./teamsapp.yml) since you do not need other Azure resources, and run `provision` command of Teams Toolkit to create a Teams app and a bot registration.
     ```
-  - uses: arm/deploy 
-    with:
-      subscriptionId: ${{AZURE_SUBSCRIPTION_ID}} 
-      resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}} 
-      templates:
-        - path: ./infra/botRegistration/azureBot.bicep
-          parameters: ./infra/botRegistration/azurebot.parameters.json
-          deploymentName: Create-resources-for-bot
-      bicepCliVersion: v0.9.1
+    - uses: arm/deploy 
+      with:
+        subscriptionId: ${{AZURE_SUBSCRIPTION_ID}} 
+        resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}} 
+        templates:
+          - path: ./infra/botRegistration/azureBot.bicep
+            parameters: ./infra/botRegistration/azurebot.parameters.json
+            deploymentName: Create-resources-for-bot
+        bicepCliVersion: v0.9.1
     ```
 1. Create a secret that serves as environment variables with the following command. Make sure to fill in the values in [.env.dev-secrets](./deploy/env/.env.dev-secrets) beforehand. You can find the values in [.env.${envName}](./env/.env.dev) and [.env.${envName}.user](./env/.env.dev.user) after provisioning.
     ```
