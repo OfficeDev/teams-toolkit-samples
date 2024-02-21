@@ -10,6 +10,8 @@ on:
 jobs:
   cd:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
       - name: Validate CD branch
         if: ${{ github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/release' && github.ref != 'refs/heads/v3' }}
