@@ -489,13 +489,19 @@
             "tags": [
                 "Bot",
                 "TS",
-                "GPT"
+                "Teams AI Library"
             ],
             "time": "5min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": true
+            "configuration": "Ready for debug",
+            "thumbnailPath": "assets/TeamsChef002.jpg",
+            "gifPath": "assets/TeamsChef002.jpg",
+            "suggested": true,
+            "downloadUrlInfo": {
+                "owner": "microsoft",
+                "repository": "teams-ai",
+                "ref": "main",
+                "dir": "js/samples/04.ai.a.teamsChefBot"
+            }
         },
         {
             "id": "spfx-productivity-dashboard",
