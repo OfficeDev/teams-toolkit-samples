@@ -17,7 +17,7 @@ A bot, chatbot, or conversational bot is an app that responds to simple commands
 
 This is a sample chatbot application demonstrating Single Sign-on using `botbuilder` and Teams Framework that can respond to a `show` message.
 
-![Bot SSO Overview](images/bot-sso.gif)
+![Bot SSO Overview](assets/sampleDemo.gif)
 
 ## This sample illustrates
 - Use Teams Toolkit to create a Teams bot app.
