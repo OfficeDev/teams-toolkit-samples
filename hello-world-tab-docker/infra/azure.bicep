@@ -1,7 +1,4 @@
 param resourceBaseName string
-param storageSKU string
-param functionStorageSKU string
-param functionAppSKU string
 
 param aadAppClientId string
 param aadAppTenantId string
@@ -9,12 +6,21 @@ param aadAppOauthAuthorityHost string
 @secure()
 param aadAppClientSecret string
 
-param storageName string = resourceBaseName
 param location string = resourceGroup().location
-param serverfarmsName string = resourceBaseName
-param functionAppName string = resourceBaseName
-param functionStorageName string = '${resourceBaseName}api'
 var oauthAuthority = uri(aadAppOauthAuthorityHost, aadAppTenantId)
+
+@description('Specifies the docker container image to deploy.')
+param containerImage string = 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
+
+@description('Minimum number of replicas that will be deployed')
+@minValue(0)
+@maxValue(25)
+param minReplica int = 1
+
+@description('Maximum number of replicas that will be deployed')
+@minValue(0)
+@maxValue(25)
+param maxReplica int = 3
 
 var teamsMobileOrDesktopAppClientId = '1fec8e78-bce4-4aaf-ab1b-5451cc387264'
 var teamsWebAppClientId = '5e3ce6c0-2b1f-4285-8d4b-75ee78787346'
@@ -25,138 +31,151 @@ var outlookWebAppClientId = '00000002-0000-0ff1-ce00-000000000000'
 var authorizedClientApplicationIds = '${teamsMobileOrDesktopAppClientId};${teamsWebAppClientId};${officeWebAppClientId1};${officeWebAppClientId2};${outlookDesktopAppClientId};${outlookWebAppClientId}'
 var allowedClientApplications = '"${teamsMobileOrDesktopAppClientId}","${teamsWebAppClientId}","${officeWebAppClientId1}","${officeWebAppClientId2}","${outlookDesktopAppClientId}","${outlookWebAppClientId}"'
 
-// Azure Storage that hosts your static web site
-resource storage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
-  kind: 'StorageV2'
-  location: location
-  name: storageName
-  properties: {
-    supportsHttpsTrafficOnly: true
-  }
-  sku: {
-    name: storageSKU
+module acr 'containerRegistry.bicep' = {
+  name: 'acr'
+  params: {
+    containerRegistryName: resourceBaseName
   }
 }
 
-var siteDomain = replace(replace(storage.properties.primaryEndpoints.web, 'https://', ''), '/', '')
-var tabEndpoint = 'https://${siteDomain}'
-var aadApplicationIdUri = 'api://${siteDomain}/${aadAppClientId}'
-
-// Compute resources for Azure Functions
-resource serverfarms 'Microsoft.Web/serverfarms@2021-02-01' = {
-  name: serverfarmsName
-  kind: 'functionapp'
+resource containerAppEnv 'Microsoft.App/managedEnvironments@2023-05-01' = {
+  name: resourceBaseName
   location: location
-  sku: {
-    name: functionAppSKU // You can follow https://aka.ms/teamsfx-bicep-add-param-tutorial to add functionServerfarmsSku property to provisionParameters to override the default value "Y1".
-  }
   properties: {}
 }
 
-// Azure Functions that hosts your function code
-resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
-  name: functionAppName
-  kind: 'functionapp'
+resource frontendApp 'Microsoft.App/containerApps@2023-05-01' = {
+  name: '${resourceBaseName}-frontend'
   location: location
   properties: {
-    serverFarmId: serverfarms.id
-    httpsOnly: true
-    siteConfig: {
-      alwaysOn: true
-      cors: {
-        allowedOrigins: [ tabEndpoint ]
+    managedEnvironmentId: containerAppEnv.id
+    configuration: {
+      ingress: {
+        external: true
+        targetPort: 80
+        allowInsecure: false
+        traffic: [
+          {
+            latestRevision: true
+            weight: 100
+          }
+        ]
       }
-      appSettings: [
+    }
+    template: {
+      containers: [
         {
-          name: ' AzureWebJobsDashboard'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${functionStorage.name};AccountKey=${listKeys(functionStorage.id, functionStorage.apiVersion).keys[0].value};EndpointSuffix=${environment().suffixes.storage}' // Azure Functions internal setting
-        }
-        {
-          name: 'AzureWebJobsStorage'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${functionStorage.name};AccountKey=${listKeys(functionStorage.id, functionStorage.apiVersion).keys[0].value};EndpointSuffix=${environment().suffixes.storage}' // Azure Functions internal setting
-        }
-        {
-          name: 'FUNCTIONS_EXTENSION_VERSION'
-          value: '~4' // Use Azure Functions runtime v4
-        }
-        {
-          name: 'FUNCTIONS_WORKER_RUNTIME'
-          value: 'node' // Set runtime to NodeJS
-        }
-        {
-          name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storage.name};AccountKey=${listKeys(storage.id, storage.apiVersion).keys[0].value};EndpointSuffix=${environment().suffixes.storage}' // Azure Functions internal setting
-        }
-        {
-          name: 'WEBSITE_RUN_FROM_PACKAGE'
-          value: '1' // Run Azure Functions from a package file
-        }
-        {
-          name: 'WEBSITE_NODE_DEFAULT_VERSION'
-          value: '~18' // Set NodeJS version to 18.x
-        }
-        {
-          name: 'ALLOWED_APP_IDS'
-          value: authorizedClientApplicationIds
-        }
-        {
-          name: 'M365_CLIENT_ID'
-          value: aadAppClientId
-        }
-        {
-          name: 'M365_CLIENT_SECRET'
-          value: aadAppClientSecret
-        }
-        {
-          name: 'M365_TENANT_ID'
-          value: aadAppTenantId
-        }
-        {
-          name: 'M365_AUTHORITY_HOST'
-          value: aadAppOauthAuthorityHost
-        }
-        {
-          name: 'M365_APPLICATION_ID_URI'
-          value: aadApplicationIdUri
-        }
-        {
-          name: 'WEBSITE_AUTH_AAD_ACL'
-          value: '{"allowed_client_applications": [${allowedClientApplications}]}'
+          name: resourceBaseName
+          image: containerImage
+          resources: {
+            cpu: json('.25')
+            memory: '.5Gi'
+          }
         }
       ]
-      ftpsState: 'FtpsOnly'
+      scale: {
+        minReplicas: minReplica
+        maxReplicas: maxReplica
+        rules: [
+          {
+            name: 'http-requests'
+            http: {
+              metadata: {
+                concurrentRequests: '10'
+              }
+            }
+          }
+        ]
+      }
     }
   }
 }
-var apiEndpoint = 'https://${functionApp.properties.defaultHostName}'
 
-resource authSettings 'Microsoft.Web/sites/config@2021-02-01' = {
-  name: '${functionApp.name}/authsettings'
-  properties: {
-    enabled: true
-    defaultProvider: 'AzureActiveDirectory'
-    clientId: aadAppClientId
-    issuer: '${oauthAuthority}/v2.0'
-    allowedAudiences: [
-      aadAppClientId
-      aadApplicationIdUri
-    ]
-  }
-}
+var siteDomain = frontendApp.properties.configuration.ingress.fqdn
 
-// Azure Storage is required when creating Azure Functions instance
-resource functionStorage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
-  name: functionStorageName
-  kind: 'StorageV2'
+resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
+  name: resourceBaseName
   location: location
-  sku: {
-    name: functionStorageSKU// You can follow https://aka.ms/teamsfx-bicep-add-param-tutorial to add functionStorageSKUproperty to provisionParameters to override the default value "Standard_LRS".
+  properties: {
+    managedEnvironmentId: containerAppEnv.id
+    configuration: {
+      secrets: [
+        {
+          name: 'allowed-app-ids'
+          value: authorizedClientApplicationIds
+        }
+        {
+          name: 'm365-client-id'
+          value: aadAppClientId
+        }
+        {
+          name: 'm365-client-secret'
+          value: aadAppClientSecret
+        }
+        {
+          name: 'm365-tenant-id'
+          value: aadAppTenantId
+        }
+        {
+          name: 'm365-oauth-authority-host'
+          value: aadAppOauthAuthorityHost
+        }
+        {
+          name: 'website-auth-aad-acl'
+          value: '{"allowed_client_applications": [${allowedClientApplications}]}'
+        }
+      ]
+      ingress: {
+        external: true
+        targetPort: 80
+        allowInsecure: false
+        traffic: [
+          {
+            latestRevision: true
+            weight: 100
+          }
+        ]
+        corsPolicy: {
+          allowCredentials: true
+          allowedOrigins: [
+            siteDomain
+          ]
+        }
+      }
+    }
+    template: {
+      containers: [
+        {
+          name: resourceBaseName
+          image: containerImage
+          resources: {
+            cpu: json('.25')
+            memory: '.5Gi'
+          }
+        }
+      ]
+      scale: {
+        minReplicas: minReplica
+        maxReplicas: maxReplica
+        rules: [
+          {
+            name: 'http-requests'
+            http: {
+              metadata: {
+                concurrentRequests: '10'
+              }
+            }
+          }
+        ]
+      }
+    }
   }
 }
 
 // The output will be persisted in .env.{envName}. Visit https://aka.ms/teamsfx-actions/arm-deploy for more details.
-output TAB_AZURE_STORAGE_RESOURCE_ID string = storage.id // used in deploy stage
+output REGISTRY_NAME string = acr.outputs.name
+output API_FUNCTION_ENDPOINT string = 'https://${containerApp.properties.configuration.ingress.fqdn}'
+output BACKEND_APP_NAME string = containerApp.name
+output FRONTEND_APP_NAME string = frontendApp.name
 output TAB_DOMAIN string = siteDomain
-output TAB_ENDPOINT string = tabEndpoint
-output API_FUNCTION_ENDPOINT string = apiEndpoint
-output API_FUNCTION_RESOURCE_ID string = functionApp.id
+output TAB_ENDPOINT string = 'https://${siteDomain}'
