@@ -61,8 +61,8 @@ export class ShowUserProfile implements SSOCommand {
           {
             type: "Image",
             url: imageUri,
-            size: "Stretch",
-            horizontalAlignment: "Center"
+            size: "Large",
+            horizontalAlignment: "Left"
           }
         ],
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
