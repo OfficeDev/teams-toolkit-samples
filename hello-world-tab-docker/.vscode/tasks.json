@@ -42,13 +42,13 @@
     {
       "label": "Stop Teams App in Docker",
       "type": "shell",
-      "command": "docker compose -f ${workspaceFolder}/compose-debug.yaml down",
+      "command": "docker compose -f ${workspaceFolder}/compose-debug.yml down",
       "isBackground": true
     },
     {
       "type": "shell",
       "label": "docker-compose-up",
-      "command": "docker compose -f ${workspaceFolder}/compose-debug.yaml up -d",
+      "command": "docker compose -f ${workspaceFolder}/compose-debug.yml up -d",
       "isBackground": true,
       "options": {
         "env": {
