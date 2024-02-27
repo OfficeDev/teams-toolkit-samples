@@ -25,7 +25,7 @@
       "dependsOn": [
         "Validate Docker prerequisites",
         "Provision",
-        "docker-compose-up"
+        "Start Application in Docker"
       ],
       "dependsOrder": "sequence"
     },
@@ -40,14 +40,14 @@
       }
     },
     {
-      "label": "Stop Teams App in Docker",
+      "label": "Stop Application in Docker",
       "type": "shell",
       "command": "docker compose -f ${workspaceFolder}/docker-compose.yml down",
       "isBackground": true
     },
     {
+      "label": "Start Application in Docker",
       "type": "shell",
-      "label": "docker-compose-up",
       "command": "docker compose -f ${workspaceFolder}/docker-compose.yml up -d",
       "isBackground": true,
       "options": {

@@ -32,7 +32,7 @@
         "group": "all",
         "hidden": true
       },
-      "postDebugTask": "Stop Teams App in Docker",
+      "postDebugTask": "Stop Application in Docker",
       "internalConsoleOptions": "neverOpen"
     },
     {
@@ -44,6 +44,7 @@
         "group": "all",
         "hidden": true
       },
+      "postDebugTask": "Stop Application in Docker",
       "internalConsoleOptions": "neverOpen"
     }
   ],
