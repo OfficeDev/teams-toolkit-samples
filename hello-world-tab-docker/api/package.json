@@ -2,8 +2,9 @@
   "name": "teamsfx-template-api",
   "version": "1.0.0",
   "engines": {
-    "node": "16 || 18"
+    "node": "18 || 20"
   },
+  "main": "dist/src/functions/*.js",
   "scripts": {
     "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run dev",
     "dev": "func start --typescript --language-worker=\"--inspect=9229\" --port \"7071\" --cors \"*\"",
@@ -14,7 +15,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@azure/functions": "^1.2.2",
+    "@azure/functions": "^4.1.0",
     "@microsoft/teamsfx": "^2.0.0",
     "@microsoft/microsoft-graph-client": "^3.0.5",
     "isomorphic-fetch": "^3.0.0"
