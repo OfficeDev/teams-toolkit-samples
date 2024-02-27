@@ -79,14 +79,16 @@ deploy:
   - uses: script
     name: set environment variables
     with:
-      run: echo "::set-teamsfx-env TAB_CONTAINER_IMAGE=${{AZURE_CONTAINER_REGISTRY_SERVER}}/hello_world_tab" &&
-        echo "::set-teamsfx-env API_CONTAINER_IMAGE=${{AZURE_CONTAINER_REGISTRY_SERVER}}/hello_world_api"
+      run: echo "::set-teamsfx-env
+        TAB_CONTAINER_IMAGE=${{AZURE_CONTAINER_REGISTRY_SERVER}}/hello_world_tab"
+        && echo "::set-teamsfx-env
+        API_CONTAINER_IMAGE=${{AZURE_CONTAINER_REGISTRY_SERVER}}/hello_world_api"
 
   - uses: script
     name: build container images
     with:
-      run: docker build -t ${{TAB_CONTAINER_IMAGE}} . &&
-        docker build -t ${{API_CONTAINER_IMAGE}} ./api
+      run: docker build -t ${{TAB_CONTAINER_IMAGE}} . && docker build -t
+        ${{API_CONTAINER_IMAGE}} ./api
 
   - uses: script
     name: login azure container registry
@@ -96,26 +98,28 @@ deploy:
   - uses: script
     name: push container images
     with:
-      run: docker push ${{TAB_CONTAINER_IMAGE}} && docker push ${{API_CONTAINER_IMAGE}}
+      run: docker push ${{TAB_CONTAINER_IMAGE}} && docker push
+        ${{API_CONTAINER_IMAGE}}
 
   - uses: script
     name: deploy tab container image
     with:
-      run: az containerapp up -n ${{FRONTEND_APP_NAME}} --image ${{TAB_CONTAINER_IMAGE}}
-      
+      run: az containerapp up -n ${{FRONTEND_APP_NAME}} --image
+        ${{TAB_CONTAINER_IMAGE}}
+
   - uses: script
     name: deploy api container image
     with:
-      run: az containerapp up -n ${{BACKEND_APP_NAME}} --image ${{API_CONTAINER_IMAGE}}
-        --env-vars "M365_CLIENT_ID=secretref:m365-client-id"
+      run: az containerapp up -n ${{BACKEND_APP_NAME}} --image
+        ${{API_CONTAINER_IMAGE}} --env-vars
+        "M365_CLIENT_ID=secretref:m365-client-id"
         "M365_CLIENT_SECRET=secretref:m365-client-secret"
         "M365_TENANT_ID=secretref:m365-tenant-id"
         "M365_AUTHORITY_HOST=secretref:m365-oauth-authority-host"
         "WEBSITE_AUTH_AAD_ACL=secretref:website-auth-aad-acl"
         "ALLOWED_APP_IDS=secretref:allowed-app-ids"
         "CORS_ALLOWED_ORIGINS=[\"${{TAB_ENDPOINT}}\"]"
-        "CORS_SUPPORT_CREDENTIALS=true"
-        "CONTAINER_NAME=api"
+        "CORS_SUPPORT_CREDENTIALS=true" "CONTAINER_NAME=api"
 
 publish:
   # Validate using manifest schema
@@ -146,4 +150,3 @@ publish:
     # the specified environment variable(s).
     writeToEnvironmentFile:
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
-projectId: ec44a81a-8784-49bc-95b5-bcbd2e1cd2e5

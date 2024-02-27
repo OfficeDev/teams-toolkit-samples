@@ -4,18 +4,34 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: production
-    image: $DOCKER_REGISTRY/hello-world-tab-frontend
-    container_name: hello-world-tab-frontend
+      target: development
+    ports:
+      - 53000:53000
+    volumes:
+      - ./src:/app/src
+      - ~/.fx/certificate:/app/.fx/certificate
+    env_file:
+      - .localConfigs
     environment:
-      - "REACT_APP_CLIENT_ID=6427811e-d1a1-4ff9-834f-e99d10e551b3"
-      - "REACT_APP_START_LOGIN_PAGE_URL=https://helloworld650f48.proudcliff-bba63f36.centralus.azurecontainerapps.io/auth-start.html"
-      - "REACT_APP_FUNC_NAME=getUserProfile"
-      - "REACT_APP_FUNC_ENDPOINT=https://zhijieapi.internal.proudcliff-bba63f36.centralus.azurecontainerapps.io"
-      - "PORT=80"
+      - SSL_CRT_FILE=/app/.fx/certificate/localhost.crt
+      - SSL_KEY_FILE=/app/.fx/certificate/localhost.key
+      - REACT_APP_FUNC_ENDPOINT=http://localhost:7071
+      - WATCHPACK_POLLING=true
   api:
     build:
       context: ./api
       dockerfile: Dockerfile
-    image: $DOCKER_REGISTRY/hello-world-tab-api
-    container_name: hello-world-tab-api
+    ports:
+      - 7071:80
+    volumes:
+      - ./api:/home/site/wwwroot
+      - /home/site/wwwroot/node_modules
+      - /home/site/wwwroot/bin
+      - /home/site/wwwroot/dist
+    env_file:
+      - api/.localConfigs
+    environment:
+      - CORS_ALLOWED_ORIGINS=["https://localhost:53000"]
+      - CORS_SUPPORT_CREDENTIALS=true
+      - CONTAINER_NAME=api # Enable CORS
+      # - FUNCTIONS_ENABLE_CORS_CONFIGURATION=true # Enable CORS, requires azure-functions-host 4.31.0 or later
