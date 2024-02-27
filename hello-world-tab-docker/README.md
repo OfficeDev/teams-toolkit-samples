@@ -5,7 +5,7 @@ languages:
 products:
 - office-teams
 name: Containerized Tab App with Azure Backend
-urlFragment: officedev-teamsfx-samples-tab-hello-world-tab-with-backend-docker
+urlFragment: officedev-teamsfx-samples-tab-hello-world-tab-docker
 description: A containerized Hello World app of Microsoft Teams Tab app which has a backend service.
 extensions:
   createdDate: "2024-02-27"
