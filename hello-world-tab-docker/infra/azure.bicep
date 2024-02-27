@@ -45,7 +45,7 @@ resource containerAppEnv 'Microsoft.App/managedEnvironments@2023-05-01' = {
 }
 
 resource frontendApp 'Microsoft.App/containerApps@2023-05-01' = {
-  name: '${resourceBaseName}-frontend'
+  name: '${resourceBaseName}-tab'
   location: location
   properties: {
     managedEnvironmentId: containerAppEnv.id
@@ -65,7 +65,7 @@ resource frontendApp 'Microsoft.App/containerApps@2023-05-01' = {
     template: {
       containers: [
         {
-          name: resourceBaseName
+          name: '${resourceBaseName}-tab'
           image: containerImage
           resources: {
             cpu: json('.25')
@@ -93,8 +93,8 @@ resource frontendApp 'Microsoft.App/containerApps@2023-05-01' = {
 
 var siteDomain = frontendApp.properties.configuration.ingress.fqdn
 
-resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
-  name: resourceBaseName
+resource backendApp 'Microsoft.App/containerApps@2023-05-01' = {
+  name: '${resourceBaseName}-api'
   location: location
   properties: {
     managedEnvironmentId: containerAppEnv.id
@@ -135,18 +135,12 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
             weight: 100
           }
         ]
-        corsPolicy: {
-          allowCredentials: true
-          allowedOrigins: [
-            siteDomain
-          ]
-        }
       }
     }
     template: {
       containers: [
         {
-          name: resourceBaseName
+          name: '${resourceBaseName}-api'
           image: containerImage
           resources: {
             cpu: json('.25')
@@ -173,9 +167,10 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
 }
 
 // The output will be persisted in .env.{envName}. Visit https://aka.ms/teamsfx-actions/arm-deploy for more details.
-output REGISTRY_NAME string = acr.outputs.name
-output API_FUNCTION_ENDPOINT string = 'https://${containerApp.properties.configuration.ingress.fqdn}'
-output BACKEND_APP_NAME string = containerApp.name
+output AZURE_CONTAINER_REGISTRY_SERVER string = acr.outputs.loginServer
+output AZURE_CONTAINER_REGISTRY_NAME string = acr.outputs.name
+output API_FUNCTION_ENDPOINT string = 'https://${backendApp.properties.configuration.ingress.fqdn}'
+output BACKEND_APP_NAME string = backendApp.name
 output FRONTEND_APP_NAME string = frontendApp.name
 output TAB_DOMAIN string = siteDomain
 output TAB_ENDPOINT string = 'https://${siteDomain}'

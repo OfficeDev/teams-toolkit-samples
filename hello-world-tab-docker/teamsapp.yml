@@ -79,49 +79,35 @@ deploy:
   - uses: script
     name: set environment variables
     with:
-      run: echo "::set-teamsfx-env
-        TAB_CONTAINER_IMAGE=${{REGISTRY_NAME}}.azurecr.io/hello_world_tab"
+      run: echo "::set-teamsfx-env TAB_CONTAINER_IMAGE=${{AZURE_CONTAINER_REGISTRY_SERVER}}/hello_world_tab" &&
+        echo "::set-teamsfx-env API_CONTAINER_IMAGE=${{AZURE_CONTAINER_REGISTRY_SERVER}}/hello_world_api"
 
   - uses: script
-    name: set environment variables
+    name: build container images
     with:
-      run: echo "::set-teamsfx-env
-        API_CONTAINER_IMAGE=${{REGISTRY_NAME}}.azurecr.io/hello_world_api"
-
-  - uses: script
-    name: build container image
-    with:
-      run: docker build -t ${{TAB_CONTAINER_IMAGE}} .
-
-  - uses: script
-    name: build container image
-    with:
-      run: docker build -t ${{API_CONTAINER_IMAGE}} ./api
+      run: docker build -t ${{TAB_CONTAINER_IMAGE}} . &&
+        docker build -t ${{API_CONTAINER_IMAGE}} ./api
 
   - uses: script
     name: login azure container registry
     with:
-      run: az acr login -n ${{REGISTRY_NAME}}
+      run: az acr login -n ${{AZURE_CONTAINER_REGISTRY_NAME}}
 
   - uses: script
-    name: push container image
+    name: push container images
     with:
-      run: docker push ${{TAB_CONTAINER_IMAGE}}
+      run: docker push ${{TAB_CONTAINER_IMAGE}} && docker push ${{API_CONTAINER_IMAGE}}
 
   - uses: script
-    name: push container image
-    with:
-      run: docker push ${{API_CONTAINER_IMAGE}}
-
-  - uses: script
-    name: deploy container image
+    name: deploy tab container image
     with:
       run: az containerapp up -n ${{FRONTEND_APP_NAME}} --image ${{TAB_CONTAINER_IMAGE}}
       
   - uses: script
-    name: deploy container image
+    name: deploy api container image
     with:
-      run: az containerapp up -n ${{BACKEND_APP_NAME}} --image ${{API_CONTAINER_IMAGE}} --env-vars "M365_CLIENT_ID=secretref:m365-client-id"
+      run: az containerapp up -n ${{BACKEND_APP_NAME}} --image ${{API_CONTAINER_IMAGE}}
+        --env-vars "M365_CLIENT_ID=secretref:m365-client-id"
         "M365_CLIENT_SECRET=secretref:m365-client-secret"
         "M365_TENANT_ID=secretref:m365-tenant-id"
         "M365_AUTHORITY_HOST=secretref:m365-oauth-authority-host"
