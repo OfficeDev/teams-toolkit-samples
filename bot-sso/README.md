@@ -4,7 +4,7 @@ A bot, chatbot, or conversational bot is an app that responds to simple commands
 
 This is a sample chatbot application demonstrating Single Sign-on using `botbuilder` and Teams Framework that can respond to a `show` message.
 
-![Bot SSO Overview](images/bot-sso.gif)
+![Bot SSO Overview](assets/sampleDemo.gif)
 
 ## This sample illustrates
 - Use Teams Toolkit to create a Teams bot app.
@@ -55,6 +55,7 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
 |---|---|---|
 |Apr 19, 2022| IvanJobs | update to support Teams Toolkit v4.0.0|
 |Dec 7, 2022| yukun-dong | update to support Teams Toolkit v5.0.0|
+|Feb 22, 2024| yukun-dong | update card to adaptive card|
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
