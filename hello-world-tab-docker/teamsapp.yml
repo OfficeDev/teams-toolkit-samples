@@ -117,7 +117,6 @@ deploy:
         "M365_TENANT_ID=secretref:m365-tenant-id"
         "M365_AUTHORITY_HOST=secretref:m365-oauth-authority-host"
         "WEBSITE_AUTH_AAD_ACL=secretref:website-auth-aad-acl"
-        "ALLOWED_APP_IDS=secretref:allowed-app-ids"
         "CORS_ALLOWED_ORIGINS=[\"${{TAB_ENDPOINT}}\"]"
         "CORS_SUPPORT_CREDENTIALS=true" "CONTAINER_NAME=api"
 

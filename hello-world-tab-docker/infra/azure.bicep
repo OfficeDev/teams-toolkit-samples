@@ -28,8 +28,7 @@ var officeWebAppClientId1 = '4345a7b9-9a63-4910-a426-35363201d503'
 var officeWebAppClientId2 = '4765445b-32c6-49b0-83e6-1d93765276ca'
 var outlookDesktopAppClientId = 'd3590ed6-52b3-4102-aeff-aad2292ab01c'
 var outlookWebAppClientId = '00000002-0000-0ff1-ce00-000000000000'
-var authorizedClientApplicationIds = '${teamsMobileOrDesktopAppClientId};${teamsWebAppClientId};${officeWebAppClientId1};${officeWebAppClientId2};${outlookDesktopAppClientId};${outlookWebAppClientId}'
-var allowedClientApplications = '"${teamsMobileOrDesktopAppClientId}","${teamsWebAppClientId}","${officeWebAppClientId1}","${officeWebAppClientId2}","${outlookDesktopAppClientId}","${outlookWebAppClientId}"'
+var allowedClientApplications = '"${aadAppClientId}","${teamsMobileOrDesktopAppClientId}","${teamsWebAppClientId}","${officeWebAppClientId1}","${officeWebAppClientId2}","${outlookDesktopAppClientId}","${outlookWebAppClientId}"'
 
 module acr 'containerRegistry.bicep' = {
   name: 'acr'
@@ -92,6 +91,7 @@ resource frontendApp 'Microsoft.App/containerApps@2023-05-01' = {
 }
 
 var siteDomain = frontendApp.properties.configuration.ingress.fqdn
+var aadApplicationIdUri = 'api://${siteDomain}/${aadAppClientId}'
 
 resource backendApp 'Microsoft.App/containerApps@2023-05-01' = {
   name: '${resourceBaseName}-api'
@@ -100,10 +100,6 @@ resource backendApp 'Microsoft.App/containerApps@2023-05-01' = {
     managedEnvironmentId: containerAppEnv.id
     configuration: {
       secrets: [
-        {
-          name: 'allowed-app-ids'
-          value: authorizedClientApplicationIds
-        }
         {
           name: 'm365-client-id'
           value: aadAppClientId
@@ -135,6 +131,12 @@ resource backendApp 'Microsoft.App/containerApps@2023-05-01' = {
             weight: 100
           }
         ]
+        corsPolicy: {
+          allowCredentials: true
+          allowedOrigins: [
+            'https://${siteDomain}'
+          ]
+        }
       }
     }
     template: {
@@ -161,6 +163,31 @@ resource backendApp 'Microsoft.App/containerApps@2023-05-01' = {
             }
           }
         ]
+      }
+    }
+  }
+}
+
+resource authSettings 'Microsoft.App/containerApps/authConfigs@2023-05-01' = {
+  name: 'current'
+  parent: backendApp
+  properties: {
+    platform: {
+      enabled: true
+    }
+    identityProviders: {
+      azureActiveDirectory: {
+        enabled: true
+        registration: {
+          clientId: aadAppClientId
+          openIdIssuer: '${oauthAuthority}/v2.0'
+        }
+        validation: {
+          allowedAudiences: [
+            aadAppClientId
+            aadApplicationIdUri
+          ]
+        }
       }
     }
   }
