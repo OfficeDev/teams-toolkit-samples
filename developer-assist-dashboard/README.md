@@ -112,8 +112,8 @@ This widget displays Planner tasks including the title of the task. This widget 
 
 | Date         | Author                          | Comments                               |
 | ------------ | ------------------------------- | -------------------------------------- |
-| Mar 14, 2023 | Ayca, Huihui, Hui, Frank, Ellie | onboard                                |
-| Mar 31, 2023 | Hui                             | update to support Teams Toolkit V5.0.0 |
+| Mar 14, 2023 | Ayca, Huihui, Hui, Frank, Ellie | Onboard                                |
+| Mar 31, 2023 | Hui                             | Update to support Teams Toolkit V5.0.0 |
 | Feb 27, 2024 | Hui                             | Upgrade Azure Function V4              |
 
 ## Feedback
