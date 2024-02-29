@@ -17,7 +17,7 @@ This is a dashboard sample based on demo sample data that shows you how to creat
 
 ## Minimal path to awesome
 
-### Deploy the app to Azure
+### Deploy the app
 
 >Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try sample with TeamsFx CLI](cli.md)
 
