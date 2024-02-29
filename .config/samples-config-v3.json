@@ -27,7 +27,7 @@
             "title": "Tab App with Azure Backend",
             "shortId": "helloworld-backend",
             "shortDescription": "A Hello World app of Microsoft Teams Tab app which has a backend service",
-            "fullDescription": "This is a Hello World app of Microsoft Teams Tab app which accomplishes very simple function like single-sign on. You can run this app locally or deploy it to Microsoft Azure. This app has a Tab frontend and a backend service using Azure Functions.",
+            "fullDescription": "This project is a Microsoft Teams Tab application that allows users to interact with Microsoft 365 content. It utilizes Azure Storage for hosting and Azure Functions for implementing server-side behaviors. The TeamsFx SDK is employed for user authentication and server-side operations. The application is configured using environment variables and Azure Bicep for resource deployment. The frontend, a React app, is loaded inside a custom Teams tab, which communicates with the Azure Functions backend via HTTP requests. The application provides a seamless user experience by using Single Sign-On (SSO) for user authentication.",
             "types": [
                 "Tab"
             ],
@@ -48,7 +48,7 @@
             "onboardDate": "2021-11-30",
             "title": "Contact Exporter using Graph Toolkit",
             "shortDescription": "Contact Exporter app of Microsoft Teams Tab app.",
-            "fullDescription": "Contact Exporter app can export your teams contact info to Excel files, and it is using Microsoft Graph Toolkit as UI component. This app only has a Tab frontend.",
+            "fullDescription": "The project is a Microsoft Teams application that uses the React framework for its user interface. It leverages Azure Active Directory for user authentication and Azure Storage for deployment. The application is configured to run locally with environment variables set for development. The Teams app is created and updated using YAML configuration files. The application also uses the Microsoft Graph Toolkit for functionality related to Microsoft Graph API. The user scenario likely involves interacting with the application within the Teams environment, using the tabs and other UI components provided.",
             "types": [
                 "Tab"
             ],
@@ -263,7 +263,7 @@
             "onboardDate": "2022-09-20",
             "title": "Org User Search Connector",
             "shortDescription": "Query Org User with Message Extension SSO",
-            "fullDescription": "This is a simple search-based Message Extension app demonstrating how to integrate with Bot Framework SDK, TeamsFx SDK and Microsoft Graph API to implement a feature that queries organization's user with single sign on (SSO) capability.",
+            "fullDescription": "This project is a Microsoft Teams bot application that interacts with users within the Teams environment. It uses Azure cloud services for deployment and hosting. The bot's behavior is defined using environment variables for configuration. The application includes a manifest file for Teams app packaging and supports a web-based authentication flow. The project also includes documentation for usage and deployment. The bot application is designed to query organization users with message extension and Single Sign-On (SSO). It leverages Microsoft Graph Client for data access and manipulation. The application is designed to be deployed on Azure and uses Azure Active Directory for authentication.",
             "types": [
                 "Message Extension"
             ],
@@ -327,7 +327,7 @@
             "onboardDate": "2022-07-27",
             "title": "One Productivity Hub using Graph Toolkit",
             "shortDescription": "Microsoft Teams tab with SSO to view calendar events, to-do tasks and file folders.",
-            "fullDescription": "One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using Microsoft Graph Toolkit components and TeamsFx provider. You can run this app locally or deploy it to Microsoft Azure.",
+            "fullDescription": "This Teams application, named \"One Productivity Hub\", serves as a central hub within Microsoft Teams where users can access various resources and tools. It provides links to developer questions, development videos from Microsoft and the community, and other productivity tools. The application uses techniques such as Single Sign-On (SSO) for user authentication and Microsoft Graph Toolkit for accessing Microsoft Graph APIs. It is built using Fluent UI for the user interface, React Router for navigation, and Microsoft Teams JavaScript client SDK for Teams-specific functionalities. The application is hosted on Azure, with infrastructure as code defined using Bicep and parameters managed with JSON.",
             "types": [
                 "Tab"
             ],
@@ -482,7 +482,7 @@
             "onboardDate": "2023-06-25",
             "title": "Teams Chef Bot",
             "shortDescription": "Demonstrates how to build bot with Microsoft Teams AI Library.",
-            "fullDescription": "This is a conversational bot for Microsoft Teams that impersonates a Chef to help you you cook Teams apps.",
+            "fullDescription": "This project, Teams Chef, is a conversational bot designed to guide junior developers in Microsoft Teams app development. It uses the Teams AI Library and the gpt-3.5-turbo model to facilitate interactions. The bot leverages Retrieval Augmented Generation (RAG) and a local Vector Database, Vectra, for contextual information retrieval. Semantic Search is employed to find relevant information from its index, which includes Getting Started docs and the source code for the Teams AI Library. The bot is configured for Azure deployment, with infrastructure defined using Bicep.",
             "types": [
                 "Bot"
             ],
@@ -574,7 +574,7 @@
             "onboardDate": "2023-10-17",
             "title": "Large Scale Notification Bot",
             "shortDescription": "This sample demonstrates the architecture of a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant.",
-            "fullDescription": "This sample demonstrates the architecture of a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant. This app relies on Azure services such as Azure Durable Functions and Service Bus Queue to handle high volume and speed of notification messaging.",
+            "fullDescription": "This project is a large-scale notification system for Microsoft Teams. It uses Azure Functions for serverless computing and Azure Service Bus for message handling. The system leverages Azure Table Storage for data persistence and Azure Bot Service for interaction with Teams. It also uses Bicep for infrastructure management. The project is structured to handle environment-specific configurations and includes scripts for various tasks like data mocking and app installation. The system is designed to handle large volumes of notifications efficiently and reliably.",
             "types": [
               "Bot"
             ],
@@ -597,7 +597,7 @@
             "onboardDate": "2023-11-07",
             "title": "Graph Connector Bot",
             "shortDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.",
-            "fullDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.",
+            "fullDescription": "This project is a Graph Connector Bot for Microsoft Teams. It uses Azure Bot Service and Azure Active Directory for bot registration and authentication. The bot leverages Adaptive Cards for interactive messaging. The project is configured with Azure Resource Manager templates for infrastructure setup. The Teams app package is built and validated using TeamsFx actions, and the app is published to the Teams Admin Center for review and approval. The project uses environment variables for configuration and supports multiple environments.",
             "types": [
               "Bot"
             ],
@@ -774,7 +774,7 @@
             "onboardDate": "2024-02-20",
             "title": "Containerized Bot App with SSO Enabled",
             "shortDescription": "Creating a Teams Bot with SSO and Microsoft Graph in a Docker Container.",
-            "fullDescription": "This is an containerized Microsoft Teams Bot app demonstrating how to integrate with Bot Framework SDK, TeamsFx SDK, and Graph SDK to implement SSO (Single Sign-On) feature that retrieves profile photos for currently signed-in users. It responds to a show message and leverages the Teams Toolkit to create a Teams bot app. The project also uses Microsoft Graph to fetch user info and pictures in the Teams app, and the TeamsFx SDK to implement SSO for the Teams bot. Docker is used for containerization.",
+            "fullDescription": "This project is a Microsoft Teams bot application that interacts with users in a Teams environment. It uses the Azure Bot Framework for bot functionality and single sign-on (SSO) capabilities. The bot is hosted on Azure, with infrastructure as code (IaC) deployments managed through Azure Bicep files. Docker is used for containerization, and the application's behavior is controlled by environment variables. The Teams app package is used for distribution. The bot's source code includes a main entry point and various command implementations. The project also includes instructions for running the bot locally and deploying it to Azure.",
             "types": [
               "Bot"
             ],
