@@ -42,7 +42,7 @@ Debug the app with Teams workbench
 ![debug](images/localdebug.png)
 3. You should see the app running in your Teams.
 ![localdebug-preview](images/localdebug-preview.png)
-### Deploy the app to Azure
+### Deploy the app
 >Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try sample with TeamsFx CLI](cli.md)
 
 1. Clone the repo to your local workspace or directly download the source code.
