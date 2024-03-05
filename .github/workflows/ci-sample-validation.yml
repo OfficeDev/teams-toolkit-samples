@@ -14,6 +14,8 @@ on:
 jobs:
   sample-validation:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
     steps:
       - name: Checkout Pull Request
         if: ${{ github.event_name == 'pull_request' }}
