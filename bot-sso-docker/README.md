@@ -91,18 +91,25 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
 
 ## Deploying on Azure Kubernetes Service
 
-You can deploy a containerized Teams App on a Kubernetes cluster. This assumes that you have an existing Azure Kubernetes Service connected to your Azure Container Registry, which hosts your container images. If you do not have one, please refer to this tutorial to create one: [AKS Tutorials](https://learn.microsoft.com/azure/aks/tutorial-kubernetes-prepare-app).
+You can deploy a containerized Teams App on a Kubernetes cluster. This assumes that you have an existing Azure Kubernetes Service connected to your Azure Container Registry, which hosts your container images. If you do not have one, please refer to this tutorial to create one: [AKS Tutorials](https://learn.microsoft.com/azure/aks/learn/quick-kubernetes-deploy-cli).
 
 The following steps are provided as an example:
 
-1. Install dependency for setting up TLS. Refer to [Create an ingress controller](https://learn.microsoft.com/azure/aks/ingress-basic?tabs=azure-cli) and [Use TLS with Let's Encrypt certificates](https://learn.microsoft.com/azure/aks/ingress-tls?tabs=azure-cli#use-tls-with-lets-encrypt-certificates).
+1. Install ingress controller and certificates manager for setting up TLS. Refer to [Create an ingress controller](https://learn.microsoft.com/azure/aks/ingress-basic?tabs=azure-cli) and [Use TLS with Let's Encrypt certificates](https://learn.microsoft.com/azure/aks/ingress-tls?tabs=azure-cli#use-tls-with-lets-encrypt-certificates).
     ```
+    NAMESPACE=ingress-basic
+
+    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+    helm repo update
     helm install ingress-nginx ingress-nginx/ingress-nginx --create-namespace --namespace $NAMESPACE \
         --set controller.nodeSelector."kubernetes\.io/os"=linux  \
         --set defaultBackend.nodeSelector."kubernetes\.io/os"=linux  \
         --set controller.healthStatus=true \
         --set controller.service.externalTrafficPolicy=Local \
-        --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz  \
+        --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz 
+
+    helm repo add jetstack https://charts.jetstack.io
+    helm repo update
     helm install cert-manager jetstack/cert-manager --namespace $NAMESPACE --set installCRDs=true --set nodeSelector."kubernetes\.io/os"=linux
     ```
 1. Update the DNS for the ingress public IP.

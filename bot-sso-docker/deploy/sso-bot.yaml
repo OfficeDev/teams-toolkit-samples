@@ -1,3 +1,6 @@
+# This is a Kubernetes deployment file for deploying the Teams bot.
+# This file is specifically designed for Kubernetes deployments and is not necessary for deployments using Azure Container Apps.
+# If you are deploying your Teams bot using Azure Container Apps, you can ignore this file.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,7 +17,7 @@ spec:
     spec:
       containers:
         - name: sso-bot
-          image: basicbotacr.azurecr.io/sso-bot
+          image: <image>
           ports:
             - containerPort: 80
           imagePullPolicy: Always
