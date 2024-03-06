@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@azure/functions": "^4.3.0",
+    "@azure/functions": "^4.2.0",
     "@microsoft/teamsfx": "^2.3.0",
     "mssql": "^10.0.1"
   },
