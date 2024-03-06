@@ -11,10 +11,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@azure/functions": "^4.2.0",
+    "@azure/functions": "^4.3.0",
     "@microsoft/teamsfx": "^2.0.0",
     "@microsoft/teams-js": "^2.7.1",
-    "@octokit/core": "^4.2.0",
+    "@octokit/core": "^6.0.1",
     "isomorphic-fetch": "^3.0.0"
   },
   "devDependencies": {

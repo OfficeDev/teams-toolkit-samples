@@ -14,7 +14,7 @@
         "start": "npx func start"
     },
     "dependencies": {
-        "@azure/functions": "^1.2.2",
+        "@azure/functions": "^4.3.0",
         "@microsoft/microsoft-graph-client": "^3.0.0",
         "@microsoft/teamsfx": "^2.0.0",
         "csv-parse": "^5.0.4",
