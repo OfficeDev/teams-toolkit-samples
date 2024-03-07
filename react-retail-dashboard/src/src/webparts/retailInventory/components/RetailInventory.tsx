@@ -8,7 +8,7 @@ import { InventoryList } from '../../../components/InventoryList/InventoryList';
 import { SingleProduct } from '../../../components/SingleProduct/SingleProduct';
 
 import { WidgetSize, Dashboard, IWidget } from '@pnp/spfx-controls-react/lib/Dashboard';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
+import { Spinner, SpinnerSize } from '@fluentui/react';
 
 export default class RetailInventory extends React.Component<IRetailInventoryProps, IRetailInventoryState> {
 

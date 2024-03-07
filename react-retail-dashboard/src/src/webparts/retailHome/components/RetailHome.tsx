@@ -5,7 +5,7 @@ import { IRetailHomeProps } from './IRetailHomeProps';
 import { IRetailHomeState } from './IRetailHomeState';
 
 import { WidgetSize, Dashboard, IWidget } from '@pnp/spfx-controls-react/lib/Dashboard';
-import { Spinner, SpinnerSize, initializeIcons } from 'office-ui-fabric-react';
+import { Spinner, SpinnerSize, initializeIcons } from '@fluentui/react';
 import { IconButton } from '@fluentui/react/lib/Button';
 import { IIconProps } from '@fluentui/react';
 
