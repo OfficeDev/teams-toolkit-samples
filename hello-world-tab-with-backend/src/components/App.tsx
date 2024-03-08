@@ -16,6 +16,7 @@ import Tab from "./Tab";
 import TabConfig from "./TabConfig";
 import { TeamsFxContext } from "./Context";
 import config from "./sample/lib/config";
+import "./HookForProxy";
 
 /**
  * The main app which handles the initialization and routing

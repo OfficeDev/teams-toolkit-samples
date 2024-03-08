@@ -32,7 +32,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy:teamsfx": "devproxy -p 54000 --as-system-proxy false -c proxy/graph.json -f 0  --mocks-file proxy/graph-mocks.json --record"
   },
   "eslintConfig": {
     "extends": [

@@ -130,6 +130,117 @@
             "presentation": {
                 "reveal": "silent"
             }
+        },
+        {
+            "label": "Start Teams App Locally with proxy",
+            "dependsOn": [
+                "Validate prerequisites",
+                "Check dev proxy",
+                "Provision",
+                "Deploy",
+                "Start application with proxy",
+                "Start dev proxy"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Check dev proxy",
+            "type": "shell",
+            "command": "node check.js",
+            "options": {
+              "cwd": "${workspaceFolder}/proxy"
+            },
+        },
+        {
+            "label": "Start dev proxy",
+            "type": "shell",
+            "command": "npm run proxy:teamsfx",
+            "isBackground": true,
+            "options": {
+              "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": {
+              "pattern": {
+                "regexp": "^.*$",
+                "file": 1,
+                "location": 1,
+                "message": 1
+              },
+              "background": {
+                "activeOnStart": true,
+                "beginsPattern": ".*",
+                "endsPattern": "^.*(Recording...).*$"
+              }
+            }
+        },
+        {
+            "label": "Start application with proxy",
+            "dependsOn": [
+                "Start frontend with proxy",
+                "Start backend with proxy"
+            ],
+        },
+        {
+            "label": "Start frontend with proxy",
+            "type": "shell",
+            "command": "npm run dev-tab:teamsfx",
+            "isBackground": true,
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "REACT_APP_HOOK_FOR_PROXY": "true"
+                }
+            },
+            "problemMatcher": {
+                "pattern": {
+                    "regexp": "^.*$",
+                    "file": 0,
+                    "location": 1,
+                    "message": 2
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*",
+                    "endsPattern": "Compiled|Failed|compiled|failed"
+                }
+            }
+        },
+        {
+            "label": "Start backend with proxy",
+            "type": "shell",
+            "command": "npm run dev:teamsfx",
+            "isBackground": true,
+            "options": {
+                "cwd": "${workspaceFolder}/api",
+                "env": {
+                    "PATH": "${workspaceFolder}/devTools/func:${env:PATH}",
+                    "HOOK_FOR_PROXY": "true"
+                }
+            },
+            "windows": {
+                "options": {
+                    "env": {
+                        "PATH": "${workspaceFolder}/devTools/func;${env:PATH}"
+                    }
+                }
+            },
+            "problemMatcher": {
+                "pattern": {
+                    "regexp": "^.*$",
+                    "file": 0,
+                    "location": 1,
+                    "message": 2
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^.*(Job host stopped|signaling restart).*$",
+                    "endsPattern": "^.*(Worker process started and initialized|Host lock lease acquired by instance ID).*$"
+                }
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "dependsOn": "Watch backend"
         }
     ]
 }

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/dev-proxy/main/schemas/v0.15.0/rc.schema.json",
+  "plugins": [
+    {
+      "name": "RetryAfterPlugin",
+      "enabled": true,
+      "pluginPath": "~appFolder/plugins/dev-proxy-plugins.dll"
+    },
+    {
+      "name": "GenericRandomErrorPlugin",
+      "enabled": true,
+      "pluginPath": "~appFolder/plugins/dev-proxy-plugins.dll",
+      "configSection": "genericRandomErrorPlugin"
+    },
+    {
+      "name": "MockResponsePlugin",
+      "enabled": true,
+      "pluginPath": "~appFolder/plugins/dev-proxy-plugins.dll",
+      "configSection": "mocksPlugin"
+    }
+  ],
+  "urlsToWatch": [
+    "https://graph.microsoft.com/v1.0/*",
+    "https://graph.microsoft.com/beta/*",
+    "https://graph.microsoft.us/v1.0/*",
+    "https://graph.microsoft.us/beta/*",
+    "https://dod-graph.microsoft.us/v1.0/*",
+    "https://dod-graph.microsoft.us/beta/*",
+    "https://microsoftgraph.chinacloudapi.cn/v1.0/*",
+    "https://microsoftgraph.chinacloudapi.cn/beta/*",
+    "https://*.sharepoint.*/*_api/*",
+    "https://*.sharepoint.*/*_vti_bin/*",
+    "https://*.sharepoint-df.*/*_api/*",
+    "https://*.sharepoint-df.*/*_vti_bin/*"
+  ],
+  "mocksPlugin": {
+    "mocksFile": "responses.json"
+  },
+  "genericRandomErrorPlugin": {
+    "errorsFile": "devproxy-errors.json"
+  },
+  "rate": 50,
+  "labelMode": "text",
+  "logLevel": "information",
+  "newVersionNotification": "stable"
+}

@@ -72,6 +72,11 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 - From TeamsFx CLI:
     1. Run command: `teamsapp preview --env dev`.
 
+### Run the app locally with proxy
+In some scenarios, it is helpful to skip the login and authentication flow and then provide mocked Graph API responses for development and test purpose. This sample provides a new way to debug it with proxy for mocking Graph API responses. You can customize the desired Graph API 
+    1. refer to [Get started with Dev Proxy](https://learn.microsoft.com/en-us/microsoft-cloud/dev/dev-proxy/get-started?tabs=powershell&pivots=client-operating-system-windows) to install devproxy first
+    1. Open the `Run and Debug Activity` Panel and select `Debug in Teams with proxy (Edge)`.
+
 ## Version History
 
 |Date| Author| Comments|
