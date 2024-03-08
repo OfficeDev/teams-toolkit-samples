@@ -19,7 +19,7 @@
     "@microsoft/microsoft-graph-client": "^3.0.1",
     "@microsoft/teamsfx": "^2.0.0",
     "isomorphic-fetch": "^3.0.0",
-    "tedious": "^9.2.3"
+    "tedious": "^17.0.0"
   },
   "devDependencies": {
     "@types/tedious": "^4.0.3",
