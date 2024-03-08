@@ -1,16 +1,17 @@
 ---
 page_type: sample
 languages:
-- typescript
+  - typescript
 products:
-- office-teams
-- office
+  - office-teams
+  - office
 name: Large Scale Notification Bot
 urlFragment: officedev-teamsfx-samples-bot-large-scale-notification
 description: This sample demonstrates a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users.
 extensions:
   createdDate: "2023-10-17"
 ---
+
 # Overview of the Large Scale Notification Bot
 
 This sample demonstrates the architecture of a Teams notfication bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant. This app relies on Azure services such as [Durable Function](https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=csharp-inproc) and [Service Bus Queue](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions#queues) to handle high volume and speed of notification messaging.
@@ -47,6 +48,11 @@ To debug the project, you will need to configure an Azure Service Bus to be used
 4. Visit https://developer.microsoft.com/en-us/graph/graph-explorer. Click "Modify permissions" and consent "TeamsAppInstallation.ReadWriteForUser" & "TeamsAppInstallation.ReadWriteAndConsentForUser".
 5. Copy the "Access token" and paste it to variable `ACCESS_TOKEN` in `script/installAppForUsers.js`.
 6. Run command in project folder: `node script/installAppForUsers.js`.
+   > After publishing your app, it may take several hours before you can retrieve app details using the Graph API, which is utilized in the `installAppForUsers` script. You could check if the app is ready by sending the following request in Graph Explorer, and replace `<TEAMS_APP_ID>` with the actual "App Id" from step 2. If the value of `@odata.count` in the response is equal to 1, you are good to run the script.
+   >
+   > ```
+   > GET https://graph.microsoft.com/v1.0/appCatalogs/teamsApps?$filter=id eq '<TEAMS_APP_ID>'
+   > ```
 7. Check the provisioned Azure Storage Account Table `installation` for installation records.
 
 ## Mock the installation of a large amount of users
