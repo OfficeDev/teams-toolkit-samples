@@ -162,10 +162,11 @@
       "https://*.sharepoint-df.*/*_vti_bin/*"
     ],
     "mocksPlugin": {
-      "mocksFile": "m365-mocks.json"
+      "mocksFile": "graph-mocks.json"
     },
     "graphRandomErrorsPlugin": {
-      "allowedErrors": [ 429, 500, 502, 503, 504, 507 ]
+      "allowedErrors": [ 429, 500, 502, 503, 504, 507 ],
+      "errorsFile": "devproxy-errors.json"
     },
     "minimalPermissionsPlugin": {
       "type": "delegated"

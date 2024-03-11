@@ -73,9 +73,10 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
     1. Run command: `teamsapp preview --env dev`.
 
 ### Run the app locally with proxy
-In some scenarios, it is helpful to skip the login and authentication flow and then provide mocked Graph API responses for development and test purpose. This sample provides a new way to debug it with proxy for mocking Graph API responses. You can customize the desired Graph API 
-    1. refer to [Get started with Dev Proxy](https://learn.microsoft.com/en-us/microsoft-cloud/dev/dev-proxy/get-started?tabs=powershell&pivots=client-operating-system-windows) to install devproxy first
-    1. Open the `Run and Debug Activity` Panel and select `Debug in Teams with proxy (Edge)`.
+In some scenarios, it is helpful to skip the login and authentication flow and then provide mocked Graph API responses for development and test purpose. This sample provides a new way to debug it with proxy for mocking Graph API responses. You can customize the desired Graph API responses.
+1. Refer to [Get started with Dev Proxy](https://learn.microsoft.com/en-us/microsoft-cloud/dev/dev-proxy/get-started?tabs=powershell&pivots=client-operating-system-windows) to install devproxy first
+1. Open the project with VS Code, open the `Run and Debug Activity` Panel and select `Debug in Teams with proxy (Edge)`. 
+1. Please refer to [Proxy Mode](proxy/README.md) for more information.
 
 ## Version History
 
@@ -83,6 +84,7 @@ In some scenarios, it is helpful to skip the login and authentication flow and t
 |---|---|---|
 |May 18, 2022| hund030 | update to support Teams Toolkit v4.0.0|
 |Dec 8, 2022| hund030 | update to support Teams Toolkit v5.0.0|
+|Mar 11, 2024| xzf0587 | update to support proxy|
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

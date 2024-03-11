@@ -16,6 +16,7 @@ import Tab from "./Tab";
 import TabConfig from "./TabConfig";
 import { TeamsFxContext } from "./Context";
 import config from "./sample/lib/config";
+// Only takes effect for proxy purpose when REACT_APP_HOOK_FOR_PROXY is set in the environment.
 import "./HookForProxy";
 
 /**

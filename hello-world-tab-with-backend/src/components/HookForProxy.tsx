@@ -1,6 +1,7 @@
 /* This file is used for debugging with proxy. 
  * It only takes effect when the environment REACT_ACT_HOOK_FOR_PROXY is set. In VSCode, try it by launching the debug option "Debug in Teams with proxy (Edge)".
- * It will hook the getToken and login function of TeamsUserCredential to return a mocked access token. The backend code in api folder will send the Graph API request to proxy which will skip the access token check.
+ * It will hook the getToken and login function of TeamsUserCredential to return a mocked access token. 
+ * The backend code in api folder will send the Graph API request to proxy which will skip the access token check.
  */
 
 import { TeamsUserCredential } from "@microsoft/teamsfx";
@@ -10,7 +11,7 @@ export function shouldHookForProxy(): boolean {
 }
 
 if (shouldHookForProxy()) {
-  // hook getToken to return a mocked access token. The token can not be used to call real graph API.
+  // hook getToken to return a mocked access token. The token can not be used to call real Graph API.
   TeamsUserCredential.prototype.getToken = async (scopes: string | string[], options?: any) => {
     const accessToken: AccessToken = {
       // Function extension will check the expiration time of the token, so set it to maximum timestamp.
