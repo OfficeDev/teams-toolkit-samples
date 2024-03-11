@@ -7,7 +7,7 @@ import { ICurrentInventoryState } from "./ICurrentInventoryState";
 import { RetailInventory } from "../../models";
 
 import { ChartControl, ChartType, ChartPalette } from '@pnp/spfx-controls-react/lib/ChartControl';
-import { Spinner, SpinnerSize } from "office-ui-fabric-react";
+import { Spinner, SpinnerSize } from "@fluentui/react";
 
 export class CurrentInventory extends React.Component<ICurrentInventoryProps, ICurrentInventoryState> {
 

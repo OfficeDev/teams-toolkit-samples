@@ -6,7 +6,7 @@ import { ISingleProductProps } from "./ISingleProductProps";
 import { ISingleProductState } from "./ISingleProductState";
 import { RetailProduct } from "../../models";
 
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { css } from '@fluentui/react';
 
 export class SingleProduct extends React.Component<ISingleProductProps, ISingleProductState> {
 

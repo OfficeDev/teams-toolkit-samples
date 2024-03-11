@@ -5,7 +5,7 @@ import { IRetailDashboardProps } from './IRetailDashboardProps';
 import { IRetailDashboardState } from './IRetailDashboardState';
 
 import { WidgetSize, Dashboard, IWidget } from '@pnp/spfx-controls-react/lib/Dashboard';
-import { Spinner, SpinnerSize, initializeIcons } from 'office-ui-fabric-react';
+import { Spinner, SpinnerSize, initializeIcons } from '@fluentui/react';
 
 import { ReturnVolumes } from '../../../components/ReturnVolumes/ReturnVolumes';
 import { ReturnReasons } from '../../../components/ReturnReasons/ReturnReasons';
