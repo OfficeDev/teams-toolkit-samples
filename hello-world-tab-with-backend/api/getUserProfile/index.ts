@@ -14,6 +14,9 @@ import {
 import { Client } from "@microsoft/microsoft-graph-client";
 import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
 import config from "../config";
+// Only takes effect for proxy purpose when HOOK_FOR_PROXY is set in the environment.
+import "./HookForProxy";
+
 
 interface Response {
   status: number;
