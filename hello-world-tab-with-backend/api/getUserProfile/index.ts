@@ -144,7 +144,8 @@ export default async function run(
 
 // You can replace the codes above from the function body with comment "Query user's information from the access token." to the end
 // with the following codes to use application permission to get user profiles.
-// Remember to get admin consent of application permission "User.Read.All".
+// Remember to get admin consent of application permission "User.Read.All". 
+// If you use the proxy mode to debug, the application permission is not required as the Graph API proxy will not check the token and permission.
 /*
 // Query user's information from the access token.
   let userName: string;
