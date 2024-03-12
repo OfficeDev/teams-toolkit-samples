@@ -41,7 +41,7 @@ Now you have the ability to create a single unit of distribution for all your Mi
 - From TeamsFx CLI: Start debugging the project by executing the command `teamsapp preview --env local` in your project directory.
 
    After installing the app in Teams when prompted, it will launch and you'll be able to view the tab app.
-   ![Sample tab app running in Teams](./images/teams-tab-app.PNG)
+   ![Sample tab app running in Teams](https://github.com/OfficeDev/Office-Add-in-samples/assets/1658418/41dabdb8-ad60-4447-8f0e-a9d449836a75)
 
 ### Debug Outlook add-in
 
