@@ -1,0 +1,255 @@
+{
+  "mocks": [
+    {
+      "request": {
+        "url": "https://graph.microsoft.com/v1.0/me?*"
+      },
+      "response": {
+        "body": {
+          "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users/$entity",
+          "businessPhones": [
+            "+1 412 555 0109"
+          ],
+          "displayName": "Megan Bowen",
+          "givenName": "Megan",
+          "jobTitle": "Auditor",
+          "mail": "MeganB@M365x214355.onmicrosoft.com",
+          "mobilePhone": null,
+          "officeLocation": "12/1110",
+          "preferredLanguage": "en-US",
+          "surname": "Bowen",
+          "userPrincipalName": "MeganB@M365x214355.onmicrosoft.com",
+          "id": "48d31887-5fad-4d73-a9f5-3c356e68a038"
+        }
+      }
+    },
+    {
+      "request": {
+        "url": "https://graph.microsoft.com/v1.0/me"
+      },
+      "response": {
+        "body": {
+          "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users/$entity",
+          "businessPhones": [
+            "+1 412 555 0109"
+          ],
+          "displayName": "Megan Bowen",
+          "givenName": "Megan",
+          "jobTitle": "Auditor",
+          "mail": "MeganB@M365x214355.onmicrosoft.com",
+          "mobilePhone": null,
+          "officeLocation": "12/1110",
+          "preferredLanguage": "en-US",
+          "surname": "Bowen",
+          "userPrincipalName": "MeganB@M365x214355.onmicrosoft.com",
+          "id": "48d31887-5fad-4d73-a9f5-3c356e68a038"
+        }
+      }
+    },
+    {
+      "request": {
+        "url": "https://graph.microsoft.com/v1.0/users/33b43a5b-87d6-41ec-91f8-a2610048105f*"
+      },
+      "response": {
+        "body": {
+          "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users/$entity",
+          "businessPhones": [
+            "+1 425 555 0109"
+          ],
+          "displayName": "Adele Vance",
+          "givenName": "Adele",
+          "jobTitle": "Product Marketing Manager",
+          "mail": "AdeleV@M365x214355.onmicrosoft.com",
+          "mobilePhone": null,
+          "officeLocation": "18/2111",
+          "preferredLanguage": "en-US",
+          "surname": "Vance",
+          "userPrincipalName": "AdeleV@M365x214355.onmicrosoft.com",
+          "id": "87d349ed-44d7-43e1-9a83-5f2406dee5bd"
+        }
+      }
+    },
+    {
+      "request": {
+        "url": "https://graph.microsoft.com/v1.0/users/4782e723-f4f4-4af3-a76e-25e3bab0d896*"
+      },
+      "response": {
+        "body": {
+          "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users/$entity",
+          "businessPhones": [
+            "+1 425 555 0109"
+          ],
+          "displayName": "Alex Wilber",
+          "givenName": "Alex",
+          "jobTitle": "Marketing Assistant",
+          "mail": "AlexW@M365x214355.onmicrosoft.com",
+          "mobilePhone": null,
+          "officeLocation": "18/2111",
+          "preferredLanguage": "en-US",
+          "surname": "Wilber",
+          "userPrincipalName": "AlexW@M365x214355.onmicrosoft.com",
+          "id": "4782e723-f4f4-4af3-a76e-25e3bab0d896"
+        }
+      }
+    },
+    {
+      "request": {
+        "url": "https://graph.microsoft.com/v1.0/users/e8a02cc7-df4d-4778-956d-784cc9506e5a*"
+      },
+      "response": {
+        "body": {
+          "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users/$entity",
+          "businessPhones": [
+            "+1 425 555 0109"
+          ],
+          "displayName": "Lynne Robbins",
+          "givenName": "Lynne",
+          "jobTitle": "Product Manager",
+          "mail": "LynneR@M365x214355.onmicrosoft.com",
+          "mobilePhone": null,
+          "officeLocation": "18/2111",
+          "preferredLanguage": "en-US",
+          "surname": "Robbins",
+          "userPrincipalName": "LynneR@M365x214355.onmicrosoft.com",
+          "id": "e8a02cc7-df4d-4778-956d-784cc9506e5a"
+        }
+      }
+    },
+    {
+      "request": {
+        "url": "https://graph.microsoft.com/v1.0/users/*"
+      },
+      "response": {
+        "body": {
+          "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users/$entity",
+          "businessPhones": [
+            "+1 425 555 0109"
+          ],
+          "displayName": "Adele Vance",
+          "givenName": "Adele",
+          "jobTitle": "Product Marketing Manager",
+          "mail": "AdeleV@M365x214355.onmicrosoft.com",
+          "mobilePhone": null,
+          "officeLocation": "18/2111",
+          "preferredLanguage": "en-US",
+          "surname": "Vance",
+          "userPrincipalName": "AdeleV@M365x214355.onmicrosoft.com",
+          "id": "87d349ed-44d7-43e1-9a83-5f2406dee5bd"
+        }
+      }
+    },
+    {
+      "request": {
+        "url": "https://graph.microsoft.com/v1.0/me/people*"
+      },
+      "response": {
+        "body": {
+          "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('48d31887-5fad-4d73-a9f5-3c356e68a038')/people",
+          "value": [
+            {
+              "id": "33b43a5b-87d6-41ec-91f8-a2610048105f",
+              "displayName": "Adele Vance",
+              "givenName": "Adele",
+              "surname": "Vance",
+              "birthday": null,
+              "personNotes": null,
+              "isFavorite": false,
+              "jobTitle": "Product Marketing Manager",
+              "companyName": null,
+              "yomiCompany": null,
+              "department": null,
+              "officeLocation": null,
+              "profession": null,
+              "mail": "AdeleV@M365x214355.onmicrosoft.com",
+              "userPrincipalName": "AdeleV@M365x214355.onmicrosoft.com",
+              "imAddress": null,
+              "scoredEmailAddresses": [
+                {
+                  "address": "AdeleV@M365x214355.onmicrosoft.com",
+                  "relevanceScore": 29,
+                  "selectionLikelihood": "notSpecified"
+                }
+              ],
+              "phones": [],
+              "personType": {
+                "class": "Group",
+                "subclass": "UnifiedGroup"
+              }
+            },
+            {
+              "id": "4782e723-f4f4-4af3-a76e-25e3bab0d896",
+              "displayName": "Alex Wilber",
+              "givenName": "Alex",
+              "surname": "Wilber",
+              "birthday": null,
+              "personNotes": null,
+              "isFavorite": false,
+              "jobTitle": "Marketing Assistant",
+              "companyName": null,
+              "yomiCompany": null,
+              "department": "Sales & Marketing",
+              "officeLocation": "131/1104",
+              "profession": null,
+              "mail": "AlexW@M365x214355.onmicrosoft.com",
+              "userPrincipalName": "AlexW@M365x214355.onmicrosoft.com",
+              "imAddress": "sip:alexw@m365x214355.onmicrosoft.com",
+              "scoredEmailAddresses": [
+                {
+                  "address": "AlexW@M365x214355.onmicrosoft.com",
+                  "relevanceScore": 10,
+                  "selectionLikelihood": "notSpecified"
+                }
+              ],
+              "phones": [
+                {
+                  "type": "business",
+                  "number": "+1 858 555 0110"
+                }
+              ],
+              "personType": {
+                "class": "Person",
+                "subclass": "OrganizationUser"
+              }
+            },
+            {
+              "id": "e8a02cc7-df4d-4778-956d-784cc9506e5a",
+              "displayName": "Lynne Robbins",
+              "givenName": "Lynne",
+              "surname": "Robbins",
+              "birthday": null,
+              "personNotes": null,
+              "isFavorite": false,
+              "jobTitle": "Product Manager",
+              "companyName": null,
+              "yomiCompany": null,
+              "department": "Sales & Marketing",
+              "officeLocation": "20/1104",
+              "profession": null,
+              "mail": "LynneR@M365x214355.onmicrosoft.com",
+              "userPrincipalName": "LynneR@M365x214355.onmicrosoft.com",
+              "imAddress": "sip:lynner@m365x214355.onmicrosoft.com",
+              "scoredEmailAddresses": [
+                {
+                  "address": "LynneR@M365x214355.onmicrosoft.com",
+                  "relevanceScore": 0,
+                  "selectionLikelihood": "notSpecified"
+                }
+              ],
+              "phones": [
+                {
+                  "type": "business",
+                  "number": "+1 918 555 0104"
+                }
+              ],
+              "personType": {
+                "class": "Person",
+                "subclass": "OrganizationUser"
+              }
+            }
+          ],
+          "@odata.nextLink": "https://graph.microsoft.com/v1.0/me/people?%24skip=0"
+        }
+      }
+    }
+  ]
+}
