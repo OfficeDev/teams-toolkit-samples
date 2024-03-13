@@ -7,15 +7,14 @@ To run the app locally with Graph API proxy, you can skip the user login flow an
 1. Add an option `Debug in Teams with proxy (Edge)` in `Run and Debug Activity` Panel for VS Code.
 1. Add a package script command `proxy:teamsfx` to start dev proxy.
 1. Add folder `proxy` for dev proxy configuration.
-1. Add the hooking code in `src/components/sample/HookForProxy.tsx` to skip the authentication flow of login/getToken for proxy mode in browser environment.
-1. Add the hooking code in `api/getUserProfile/HookForProxy.ts` to set the proxy agent configure and set the authenticationProvider and proxy agent for Graph client 
+2. Add the hooking code in `src/components/HookForProxy.js` to skip the authentication flow of login/getToken for proxy mode in browser environment.
    
 ## How it works
 
 - From VS Code:
     1. In `.vscode.tasks.json`, add the `Check dev proxy` task to ensure the `devproxy` command available. 
-    1. In `.vscode.tasks.json`, set environment `REACT_APP_HOOK_FOR_PROXY` in `Start frontend with proxy` task and `HOOK_FOR_PROXY` in `Start backend with proxy` task to enable the hooking code.
-    1. Add the `Start dev proxy` task to start the devproxy. It leverages the package script command `proxy:teamsfx`.
+    2. In `.vscode.tasks.json`, set environment `REACT_APP_HOOK_FOR_PROXY` in `Start frontend with proxy` task to enable the hooking code.
+    3. Add the `Start dev proxy` task to start the devproxy. It leverages the package script command `proxy:teamsfx`.
    
 When the app is running, the authentication flow for login and get access token will be hooked to skip. The Graph API requests will be sent to the devproxy listening address(127.0.0.1:54000).
 

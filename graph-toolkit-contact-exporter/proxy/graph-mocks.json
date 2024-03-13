@@ -160,6 +160,7 @@
               "department": null,
               "officeLocation": null,
               "profession": null,
+              "mail": "AdeleV@M365x214355.onmicrosoft.com",
               "userPrincipalName": "AdeleV@M365x214355.onmicrosoft.com",
               "imAddress": null,
               "scoredEmailAddresses": [
@@ -189,6 +190,7 @@
               "department": "Sales & Marketing",
               "officeLocation": "131/1104",
               "profession": null,
+              "mail": "AlexW@M365x214355.onmicrosoft.com",
               "userPrincipalName": "AlexW@M365x214355.onmicrosoft.com",
               "imAddress": "sip:alexw@m365x214355.onmicrosoft.com",
               "scoredEmailAddresses": [
@@ -223,6 +225,7 @@
               "department": "Sales & Marketing",
               "officeLocation": "20/1104",
               "profession": null,
+              "mail": "LynneR@M365x214355.onmicrosoft.com",
               "userPrincipalName": "LynneR@M365x214355.onmicrosoft.com",
               "imAddress": "sip:lynner@m365x214355.onmicrosoft.com",
               "scoredEmailAddresses": [
