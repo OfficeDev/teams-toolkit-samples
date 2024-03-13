@@ -22,12 +22,12 @@
     },
     "dependencies": {
         "@microsoft/teamsfx": "^2.0.0",
-        "adaptivecards": "^3.0.2",
-        "axios": "^1.6.7",
+        "adaptivecards": "^2.9.0",
+        "axios": "^0.21.1",
         "botbuilder": "^4.18.0",
         "replace": "^1.2.0",
-        "restify": "^11.1.0",
-        "tedious": "^17.0.0"
+        "restify": "^10.0.0",
+        "tedious": "^9.2.3"
     },
     "devDependencies": {
         "@types/restify": "^8.5.5",
