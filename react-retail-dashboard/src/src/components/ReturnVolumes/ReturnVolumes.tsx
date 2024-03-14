@@ -7,7 +7,7 @@ import { IReturnVolumesState } from "./IReturnVolumesState";
 import { RetailReturnVolumes } from "../../models";
 
 import { ChartControl, ChartType, ChartPalette } from '@pnp/spfx-controls-react/lib/ChartControl';
-import { Spinner, SpinnerSize } from "office-ui-fabric-react";
+import { Spinner, SpinnerSize } from "@fluentui/react";
 
 const months: string[] = [
     'January',

@@ -3,7 +3,7 @@ import styles from './TopSellerProduct.module.scss';
 import { ITopSellerProductProps } from "./ITopSellerProductProps";
 import { ITopSellerProductState } from "./ITopSellerProductState";
 import { RetailProduct } from "../../models";
-import { DefaultButton } from "office-ui-fabric-react/lib/Button";
+import { DefaultButton } from "@fluentui/react";
 
 export class TopSellerProduct extends React.Component<ITopSellerProductProps, ITopSellerProductState> {
 

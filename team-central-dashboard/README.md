@@ -32,7 +32,7 @@ Team Central Dashboard shows you how to build a tab with data chats and content 
 
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Minimal path to awesome
 
@@ -112,8 +112,9 @@ In mobile devices, the feature of open in Teams may not work.
 
 | Date         | Author     | Comments                               |
 | ------------ | ---------- | -------------------------------------- |
-| Feb 22, 2023 | Hui, Frank | onboard                                |
-| Mar 31, 2023 | Hui        | update to support Teams Toolkit V5.0.0 |
+| Feb 22, 2023 | Hui, Frank | Onboard                                |
+| Mar 31, 2023 | Hui        | Update to support Teams Toolkit V5.0.0 |
+| Feb 27, 2024 | Hui        | Upgrade Azure Function V4              |
 
 ## Feedback
 

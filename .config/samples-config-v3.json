@@ -489,13 +489,19 @@
             "tags": [
                 "Bot",
                 "TS",
-                "GPT"
+                "Teams AI Library"
             ],
             "time": "5min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": true
+            "configuration": "Ready for debug",
+            "thumbnailPath": "assets/TeamsChef003.jpg",
+            "gifPath": "assets/TeamsChef003.jpg",
+            "suggested": true,
+            "downloadUrlInfo": {
+                "owner": "microsoft",
+                "repository": "teams-ai",
+                "ref": "js-1.1.1",
+                "dir": "js/samples/04.ai.a.teamsChefBot"
+            }
         },
         {
             "id": "spfx-productivity-dashboard",
@@ -713,6 +719,76 @@
                 "ref": "main",
                 "dir": "samples/msgext-link-unfurling-reddit/nodejs"
             }
+        },
+        {
+            "id": "meetings-live-code-interview",
+            "shortId": "live-code-interview",
+            "onboardDate": "2023-12-18",
+            "title": "Live Coding Interview",
+            "shortDescription": "This sample demos live coding in a teams meeting stage using live share SDK. The tab is loaded as side panel which contains various coding questions.",
+            "fullDescription": "This sample demos live coding in a teams meeting stage using live share SDK. The tab is loaded as side panel which contains various coding questions.",
+            "types": [
+              "Meeting"
+            ],
+            "tags": [
+              "Meeting Extension",
+              "JS",
+              "Live Share SDK"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/meetings-live-code-interview/nodejs"
+            }
+        },
+        {
+            "id": "intelligent-data-chart-generator",
+            "shortId": "data-chart-generator",
+            "onboardDate": "2024-01-31",
+            "title": "Intelligent Data Chart Generator",
+            "shortDescription": "The Microsoft Teams Tab app, powered by Azure OpenAI, interprets user inputs to generate data charts from Azure SQL.",
+            "fullDescription": "This intelligent Microsoft Teams Tab app is powered by Azure OpenAI, which helps users generating data charts based on users' description of the data chart in human language. There is an input box where users tell the Tab app what data chart they want to generate, and the app interprets user's requirements then generate visual charts. The data is from Azure SQL. This sample demonstrates how to build a seamless and intuitive experience for accessing and interpreting data.",
+            "types": [
+              "Tab"
+            ],
+            "tags": [
+              "Tab",
+              "TS",
+              "Azure Functions"
+            ],
+            "time": "30 mins to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false
+        },
+        {
+            "id": "bot-sso-docker",
+            "shortId": "bot-sso-docker",
+            "onboardDate": "2024-02-20",
+            "title": "Containerized Bot App with SSO Enabled",
+            "shortDescription": "Creating a Teams Bot with SSO and Microsoft Graph in a Docker Container.",
+            "fullDescription": "This is an containerized Microsoft Teams Bot app demonstrating how to integrate with Bot Framework SDK, TeamsFx SDK, and Graph SDK to implement SSO (Single Sign-On) feature that retrieves profile photos for currently signed-in users. It responds to a show message and leverages the Teams Toolkit to create a Teams bot app. The project also uses Microsoft Graph to fetch user info and pictures in the Teams app, and the TeamsFx SDK to implement SSO for the Teams bot. Docker is used for containerization.",
+            "types": [
+              "Bot"
+            ],
+            "tags": [
+              "Bot",
+              "TS",
+              "Docker",
+              "SSO"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false
         }
     ]
 }

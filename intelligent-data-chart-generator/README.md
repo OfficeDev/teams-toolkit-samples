@@ -30,8 +30,8 @@ This intelligent Microsoft Teams Tab app is powered by Azure OpenAI, which helps
 
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- An Azure OpenAI(https://aka.ms/azureopenai) resource and an Azure SQL Database(https://aka.ms/azuredb) resource.
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- An [Azure OpenAI](https://aka.ms/azureopenai) resource and an [Azure SQL Database](https://aka.ms/azuredb) resource.
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-toolkit-cli)
 
 ## Minimal path to awesome
 
@@ -60,7 +60,7 @@ This intelligent Microsoft Teams Tab app is powered by Azure OpenAI, which helps
    SQL_DATABASE=<your-sql-database-name>
    ```
 
-   > If you have not created an Azure SQL Database resource, please follow [this tutorial](https://learn.microsoft.com/azure/azure-sql/database/single-database-create-quickstart?view=azuresql&tabs=azure-portal) to create one. Once you've set up the Azure database, you can use [/data/script.sql](/data/script.sql) file to create the table and insert some sample data.
+   > If you have not created an Azure SQL Database resource, please follow [this tutorial](https://learn.microsoft.com/azure/azure-sql/database/single-database-create-quickstart?view=azuresql&tabs=azure-portal) to create one. Once you've set up the Azure database, you can use `/data/script.sql` file to create the table and insert some sample data.
 
 5. Press `F5` to start the app locally.
 
@@ -70,7 +70,7 @@ Deploy your project to Azure by following these steps:
 
 1. Open Teams Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
 2. After you signed in, select a subscription under your account. The Teams Toolkit will use this subscription to provision Azure resources to host you app.
-3. Update the `.env.user` file to add your Azure Open AI and Azure SQL configurations.
+3. Update the `.env.dev.user` file to add your Azure Open AI and Azure SQL configurations.
 4. Open the Teams Toolkit and click `Provision` in the `LIFECYCLE` section. Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Provision` command.
 5. Open the Teams Toolkit and click `Deploy` in the `LIFECYCLE` section. Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Deploy` command.
 
@@ -86,9 +86,10 @@ After you have completed the provision and deploy steps in `Deploy the app to Az
 
 ## Version History
 
-| Date        | Author   | Comments                               |
-| ----------- | -------- | -------------------------------------- |
-| Jan 8, 2024 | Hui Miao | Onboard sample in Teams Toolkit V5.0.0 |
+| Date         | Author   | Comments                               |
+| ------------ | -------- | -------------------------------------- |
+| Jan 8, 2024  | Hui Miao | Onboard sample in Teams Toolkit V5.0.0 |
+| Feb 27, 2024 | Hui      | Upgrade Azure Function V4              |
 
 ## Feedback
 
