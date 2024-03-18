@@ -149,19 +149,19 @@ export async function getUserProfile(
 // Query user's information from the access token.
   let userName: string;
   try {
-    const currentUser: UserInfo = await teamsfx.getUserInfo();
+    const currentUser: UserInfo = await oboCredential.getUserInfo();
     console.log(currentUser);
     userName = currentUser.preferredUserName; // Will be used in app credential flow
     if (currentUser && currentUser.displayName) {
-      res.body.userInfoMessage = `User display name is ${currentUser.displayName}.`;
+      res.jsonBody.userInfoMessage = `User display name is ${currentUser.displayName}.`;
     } else {
-      res.body.userInfoMessage = "No user information was found in access token.";
+      res.jsonBody.userInfoMessage = "No user information was found in access token.";
     }
   } catch (e) {
-    context.log.error(e);
+    context.error(e);
     return {
       status: 400,
-      body: {
+      jsonBody: {
         error: "Access token is invalid.",
       },
     };
@@ -177,10 +177,10 @@ export async function getUserProfile(
   try {
     const appCredential = new AppCredential(appAuthConfig);
   } catch (e) {
-    context.log.error(e);
+    context.error(e);
     return {
       status: 500,
-      body: {
+      jsonBody: {
         error:
           "App credential error:" +
           "Failed to construct TeamsFx using your accessToken. " +
@@ -202,12 +202,12 @@ export async function getUserProfile(
     });
 
     const profile: any = await graphClient.api("/users/"+userName).get();
-    res.body.graphClientMessage = profile;
+    res.jsonBody.graphClientMessage = profile;
   } catch (e) {
-    context.log.error(e);
+    context.error(e);
     return {
       status: 500,
-      body: {
+      jsonBody: {
         error:
           "Failed to retrieve user profile from Microsoft Graph. The application may not be authorized.",
       },
