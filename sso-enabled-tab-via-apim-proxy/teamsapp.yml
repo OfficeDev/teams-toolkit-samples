@@ -2,7 +2,7 @@
 version: v1.2
 
 additionalMetadata:
-  sampleTag: TeamsFx-Samples:bot-sso
+  sampleTag: TeamsFx-Samples:sso-tab-via-apim-proxy
 
 environmentFolderPath: ./env
 
