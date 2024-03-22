@@ -17,7 +17,7 @@ Bots can be used to deliver pro-active messages into different Microsoft Teams c
 
 The Stocks Update Notification bot shows you how to request data on a pretermined schedule from a public API using API Key authentication and render that data using an Adaptive Card in different Microsoft Teams contexts.
 
-![Stocks Update Notification Bot](assets/sampleDemo.gif)
+![Stocks Update Notification Bot](assets/sampleDemo.png)
 
 ## This sample illustrates
 - How to launch and debug an app using "F5" using Teams Toolkit for Visual Studio.
