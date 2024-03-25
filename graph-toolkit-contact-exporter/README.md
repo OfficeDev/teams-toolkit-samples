@@ -70,7 +70,7 @@ Graph Toolkit Contact Exporter sample APP provides an easy way to export your te
 
 ### Run the app locally with proxy
 In some scenarios, it is helpful to skip the login and authentication flow and then provide mocked Graph API responses for development and test purpose. This sample provides a new way to debug it with proxy for mocking Graph API responses. You can customize the desired Graph API responses.
-1. Refer to [Get started with Dev Proxy](https://learn.microsoft.com/en-us/microsoft-cloud/dev/dev-proxy/get-started?tabs=powershell&pivots=client-operating-system-windows) to install devproxy first
+1. Refer to [Get started with Dev Proxy](https://learn.microsoft.com/en-us/microsoft-cloud/dev/dev-proxy/get-started?tabs=powershell&pivots=client-operating-system-windows) to install devproxy first.
 1. Open the project with VS Code, open the `Run and Debug Activity` Panel and select `Debug in Teams with proxy (Edge)`. 
 1. Please refer to [Proxy Mode](proxy/README.md) for more information.
 
