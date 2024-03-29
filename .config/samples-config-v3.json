@@ -804,7 +804,8 @@
             "tags": [
               "JS",
               "React",
-              "Word"
+              "Word",
+              "Office Add-in"
             ],
             "time": "5 mins to run",
             "configuration": "Ready for local debug",
@@ -944,7 +945,8 @@
             ],
             "tags": [
               "TS",
-              "React"
+              "React",
+              "Office Add-in"
             ],
             "time": "5 mins to run",
             "configuration": "Ready for local debug",
