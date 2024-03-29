@@ -822,7 +822,7 @@
             "id": "Excel-Add-in-ChartAPI-Anylysis-Data",
             "shortId": "excel-chartapi-analysis-data",
             "onboardDate": "2024-03-29",
-            "title": "Using chart API to analyse data",
+            "title": "Using Chart API to Analyse Data",
             "shortDescription": "The sample add-in demonstrates Excel add-in capablities to help users using chart API to analyse data.",
             "fullDescription": "The sample add-in demonstrates Excel add-in capablities to help users using chart API to analyse data.",
             "types": [
@@ -850,7 +850,7 @@
             "id": "Excel-Add-in-ShapeAPI-Dashboard",
             "shortId": "excel-shapeapi-dashboard",
             "onboardDate": "2024-03-29",
-            "title": "Using shape API to work as a dashboard",
+            "title": "Using Shape API to Work as a Dashboard",
             "shortDescription": "The sample add-in demonstrates Excel add-in capablities to help users using shape API to work as a dashboard.",
             "fullDescription": "The sample add-in demonstrates Excel add-in capablities to help users using shape API to work as a dashboard.",
             "types": [
@@ -878,7 +878,7 @@
             "id": "Excel-Add-in-Custom-Function-Using-WebWorker",
             "shortId": "excel-webworker-custom-function",
             "onboardDate": "2024-03-29",
-            "title": "Custom Function Sample Using Web Worker",
+            "title": "Custom Function Sample using Web Worker",
             "shortDescription": "Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in.",
             "fullDescription": "Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in.",
             "types": [
