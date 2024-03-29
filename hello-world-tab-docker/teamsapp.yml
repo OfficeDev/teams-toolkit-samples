@@ -92,8 +92,10 @@ deploy:
   - uses: script
     name: build container images
     with:
-      run: az acr build --registry ${{AZURE_CONTAINER_REGISTRY_NAME}} --image ${{TAB_CONTAINER_IMAGE}} . 
-        && az acr build --registry ${{AZURE_CONTAINER_REGISTRY_NAME}} --image ${{API_CONTAINER_IMAGE}} ./api
+      run: az acr build --registry ${{AZURE_CONTAINER_REGISTRY_NAME}} --image
+        ${{TAB_CONTAINER_IMAGE}} . && az acr build --registry
+        ${{AZURE_CONTAINER_REGISTRY_NAME}} --image ${{API_CONTAINER_IMAGE}}
+        ./api
 
   - uses: script
     name: deploy tab container image
@@ -112,8 +114,7 @@ deploy:
         "M365_AUTHORITY_HOST=secretref:m365-oauth-authority-host"
         "WEBSITE_AUTH_AAD_ACL=secretref:website-auth-aad-acl"
         "CORS_ALLOWED_ORIGINS=[\"${{TAB_ENDPOINT}}\"]"
-        "CORS_SUPPORT_CREDENTIALS=true"
-        "CONTAINER_NAME=api"
+        "FUNCTIONS_ENABLE_CORS_CONFIGURATION=1"
 
 publish:
   # Validate using manifest schema
