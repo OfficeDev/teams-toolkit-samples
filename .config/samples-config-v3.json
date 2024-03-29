@@ -4,7 +4,8 @@
             "Tab",
             "Bot",
             "Message Extension",
-            "Meeting"
+            "Meeting",
+            "Office Add-in"
         ],
         "languages": [
             "TS",
@@ -789,6 +790,173 @@
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
+        },
+        {
+            "id": "Word-Add-In-Writing-Assistant",
+            "shortId": "word-writing-assistant",
+            "onboardDate": "2024-03-29",
+            "title": "Word Add-in Writing Assistant",
+            "shortDescription": "This add-in demonstrates Word add-in capabilities to help users check errors, improve writing, and rephrase content.",
+            "fullDescription": "This add-in demonstrates Word add-in capabilities to help users check errors, improve writing, and rephrase content.",
+            "types": [
+              "Office Add-in"
+            ],
+            "tags": [
+              "JS",
+              "React",
+              "Word"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Office-Samples",
+                "ref": "main",
+                "dir": "Word-Add-in-WritingAssistant"
+            }
+        },
+        {
+            "id": "Excel-Add-in-ChartAPI-Anylysis-Data",
+            "shortId": "excel-chartapi-analysis-data",
+            "onboardDate": "2024-03-29",
+            "title": "Using chart API to analyse data",
+            "shortDescription": "The sample add-in demonstrates Excel add-in capablities to help users using chart API to analyse data.",
+            "fullDescription": "The sample add-in demonstrates Excel add-in capablities to help users using chart API to analyse data.",
+            "types": [
+              "Office Add-in"
+            ],
+            "tags": [
+              "TS",
+              "Chart",
+              "Excel",
+              "Office Add-in"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Office-Samples",
+                "ref": "main",
+                "dir": "Excel-Add-in-ChartAPI-Anylysis-Data"
+            }
+        },
+        {
+            "id": "Excel-Add-in-ShapeAPI-Dashboard",
+            "shortId": "excel-shapeapi-dashboard",
+            "onboardDate": "2024-03-29",
+            "title": "Using shape API to work as a dashboard",
+            "shortDescription": "The sample add-in demonstrates Excel add-in capablities to help users using shape API to work as a dashboard.",
+            "fullDescription": "The sample add-in demonstrates Excel add-in capablities to help users using shape API to work as a dashboard.",
+            "types": [
+              "Office Add-in"
+            ],
+            "tags": [
+              "TS",
+              "Shape",
+              "Excel",
+              "Office Add-in"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Office-Samples",
+                "ref": "main",
+                "dir": "Excel-Add-in-ShapeAPI-Dashboard"
+            }
+        },
+        {
+            "id": "Excel-Add-in-Custom-Function-Using-WebWorker",
+            "shortId": "excel-webworker-custom-function",
+            "onboardDate": "2024-03-29",
+            "title": "Custom Function Sample Using Web Worker",
+            "shortDescription": "Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in.",
+            "fullDescription": "Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in.",
+            "types": [
+              "Office Add-in"
+            ],
+            "tags": [
+              "Custom Function",
+              "JS",
+              "Excel",
+              "WebWorker",
+              "Office Add-in"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/taskpane.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Office-Samples",
+                "ref": "main",
+                "dir": "Excel-Add-in-Custom-Function-Using-WebWorker"
+            }
+        },
+        {
+            "id": "Excel-Add-in-Mail-Merge",
+            "shortId": "excel-mail-merge",
+            "onboardDate": "2024-03-29",
+            "title": "Create an Excel Mail Merge Add-in",
+            "shortDescription": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to send emails in Excel from Office Add-ins.",
+            "fullDescription": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to send emails in Excel from Office Add-ins.",
+            "types": [
+              "Office Add-in"
+            ],
+            "tags": [
+              "JS",
+              "Excel",
+              "SSO",
+              "Graph",
+              "Office Add-in"
+            ],
+            "time": "10 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/taskpane.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Office-Samples",
+                "ref": "main",
+                "dir": "Excel-Add-in-Mail-Merge"
+            }
+        },
+        {
+            "id": "Word-Add-In-AIGC",
+            "shortId": "word-aigc",
+            "onboardDate": "2024-03-29",
+            "title": "Word Add-in AIGC",
+            "shortDescription": "This sample shows a practical Word Add-in with content insertion features, utilizing either AI or predefined content.",
+            "fullDescription": "This sample shows a practical Word Add-in with content insertion features, utilizing either AI or predefined content.",
+            "types": [
+              "Office Add-in"
+            ],
+            "tags": [
+              "TS",
+              "React"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Office-Samples",
+                "ref": "main",
+                "dir": "Word-Add-in-AIGC"
+            }
         }
     ]
 }
