@@ -5,7 +5,8 @@
             "Bot",
             "Message Extension",
             "Meeting",
-            "Office Add-in"
+            "Word",
+            "Excel"
         ],
         "languages": [
             "TS",
@@ -799,7 +800,7 @@
             "shortDescription": "This add-in demonstrates Word add-in capabilities to help users check errors, improve writing, and rephrase content.",
             "fullDescription": "This add-in demonstrates Word add-in capabilities to help users check errors, improve writing, and rephrase content.",
             "types": [
-              "Office Add-in"
+              "Word"
             ],
             "tags": [
               "JS",
@@ -827,7 +828,7 @@
             "shortDescription": "The sample add-in demonstrates Excel add-in capablities to help users using chart API to analyse data.",
             "fullDescription": "The sample add-in demonstrates Excel add-in capablities to help users using chart API to analyse data.",
             "types": [
-              "Office Add-in"
+              "Excel"
             ],
             "tags": [
               "TS",
@@ -855,7 +856,7 @@
             "shortDescription": "The sample add-in demonstrates Excel add-in capablities to help users using shape API to work as a dashboard.",
             "fullDescription": "The sample add-in demonstrates Excel add-in capablities to help users using shape API to work as a dashboard.",
             "types": [
-              "Office Add-in"
+              "Excel"
             ],
             "tags": [
               "TS",
@@ -883,7 +884,7 @@
             "shortDescription": "Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in.",
             "fullDescription": "Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in.",
             "types": [
-              "Office Add-in"
+              "Excel"
             ],
             "tags": [
               "Custom Function",
@@ -912,7 +913,7 @@
             "shortDescription": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to send emails in Excel from Office Add-ins.",
             "fullDescription": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to send emails in Excel from Office Add-ins.",
             "types": [
-              "Office Add-in"
+              "Excel"
             ],
             "tags": [
               "JS",
@@ -941,7 +942,7 @@
             "shortDescription": "This sample shows a practical Word Add-in with content insertion features, utilizing either AI or predefined content.",
             "fullDescription": "This sample shows a practical Word Add-in with content insertion features, utilizing either AI or predefined content.",
             "types": [
-              "Office Add-in"
+              "Word"
             ],
             "tags": [
               "TS",
