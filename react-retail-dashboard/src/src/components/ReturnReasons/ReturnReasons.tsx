@@ -7,7 +7,7 @@ import { IReturnReasonsState } from "./IReturnReasonsState";
 import { RetailReturnReasonsStats } from "../../models";
 
 import { ChartControl, ChartType, ChartPalette } from '@pnp/spfx-controls-react/lib/ChartControl';
-import { Spinner, SpinnerSize } from "office-ui-fabric-react";
+import { Spinner, SpinnerSize } from "@fluentui/react";
 
 export class ReturnReasons extends React.Component<IReturnReasonsProps, IReturnReasonsState> {
 

@@ -2,7 +2,7 @@
   "name": "teamsfx-template-tab",
   "version": "0.1.0",
   "engines": {
-    "node": "16 || 18"
+    "node": "18"
   },
   "private": true,
   "dependencies": {
@@ -11,13 +11,14 @@
     "@microsoft/teamsfx": "^2.2.0",
     "@microsoft/teamsfx-react": "^3.0.0",
     "axios": "^0.21.1",
+    "js-base64": "^3.7.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
     "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "@types/node": "^14.0.0",
+    "@types/node": "^18.16.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-router-dom": "^5.3.3",
@@ -32,7 +33,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy:teamsfx": "devproxy -p 54000 --as-system-proxy false -c proxy/graph.json -f 0 --record"
   },
   "eslintConfig": {
     "extends": [

@@ -10,7 +10,8 @@ import Privacy from "./about/Privacy";
 import TermsOfUse from "./about/TermsOfUse";
 import Tab from "./Tab";
 import TabConfig from "./TabConfig";
-
+// Only takes effect for proxy purpose when REACT_APP_HOOK_FOR_PROXY is set in the environment.
+import "./HookForProxy";
 /**
  * The main app which handles the initialization and routing
  * of the app.

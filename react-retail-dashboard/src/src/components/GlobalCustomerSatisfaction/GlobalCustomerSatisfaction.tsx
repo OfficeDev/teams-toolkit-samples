@@ -6,7 +6,7 @@ import { IGlobalCustomerSatisfactionProps } from "./IGlobalCustomerSatisfactionP
 import { IGlobalCustomerSatisfactionState } from "./IGlobalCustomerSatisfactionState";
 
 import { ChartControl, ChartType, ChartPalette } from '@pnp/spfx-controls-react/lib/ChartControl';
-import { Spinner, SpinnerSize } from "office-ui-fabric-react";
+import { Spinner, SpinnerSize } from "@fluentui/react";
 import { RetailCustomerSatisfactionStats } from "../../models";
 
 export class GlobalCustomerSatisfaction extends React.Component<IGlobalCustomerSatisfactionProps, IGlobalCustomerSatisfactionState> {

@@ -2,7 +2,7 @@
   "name": "team-central-dashboard",
   "version": "0.1.0",
   "engines": {
-    "node": "16 || 18"
+    "node": "18"
   },
   "private": true,
   "dependencies": {
@@ -12,8 +12,8 @@
     "@fluentui/react-icons": "^2.0.186",
     "@microsoft/microsoft-graph-client": "^3.0.1",
     "@microsoft/teams-js": "^2.7.1",
-    "@microsoft/teamsfx": "^2.2.0",
-    "@microsoft/teamsfx-react": "^3.0.0",
+    "@microsoft/teamsfx": "2.3.0",
+    "@microsoft/teamsfx-react": "3.1.0",
     "axios": "^0.21.1",
     "moment-timezone": "^0.5.39",
     "react": "^18.2.0",
@@ -22,11 +22,10 @@
     "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "@types/node": "^14.0.0",
+    "@types/node": "^18.16.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-router-dom": "^5.3.3",
-    "cross-env": "^7.0.3",
     "env-cmd": "^10.1.0",
     "typescript": "^4.1.2"
   },

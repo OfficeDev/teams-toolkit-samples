@@ -17,7 +17,7 @@ Bots can be used to deliver pro-active messages into different Microsoft Teams c
 
 The Stocks Update Notification bot shows you how to request data on a pretermined schedule from a public API using API Key authentication and render that data using an Adaptive Card in different Microsoft Teams contexts.
 
-![Stocks Update Notification Bot](assets/sampleDemo.gif)
+![Stocks Update Notification Bot](assets/sampleDemo.png)
 
 ## This sample illustrates
 - How to launch and debug an app using "F5" using Teams Toolkit for Visual Studio.
@@ -26,7 +26,7 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teamsfx-toolkit-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teams-toolkit-cli)
 
 
 ## Minimal path to awesome

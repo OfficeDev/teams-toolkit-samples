@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "core-js": "^3.9.1",
-    "regenerator-runtime": "^0.13.7"
+    "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
