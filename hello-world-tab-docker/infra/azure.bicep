@@ -28,7 +28,7 @@ var officeWebAppClientId1 = '4345a7b9-9a63-4910-a426-35363201d503'
 var officeWebAppClientId2 = '4765445b-32c6-49b0-83e6-1d93765276ca'
 var outlookDesktopAppClientId = 'd3590ed6-52b3-4102-aeff-aad2292ab01c'
 var outlookWebAppClientId = '00000002-0000-0ff1-ce00-000000000000'
-var allowedClientApplications = '"${aadAppClientId}","${teamsMobileOrDesktopAppClientId}","${teamsWebAppClientId}","${officeWebAppClientId1}","${officeWebAppClientId2}","${outlookDesktopAppClientId}","${outlookWebAppClientId}"'
+var allowedClientApplications = [aadAppClientId, teamsMobileOrDesktopAppClientId, teamsWebAppClientId, officeWebAppClientId1, officeWebAppClientId2, outlookDesktopAppClientId, outlookWebAppClientId]
 
 module acr 'containerRegistry.bicep' = {
   name: 'acr'
@@ -116,10 +116,6 @@ resource backendApp 'Microsoft.App/containerApps@2023-05-01' = {
           name: 'm365-oauth-authority-host'
           value: aadAppOauthAuthorityHost
         }
-        {
-          name: 'website-auth-aad-acl'
-          value: '{"allowed_client_applications": [${allowedClientApplications}]}'
-        }
       ]
       ingress: {
         external: true
@@ -187,6 +183,9 @@ resource authSettings 'Microsoft.App/containerApps/authConfigs@2023-05-01' = {
             aadAppClientId
             aadApplicationIdUri
           ]
+          defaultAuthorizationPolicy: {
+            allowedApplications: allowedClientApplications
+          }
         }
       }
     }

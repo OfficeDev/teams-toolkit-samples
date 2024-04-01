@@ -112,7 +112,6 @@ deploy:
         "M365_CLIENT_SECRET=secretref:m365-client-secret"
         "M365_TENANT_ID=secretref:m365-tenant-id"
         "M365_AUTHORITY_HOST=secretref:m365-oauth-authority-host"
-        "WEBSITE_AUTH_AAD_ACL=secretref:website-auth-aad-acl"
         "CORS_ALLOWED_ORIGINS=[\"${{TAB_ENDPOINT}}\"]"
         "FUNCTIONS_ENABLE_CORS_CONFIGURATION=1"
 
