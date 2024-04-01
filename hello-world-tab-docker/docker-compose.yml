@@ -31,6 +31,4 @@ services:
       - api/.localConfigs
     environment:
       - CORS_ALLOWED_ORIGINS=["https://localhost:53000"]
-      - CORS_SUPPORT_CREDENTIALS=true
-      - CONTAINER_NAME=api # Enable CORS middleware
-      # - FUNCTIONS_ENABLE_CORS_CONFIGURATION=true # Enable CORS, requires azure-functions-host 4.31.0 or later
+      - FUNCTIONS_ENABLE_CORS_CONFIGURATION=1
