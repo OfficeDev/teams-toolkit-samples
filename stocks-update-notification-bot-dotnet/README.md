@@ -15,7 +15,7 @@ extensions:
 
 Stocks Update Notifcation Bot is a an application that can be installed in different Microsoft Teams contexts, personal, group chat, or teams channel, which sends a message on a pre-defined schedule as an Adaptive Card to locations where it is installed.
 
-![Stocks Update Notification Bot Overview](images/app.gif)
+![Stocks Update Notification Bot Overview](images/app.png)
 
 ## This sample illustrates
 - How to use API client in TeamsFx to get access data in public API using the API Key provider.
