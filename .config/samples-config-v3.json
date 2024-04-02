@@ -789,6 +789,30 @@
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
+        },
+        {
+            "id": "hello-world-tab-docker",
+            "shortId": "hello-world-tab-docker",
+            "onboardDate": "2024-04-02",
+            "title": "Containerized Hello World Tab with Backend",
+            "shortDescription": "A containerized Hello World app of Microsoft Teams Tab app which has a backend service.",
+            "fullDescription": "Hello World Tab with Backend shows you how to build a tab app with an Azure Function as backend, how to get user login information with SSO and how to call Azure Function from frontend tab.",
+            "types": [
+              "Tab"
+            ],
+            "tags": [
+              "TS",
+              "Tab",
+              "React",
+              "Graph Toolkit",
+              "Docker",
+              "SSO"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false
         }
     ]
 }
