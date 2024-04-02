@@ -439,7 +439,7 @@
             "onboardDate": "2023-03-07",
             "title": "Developer Assist Dashboard",
             "shortDescription": "A dashboard that integrates with Azure DevOps, Github issues and Planner tasks that accelerates developer productivity.",
-            "fullDescription": "A dashboard that integrates with Azure DevOps, Github issues and Planner tasks that accelerates developer productivity.",
+            "fullDescription": "Developer Assist Dashboard shows you how to build a tab with Azure DevOps work items, GitHub issues and Planner tasks to accelerate developer team collaboration and productivity. Developer Assist Dashboard is capable of working on Microsoft Teams, Outlook Web and Microsoft 365 app.",
             "types": [
                 "Tab"
             ],
