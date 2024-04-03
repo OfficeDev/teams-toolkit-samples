@@ -2,6 +2,7 @@ appPackage
 assets
 build
 env
+deploy
 infra
 node_modules
 .gitignore
