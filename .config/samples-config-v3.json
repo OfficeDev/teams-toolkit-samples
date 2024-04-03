@@ -17,7 +17,8 @@
             "SSO",
             "SPFx",
             "Outlook",
-            "Graph"
+            "Graph",
+            "Dev Proxy"
         ]
     },
     "samples": [
@@ -34,7 +35,8 @@
             "tags": [
                 "Tab",
                 "TS",
-                "Azure Functions"
+                "Azure Functions",
+                "Dev Proxy"
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
