@@ -54,7 +54,52 @@
             ]
         }
     ],
-    "composeExtensions": [],
+    "composeExtensions": [
+        {
+            "botId": "${{BOT_ID}}",
+            "commands": [
+                {
+                    "id": "searchQuery",
+                    "context": [
+                        "compose",
+                        "commandBox"
+                    ],
+                    "description": "Test command to run query",
+                    "title": "Search",
+                    "type": "query",
+                    "parameters": [
+                        {
+                            "name": "searchQuery",
+                            "title": "Search Query",
+                            "description": "Your search query",
+                            "inputType": "text"
+                        }
+                    ]
+                },
+                {
+                    "id": "FetchRoster",
+                    "description": "Fetch the conversation roster",
+                    "title": "FetchRoster",
+                    "type": "action",
+                    "fetchTask": true,
+                    "context": [
+                      "compose"
+                    ]
+                }
+            ],
+            "messageHandlers": [
+                {
+                    "type": "link",
+                    "value": {
+                        "domains": [
+                            "*.botframework.com"
+                        ],
+                        "supportsAnonymizedPayloads": true
+                    }
+                }
+            ]
+        }
+    ],
     "configurableTabs": [],
     "staticTabs": [],
     "permissions": [

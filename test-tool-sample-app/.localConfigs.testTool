@@ -1,4 +1,5 @@
-# A gitignored place holder file for local runtime configurations when debug in test tool
 BOT_ID=
 BOT_PASSWORD=
+BOT_ENDPOINT=http://127.0.0.1:3979/api/messages
 TEAMSFX_NOTIFICATION_STORE_FILENAME=.notification.testtoolstore.json
+TEAMSAPPTESTER_PORT=56150

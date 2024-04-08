@@ -11,10 +11,17 @@ deploy:
   - uses: devTool/install
     with:
       testTool:
-        version: ~0.1.0-beta
+        version: ~0.2.1-beta
         symlinkDir: ./devTools/teamsapptester
 
   # Run npm command
   - uses: cli/runNpmCommand
     with:
       args: install --no-audit
+
+  # Generate runtime environment variables
+  - uses: file/createOrUpdateEnvironmentFile
+    with:
+      target: ./.localConfigs.testTool
+      envs:
+        TEAMSAPPTESTER_PORT: ${{TEAMSAPPTESTER_PORT}}
