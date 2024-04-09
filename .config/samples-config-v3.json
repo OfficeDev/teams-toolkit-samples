@@ -17,7 +17,8 @@
             "SSO",
             "SPFx",
             "Outlook",
-            "Graph"
+            "Graph",
+            "Dev Proxy"
         ]
     },
     "samples": [
@@ -34,7 +35,8 @@
             "tags": [
                 "Tab",
                 "TS",
-                "Azure Functions"
+                "Azure Functions",
+                "Dev Proxy"
             ],
             "time": "5min to run",
             "configuration": "Ready for debug",
@@ -781,6 +783,30 @@
             "tags": [
               "Bot",
               "TS",
+              "Docker",
+              "SSO"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false
+        },
+        {
+            "id": "hello-world-tab-docker",
+            "shortId": "hello-world-tab-docker",
+            "onboardDate": "2024-04-02",
+            "title": "Containerized Hello World Tab with Backend",
+            "shortDescription": "A containerized Hello World app of Microsoft Teams Tab app which has a backend service.",
+            "fullDescription": "Hello World Tab with Backend shows you how to build a tab app with an Azure Function as backend, how to get user login information with SSO and how to call Azure Function from frontend tab. Teams applications can be developed and run locally using containerization, which provides a consistent and isolated environment for testing and deployment. Containerizing your Teams app makes it easier to manage dependencies, scale efficiently, and maintain your app in production.",
+            "types": [
+              "Tab"
+            ],
+            "tags": [
+              "TS",
+              "Tab",
+              "React",
+              "Graph Toolkit",
               "Docker",
               "SSO"
             ],

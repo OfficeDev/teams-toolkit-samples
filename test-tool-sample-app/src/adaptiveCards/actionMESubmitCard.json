@@ -1,0 +1,43 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.4",
+  "body": [
+    {
+      "type": "TextBlock",
+      "size": "Large",
+      "weight": "Bolder",
+      "color": "accent",
+      "text": "${incidentTitle}"
+    },
+    {
+      "type": "TextBlock",
+      "text": "${incidentDescription}",
+      "wrap": true
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "Start at",
+          "value": "${incidentStart}"
+        },
+        {
+          "title": "Severity",
+          "value": "${incidentSeverity}"
+        },
+        {
+          "title": "Assignee ID",
+          "value": "${assignedToUserId}"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "View Details",
+      "url": "${viewDetailsUrl}"
+    }
+  ]
+}

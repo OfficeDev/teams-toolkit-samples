@@ -1,0 +1,80 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.6",
+    "body": [
+        {
+            "type": "TextBlock",
+            "weight": "Bolder",
+            "size": "Large",
+            "color": "accent",
+            "text": "Contoso Incident Management"
+        },
+        {
+            "type": "Input.Text",
+            "label": "Title",
+            "id": "incidentTitle",
+            "placeholder": "Enter title...",
+            "isRequired": true,
+            "value": "${title}",
+            "errorMessage": "Incident title is required"
+        },
+        {
+            "type": "Input.Text",
+            "label": "Description",
+            "id": "incidentDescription",
+            "placeholder": "Enter description...",
+            "value": " ",
+            "isMultiline": true
+        },
+        {
+            "type": "Input.Date",
+            "label": "Incident Start",
+            "id": "incidentStart",
+            "value": "2024-03-01"
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "id": "incidentSeverity",
+            "style": "compact",
+            "label": "Severity",
+            "value": "Moderate",
+            "choices": [
+                {
+                    "title": "Low",
+                    "value": "Low"
+                },
+                {
+                    "title": "Moderate",
+                    "value": "Moderate"
+                },
+                {
+                    "title": "High",
+                    "value": "High"
+                },
+                {
+                    "title": "Critical",
+                    "value": "Critical"
+                }
+            ]
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "label": "Assigned To",
+            "choices.data": {
+                "type": "Data.Query",
+                "dataset": "graph.microsoft.com/users"
+            },
+            "id": "assignedToUserId",
+            "isRequired": true,
+            "isMultiSelect": true,
+            "errorMessage": "Assignee is required"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit"
+        }
+    ]
+}

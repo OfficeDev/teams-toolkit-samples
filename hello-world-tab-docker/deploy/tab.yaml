@@ -1,0 +1,116 @@
+# This is a Kubernetes deployment file for deploying the Teams tab app.
+# This file is specifically designed for Kubernetes deployments and is not necessary for deployments using Azure Container Apps.
+# If you are deploying your Teams tab app using Azure Container Apps, you can ignore this file.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-tab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world-tab
+  template:
+    metadata:
+      labels:
+        app: hello-world-tab
+    spec:
+      containers:
+        - name: hello-world-tab
+          image: ${tab_image}
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-tab
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+  selector:
+    app: hello-world-tab
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world-api
+  template:
+    metadata:
+      labels:
+        app: hello-world-api
+    spec:
+      containers:
+        - name: hello-world-api
+          image: ${api_image}
+          ports:
+            - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: hello-world-api-secrets
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-api
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+  selector:
+    app: hello-world-api
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-world-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - ${host}
+    secretName: tls-secret
+  rules:
+  - host: ${host}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hello-world-tab
+            port:
+              number: 80
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: hello-world-api
+            port:
+              number: 80
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+          podTemplate:
+            spec:
+              nodeSelector:
+                "kubernetes.io/os": linux

@@ -85,21 +85,15 @@ deploy:
         API_CONTAINER_IMAGE=${{AZURE_CONTAINER_REGISTRY_SERVER}}/hello_world_api"
 
   - uses: script
-    name: build container images
-    with:
-      run: docker build -t ${{TAB_CONTAINER_IMAGE}} . && docker build -t
-        ${{API_CONTAINER_IMAGE}} ./api
-
-  - uses: script
     name: login azure container registry
     with:
       run: az acr login -n ${{AZURE_CONTAINER_REGISTRY_NAME}}
 
   - uses: script
-    name: push container images
+    name: build container images
     with:
-      run: docker push ${{TAB_CONTAINER_IMAGE}} && docker push
-        ${{API_CONTAINER_IMAGE}}
+      run: az acr build --registry ${{AZURE_CONTAINER_REGISTRY_NAME}} --image ${{TAB_CONTAINER_IMAGE}} .
+        && az acr build --registry ${{AZURE_CONTAINER_REGISTRY_NAME}} --image ${{API_CONTAINER_IMAGE}} ./api
 
   - uses: script
     name: deploy tab container image
@@ -116,9 +110,8 @@ deploy:
         "M365_CLIENT_SECRET=secretref:m365-client-secret"
         "M365_TENANT_ID=secretref:m365-tenant-id"
         "M365_AUTHORITY_HOST=secretref:m365-oauth-authority-host"
-        "WEBSITE_AUTH_AAD_ACL=secretref:website-auth-aad-acl"
         "CORS_ALLOWED_ORIGINS=[\"${{TAB_ENDPOINT}}\"]"
-        "CORS_SUPPORT_CREDENTIALS=true" "CONTAINER_NAME=api"
+        "FUNCTIONS_ENABLE_CORS_CONFIGURATION=1"
 
 publish:
   # Validate using manifest schema

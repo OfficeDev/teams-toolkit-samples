@@ -26,8 +26,8 @@
                     "portOccupancy" // Validate available ports to ensure those debug ones are not occupied.
                 ],
                 "portOccupancy": [
-                    3978, // app service port
-                    9239, // app inspector port for Node.js debugger
+                    3979, // app service port
+                    9241, // app inspector port for Node.js debugger
                     56150, // test tool port
                 ]
             }
@@ -127,8 +127,8 @@
                     "portOccupancy" // Validate available ports to ensure those debug ones are not occupied.
                 ],
                 "portOccupancy": [
-                    3978, // app service port
-                    9239 // app inspector port for Node.js debugger
+                    3979, // app service port
+                    9241 // app inspector port for Node.js debugger
                 ]
             }
         },
@@ -142,7 +142,7 @@
                 "type": "dev-tunnel",
                 "ports": [
                     {
-                        "portNumber": 3978,
+                        "portNumber": 3979,
                         "protocol": "http",
                         "access": "public",
                         "writeToEnvironmentFile": {

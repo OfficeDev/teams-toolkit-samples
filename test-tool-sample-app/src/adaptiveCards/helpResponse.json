@@ -1,84 +1,267 @@
 {
-  "type": "AdaptiveCard",
-  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-  "version": "1.4",
-  "body": [
-    {
-      "type": "TextBlock",
-      "text": "Show all available commands",
-      "size": "Large",
-      "weight": "bolder",
-      "color": "accent",
-      "wrap": true
-    },
-      {
-          "type": "Table",
-          "columns": [
-              {
-                  "width": 1
-              },
-              {
-                  "width": 2
-              }
-          ],
-          "rows": [
-              {
-                  "type": "TableRow",
-                  "cells": [
-                      {
-                          "type": "TableCell",
-                          "items": [
-                              {
-                                  "type": "TextBlock",
-                                  "text": "Bot Command",
-                                  "wrap": true,
-                                  "weight": "bolder"
-                              }
-                          ]
-                      },
-                      {
-                          "type": "TableCell",
-                          "items": [
-                              {
-                                  "type": "TextBlock",
-                                  "text": "Description",
-                                  "wrap": true,
-                                  "weight": "bolder"
-                              }
-                          ]
-                      }
-                  ],
-                  "style": "accent"
-              },
-              {
-                  "type": "TableRow",
-                  "$data": "${data}",
-                  "cells": [
-                      {
-                          "type": "TableCell",
-                          "items": [
-                              {
-                                  "type": "TextBlock",
-                                  "text": "${command}",
-                                  "weight": "bolder",
-                                  "wrap": true
-                              }
-                          ]
-                      },
-                      {
-                          "type": "TableCell",
-                          "items": [
-                              {
-                                  "type": "TextBlock",
-                                  "text": "${description}",
-                                  "wrap": true
-                              }
-                          ]
-                      }
-                  ]
-              }
-          ],
-          "gridStyle": "accent"
-      }
-  ]
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.4",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Bot Commands",
+            "size": "Large",
+            "weight": "bolder",
+            "color": "accent",
+            "wrap": true
+        },
+        {
+            "type": "Table",
+            "columns": [
+                {
+                    "width": 1
+                },
+                {
+                    "width": 2
+                }
+            ],
+            "rows": [
+                {
+                    "type": "TableRow",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Bot Command",
+                                    "wrap": true,
+                                    "weight": "bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Description",
+                                    "wrap": true,
+                                    "weight": "bolder"
+                                }
+                            ]
+                        }
+                    ],
+                    "style": "accent"
+                },
+                {
+                    "type": "TableRow",
+                    "$data": "${botCommands}",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${command}",
+                                    "weight": "bolder",
+                                    "wrap": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${description}",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "gridStyle": "accent"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Message Extension",
+            "size": "Large",
+            "weight": "bolder",
+            "color": "accent",
+            "wrap": true,
+            "spacing":"extraLarge"
+        },
+        {
+            "type": "TextBlock",
+            "text": "`>` Trigger Message Extension by clicking the `+` button next to the send button or the `...` menu on a message",
+            "isSubtle": true,
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "Message Extension Search Commands",
+            "size": "medium",
+            "weight": "bolder",
+            "color": "accent",
+            "wrap": true
+        },
+        {
+            "type": "Table",
+            "columns": [
+                {
+                    "width": 1
+                },
+                {
+                    "width": 2
+                }
+            ],
+            "rows": [
+                {
+                    "type": "TableRow",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "ME Search Command",
+                                    "wrap": true,
+                                    "weight": "bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Description",
+                                    "wrap": true,
+                                    "weight": "bolder"
+                                }
+                            ]
+                        }
+                    ],
+                    "style": "accent"
+                },
+                {
+                    "type": "TableRow",
+                    "$data": "${searchMECommands}",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${command}",
+                                    "weight": "bolder",
+                                    "wrap": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${description}",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "gridStyle": "accent"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Message Extension Action Commands",
+            "size": "medium",
+            "weight": "bolder",
+            "color": "accent",
+            "wrap": true
+        },
+        {
+            "type": "Table",
+            "columns": [
+                {
+                    "width": 1
+                },
+                {
+                    "width": 2
+                }
+            ],
+            "rows": [
+                {
+                    "type": "TableRow",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "ME Action Command",
+                                    "wrap": true,
+                                    "weight": "bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Description",
+                                    "wrap": true,
+                                    "weight": "bolder"
+                                }
+                            ]
+                        }
+                    ],
+                    "style": "accent"
+                },
+                {
+                    "type": "TableRow",
+                    "$data": "${actionMECommands}",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${command}",
+                                    "weight": "bolder",
+                                    "wrap": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${description}",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "gridStyle": "accent"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Message Extension Link Unfurling",
+            "size": "medium",
+            "weight": "bolder",
+            "color": "accent",
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "`>` Input a valid URL in the link unfurling dialog to see the returned card and send it to the chat",
+            "isSubtle": true,
+            "wrap": true
+        }
+    ]
 }
