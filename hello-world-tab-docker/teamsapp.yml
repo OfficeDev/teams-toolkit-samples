@@ -92,10 +92,8 @@ deploy:
   - uses: script
     name: build container images
     with:
-      run: az acr build --registry ${{AZURE_CONTAINER_REGISTRY_NAME}} --image
-        ${{TAB_CONTAINER_IMAGE}} . && az acr build --registry
-        ${{AZURE_CONTAINER_REGISTRY_NAME}} --image ${{API_CONTAINER_IMAGE}}
-        ./api
+      run: az acr build --registry ${{AZURE_CONTAINER_REGISTRY_NAME}} --image ${{TAB_CONTAINER_IMAGE}} .
+        && az acr build --registry ${{AZURE_CONTAINER_REGISTRY_NAME}} --image ${{API_CONTAINER_IMAGE}} ./api
 
   - uses: script
     name: deploy tab container image

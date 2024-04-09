@@ -98,7 +98,7 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
 
 | Date         | Author     | Comments                               |
 | ------------ | ---------- | -------------------------------------- |
-| Jan 17, 2024  | hund030    | Onboard sample in Teams Toolkit V5.0.0 |
+| Jan 17, 2024  | hund030   | Onboard sample in Teams Toolkit V5.0.0 |
 
 ## Feedback
 
