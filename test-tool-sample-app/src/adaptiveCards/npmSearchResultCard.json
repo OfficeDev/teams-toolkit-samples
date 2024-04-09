@@ -1,0 +1,88 @@
+{
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "TextBlock",
+      "size": "medium",
+      "weight": "bolder",
+      "text": "${name}",
+      "style": "heading",
+      "wrap": true
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Image",
+              "style": "person",
+              "url": "${imageUrl}",
+              "altText": "image",
+              "size": "small"
+            }
+          ],
+          "width": "auto"
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "weight": "bolder",
+              "text": "${publisher.username}",
+              "wrap": true
+            },
+            {
+              "type": "TextBlock",
+              "spacing": "none",
+              "text": "Updated ${date}",
+              "isSubtle": true,
+              "wrap": true
+            }
+          ],
+          "width": "stretch"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "${description}",
+      "wrap": true
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "Package name",
+          "value": "${name}"
+        },
+        {
+          "title": "Scope",
+          "value": "${scope}"
+        },
+        {
+          "title": "Version",
+          "value": "${version}"
+        },
+        {
+          "title": "Publisher email",
+          "value": "${publisher.email}"
+        },
+        {
+          "title": "Maintainer email",
+          "value": "${maintainers[0].email}"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "View",
+      "url": "${links.npm}",
+      "role": "button"
+    }
+  ]
+}

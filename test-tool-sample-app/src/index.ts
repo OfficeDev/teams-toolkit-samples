@@ -9,7 +9,7 @@ const teamsBot = new SimpleBot();
 
 const server = restify.createServer();
 server.use(restify.plugins.bodyParser());
-server.listen(process.env.port || process.env.PORT || 3978, () => {
+server.listen(process.env.port || process.env.PORT || 3979, () => {
   console.log(`\nBot Started, ${server.name} listening to ${server.url}`);
 });
 

@@ -1,0 +1,76 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.4",
+    "body": [
+        {
+            "type": "Table",
+            "columns": [
+                {
+                    "width": 1
+                },
+                {
+                    "width": 2
+                }
+            ],
+            "rows": [
+                {
+                    "type": "TableRow",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Field name",
+                                    "wrap": true,
+                                    "weight": "bolder"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Field value",
+                                    "wrap": true,
+                                    "weight": "bolder"
+                                }
+                            ]
+                        }
+                    ],
+                    "style": "accent"
+                },
+                {
+                    "type": "TableRow",
+                    "$data": "${fields}",
+                    "cells": [
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${name}",
+                                    "weight": "bolder",
+                                    "wrap": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TableCell",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "${value}",
+                                    "wrap": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "gridStyle": "accent"
+        }
+    ]
+}

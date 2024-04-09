@@ -11,6 +11,8 @@ import { HeroCardCommandHandler } from "../commands/heroCardCommandHandler";
 import { ReportIncidentCommandHandler } from "../commands/reportIncidentCommandHandler";
 import { AssignIncidentActionHandler } from "../cardActions/assignIncidentActionHandler";
 import { SubmitCommandHandler } from "../commands/submitCommandHandler";
+import { TypingCommandHandler } from "../commands/typingCommandHandler";
+import { MarkdownCommandHandler } from "../commands/markdownCommandHandler";
 
 // Create the conversation bot and register the command and card action handlers for your app.
 export const conversationBot = new ConversationBot({
@@ -34,6 +36,8 @@ export const conversationBot = new ConversationBot({
       new HeroCardCommandHandler(),
       new ReportIncidentCommandHandler(),
       new SubmitCommandHandler(),
+      new TypingCommandHandler(),
+      new MarkdownCommandHandler(),
     ],
   },
   cardAction: {

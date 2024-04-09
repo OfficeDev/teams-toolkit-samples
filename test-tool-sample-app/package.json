@@ -5,14 +5,11 @@
     "author": "Microsoft",
     "license": "MIT",
     "main": "./lib/index.js",
-    "engines": {
-        "node": "16 || 18"
-    },
     "scripts": {
         "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run dev",
         "dev:teamsfx:testtool": "env-cmd --silent -f .localConfigs.testTool npm run dev",
         "dev:teamsfx:launch-testtool": "env-cmd --silent -f .env.testTool teamsapptester start",
-        "dev": "nodemon --watch ./src --exec node --inspect=9239 --signal SIGINT -r ts-node/register ./src/index.ts",
+        "dev": "nodemon --watch ./src --exec node --inspect=9241 --signal SIGINT -r ts-node/register ./src/index.ts",
         "build": "tsc --build && shx cp -r ./src/adaptiveCards ./lib/src",
         "start": "node ./lib/src/index.js",
         "watch": "nodemon --watch ./src --exec \"npm run start\"",
@@ -24,9 +21,11 @@
     },
     "dependencies": {
         "@microsoft/adaptivecards-tools": "^1.0.0",
-        "@microsoft/teamsfx": "^2.3.1-beta",
+        "@microsoft/teamsfx": "^2.3.1",
         "botbuilder": "^4.18.0",
-        "restify": "^10"
+        "restify": "^10",
+        "axios": "^1.6.7",
+        "querystring": "^0.2.1"
     },
     "devDependencies": {
         "@types/restify": "8.4.2",

@@ -29,9 +29,10 @@ export class HeroCardCommandHandler implements TeamsFxBotCommandHandler {
             "value": "https://www.seattlemonorail.com"
           },
           {
-            "type": "openUrl",
-            "title": "Wikipeda page",
-            "value": "https://en.wikipedia.org/wiki/Seattle_Center_Monorail"
+            "type": "messageBack",
+            "title": "MessageBack",
+            "value": {key: "key", value: "value"},
+            "displayText": "MessageBack"
           }
         ]
       }

@@ -1,0 +1,39 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.6",
+    "body": [
+        {
+            "type": "TextBlock",
+            "weight": "Bolder",
+            "size": "Large",
+            "color": "accent",
+            "text": "Contoso Incident Management"
+        },
+        {
+            "type": "Input.Text",
+            "label": "Title",
+            "id": "incidentTitle",
+            "placeholder": "Enter title...",
+            "isRequired": true,
+            "errorMessage": "Incident title is required"
+        },
+        {
+            "type": "Input.Text",
+            "label": "Description",
+            "id": "incidentDescription",
+            "placeholder": "Enter description...",
+            "value": " ",
+            "isMultiline": true
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Next",
+            "data": {
+                "hasNext": true
+            }
+        }
+    ]
+}
