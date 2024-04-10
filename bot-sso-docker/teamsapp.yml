@@ -104,6 +104,11 @@ deploy:
       run: docker push ${{AZURE_CONTAINER_IMAGE}}
 
   - uses: script
+    name: print log after pushing image
+    with:  
+      run: echo "Container image has been pushed successfully"
+
+  - uses: script
     name: deploy container image
     with:
       run: az containerapp up -n ${{AZURE_CONTAINER_APP_NAME}} --image
