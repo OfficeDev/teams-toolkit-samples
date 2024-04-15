@@ -136,3 +136,4 @@ output AZURE_CONTAINER_REGISTRY_NAME string = acr.outputs.name
 output AZURE_CONTAINER_REGISTRY_SERVER string = acr.outputs.loginServer
 output AZURE_CONTAINER_APP_NAME string = containerApp.name
 output BOT_DOMAIN string = containerApp.properties.configuration.ingress.fqdn
+output AZURE_CONTAINER_APP_RESOURCE_ID string = containerApp.id
