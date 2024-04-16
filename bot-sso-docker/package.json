@@ -21,14 +21,13 @@
     "url": "https://github.com"
   },
   "dependencies": {
-    "@azure/msal-node": "^1.1.0",
     "@microsoft/microsoft-graph-client": "^3.0.1",
     "@microsoft/teamsfx": "^2.0.0",
-    "botbuilder": "^4.18.0",
-    "botbuilder-dialogs": "^4.18.0",
+    "botbuilder": "^4.22.0",
+    "botbuilder-dialogs": "^4.22.0",
     "isomorphic-fetch": "^3.0.0",
-    "restify": "^10.0.0",
-    "uuid": "^8.3.2"
+    "restify": "^11.1.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/restify": "8.5.5",
