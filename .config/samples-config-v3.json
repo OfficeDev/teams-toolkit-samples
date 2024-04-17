@@ -460,7 +460,7 @@
             "onboardDate": "2023-04-27",
             "title": "Dice Roller in meeting",
             "shortDescription": "This sample introduces Microsoft Live Share and Azure Fluid Relay to enable a shared experience between multiple users.",
-            "fullDescription": "Microsoft Live Share is a collaboration tool that enables you to share your experience with others in real time. Azure Fluid Relay is a part of this service. The diceroller example is a simple app that allows multiple users to roll a dice and see the results. This sample is a great way to get started with Live Share and Fluid.",
+            "fullDescription": "Microsoft Live Share is a a collaboration tool sample used in meeting that enables you to share your experience with others in real time. Azure Fluid Relay is a part of this service. The diceroller example is a simple app that allows multiple users to roll a dice and see the results. This sample is a great way to get started with Live Share and Fluid.",
             "types": [
                 "Tab"
             ],
