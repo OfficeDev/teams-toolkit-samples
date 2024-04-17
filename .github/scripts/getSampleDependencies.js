@@ -7,28 +7,28 @@ const repoRoot = "../TeamsFx-Samples";
 
 const codeOwnerMap = new Map([
   ["adaptive-card-notification", "tianyuan@microsoft.com"],
-  ["basic-blazor-tab-app", "huimiao@microsoft.com"],//
+  ["basic-blazor-tab-app", "nintan@microsoft.com"],
   ["bot-sso", "yukundong@microsoft.com"],
   ["bot-sso-docker", "zhijie.huang@microsoft.com"],
-  ["command-bot-with-sso", "zhijie.huang@microsoft.com"],//
+  ["command-bot-with-sso", "rentu@microsoft.com"],
   ["developer-assist-dashboard", "huimiao@microsoft.com"],
   ["graph-connector-app", "junhan@microsoft.com"],
   ["graph-connector-bot", "junhan@microsoft.com"],
   ["graph-toolkit-contact-exporter", "rentu@microsoft.com"],
   ["graph-toolkit-one-productivity-hub", "rentu@microsoft.com"],
-  ["hello-world-bot-with-tab", "yukundong@microsoft.com"],//
+  ["hello-world-bot-with-tab", "zhijie.huang@microsoft.com"],
   ["hello-world-in-meeting", "kaiyan@microsoft.com"],
-  ["hello-world-tab-codespaces", "yuqzho@microsoft.com"],//
-  ["hello-world-tab-docker", "yuqzho@microsoft.com"],//
+  ["hello-world-tab-codespaces", "qinzhu@microsoft.com"],
+  ["hello-world-tab-docker", "yiminjin@microsoft.com"],
   ["hello-world-tab-with-backend", "bowsong@microsoft.com"],
   ["hello-world-teams-tab-and-outlook-add-in", "zhijie.huang@microsoft.com"],
   ["incoming-webhook-notification", "kuojianlu@microsoft.com"],
   ["intelligent-data-chart-generator", "huimiao@microsoft.com"],
   ["large-scale-notification", "yiqingzhao@microsoft.com"],
   ["live-share-dice-roller", "nintan@microsoft.com"],
-  ["notification-codespaces", "yuqzho@microsoft.com"],//
+  ["notification-codespaces", "qinzhu@microsoft.com"],
   ["NPM-search-connector-M365", "kuojianlu@microsoft.com"],
-  ["NPM-search-message-extension-codespaces", "qidon@microsoft.com"],//
+  ["NPM-search-message-extension-codespaces", "qinzhu@microsoft.com"],
   ["query-org-user-with-message-extension-sso", "wenyutang@microsoft.com"],
   ["react-retail-dashboard", "yuqzho@microsoft.com"],
   ["share-now", "zhaofengxu@microsoft.com"],
@@ -37,11 +37,11 @@ const codeOwnerMap = new Map([
   ["stocks-update-notification-bot", "kuojianlu@microsoft.com"],
   ["stocks-update-notification-bot-dotnet", "tianyuan@microsoft.com"],
   ["team-central-dashboard", "huimiao@microsoft.com"],
-  ["test-tool-sample-app", "tianyuan@microsoft.com"],//
+  ["test-tool-sample-app", "qinzhu@microsoft.com"],
   ["todo-list-SPFx", "yuqzho@microsoft.com"],
   ["todo-list-with-Azure-backend", "junhan@microsoft.com"],
   ["todo-list-with-Azure-backend-M365", "kuojianlu@microsoft.com"],
-  ["whos-next-meeting-app", "kuojianlu@microsoft.com"],//
+  ["whos-next-meeting-app", "nintan@microsoft.com"],
 ]);
 
 async function getSamplesDependencies() {
@@ -53,17 +53,18 @@ async function getSamplesDependencies() {
 
   packageJsonFiles.forEach((packageJsonFile) => {
     const packageJson = JSON.parse(fs.readFileSync(packageJsonFile, "utf8"));
-    let templateDir = path.relative(
-      `${repoRoot}`,
-      path.dirname(packageJsonFile)
-    );
+    let sampleDir = path.relative(`${repoRoot}`, path.dirname(packageJsonFile));
     let codeOwners = "";
+    if (sampleDir.includes("validation-tool")) {
+      return;
+    }
+
     for (const [key, value] of codeOwnerMap) {
-      if (templateDir.includes("non-sso-tab-default-bot")) {
-        codeOwners = "yuqzho@microsoft.com";
-        continue;
-      }
-      if (key === path.basename(templateDir)) {
+      if (
+        key === path.basename(sampleDir) ||
+        key === path.dirname(sampleDir) ||
+        key === path.dirname(path.dirname(sampleDir))
+      ) {
         codeOwners = value;
       }
     }
@@ -75,18 +76,16 @@ async function getSamplesDependencies() {
         dependenciesMap.get(dependency).has(codeOwners)
       ) {
         dependenciesMap.get(dependency).get(codeOwners).push({
-          templateDir,
+          sampleDir,
           version: dependencies[dependency],
         });
       } else if (dependenciesMap.has(dependency)) {
         dependenciesMap
           .get(dependency)
-          .set(codeOwners, [
-            { templateDir, version: dependencies[dependency] },
-          ]);
+          .set(codeOwners, [{ sampleDir, version: dependencies[dependency] }]);
       } else {
         const codeOwnerTemplateMap = new Map([
-          [codeOwners, [{ templateDir, version: dependencies[dependency] }]],
+          [codeOwners, [{ sampleDir, version: dependencies[dependency] }]],
         ]);
         dependenciesMap.set(dependency, codeOwnerTemplateMap);
       }
@@ -96,27 +95,20 @@ async function getSamplesDependencies() {
   return dependenciesMap;
 }
 
-async function getCsharpTemplateDependencies() {
+async function getCsharpSampleDependencies() {
   var dependenciesMap = new Map();
-  const templateCsprojPath = `${repoRoot}/templates/**/*.csproj.tpl`;
-  const csprojFiles = await glob.glob(templateCsprojPath);
+  const sampleCsprojPath = `${repoRoot}/**/*.csproj`;
+  const csprojFiles = await glob.glob(sampleCsprojPath);
   csprojFiles.forEach((csprojFile) => {
     const csproj = fs.readFileSync(csprojFile, "utf8");
-    let templateDir = path.relative(
-      `${repoRoot}/templates`,
-      path.dirname(csprojFile)
-    );
+    let sampleDir = path.relative(`${repoRoot}`, path.dirname(csprojFile));
     let codeOwners = "";
     for (const [key, value] of codeOwnerMap) {
       if (
-        path.basename(templateDir) === "copilot-plugin-existing-api" ||
-        path.basename(templateDir) === "copilot-plugin-existing-api-api-key" ||
-        path.basename(templateDir) === "copilot-plugin-from-oai-plugin"
+        key === path.basename(sampleDir) ||
+        key === path.dirname(sampleDir) ||
+        key === path.dirname(path.dirname(sampleDir))
       ) {
-        codeOwners = "zhiyu.you@microsoft.com";
-        continue;
-      }
-      if (key === path.basename(templateDir)) {
         codeOwners = value;
       }
     }
@@ -138,18 +130,18 @@ async function getCsharpTemplateDependencies() {
         dependenciesMap.get(dependencyName).has(codeOwners)
       ) {
         dependenciesMap.get(dependencyName).get(codeOwners).push({
-          templateDir,
+          sampleDir,
           version: dependencyVersion,
         });
       } else if (dependenciesMap.has(dependencyName)) {
         dependenciesMap
           .get(dependencyName)
-          .set(codeOwners, [{ templateDir, version: dependencyVersion }]);
+          .set(codeOwners, [{ sampleDir, version: dependencyVersion }]);
       } else {
-        const codeOwnerTemplateMap = new Map([
-          [codeOwners, [{ templateDir, version: dependencyVersion }]],
+        const codeOwnerSampleMap = new Map([
+          [codeOwners, [{ sampleDir, version: dependencyVersion }]],
         ]);
-        dependenciesMap.set(dependencyName, codeOwnerTemplateMap);
+        dependenciesMap.set(dependencyName, codeOwnerSampleMap);
       }
     }
   });
@@ -241,7 +233,7 @@ function generateAdaptiveCardColumnSets(arr) {
                     items: [
                       {
                         type: "TextBlock",
-                        text: templateInfo.templateDir,
+                        text: templateInfo.sampleDir,
                         wrap: true,
                         size: "Small",
                       },
@@ -253,7 +245,10 @@ function generateAdaptiveCardColumnSets(arr) {
                     items: [
                       {
                         type: "TextBlock",
-                        text: templateInfo.version,
+                        text:
+                          templateInfo.version[0] === ">"
+                            ? "\\" + templateInfo.version
+                            : templateInfo.version,
                         wrap: true,
                         size: "Small",
                       },
@@ -293,7 +288,7 @@ function generateAdaptiveCardColumnSets(arr) {
                   package.ownerMap
                     .values()
                     .next()
-                    .value[0].templateDir.includes("csharp")
+                    .value[0].sampleDir.includes("csharp")
                     ? `https://www.nuget.org/packages/${package.name}`
                     : `https://www.npmjs.com/package/${package.name}`
                 })` +
@@ -318,7 +313,7 @@ function generateAdaptiveCardColumnSets(arr) {
 }
 
 async function main() {
-  const dependenciesMap = await getTemplatesDependencies();
+  const dependenciesMap = await getSamplesDependencies();
   let arr = [];
   for (const entry of dependenciesMap.entries()) {
     await axios
@@ -337,7 +332,7 @@ async function main() {
       });
   }
 
-  const csharpDependencyMap = await getCsharpTemplateDependencies();
+  const csharpDependencyMap = await getCsharpSampleDependencies();
   for (const entry of csharpDependencyMap.entries()) {
     await axios
       .get(
