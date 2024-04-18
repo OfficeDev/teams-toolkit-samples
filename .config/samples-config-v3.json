@@ -501,8 +501,8 @@
             "downloadUrlInfo": {
                 "owner": "microsoft",
                 "repository": "teams-ai",
-                "ref": "js-1.1.3",
-                "dir": "js/samples/04.ai.a.teamsChefBot"
+                "ref": "main",
+                "dir": "js/samples/04.ai-apps/a.teamsChefBot"
             }
         },
         {
@@ -658,7 +658,7 @@
             ],
             "time": "5min to run",
             "configuration": "Manual configurations required",
-            "thumbnailPath": "Images/9-mention-Search-Result.png",
+            "thumbnailPath": "Images/4-search-Result-ME.png",
             "gifPath": "Images/msgext-search.gif",
             "suggested": false,
             "downloadUrlInfo": {
