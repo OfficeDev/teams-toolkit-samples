@@ -200,3 +200,4 @@ output BACKEND_APP_NAME string = backendApp.name
 output FRONTEND_APP_NAME string = frontendApp.name
 output TAB_DOMAIN string = siteDomain
 output TAB_ENDPOINT string = 'https://${siteDomain}'
+output AZURE_CONTAINER_APP_RESOURCE_ID string = backendApp.id
