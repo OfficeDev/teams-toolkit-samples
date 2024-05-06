@@ -5,7 +5,7 @@ import fs from "fs-extra";
 import path from "path";
 import { Result } from "../resultType";
 
-const MANIFEST_VERSION = "1.16";
+const MANIFEST_VERSION = "1.17";
 const MANIFEST_PREVIEW_VERSION = "devPreview";
 
 /**
