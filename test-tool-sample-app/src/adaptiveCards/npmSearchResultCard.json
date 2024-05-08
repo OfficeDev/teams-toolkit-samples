@@ -17,7 +17,6 @@
           "items": [
             {
               "type": "Image",
-              "style": "person",
               "url": "${imageUrl}",
               "altText": "image",
               "size": "small"
