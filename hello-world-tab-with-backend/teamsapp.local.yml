@@ -63,6 +63,20 @@ provision:
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip # Relative path to teamsfx folder. This is the path for built zip file.
 
 deploy:
+  # Install development tool(s)
+  - uses: devTool/install
+    with:
+      devCert:
+        trust: true
+      func:
+        version: ~4.0.5455
+        symlinkDir: ./devTools/func
+    # Write the information of installed development tool(s) into environment
+    # file for the specified environment variable(s).
+    writeToEnvironmentFile:
+      sslCertFile: SSL_CRT_FILE
+      sslKeyFile: SSL_KEY_FILE
+      funcPath: FUNC_PATH
   # Run npm command
   - uses: cli/runNpmCommand
     with:
