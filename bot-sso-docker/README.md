@@ -64,10 +64,10 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
       BOT_DOMAIN=sample-id-3978.devtunnels.ms
       BOT_ENDPOINT=https://sample-id-3978.devtunnels.ms
       ```
-  1.  Run command: `teamsfx provision --env local` .
+  1.  Run command: `teamsapp provision --env local` .
   1.  Run command: `docker build -t sso-bot ./` .
   1.  Run command: `docker run -p 3978:80 --env-file .localConfigs sso-bot` .
-  1.  Run command: `teamsfx preview --open-only` .
+  1.  Run command: `teamsapp preview --open-only` .
 
 ### Deploy the app to Azure
 
@@ -77,17 +77,17 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
   1. Login Azure CLI with commands: `az login` and `az account set -s <subscription-id>`.
   1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 - From TeamsFx CLI:
-  1. Run command: `teamsfx account login azure` .
-  1. Run command: `teamsfx provision --env dev` .
+  1. Run command: `teamsapp account login azure` .
+  1. Run command: `teamsapp provision --env dev` .
   1. Run command: `az login` .
-  1. Run command: `teamsfx deploy --env dev` .
+  1. Run command: `teamsapp deploy --env dev` .
 
 ### Preview the app in Teams
 
 - From VS Code:
   1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 - From TeamsFx CLI:
-  1. Run command: `teamsfx preview --env dev`.
+  1. Run command: `teamsapp preview --env dev`.
 
 ## Further reading
 
