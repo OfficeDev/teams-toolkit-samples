@@ -7,7 +7,7 @@
     "@fluidframework/azure-client": "~1.1.1",
     "@fluidframework/test-client-utils": "~1.3.7",
     "@microsoft/live-share": "^1.0.0-preview.4",
-    "@microsoft/teams-js": "^2.8.0-beta.0",
+    "@microsoft/teams-js": "^2.22.0", 
     "fluid-framework": "~1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
