@@ -15,7 +15,7 @@
     "outline": "outline.png"
   },
   "name": {
-    "short": "large-scale-notifi-${{TEAMSFX_ENV}}",
+    "short": "large-scale-notifi${{TEAMSFX_ENV}}",
     "full": "full name for large-scale-notification"
   },
   "description": {
