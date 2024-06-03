@@ -121,12 +121,6 @@ deploy:
       args: install --no-audit
       workingDirectory: bot
 
-  - uses: cli/runDotnetCommand # Run dotnet command
-    with:
-      args: build extensions.csproj -o ./bin --ignore-failed-sources
-      workingDirectory: api
-      execPath: ${{DOTNET_PATH}}
-
   # Generate runtime environment variables for tab
   - uses: file/createOrUpdateEnvironmentFile
     with:
