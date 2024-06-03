@@ -49,8 +49,8 @@ export default async function posts(
     switch (method) {
       case "get":
         const pageCount = +req.query.get("pageCount");
-        const inPutSize = +req.query.get("pageSize")
-        const pageSize = inPutSize == 0 ? 8 : inPutSize;
+        const inputSize = +req.query.get("pageSize")
+        const pageSize = inputSize == 0 ? 8 : inputSize;
         query = `SELECT * FROM [dbo].[TeamPostEntity] where IsRemoved = 0 ORDER BY PostID DESC OFFSET ${pageSize * pageCount} ROWS FETCH NEXT ${pageSize} ROWS ONLY;`;
         const posts = await executeQuery(query, connection);
         const data = await decoratePosts(posts, currentUser.objectId, connection);

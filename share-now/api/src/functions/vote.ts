@@ -2,9 +2,10 @@
 // Licensed under the MIT License.
 import "isomorphic-fetch";
 import { HttpRequest, HttpResponseInit, InvocationContext, app } from "@azure/functions";
-import { OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential, TeamsFx } from "@microsoft/teamsfx";
+import { OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential } from "@microsoft/teamsfx";
 import { executeQuery, getSQLConnection } from "../utils/common";
 import { checkPost } from "../utils/query";
+import config from "../config";
 
 interface Response {
   status: number;
@@ -12,13 +13,11 @@ interface Response {
 }
 
 const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
-  authorityHost: process.env.M365_AUTHORITY_HOST,
-  clientId: process.env.M365_CLIENT_ID,
-  tenantId: process.env.M365_TENANT_ID,
-  clientSecret: process.env.M365_CLIENT_SECRET,
+  authorityHost: config.authorityHost,
+  clientId: config.clientId,
+  tenantId: config.tenantId,
+  clientSecret: config.clientSecret,
 };
-
-type TeamsfxContext = { [key: string]: any; };
 
 export default async function vote(
   req: HttpRequest,
