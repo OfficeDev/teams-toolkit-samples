@@ -15,7 +15,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "bot-all-in-one-${{TEAMSFX_ENV}}",
+        "short": "bot-all-in-one${{APP_NAME_SUFFIX}}",
         "full": "full name for bot-all-in-one"
     },
     "description": {

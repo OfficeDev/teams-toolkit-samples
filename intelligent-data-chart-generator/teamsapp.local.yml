@@ -20,7 +20,7 @@ provision:
   - uses: teamsApp/create
     with:
       # Teams app name
-      name: intelligent-data-chart-generator-${{TEAMSFX_ENV}}
+      name: intelligent-data-chart-generator${{APP_NAME_SUFFIX}}
     # Write the information of created resources into environment file for
     # the specified environment variable(s).
     writeToEnvironmentFile:
