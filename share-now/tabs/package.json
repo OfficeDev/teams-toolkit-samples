@@ -9,7 +9,7 @@
     "@fluentui/react": "^7.115.4",
     "@fluentui/react-icons-northstar": "^0.49.0",
     "@fluentui/react-northstar": "^0.49.0",
-    "@microsoft/teams-js": "^2.2.0",
+    "@microsoft/teams-js": "^2.22.0",
     "@microsoft/teamsfx": "^2.0.0",
     "@uifabric/icons": "^7.5.23",
     "axios": "^0.21.1",

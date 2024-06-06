@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@fluentui/react-components": "^9.18.0",
-    "@microsoft/teams-js": "^2.7.1",
+    "@microsoft/teams-js": "^2.22.0",
     "@microsoft/teamsfx": "2.3.0",
     "axios": "^1.6.7",
     "react": "^18.2.0",

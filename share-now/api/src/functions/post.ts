@@ -1,23 +1,21 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 import "isomorphic-fetch";
-import { Context, HttpRequest } from "@azure/functions";
+import { HttpRequest, HttpResponseInit, InvocationContext, app } from "@azure/functions";
 import { OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential } from "@microsoft/teamsfx";
 import { executeQuery, getSQLConnection, PostRequest, PostTypes, ResponsePost, LengthLimit } from "../utils/common";
 import { checkPost } from "../utils/query";
+import config from "../config";
 
 interface Response {
   status: number;
   body: any;
 }
 
-type TeamsfxContext = { [key: string]: any; };
-
-export default async function run(
-  context: Context,
+export default async function posts(
   req: HttpRequest,
-  teamsfxContext: TeamsfxContext
-): Promise<Response> {
+  context: InvocationContext
+): Promise<HttpResponseInit> {
   context.log("HTTP trigger function processed a post request.");
 
   // Initialize response.
@@ -30,16 +28,19 @@ export default async function run(
   try {
     connection = await getSQLConnection();
     const method = req.method.toLowerCase();
-    const accessToken: string = teamsfxContext["AccessToken"];
+    const accessToken: string = req.headers
+      .get("Authorization")
+      ?.replace("Bearer ", "")
+      .trim();
     const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
-      authorityHost: process.env.M365_AUTHORITY_HOST,
-      clientId: process.env.M365_CLIENT_ID,
-      tenantId: process.env.M365_TENANT_ID,
-      clientSecret: process.env.M365_CLIENT_SECRET,
+      authorityHost: config.authorityHost,
+      clientId: config.clientId,
+      tenantId: config.tenantId,
+      clientSecret: config.clientSecret,
     };
-    
+
     const oboCredential = new OnBehalfOfUserCredential(accessToken, oboAuthConfig);
-    
+
     const currentUser = await oboCredential.getUserInfo();
     let query;
     let postID;
@@ -47,23 +48,24 @@ export default async function run(
 
     switch (method) {
       case "get":
-        const pageCount = req.query.pageCount ? Number(req.query.pageCount) : 0;
-        const pageSize = req.query.pageSize ? Number(req.query.pageSize) : 8;
+        const pageCount = +req.query.get("pageCount");
+        const inputSize = +req.query.get("pageSize")
+        const pageSize = inputSize == 0 ? 8 : inputSize;
         query = `SELECT * FROM [dbo].[TeamPostEntity] where IsRemoved = 0 ORDER BY PostID DESC OFFSET ${pageSize * pageCount} ROWS FETCH NEXT ${pageSize} ROWS ONLY;`;
         const posts = await executeQuery(query, connection);
         const data = await decoratePosts(posts, currentUser.objectId, connection);
-        res.body = data;
+        res.body = JSON.stringify(data);
         return res;
       case "post":
-        const createRequest = getPostRequest(req);
+        const createRequest = await getPostRequest(req);
         query = `INSERT TeamPostEntity (ContentUrl, CreatedByName, CreatedDate, Description, IsRemoved, Tags, Title, TotalVotes, Type, UpdatedDate, UserID) OUTPUT Inserted.PostID VALUES (N'${createRequest.contentUrl}',N'${currentUser.displayName}', CURRENT_TIMESTAMP, N'${createRequest.description}', 0, N'${createRequest.tags}', N'${createRequest.title}', 0,${createRequest.type}, CURRENT_TIMESTAMP, '${currentUser.objectId}');`;
         const created = await executeQuery(query, connection);
         const createdId = created[0].PostID;
         const detail = await postDetail(createdId, currentUser.objectId, connection);
-        res.body = detail;
+        res.body = JSON.stringify(detail);
         return res;
       case "delete":
-        postID = context.bindingData.id as number;
+        postID = +req.params.id;
         check = await checkPost(postID, connection, currentUser.objectId);
         if (!check) {
           throw new Error("invalid postID");
@@ -73,16 +75,16 @@ export default async function run(
         res.body = "delete post successfully";
         return res;
       case "put":
-        postID = context.bindingData.id as number;
+        postID = +req.params.id;
         check = await checkPost(postID, connection, currentUser.objectId);
         if (!check) {
           throw new Error("invalid postID");
         }
-        const updateRequest = getPostRequest(req);
+        const updateRequest = await getPostRequest(req);
         query = `update TeamPostEntity set ContentUrl = N'${updateRequest.contentUrl}', Description = N'${updateRequest.description}', Tags = N'${updateRequest.tags}', Title = N'${updateRequest.title}', Type = ${updateRequest.type}, UpdatedDate = CURRENT_TIMESTAMP where PostID = ${postID};`;
         await executeQuery(query, connection);
         const updatedDetail = await postDetail(postID, currentUser.objectId, connection);
-        res.body = updatedDetail;
+        res.body = JSON.stringify(updatedDetail);
         return res;
     }
   } catch (error) {
@@ -121,13 +123,14 @@ async function postDetail(postID, userID, connection) {
   return data[0];
 }
 
-function getPostRequest(req: HttpRequest) {
+async function getPostRequest(req: HttpRequest) {
   let res = new PostRequest();
-  res.type = req.body.type ?? 1;
-  res.title = req.body.title ?? "automatic post";
-  res.description = req.body.description ?? "hello";
-  res.contentUrl = req.body.contentUrl ?? "https://bing.com";
-  res.tags = req.body.tags ?? "red;blue";
+  const body: any = await req.json()
+  res.type = body.type ?? 1;
+  res.title = body.title ?? "automatic post";
+  res.description = body.description ?? "hello";
+  res.contentUrl = body.contentUrl ?? "https://bing.com";
+  res.tags = body.tags ?? "red;blue";
 
   if (!Object.values(PostTypes).includes(res.type)) {
     throw new Error("invalid input for type");
@@ -146,3 +149,10 @@ function getPostRequest(req: HttpRequest) {
   }
   return res;
 }
+
+app.http("posts", {
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  authLevel: "anonymous",
+  route: 'posts/{id:int?}',
+  handler: posts,
+});
