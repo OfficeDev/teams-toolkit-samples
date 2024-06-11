@@ -50,7 +50,7 @@
         "messageTeamMembers"
     ],
     "validDomains": [
-        "${{TAB_DOMAIN}}"
+        "${{TAB_HOSTNAME}}"
     ],
     "showLoadingIndicator": false
 }
