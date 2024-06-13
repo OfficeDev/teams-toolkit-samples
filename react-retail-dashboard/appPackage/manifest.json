@@ -4,7 +4,6 @@
     "version": "1.0.8",
     "showLoadingIndicator": false,
     "id": "${{TEAMS_APP_ID}}",
-    "packageName": "com.pnp.retaildashboard",
     "developer": {
         "name": "PiaSys.com",
         "websiteUrl": "https://www.piasys.com/",
