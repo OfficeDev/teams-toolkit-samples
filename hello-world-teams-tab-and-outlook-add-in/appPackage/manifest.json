@@ -3,6 +3,7 @@
     "manifestVersion": "devPreview",
     "version": "1.0.0",
     "id": "${{TEAMS_APP_ID}}",
+    "packageName": "com.microsoft.teams.extension",
     "developer": {
         "name": "Contoso App, Inc.",
         "websiteUrl": "${{TAB_ENDPOINT}}",
