@@ -38,9 +38,11 @@ provision:
       channels:
         - name: msteams
 
-  - uses: script # Set TAB_DOMAIN and TAB_ENDPOINT for local launch
+  - uses: script # Set required variables for local launch
     with:
-      run: echo "::set-teamsfx-env TAB_DOMAIN=localhost:53000";
+      run:
+        echo "::set-teamsfx-env TAB_HOSTNAME=localhost";
+        echo "::set-teamsfx-env TAB_DOMAIN=localhost:53000";
         echo "::set-teamsfx-env TAB_ENDPOINT=https://localhost:53000";
   # Validate using manifest schema
   - uses: teamsApp/validateManifest

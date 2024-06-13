@@ -24,10 +24,13 @@
     "accentColor": "#FFFFFF",
     "bots": [],
     "composeExtensions": [],
-    "configurableTabs": [
+    "configurableTabs": [],
+    "staticTabs": [
         {
-            "configurationUrl": "${{TAB_ENDPOINT}}/index.html#/config",
-            "canUpdateConfiguration": true,
+            "entityId": "index",
+            "name": "Home",
+            "contentUrl": "${{TAB_ENDPOINT}}/index.html#/tab",
+            "websiteUrl": "${{TAB_ENDPOINT}}/index.html#/tab",
             "scopes": [
                 "team",
                 "groupChat"
@@ -38,16 +41,15 @@
                 "meetingChatTab",
                 "meetingDetailsTab",
                 "meetingSidePanel"
-              ]
+            ]
         }
     ],
-    "staticTabs": [],
     "permissions": [
         "identity",
         "messageTeamMembers"
     ],
     "validDomains": [
-        "${{TAB_DOMAIN}}"
+        "${{TAB_HOSTNAME}}"
     ],
     "showLoadingIndicator": false
 }

@@ -8,8 +8,8 @@
 
   <body>
     <script
-      src="https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js"
-      integrity="sha384-mhp2E+BLMiZLe7rDIzj19WjgXJeI32NkPvrvvZBrMi5IvWup/1NUfS5xuYN5S3VT"
+      src="https://res.cdn.office.net/teams-js/2.22.0/js/MicrosoftTeams.min.js"
+      integrity="sha384-WSG/sWulIv7rel5TnFlH8JTpxl2OxzZh9Lux2mIzBFiTRLFvMBeFv9VURu/3vQdx"
       crossorigin="anonymous"
     ></script>
     <script
@@ -22,34 +22,35 @@
       var currentURL = new URL(window.location);
       var clientId = currentURL.searchParams.get("clientId");
 
-      microsoftTeams.initialize();
-      microsoftTeams.getContext(async function (context) {
-        const msalConfig = {
-          auth: {
-            clientId: clientId,
-            authority: `https://login.microsoftonline.com/${context.tid}`,
-            navigateToLoginRequestUrl: false
-          },
-          cache: {
-            cacheLocation: "sessionStorage",
-          },
-        }
+      microsoftTeams.app.initialize().then(() => {
+        microsoftTeams.getContext(async function (context) {
+          const msalConfig = {
+            auth: {
+              clientId: clientId,
+              authority: `https://login.microsoftonline.com/${context.tid}`,
+              navigateToLoginRequestUrl: false
+            },
+            cache: {
+              cacheLocation: "sessionStorage",
+            },
+          }
 
-        const msalInstance = new window.msal.PublicClientApplication(msalConfig);
-        msalInstance.handleRedirectPromise()
-          .then((tokenResponse) => {
-            if (tokenResponse !== null) {
-              microsoftTeams.authentication.notifySuccess(JSON.stringify({
-                sessionStorage: sessionStorage
-              }));
-            } else {
-              microsoftTeams.authentication.notifyFailure("Get empty response.");
-            }
-          })
-          .catch((error) => {
-            microsoftTeams.authentication.notifyFailure(JSON.stringify(error));
-          });
-      })
+          const msalInstance = new window.msal.PublicClientApplication(msalConfig);
+          msalInstance.handleRedirectPromise()
+            .then((tokenResponse) => {
+              if (tokenResponse !== null) {
+                microsoftTeams.authentication.notifySuccess(JSON.stringify({
+                  sessionStorage: sessionStorage
+                }));
+              } else {
+                microsoftTeams.authentication.notifyFailure("Get empty response.");
+              }
+            })
+            .catch((error) => {
+              microsoftTeams.authentication.notifyFailure(JSON.stringify(error));
+            });
+        })
+      });
     </script>
   </body>
 </html>

@@ -13,7 +13,7 @@
   "dependencies": {
     "@azure/functions": "^4.2.0",
     "@microsoft/teamsfx": "^2.0.0",
-    "@microsoft/teams-js": "^2.7.1",
+    "@microsoft/teams-js": "^2.22.0",
     "@octokit/core": "^5",
     "isomorphic-fetch": "^3.0.0"
   },

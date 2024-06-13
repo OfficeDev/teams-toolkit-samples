@@ -14,7 +14,6 @@ import { useTeamsUserCredential } from "@microsoft/teamsfx-react";
 
 import SampleDashboard from "./dashboards/SampleDashboard";
 import { TeamsFxContext } from "./internal/context";
-import TabConfig from "./TabConfig";
 
 /**
  * The main app which handles the initialization and routing
@@ -48,7 +47,6 @@ export default function App() {
           <Router>
             <Routes>
               <Route path="/tab" element={<SampleDashboard />} />
-              <Route path="/config" element={<TabConfig />} />
               <Route path="*" element={<Navigate to={"/tab"} />} />
             </Routes>
           </Router>

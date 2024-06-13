@@ -1,10 +1,11 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 import "isomorphic-fetch";
-import { Context, HttpRequest } from "@azure/functions";
-import { OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential, TeamsFx } from "@microsoft/teamsfx";
+import { HttpRequest, HttpResponseInit, InvocationContext, app } from "@azure/functions";
+import { OnBehalfOfCredentialAuthConfig, OnBehalfOfUserCredential } from "@microsoft/teamsfx";
 import { executeQuery, getSQLConnection } from "../utils/common";
 import { checkPost } from "../utils/query";
+import config from "../config";
 
 interface Response {
   status: number;
@@ -12,19 +13,16 @@ interface Response {
 }
 
 const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
-  authorityHost: process.env.M365_AUTHORITY_HOST,
-  clientId: process.env.M365_CLIENT_ID,
-  tenantId: process.env.M365_TENANT_ID,
-  clientSecret: process.env.M365_CLIENT_SECRET,
+  authorityHost: config.authorityHost,
+  clientId: config.clientId,
+  tenantId: config.tenantId,
+  clientSecret: config.clientSecret,
 };
 
-type TeamsfxContext = { [key: string]: any; };
-
-export default async function run(
-  context: Context,
+export default async function vote(
   req: HttpRequest,
-  teamsfxContext: TeamsfxContext
-): Promise<Response> {
+  context: InvocationContext
+): Promise<HttpResponseInit> {
   context.log("HTTP trigger function processed a vote request.");
 
   // Initialize response.
@@ -37,12 +35,15 @@ export default async function run(
   try {
     connection = await getSQLConnection();
     const method = req.method.toLowerCase();
-    const accessToken = teamsfxContext["AccessToken"];
+    const accessToken: string = req.headers
+    .get("Authorization")
+    ?.replace("Bearer ", "")
+    .trim();
 
     const oboCredential = new OnBehalfOfUserCredential(accessToken, oboAuthConfig);
     const currentUser = await oboCredential.getUserInfo();
 
-    const postID = context.bindingData.id as number;
+    const postID = +req.params.id;;
     const checkRes = await checkPost(postID, connection);
     if (!checkRes) {
       throw new Error(`invalid postID ${postID}`);
@@ -98,3 +99,10 @@ async function updateVoteCount(postID, isAdd, conn) {
   let query = `update [dbo].[TeamPostEntity] set totalVotes = totalVotes ${flag} 1 where PostID = ${postID};`;
   await executeQuery(query, conn);
 }
+
+app.http("vote", {
+  methods: ["POST", "DELETE"],
+  authLevel: "anonymous",
+  route: 'vote/{id:int?}',
+  handler: vote,
+});

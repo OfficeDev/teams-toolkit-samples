@@ -15,7 +15,7 @@
     "outline": "outline.png"
   },
   "name": {
-    "short": "intelligent-chart-${{TEAMSFX_ENV}}",
+    "short": "intelligent-chart${{APP_NAME_SUFFIX}}",
     "full": "Full name for intelligent-data-chart-generator"
   },
   "description": {

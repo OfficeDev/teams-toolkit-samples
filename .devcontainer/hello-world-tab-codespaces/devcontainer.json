@@ -4,7 +4,7 @@
   "name": "tab-codespaces",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:16",
   // Default workspace folder
-  "workspaceFolder": "/workspaces/TeamsFx-Samples/hello-world-tab-codespaces/",
+  "workspaceFolder": "/workspaces/teams-toolkit-samples/hello-world-tab-codespaces/",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [
     53000

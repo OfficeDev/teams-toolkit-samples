@@ -63,6 +63,20 @@ provision:
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip # Relative path to teamsfx folder. This is the path for built zip file.
 
 deploy:
+  # Install development tool(s)
+  - uses: devTool/install
+    with:
+      devCert:
+        trust: true
+      func:
+        version: ~4.0.5455
+        symlinkDir: ./devTools/func
+    # Write the information of installed development tool(s) into environment
+    # file for the specified environment variable(s).
+    writeToEnvironmentFile:
+      sslCertFile: SSL_CRT_FILE
+      sslKeyFile: SSL_KEY_FILE
+      funcPath: FUNC_PATH
   # Run npm command
   - uses: cli/runNpmCommand
     with:
@@ -82,6 +96,8 @@ deploy:
         BROWSER: none
         HTTPS: true
         PORT: 53000
+        SSL_CRT_FILE: ${{SSL_CRT_FILE}}
+        SSL_KEY_FILE: ${{SSL_KEY_FILE}}
         REACT_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
         REACT_APP_START_LOGIN_PAGE_URL: ${{TAB_ENDPOINT}}/auth-start.html
         REACT_APP_FUNC_NAME: ${{FUNC_NAME}}
