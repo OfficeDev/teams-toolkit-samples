@@ -5,7 +5,7 @@
   "image": "mcr.microsoft.com/devcontainers/typescript-node:16",
 
   // Default workspace folder
-  "workspaceFolder": "/workspaces/TeamsFx-Samples/notification-codespaces/",
+  "workspaceFolder": "/workspaces/teams-toolkit-samples/notification-codespaces/",
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [

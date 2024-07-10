@@ -1,9 +1,8 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
     "version": "1.0.1",
-    "manifestVersion": "1.16",
+    "manifestVersion": "1.17",
     "id": "${{TEAMS_APP_ID}}",
-    "packageName": "com.microsoft.teams.livesharediceroller",
     "name": {
         "short": "DiceRollerLiveShare${{APP_NAME_SUFFIX}}",
         "full": "Dice Roller Live Share - ${{TEAMSFX_ENV}}"
@@ -29,7 +28,7 @@
             "configurationUrl": "${{BOT_ENDPOINT}}/?view=config&inTeams=1&load=1",
             "canUpdateConfiguration": false,
             "scopes": [
-                "groupchat"
+                "groupChat"
             ],
             "context": [
                 "meetingChatTab",

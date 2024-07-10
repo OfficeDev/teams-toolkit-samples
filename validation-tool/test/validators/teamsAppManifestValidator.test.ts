@@ -85,6 +85,6 @@ describe('validateTeamsAppManifest()', () => {
     expect(result.name).toEqual("Teams App Manifest");
     expect(result.failed.length).toBe(1);
     expect(result.passed.length).toBe(1);
-    expect(result.failed[0]).toEqual("Manifest version(1.12) is NOT aligned with Teams Toolkit(1.16).");
+    expect(result.failed[0]).toEqual("Manifest version(1.12) is NOT aligned with Teams Toolkit(1.17).");
   });
 });

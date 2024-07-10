@@ -112,21 +112,6 @@ deploy:
       workingDirectory: api
       args: install
 
-  # Install development tool(s)
-  - uses: devTool/install
-    with:
-      dotnet: true
-    # Write the information of installed development tool(s) into environment
-    # file for the specified environment variable(s).
-    writeToEnvironmentFile:
-      dotnetPath: DOTNET_PATH
-
-  - uses: cli/runDotnetCommand
-    with:
-      workingDirectory: api
-      args: build extensions.csproj -o bin --ignore-failed-sources
-      execPath: ${{DOTNET_PATH}}
-
   # Deploy your application to Azure Functions using the zip deploy feature.
   # For additional details, see at https://aka.ms/zip-deploy-to-azure-functions
   - uses: azureFunctions/zipDeploy
