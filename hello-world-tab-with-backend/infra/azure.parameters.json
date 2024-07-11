@@ -22,9 +22,6 @@
     },
     "storageSKU": {
       "value": "Standard_LRS"
-    },
-    "functionStorageSKU": {
-      "value": "Standard_LRS"
     }
   }
 }
