@@ -1,5 +1,5 @@
 param resourceBaseName string
-param storageSKU string
+param staticWebAppSku string
 param functionAppSKU string
 
 param aadAppClientId string
@@ -8,7 +8,7 @@ param aadAppOauthAuthorityHost string
 @secure()
 param aadAppClientSecret string
 
-param storageName string = resourceBaseName
+param staticWebAppName string = resourceBaseName
 param location string = resourceGroup().location
 param serverfarmsName string = resourceBaseName
 param functionAppName string = resourceBaseName
@@ -23,20 +23,19 @@ var outlookWebAppClientId = '00000002-0000-0ff1-ce00-000000000000'
 var authorizedClientApplicationIds = '${teamsMobileOrDesktopAppClientId};${teamsWebAppClientId};${officeWebAppClientId1};${officeWebAppClientId2};${outlookDesktopAppClientId};${outlookWebAppClientId}'
 var allowedClientApplications = '"${teamsMobileOrDesktopAppClientId}","${teamsWebAppClientId}","${officeWebAppClientId1}","${officeWebAppClientId2}","${outlookDesktopAppClientId}","${outlookWebAppClientId}"'
 
-// Azure Storage that hosts your static web site
-resource storage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
-  kind: 'StorageV2'
-  location: location
-  name: storageName
-  properties: {
-    supportsHttpsTrafficOnly: true
-  }
+// Azure Static Web Apps that hosts your static web site
+resource swa 'Microsoft.Web/staticSites@2022-09-01' = {
+  name: staticWebAppName
+  // SWA do not need location setting
+  location: 'centralus'
   sku: {
-    name: storageSKU
+    name: staticWebAppSku
+    tier: staticWebAppSku
   }
+  properties: {}
 }
 
-var siteDomain = replace(replace(storage.properties.primaryEndpoints.web, 'https://', ''), '/', '')
+var siteDomain = swa.properties.defaultHostname
 var tabEndpoint = 'https://${siteDomain}'
 var aadApplicationIdUri = 'api://${siteDomain}/${aadAppClientId}'
 
@@ -131,7 +130,7 @@ resource authSettings 'Microsoft.Web/sites/config@2021-02-01' = {
 }
 
 // The output will be persisted in .env.{envName}. Visit https://aka.ms/teamsfx-actions/arm-deploy for more details.
-output TAB_AZURE_STORAGE_RESOURCE_ID string = storage.id // used in deploy stage
+output AZURE_STATIC_WEB_APPS_RESOURCE_ID string = swa.id
 output TAB_DOMAIN string = siteDomain
 output TAB_ENDPOINT string = tabEndpoint
 output API_FUNCTION_ENDPOINT string = apiEndpoint
