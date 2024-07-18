@@ -11,7 +11,7 @@ module frontendHostingProvision './provision/frontendHosting.bicep' = {
 output frontendHostingOutput object = {
   domain: frontendHostingProvision.outputs.domain
   endpoint: frontendHostingProvision.outputs.endpoint
-  storageResourceId: frontendHostingProvision.outputs.resourceId
+  swaResourceId: frontendHostingProvision.outputs.resourceId
 }
 // Resources for identity
 module userAssignedIdentityProvision './provision/identity.bicep' = {

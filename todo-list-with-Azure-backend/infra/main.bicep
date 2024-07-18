@@ -10,7 +10,7 @@ module provision './provision.bicep' = {
 
 output TAB_ENDPOINT string = provision.outputs.frontendHostingOutput.endpoint
 output TAB_DOMAIN string = provision.outputs.frontendHostingOutput.domain
-output TAB_AZURE_STORAGE_RESOURCE_ID string = provision.outputs.frontendHostingOutput.storageResourceId
+output AZURE_STATIC_WEB_APPS_RESOURCE_ID string = provision.outputs.frontendHostingOutput.swaResourceId
 output FUNCTION_ENDPOINT string = provision.outputs.functionOutput.functionEndpoint
 output FUNCTION_RESOURCE_ID string = provision.outputs.functionOutput.functionAppResourceId
 

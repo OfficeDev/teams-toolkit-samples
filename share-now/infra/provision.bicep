@@ -12,7 +12,7 @@ output frontendHostingOutput object = {
   teamsFxPluginId: 'fx-resource-frontend-hosting'
   domain: frontendHostingProvision.outputs.domain
   endpoint: frontendHostingProvision.outputs.endpoint
-  storageResourceId: frontendHostingProvision.outputs.resourceId
+  swaResourceId: frontendHostingProvision.outputs.resourceId
 }
 // Resources for identity
 module userAssignedIdentityProvision './provision/identity.bicep' = {

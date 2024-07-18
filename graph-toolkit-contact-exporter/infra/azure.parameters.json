@@ -5,8 +5,8 @@
       "resourceBaseName": {
         "value": "contactexp${{RESOURCE_SUFFIX}}"
       },
-      "storageSku": {
-        "value": "Standard_LRS"
+      "staticWebAppSku": {
+        "value": "Free"
       }
     }
   }
