@@ -1,5 +1,5 @@
 param resourceBaseName string
-param storageSku string
+param staticWebAppSku string
 param apimServiceSku string
 param publisherEmail string
 param publisherName string
@@ -13,7 +13,7 @@ module storage './storage.bicep' = {
   name: 'provisionStorage'
   params: {
     resourceBaseName: resourceBaseName
-    storageSku: storageSku
+    staticWebAppSku: staticWebAppSku
   }
 }
 
