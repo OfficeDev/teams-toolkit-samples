@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@azure/storage-blob": "^12.9.0",
+    "@azure/identity": "^4.4.0",
     "@microsoft/adaptivecards-tools": "^1.0.0",
     "@microsoft/teamsfx": "^2.0.0",
     "botbuilder": "^4.18.0"

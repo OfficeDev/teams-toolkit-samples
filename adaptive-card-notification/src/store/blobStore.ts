@@ -1,5 +1,6 @@
 import { ConversationReference } from "botbuilder";
 import { ContainerClient, ContainerListBlobFlatSegmentResponse } from "@azure/storage-blob";
+import { ManagedIdentityCredential } from "@azure/identity";
 import { ConversationReferenceStore, ConversationReferenceStoreAddOptions, PagedData } from "@microsoft/teamsfx";
 
 // A sample implementation to use Azure Blob Storage as conversation reference store
@@ -11,6 +12,17 @@ export class BlobStore implements ConversationReferenceStore {
   constructor(connectionString: string, containerName: string) {
     this.client = new ContainerClient(connectionString, containerName);
   }
+
+  /**
+   * This implementation uses container URL and managed identity to connect Azure Blob Storage.
+   * To use this, please follow the steps here (https://learn.microsoft.com/entra/identity-platform/multi-service-web-app-access-storage)
+   * to enable managed identity and assign the necessary roles.
+   * 
+   * @param containerUrl - the container URL, e.g. `https://<account>.blob.core.windows.net/<container>`
+   */ 
+  // constructor(containerUrl: string) {
+  //   this.client = new ContainerClient(containerUrl, new ManagedIdentityCredential());
+  // }
 
   async get(key: string): Promise<Partial<ConversationReference>> {
     await this.initialize();
