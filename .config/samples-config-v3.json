@@ -815,6 +815,34 @@
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
+        },
+        {
+            "id": "graph-rsc-helper",
+            "shortId": "graph-rsc-helper",
+            "onboardDate": "2024-04-02",
+            "title": "Graph RSC Helper",
+            "shortDescription": "This sample demonstrates how to use Resource Specific Consent to call Graph API in Microsoft teams channel and group chat. You can observe the real API response with the scope installed.",
+            "fullDescription": "This sample demonstrates how to use Resource Specific Consent (RSC) to call Graph API in Microsoft Teams channel and group chat. It shows how to configure RSC permissions in the manifest and use them to call Microsoft Graph, allowing you to observe the real API response with the scope installed. The sample includes features such as RSC permissions, Graph, and Tab App in team channel and group chat. Prerequisites include NodeJS and a M365 developer account.",
+            "types": [
+              "Tab"
+            ],
+            "tags": [
+              "TS",
+              "Tab",
+              "RSC Permissions",
+              "Graph"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "Images/Overview.png",
+            "gifPath": "Images/graphrschelper.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/graph-rsc-helper/nodejs"
+            }
         }
     ]
 }
