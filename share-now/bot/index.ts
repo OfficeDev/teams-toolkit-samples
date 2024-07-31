@@ -17,9 +17,10 @@ import { MessageExtensionBot } from './messageExtensionBot';
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
 const credentialsFactory = new ConfigurationServiceClientCredentialFactory({
-    MicrosoftAppId: process.env.BOT_ID,
-    MicrosoftAppPassword: process.env.BOT_PASSWORD,
-    MicrosoftAppType: "MultiTenant",
+  MicrosoftAppId: process.env.BOT_ID,
+  MicrosoftAppType: process.env.BOT_TYPE,
+  MicrosoftAppTenantId: process.env.BOT_TENANT_ID,
+  MicrosoftAppPassword: process.env.BOT_PASSWORD,
   });
   
   const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(
