@@ -20,17 +20,6 @@ provision:
     writeToEnvironmentFile:
       teamsAppId: TEAMS_APP_ID
 
-  # Create or reuse an existing Azure Active Directory application for bot.
-  - uses: botAadApp/create
-    with:
-      # The Azure Active Directory application's display name
-      name: notification-app${{APP_NAME_SUFFIX}}
-    writeToEnvironmentFile:
-      # The Azure Active Directory application's client id created for bot.
-      botId: BOT_ID
-      # The Azure Active Directory application's client secret created for bot.
-      botPassword: SECRET_BOT_PASSWORD
-
   - uses: arm/deploy # Deploy given ARM templates parallelly.
     with:
       subscriptionId: ${{AZURE_SUBSCRIPTION_ID}} # The AZURE_SUBSCRIPTION_ID is a built-in environment variable. TeamsFx will ask you select one subscription if its value is empty. You're free to reference other environment varialbe here, but TeamsFx will not ask you to select subscription if it's empty in this case.
