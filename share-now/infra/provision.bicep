@@ -47,7 +47,6 @@ module botProvision './provision/bot.bicep' = {
   name: 'botProvision'
   params: {
     provisionParameters: provisionParameters
-    userAssignedIdentityId: userAssignedIdentityProvision.outputs.identityResourceId
   }
 }
 
@@ -59,6 +58,8 @@ output botOutput object = {
   appServicePlanName: botProvision.outputs.appServicePlanName
   botWebAppResourceId: botProvision.outputs.botWebAppResourceId
   siteEndpoint: botProvision.outputs.botWebAppEndpoint
+  identityClientId: botProvision.outputs.identityClientId
+  identityTenantId: botProvision.outputs.identityTenantId
 }
 // Resources for Azure Functions
 module functionProvision './provision/function.bicep' = {
