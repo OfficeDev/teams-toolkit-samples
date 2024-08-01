@@ -841,7 +841,7 @@
                 "owner": "OfficeDev",
                 "repository": "Microsoft-Teams-Samples",
                 "ref": "main",
-                "dir": "samples/graph-rsc-helper/nodejs"
+                "dir": "samples/graph-rsc-helper/nodeJs"
             }
         }
     ]
