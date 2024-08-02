@@ -12,6 +12,6 @@ export class Utils {
   }
 
   static getConnectionId(): string {
-    return config.botId.replace(/[^A-Za-z0-9]/g, '');
+    return config.MicrosoftAppId.replace(/[^A-Za-z0-9]/g, '');
   }
 }

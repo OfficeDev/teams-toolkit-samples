@@ -17,7 +17,7 @@ const serviceBusQueueTrigger: AzureFunction = async function (
   const installation = new BotBuilderCloudAdapter.TeamsBotInstallation(
     notificationApp.adapter,
     conversation,
-    config.botId
+    config.MicrosoftAppId
   );
 
   await installation.sendMessage(

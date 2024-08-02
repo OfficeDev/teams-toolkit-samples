@@ -15,6 +15,7 @@ output FUNCTION_ENDPOINT string = provision.outputs.functionOutput.functionEndpo
 output FUNCTION_RESOURCE_ID string = provision.outputs.functionOutput.functionAppResourceId
 output BOT_AZURE_APP_SERVICE_RESOURCE_ID string = provision.outputs.botOutput.botWebAppResourceId
 output BOT_DOMAIN string = provision.outputs.botOutput.botDomain
+output BOT_ID string = provision.outputs.botOutput.identityClientId
 
 module teamsFxConfig './config.bicep' = {
   name: 'addTeamsFxConfigurations'
