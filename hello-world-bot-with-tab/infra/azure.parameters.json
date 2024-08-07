@@ -5,8 +5,8 @@
     "resourceBaseName": {
       "value": "helloworld${{RESOURCE_SUFFIX}}"
     },
-    "storageSku": {
-      "value": "Standard_LRS"
+    "staticWebAppSku": {
+      "value": "Free"
     },
     "botAadAppClientId": {
       "value": "${{BOT_ID}}"

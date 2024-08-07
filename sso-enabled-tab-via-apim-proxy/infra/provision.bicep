@@ -1,5 +1,5 @@
 param resourceBaseName string
-param storageSku string
+param staticWebAppSku string
 param apimServiceSku string
 param publisherEmail string
 param publisherName string
@@ -13,7 +13,7 @@ module storage './storage.bicep' = {
   name: 'provisionStorage'
   params: {
     resourceBaseName: resourceBaseName
-    storageSku: storageSku
+    staticWebAppSku: staticWebAppSku
   }
 }
 
@@ -31,7 +31,7 @@ module apim './apim.bicep' = {
   }
 }
 
-output TAB_AZURE_STORAGE_RESOURCE_ID string = storage.outputs.TAB_AZURE_STORAGE_RESOURCE_ID
+output AZURE_STATIC_WEB_APPS_RESOURCE_ID string = storage.outputs.AZURE_STATIC_WEB_APPS_RESOURCE_ID
 output TAB_DOMAIN string = storage.outputs.TAB_DOMAIN
 output TAB_ENDPOINT string = storage.outputs.TAB_ENDPOINT
 output APIM_ENDPOINT string = apim.outputs.APIM_ENDPOINT

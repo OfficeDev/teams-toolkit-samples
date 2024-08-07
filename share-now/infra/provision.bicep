@@ -12,7 +12,7 @@ output frontendHostingOutput object = {
   teamsFxPluginId: 'fx-resource-frontend-hosting'
   domain: frontendHostingProvision.outputs.domain
   endpoint: frontendHostingProvision.outputs.endpoint
-  storageResourceId: frontendHostingProvision.outputs.resourceId
+  swaResourceId: frontendHostingProvision.outputs.resourceId
 }
 // Resources for identity
 module userAssignedIdentityProvision './provision/identity.bicep' = {
@@ -47,7 +47,6 @@ module botProvision './provision/bot.bicep' = {
   name: 'botProvision'
   params: {
     provisionParameters: provisionParameters
-    userAssignedIdentityId: userAssignedIdentityProvision.outputs.identityResourceId
   }
 }
 
@@ -59,6 +58,8 @@ output botOutput object = {
   appServicePlanName: botProvision.outputs.appServicePlanName
   botWebAppResourceId: botProvision.outputs.botWebAppResourceId
   siteEndpoint: botProvision.outputs.botWebAppEndpoint
+  identityClientId: botProvision.outputs.identityClientId
+  identityTenantId: botProvision.outputs.identityTenantId
 }
 // Resources for Azure Functions
 module functionProvision './provision/function.bicep' = {

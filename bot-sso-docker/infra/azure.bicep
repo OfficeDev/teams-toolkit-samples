@@ -3,13 +3,6 @@
 @description('Used to generate names for all resources in this file')
 param resourceBaseName string
 
-@description('Required when create Azure Bot service')
-param botAadAppClientId string
-
-@secure()
-@description('Required by Bot Framework package in your bot project')
-param botAadAppClientSecret string
-
 @maxLength(42)
 param botDisplayName string
 
@@ -32,8 +25,13 @@ param minReplica int = 1
 @minValue(0)
 @maxValue(25)
 param maxReplica int = 3
-
+param identityName string = resourceBaseName
 var location = resourceGroup().location
+
+resource identity 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = {
+  location: location
+  name: identityName
+}
 
 module acr 'containerRegistry.bicep' = {
   name: 'acr'
@@ -57,11 +55,15 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
       secrets: [
         {
           name: 'bot-id'
-          value: botAadAppClientId
+          value: identity.properties.clientId
         }
         {
-          name: 'bot-password'
-          value: botAadAppClientSecret
+          name: 'bot-tenant-id'
+          value: identity.properties.tenantId
+        }
+        {
+          name: 'bot-type'
+          value: 'UserAssignedMsi'
         }
         {
           name: 'aad-app-client-id'
@@ -119,6 +121,12 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
       }
     }
   }
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${identity.id}': {}
+    }
+  }
 }
 
 // Register your web service as a bot with the Bot Framework
@@ -126,7 +134,9 @@ module azureBotRegistration './botRegistration/azurebot.bicep' = {
   name: 'Azure-Bot-registration'
   params: {
     resourceBaseName: resourceBaseName
-    botAadAppClientId: botAadAppClientId
+    identityClientId: identity.properties.clientId
+    identityResourceId: identity.id
+    identityTenantId: identity.properties.tenantId
     botAppDomain: containerApp.properties.configuration.ingress.fqdn
     botDisplayName: botDisplayName
   }
@@ -137,3 +147,5 @@ output AZURE_CONTAINER_REGISTRY_SERVER string = acr.outputs.loginServer
 output AZURE_CONTAINER_APP_NAME string = containerApp.name
 output BOT_DOMAIN string = containerApp.properties.configuration.ingress.fqdn
 output AZURE_CONTAINER_APP_RESOURCE_ID string = containerApp.id
+output BOT_ID string = identity.properties.clientId
+output BOT_TENANT_ID string = identity.properties.tenantId

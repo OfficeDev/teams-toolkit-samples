@@ -1,24 +1,23 @@
 @secure()
 param provisionParameters object
 var resourceBaseName = provisionParameters.resourceBaseName
-var storageName = contains(provisionParameters, 'frontendHostingStorageName') ? provisionParameters['frontendHostingStorageName'] : '${resourceBaseName}tab' // Try to read name for frontend hosting Storage Account from parameters
-var storageSku = contains(provisionParameters, 'frontendHostingStorageSku') ? provisionParameters['frontendHostingStorageSku'] : 'Standard_LRS' // Try to read SKU for frontend hosting Storage Account from parameters
+var staticWebAppName = contains(provisionParameters, 'frontendHostingStorageName') ? provisionParameters['frontendHostingStorageName'] : '${resourceBaseName}tab' // Try to read name for frontend hosting Storage Account from parameters
+var staticWebAppSku = 'Free'
 
-// Azure Storage that hosts your static web site
-resource storage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
-  kind: 'StorageV2'
-  location: resourceGroup().location
-  name: storageName
-  properties: {
-    supportsHttpsTrafficOnly: true
-  }
+// Azure Static Web Apps that hosts your static web site
+resource swa 'Microsoft.Web/staticSites@2022-09-01' = {
+  name: staticWebAppName
+  // SWA do not need location setting
+  location: 'centralus'
   sku: {
-    name: storageSku // You can follow https://aka.ms/teamsfx-bicep-add-param-tutorial to add frontendHostingStorageSku property to provisionParameters to override the default value "Standard_LRS".
+    name: staticWebAppSku
+    tier: staticWebAppSku
   }
+  properties: {}
 }
 
-var siteDomain = replace(replace(storage.properties.primaryEndpoints.web, 'https://', ''), '/', '')
+var siteDomain = swa.properties.defaultHostname
 
-output resourceId string = storage.id
+output resourceId string = swa.id
 output endpoint string = 'https://${siteDomain}'
 output domain string = siteDomain

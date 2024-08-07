@@ -104,6 +104,7 @@ deploy:
       envs:
         BOT_ID: ${{BOT_ID}}
         BOT_PASSWORD: ${{SECRET_BOT_PASSWORD}}
+        BOT_TYPE: 'MultiTenant'
         SERVICE_BUS_QUEUE_NAME: ${{SERVICE_BUS_QUEUE_NAME}}
         STORAGE_ACCOUNT_NAME: devstoreaccount1
         STORAGE_ACCOUNT_URL: http://127.0.0.1:10002/devstoreaccount1

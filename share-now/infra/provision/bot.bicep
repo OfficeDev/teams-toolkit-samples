@@ -1,15 +1,18 @@
 @secure()
 param provisionParameters object
-param userAssignedIdentityId string
 
 var resourceBaseName = provisionParameters.resourceBaseName
-var botAadAppClientId = provisionParameters['botAadAppClientId']
 var botServiceName = contains(provisionParameters, 'botServiceName') ? provisionParameters['botServiceName'] : '${resourceBaseName}'
 var botServiceSku = contains(provisionParameters, 'botServiceSku') ? provisionParameters['botServiceSku'] : 'F0'
 var botDisplayName = contains(provisionParameters, 'botDisplayName') ? provisionParameters['botDisplayName'] : '${resourceBaseName}'
 var serverfarmsName = contains(provisionParameters, 'botServerfarmsName') ? provisionParameters['botServerfarmsName'] : '${resourceBaseName}bot'
 var webAppSKU = contains(provisionParameters, 'botWebAppSKU') ? provisionParameters['botWebAppSKU'] : 'F1'
 var webAppName = contains(provisionParameters, 'botSitesName') ? provisionParameters['botSitesName'] : '${resourceBaseName}bot'
+
+resource identity 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = {
+  location: resourceGroup().location
+  name: resourceBaseName
+}
 
 resource botService 'Microsoft.BotService/botServices@2021-03-01' = {
   kind: 'azurebot'
@@ -18,7 +21,10 @@ resource botService 'Microsoft.BotService/botServices@2021-03-01' = {
   properties: {
     displayName: botDisplayName
     endpoint: uri('https://${webApp.properties.defaultHostName}', '/api/messages')
-    msaAppId: botAadAppClientId
+    msaAppId: identity.properties.clientId
+    msaAppMSIResourceId: identity.id
+    msaAppTenantId:identity.properties.tenantId
+    msaAppType:'UserAssignedMSI'
   }
   sku: {
     name: botServiceSku // You can follow https://aka.ms/teamsfx-bicep-add-param-tutorial to add botServiceSku property to provisionParameters to override the default value "F0".
@@ -50,7 +56,6 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
   name: webAppName
   properties: {
     serverFarmId: serverfarm.id
-    keyVaultReferenceIdentity: userAssignedIdentityId
     siteConfig: {
       appSettings: [
         {
@@ -67,7 +72,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
-      '${userAssignedIdentityId}': {}
+      '${identity.id}': {}
     }
   }
 }
@@ -79,3 +84,6 @@ output appServicePlanName string = serverfarmsName
 output botServiceName string = botServiceName
 output botWebAppResourceId string = webApp.id
 output botWebAppEndpoint string = 'https://${webApp.properties.defaultHostName}'
+output identityClientId string = identity.properties.clientId
+output identityResourceId string = identity.id
+output identityTenantId string = identity.properties.tenantId

@@ -10,13 +10,11 @@ var botWebAppName = split(provisionOutputs.botOutput.value.botWebAppResourceId, 
 var m365ClientId = provisionParameters['m365ClientId']
 var m365ClientSecret = provisionParameters['m365ClientSecret']
 var m365TenantId = provisionParameters['m365TenantId']
+var identityClientId = provisionOutputs.botOutput.value.identityClientId
+var identityTenantId = provisionOutputs.botOutput.value.identityTenantId
 var m365OauthAuthorityHost = provisionParameters['m365OauthAuthorityHost']
 var administratorLogin = contains(provisionParameters, 'azureSqlAdmin') ? provisionParameters['azureSqlAdmin'] : ''
 var administratorLoginPassword = contains(provisionParameters, 'azureSqlAdminPassword') ? provisionParameters['azureSqlAdminPassword'] : ''
-var botAadAppClientId = provisionParameters['botAadAppClientId']
-var botAadAppClientSecret = provisionParameters['botAadAppClientSecret']
-
-var botId = provisionParameters['botAadAppClientId']
 
 var m365ApplicationIdUri = 'api://${provisionOutputs.frontendHostingOutput.value.domain}/${m365ClientId}'
 
@@ -29,8 +27,9 @@ resource botWebAppSettings 'Microsoft.Web/sites/config@2021-02-01' = {
     M365_CLIENT_SECRET: m365ClientSecret
     M365_TENANT_ID: m365TenantId
     M365_APPLICATION_ID_URI: m365ApplicationIdUri
-    BOT_ID: botAadAppClientId
-    BOT_PASSWORD: botAadAppClientSecret
+    BOT_ID: identityClientId
+    BOT_TYPE: 'UserAssignedMsi'
+    BOT_TENANT_ID: identityTenantId
     API_ENDPOINT: provisionOutputs.functionOutput.value.functionEndpoint
     SQL_DATABASE_NAME: provisionOutputs.azureSqlOutput.value.databaseName
     SQL_ENDPOINT: provisionOutputs.azureSqlOutput.value.sqlEndpoint

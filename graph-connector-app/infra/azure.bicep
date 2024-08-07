@@ -1,6 +1,5 @@
 param resourceBaseName string
-param storageSKU string
-param functionStorageSKU string
+param staticWebAppSku string
 param functionAppSKU string
 
 param aadAppClientId string
@@ -9,11 +8,10 @@ param aadAppOauthAuthorityHost string
 @secure()
 param aadAppClientSecret string
 
-param storageName string = resourceBaseName
+param staticWebAppName string = resourceBaseName
 param location string = resourceGroup().location
 param serverfarmsName string = resourceBaseName
 param functionAppName string = resourceBaseName
-param functionStorageName string = '${resourceBaseName}api'
 var oauthAuthority = uri(aadAppOauthAuthorityHost, aadAppTenantId)
 
 var teamsMobileOrDesktopAppClientId = '1fec8e78-bce4-4aaf-ab1b-5451cc387264'
@@ -25,20 +23,19 @@ var outlookWebAppClientId = '00000002-0000-0ff1-ce00-000000000000'
 var authorizedClientApplicationIds = '${teamsMobileOrDesktopAppClientId};${teamsWebAppClientId};${officeWebAppClientId1};${officeWebAppClientId2};${outlookDesktopAppClientId};${outlookWebAppClientId}'
 var allowedClientApplications = '["${aadAppClientId}","${teamsMobileOrDesktopAppClientId}","${teamsWebAppClientId}","${officeWebAppClientId1}","${officeWebAppClientId2}","${outlookDesktopAppClientId}","${outlookWebAppClientId}"]'
 
-// Azure Storage that hosts your static web site
-resource storage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
-  kind: 'StorageV2'
-  location: location
-  name: storageName
-  properties: {
-    supportsHttpsTrafficOnly: true
-  }
+// Azure Static Web Apps that hosts your static web site
+resource swa 'Microsoft.Web/staticSites@2022-09-01' = {
+  name: staticWebAppName
+  // SWA do not need location setting
+  location: 'centralus'
   sku: {
-    name: storageSKU
+    name: staticWebAppSku
+    tier: staticWebAppSku
   }
+  properties: {}
 }
 
-var siteDomain = replace(replace(storage.properties.primaryEndpoints.web, 'https://', ''), '/', '')
+var siteDomain = swa.properties.defaultHostname
 var tabEndpoint = 'https://${siteDomain}'
 var aadApplicationIdUri = 'api://${siteDomain}/${aadAppClientId}'
 
@@ -67,24 +64,12 @@ resource functionApp 'Microsoft.Web/sites@2021-02-01' = {
       }
       appSettings: [
         {
-          name: ' AzureWebJobsDashboard'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${functionStorage.name};AccountKey=${listKeys(functionStorage.id, functionStorage.apiVersion).keys[0].value};EndpointSuffix=${environment().suffixes.storage}' // Azure Functions internal setting
-        }
-        {
-          name: 'AzureWebJobsStorage'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${functionStorage.name};AccountKey=${listKeys(functionStorage.id, functionStorage.apiVersion).keys[0].value};EndpointSuffix=${environment().suffixes.storage}' // Azure Functions internal setting
-        }
-        {
           name: 'FUNCTIONS_EXTENSION_VERSION'
           value: '~4' // Use Azure Functions runtime v4
         }
         {
           name: 'FUNCTIONS_WORKER_RUNTIME'
           value: 'node' // Set runtime to NodeJS
-        }
-        {
-          name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storage.name};AccountKey=${listKeys(storage.id, storage.apiVersion).keys[0].value};EndpointSuffix=${environment().suffixes.storage}' // Azure Functions internal setting
         }
         {
           name: 'WEBSITE_RUN_FROM_PACKAGE'
@@ -143,18 +128,8 @@ resource authSettings 'Microsoft.Web/sites/config@2021-02-01' = {
   }
 }
 
-// Azure Storage is required when creating Azure Functions instance
-resource functionStorage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
-  name: functionStorageName
-  kind: 'StorageV2'
-  location: location
-  sku: {
-    name: functionStorageSKU
-  }
-}
-
 // The output will be persisted in .env.{envName}. Visit https://aka.ms/teamsfx-actions/arm-deploy for more details.
-output TAB_AZURE_STORAGE_RESOURCE_ID string = storage.id // used in deploy stage
+output AZURE_STATIC_WEB_APPS_RESOURCE_ID string = swa.id
 output TAB_DOMAIN string = siteDomain
 output TAB_ENDPOINT string = tabEndpoint
 output API_FUNCTION_ENDPOINT string = apiEndpoint

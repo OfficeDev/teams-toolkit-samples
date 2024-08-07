@@ -5,8 +5,8 @@
       "resourceBaseName": {
         "value": "oneproduct${{RESOURCE_SUFFIX}}"
       },
-      "storageSku": {
-        "value": "Standard_LRS"
+      "staticWebAppSku": {
+        "value": "Free"
       }
     }
   }

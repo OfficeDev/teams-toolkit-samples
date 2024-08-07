@@ -5,8 +5,8 @@
     "resourceBaseName": {
       "value": "tab${{RESOURCE_SUFFIX}}"
     },
-    "storageSku": {
-      "value": "Standard_LRS"
+    "staticWebAppSku": {
+      "value": "Free"
     },
     "aadAppClientId": {
       "value": "${{AAD_APP_CLIENT_ID}}"
@@ -22,9 +22,6 @@
     },
     "functionAppSKU": {
       "value": "B1"
-    },
-    "functionStorageSKU": {
-      "value": "Standard_LRS"
     },
     "teamsAppId": {
       "value": "${{TEAMS_APP_ID}}"
