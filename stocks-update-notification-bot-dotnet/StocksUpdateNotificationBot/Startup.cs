@@ -24,9 +24,10 @@ namespace StocksUpdateNotificationBot
             var configuration = builder.ConfigurationBuilder.Build();
             builder.ConfigurationBuilder.AddInMemoryCollection(new Dictionary<string, string>()
             {
-                { "MicrosoftAppType", "MultiTenant" },
+                { "MicrosoftAppType", configuration.GetSection("BOT_TYPE")?.Value ?? string.Empty},
                 { "MicrosoftAppId", configuration.GetSection("BOT_ID")?.Value ?? string.Empty },
                 { "MicrosoftAppPassword", configuration.GetSection("BOT_PASSWORD")?.Value ?? string.Empty },
+                { "MicrosoftAppTenantId", configuration.GetSection("BOT_TENANT_ID")?.Value ?? string.Empty}
             });
         }
 
