@@ -1,4 +1,4 @@
-import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import * as ACData from "adaptivecards-templating";
 import * as restify from "restify";
 import { conversationBot } from "./internal/initialize";
 import notificationTemplate from "./adaptiveCards/notification-default.json";

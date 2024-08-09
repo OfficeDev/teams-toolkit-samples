@@ -1,6 +1,6 @@
 import { Activity, CardFactory, MessageFactory, TurnContext } from "botbuilder";
 import { CommandMessage, TeamsFxBotCommandHandler, TriggerPatterns } from "@microsoft/teamsfx";
-import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import * as ACData from "adaptivecards-templating";
 import learnCard from "../adaptiveCards/learn.json";
 
 export class LearnCommandHandler implements TeamsFxBotCommandHandler {
@@ -16,7 +16,7 @@ export class LearnCommandHandler implements TeamsFxBotCommandHandler {
       "likeCount": '0'
     };
 
-    const cardJson = AdaptiveCards.declare(learnCard).render(cardData);
+    const cardJson = new ACData.Template(learnCard).expand({ $root: cardData });
     return MessageFactory.attachment(CardFactory.adaptiveCard(cardJson));
   }
 }

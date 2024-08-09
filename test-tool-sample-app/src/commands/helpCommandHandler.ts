@@ -1,7 +1,7 @@
 import { Activity, CardFactory, MessageFactory, TurnContext } from "botbuilder";
 import { CommandMessage, TeamsFxBotCommandHandler, TriggerPatterns } from "@microsoft/teamsfx";
 import helpResponse from "../adaptiveCards/helpResponse.json";
-import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import * as ACData from "adaptivecards-templating";
 import { ActionCommands } from "../messageExtension/actionCommands";
 import { SearchCommands } from "../messageExtension/searchCommands";
 
@@ -54,7 +54,7 @@ export class HelpCommandHandler implements TeamsFxBotCommandHandler {
       ]
     }
 
-    const cardJson = AdaptiveCards.declare(helpResponse).render(data);
+    const cardJson = new ACData.Template(helpResponse).expand({ $root: data });
     return MessageFactory.attachment(CardFactory.adaptiveCard(cardJson));
   }
 }
