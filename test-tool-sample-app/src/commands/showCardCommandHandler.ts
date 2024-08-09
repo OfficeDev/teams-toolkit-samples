@@ -6,7 +6,7 @@ import * as listCard from "../adaptiveCards/list.json";
 import * as factsetCard from "../adaptiveCards/factset.json";
 import * as columnsetCard from "../adaptiveCards/columnset.json";
 import { FactsetData, ListData, ColumnsetData } from "../cardModels";
-import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import * as ACData from "adaptivecards-templating";
 
 const listData: ListData = {
   title: "New Event Occurred!",
@@ -77,7 +77,7 @@ export class ShowCardCommandHandler implements TeamsFxBotCommandHandler {
     }
 
     const [cardTemplate, cardData] = cards[cardName];
-    const cardJson = AdaptiveCards.declare(cardTemplate).render(cardData);
+    const cardJson = new ACData.Template(cardTemplate).expand({ $root: cardData });
     return MessageFactory.attachment(CardFactory.adaptiveCard(cardJson));
   }
 }

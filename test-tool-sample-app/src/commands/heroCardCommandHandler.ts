@@ -1,7 +1,6 @@
 import { Activity, CardFactory, MessageFactory, TurnContext } from "botbuilder";
 import { CommandMessage, TeamsFxBotCommandHandler, TriggerPatterns } from "@microsoft/teamsfx";
 import * as helpResponse from "../adaptiveCards/helpResponse.json";
-import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
 
 export class HeroCardCommandHandler implements TeamsFxBotCommandHandler {
   triggerPatterns: TriggerPatterns = "herocard";

@@ -19,7 +19,7 @@ import actionMEFetchTaskCard1 from "./adaptiveCards/actionMEFetchTaskCard1.json"
 import actionMEFetchTaskCard2 from "./adaptiveCards/actionMEFetchTaskCard2.json";
 import actionMESubmitCard from "./adaptiveCards/actionMESubmitCard.json";
 import actionMESubmitStaticCard from "./adaptiveCards/actionMESubmitStaticCard.json";
-import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import * as ACData from "adaptivecards-templating";
 import helloWorldCard from "./adaptiveCards/linkUnfurlingCard.json";
 import o365ConnectorCard from "./adaptiveCards/o365ConnectorCard.json";
 import { ActionCommandId } from "./messageExtension/actionCommands";
@@ -129,7 +129,7 @@ export class SimpleBot extends TeamsActivityHandler {
       const imageUrl = `https://picsum.photos/seed/${Math.random()}/800/500`;
       const heroCard = CardFactory.heroCard(obj.package.name, [imageUrl], undefined, { subtitle: obj.package.version, text: obj.package.description })
       const thumbnailCard = CardFactory.thumbnailCard(obj.package.name, [imageUrl], undefined, { subtitle: obj.package.version, text: obj.package.description });
-      const cardJson = AdaptiveCards.declare(npmSearchResultCard).render({ ...obj.package, imageUrl });
+      const cardJson = new ACData.Template(npmSearchResultCard).expand({ $root: { ...obj.package, imageUrl } });
       const adaptiveCard = CardFactory.adaptiveCard(cardJson);
       if (query.commandId === SearchCommandId.Tap) {
         heroCard.content.tap = { type: 'invoke', value: { description: obj.package.description } };
@@ -184,7 +184,7 @@ export class SimpleBot extends TeamsActivityHandler {
       case ActionCommandId.Default:
       default:
         const title = action.messagePayload?.body?.content || "";
-        const cardJson = AdaptiveCards.declare(actionMEFetchTaskCard).render({ title });
+        const cardJson = new ACData.Template(actionMEFetchTaskCard).expand({ $root: title });
 
         return {
           task: {
@@ -213,7 +213,7 @@ export class SimpleBot extends TeamsActivityHandler {
       case ActionCommandId.StaticCard:
         const fields = Object.entries(action.data)
           .map(([k, v]) => ({ ["name"]: k, ["value"]: v }));
-        const card = AdaptiveCards.declare(actionMESubmitStaticCard).render({ fields });
+        const card = new ACData.Template(actionMESubmitStaticCard).expand({ $root: fields });
         return {
           composeExtension: {
             type: 'result',
@@ -258,7 +258,7 @@ export class SimpleBot extends TeamsActivityHandler {
 
       case ActionCommandId.MultipleCards:
         if (action.data?.hasNext) {
-          const cardJson = AdaptiveCards.declare(actionMEFetchTaskCard2).render(data);
+          const cardJson = new ACData.Template(actionMEFetchTaskCard2).expand({ $root: data });
           return {
             task: {
               type: 'continue',
@@ -272,7 +272,7 @@ export class SimpleBot extends TeamsActivityHandler {
 
       case ActionCommandId.Default:
       default:
-        const cardJson = AdaptiveCards.declare(actionMESubmitCard).render(data);
+        const cardJson = new ACData.Template(actionMESubmitCard).expand({ $root: data });
         return {
           composeExtension: {
             type: 'result',
@@ -293,7 +293,7 @@ export class SimpleBot extends TeamsActivityHandler {
       "https://raw.githubusercontent.com/microsoft/botframework-sdk/master/icon.png",
     ]);
 
-    const cardJson = AdaptiveCards.declare(helloWorldCard).render({ link: query.url })
+    const cardJson = new ACData.Template(helloWorldCard).expand({ $root: { link: query.url }  });
     const attachment = {
       ...CardFactory.adaptiveCard(cardJson),
       // preview: previewCard 
@@ -328,7 +328,7 @@ export class SimpleBot extends TeamsActivityHandler {
       "https://raw.githubusercontent.com/microsoft/botframework-sdk/master/icon.png",
     ]);
 
-    const cardJson = AdaptiveCards.declare(helloWorldCard).render({ link: query.url })
+    const cardJson = new ACData.Template(helloWorldCard).expand({ $root: { link: query.url } });
     const attachment = { ...CardFactory.adaptiveCard(cardJson), preview: previewCard };
 
     return {
