@@ -24,7 +24,7 @@ export class DoStuffActionHandler implements TeamsFxAdaptiveCardActionHandler {
       body: "Congratulations! Your task is processed successfully.",
     };
 
-    const cardJson = AdaptiveCards.declare(responseCard).render(cardData);
+    const cardJson = new ACData.Template(responseCard).expand({ $root: cardData });
     return InvokeResponseFactory.adaptiveCard(cardJson);
 
     /**

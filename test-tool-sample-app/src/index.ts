@@ -31,11 +31,14 @@ server.post(
     // to every installation.
     for (const target of await conversationBot.notification.installations()) {
       await target.sendAdaptiveCard(
-        AdaptiveCards.declare<NotificationCardData>(notificationTemplate).render({
-          title: "New Event Occurred!",
-          appName: "Contoso App Notification",
-          description: `This is a sample http-triggered notification to ${target.type}`,
-          notificationUrl: "https://www.adaptivecards.io/",
+        new ACData.Template(notificationTemplate).expand({
+          $root:
+          {
+            title: "New Event Occurred!",
+            appName: "Contoso App Notification",
+            description: `This is a sample http-triggered notification to ${target.type}`,
+            notificationUrl: "https://www.adaptivecards.io/",
+          }
         })
       );
 

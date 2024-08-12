@@ -15,7 +15,7 @@ export class AssignIncidentActionHandler implements TeamsFxAdaptiveCardActionHan
         viewDetailsUrl,
     });
         
-    const cardJson = AdaptiveCards.declare(responseCard).render(data);
+    const cardJson = new ACData.Template(responseCard).expand({$root: data});
     return InvokeResponseFactory.adaptiveCard(cardJson);
   }
 }

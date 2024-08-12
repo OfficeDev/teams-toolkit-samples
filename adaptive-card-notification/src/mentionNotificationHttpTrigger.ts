@@ -40,7 +40,7 @@ const httpTrigger: AzureFunction = async function (
           data.userId = member.account.email;
           data.userName = member.account.name;
           await target.sendAdaptiveCard(
-            AdaptiveCards.declare<MentionData>(notificationTemplate).render(data)
+            new ACData.Template(notificationTemplate).expand({ $root: data })
           );
         }
       } while (memberContinuationToken);
