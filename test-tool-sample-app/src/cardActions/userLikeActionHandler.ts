@@ -1,4 +1,4 @@
-import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import * as ACData from "adaptivecards-templating";
 import { TurnContext, InvokeResponse } from "botbuilder";
 import { TeamsFxAdaptiveCardActionHandler, InvokeResponseFactory, AdaptiveCardResponse } from "@microsoft/teamsfx";
 import learnCard from "../adaptiveCards/learn.json";
@@ -14,7 +14,7 @@ export class UserLikeActionHandler implements TeamsFxAdaptiveCardActionHandler {
   async handleActionInvoked(context: TurnContext, actionData: any): Promise<InvokeResponse> {
     console.log(actionData);
     const count = parseInt(actionData['likeCount'], 10);
-    const cardJson = AdaptiveCards.declare(learnCard).render({'likeCount': `${count+1}`});
+    const cardJson = new ACData.Template(learnCard).expand({ $root: {'likeCount': `${count+1}`} });
     return InvokeResponseFactory.adaptiveCard(cardJson);
   }
 }

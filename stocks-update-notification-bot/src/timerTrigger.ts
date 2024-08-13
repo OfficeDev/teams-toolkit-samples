@@ -1,5 +1,5 @@
 import { AzureFunction, Context } from '@azure/functions';
-import { AdaptiveCards } from '@microsoft/adaptivecards-tools';
+import * as ACData from "adaptivecards-templating";
 import { AxiosInstance, BotBuilderCloudAdapter } from '@microsoft/teamsfx';
 import ConversationBot = BotBuilderCloudAdapter.ConversationBot;
 import TeamsBotInstallation = BotBuilderCloudAdapter.TeamsBotInstallation;
@@ -19,7 +19,7 @@ const timerTrigger: AzureFunction = async function (context: Context, myTimer: a
     .then(quote => addCompanyName(quote)('Microsoft Corporation'))
     .then(quote =>
       getInstallations(notificationApp)
-        .then(targets => targets.map(target => sendCard(target)(AdaptiveCards)(template)(quote)))
+        .then(targets => targets.map(target => sendCard(target)()(template)(quote)))
     )
     .catch(err => handleError(err)(context));
 
@@ -89,10 +89,10 @@ const getInstallations =
 
 const sendCard =
   <T extends object>(target: TeamsBotInstallation) =>
-    (ac: typeof AdaptiveCards) =>
+    () =>
       (template: object) =>
         (quote: GlobalQuote): Promise<any> =>
-          target.sendAdaptiveCard(ac.declare<T>(template).render(quote as T));
+          target.sendAdaptiveCard(new ACData.Template(template).expand({ $root: quote }));
 
 const handleError =
   (err: Error) =>

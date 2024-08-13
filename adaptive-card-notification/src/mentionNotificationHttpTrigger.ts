@@ -1,5 +1,5 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
-import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import * as ACData from "adaptivecards-templating";
 import { notificationApp } from "./internal/initialize";
 import notificationTemplate from "./adaptiveCards/notification-mention.json";
 import { MentionData } from "./cardModels";
@@ -26,7 +26,7 @@ const httpTrigger: AzureFunction = async function (
     const targets = pagedInstallations.data;
     for (const target of targets) {
       await target.sendAdaptiveCard(
-        AdaptiveCards.declare<MentionData>(notificationTemplate).render(data)
+        new ACData.Template(notificationTemplate).expand({ $root: data })
       );
 
       /** List all members then notify each member
@@ -40,7 +40,7 @@ const httpTrigger: AzureFunction = async function (
           data.userId = member.account.email;
           data.userName = member.account.name;
           await target.sendAdaptiveCard(
-            AdaptiveCards.declare<MentionData>(notificationTemplate).render(data)
+            new ACData.Template(notificationTemplate).expand({ $root: data })
           );
         }
       } while (memberContinuationToken);

@@ -1,6 +1,6 @@
 import { Activity, CardFactory, MessageFactory, TurnContext } from "botbuilder";
 import { CommandMessage, TeamsFxBotCommandHandler, TriggerPatterns } from "@microsoft/teamsfx";
-import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import * as ACData from "adaptivecards-templating";
 import reportIncidentCard from "../adaptiveCards/reportIncidentResponse.json";
 
 export class ReportIncidentCommandHandler implements TeamsFxBotCommandHandler {
@@ -12,7 +12,6 @@ export class ReportIncidentCommandHandler implements TeamsFxBotCommandHandler {
   ): Promise<string | Partial<Activity> | void> {
     console.log(`Bot received message: ${message.text}`);
 
-    const cardJson = AdaptiveCards.declareWithoutData(reportIncidentCard).render();
-    return MessageFactory.attachment(CardFactory.adaptiveCard(cardJson));
+    return MessageFactory.attachment(CardFactory.adaptiveCard(reportIncidentCard));
   }
 }

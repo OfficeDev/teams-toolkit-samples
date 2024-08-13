@@ -1,5 +1,5 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
-import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import * as ACData from "adaptivecards-templating";
 import { notificationApp } from "./internal/initialize";
 import notificationTemplate from "./adaptiveCards/notification-factset.json";
 import { FactsetData } from "./cardModels";
@@ -29,7 +29,7 @@ const httpTrigger: AzureFunction = async function (
     const targets = pagedInstallations.data;
     for (const target of targets) {
       await target.sendAdaptiveCard(
-        AdaptiveCards.declare<FactsetData>(notificationTemplate).render(data)
+        new ACData.Template(notificationTemplate).expand({ $root: data })
       );
     }
   } while (continuationToken);
