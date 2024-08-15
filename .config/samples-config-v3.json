@@ -631,7 +631,7 @@
             ],
             "time": "5min to run",
             "configuration": "Manual configurations required",
-            "thumbnailPath": "Images/2.WelcomeCard.PNG",
+            "thumbnailPath": "Images/2.welcome.png",
             "gifPath": "Images/BotConversation.gif",
             "suggested": false,
             "downloadUrlInfo": {
@@ -658,7 +658,7 @@
             ],
             "time": "5min to run",
             "configuration": "Manual configurations required",
-            "thumbnailPath": "Images/4-search-Result-ME.png",
+            "thumbnailPath": "Images/5.Select_result.png",
             "gifPath": "Images/msgext-search.gif",
             "suggested": false,
             "downloadUrlInfo": {
