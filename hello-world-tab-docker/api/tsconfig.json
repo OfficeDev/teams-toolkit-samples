@@ -6,6 +6,7 @@
     "rootDir": ".",
     "sourceMap": true,
     "strict": false,
+    "esModuleInterop": true,
     "typeRoots": ["./node_modules/@types"]
   }
 }
