@@ -1,4 +1,4 @@
-import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
+import * as ACData from "adaptivecards-templating";
 import { TurnContext, InvokeResponse, TeamsInfo } from "botbuilder";
 import { TeamsFxAdaptiveCardActionHandler, InvokeResponseFactory } from "@microsoft/teamsfx";
 import responseCard from "../adaptiveCards/incidentReportedResponse.json";
@@ -15,7 +15,7 @@ export class AssignIncidentActionHandler implements TeamsFxAdaptiveCardActionHan
         viewDetailsUrl,
     });
         
-    const cardJson = AdaptiveCards.declare(responseCard).render(data);
+    const cardJson = new ACData.Template(responseCard).expand({$root: data});
     return InvokeResponseFactory.adaptiveCard(cardJson);
   }
 }

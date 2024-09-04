@@ -2,10 +2,13 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
+    "esModuleInterop": true,  
+    "allowSyntheticDefaultImports": true,  
     "outDir": "dist",
     "rootDir": ".",
     "sourceMap": true,
     "strict": false,
+    "esModuleInterop": true,
     "typeRoots": ["./node_modules/@types"]
   }
 }

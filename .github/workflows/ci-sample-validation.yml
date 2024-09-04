@@ -80,7 +80,7 @@ jobs:
         run: |
           # This script runs the validation tool against changed samples in the pull request.
           # External samples are excluded from the validation.
-          exceptions=(".config" "validation-tool" "basic-blazor-tab-app" "incoming-webhook-notification" "stocks-update-notification-bot-dotnet" "whos-next-meeting-app")
+          exceptions=(".config" ".devcontainer" "assets" "templates" "validation-tool" "basic-blazor-tab-app" "incoming-webhook-notification" "stocks-update-notification-bot-dotnet" "whos-next-meeting-app")
           samples=`jq -r ".[]" <<< '${{ steps.get_changed_folders.outputs.changed }}'`
           validationFailed="validation failed"
           validationResult=true
