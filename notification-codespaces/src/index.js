@@ -33,7 +33,7 @@ server.post(
             $root: {
               title: "New Event Occurred!",
               appName: "Contoso App Notification",
-              description: `This is a sample time-triggered notification (${timeStamp}).`,
+              description: `This is a sample http-triggered notification to ${target.type}`,
               notificationUrl: "https://aka.ms/teamsfx-notification-new",
             }
           })
