@@ -1,5 +1,5 @@
 import * as jwt from "jsonwebtoken";
-import * as jwksClient from "jwks-rsa";
+import jwksClient from "jwks-rsa";
 import { ExpectedMicrosoftApps } from "./constants";
 
 export class Utils {
