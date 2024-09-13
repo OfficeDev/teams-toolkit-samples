@@ -94,7 +94,7 @@ deploy:
     with: 
       target: ./env/.env.${{TEAMSFX_ENV}}.user
       envs: 
-        SECRET_STORAGE_ACCOUNT_KEY: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+        SECRET_STORAGE_ACCOUNT_KEY: ${{SECRET_STORAGE_ACCOUNT_KEY}}
         
 
   # Generate runtime environment variables
@@ -109,4 +109,4 @@ deploy:
         STORAGE_ACCOUNT_NAME: devstoreaccount1
         STORAGE_ACCOUNT_URL: http://127.0.0.1:10002/devstoreaccount1
         INSTALLATION_TABLE_NAME: localtable
-        STORAGE_ACCOUNT_KEY: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+        STORAGE_ACCOUNT_KEY: ${{SECRET_STORAGE_ACCOUNT_KEY}}

@@ -29,10 +29,11 @@ To debug the project, you will need to configure an Azure Service Bus to be used
 4. Return to the homepage of your Service Bus namespace and select "+ Queue". Proceed to create a queue with the "Max delivery count" configured to 1.
    ![Service Bus Queue](./assets/ServiceBusQueue.png)
 5. Open **env/.env.local** file, and set the value of `SERVICE_BUS_QUEUE_NAME` with the name of queue you just created.
-6. Press "F5" to open a browser window and then select your package to view the large scale notification bot app.
-7. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default.
-8. Navigate to `http://localhost:3978/api/notification` to activate the sending function. Then, access the `statusQueryGetUri` in the returned JSON object to retrieve the sending status.
-9. \[Optional\] Once your app is running locally, you can utilize Azure Storage Explorer to inspect the data in your local storage table. Visit https://learn.microsoft.com/en-us/azure/storage/common/storage-explorer-emulators for more information.
+6. Open **teamsapp.local.yml**, and substitue the `${{SECRET_STORAGE_ACCOUNT_KEY}}` with the well-known storage account key listed in the [guide](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio%2Cblob-storage#well-known-storage-account-and-key).
+7. Press "F5" to open a browser window and then select your package to view the large scale notification bot app.
+8. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default.
+9. Navigate to `http://localhost:3978/api/notification` to activate the sending function. Then, access the `statusQueryGetUri` in the returned JSON object to retrieve the sending status.
+10. \[Optional\] Once your app is running locally, you can utilize Azure Storage Explorer to inspect the data in your local storage table. Visit https://learn.microsoft.com/en-us/azure/storage/common/storage-explorer-emulators for more information.
 
 ## Execute lifecycle commands
 
