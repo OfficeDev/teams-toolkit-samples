@@ -127,7 +127,7 @@
                 "background": {
                     "activeOnStart": true,
                     "beginsPattern": ".*",
-                    "endsPattern": "Compiled|Failed|compiled|failed"
+                    "endsPattern": "Compiled|Failed|compiled|failed|ready"
                 }
             }
         }
