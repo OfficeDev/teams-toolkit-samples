@@ -27,7 +27,7 @@
     "@types/react-dom": "^18.0.0",
     "@types/react-router-dom": "^5.3.3",
     "env-cmd": "^10.1.0",
-    "typescript": "^4.1.2"
+    "typescript": "^5.3.0"
   },
   "scripts": {
     "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run start",
