@@ -6,7 +6,9 @@
     "rootDir": ".",
     "sourceMap": true,
     "strict": false,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "moduleResolution": "nodenext",
     "typeRoots": ["./node_modules/@types"]
   }
 }
