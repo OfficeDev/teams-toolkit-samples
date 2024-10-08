@@ -843,6 +843,33 @@
                 "ref": "main",
                 "dir": "samples/graph-rsc-helper/nodeJs"
             }
+        },
+        {
+            "id": "nodejs-typescript-policies",
+            "shortId": "nodejs-ts-policies",
+            "onboardDate": "2024-09-24",
+            "title": "Policies Graph connector",
+            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content.",
+            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content.",
+            "types": [
+            ],
+            "tags": [
+              "TS",
+              "Graph Connect",
+              "Azure Function",
+              "Copilot for Microsoft 365"
+            ],
+            "time": "10 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/connector-copilot-results.png",
+            "gifPath": "assets/connector-copilot-results.png",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "pnp",
+                "repository": "graph-connectors-samples",
+                "ref": "main",
+                "dir": "samples/nodejs-typescript-policies/"
+            }
         }
     ]
 }
