@@ -9,7 +9,7 @@
         "build:tab": "cd tab && npm run build",
         "build:add-in": "cd add-in && npm run build",
         "build": "npm run build:tab && npm run build:add-in",
-        "postbuild": "ncp tab/build build && ncp add-in/dist build",
+        "postbuild": "ncp tab/dist build && ncp add-in/dist build",
         "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run start:tab",
         "install": "npm run install:add-in && npm run install:tab",
         "install:add-in": "cd add-in && npm install",
