@@ -23,7 +23,7 @@ export async function callFunction(method: Method, functionName: string, params?
 
   try {
     // Construct the base URL for the Azure Function API
-    const apiBaseUrl = process.env.REACT_APP_FUNC_ENDPOINT + "/api/";
+    const apiBaseUrl = import.meta.env.VITE_APP_FUNC_ENDPOINT + "/api/";
 
     // Create an Axios instance which uses BearerTokenAuthProvider to inject token to request header
     const apiClient = createApiClient(
