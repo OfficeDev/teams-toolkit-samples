@@ -30,7 +30,7 @@ Todo List provides an easy way to manage to-do items in Teams Client. This app h
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teams-toolkit-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
 ## Minimal path to awesome
@@ -62,7 +62,7 @@ To debug the project, you will need to configure an Azure SQL Database to be use
 
 ### Deploy the app to Azure
 
->Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using TeamsFx CLI tool, refer to [Try the Sample with TeamsFx CLI](cli.md)
+>Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using Teams Toolkit CLI tool, refer to [Try the Sample with Teams Toolkit CLI](cli.md)
 
 1. Clone the repo to your local workspace or directly download the source code.
 1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
