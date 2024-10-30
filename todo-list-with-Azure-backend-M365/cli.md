@@ -1,5 +1,5 @@
 ## Minimal path to awesome
-1. Install TeamsFx CLI using the npm package manager:
+1. Install Teams Toolkit CLI using the npm package manager:
     ```
     npm install -g @microsoft/teamsapp-cli
     ```

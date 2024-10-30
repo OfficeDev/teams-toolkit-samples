@@ -12,7 +12,7 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
 
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teams-toolkit-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Minimal path to awesome
 
@@ -21,7 +21,7 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
 - From VS Code:
     1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug in Teams (Edge)` or `Debug in Teams (Chrome)`.
 
-- From TeamsFx CLI:
+- From Teams Toolkit CLI:
     1. Install [dev tunnel cli](https://aka.ms/teamsfx-install-dev-tunnel).
     1. Login with your M365 Account using the command `devtunnel user login`.
     1. Start your local tunnel service by running the command `devtunnel host -p 3978 --protocol http --allow-anonymous`.
@@ -41,7 +41,7 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
     1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
     1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 
-- From TeamsFx CLI:
+- From Teams Toolkit CLI:
     1. Run command: `teamsapp auth login azure`.
     1. Run command: `teamsapp provision --env dev`.
     1. Run command: `teamsapp deploy --env dev`.
@@ -51,7 +51,7 @@ This is a simple "Hello World" application that has both Bot and Tab capabilitie
 - From VS Code:
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 
-- From TeamsFx CLI:
+- From Teams Toolkit CLI:
     1. Run command: `teamsapp preview --env dev`.
 
 ## Advanced usage of this sample

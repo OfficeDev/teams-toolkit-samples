@@ -31,7 +31,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 
 - [Docker Engine](https://docs.docker.com/engine/install/)
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teams-toolkit-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 - [Azure Cli](https://learn.microsoft.com/cli/azure/install-azure-cli) for Azure Container Apps deployment
 
 # Note
@@ -66,7 +66,7 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
 - From VS Code:
     1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug in Teams (Edge)` or `Debug in Teams (Chrome)`.
 
-- From TeamsFx CLI:
+- From Teams Toolkit CLI:
     1. Run command: `teamsapp provision --env local` .
     1. Run command: `docker compose -f ./docker-compose.yml up -d` .
     1. Run command: `teamsapp preview --open-only` .
@@ -79,7 +79,7 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
     1. Login Azure CLI with commands: `az login` and `az account set -s <subscription-id>` .
     1. Click `Deploy` or open the command palette and select: `Teams: Deploy` .
 
-- From TeamsFx CLI:
+- From Teams Toolkit CLI:
     1. Run command: `teamsapp auth login azure` .
     1. Run command: `teamsapp provision --env dev` .
     1. Run command: `az login` .
@@ -90,7 +90,7 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
 - From VS Code:
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 
-- From TeamsFx CLI:
+- From Teams Toolkit CLI:
     1. Run command: `teamsapp preview --env dev`.
 
 ## Further reading

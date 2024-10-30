@@ -36,7 +36,7 @@ Hello World Tab shows you how to build a tab app without single sign on.
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
     1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
     1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
-- From TeamsFx CLI:
+- From Teams Toolkit CLI:
     1. Run command: `teamsapp auth login azure`.
     1. Run command: `teamsapp provision --env dev`.
     1. Run command: `teamsapp deploy --env dev`.
@@ -44,7 +44,7 @@ Hello World Tab shows you how to build a tab app without single sign on.
 ### Preview the app in Teams
 - From VS Code: 
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Codespaces)` from the launch configuration drop-down.
-- From TeamsFx CLI:
+- From Teams Toolkit CLI:
     1. Run command: `teamsapp preview --env dev`.
 
 ## Version History

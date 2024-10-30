@@ -6,11 +6,11 @@ Azure Functions are a great way to add server-side behaviors to any Teams applic
 
 - [Docker Engine](https://docs.docker.com/engine/install/)
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [TeamsFx CLI](https://aka.ms/teams-toolkit-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Develop
 
-The Teams Toolkit IDE Extension and TeamsFx CLI provide template code for you to get started with Azure Functions for your Teams application. Microsoft Teams Framework simplifies the task of establishing the user's identity within the Azure Function.
+The Teams Toolkit IDE Extension and Teams Toolkit CLI provide template code for you to get started with Azure Functions for your Teams application. Microsoft Teams Framework simplifies the task of establishing the user's identity within the Azure Function.
 
 The template handles calls from your Teams "custom tab" (client-side of your app), initializes the TeamsFx SDK to access the current user context, and demonstrates how to obtain a pre-authenticated Microsoft Graph Client. Microsoft Graph is the "data plane" of Microsoft 365 - you can use it to access content within Microsoft 365 in your company. With it you can read and write documents, SharePoint collections, Teams channels, and many other entities within Microsoft 365. Read more about [Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview).
 
@@ -36,12 +36,12 @@ const response = await fetch(`${functionEndpoint}/api/${functionName}`, {
 ### Add More Functions
 
 - From Visual Studio Code, open the command palette, select `Teams: Add Resources` and select `Azure Function App`.
-- From TeamsFx CLI: run command `teamsapp resource add azure-function --function-name <your-function-name>` in your project directory.
+- From Teams Toolkit CLI: run command `teamsapp resource add azure-function --function-name <your-function-name>` in your project directory.
 
 ## Debug
 
 - From Visual Studio Code: Start debugging the project by hitting the `F5` key in Visual Studio Code. Alternatively use the `Run and Debug Activity Panel` in Visual Studio Code and click the `Start Debugging` green arrow button.
-- From TeamsFx CLI: Start debugging the project by executing the command `teamsapp preview --local` in your project directory.
+- From Teams Toolkit CLI: Start debugging the project by executing the command `teamsapp preview --local` in your project directory.
 
 ## Edit the manifest
 
@@ -54,7 +54,7 @@ This file contains template arguments with `${{...}}` statements which will be r
 
 Deploy your project to Azure by following these steps:
 
-| From Visual Studio Code                                                                                                                                                                                                                                                                                                                                                  | From TeamsFx CLI                                                                                                                                                                                                                   |
+| From Visual Studio Code                                                                                                                                                                                                                                                                                                                                                  | From Teams Toolkit CLI                                                                                                                                                                                                                   |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <ul><li>Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.</li> <li>After you signed in, select a subscription under your account.</li><li>Open the command palette and select: `Teams: Provision`.</li><li>Open the command palette and select: `Teams: Deploy`.</li></ul> | <ul> <li>Run command `teamsapp auth login azure`.</li> <li>Run command `teamsapp auth set --subscription <your-subscription-id>`.</li> <li> Run command `teamsapp provision`.</li> <li>Run command `teamsapp deploy`. </li></ul> |
 
@@ -70,14 +70,14 @@ Once the provisioning and deployment steps are finished, you can preview your ap
   1. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
   1. Press the Play (green arrow) button to launch your app - now running remotely from Azure.
 
-- From TeamsFx CLI: execute `teamsapp preview --remote` in your project directory to launch your application.
+- From Teams Toolkit CLI: execute `teamsapp preview --remote` in your project directory to launch your application.
 
 ## Validate manifest file
 
 To check that your manifest file is valid:
 
 - From Visual Studio Code: open the command palette and select: `Teams: Validate manifest file`.
-- From TeamsFx CLI: run command `teamsapp validate` in your project directory.
+- From Teams Toolkit CLI: run command `teamsapp validate` in your project directory.
 
 ## Package
 
@@ -89,4 +89,4 @@ To check that your manifest file is valid:
 Once deployed, you may want to distribute your application to your organization's internal app store in Teams. Your app will be submitted for admin approval.
 
 - From Visual Studio Code: open the command palette and select: `Teams: Publish to Teams`.
-- From TeamsFx CLI: run command `teamsapp publish` in your project directory.
+- From Teams Toolkit CLI: run command `teamsapp publish` in your project directory.
