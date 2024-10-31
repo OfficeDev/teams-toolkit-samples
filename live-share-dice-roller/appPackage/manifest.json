@@ -1,7 +1,7 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
     "version": "1.0.1",
-    "manifestVersion": "1.17",
+    "manifestVersion": "1.19",
     "id": "${{TEAMS_APP_ID}}",
     "name": {
         "short": "DiceRollerLiveShare${{APP_NAME_SUFFIX}}",
