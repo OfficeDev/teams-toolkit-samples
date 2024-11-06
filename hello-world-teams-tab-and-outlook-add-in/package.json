@@ -19,9 +19,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@microsoft/teamsfx-cli": "^1.2.3",
-    "@microsoft/teamsfx-run-utils": "alpha",
-    "env-cmd": "^10.1.0",
-    "ncp": "^2.0.0"
+    "@microsoft/teamsapp-cli": "^3.0.0",
+    "env-cmd": "^10.1.0"
   }
 }

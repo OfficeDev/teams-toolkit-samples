@@ -6,7 +6,6 @@ The app template is built using the TeamsFx SDK, which provides a simple set of 
 
 ## Get Started with the Notification bot
 
->
 > **Prerequisites**
 >
 > To run the notification bot template in your local dev machine, you will need:
@@ -33,24 +32,24 @@ The bot will send an Adaptive Card to Teams App Test Tool:
 
 ## What's included in the template
 
-| Folder / File| Contents |
-| - | - |
-| `teamsapp.yml` | Main project file describes your application configuration and defines the set of actions to run in each lifecycle stages |
-| `teamsapp.local.yml`| This overrides `teamsapp.yml` with actions that enable local execution and debugging |
-| `teamsapp.testtool.yml`| This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool |
-| `env/`| Name / value pairs are stored in environment files and used by `teamsapp.yml` to customize the provisioning and deployment rules |
-| `.vscode/` | VSCode files for debugging |
-| `src/` | The source code for the notification Teams application |
-| `appPackage/` | Templates for the Teams application manifest |
-| `infra/` | Templates for provisioning Azure resources |
+| Folder / File           | Contents                                                                                                                         |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `teamsapp.yml`          | Main project file describes your application configuration and defines the set of actions to run in each lifecycle stages        |
+| `teamsapp.local.yml`    | This overrides `teamsapp.yml` with actions that enable local execution and debugging                                             |
+| `teamsapp.testtool.yml` | This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool                      |
+| `env/`                  | Name / value pairs are stored in environment files and used by `teamsapp.yml` to customize the provisioning and deployment rules |
+| `.vscode/`              | VSCode files for debugging                                                                                                       |
+| `src/`                  | The source code for the notification Teams application                                                                           |
+| `appPackage/`           | Templates for the Teams application manifest                                                                                     |
+| `infra/`                | Templates for provisioning Azure resources                                                                                       |
 
 The following files can be customized and demonstrate an example implementation to get you started.
 
-| File | Contents |
-| - | - |
-| `src/index.js` | Application entry point and `restify` handlers for notifications |
-| `src/teamsBot.js`| An empty teams activity handler for bot customization |
-| `src/adaptiveCards/notification-default.json` | A generated Adaptive Card that is sent to Teams |
+| File                                          | Contents                                                         |
+| --------------------------------------------- | ---------------------------------------------------------------- |
+| `src/index.js`                                | Application entry point and `express` handlers for notifications |
+| `src/teamsBot.js`                             | An empty teams activity handler for bot customization            |
+| `src/adaptiveCards/notification-default.json` | A generated Adaptive Card that is sent to Teams                  |
 
 ## Extend the notification bot template
 
@@ -62,7 +61,7 @@ There are few customizations you can make to extend the template to fit your bus
 
 ### Step 1: Customize the trigger point from event source
 
-By default Teams Toolkit scaffolds a single `restify` entry point in `src/index.js`. When a HTTP request is sent to this entry point, the default implementation sends a hard-coded Adaptive Card to Teams. You can customize this behavior by customizing `src/index.js`. A typical implementation might make an API call to retrieve some events and/or data, and then send an Adaptive Card as appropriate.
+By default Teams Toolkit scaffolds a single `express` entry point in `src/index.js`. When a HTTP request is sent to this entry point, the default implementation sends a hard-coded Adaptive Card to Teams. You can customize this behavior by customizing `src/index.js`. A typical implementation might make an API call to retrieve some events and/or data, and then send an Adaptive Card as appropriate.
 
 You can also add additional triggers by:
 

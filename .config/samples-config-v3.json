@@ -1,848 +1,617 @@
 {
-    "filterOptions": {
-        "capabilities": [
-            "Tab",
-            "Bot",
-            "Message Extension",
-            "Meeting"
-        ],
-        "languages": [
-            "TS",
-            "JS",
-            "Python"
-        ],
-        "technologies": [
-            "Azure",
-            "Adaptive Cards",
-            "SSO",
-            "SPFx",
-            "Outlook",
-            "Graph",
-            "Dev Proxy"
-        ]
-    },
-    "samples": [
-        {
-            "id": "hello-world-tab-with-backend",
-            "onboardDate": "2021-11-30",
-            "title": "Tab App with Azure Backend",
-            "shortId": "helloworld-backend",
-            "shortDescription": "A Hello World app of Microsoft Teams Tab app which has a backend service",
-            "fullDescription": "This project is a Microsoft Teams Tab application that allows users to interact with Microsoft 365 content. It utilizes Azure Storage for hosting and Azure Functions for implementing server-side behaviors. The TeamsFx SDK is employed for user authentication and server-side operations. The application is configured using environment variables and Azure Bicep for resource deployment. The frontend, a React app, is loaded inside a custom Teams tab, which communicates with the Azure Functions backend via HTTP requests. The application provides a seamless user experience by using Single Sign-On (SSO) for user authentication.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Tab",
-                "TS",
-                "Azure Functions",
-                "Dev Proxy"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": true
-        },
-        {
-            "id": "graph-toolkit-contact-exporter",
-            "shortId": "contact-exporter",
-            "onboardDate": "2021-11-30",
-            "title": "Contact Exporter using Graph Toolkit",
-            "shortDescription": "Contact Exporter app of Microsoft Teams Tab app.",
-            "fullDescription": "The project is a Microsoft Teams application that uses the React framework for its user interface. It leverages Azure Active Directory for user authentication and Azure Storage for deployment. The application is configured to run locally with environment variables set for development. The Teams app is created and updated using YAML configuration files. The application also uses the Microsoft Graph Toolkit for functionality related to Microsoft Graph API. The user scenario likely involves interacting with the application within the Teams environment, using the tabs and other UI components provided.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Tab",
-                "JS"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "bot-sso",
-            "shortId": "sso-bot",
-            "onboardDate": "2021-10-19",
-            "title": "Bot App with SSO Enabled",
-            "shortDescription": "A Hello World app of Microsoft Teams Bot app with SSO",
-            "fullDescription": "This is an extended Hello World app of Microsoft Teams Bot app demonstrating how to integrate with Bot Framework SDK, TeamsFx SDK, and Graph SDK to implement SSO (Single Sign-On) feature that retrieves profile photos for currently signed-in users.",
-            "types": [
-                "Bot"
-            ],
-            "tags": [
-                "Bot",
-                "TS",
-                "Adaptive Cards",
-                "SSO"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "todo-list-SPFx",
-            "shortId": "todo-spfx",
-            "onboardDate": "2021-05-06",
-            "title": "Todo List with SPFx",
-            "shortDescription": "Todo List app hosting on SharePoint",
-            "fullDescription": "The \"Todo List with SPFx\" is a Microsoft Teams application that provides a collaborative task management tool for Teams or Channel members. The application is hosted on SharePoint, allowing users to create, update, and delete tasks within a shared Todo List. The main user scenario involves members of a Team or Channel collaborating on the same Todo List and manipulating the same set of Todo items. The application leverages SharePoint Framework (SPFx) for its development and uses Single Sign-On (SSO) for user authentication. It also utilizes the Microsoft Graph Toolkit for accessing and manipulating Microsoft Graph data. The application does not require an Azure account for deployment, instead, it is deployed to the SharePoint App Catalog and synced to the Teams App Catalog. The application is primarily a Tab application and is written in TypeScript.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "SharePoint",
-                "SPFx",
-                "TS"
-            ],
-            "time": "1hr to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "hello-world-in-meeting",
-            "shortId": "helloworld-meeting",
-            "onboardDate": "2022-04-08",
-            "title": "My First Meeting App",
-            "shortDescription": "A template for apps using only in the context of a Teams meeting",
-            "fullDescription": "My first meeting app is a simple template to show how to build a tab app that can be installed and used in a meeting, in all of meeting lifecycles: pre-meeting chat, in-meeting, post-meeting chat. This sample contains tab as side panel, meeting chat tab, or meeting details tab. The template also includes simple codes to fetch meeting info and user profile.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Meeting Extension",
-                "JS"
-            ],
-            "time": "30min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "images/thumbnail.png",
-            "gifPath": "images/thumbnail.png",
-            "suggested": false
-        },
-        {
-            "id": "todo-list-with-Azure-backend-M365",
-            "shortId": "todo-backend-m365",
-            "onboardDate": "2021-11-09",
-            "title": "Todo List (Works in Teams, Outlook and Office)",
-            "shortDescription": "Todo List app that runs across Microsoft 365 including Teams, Outlook and Office",
-            "fullDescription": "Todo List app helps to manage personal to do items and also runs across Microsoft 365, including Teams, Outlook and Office. The frontend is a React app and the backend is an Azure Function. You can optionally deploy and host the app in Azure.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "React",
-                "Azure Functions",
-                "JS",
-                "Outlook",
-                "Office"
-            ],
-            "time": "30min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "NPM-search-connector-M365",
-            "shortId": "npm-search-m365",
-            "onboardDate": "2021-11-09",
-            "title": "NPM Search Connector",
-            "shortDescription": "Search and Share an NPM Package in Teams and Outlook (Web)",
-            "fullDescription": "This is a Microsoft Teams application named \"NPM Search Connector\". It serves as a Message Extension that allows users to perform a quick search to the NPM Registry for a package and insert package details into conversations for sharing with co-workers. The application uses Adaptive Cards to render NPM package details and Azure Bot Service for handling search queries and communication between the server workload and the clients, including Teams and Outlook (Web Client). It relies on external dependencies such as the botbuilder and restify libraries. The application is built using the TeamsFx SDK and leverages cloud services like Azure Active Directory and Azure Bot Service. While it doesn't directly involve Tabs, JS, SSO, or the Graph Toolkit, these could potentially be integrated for enhanced functionality.",
-            "types": [
-                "Message Extension"
-            ],
-            "tags": [
-                "Message Extension",
-                "JS",
-                "Outlook"
-            ],
-            "time": "45min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "bot-proactive-messaging-teamsfx",
-            "shortId": "proactive-messaging",
-            "onboardDate": "2022-08-01",
-            "title": "Proactive Messaging",
-            "shortDescription": "Demonstrates how to send proactive messages to users.",
-            "fullDescription": "This Teams application is a proactive messaging bot that enables users to receive notifications and messages proactively. The bot can send messages to all users who have previously interacted with it, and it can be triggered via a dedicated endpoint. The bot is built using the Bot Framework SDK and is written in JavaScript. The bot is hosted on Azure and uses Azure Active Directory for identity management.",
-            "types": [
-                "Bot"
-            ],
-            "tags": [
-                "Bot",
-                "JS"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "images/thumbnail.png",
-            "gifPath": "images/send-proactive-messages.gif",
-            "suggested": false,
-            "downloadUrlInfo": {
-                "owner": "OfficeDev",
-                "repository": "Microsoft-Teams-Samples",
-                "ref": "main",
-                "dir": "samples/bot-proactive-messaging-teamsfx"
-            }
-        },
-        {
-            "id": "adaptive-card-notification",
-            "shortId": "ac-notification",
-            "onboardDate": "2022-03-28",
-            "title": "Adaptive Card Notification",
-            "shortDescription": "Demonstrates how to send adaptive card notification to users.",
-            "fullDescription": "Adaptive Card Notification provides an easy way to send notification in Teams. The front end is built with Adaptive Cards to render notification details, the bot framework service is an Azure Bot Service handling search queries and communication between the server workload and the client and the backend is hosted in Azure Functions providing notification trigger and message handler.",
-            "types": [
-                "Bot"
-            ],
-            "tags": [
-                "Bot",
-                "TS"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "incoming-webhook-notification",
-            "shortId": "webhook-notification",
-            "onboardDate": "2022-03-31",
-            "title": "Incoming Webhook Notification",
-            "shortDescription": "Demonstrates how to send notification via Incoming Webhook.",
-            "fullDescription": "This is a Microsoft Teams application that enables users to send adaptive cards to Teams channels via incoming webhooks. The main user scenario involves tracking and notifying events in Teams channels. The application relies on Node.js and requires a Teams Channel to function. It doesn't use any specific cloud services, but the webhooks could be triggered from any cloud-based application.",
-            "types": [
-                "Bot"
-            ],
-            "tags": [
-                "Bot",
-                "TS"
-            ],
-            "time": "5min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "stocks-update-notification-bot",
-            "shortId": "stocks-notification",
-            "onboardDate": "2022-08-08",
-            "title": "Stocks Update",
-            "shortDescription": "Keep up to date with the latest stock price in Microsoft Teams.",
-            "fullDescription": "This sample demonstrates how a Notification Bot can be used to call an external API using API Key authentication, on a pre-defined schedule of every 30 seconds, to obtain the latest stock information and render the results as an Adaptive Card.",
-            "types": [
-                "Bot"
-            ],
-            "tags": [
-                "Bot",
-                "TS",
-                "Azure Functions",
-                "API Key"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "query-org-user-with-message-extension-sso",
-            "shortId": "query-user-sso",
-            "onboardDate": "2022-09-20",
-            "title": "Org User Search Connector",
-            "shortDescription": "Query Org User with Message Extension SSO",
-            "fullDescription": "This project is a Microsoft Teams bot application that interacts with users within the Teams environment. It uses Azure cloud services for deployment and hosting. The bot's behavior is defined using environment variables for configuration. The application includes a manifest file for Teams app packaging and supports a web-based authentication flow. The project also includes documentation for usage and deployment. The bot application is designed to query organization users with message extension and Single Sign-On (SSO). It leverages Microsoft Graph Client for data access and manipulation. The application is designed to be deployed on Azure and uses Azure Active Directory for authentication.",
-            "types": [
-                "Message Extension"
-            ],
-            "tags": [
-                "Message Extension",
-                "SSO"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "team-central-dashboard",
-            "shortId": "central-dashboard",
-            "onboardDate": "2022-09-20",
-            "title": "Team Central Dashboard",
-            "shortDescription": "A single dashboard displaying data chats and content from Microsoft Graph to accelerate team collaboration and personal productivity.",
-            "fullDescription": "This project is a Microsoft Teams application that provides a Tab interface for users to interact with. The main scenario involves users accessing various functionalities through this Tab, which is built using the Microsoft Teams JavaScript client SDK. The application supports Single Sign-On (SSO) for a seamless user experience. It also utilizes the Microsoft Graph Toolkit, enabling easy integration with the Microsoft Graph APIs. The application is hosted on Azure, leveraging its cloud services for robust and scalable performance.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Tab",
-                "TS",
-                "Azure Functions",
-                "SSO"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "graph-connector-app",
-            "shortId": "graph-connector",
-            "onboardDate": "2022-04-18",
-            "title": "Graph Connector App",
-            "shortDescription": "Showcases how to build custom Graph Connector",
-            "fullDescription": "This project is a Microsoft Teams application that provides a custom Graph Connector built with Azure Functions. The main user scenario involves querying data using the Microsoft Graph Client and TeamsFx SDK. The application can build both frontend and backend hosting on Azure for a Teams tab app, and it uses Single Sign-On (SSO) for authentication. It leverages the Microsoft Graph Toolkit for UI components related to Microsoft Graph. The application is dependent on Azure Functions for serverless computing and Azure Active Directory for identity services. It also uses the TeamsFx SDK to facilitate the development of Teams applications. The application is designed to be deployed on Azure, utilizing its cloud services for hosting and data management.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Tab",
-                "Azure Functions",
-                "TS",
-                "SSO"
-            ],
-            "time": "10min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "graph-toolkit-one-productivity-hub",
-            "shortId": "graph-ttk-hub",
-            "onboardDate": "2022-07-27",
-            "title": "One Productivity Hub using Graph Toolkit",
-            "shortDescription": "Microsoft Teams tab with SSO to view calendar events, to-do tasks and file folders.",
-            "fullDescription": "This Teams application, named \"One Productivity Hub\", serves as a central hub within Microsoft Teams where users can access various resources and tools. It provides links to developer questions, development videos from Microsoft and the community, and other productivity tools. The application uses techniques such as Single Sign-On (SSO) for user authentication and Microsoft Graph Toolkit for accessing Microsoft Graph APIs. It is built using Fluent UI for the user interface, React Router for navigation, and Microsoft Teams JavaScript client SDK for Teams-specific functionalities. The application is hosted on Azure, with infrastructure as code defined using Bicep and parameters managed with JSON.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Tab",
-                "JS",
-                "SSO",
-                "Graph Toolkit"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "todo-list-with-Azure-backend",
-            "shortId": "todo-backend",
-            "onboardDate": "2021-05-06",
-            "title": "Todo List with backend on Azure",
-            "shortDescription": "Todo List app with Azure Functions backend and Azure SQL database",
-            "fullDescription": "Todo List provides an easy way to manage to-do items in Teams Client. This app helps enabling task collaboration and management for your team. The frontend is a React app and the backend is hosted on Azure. You will need an Azure subscription to run the app.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "React",
-                "Azure Functions",
-                "Azure SQL",
-                "JS",
-                "CI/CD"
-            ],
-            "time": "30min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "share-now",
-            "shortId": "share-now",
-            "onboardDate": "2021-05-17",
-            "title": "Share Now",
-            "shortDescription": "Knowledge sharing app contains a Tab and a Message Extension",
-            "fullDescription": "Share Now promotes the exchange of information between colleagues by enabling users to share content within the Teams environment. Users engage the app to share items of interest, discover new shared content, set preferences, and bookmark favorites for later reading.",
-            "types": [
-                "Tab",
-                "Message Extension"
-            ],
-            "tags": [
-                "Tab",
-                "Message Extension",
-                "TS"
-            ],
-            "time": "30min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "hello-world-teams-tab-and-outlook-add-in",
-            "shortId": "helloworld-outlook",
-            "onboardDate": "2023-03-02",
-            "title": "Hello World Teams Tab and Outlook add-in",
-            "shortDescription": "A hello world project that contains both Teams Tab and Outlook add-in capability",
-            "fullDescription": "Microsoft Teams supports the ability to run web-based UI inside \"custom tabs\" that users can install either for just themselves (personal tabs) or within a team or group chat context. Outlook add-ins are integrations built by third parties into Outlook by using our web-based platform. Now you have the ability to create a single unit of distribution for all your Microsoft 365 extensions by using the same manifest format and schema, based on the current JSON-formatted Teams manifest.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Tab",
-                "Outlook Add-in"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/thumbnail.png",
-            "suggested": false
-        },
-        {
-            "id": "outlook-add-in-set-signature",
-            "shortId": "signature-outlook",
-            "onboardDate": "2023-05-04",
-            "title": "Set signature using Outlook add-in",
-            "shortDescription": "An Outlook add-in that sets signature for the user",
-            "fullDescription": "An Outlook add-in that sets signature for the user",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Outlook Add-in"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/outlook-set-signature-overview.png",
-            "gifPath": "assets/outlook-set-signature-overview.png",
-            "suggested": false,
-            "downloadUrlInfo": {
-                "owner": "OfficeDev",
-                "repository": "Office-Add-in-samples",
-                "ref": "main",
-                "dir": "Samples/outlook-set-signature"
-            }
-        },
-        {
-            "id": "developer-assist-dashboard",
-            "shortId": "dev-assist-dashboard",
-            "onboardDate": "2023-03-07",
-            "title": "Developer Assist Dashboard",
-            "shortDescription": "A dashboard that integrates with Azure DevOps, Github issues and Planner tasks that accelerates developer productivity.",
-            "fullDescription": "Developer Assist Dashboard shows you how to build a tab with Azure DevOps work items, GitHub issues and Planner tasks to accelerate developer team collaboration and productivity. Developer Assist Dashboard is capable of working on Microsoft Teams, Outlook Web and Microsoft 365 app.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Outlook",
-                "Office",
-                "TS"
-            ],
-            "time": "15min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "images/preview.png",
-            "gifPath": "images/preview.png",
-            "suggested": false
-        },
-        {
-            "id": "live-share-dice-roller",
-            "shortId": "dice-roller",
-            "onboardDate": "2023-04-27",
-            "title": "Dice Roller in meeting",
-            "shortDescription": "This sample introduces Microsoft Live Share and Azure Fluid Relay to enable a shared experience between multiple users.",
-            "fullDescription": "This sample is a a collaboration tool used in a Teams meeting that enables you to share your experience with others in real time. Azure Fluid Relay is a part of this service. It allows multiple users to roll a dice and see the results. This sample is a great way to get started with Live Share and Fluid.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Live Share",
-                "JS",
-                "ReactJS",
-                "Teams-JS 2.0"
-            ],
-            "time": "5 min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "teams-chef-bot",
-            "shortId": "chef-bot",
-            "onboardDate": "2023-06-25",
-            "title": "Teams Chef Bot",
-            "shortDescription": "Demonstrates how to build bot with Microsoft Teams AI Library.",
-            "fullDescription": "This project, Teams Chef, is a conversational bot designed to guide junior developers in Microsoft Teams app development. It uses the Teams AI Library and the gpt-3.5-turbo model to facilitate interactions. The bot leverages Retrieval Augmented Generation (RAG) and a local Vector Database, Vectra, for contextual information retrieval. Semantic Search is employed to find relevant information from its index, which includes Getting Started docs and the source code for the Teams AI Library. The bot is configured for Azure deployment, with infrastructure defined using Bicep.",
-            "types": [
-                "Bot"
-            ],
-            "tags": [
-                "Bot",
-                "TS",
-                "Teams AI Library"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/TeamsChef003.png",
-            "gifPath": "assets/TeamsChef003.png",
-            "suggested": true,
-            "downloadUrlInfo": {
-                "owner": "microsoft",
-                "repository": "teams-ai",
-                "ref": "main",
-                "dir": "js/samples/04.ai-apps/a.teamsChefBot"
-            }
-        },
-        {
-            "id": "spfx-productivity-dashboard",
-            "shortId": "spfx-dashboard",
-            "onboardDate": "2023-08-09",
-            "title": "One Productivity Hub using Graph Toolkit with SPFx",
-            "shortDescription": "Microsoft Teams tab powered by SharePoint Framework to view calendar events, to-do tasks and file folders.",
-            "fullDescription": "One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using Microsoft Graph Toolkit components and SharePoint provider. You can run this app locally or deploy it to SharePoint.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Tab",
-                "TS",
-                "SPFx",
-                "Graph Toolkit"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "src/assets/screenshot.png",
-            "gifPath": "src/assets/screenshot.png",
-            "suggested": false
-        },
-        {
-            "id": "react-retail-dashboard",
-            "shortId": "retail-dashboard",
-            "onboardDate": "2023-09-15",
-            "title": "Contoso Retail Dashboard",
-            "shortDescription": "Microsoft Teams tab powered by SharePoint Framework to show a Contoso retail dashboard based on demo sample data.",
-            "fullDescription": "Contoso Retail Dashboard sample shows you how to build a dashboard for viewing different control layouts. It also shows you how to create a Microsoft Teams personal app with SharePoint Framework, hosting the solution also in Outlook.com and in the Microsoft 365 Portal as a Microsoft 365 app.",
-            "types": [
-                "Tab"
-            ],
-            "tags": [
-                "Tab",
-                "TS",
-                "SPFx"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/screenshot.png",
-            "gifPath": "assets/screenshot.png",
-            "suggested": false
-        },
-        {
-            "id": "sso-enabled-tab-via-apim-proxy",
-            "shortId": "tab-apim",
-            "onboardDate": "2023-09-15",
-            "title": "SSO Enabled Tab via APIM Proxy",
-            "shortDescription": "An SSO-enabled Microsoft Teams Tab app using APIM as a proxy.",
-            "fullDescription": "This is a Microsoft Teams tab app that can display user login information with SSO. This app uses Graph Toolkit as the frontend and Azure API Management as a proxy.",
-            "types": [
-              "Tab"
-            ],
-            "tags": [
-              "Tab",
-              "JS",
-              "API Management",
-              "SSO"
-            ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
-            "gifPath": "assets/sampleDemo.gif",
-            "thumbnailPath": "assets/thumbnail.png",
-            "suggested": false
-        },
-        {
-            "id": "large-scale-notification",
-            "shortId": "large-notification",
-            "onboardDate": "2023-10-17",
-            "title": "Large Scale Notification Bot",
-            "shortDescription": "This sample demonstrates the architecture of a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant.",
-            "fullDescription": "This project is a large-scale notification system for Microsoft Teams. It uses Azure Functions for serverless computing and Azure Service Bus for message handling. The system leverages Azure Table Storage for data persistence and Azure Bot Service for interaction with Teams. It also uses Bicep for infrastructure management. The project is structured to handle environment-specific configurations and includes scripts for various tasks like data mocking and app installation. The system is designed to handle large volumes of notifications efficiently and reliably.",
-            "types": [
-              "Bot"
-            ],
-            "tags": [
-              "Bot",
-              "TS",
-              "Azure Durable Functions",
-              "Notification",
-              "Large User Scale"
-            ],
-            "time": "30min to run",
-            "configuration": "Manual configurations required",
-            "gifPath": "assets/thumbnail.png",
-            "thumbnailPath": "assets/thumbnail.png",
-            "suggested": true
-        },
-        {
-            "id": "graph-connector-bot",
-            "shortId": "graph-connector-bot",
-            "onboardDate": "2023-11-07",
-            "title": "Graph Connector Bot",
-            "shortDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.",
-            "fullDescription": "This project is a Graph Connector Bot for Microsoft Teams. It uses Azure Bot Service and Azure Active Directory for bot registration and authentication. The bot leverages Adaptive Cards for interactive messaging. The project is configured with Azure Resource Manager templates for infrastructure setup. The Teams app package is built and validated using TeamsFx actions, and the app is published to the Teams Admin Center for review and approval. The project uses environment variables for configuration and supports multiple environments.",
-            "types": [
-              "Bot"
-            ],
-            "tags": [
-              "Bot",
-              "TS",
-              "Microsoft Graph Connectors"
-            ],
-            "time": "30min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "bot-conversation-python",
-            "shortId": "bot-conversation-py",
-            "onboardDate": "2023-11-08",
-            "title": "Teams Conversation Bot using Python",
-            "shortDescription": "This sample shows how to incorporate basic conversational flow into a Teams application.",
-            "fullDescription": "This bot has been created using Bot Framework. This sample shows how to incorporate basic conversational flow into a Teams application. It also illustrates a few of the Teams specific calls you can make from your bot.",
-            "types": [
-              "Bot"
-            ],
-            "tags": [
-              "Python",
-              "Bot",
-              "Bot Framework"
-            ],
-            "time": "5min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "Images/2.welcome.png",
-            "gifPath": "Images/BotConversation.gif",
-            "suggested": false,
-            "downloadUrlInfo": {
-                "owner": "OfficeDev",
-                "repository": "Microsoft-Teams-Samples",
-                "ref": "main",
-                "dir": "samples/bot-conversation/python"
-            }
-        },
-        {
-            "id": "msgext-search-python",
-            "shortId": "msgext-search-py",
-            "onboardDate": "2023-11-08",
-            "title": "Teams Messaging Extensions Search using Python",
-            "shortDescription": "This sample illustrates how to build a Search-based Messaging Extension.",
-            "fullDescription": "There are two basic types of Messaging Extension in Teams: Search-based and Action-based. This sample illustrates how to build a Search-based Messaging Extension.",
-            "types": [
-              "Bot"
-            ],
-            "tags": [
-              "Python",
-              "Message extension",
-              "Bot Framework"
-            ],
-            "time": "5min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "Images/5.Select_result.png",
-            "gifPath": "Images/msgext-search.gif",
-            "suggested": false,
-            "downloadUrlInfo": {
-                "owner": "OfficeDev",
-                "repository": "Microsoft-Teams-Samples",
-                "ref": "main",
-                "dir": "samples/msgext-search/python"
-            }
-        },
-        {
-            "id": "gc-nodejs-typescript-food-catalog",
-            "shortId": "gc-food-catalog",
-            "onboardDate": "2023-11-15",
-            "title": "Ingest Custom API Data into Microsoft 365 with a Microsoft Graph Connector",
-            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph.",
-            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content on a schedule. It also includes the simplified admin experience which means that admins can toggle the connector on and off from the Microsoft Teams admin center.",
-            "types": [
-              "Tab"
-            ],
-            "tags": [
-              "TS",
-              "Microsoft Graph Connectors",
-              "Azure Functions"
-            ],
-            "time": "5min to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/ttk_thumb.png",
-            "gifPath": "assets/ttk.gif",
-            "suggested": false,
-            "downloadUrlInfo": {
-                "owner": "pnp",
-                "repository": "graph-connectors-samples",
-                "ref": "main",
-                "dir": "samples/nodejs-typescript-food-catalog"
-            }
-        },
-        {
-            "id": "reddit-link-unfurling",
-            "shortId": "reddit-link-unfurling",
-            "onboardDate": "2023-12-12",
-            "title": "Format Reddit Link into Adaptive Card",
-            "shortDescription": "This sample application showcases how to build a Teams application (Link Unfurling, a type of Message Extension) that can format the Reddit link into an Adaptive Card when a user pastes a Reddit link into the compose message area.",
-            "fullDescription": "This sample application showcases how to build a Teams application (Link Unfurling, a type of Message Extension) that can format the Reddit link into an Adaptive Card when a user pastes a Reddit link into the compose message area.",
-            "types": [
-              "Message Extension"
-            ],
-            "tags": [
-              "Message Extension",
-              "JS",
-              "Link Unfurling"
-            ],
-            "time": "10 mins to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "doc/image/link.png",
-            "gifPath": "doc/image/link.png",
-            "suggested": false,
-            "downloadUrlInfo": {
-                "owner": "OfficeDev",
-                "repository": "Microsoft-Teams-Samples",
-                "ref": "main",
-                "dir": "samples/msgext-link-unfurling-reddit/nodejs"
-            }
-        },
-        {
-            "id": "meetings-live-code-interview",
-            "shortId": "live-code-interview",
-            "onboardDate": "2023-12-18",
-            "title": "Live Coding Interview",
-            "shortDescription": "This sample demos live coding in a teams meeting stage using live share SDK. The tab is loaded as side panel which contains various coding questions.",
-            "fullDescription": "This sample demos live coding in a teams meeting stage using live share SDK. The tab is loaded as side panel which contains various coding questions.",
-            "types": [
-              "Meeting"
-            ],
-            "tags": [
-              "Meeting Extension",
-              "JS",
-              "Live Share SDK"
-            ],
-            "time": "5 mins to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false,
-            "downloadUrlInfo": {
-                "owner": "OfficeDev",
-                "repository": "Microsoft-Teams-Samples",
-                "ref": "main",
-                "dir": "samples/meetings-live-code-interview/nodejs"
-            }
-        },
-        {
-            "id": "intelligent-data-chart-generator",
-            "shortId": "data-chart-generator",
-            "onboardDate": "2024-01-31",
-            "title": "Intelligent Data Chart Generator",
-            "shortDescription": "The Microsoft Teams Tab app, powered by Azure OpenAI, interprets user inputs to generate data charts from Azure SQL.",
-            "fullDescription": "This intelligent Microsoft Teams Tab app is powered by Azure OpenAI, which helps users generating data charts based on users' description of the data chart in human language. There is an input box where users tell the Tab app what data chart they want to generate, and the app interprets user's requirements then generate visual charts. The data is from Azure SQL. This sample demonstrates how to build a seamless and intuitive experience for accessing and interpreting data.",
-            "types": [
-              "Tab"
-            ],
-            "tags": [
-              "Tab",
-              "TS",
-              "Azure Functions"
-            ],
-            "time": "30 mins to run",
-            "configuration": "Manual configurations required",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "bot-sso-docker",
-            "shortId": "bot-sso-docker",
-            "onboardDate": "2024-02-20",
-            "title": "Containerized Bot App with SSO Enabled",
-            "shortDescription": "Creating a Teams Bot with SSO and Microsoft Graph in a Docker Container.",
-            "fullDescription": "This project is a Microsoft Teams bot application that interacts with users in a Teams environment. It uses the Azure Bot Framework for bot functionality and single sign-on (SSO) capabilities. The bot is hosted on Azure, with infrastructure as code (IaC) deployments managed through Azure Bicep files. Docker is used for containerization, and the application's behavior is controlled by environment variables. The Teams app package is used for distribution. The bot's source code includes a main entry point and various command implementations. The project also includes instructions for running the bot locally and deploying it to Azure.",
-            "types": [
-              "Bot"
-            ],
-            "tags": [
-              "Bot",
-              "TS",
-              "Docker",
-              "SSO"
-            ],
-            "time": "5 mins to run",
-            "configuration": "Ready for local debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "hello-world-tab-docker",
-            "shortId": "hello-world-tab-docker",
-            "onboardDate": "2024-04-02",
-            "title": "Containerized Hello World Tab with Backend",
-            "shortDescription": "A containerized Hello World app of Microsoft Teams Tab app which has a backend service.",
-            "fullDescription": "Hello World Tab with Backend shows you how to build a tab app with an Azure Function as backend, how to get user login information with SSO and how to call Azure Function from frontend tab. Teams applications can be developed and run locally using containerization, which provides a consistent and isolated environment for testing and deployment. Containerizing your Teams app makes it easier to manage dependencies, scale efficiently, and maintain your app in production.",
-            "types": [
-              "Tab"
-            ],
-            "tags": [
-              "TS",
-              "Tab",
-              "React",
-              "Graph Toolkit",
-              "Docker",
-              "SSO"
-            ],
-            "time": "5 mins to run",
-            "configuration": "Ready for local debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
-            "id": "graph-rsc-helper",
-            "shortId": "graph-rsc-helper",
-            "onboardDate": "2024-04-02",
-            "title": "Graph RSC Helper",
-            "shortDescription": "This sample demonstrates how to use Resource Specific Consent to call Graph API in Microsoft teams channel and group chat. You can observe the real API response with the scope installed.",
-            "fullDescription": "This sample demonstrates how to use Resource Specific Consent (RSC) to call Graph API in Microsoft Teams channel and group chat. It shows how to configure RSC permissions in the manifest and use them to call Microsoft Graph, allowing you to observe the real API response with the scope installed. The sample includes features such as RSC permissions, Graph, and Tab App in team channel and group chat. Prerequisites include NodeJS and a M365 developer account.",
-            "types": [
-              "Tab"
-            ],
-            "tags": [
-              "TS",
-              "Tab",
-              "RSC Permissions",
-              "Graph"
-            ],
-            "time": "5 mins to run",
-            "configuration": "Ready for local debug",
-            "thumbnailPath": "Images/Overview.png",
-            "gifPath": "Images/graphrschelper.gif",
-            "suggested": false,
-            "downloadUrlInfo": {
-                "owner": "OfficeDev",
-                "repository": "Microsoft-Teams-Samples",
-                "ref": "main",
-                "dir": "samples/graph-rsc-helper/nodeJs"
-            }
-        }
+  "filterOptions": {
+    "capabilities": ["Tab", "Bot", "Message Extension", "Meeting"],
+    "languages": ["TS", "JS", "Python"],
+    "technologies": [
+      "Azure",
+      "Adaptive Cards",
+      "SSO",
+      "SPFx",
+      "Outlook",
+      "Graph",
+      "Dev Proxy"
     ]
+  },
+  "samples": [
+    {
+      "id": "hello-world-tab-with-backend",
+      "onboardDate": "2021-11-30",
+      "title": "Tab App with Azure Backend",
+      "shortId": "helloworld-backend",
+      "shortDescription": "A Hello World app of Microsoft Teams Tab app which has a backend service",
+      "fullDescription": "This project is a Microsoft Teams Tab application that allows users to interact with Microsoft 365 content. It utilizes Azure Storage for hosting and Azure Functions for implementing server-side behaviors. The TeamsFx SDK is employed for user authentication and server-side operations. The application is configured using environment variables and Azure Bicep for resource deployment. The frontend, a React app, is loaded inside a custom Teams tab, which communicates with the Azure Functions backend via HTTP requests. The application provides a seamless user experience by using Single Sign-On (SSO) for user authentication.",
+      "types": ["Tab"],
+      "tags": ["Tab", "TS", "Azure Functions", "Dev Proxy"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": true
+    },
+    {
+      "id": "graph-toolkit-contact-exporter",
+      "shortId": "contact-exporter",
+      "onboardDate": "2021-11-30",
+      "title": "Contact Exporter using Graph Toolkit",
+      "shortDescription": "Contact Exporter app of Microsoft Teams Tab app.",
+      "fullDescription": "The project is a Microsoft Teams application that uses the React framework for its user interface. It leverages Azure Active Directory for user authentication and Azure Storage for deployment. The application is configured to run locally with environment variables set for development. The Teams app is created and updated using YAML configuration files. The application also uses the Microsoft Graph Toolkit for functionality related to Microsoft Graph API. The user scenario likely involves interacting with the application within the Teams environment, using the tabs and other UI components provided.",
+      "types": ["Tab"],
+      "tags": ["Tab", "JS"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "bot-sso",
+      "shortId": "sso-bot",
+      "onboardDate": "2021-10-19",
+      "title": "Bot App with SSO Enabled",
+      "shortDescription": "A Hello World app of Microsoft Teams Bot app with SSO",
+      "fullDescription": "This is an extended Hello World app of Microsoft Teams Bot app demonstrating how to integrate with Bot Framework SDK, TeamsFx SDK, and Graph SDK to implement SSO (Single Sign-On) feature that retrieves profile photos for currently signed-in users.",
+      "types": ["Bot"],
+      "tags": ["Bot", "TS", "Adaptive Cards", "SSO"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "todo-list-SPFx",
+      "shortId": "todo-spfx",
+      "onboardDate": "2021-05-06",
+      "title": "Todo List with SPFx",
+      "shortDescription": "Todo List app hosting on SharePoint",
+      "fullDescription": "The \"Todo List with SPFx\" is a Microsoft Teams application that provides a collaborative task management tool for Teams or Channel members. The application is hosted on SharePoint, allowing users to create, update, and delete tasks within a shared Todo List. The main user scenario involves members of a Team or Channel collaborating on the same Todo List and manipulating the same set of Todo items. The application leverages SharePoint Framework (SPFx) for its development and uses Single Sign-On (SSO) for user authentication. It also utilizes the Microsoft Graph Toolkit for accessing and manipulating Microsoft Graph data. The application does not require an Azure account for deployment, instead, it is deployed to the SharePoint App Catalog and synced to the Teams App Catalog. The application is primarily a Tab application and is written in TypeScript.",
+      "types": ["Tab"],
+      "tags": ["SharePoint", "SPFx", "TS"],
+      "time": "1hr to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "hello-world-in-meeting",
+      "shortId": "helloworld-meeting",
+      "onboardDate": "2022-04-08",
+      "title": "My First Meeting App",
+      "shortDescription": "A template for apps using only in the context of a Teams meeting",
+      "fullDescription": "My first meeting app is a simple template to show how to build a tab app that can be installed and used in a meeting, in all of meeting lifecycles: pre-meeting chat, in-meeting, post-meeting chat. This sample contains tab as side panel, meeting chat tab, or meeting details tab. The template also includes simple codes to fetch meeting info and user profile.",
+      "types": ["Tab"],
+      "tags": ["Meeting Extension", "JS"],
+      "time": "30min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "images/thumbnail.png",
+      "gifPath": "images/thumbnail.png",
+      "suggested": false
+    },
+    {
+      "id": "todo-list-with-Azure-backend-M365",
+      "shortId": "todo-backend-m365",
+      "onboardDate": "2021-11-09",
+      "title": "Todo List (Works in Teams, Outlook and Office)",
+      "shortDescription": "Todo List app that runs across Microsoft 365 including Teams, Outlook and Office",
+      "fullDescription": "Todo List app helps to manage personal to do items and also runs across Microsoft 365, including Teams, Outlook and Office. The frontend is a React app and the backend is an Azure Function. You can optionally deploy and host the app in Azure.",
+      "types": ["Tab"],
+      "tags": ["React", "Azure Functions", "JS", "Outlook", "Office"],
+      "time": "30min to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "NPM-search-connector-M365",
+      "shortId": "npm-search-m365",
+      "onboardDate": "2021-11-09",
+      "title": "NPM Search Connector",
+      "shortDescription": "Search and Share an NPM Package in Teams and Outlook (Web)",
+      "fullDescription": "This is a Microsoft Teams application named \"NPM Search Connector\". It serves as a Message Extension that allows users to perform a quick search to the NPM Registry for a package and insert package details into conversations for sharing with co-workers. The application uses Adaptive Cards to render NPM package details and Azure Bot Service for handling search queries and communication between the server workload and the clients, including Teams and Outlook (Web Client). It relies on external dependencies such as the botbuilder and express libraries. The application is built using the TeamsFx SDK and leverages cloud services like Azure Active Directory and Azure Bot Service. While it doesn't directly involve Tabs, JS, SSO, or the Graph Toolkit, these could potentially be integrated for enhanced functionality.",
+      "types": ["Message Extension"],
+      "tags": ["Message Extension", "JS", "Outlook"],
+      "time": "45min to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "bot-proactive-messaging-teamsfx",
+      "shortId": "proactive-messaging",
+      "onboardDate": "2022-08-01",
+      "title": "Proactive Messaging",
+      "shortDescription": "Demonstrates how to send proactive messages to users.",
+      "fullDescription": "This Teams application is a proactive messaging bot that enables users to receive notifications and messages proactively. The bot can send messages to all users who have previously interacted with it, and it can be triggered via a dedicated endpoint. The bot is built using the Bot Framework SDK and is written in JavaScript. The bot is hosted on Azure and uses Azure Active Directory for identity management.",
+      "types": ["Bot"],
+      "tags": ["Bot", "JS"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "images/thumbnail.png",
+      "gifPath": "images/send-proactive-messages.gif",
+      "suggested": false,
+      "downloadUrlInfo": {
+        "owner": "OfficeDev",
+        "repository": "Microsoft-Teams-Samples",
+        "ref": "main",
+        "dir": "samples/bot-proactive-messaging-teamsfx"
+      }
+    },
+    {
+      "id": "adaptive-card-notification",
+      "shortId": "ac-notification",
+      "onboardDate": "2022-03-28",
+      "title": "Adaptive Card Notification",
+      "shortDescription": "Demonstrates how to send adaptive card notification to users.",
+      "fullDescription": "Adaptive Card Notification provides an easy way to send notification in Teams. The front end is built with Adaptive Cards to render notification details, the bot framework service is an Azure Bot Service handling search queries and communication between the server workload and the client and the backend is hosted in Azure Functions providing notification trigger and message handler.",
+      "types": ["Bot"],
+      "tags": ["Bot", "TS"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "incoming-webhook-notification",
+      "shortId": "webhook-notification",
+      "onboardDate": "2022-03-31",
+      "title": "Incoming Webhook Notification",
+      "shortDescription": "Demonstrates how to send notification via Incoming Webhook.",
+      "fullDescription": "This is a Microsoft Teams application that enables users to send adaptive cards to Teams channels via incoming webhooks. The main user scenario involves tracking and notifying events in Teams channels. The application relies on Node.js and requires a Teams Channel to function. It doesn't use any specific cloud services, but the webhooks could be triggered from any cloud-based application.",
+      "types": ["Bot"],
+      "tags": ["Bot", "TS"],
+      "time": "5min to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "stocks-update-notification-bot",
+      "shortId": "stocks-notification",
+      "onboardDate": "2022-08-08",
+      "title": "Stocks Update",
+      "shortDescription": "Keep up to date with the latest stock price in Microsoft Teams.",
+      "fullDescription": "This sample demonstrates how a Notification Bot can be used to call an external API using API Key authentication, on a pre-defined schedule of every 30 seconds, to obtain the latest stock information and render the results as an Adaptive Card.",
+      "types": ["Bot"],
+      "tags": ["Bot", "TS", "Azure Functions", "API Key"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "query-org-user-with-message-extension-sso",
+      "shortId": "query-user-sso",
+      "onboardDate": "2022-09-20",
+      "title": "Org User Search Connector",
+      "shortDescription": "Query Org User with Message Extension SSO",
+      "fullDescription": "This project is a Microsoft Teams bot application that interacts with users within the Teams environment. It uses Azure cloud services for deployment and hosting. The bot's behavior is defined using environment variables for configuration. The application includes a manifest file for Teams app packaging and supports a web-based authentication flow. The project also includes documentation for usage and deployment. The bot application is designed to query organization users with message extension and Single Sign-On (SSO). It leverages Microsoft Graph Client for data access and manipulation. The application is designed to be deployed on Azure and uses Azure Active Directory for authentication.",
+      "types": ["Message Extension"],
+      "tags": ["Message Extension", "SSO"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "team-central-dashboard",
+      "shortId": "central-dashboard",
+      "onboardDate": "2022-09-20",
+      "title": "Team Central Dashboard",
+      "shortDescription": "A single dashboard displaying data chats and content from Microsoft Graph to accelerate team collaboration and personal productivity.",
+      "fullDescription": "This project is a Microsoft Teams application that provides a Tab interface for users to interact with. The main scenario involves users accessing various functionalities through this Tab, which is built using the Microsoft Teams JavaScript client SDK. The application supports Single Sign-On (SSO) for a seamless user experience. It also utilizes the Microsoft Graph Toolkit, enabling easy integration with the Microsoft Graph APIs. The application is hosted on Azure, leveraging its cloud services for robust and scalable performance.",
+      "types": ["Tab"],
+      "tags": ["Tab", "TS", "Azure Functions", "SSO"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "graph-connector-app",
+      "shortId": "graph-connector",
+      "onboardDate": "2022-04-18",
+      "title": "Graph Connector App",
+      "shortDescription": "Showcases how to build custom Graph Connector",
+      "fullDescription": "This project is a Microsoft Teams application that provides a custom Graph Connector built with Azure Functions. The main user scenario involves querying data using the Microsoft Graph Client and TeamsFx SDK. The application can build both frontend and backend hosting on Azure for a Teams tab app, and it uses Single Sign-On (SSO) for authentication. It leverages the Microsoft Graph Toolkit for UI components related to Microsoft Graph. The application is dependent on Azure Functions for serverless computing and Azure Active Directory for identity services. It also uses the TeamsFx SDK to facilitate the development of Teams applications. The application is designed to be deployed on Azure, utilizing its cloud services for hosting and data management.",
+      "types": ["Tab"],
+      "tags": ["Tab", "Azure Functions", "TS", "SSO"],
+      "time": "10min to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "graph-toolkit-one-productivity-hub",
+      "shortId": "graph-ttk-hub",
+      "onboardDate": "2022-07-27",
+      "title": "One Productivity Hub using Graph Toolkit",
+      "shortDescription": "Microsoft Teams tab with SSO to view calendar events, to-do tasks and file folders.",
+      "fullDescription": "This Teams application, named \"One Productivity Hub\", serves as a central hub within Microsoft Teams where users can access various resources and tools. It provides links to developer questions, development videos from Microsoft and the community, and other productivity tools. The application uses techniques such as Single Sign-On (SSO) for user authentication and Microsoft Graph Toolkit for accessing Microsoft Graph APIs. It is built using Fluent UI for the user interface, React Router for navigation, and Microsoft Teams JavaScript client SDK for Teams-specific functionalities. The application is hosted on Azure, with infrastructure as code defined using Bicep and parameters managed with JSON.",
+      "types": ["Tab"],
+      "tags": ["Tab", "JS", "SSO", "Graph Toolkit"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "todo-list-with-Azure-backend",
+      "shortId": "todo-backend",
+      "onboardDate": "2021-05-06",
+      "title": "Todo List with backend on Azure",
+      "shortDescription": "Todo List app with Azure Functions backend and Azure SQL database",
+      "fullDescription": "Todo List provides an easy way to manage to-do items in Teams Client. This app helps enabling task collaboration and management for your team. The frontend is a React app and the backend is hosted on Azure. You will need an Azure subscription to run the app.",
+      "types": ["Tab"],
+      "tags": ["React", "Azure Functions", "Azure SQL", "JS", "CI/CD"],
+      "time": "30min to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "share-now",
+      "shortId": "share-now",
+      "onboardDate": "2021-05-17",
+      "title": "Share Now",
+      "shortDescription": "Knowledge sharing app contains a Tab and a Message Extension",
+      "fullDescription": "Share Now promotes the exchange of information between colleagues by enabling users to share content within the Teams environment. Users engage the app to share items of interest, discover new shared content, set preferences, and bookmark favorites for later reading.",
+      "types": ["Tab", "Message Extension"],
+      "tags": ["Tab", "Message Extension", "TS"],
+      "time": "30min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "hello-world-teams-tab-and-outlook-add-in",
+      "shortId": "helloworld-outlook",
+      "onboardDate": "2023-03-02",
+      "title": "Hello World Teams Tab and Outlook add-in",
+      "shortDescription": "A hello world project that contains both Teams Tab and Outlook add-in capability",
+      "fullDescription": "Microsoft Teams supports the ability to run web-based UI inside \"custom tabs\" that users can install either for just themselves (personal tabs) or within a team or group chat context. Outlook add-ins are integrations built by third parties into Outlook by using our web-based platform. Now you have the ability to create a single unit of distribution for all your Microsoft 365 extensions by using the same manifest format and schema, based on the current JSON-formatted Teams manifest.",
+      "types": ["Tab"],
+      "tags": ["Tab", "Outlook Add-in"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/thumbnail.png",
+      "suggested": false
+    },
+    {
+      "id": "outlook-add-in-set-signature",
+      "shortId": "signature-outlook",
+      "onboardDate": "2023-05-04",
+      "title": "Set signature using Outlook add-in",
+      "shortDescription": "An Outlook add-in that sets signature for the user",
+      "fullDescription": "An Outlook add-in that sets signature for the user",
+      "types": ["Tab"],
+      "tags": ["Outlook Add-in"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/outlook-set-signature-overview.png",
+      "gifPath": "assets/outlook-set-signature-overview.png",
+      "suggested": false,
+      "downloadUrlInfo": {
+        "owner": "OfficeDev",
+        "repository": "Office-Add-in-samples",
+        "ref": "main",
+        "dir": "Samples/outlook-set-signature"
+      }
+    },
+    {
+      "id": "developer-assist-dashboard",
+      "shortId": "dev-assist-dashboard",
+      "onboardDate": "2023-03-07",
+      "title": "Developer Assist Dashboard",
+      "shortDescription": "A dashboard that integrates with Azure DevOps, Github issues and Planner tasks that accelerates developer productivity.",
+      "fullDescription": "Developer Assist Dashboard shows you how to build a tab with Azure DevOps work items, GitHub issues and Planner tasks to accelerate developer team collaboration and productivity. Developer Assist Dashboard is capable of working on Microsoft Teams, Outlook Web and Microsoft 365 app.",
+      "types": ["Tab"],
+      "tags": ["Outlook", "Office", "TS"],
+      "time": "15min to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "images/preview.png",
+      "gifPath": "images/preview.png",
+      "suggested": false
+    },
+    {
+      "id": "live-share-dice-roller",
+      "shortId": "dice-roller",
+      "onboardDate": "2023-04-27",
+      "title": "Dice Roller in meeting",
+      "shortDescription": "This sample introduces Microsoft Live Share and Azure Fluid Relay to enable a shared experience between multiple users.",
+      "fullDescription": "This sample is a a collaboration tool used in a Teams meeting that enables you to share your experience with others in real time. Azure Fluid Relay is a part of this service. It allows multiple users to roll a dice and see the results. This sample is a great way to get started with Live Share and Fluid.",
+      "types": ["Tab"],
+      "tags": ["Live Share", "JS", "ReactJS", "Teams-JS 2.0"],
+      "time": "5 min to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "teams-chef-bot",
+      "shortId": "chef-bot",
+      "onboardDate": "2023-06-25",
+      "title": "Teams Chef Bot",
+      "shortDescription": "Demonstrates how to build bot with Microsoft Teams AI Library.",
+      "fullDescription": "This project, Teams Chef, is a conversational bot designed to guide junior developers in Microsoft Teams app development. It uses the Teams AI Library and the gpt-3.5-turbo model to facilitate interactions. The bot leverages Retrieval Augmented Generation (RAG) and a local Vector Database, Vectra, for contextual information retrieval. Semantic Search is employed to find relevant information from its index, which includes Getting Started docs and the source code for the Teams AI Library. The bot is configured for Azure deployment, with infrastructure defined using Bicep.",
+      "types": ["Bot"],
+      "tags": ["Bot", "TS", "Teams AI Library"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/TeamsChef003.png",
+      "gifPath": "assets/TeamsChef003.png",
+      "suggested": true,
+      "downloadUrlInfo": {
+        "owner": "microsoft",
+        "repository": "teams-ai",
+        "ref": "main",
+        "dir": "js/samples/04.ai-apps/a.teamsChefBot"
+      }
+    },
+    {
+      "id": "spfx-productivity-dashboard",
+      "shortId": "spfx-dashboard",
+      "onboardDate": "2023-08-09",
+      "title": "One Productivity Hub using Graph Toolkit with SPFx",
+      "shortDescription": "Microsoft Teams tab powered by SharePoint Framework to view calendar events, to-do tasks and file folders.",
+      "fullDescription": "One Productivity Hub sample shows you how to build a tab for viewing your calendar events, to-do tasks and files by using Microsoft Graph Toolkit components and SharePoint provider. You can run this app locally or deploy it to SharePoint.",
+      "types": ["Tab"],
+      "tags": ["Tab", "TS", "SPFx", "Graph Toolkit"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "src/assets/screenshot.png",
+      "gifPath": "src/assets/screenshot.png",
+      "suggested": false
+    },
+    {
+      "id": "react-retail-dashboard",
+      "shortId": "retail-dashboard",
+      "onboardDate": "2023-09-15",
+      "title": "Contoso Retail Dashboard",
+      "shortDescription": "Microsoft Teams tab powered by SharePoint Framework to show a Contoso retail dashboard based on demo sample data.",
+      "fullDescription": "Contoso Retail Dashboard sample shows you how to build a dashboard for viewing different control layouts. It also shows you how to create a Microsoft Teams personal app with SharePoint Framework, hosting the solution also in Outlook.com and in the Microsoft 365 Portal as a Microsoft 365 app.",
+      "types": ["Tab"],
+      "tags": ["Tab", "TS", "SPFx"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/screenshot.png",
+      "gifPath": "assets/screenshot.png",
+      "suggested": false
+    },
+    {
+      "id": "sso-enabled-tab-via-apim-proxy",
+      "shortId": "tab-apim",
+      "onboardDate": "2023-09-15",
+      "title": "SSO Enabled Tab via APIM Proxy",
+      "shortDescription": "An SSO-enabled Microsoft Teams Tab app using APIM as a proxy.",
+      "fullDescription": "This is a Microsoft Teams tab app that can display user login information with SSO. This app uses Graph Toolkit as the frontend and Azure API Management as a proxy.",
+      "types": ["Tab"],
+      "tags": ["Tab", "JS", "API Management", "SSO"],
+      "time": "5min to run",
+      "configuration": "Ready for debug",
+      "gifPath": "assets/sampleDemo.gif",
+      "thumbnailPath": "assets/thumbnail.png",
+      "suggested": false
+    },
+    {
+      "id": "large-scale-notification",
+      "shortId": "large-notification",
+      "onboardDate": "2023-10-17",
+      "title": "Large Scale Notification Bot",
+      "shortDescription": "This sample demonstrates the architecture of a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant.",
+      "fullDescription": "This project is a large-scale notification system for Microsoft Teams. It uses Azure Functions for serverless computing and Azure Service Bus for message handling. The system leverages Azure Table Storage for data persistence and Azure Bot Service for interaction with Teams. It also uses Bicep for infrastructure management. The project is structured to handle environment-specific configurations and includes scripts for various tasks like data mocking and app installation. The system is designed to handle large volumes of notifications efficiently and reliably.",
+      "types": ["Bot"],
+      "tags": [
+        "Bot",
+        "TS",
+        "Azure Durable Functions",
+        "Notification",
+        "Large User Scale"
+      ],
+      "time": "30min to run",
+      "configuration": "Manual configurations required",
+      "gifPath": "assets/thumbnail.png",
+      "thumbnailPath": "assets/thumbnail.png",
+      "suggested": true
+    },
+    {
+      "id": "graph-connector-bot",
+      "shortId": "graph-connector-bot",
+      "onboardDate": "2023-11-07",
+      "title": "Graph Connector Bot",
+      "shortDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.",
+      "fullDescription": "This project is a Graph Connector Bot for Microsoft Teams. It uses Azure Bot Service and Azure Active Directory for bot registration and authentication. The bot leverages Adaptive Cards for interactive messaging. The project is configured with Azure Resource Manager templates for infrastructure setup. The Teams app package is built and validated using TeamsFx actions, and the app is published to the Teams Admin Center for review and approval. The project uses environment variables for configuration and supports multiple environments.",
+      "types": ["Bot"],
+      "tags": ["Bot", "TS", "Microsoft Graph Connectors"],
+      "time": "30min to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "bot-conversation-python",
+      "shortId": "bot-conversation-py",
+      "onboardDate": "2023-11-08",
+      "title": "Teams Conversation Bot using Python",
+      "shortDescription": "This sample shows how to incorporate basic conversational flow into a Teams application.",
+      "fullDescription": "This bot has been created using Bot Framework. This sample shows how to incorporate basic conversational flow into a Teams application. It also illustrates a few of the Teams specific calls you can make from your bot.",
+      "types": ["Bot"],
+      "tags": ["Python", "Bot", "Bot Framework"],
+      "time": "5min to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "Images/2.welcome.png",
+      "gifPath": "Images/BotConversation.gif",
+      "suggested": false,
+      "downloadUrlInfo": {
+        "owner": "OfficeDev",
+        "repository": "Microsoft-Teams-Samples",
+        "ref": "main",
+        "dir": "samples/bot-conversation/python"
+      }
+    },
+    {
+      "id": "msgext-search-python",
+      "shortId": "msgext-search-py",
+      "onboardDate": "2023-11-08",
+      "title": "Teams Messaging Extensions Search using Python",
+      "shortDescription": "This sample illustrates how to build a Search-based Messaging Extension.",
+      "fullDescription": "There are two basic types of Messaging Extension in Teams: Search-based and Action-based. This sample illustrates how to build a Search-based Messaging Extension.",
+      "types": ["Bot"],
+      "tags": ["Python", "Message extension", "Bot Framework"],
+      "time": "5min to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "Images/5.Select_result.png",
+      "gifPath": "Images/msgext-search.gif",
+      "suggested": false,
+      "downloadUrlInfo": {
+        "owner": "OfficeDev",
+        "repository": "Microsoft-Teams-Samples",
+        "ref": "main",
+        "dir": "samples/msgext-search/python"
+      }
+    },
+    {
+      "id": "gc-nodejs-typescript-food-catalog",
+      "shortId": "gc-food-catalog",
+      "onboardDate": "2023-11-15",
+      "title": "Ingest Custom API Data into Microsoft 365 with a Microsoft Graph Connector",
+      "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph.",
+      "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content on a schedule. It also includes the simplified admin experience which means that admins can toggle the connector on and off from the Microsoft Teams admin center.",
+      "types": ["Tab"],
+      "tags": ["TS", "Microsoft Graph Connectors", "Azure Functions"],
+      "time": "5min to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "assets/ttk_thumb.png",
+      "gifPath": "assets/ttk.gif",
+      "suggested": false,
+      "downloadUrlInfo": {
+        "owner": "pnp",
+        "repository": "graph-connectors-samples",
+        "ref": "main",
+        "dir": "samples/nodejs-typescript-food-catalog"
+      }
+    },
+    {
+      "id": "reddit-link-unfurling",
+      "shortId": "reddit-link-unfurling",
+      "onboardDate": "2023-12-12",
+      "title": "Format Reddit Link into Adaptive Card",
+      "shortDescription": "This sample application showcases how to build a Teams application (Link Unfurling, a type of Message Extension) that can format the Reddit link into an Adaptive Card when a user pastes a Reddit link into the compose message area.",
+      "fullDescription": "This sample application showcases how to build a Teams application (Link Unfurling, a type of Message Extension) that can format the Reddit link into an Adaptive Card when a user pastes a Reddit link into the compose message area.",
+      "types": ["Message Extension"],
+      "tags": ["Message Extension", "JS", "Link Unfurling"],
+      "time": "10 mins to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "doc/image/link.png",
+      "gifPath": "doc/image/link.png",
+      "suggested": false,
+      "downloadUrlInfo": {
+        "owner": "OfficeDev",
+        "repository": "Microsoft-Teams-Samples",
+        "ref": "main",
+        "dir": "samples/msgext-link-unfurling-reddit/nodejs"
+      }
+    },
+    {
+      "id": "meetings-live-code-interview",
+      "shortId": "live-code-interview",
+      "onboardDate": "2023-12-18",
+      "title": "Live Coding Interview",
+      "shortDescription": "This sample demos live coding in a teams meeting stage using live share SDK. The tab is loaded as side panel which contains various coding questions.",
+      "fullDescription": "This sample demos live coding in a teams meeting stage using live share SDK. The tab is loaded as side panel which contains various coding questions.",
+      "types": ["Meeting"],
+      "tags": ["Meeting Extension", "JS", "Live Share SDK"],
+      "time": "5 mins to run",
+      "configuration": "Ready for debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false,
+      "downloadUrlInfo": {
+        "owner": "OfficeDev",
+        "repository": "Microsoft-Teams-Samples",
+        "ref": "main",
+        "dir": "samples/meetings-live-code-interview/nodejs"
+      }
+    },
+    {
+      "id": "intelligent-data-chart-generator",
+      "shortId": "data-chart-generator",
+      "onboardDate": "2024-01-31",
+      "title": "Intelligent Data Chart Generator",
+      "shortDescription": "The Microsoft Teams Tab app, powered by Azure OpenAI, interprets user inputs to generate data charts from Azure SQL.",
+      "fullDescription": "This intelligent Microsoft Teams Tab app is powered by Azure OpenAI, which helps users generating data charts based on users' description of the data chart in human language. There is an input box where users tell the Tab app what data chart they want to generate, and the app interprets user's requirements then generate visual charts. The data is from Azure SQL. This sample demonstrates how to build a seamless and intuitive experience for accessing and interpreting data.",
+      "types": ["Tab"],
+      "tags": ["Tab", "TS", "Azure Functions"],
+      "time": "30 mins to run",
+      "configuration": "Manual configurations required",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "bot-sso-docker",
+      "shortId": "bot-sso-docker",
+      "onboardDate": "2024-02-20",
+      "title": "Containerized Bot App with SSO Enabled",
+      "shortDescription": "Creating a Teams Bot with SSO and Microsoft Graph in a Docker Container.",
+      "fullDescription": "This project is a Microsoft Teams bot application that interacts with users in a Teams environment. It uses the Azure Bot Framework for bot functionality and single sign-on (SSO) capabilities. The bot is hosted on Azure, with infrastructure as code (IaC) deployments managed through Azure Bicep files. Docker is used for containerization, and the application's behavior is controlled by environment variables. The Teams app package is used for distribution. The bot's source code includes a main entry point and various command implementations. The project also includes instructions for running the bot locally and deploying it to Azure.",
+      "types": ["Bot"],
+      "tags": ["Bot", "TS", "Docker", "SSO"],
+      "time": "5 mins to run",
+      "configuration": "Ready for local debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "hello-world-tab-docker",
+      "shortId": "hello-world-tab-docker",
+      "onboardDate": "2024-04-02",
+      "title": "Containerized Hello World Tab with Backend",
+      "shortDescription": "A containerized Hello World app of Microsoft Teams Tab app which has a backend service.",
+      "fullDescription": "Hello World Tab with Backend shows you how to build a tab app with an Azure Function as backend, how to get user login information with SSO and how to call Azure Function from frontend tab. Teams applications can be developed and run locally using containerization, which provides a consistent and isolated environment for testing and deployment. Containerizing your Teams app makes it easier to manage dependencies, scale efficiently, and maintain your app in production.",
+      "types": ["Tab"],
+      "tags": ["TS", "Tab", "React", "Graph Toolkit", "Docker", "SSO"],
+      "time": "5 mins to run",
+      "configuration": "Ready for local debug",
+      "thumbnailPath": "assets/thumbnail.png",
+      "gifPath": "assets/sampleDemo.gif",
+      "suggested": false
+    },
+    {
+      "id": "graph-rsc-helper",
+      "shortId": "graph-rsc-helper",
+      "onboardDate": "2024-04-02",
+      "title": "Graph RSC Helper",
+      "shortDescription": "This sample demonstrates how to use Resource Specific Consent to call Graph API in Microsoft teams channel and group chat. You can observe the real API response with the scope installed.",
+      "fullDescription": "This sample demonstrates how to use Resource Specific Consent (RSC) to call Graph API in Microsoft Teams channel and group chat. It shows how to configure RSC permissions in the manifest and use them to call Microsoft Graph, allowing you to observe the real API response with the scope installed. The sample includes features such as RSC permissions, Graph, and Tab App in team channel and group chat. Prerequisites include NodeJS and a M365 developer account.",
+      "types": ["Tab"],
+      "tags": ["TS", "Tab", "RSC Permissions", "Graph"],
+      "time": "5 mins to run",
+      "configuration": "Ready for local debug",
+      "thumbnailPath": "Images/Overview.png",
+      "gifPath": "Images/graphrschelper.gif",
+      "suggested": false,
+      "downloadUrlInfo": {
+        "owner": "OfficeDev",
+        "repository": "Microsoft-Teams-Samples",
+        "ref": "main",
+        "dir": "samples/graph-rsc-helper/nodeJs"
+      }
+    }
+  ]
 }
