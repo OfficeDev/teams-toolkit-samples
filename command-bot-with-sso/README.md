@@ -20,7 +20,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 
 ## Prerequisite to use this sample
 
-- [Node.js](https://nodejs.org/) version 16, 18
+- [Node.js](https://nodejs.org/) version 18, 20
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 

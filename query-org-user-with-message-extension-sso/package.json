@@ -1,39 +1,40 @@
 {
-    "name": "query-org-user-with-me-sso",
-    "version": "1.0.0",
-    "description": "Microsoft Teams Toolkit message extension Bot sample",
-    "engines": {
-        "node": "16 || 18"
-    },
-    "author": "Microsoft",
-    "license": "MIT",
-    "main": "./lib/index.js",
-    "scripts": {
-        "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run dev",
-        "dev": "nodemon --exec node --inspect=9239 --signal SIGINT -r ts-node/register ./index.ts",
-        "build": "tsc --build",
-        "start": "node ./lib/index.js",
-        "watch": "nodemon --exec \"npm run start\"",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com"
-    },
-    "dependencies": {
-        "@microsoft/microsoft-graph-client": "^3.0.2",
-        "@microsoft/teamsfx": "2.3.1-beta.2023110805.0",
-        "botbuilder": ">=4.18.0 <5.0.0",
-        "isomorphic-fetch": "^3.0.0",
-        "restify": "^10.0.0"
-    },
-    "devDependencies": {
-        "@types/restify": "^8.5.5",
-        "@types/node": "^18.0.0",
-        "env-cmd": "^10.1.0",
-        "ts-node": "^10.4.0",
-        "typescript": "^5.3.0",
-        "nodemon": "^2.0.7",
-        "shx": "^0.3.3"
-    }
+  "name": "query-org-user-with-me-sso",
+  "version": "1.0.0",
+  "description": "Microsoft Teams Toolkit message extension Bot sample",
+  "engines": {
+    "node": "18 || 20"
+  },
+  "author": "Microsoft",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "scripts": {
+    "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run dev",
+    "dev": "nodemon --exec node --inspect=9239 --signal SIGINT -r ts-node/register ./index.ts",
+    "build": "tsc --build",
+    "start": "node ./lib/index.js",
+    "watch": "nodemon --exec \"npm run start\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com"
+  },
+  "dependencies": {
+    "@microsoft/microsoft-graph-client": "^3.0.1",
+    "@microsoft/teamsfx": "^3.0.0-alpha",
+    "botbuilder": "^4.23.1",
+    "isomorphic-fetch": "^3.0.0",
+    "express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^18.0.0",
+    "@types/json-schema": "^7.0.15",
+    "env-cmd": "^10.1.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^5.3.0",
+    "nodemon": "^3.1.7",
+    "shx": "^0.3.3"
+  }
 }

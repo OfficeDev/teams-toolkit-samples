@@ -1,6 +1,7 @@
 // Import required packages
-import * as path from "path";
-import * as restify from "restify";
+import path from "path";
+import express from "express";
+import send from "send";
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
@@ -13,13 +14,14 @@ import {
 
 // This bot's main dialog.
 import { TeamsBot } from "./teamsBot";
-import { SSODialog } from "./helpers/ssoDialog";
 import { NotificationHandler } from "./services/notificationHandler";
 import config from "./config";
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
-const credentialsFactory = new ConfigurationServiceClientCredentialFactory(config);
+const credentialsFactory = new ConfigurationServiceClientCredentialFactory(
+  config
+);
 
 const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(
   {},
@@ -44,28 +46,36 @@ const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
   );
 
   // Send a message to the user
-  await context.sendActivity(`The bot encountered unhandled error:\n ${error.message}`);
-  await context.sendActivity("To continue to run this bot, please fix the bot source code.");
+  await context.sendActivity(
+    `The bot encountered unhandled error:\n ${error.message}`
+  );
+  await context.sendActivity(
+    "To continue to run this bot, please fix the bot source code."
+  );
 };
 
 // Set the onTurnError for the singleton BotFrameworkAdapter.
 adapter.onTurnError = onTurnErrorHandler;
 
-
-
 // Create the bot that will handle incoming messages.
 const bot = new TeamsBot();
 
-// Create HTTP server.
-const server = restify.createServer();
-server.use(restify.plugins.bodyParser());
-server.listen(process.env.port || process.env.PORT || 3978, () => {
-  console.log(`\nBot Started, ${server.name} listening to ${server.url}`);
-});
-server.use(restify.plugins.bodyParser());
+// Create express application.
+const expressApp = express();
+expressApp.use(express.json());
+
+const server = expressApp.listen(
+  process.env.port || process.env.PORT || 3978,
+  () => {
+    console.log(
+      `\nBot Started, ${expressApp.name} listening to`,
+      server.address()
+    );
+  }
+);
 
 // Listen for incoming requests.
-server.post("/api/messages", async (req, res) => {
+expressApp.post("/api/messages", async (req, res) => {
   await adapter
     .process(req, res, async (context) => {
       await bot.run(context);
@@ -78,15 +88,19 @@ server.post("/api/messages", async (req, res) => {
     });
 });
 
-server.post("/api/notification", async (req, res) => {
+expressApp.post("/api/notification", async (req, res) => {
   // By design to not use 'await' in order to immediately return an HTTP 202 and process webhook notification in background.
   NotificationHandler.processGraphWebhookChangeNotification(req);
   res.send(202);
 });
 
-server.get(
-  "/auth-:name(start|end).html",
-  restify.plugins.serveStatic({
-    directory: path.join(__dirname, "public"),
-  })
-);
+expressApp.get(["/auth-start.html", "/auth-end.html"], async (req, res) => {
+  send(
+    req,
+    path.join(
+      __dirname,
+      "public",
+      req.url.includes("auth-start.html") ? "auth-start.html" : "auth-end.html"
+    )
+  ).pipe(res);
+});
