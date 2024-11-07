@@ -36,27 +36,27 @@ When you click the `DoStuff` button, the above adaptive card will be updated to 
 
 ## What's included in the template
 
-| Folder / File | Contents |
-| - | - |
-| `teamsapp.yml` | Main project file describes your application configuration and defines the set of actions to run in each lifecycle stages |
-| `teamsapp.local.yml`| This overrides `teamsapp.yml` with actions that enable local execution and debugging |
-| `teamsapp.testtool.yml`| This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool |
-| `env/`| Name / value pairs are stored in environment files and used by `teamsapp.yml` to customize the provisioning and deployment rules |
-| `.vscode/` | VSCode files for debugging |
-| `appPackage/` | Templates for the Teams application manifest |
-| `infra/` | Templates for provisioning Azure resources |
-| `src/` | The source code for the application |
+| Folder / File           | Contents                                                                                                                         |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `teamsapp.yml`          | Main project file describes your application configuration and defines the set of actions to run in each lifecycle stages        |
+| `teamsapp.local.yml`    | This overrides `teamsapp.yml` with actions that enable local execution and debugging                                             |
+| `teamsapp.testtool.yml` | This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool                      |
+| `env/`                  | Name / value pairs are stored in environment files and used by `teamsapp.yml` to customize the provisioning and deployment rules |
+| `.vscode/`              | VSCode files for debugging                                                                                                       |
+| `appPackage/`           | Templates for the Teams application manifest                                                                                     |
+| `infra/`                | Templates for provisioning Azure resources                                                                                       |
+| `src/`                  | The source code for the application                                                                                              |
 
 The following files can be customized and demonstrate an example implementation to get you started.
 
-| File | Contents |
-| - | - |
-| `src/index.ts`| Application entry point and `restify` handlers for the Workflow bot |
-| `src/teamsBot.ts` | An empty teams activity handler for bot customization |
-| `src/commands/helloworldCommandHandler.ts` | Implementation that handles responding to a chat command |
-| `src/adaptiveCards/helloworldCommandResponse.json` | Defines the Adaptive Card (UI) that is displayed in response to a chat command |
-| `src/adaptiveCards/doStuffActionResponse.json` | A generated Adaptive Card that is sent to Teams for the response of "doStuff" action |
-| `src/cardActions/doStuffActionHandler.ts` | Implements the handler for the `doStuff` button displayed in the Adaptive Card |
+| File                                               | Contents                                                                             |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `src/index.ts`                                     | Application entry point and `express` handlers for the Workflow bot                  |
+| `src/teamsBot.ts`                                  | An empty teams activity handler for bot customization                                |
+| `src/commands/helloworldCommandHandler.ts`         | Implementation that handles responding to a chat command                             |
+| `src/adaptiveCards/helloworldCommandResponse.json` | Defines the Adaptive Card (UI) that is displayed in response to a chat command       |
+| `src/adaptiveCards/doStuffActionResponse.json`     | A generated Adaptive Card that is sent to Teams for the response of "doStuff" action |
+| `src/cardActions/doStuffActionHandler.ts`          | Implements the handler for the `doStuff` button displayed in the Adaptive Card       |
 
 ## Extend the workflow bot template with more actions and responses
 
@@ -125,14 +125,18 @@ The TeamsFx SDK provides a convenient class, `TeamsFxAdaptiveCardActionHandler`,
 
 ```typescript
 const { AdaptiveCards } = require("@microsoft/adaptivecards-tools");
-const { AdaptiveCardResponse, InvokeResponseFactory } = require("@microsoft/teamsfx");
+const {
+  AdaptiveCardResponse,
+  InvokeResponseFactory,
+} = require("@microsoft/teamsfx");
 const responseCard = require("../adaptiveCards/doSomethingResponse.json");
 
 export class DoSomethingActionHandler {
   triggerVerb = "doSomething";
 
   async handleActionInvoked(context, message) {
-    const responseCardJson = AdaptiveCards.declare(responseCard).render(actionData);
+    const responseCardJson =
+      AdaptiveCards.declare(responseCard).render(actionData);
     return InvokeResponseFactory.adaptiveCard(responseCardJson);
   }
 }

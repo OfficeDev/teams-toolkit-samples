@@ -34,7 +34,7 @@ Search based message extensions allow you to query your service and post that in
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
     1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
     1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
-- From TeamsFx CLI:
+- From Teams Toolkit CLI:
     1. Run command: `teamsapp auth login azure`.
     1. Run command: `teamsapp provision --env dev`.
     1. Run command: `teamsapp deploy --env dev`.
@@ -42,7 +42,7 @@ Search based message extensions allow you to query your service and post that in
 ### Preview the app in Teams
 - From VS Code: 
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Codespaces)` from the launch configuration drop-down.
-- From TeamsFx CLI:
+- From Teams Toolkit CLI:
     1. Run command: `teamsapp preview --env dev`.
 
 ## Version History

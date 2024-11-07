@@ -1,12 +1,12 @@
 // Import required packages
-import * as restify from "restify";
+import express from "express";
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 import {
   CloudAdapter,
   ConfigurationServiceClientCredentialFactory,
-  createBotFrameworkAuthenticationFromConfiguration,
+  ConfigurationBotFrameworkAuthentication,
   TurnContext,
 } from "botbuilder";
 
@@ -22,8 +22,8 @@ const credentialsFactory = new ConfigurationServiceClientCredentialFactory({
   MicrosoftAppType: "MultiTenant",
 });
 
-const botFrameworkAuthentication = createBotFrameworkAuthenticationFromConfiguration(
-  null,
+const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(
+  {},
   credentialsFactory
 );
 
@@ -45,8 +45,12 @@ const onTurnErrorHandler = async (context: TurnContext, error: Error) => {
   );
 
   // Send a message to the user
-  await context.sendActivity(`The bot encountered unhandled error:\n ${error.message}`);
-  await context.sendActivity("To continue to run this bot, please fix the bot source code.");
+  await context.sendActivity(
+    `The bot encountered unhandled error:\n ${error.message}`
+  );
+  await context.sendActivity(
+    "To continue to run this bot, please fix the bot source code."
+  );
 };
 
 // Set the onTurnError for the singleton CloudAdapter.
@@ -55,15 +59,22 @@ adapter.onTurnError = onTurnErrorHandler;
 // Create the bot that will handle incoming messages.
 const bot = new TeamsBot();
 
-// Create HTTP server.
-const server = restify.createServer();
-server.use(restify.plugins.bodyParser());
-server.listen(process.env.port || process.env.PORT || 3978, () => {
-  console.log(`\nBot Started, ${server.name} listening to ${server.url}`);
-});
+// Create express application.
+const expressApp = express();
+expressApp.use(express.json());
+
+const server = expressApp.listen(
+  process.env.port || process.env.PORT || 3978,
+  () => {
+    console.log(
+      `\nBot Started, ${expressApp.name} listening to`,
+      server.address()
+    );
+  }
+);
 
 // Listen for incoming requests.
-server.post("/api/messages", async (req, res) => {
+expressApp.post("/api/messages", async (req, res) => {
   await adapter.process(req, res, async (context) => {
     await bot.run(context);
   });

@@ -29,25 +29,25 @@ The bot will respond to the `helloWorld` command with an Adaptive Card:
 
 ## What's included in the template
 
-| Folder / File | Contents |
-| - | - |
-| `teamsapp.yml` | Main project file describes your application configuration and defines the set of actions to run in each lifecycle stages |
-| `teamsapp.local.yml`| This overrides `teamsapp.yml` with actions that enable local execution and debugging |
-| `teamsapp.testtool.yml`| This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool |
-| `env/`| Name / value pairs are stored in environment files and used by `teamsapp.yml` to customize the provisioning and deployment rules |
-| `.vscode/` | VSCode files for debugging |
-| `appPackage/` | Templates for the Teams application manifest |
-| `infra/` | Templates for provisioning Azure resources |
-| `src/` | The source code for the application |
+| Folder / File           | Contents                                                                                                                         |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `teamsapp.yml`          | Main project file describes your application configuration and defines the set of actions to run in each lifecycle stages        |
+| `teamsapp.local.yml`    | This overrides `teamsapp.yml` with actions that enable local execution and debugging                                             |
+| `teamsapp.testtool.yml` | This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool                      |
+| `env/`                  | Name / value pairs are stored in environment files and used by `teamsapp.yml` to customize the provisioning and deployment rules |
+| `.vscode/`              | VSCode files for debugging                                                                                                       |
+| `appPackage/`           | Templates for the Teams application manifest                                                                                     |
+| `infra/`                | Templates for provisioning Azure resources                                                                                       |
+| `src/`                  | The source code for the application                                                                                              |
 
 The following files can be customized and demonstrate an example implementation to get you started.
 
-| File | Contents |
-| - | - |
-| `src/index.js` | Application entry point and `restify` handlers for command and response |
-| `src/teamsBot.js` | An empty teams activity handler for bot customization |
-| `src/adaptiveCards/helloworldCommand.json` | A generated Adaptive Card that is sent to Teams |
-| `src/helloworldCommandHandler.js` | The business logic to handle a command  |
+| File                                       | Contents                                                                |
+| ------------------------------------------ | ----------------------------------------------------------------------- |
+| `src/index.js`                             | Application entry point and `express` handlers for command and response |
+| `src/teamsBot.js`                          | An empty teams activity handler for bot customization                   |
+| `src/adaptiveCards/helloworldCommand.json` | A generated Adaptive Card that is sent to Teams                         |
+| `src/helloworldCommandHandler.js`          | The business logic to handle a command                                  |
 
 ## Extend the command bot template with more commands and responses
 

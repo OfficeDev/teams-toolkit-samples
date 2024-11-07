@@ -1,19 +1,20 @@
 import * as ACData from "adaptivecards-templating";
-import * as restify from "restify";
+import express from "express";
 import { conversationBot } from "./internal/initialize";
 import notificationTemplate from "./adaptiveCards/notification-default.json";
-import { NotificationCardData } from "./cardModels";
 import { SimpleBot } from "./simpleBot";
 
 const teamsBot = new SimpleBot();
 
-const server = restify.createServer();
-server.use(restify.plugins.bodyParser());
-server.listen(process.env.port || process.env.PORT || 3979, () => {
-  console.log(`\nBot Started, ${server.name} listening to ${server.url}`);
+// Create express application.
+const expressApp = express();
+expressApp.use(express.json());
+
+const server = expressApp.listen(process.env.port || process.env.PORT || 3978, () => {
+  console.log(`\nBot Started, ${expressApp.name} listening to`, server.address());
 });
 
-// Register an API endpoint with `restify`.
+// Register an API endpoint with `express`.
 //
 // This endpoint is provided by your application to listen to events. You can configure
 // your IT processes, other applications, background tasks, etc - to POST events to this
@@ -24,7 +25,7 @@ server.listen(process.env.port || process.env.PORT || 3979, () => {
 //
 // You can add authentication / authorization for this API. Refer to
 // https://aka.ms/teamsfx-notification for more details.
-server.post(
+expressApp.post(
   "/api/notification",
   async (req, res, next) => {
     // By default this function will iterate all the installation points and send an Adaptive Card
@@ -92,7 +93,7 @@ server.post(
   }
 );
 
-server.post("/api/messages", async (req, res, next) => {
+expressApp.post("/api/messages", async (req, res, next) => {
   await conversationBot.requestHandler(req, res, async (context) => {
     // unprocessed request fall through custom bot
     await teamsBot.run(context);
