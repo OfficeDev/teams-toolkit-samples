@@ -1,9 +1,8 @@
 import { BotBuilderCloudAdapter } from "@microsoft/teamsfx";
 
 import {
-  storageAccount,
-  storageAccountURL,
-  storageAccountKey,
+  managedIdentityId,
+  storageAccountName,
   storageTableName,
 } from "../consts";
 import config from "./config";
@@ -19,9 +18,8 @@ export const notificationApp = new ConversationBot({
   notification: {
     enabled: true,
     store: new TableStore(
-      storageAccount,
-      storageAccountURL,
-      storageAccountKey,
+      managedIdentityId,
+      `https:${storageAccountName}.table.core.windows.net`,
       storageTableName
     ),
   },

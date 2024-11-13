@@ -1,30 +1,48 @@
 ﻿import * as df from "durable-functions";
-import { AzureFunction, Context, HttpRequest } from "@azure/functions";
+import { DefaultAzureCredential } from "@azure/identity";
+import {
+  app,
+  HttpHandler,
+  HttpRequest,
+  HttpResponse,
+  InvocationContext,
+} from "@azure/functions";
 import { ServiceBusAdministrationClient } from "@azure/service-bus";
 import {
+  managedIdentityId,
   serviceBusMessageQueueName,
-  serviceBusQueueConnectionString,
+  serviceBusNamespace,
 } from "../consts";
 
-const httpStart: AzureFunction = async function (
-  context: Context,
-  req: HttpRequest
-): Promise<any> {
+const durableHttpStart: HttpHandler = async (
+  request: HttpRequest,
+  context: InvocationContext
+): Promise<HttpResponse> => {
   const client = df.getClient(context);
+  const credential = new DefaultAzureCredential({
+    managedIdentityClientId: managedIdentityId,
+  });
   const sbAdminClient = new ServiceBusAdministrationClient(
-    serviceBusQueueConnectionString
+    `${serviceBusNamespace}.servicebus.windows.net`,
+    credential
   );
   let queueRuntimeProperties = await sbAdminClient.getQueueRuntimeProperties(
     serviceBusMessageQueueName
   );
-  const instanceId = await client.startNew("sendNotifications", undefined, {
-    startTime: new Date(),
-    initDeadLetterMessageCount: queueRuntimeProperties.deadLetterMessageCount,
+  const instanceId = await client.startNew("sendNotifications", {
+    instanceId: undefined,
+    input: {
+      startTime: new Date(),
+      initDeadLetterMessageCount: queueRuntimeProperties.deadLetterMessageCount,
+    },
   });
 
-  context.log(`Started orchestration with ID = '${instanceId}'.`);
+  context.log(`Started orchestration with ID = '{instanceId}'.`);
 
-  return client.createCheckStatusResponse(context.bindingData.req, instanceId);
+  return client.createCheckStatusResponse(request, instanceId);
 };
 
-export default httpStart;
+app.http("notification", {
+  extraInputs: [df.input.durableClient()],
+  handler: durableHttpStart,
+});

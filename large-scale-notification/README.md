@@ -16,29 +16,22 @@ extensions:
 
 This sample demonstrates the architecture of a Teams notfication bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant. This app relies on Azure services such as [Durable Function](https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=csharp-inproc) and [Service Bus Queue](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions#queues) to handle high volume and speed of notification messaging.
 
-# How to run this project
-
-## Run the app locally
-
-To debug the project, you will need to configure an Azure Service Bus to be used locally:
-
-1. [Create a Service Bus namespace in the Azure portal](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal#create-a-namespace-in-the-azure-portal).
-2. Navigate to the homepage of your Service Bus namespace. Under the `Settings` section, select `Shared access policies`. Then, click on `RootManageSharedAccessKey` and copy the `Primary Connection String` value.
-   ![Copy the Value of Service Bus Connection String](./assets/ServiceBusConnectionString.png)
-3. Open **local.settings.json** file and insert the connection string value you copied earlier into the `SERVICE_BUS_CONNECTION_STRING` field.
-4. Return to the homepage of your Service Bus namespace and select "+ Queue". Proceed to create a queue with the "Max delivery count" configured to 1.
-   ![Service Bus Queue](./assets/ServiceBusQueue.png)
-5. Open **env/.env.local** file, and set the value of `SERVICE_BUS_QUEUE_NAME` with the name of queue you just created.
-6. Open **teamsapp.local.yml**, and substitue the `${{SECRET_STORAGE_ACCOUNT_KEY}}` with the well-known storage account key listed in the [guide](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio%2Cblob-storage#well-known-storage-account-and-key).
-7. Press "F5" to open a browser window and then select your package to view the large scale notification bot app.
-8. Get the endpoint of the trigger. For debug, `<endpoint>` is `http://localhost:3978` by default.
-9. Navigate to `http://localhost:3978/api/notification` to activate the sending function. Then, access the `statusQueryGetUri` in the returned JSON object to retrieve the sending status.
-10. \[Optional\] Once your app is running locally, you can utilize Azure Storage Explorer to inspect the data in your local storage table. Visit https://learn.microsoft.com/en-us/azure/storage/common/storage-explorer-emulators for more information.
+# Minimal path to awesome
 
 ## Execute lifecycle commands
 
 1. To create the Azure resources and deploy the code to Azure Function, select `Provision` and `Deploy` from the Teams Toolkit sidebar.
 2. To publish your app to Teams, select `Publish` from the Teams Toolkit sidebar.
+
+### Preview the app in Teams
+
+1. Once deployment is completed, you can preview the app running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
+2. Get the endpoint of the trigger. The `<endpoint>` can be found in `BOT_FUNCTION_ENDPOINT` of the file `env/.env.dev`.
+
+## Trigger send notification function
+
+1. Visit `https://{BOT_FUNCTION_ENDPOINT}/api/notification` in browser. This will trigger the function to send notifications.
+2. Check the link of `statusQueryGetUri` in returned json object, it reflects the sending status of this invocation.
 
 ## Install Teams App for all users
 
@@ -61,15 +54,14 @@ To debug the project, you will need to configure an Azure Service Bus to be used
 Since there are usually at most 25 users in Microsoft 365 E3/E5 subscription in a tenant, duplicate the installation data can be used to mock a large amount of users.
 
 1. Copy the value of `STORAGE_ACCOUNT_NAME` in `env/.env.dev` and paste it to variable `storageAccount` in `script/mockInstallationData.ts`.
-2. Copy the value of `SECRET_STORAGE_ACCOUNT_KEY` in `env/.env.dev.user` by clicking "Decrypt secret" and paste it to variable `storageAccountKey` in `script/mockInstallationData.ts`.
+2. Please ensure you are logged into the Azure account used for deploying the app.
 3. Run command in project root folder: `npx ts-node script/mockInstallationData.ts`.
 4. Update `storageTableName` in `src/internal/initialize.ts` to `installationMockTableName`.
 5. Deploy the code to Azure Function by selecting `Deploy` from the Teams Toolkit sidebar. Your app should now use the mock data.
 
-## Trigger send notification function
+## Note on Local Debugging
 
-1. Visit `https://{BOT_FUNCTION_ENDPOINT}/api/notification` in browser. This will trigger the function to send notifications.
-2. Check the link of `statusQueryGetUri` in returned json object, it reflects the sending status of this invocation.
+Local debugging is not supported for this project. Please ensure that all testing and debugging are conducted in the Azure environment to ensure compatibility and proper functionality.
 
 ## Architecture
 
