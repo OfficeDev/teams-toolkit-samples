@@ -1,26 +1,23 @@
-import { AzureNamedKeyCredential, TableClient } from "@azure/data-tables";
+import { TableClient } from "@azure/data-tables";
+import { DefaultAzureCredential } from "@azure/identity";
 
-export const storageAccount = "<STORAGE_ACCOUNT>";
-export const storageAccountKey = "<STORAGE_ACCOUNT_KEY>";
+export const storageAccount = "<STORAGE_ACCOUNT_NAME>";
 const storageTableName = "installation";
 const installationMockTableName = "installationmock";
 
 async function copy() {
-  const sharedKeyCredential = new AzureNamedKeyCredential(
-    storageAccount,
-    storageAccountKey
-  );
+  const credential = new DefaultAzureCredential();
 
   const originInstallationTableClient = new TableClient(
     `https://${storageAccount}.table.core.windows.net`,
     `${storageTableName}`,
-    sharedKeyCredential
+    credential
   );
 
   const mockInstallationTableClient = new TableClient(
     `https://${storageAccount}.table.core.windows.net`,
     `${installationMockTableName}`,
-    sharedKeyCredential
+    credential
   );
 
   const pages = await originInstallationTableClient

@@ -8,29 +8,38 @@
  * - run 'npm install durable-functions' from the wwwroot folder of your
  *   function app in Kudu
  */
+import * as df from "durable-functions";
+import { ActivityHandler } from "durable-functions";
 
-import { AzureFunction, Context } from "@azure/functions";
+import { DefaultAzureCredential } from "@azure/identity";
+import { InvocationContext } from "@azure/functions";
 import { ServiceBusAdministrationClient } from "@azure/service-bus";
 
 import {
+  managedIdentityId,
   serviceBusMessageQueueName,
-  serviceBusQueueConnectionString,
+  serviceBusNamespace,
 } from "../consts";
 import { SendStatus } from "../types/sendStatus";
 
-const waitSendingFinishActivity: AzureFunction = async function (
-  context: Context
-): Promise<SendStatus> {
-  const input = context.bindings.input as SendStatus;
+const waitSendingFinishActivity: ActivityHandler = async (
+  triggerInput: any,
+  context: InvocationContext
+): Promise<SendStatus> => {
+  const credential = new DefaultAzureCredential({
+    managedIdentityClientId: managedIdentityId,
+  });
+  const input = triggerInput as SendStatus;
   const sbAdminClient = new ServiceBusAdministrationClient(
-    serviceBusQueueConnectionString
+    `${serviceBusNamespace}.servicebus.windows.net`,
+    credential
   );
   let runtimeProperties = await sbAdminClient.getQueueRuntimeProperties(
     serviceBusMessageQueueName
   );
-  context.log.warn(`[waitSendingFinishActivity] checking.`);
+  context.warn(`[waitSendingFinishActivity] checking.`);
   while (runtimeProperties.activeMessageCount > 0) {
-    context.log.warn(
+    context.warn(
       `[waitSendingFinishActivity] active messages: ${runtimeProperties.activeMessageCount}`
     );
     await new Promise((r) => setTimeout(r, 5000));
@@ -44,4 +53,6 @@ const waitSendingFinishActivity: AzureFunction = async function (
   return input;
 };
 
-export default waitSendingFinishActivity;
+df.app.activity("waitSendingFinish", {
+  handler: waitSendingFinishActivity,
+});

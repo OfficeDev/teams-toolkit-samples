@@ -1,6 +1,6 @@
 import { ConversationReference } from "botbuilder";
-
-import { AzureNamedKeyCredential, TableClient } from "@azure/data-tables";
+import { DefaultAzureCredential } from "@azure/identity";
+import { TableClient } from "@azure/data-tables";
 import {
   ConversationReferenceStore,
   ConversationReferenceStoreAddOptions,
@@ -16,20 +16,18 @@ export class TableStore implements ConversationReferenceStore {
   private readonly client: TableClient;
 
   constructor(
-    storageAccountName: string,
+    managedIdentityId: string,
     storageAccountURL: string,
-    storageAccountKey: string,
     storageTableName: string
   ) {
-    const sharedKeyCredential = new AzureNamedKeyCredential(
-      storageAccountName,
-      storageAccountKey
-    );
+    const credential = new DefaultAzureCredential({
+      managedIdentityClientId: managedIdentityId,
+    });
 
     this.client = new TableClient(
       `${storageAccountURL}`,
       `${storageTableName}`,
-      sharedKeyCredential,
+      credential,
       { allowInsecureConnection: true }
     );
   }
