@@ -2,7 +2,7 @@
   "name": "teamsfx-sample-share-now-function",
   "version": "1.0.0",
   "engines": {
-    "node": "16 || 18"
+    "node": "18 || 20"
   },
   "scripts": {
     "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run dev",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@azure/functions": "^4.2.0",
-    "@microsoft/teamsfx": "^2.2.0",
+    "@microsoft/teamsfx": "^3.0.0-alpha",
     "@microsoft/microsoft-graph-client": "^3.0.1",
     "isomorphic-fetch": "^3.0.0",
     "tedious": "^9.2.3"
