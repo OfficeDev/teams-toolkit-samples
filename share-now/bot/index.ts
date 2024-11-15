@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
-import * as restify from 'restify';
+import express from "express";
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
@@ -56,15 +56,16 @@ adapter.onTurnError = onTurnErrorHandler;
 // Create the main dialog.
 const messageExtensionBot = new MessageExtensionBot();
 
-// Create HTTP server.
-const server = restify.createServer();
-server.use(restify.plugins.bodyParser());
-server.listen(process.env.port || process.env.PORT || 3978, () => {
-  console.log(`\n${server.name} listening to ${server.url}`);
+// Create express application.
+const expressApp = express();
+expressApp.use(express.json());
+
+const server = expressApp.listen(process.env.port || process.env.PORT || 3978, () => {
+  console.log(`\nBot Started, ${expressApp.name} listening to`, server.address());
 });
 
 // Listen for incoming requests.
-server.post('/api/messages', (req, res, next) => {
+expressApp.post('/api/messages', (req, res, next) => {
   adapter.process(req, res, async (context) => {
     // Route to main dialog.
     await messageExtensionBot.run(context);
