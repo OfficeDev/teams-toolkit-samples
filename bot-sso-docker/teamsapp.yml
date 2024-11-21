@@ -83,7 +83,7 @@ deploy:
       run: az acr login -n ${{AZURE_CONTAINER_REGISTRY_NAME}}
 
   - uses: script  
-    name: build and push container image
+    name: build container image
     with:  
       run: az acr build --registry ${{AZURE_CONTAINER_REGISTRY_NAME}} --image ${{AZURE_CONTAINER_IMAGE}} .
 

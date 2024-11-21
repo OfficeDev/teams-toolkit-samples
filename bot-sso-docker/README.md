@@ -47,7 +47,7 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
 
 - **Provision Infrastructure**: Automate the provisioning of Azure Container Apps and Azure Container Registry using Bicep templates. Refer to this [Azure Bicep example](./infra/azure.bicep).
 
-- **Build and Deploy to ACA**: Build the Docker image and push it to Azure Container Registry using Azure CLI. Deploy the image to Azure Container Apps using Azure CLI. Refer to the deployment scripts in this [teamsapp.yml example](./teamsapp.yml).
+- **Build and Deploy to ACA**: Build and push the Docker image to Azure Container Registry using Azure CLI, then deploy it to Azure Container Apps using Azure CLI. Refer to the deployment scripts in this [teamsapp.yml example](./teamsapp.yml).
 
 ## Minimal path to awesome
 
