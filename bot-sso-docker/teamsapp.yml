@@ -78,19 +78,14 @@ deploy:
         AZURE_CONTAINER_IMAGE=${{AZURE_CONTAINER_REGISTRY_SERVER}}/sso-bot"
 
   - uses: script
-    name: build container image
-    with:
-      run: docker build -t ${{AZURE_CONTAINER_IMAGE}} .
-
-  - uses: script
     name: login azure container registry
     with:
       run: az acr login -n ${{AZURE_CONTAINER_REGISTRY_NAME}}
 
-  - uses: script
-    name: push container image
-    with:
-      run: docker push ${{AZURE_CONTAINER_IMAGE}}
+  - uses: script  
+    name: build and push container image
+    with:  
+      run: az acr build --registry ${{AZURE_CONTAINER_REGISTRY_NAME}} --image ${{AZURE_CONTAINER_IMAGE}} .
 
   - uses: script
     name: deploy container image
