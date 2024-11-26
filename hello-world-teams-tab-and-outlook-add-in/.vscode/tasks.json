@@ -257,10 +257,34 @@
             "problemMatcher": []
         },
         {
-            "label": "Start Add-in Locally",
+            "label": "Start Word Add-in Locally",
+            "dependsOn": [
+                "Create resources",
+                "Debug: Word Desktop"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Start Excel Add-in Locally",
             "dependsOn": [
                 "Create resources",
                 "Debug: Excel Desktop"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Start PowerPoint Add-in Locally",
+            "dependsOn": [
+                "Create resources",
+                "Debug: PowerPoint Desktop"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Start Outlook Add-in Locally",
+            "dependsOn": [
+                "Create resources",
+                "Debug: Outlook Desktop"
             ],
             "dependsOrder": "sequence"
         },
