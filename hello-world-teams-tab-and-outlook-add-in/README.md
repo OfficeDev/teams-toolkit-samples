@@ -5,28 +5,28 @@ languages:
 products:
 - office-teams
 - office
-name: Hello World Teams Tab and Outlook add-in
-urlFragment: officedev-teamsfx-samples-tab-hello-world-teams-tab-and-outlook-add-in
-description: A hello world project that contains both Teams Tab and Outlook add-in capability.
+name: Hello World Teams Tab and Office add-in
+urlFragment: officedev-teamsfx-samples-tab-hello-world-teams-tab-and-office-add-in
+description: A hello world project that contains both Teams Tab and Office add-in capability.
 extensions:
   createdDate: "2023-03-02"
 ---
-# Getting Started with Hello World Teams Tab and Outlook add-in Sample
+# Getting Started with Hello World Teams Tab and Office add-in Sample
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
-Outlook add-ins are integrations built by third parties into Outlook by using our web-based platform.
+Office add-ins are integrations built by third parties into Office by using our web-based platform.
 
 Now you have the ability to create a single unit of distribution for all your Microsoft 365 extensions by using the same manifest format and schema, based on the current JSON-formatted Teams manifest.
 
 ## This sample illustrates
 
-- How a Teams Tab and an Outlook add-in share the same JSON manifest in one project.
+- How a Teams Tab and an Office add-in share the same JSON manifest in one project.
 
 ## Prerequisites to use this sample
 
-- [Node.js](https://nodejs.org/), supported versions: 16, 18
-- Edge or Chrome installed for debugging Teams Tab. Edge installed for debugging Outlook add-in.
+- [Node.js](https://nodejs.org/), supported versions: 18, 20
+- Edge or Chrome installed for debugging Teams Tab. Edge installed for debugging Office add-in.
 - Outlook for Windows: Beta Channel, Build 16320 or higher. Follow [this link](https://github.com/OfficeDev/TeamsFx/wiki/How-to-switch-Outlook-client-update-channel-and-verify-Outlook-client-build-version) for information about how to update channels and check your Outlook client build version.
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
@@ -116,6 +116,7 @@ To check that your manifest file is valid:
 |April 11, 2023 | yufuwang | comment out manifest validation |
 |May 24, 2023 | yefuwang | update outdated content |
 |September 10, 2023 | joshuapa | added images |
+|Nov 29, 2024 | hermanwen | replace outlook with office capability |
 
 ## Feedback
 

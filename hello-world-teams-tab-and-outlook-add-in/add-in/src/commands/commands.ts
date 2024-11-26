@@ -1,44 +1,27 @@
-/*
- * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
- * See LICENSE in the project root for license information.
- */
+import { insertBlueParagraphInWord } from "./word";
+import { setRangeColorInExcel } from "./excel";
+import { insertTextInPowerPoint } from "./powerpoint";
+import { setNotificationInOutlook } from "./outlook";
 
-/* global global, Office, self, window */
+/* global Office */
 
-Office.onReady(() => {
-  // If needed, Office.js is ready to be called
+// Register the add-in commands with the Office host application.
+Office.onReady(async (info) => {
+  switch (info.host) {
+    case Office.HostType.Word:
+      Office.actions.associate("action", insertBlueParagraphInWord);
+      break;
+    case Office.HostType.Excel:
+      Office.actions.associate("action", setRangeColorInExcel);
+      break;
+    case Office.HostType.PowerPoint:
+      Office.actions.associate("action", insertTextInPowerPoint);
+      break;
+    case Office.HostType.Outlook:
+      Office.actions.associate("action", setNotificationInOutlook);
+      break;
+    default: {
+      throw new Error(`${info.host} not supported.`);
+    }
+  }
 });
-
-/**
- * Shows a notification when the add-in command is executed.
- * @param event
- */
-function action(event: Office.AddinCommands.Event) {
-  const message: Office.NotificationMessageDetails = {
-    type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
-    message: "Performed action.",
-    icon: "Icon.80x80",
-    persistent: true,
-  };
-
-  // Show a notification message
-  Office.context.mailbox.item.notificationMessages.replaceAsync("ActionPerformanceNotification", message);
-
-  // Be sure to indicate when the add-in command function is complete
-  event.completed();
-}
-
-function getGlobal() {
-  return typeof self !== "undefined"
-    ? self
-    : typeof window !== "undefined"
-    ? window
-    : typeof global !== "undefined"
-    ? global
-    : undefined;
-}
-
-const g = getGlobal() as any;
-
-// The add-in command functions need to be available in global scope
-g.action = action;
