@@ -43,18 +43,20 @@ Now you have the ability to create a single unit of distribution for all your Mi
    After installing the app in Teams when prompted, it will launch and you'll be able to view the tab app.
    ![Sample tab app running in Teams](./images/teams-tab-app.PNG)
 
-### Debug Outlook add-in
+### Debug Office add-in
 
-- Please note that the same M365 account should be used both in Teams Toolkit and Outlook.
+- Please note that the same M365 account should be used both in Teams Toolkit and Office Applications (Word, Exce, Powerpoint, Outlook).
 - From Visual Studio Code only: use the `Run and Debug Activity Panel` in Visual Studio Code, select `Debug in Outlook Desktop (Edge Chromium)`, and click the `Run and Debug` green arrow button. Please run VSCode as administrator if localhost loopback for Microsoft Edge Webview hasn't been enabled. Once enbaled, administrator priviledge is no longer required.
 
-   ![Visual Studio Code debug configuration for Outlook](./images/outlook-debug.PNG)
+   ![Visual Studio Code debug configuration for Office](./images/outlook-debug.PNG)
 
    Once the Outlook app is open, select a mailbox item, and you can then use the Outlook add-in. For example, you can select the option to show a task pane.
    ![Outlook add-in show taskpane](./images/outlook-addin-open.PNG)
 
    The taskpane should look as shown in the following image.
    ![Outook add-in task pane opened](./images/outlook-addin-taskpane.PNG)
+
+   Other Office Applications share the same behavior.
 
 ### Edit the manifest
 
@@ -86,9 +88,9 @@ Once the provisioning and deployment steps are finished, you can preview your Te
 
 - From Teams Toolkit CLI: execute `teamsapp preview --env dev` in your project directory to launch your application.
 
-### Preview Outlook add-in
+### Preview Office add-in
 
-Once the provisioning and deployment steps are finished, you can preview your Outlook add-in from Visual Studio Code:
+Once the provisioning and deployment steps are finished, you can preview your Office add-in from Visual Studio Code:
 
 1. Copy the production URL from the `TAB_ENDPOINT` in env/.env.dev file.
 2. Edit webpack.config.js file and change urlProd to the value you just copied. Please note to add a '/' at the end of the URL.
