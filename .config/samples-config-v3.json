@@ -844,6 +844,25 @@
                 "ref": "main",
                 "dir": "samples/graph-rsc-helper/nodeJs"
             }
+        },
+        {
+            "id": "hello-world-office-add-in",
+            "shortId": "helloworld-office-wxpo",
+            "onboardDate": "2024-12-06",
+            "title": "Hello World Office add-in",
+            "shortDescription": "A hello world project that contains Office add-in capability",
+            "fullDescription": "Office add-ins are integrations built by third parties into Office by using our web-based platform. Now you have the ability to create a single unit of distribution for all your Office applications by using the same manifest format and schema.",
+            "types": [
+            ],
+            "tags": [
+                "Office Add-in",
+                "Outlook Add-in"
+            ],
+            "time": "5min to run",
+            "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/thumbnail.png",
+            "suggested": false
         }
     ]
 }
