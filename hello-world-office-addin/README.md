@@ -11,7 +11,7 @@ description: A hello world project that contains Office add-in capability.
 extensions:
   createdDate: "2024-12-06"
 ---
-# Getting Started with Hello World Office add-in Sample
+# Getting Started with Hello World Office Add-in Sample
 
 Office add-ins are integrations built by third parties into Office by using our web-based platform.
 
@@ -27,7 +27,7 @@ Now you have the ability to create a single unit of distribution for all your Of
 - Edge installed for debugging Office add-in.
 - Office for Windows: Beta Channel. Follow [this link](https://github.com/OfficeDev/TeamsFx/wiki/How-to-switch-Outlook-client-update-channel-and-verify-Outlook-client-build-version) for information about how to update channels and check your Office client build version.
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.11.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Minimal path to awesome
 
