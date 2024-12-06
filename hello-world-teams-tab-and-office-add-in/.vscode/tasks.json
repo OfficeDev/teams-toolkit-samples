@@ -117,20 +117,68 @@
             }
         },
         {
-            "label": "Debug: Outlook Desktop",
+            "label": "Debug: Excel Desktop",
             "type": "npm",
-            "script": "start:desktop -- --app outlook",
+            "script": "start:desktop:excel",
             "options": {
                 "cwd": "${workspaceFolder}/add-in/"
             },
-            "dependsOn": [
-                "Install"
-            ],
             "presentation": {
                 "clear": true,
-                "panel": "dedicated",
+                "panel": "dedicated"
             },
-            "problemMatcher": []
+            "problemMatcher": [],
+            "dependsOn": [
+                "Install"
+            ]
+        },
+        {
+            "label": "Debug: Outlook Desktop",
+            "type": "npm",
+            "script": "start:desktop:outlook",
+            "options": {
+                "cwd": "${workspaceFolder}/add-in/"
+            },
+            "presentation": {
+                "clear": true,
+                "panel": "dedicated"
+            },
+            "problemMatcher": [],
+            "dependsOn": [
+                "Install"
+            ]
+        },
+        {
+            "label": "Debug: PowerPoint Desktop",
+            "type": "npm",
+            "script": "start:desktop:powerpoint",
+            "options": {
+                "cwd": "${workspaceFolder}/add-in/"
+            },
+            "presentation": {
+                "clear": true,
+                "panel": "dedicated"
+            },
+            "problemMatcher": [],
+            "dependsOn": [
+                "Install"
+            ]
+        },
+        {
+            "label": "Debug: Word Desktop",
+            "type": "npm",
+            "script": "start:desktop:word",
+            "options": {
+                "cwd": "${workspaceFolder}/add-in/"
+            },
+            "presentation": {
+                "clear": true,
+                "panel": "dedicated"
+            },
+            "problemMatcher": [],
+            "dependsOn": [
+                "Install"
+            ]
         },
         {
             "label": "Dev Server",
@@ -209,7 +257,31 @@
             "problemMatcher": []
         },
         {
-            "label": "Start Add-in Locally",
+            "label": "Start Word Add-in Locally",
+            "dependsOn": [
+                "Create resources",
+                "Debug: Word Desktop"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Start Excel Add-in Locally",
+            "dependsOn": [
+                "Create resources",
+                "Debug: Excel Desktop"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Start PowerPoint Add-in Locally",
+            "dependsOn": [
+                "Create resources",
+                "Debug: PowerPoint Desktop"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Start Outlook Add-in Locally",
             "dependsOn": [
                 "Create resources",
                 "Debug: Outlook Desktop"

@@ -4,7 +4,7 @@
 version: v1.2
 
 additionalMetadata:
-  sampleTag: TeamsFx-Samples:hello-world-teams-tab-and-outlook-add-in
+  sampleTag: TeamsFx-Samples:hello-world-teams-tab-and-office-add-in
 
 provision:
   # Creates a Teams app

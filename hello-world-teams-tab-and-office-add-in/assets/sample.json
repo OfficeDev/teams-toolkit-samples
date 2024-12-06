@@ -1,17 +1,21 @@
 [
   {
-    "name": "officedev-teamsfx-samples-tab-hello-world-teams-tab-and-outlook-add-in",
+    "name": "officedev-teamsfx-samples-tab-hello-world-teams-tab-and-office-add-in",
     "source": "officeDev",
-    "title": "Hello World Teams Tab and Outlook add-in",
-    "shortDescription": "A hello world project that contains both Teams Tab and Outlook add-in capability.",
-    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/hello-world-teams-tab-and-outlook-add-in",
+    "title": "Hello World Teams Tab and Office add-in",
+    "shortDescription": "A hello world project that contains both Teams Tab and Office add-in capability.",
+    "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/hello-world-teams-tab-and-office-add-in",
     "longDescription": [
-      "A hello world project that contains both Teams Tab and Outlook add-in capability."
+      "A hello world project that contains both Teams Tab and Office add-in capability."
     ],
     "creationDateTime": "2023-03-02",
-    "updateDateTime": "2023-10-18",
+    "updateDateTime": "2024-11-29",
     "products": [
       "Teams",
+      "Office",
+      "Word",
+      "Excel",
+      "PowerPoint",
       "Outlook"
     ],
     "metadata": [
@@ -32,8 +36,8 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/hello-world-teams-tab-and-outlook-add-in/assets/thumbnail.png",
-        "alt": "Hello World Teams Tab and Outlook add-in"
+        "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/hello-world-teams-tab-and-office-add-in/assets/thumbnail.png",
+        "alt": "Hello World Teams Tab and Office add-in"
       }
     ],
     "authors": [

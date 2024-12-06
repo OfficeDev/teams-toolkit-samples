@@ -19,7 +19,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@microsoft/teamsapp-cli": "^3.0.0",
+    "@microsoft/teamsapp-cli": "^3.0.5",
     "env-cmd": "^10.1.0"
   }
 }
