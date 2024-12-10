@@ -1,10 +1,21 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
-import { getTediousConnectionConfig, TeamsFx } from "@microsoft/teamsfx";
 import * as tedious from "tedious";
 export async function getSQLConnection() {
-    const teamsfx = new TeamsFx();
-    const config = await getTediousConnectionConfig(teamsfx);
+    const config = {
+        server: process.env.SQL_ENDPOINT,
+        authentication: {
+            type: "default",
+            options: {
+                userName: process.env.SQL_USER_NAME,
+                password: process.env.SQL_PASSWORD,
+            },
+        },
+        options: {
+            database: process.env.SQL_DATABASE_NAME,
+            encrypt: true,
+        },
+    };
     const connection = new tedious.Connection(config);
     return new Promise((resolve, reject) => {
         connection.on('connect', err => {
@@ -25,7 +36,7 @@ export async function executeQuery(query, connection): Promise<any[]> {
         const request = new tedious.Request(query, (err) => {
             if (err) {
                 console.log(err);
-                reject(err)
+                reject(err);
             }
         });
         request.on("row", (columns) => {

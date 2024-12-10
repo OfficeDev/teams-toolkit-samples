@@ -2,11 +2,14 @@
  * This function is not intended to be invoked directly. Instead it will be
  * triggered by an orchestrator function.
  */
+import * as df from "durable-functions";
+import { ActivityHandler } from "durable-functions";
 
 import { chunk } from "lodash";
 import { DateTime } from "luxon";
 
-import { AzureFunction, Context } from "@azure/functions";
+import { DefaultAzureCredential } from "@azure/identity";
+import { InvocationContext } from "@azure/functions";
 import {
   ServiceBusAdministrationClient,
   ServiceBusClient,
@@ -16,28 +19,33 @@ import { BotBuilderCloudAdapter } from "@microsoft/teamsfx";
 import {
   batchSendingInterval,
   iterateTime,
+  managedIdentityId,
   maxPageSize,
   RPS,
   serviceBusMessageQueueName,
-  serviceBusQueueConnectionString,
+  serviceBusNamespace,
 } from "../consts";
 import { notificationApp } from "../internal/initialize";
 import { SendStatus } from "../types/sendStatus";
 import { extractKeyDataFromConversationReference } from "../util";
 
-const enqueueTasksForInstallationsActivity: AzureFunction = async function (
-  context: Context
-): Promise<{ sendStatus: SendStatus; continuationToken: string }> {
-  const input = context.bindings.input as {
+const enqueueTasksForInstallationsActivity: ActivityHandler = async (
+  triggerInput: any,
+  context: InvocationContext
+): Promise<{ sendStatus: SendStatus; continuationToken: string }> => {
+  const input = triggerInput as {
     continuationToken: string;
     sendStatus: SendStatus;
   };
+  const credential = new DefaultAzureCredential({
+    managedIdentityClientId: managedIdentityId,
+  });
   let token = input.continuationToken;
   let installations: BotBuilderCloudAdapter.TeamsBotInstallation[] = [];
   let lastSendTime: Date = undefined;
   let newStatus = { ...input.sendStatus };
   for (let iter = 0; iter < iterateTime; iter++) {
-    context.log.warn(
+    context.warn(
       `${new Date().toISOString()} #${iter} [enqueueTasksForInstallationsActivity] continue ${token}`
     );
     const installationResult =
@@ -53,14 +61,17 @@ const enqueueTasksForInstallationsActivity: AzureFunction = async function (
       break;
     }
 
-    context.log.warn(
+    context.warn(
       `${new Date().toISOString()} #${iter} [enqueueTasksForInstallationsActivity] found ${
         installations.length
       } installations`
     );
     newStatus.totalMessageCount += installations.length;
 
-    const sbClient = new ServiceBusClient(serviceBusQueueConnectionString);
+    const sbClient = new ServiceBusClient(
+      `${serviceBusNamespace}.servicebus.windows.net`,
+      credential
+    );
     const sender = sbClient.createSender(serviceBusMessageQueueName);
     const chunks = chunk(installations, RPS * batchSendingInterval);
     for (const chunk of chunks) {
@@ -83,12 +94,12 @@ const enqueueTasksForInstallationsActivity: AzureFunction = async function (
         })
           .plus({ second: batchSendingInterval })
           .toJSDate();
-        context.log.warn(
+        context.warn(
           `[enqueueTasksForInstallationsActivity] ${new Date().toISOString()} next enqueue time ${nextEnqueueTime.toISOString()}`
         );
         if (nextEnqueueTime > new Date()) {
           const waitMs = nextEnqueueTime.getTime() - new Date().getTime();
-          context.log.warn(
+          context.warn(
             `[enqueueTasksForInstallationsActivity] wait to ${nextEnqueueTime.toISOString()}, ${waitMs} ms`
           );
           await new Promise((r) => setTimeout(r, waitMs));
@@ -96,13 +107,13 @@ const enqueueTasksForInstallationsActivity: AzureFunction = async function (
       }
 
       lastSendTime = new Date();
-      context.log.warn(
+      context.warn(
         `[enqueueTasksForInstallationsActivity] ${lastSendTime.toISOString()} sending ${
           chunk[0].conversationReference.user.id
         }`
       );
       await sender.sendMessages(batch);
-      context.log.warn(
+      context.warn(
         `[enqueueTasksForInstallationsActivity] sent task to queue ${
           chunk[0].conversationReference.user.id
         }, cost ${new Date().getTime() - lastSendTime.getTime()} ms}`
@@ -113,13 +124,15 @@ const enqueueTasksForInstallationsActivity: AzureFunction = async function (
       break;
     }
   }
+
   const sbAdminClient = new ServiceBusAdministrationClient(
-    serviceBusQueueConnectionString
+    `${serviceBusNamespace}.servicebus.windows.net`,
+    credential
   );
   const runtimeProperties = await sbAdminClient.getQueueRuntimeProperties(
     serviceBusMessageQueueName
   );
-  context.log.warn(
+  context.warn(
     `[enqueueTasksForInstallationsActivity] active messages: ${runtimeProperties.activeMessageCount}`
   );
   newStatus.sentMessageCount =
@@ -130,4 +143,6 @@ const enqueueTasksForInstallationsActivity: AzureFunction = async function (
   return { continuationToken: token, sendStatus: newStatus };
 };
 
-export default enqueueTasksForInstallationsActivity;
+df.app.activity("enqueueTasksForInstallations", {
+  handler: enqueueTasksForInstallationsActivity,
+});

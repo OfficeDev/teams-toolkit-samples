@@ -4,10 +4,13 @@
  */
 
 import * as df from "durable-functions";
+import { OrchestrationContext, OrchestrationHandler } from "durable-functions";
 
 import { SendStatus } from "../types/sendStatus";
 
-const sendNotificationsOrchestrator = df.orchestrator(function* (context) {
+const sendNotificationsOrchestrator: OrchestrationHandler = function* (
+  context: OrchestrationContext
+) {
   const input = context.df.getInput() as {
     startTime: string;
     initDeadLetterMessageCount: number;
@@ -44,13 +47,13 @@ const sendNotificationsOrchestrator = df.orchestrator(function* (context) {
   } while (continuationToken !== undefined);
 
   sendStatus = yield context.df.callActivity("waitSendingFinish", sendStatus);
-  context.log.warn("[sendNotificationsOrchestrator] finish");
+  context.warn("[sendNotificationsOrchestrator] finish");
   context.df.setCustomStatus(undefined);
   return {
     duration:
       (context.df.currentUtcDateTime.getTime() - startTime.getTime()) / 1000,
     ...sendStatus,
   };
-});
+};
 
-export default sendNotificationsOrchestrator;
+df.app.orchestration("sendNotifications", sendNotificationsOrchestrator);
