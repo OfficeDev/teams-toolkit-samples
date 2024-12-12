@@ -38,13 +38,12 @@ Now you have the ability to create a single unit of distribution for all your Of
 
    ![Visual Studio Code debug configuration for Office](./assets/launch.png)
 
-   Once the Excel app is open, you can select the option to show a task pane.
+   Once the Office app is open, you can select the ribbon command to show the add-in task pane. The snapshot shows Excel as an example, and the other Office applications share the same behavior. 
    ![Excel add-in show taskpane](./assets/excel-ribbon.png)
 
-   The taskpane should look as shown in the following image.
+   The taskpane opens and you can check the sideloaded add-in.
    ![Excel add-in task pane opened](./assets/thumbnail.png)
 
-   Other Office Applications share the same behavior.
 
 ### Edit the manifest
 
