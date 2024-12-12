@@ -3,10 +3,9 @@ page_type: sample
 languages:
 - typescript
 products:
-- office-teams
 - office
 name: Hello World Office add-in
-urlFragment: officedev-teamsfx-samples-tab-hello-world-office-add-in
+urlFragment: officedev-teamsfx-samples-hello-world-office-add-in
 description: A hello world project that contains Office add-in capability.
 extensions:
   createdDate: "2024-12-06"
@@ -17,17 +16,21 @@ Office add-ins are integrations built by third parties into Office by using our 
 
 Now you have the ability to create a single unit of distribution for all your Office applications by using the same manifest format and schema, based on the current JSON-formatted MetaOS manifest.
 
+Currently unified manifest of Office add-in is in public preview, so it does not support deploy and publish.
+
 ## This sample illustrates
 
-- How Office add-in of Word, Excel, Powerpoint, Outlook share the same JSON manifest in one project.
+- How to create an Office add-ins with a unified manifest that works on Word, Excel, Powerpoint, and Outlook. 
+
+> [!NOTE]
+> The unified app manifest for Word, Excel, and PowerPoint is in preview. Visit [this link](aka.ms/officeversions) to check the required Office Versions. Also, publishing a unified add-in for Word, Excel, PowerPoint is not supported currently. 
 
 ## Prerequisites to use this sample
 
-- [Node.js](https://nodejs.org/), supported versions: 18, 20
-- Edge installed for debugging Office add-in.
-- Office for Windows: Beta Channel. Follow [this link](https://github.com/OfficeDev/TeamsFx/wiki/How-to-switch-Outlook-client-update-channel-and-verify-Outlook-client-build-version) for information about how to update channels and check your Office client build version.
-- An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+* Download and install [Visual Studio Code](https://visualstudio.microsoft.com/downloads/).
+* [Teams Toolkit Visual Studio Code Extension version](https://aka.ms/teams-toolkit) 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+* Node.js (the latest LTS version). Visit the [Node.js site](https://nodejs.org/) to download and install the right version for your operating system. To verify if you've already installed these tools, run the commands node -v and npm -v in your terminal.
+* Microsoft Office connected to a Microsoft 365 subscription. You might qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program), see [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-) for details. Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try?rtc=1) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/buy/compare-all-microsoft-365-products).
 
 ## Minimal path to awesome
 
@@ -53,9 +56,6 @@ You can find the app manifest in `./appPackage` folder. The folder contains one 
 
 You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more information.
 
-### Deploy and publish
-
-Currently unified manifest of Office add-in is in public preview, so it does not support deploy and publish.
 
 ### Validate manifest file
 
