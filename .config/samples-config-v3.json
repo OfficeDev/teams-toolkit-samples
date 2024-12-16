@@ -846,7 +846,7 @@
             }
         },
         {
-            "id": "hello-world-office-add-in",
+            "id": "hello-world-office-addin",
             "shortId": "helloworld-office-wxpo",
             "onboardDate": "2024-12-06",
             "title": "Hello World Office add-in",
