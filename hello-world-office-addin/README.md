@@ -16,11 +16,9 @@ Office add-ins are integrations built by third parties into Office by using our 
 
 Now you have the ability to create a single unit of distribution for all your Office applications by using the same manifest format and schema, based on the current JSON-formatted MetaOS manifest.
 
-Currently unified manifest of Office add-in is in public preview, so it does not support deploy and publish.
-
 ## This sample illustrates
 
-- How to create an Office add-ins with a unified manifest that works on Word, Excel, Powerpoint, and Outlook. 
+- How to create an Office add-in with a unified manifest that works on Word, Excel, Powerpoint, and Outlook. 
 
 > [!NOTE]
 > The unified app manifest for Word, Excel, and PowerPoint is in preview. Visit [this link](aka.ms/officeversions) to check the required Office Versions. Also, publishing a unified add-in for Word, Excel, PowerPoint is not supported currently. 
@@ -36,26 +34,23 @@ Currently unified manifest of Office add-in is in public preview, so it does not
 
 ### Debug Office add-in
 
-- Please note that the same M365 account should be used both in Teams Toolkit and Office Applications (Word, Excel, Powerpoint, Outlook).
+Please note that the same M365 account should be used both in Teams Toolkit and Office Applications (Word, Excel, Powerpoint, Outlook).
+
+The following steps show Excel as an example, and the other Office applications share the same behavior. 
 - From Visual Studio Code only: use the `Run and Debug Activity Panel` in Visual Studio Code, select `Debug in Excel Desktop (Edge Chromium)`, and click the `Run and Debug` green arrow button. Please run VSCode as administrator if localhost loopback for Microsoft Edge Webview hasn't been enabled. Once enbaled, administrator priviledge is no longer required.
 
    ![Visual Studio Code debug configuration for Office](./assets/launch.png)
 
-   Once the Office app is open, you can select the ribbon command to show the add-in task pane. The snapshot shows Excel as an example, and the other Office applications share the same behavior. 
+- Once the Office app is open, you can select the ribbon command to show the add-in task pane.
    ![Excel add-in show taskpane](./assets/excel-ribbon.png)
-
-   The taskpane opens and you can check the sideloaded add-in.
+- The taskpane opens and you can check the sideloaded add-in.
    ![Excel add-in task pane opened](./assets/thumbnail.png)
-
 
 ### Edit the manifest
 
-You can find the app manifest in `./appPackage` folder. The folder contains one manifest file:
-
-- `manifest.json`: Manifest file for Office add-in running locally.
+You can find the app manifest in `./appPackage` folder. The folder contains the manifest file: `manifest.json`: Manifest file for Office add-in running locally.
 
 You may add any extra properties or permissions you require to this file. See the [schema reference](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema) for more information.
-
 
 ### Validate manifest file
 
