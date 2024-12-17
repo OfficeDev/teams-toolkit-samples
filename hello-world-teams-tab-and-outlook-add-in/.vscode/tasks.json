@@ -117,68 +117,20 @@
             }
         },
         {
-            "label": "Debug: Excel Desktop",
-            "type": "npm",
-            "script": "start:desktop:excel",
-            "options": {
-                "cwd": "${workspaceFolder}/add-in/"
-            },
-            "presentation": {
-                "clear": true,
-                "panel": "dedicated"
-            },
-            "problemMatcher": [],
-            "dependsOn": [
-                "Install"
-            ]
-        },
-        {
             "label": "Debug: Outlook Desktop",
             "type": "npm",
-            "script": "start:desktop:outlook",
+            "script": "start:desktop -- --app outlook",
             "options": {
                 "cwd": "${workspaceFolder}/add-in/"
             },
-            "presentation": {
-                "clear": true,
-                "panel": "dedicated"
-            },
-            "problemMatcher": [],
             "dependsOn": [
                 "Install"
-            ]
-        },
-        {
-            "label": "Debug: PowerPoint Desktop",
-            "type": "npm",
-            "script": "start:desktop:powerpoint",
-            "options": {
-                "cwd": "${workspaceFolder}/add-in/"
-            },
+            ],
             "presentation": {
                 "clear": true,
-                "panel": "dedicated"
+                "panel": "dedicated",
             },
-            "problemMatcher": [],
-            "dependsOn": [
-                "Install"
-            ]
-        },
-        {
-            "label": "Debug: Word Desktop",
-            "type": "npm",
-            "script": "start:desktop:word",
-            "options": {
-                "cwd": "${workspaceFolder}/add-in/"
-            },
-            "presentation": {
-                "clear": true,
-                "panel": "dedicated"
-            },
-            "problemMatcher": [],
-            "dependsOn": [
-                "Install"
-            ]
+            "problemMatcher": []
         },
         {
             "label": "Dev Server",
@@ -257,31 +209,7 @@
             "problemMatcher": []
         },
         {
-            "label": "Start Word Add-in Locally",
-            "dependsOn": [
-                "Create resources",
-                "Debug: Word Desktop"
-            ],
-            "dependsOrder": "sequence"
-        },
-        {
-            "label": "Start Excel Add-in Locally",
-            "dependsOn": [
-                "Create resources",
-                "Debug: Excel Desktop"
-            ],
-            "dependsOrder": "sequence"
-        },
-        {
-            "label": "Start PowerPoint Add-in Locally",
-            "dependsOn": [
-                "Create resources",
-                "Debug: PowerPoint Desktop"
-            ],
-            "dependsOrder": "sequence"
-        },
-        {
-            "label": "Start Outlook Add-in Locally",
+            "label": "Start Add-in Locally",
             "dependsOn": [
                 "Create resources",
                 "Debug: Outlook Desktop"
