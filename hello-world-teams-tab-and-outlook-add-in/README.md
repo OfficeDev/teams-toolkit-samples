@@ -5,28 +5,28 @@ languages:
 products:
 - office-teams
 - office
-name: Hello World Teams Tab and Office add-in
-urlFragment: officedev-teamsfx-samples-tab-hello-world-teams-tab-and-office-add-in
-description: A hello world project that contains both Teams Tab and Office add-in capability.
+name: Hello World Teams Tab and Outlook add-in
+urlFragment: officedev-teamsfx-samples-tab-hello-world-teams-tab-and-outlook-add-in
+description: A hello world project that contains both Teams Tab and Outlook add-in capability.
 extensions:
   createdDate: "2023-03-02"
 ---
-# Getting Started with Hello World Teams Tab and Office add-in Sample
+# Getting Started with Hello World Teams Tab and Outlook add-in Sample
 
 Microsoft Teams supports the ability to run web-based UI inside "custom tabs" that users can install either for just themselves (personal tabs) or within a team or group chat context.
 
-Office add-ins are integrations built by third parties into Office by using our web-based platform.
+Outlook add-ins are integrations built by third parties into Outlook by using our web-based platform.
 
 Now you have the ability to create a single unit of distribution for all your Microsoft 365 extensions by using the same manifest format and schema, based on the current JSON-formatted Teams manifest.
 
 ## This sample illustrates
 
-- How a Teams Tab and an Office add-in share the same JSON manifest in one project.
+- How a Teams Tab and an Outlook add-in share the same JSON manifest in one project.
 
 ## Prerequisites to use this sample
 
-- [Node.js](https://nodejs.org/), supported versions: 18, 20
-- Edge or Chrome installed for debugging Teams Tab. Edge installed for debugging Office add-in.
+- [Node.js](https://nodejs.org/), supported versions: 16, 18
+- Edge or Chrome installed for debugging Teams Tab. Edge installed for debugging Outlook add-in.
 - Outlook for Windows: Beta Channel, Build 16320 or higher. Follow [this link](https://github.com/OfficeDev/TeamsFx/wiki/How-to-switch-Outlook-client-update-channel-and-verify-Outlook-client-build-version) for information about how to update channels and check your Outlook client build version.
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
@@ -43,20 +43,18 @@ Now you have the ability to create a single unit of distribution for all your Mi
    After installing the app in Teams when prompted, it will launch and you'll be able to view the tab app.
    ![Sample tab app running in Teams](./images/teams-tab-app.PNG)
 
-### Debug Office add-in
+### Debug Outlook add-in
 
-- Please note that the same M365 account should be used both in Teams Toolkit and Office Applications (Word, Exce, Powerpoint, Outlook).
+- Please note that the same M365 account should be used both in Teams Toolkit and Outlook.
 - From Visual Studio Code only: use the `Run and Debug Activity Panel` in Visual Studio Code, select `Debug in Outlook Desktop (Edge Chromium)`, and click the `Run and Debug` green arrow button. Please run VSCode as administrator if localhost loopback for Microsoft Edge Webview hasn't been enabled. Once enbaled, administrator priviledge is no longer required.
 
-   ![Visual Studio Code debug configuration for Office](./images/outlook-debug.PNG)
+   ![Visual Studio Code debug configuration for Outlook](./images/outlook-debug.PNG)
 
    Once the Outlook app is open, select a mailbox item, and you can then use the Outlook add-in. For example, you can select the option to show a task pane.
    ![Outlook add-in show taskpane](./images/outlook-addin-open.PNG)
 
    The taskpane should look as shown in the following image.
    ![Outook add-in task pane opened](./images/outlook-addin-taskpane.PNG)
-
-   Other Office Applications share the same behavior.
 
 ### Edit the manifest
 
@@ -88,9 +86,9 @@ Once the provisioning and deployment steps are finished, you can preview your Te
 
 - From Teams Toolkit CLI: execute `teamsapp preview --env dev` in your project directory to launch your application.
 
-### Preview Office add-in
+### Preview Outlook add-in
 
-Once the provisioning and deployment steps are finished, you can preview your Office add-in from Visual Studio Code:
+Once the provisioning and deployment steps are finished, you can preview your Outlook add-in from Visual Studio Code:
 
 1. Copy the production URL from the `TAB_ENDPOINT` in env/.env.dev file.
 2. Edit webpack.config.js file and change urlProd to the value you just copied. Please note to add a '/' at the end of the URL.
@@ -118,7 +116,6 @@ To check that your manifest file is valid:
 |April 11, 2023 | yufuwang | comment out manifest validation |
 |May 24, 2023 | yefuwang | update outdated content |
 |September 10, 2023 | joshuapa | added images |
-|Nov 29, 2024 | hermanwen | replace outlook with office capability |
 
 ## Feedback
 
