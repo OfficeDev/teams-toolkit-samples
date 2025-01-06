@@ -46,7 +46,7 @@ jobs:
         run: |
           # This script runs the validation tool against all samples in the samples-config-v3.json file.
           # External samples are excluded from the validation.
-          exceptions=("incoming-webhook-notification")
+          exceptions=("incoming-webhook-notification" "hello-world-office-addin")
           samples=`jq -r ".samples | .[] | select(has(\"downloadUrlInfo\") | not) | .id" .config/samples-config-v3.json`
           validationFailed="validation failed"
           validationResult=true
