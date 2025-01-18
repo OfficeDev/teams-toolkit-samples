@@ -2,7 +2,7 @@
 
 Bot Framework v4 echo bot sample user assigned managed identity in Python, deployed with Teams Toolkit.
 
-This bot has been created using [Bot Framework](https://dev.botframework.com), it shows how to create a simple bot that accepts input from the user and echoes it back.
+This bot has been created using [Bot Framework](https://dev.botframework.com), it shows how to create a simple bot that accepts input from the user and echoes it back. Follow this link for [User Assigned Managed Identity](https://learn.microsoft.com/en-us/azure/bot-service/provision-and-publish-a-bot?view=azure-bot-service-4.0&tabs=userassigned%2Cpython)
 
 | Property	| Value |
 | - | - |
