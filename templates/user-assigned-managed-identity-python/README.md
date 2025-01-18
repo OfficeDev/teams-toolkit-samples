@@ -9,7 +9,9 @@ This bot has been created using [Bot Framework](https://dev.botframework.com), i
 | MicrosoftAppType	| UserAssignedMSI |
 | MicrosoftAppId |	The client ID of the user-assigned managed identity. | 
 | MicrosoftAppPassword	| Not applicable. Leave this blank for a user-assigned managed identity bot. |
-|MicrosoftAppTenantId	| The tenant ID of the user-assigned managed identity. |
+| MicrosoftAppTenantId	| The tenant ID of the user-assigned managed identity. |
+
+> NOTE: User Assigned Managed Identity's eliminate the possibility of testing locally with Teams Toolkit
 
 ## Get started with the EchoBot User Assigned Managed Identity template
 
