@@ -890,6 +890,34 @@
                 "ref": "main",
                 "dir": "samples/nodejs-typescript-policies/"
             }
+        },
+        {
+            "id": "da-ristorante-api",
+            "shortId": "da-ristorante-api",
+            "onboardDate": "2025-01-22",
+            "title": "Browse the menu and place an order at a local Italian restaurant using Microsoft 365 Copilot",
+            "shortDescription": "This sample demonstrates how to build a declarative agent for Microsoft 365 Copilot that allows you to browse a menu of a local Italian restaurant and place an order.",
+            "fullDescription": "This sample demonstrates how to build a declarative agent for Microsoft 365 Copilot that allows you to browse a menu of a local Italian restaurant and place an order. The agent uses an API plugin to connect to an anonymous API. The project contains an Azure Function that serves as the API.",
+            "types": [
+                "Declarative Agent"
+            ],
+            "tags": [
+              "TS",
+              "Declarative Agent",
+              "Azure Function",
+              "Copilot for Microsoft 365"
+            ],
+            "time": "2 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/screenshot-menu.png",
+            "gifPath": "assets/screenshot-menu.png",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "pnp",
+                "repository": "copilot-pro-dev-samples",
+                "ref": "main",
+                "dir": "samples/da-ristorante-api/"
+            }
         }
     ]
 }
