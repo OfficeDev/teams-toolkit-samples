@@ -881,14 +881,14 @@
             ],
             "time": "10 mins to run",
             "configuration": "Ready for local debug",
-            "thumbnailPath": "assets/connector-copilot-results.png",
-            "gifPath": "assets/connector-copilot-results.png",
+            "thumbnailPath": "assets/search-results.png",
+            "gifPath": "assets/search-results.png",
             "suggested": false,
             "downloadUrlInfo": {
                 "owner": "pnp",
                 "repository": "graph-connectors-samples",
                 "ref": "main",
-                "dir": "samples/nodejs-typescript-policies/"
+                "dir": "samples/nodejs-typescript-policies"
             }
         },
         {
@@ -916,7 +916,7 @@
                 "owner": "pnp",
                 "repository": "copilot-pro-dev-samples",
                 "ref": "main",
-                "dir": "samples/da-ristorante-api/"
+                "dir": "samples/da-ristorante-api"
             }
         }
     ]
