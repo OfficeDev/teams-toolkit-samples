@@ -10,6 +10,8 @@
     "resolveJsonModule": true,
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "nodenext",
   }
 }

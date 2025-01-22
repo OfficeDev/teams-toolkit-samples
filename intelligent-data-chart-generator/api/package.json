@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@azure/functions": "^4.2.0",
-    "@microsoft/teamsfx": "^2.3.0",
+    "@microsoft/teamsfx": "^3.0.0-alpha",
     "mssql": "^10.0.1"
   },
   "devDependencies": {

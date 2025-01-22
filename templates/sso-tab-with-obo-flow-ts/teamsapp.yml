@@ -1,7 +1,7 @@
-# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.5/yaml.schema.json
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.8/yaml.schema.json
 # Visit https://aka.ms/teamsfx-v5.0-guide for details on this file
 # Visit https://aka.ms/teamsfx-actions for details on actions
-version: v1.5
+version: v1.8
 
 environmentFolderPath: ./env
 
@@ -96,7 +96,7 @@ provision:
       # Path to manifest template
       manifestPath: ./appPackage/manifest.json
       outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
-      outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
+      outputFolder: ./appPackage/build
   # Validate app package using validation rules
   - uses: teamsApp/validateAppPackage
     with:
@@ -132,16 +132,15 @@ deploy:
     with:
       args: run build --if-present
     env:
-      REACT_APP_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
-      REACT_APP_START_LOGIN_PAGE_URL: ${{TAB_ENDPOINT}}/auth-start.html
-      REACT_APP_FUNC_NAME: getUserProfile
-      REACT_APP_FUNC_ENDPOINT: ${{API_FUNCTION_ENDPOINT}}
+      VITE_CLIENT_ID: ${{AAD_APP_CLIENT_ID}}
+      VITE_START_LOGIN_PAGE_URL: ${{TAB_ENDPOINT}}/auth-start.html
+      VITE_FUNC_NAME: getUserProfile
+      VITE_FUNC_ENDPOINT: ${{API_FUNCTION_ENDPOINT}}
   # Deploy bits to Azure Static Web Apps
   - uses: cli/runNpxCommand
     name: deploy to Azure Static Web Apps
     with:
-      args: '@azure/static-web-apps-cli deploy ./build -d
-        ${{SECRET_TAB_SWA_DEPLOYMENT_TOKEN}} --env production'
+      args: "@azure/static-web-apps-cli deploy ./dist -d ${{SECRET_TAB_SWA_DEPLOYMENT_TOKEN}} --env production"
   # Run npm command
   - uses: cli/runNpmCommand
     name: install dependencies
@@ -181,7 +180,7 @@ publish:
       # Path to manifest template
       manifestPath: ./appPackage/manifest.json
       outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
-      outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
+      outputFolder: ./appPackage/build
   # Validate app package using validation rules
   - uses: teamsApp/validateAppPackage
     with:
@@ -204,4 +203,3 @@ publish:
     # the specified environment variable(s).
     writeToEnvironmentFile:
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
-projectId: 2f292205-b3dc-4d85-9af7-f18874173583
