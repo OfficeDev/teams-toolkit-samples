@@ -10,9 +10,15 @@ const teamsBot = new SimpleBot();
 const expressApp = express();
 expressApp.use(express.json());
 
-const server = expressApp.listen(process.env.port || process.env.PORT || 3979, () => {
-  console.log(`\nBot Started, ${expressApp.name} listening to`, server.address());
-});
+const server = expressApp.listen(
+  process.env.port || process.env.PORT || 3979,
+  () => {
+    console.log(
+      `\nBot Started, ${expressApp.name} listening to`,
+      server.address()
+    );
+  }
+);
 
 // Register an API endpoint with `express`.
 //
@@ -25,10 +31,8 @@ const server = expressApp.listen(process.env.port || process.env.PORT || 3979, (
 //
 // You can add authentication / authorization for this API. Refer to
 // https://aka.ms/teamsfx-notification for more details.
-expressApp.post(
-  "/api/notification",
-  async (req, res, next) => {
-    // By default this function will iterate all the installation points and send an Adaptive Card
+expressApp.post("/api/notification", async (req, res, next) => {
+  // By default this function will iterate all the installation points and send an Adaptive Card
   // to every installation.
   const pageSize = 100;
   let continuationToken: string | undefined = undefined;
@@ -130,9 +134,8 @@ expressApp.post(
   }
   **/
 
-    res.json({});
-  }
-);
+  res.json({});
+});
 
 expressApp.post("/api/messages", async (req, res, next) => {
   await conversationBot.requestHandler(req, res, async (context) => {
