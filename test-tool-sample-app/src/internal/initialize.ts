@@ -1,6 +1,7 @@
 import { DoStuffActionHandler } from "../cardActions/doStuffActionHandler";
 import { HelloWorldCommandHandler } from "../commands/helloworldCommandHandler";
-import { ConversationBot } from "@microsoft/teamsfx";
+import { BotBuilderCloudAdapter } from "@microsoft/teamsfx";
+import ConversationBot = BotBuilderCloudAdapter.ConversationBot;
 import config from "./config";
 import { MembersCommandHandler } from "../commands/membersCommandHandler";
 import { UserLikeActionHandler } from "../cardActions/userLikeActionHandler";
