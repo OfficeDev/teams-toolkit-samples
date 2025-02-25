@@ -723,33 +723,6 @@
             }
         },
         {
-            "id": "meetings-live-code-interview",
-            "shortId": "live-code-interview",
-            "onboardDate": "2023-12-18",
-            "title": "Live Coding Interview",
-            "shortDescription": "This sample demos live coding in a teams meeting stage using live share SDK. The tab is loaded as side panel which contains various coding questions.",
-            "fullDescription": "This sample demos live coding in a teams meeting stage using live share SDK. The tab is loaded as side panel which contains various coding questions.",
-            "types": [
-              "Meeting"
-            ],
-            "tags": [
-              "Meeting Extension",
-              "JS",
-              "Live Share SDK"
-            ],
-            "time": "5 mins to run",
-            "configuration": "Ready for debug",
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false,
-            "downloadUrlInfo": {
-                "owner": "OfficeDev",
-                "repository": "Microsoft-Teams-Samples",
-                "ref": "main",
-                "dir": "samples/meetings-live-code-interview/nodejs"
-            }
-        },
-        {
             "id": "intelligent-data-chart-generator",
             "shortId": "data-chart-generator",
             "onboardDate": "2024-01-31",
@@ -842,6 +815,81 @@
                 "repository": "Microsoft-Teams-Samples",
                 "ref": "main",
                 "dir": "samples/graph-rsc-helper/nodeJs"
+            }
+        },
+        {
+            "id": "hello-world-office-addin",
+            "shortId": "helloworld-office-wxpo",
+            "onboardDate": "2024-12-06",
+            "title": "Hello World Office add-in",
+            "shortDescription": "A hello world project that contains Office add-in capability",
+            "fullDescription": "Office add-ins are integrations built by third parties into Office by using our web-based platform. Now you have the ability to create a single unit of distribution for all your Office applications by using the same manifest format and schema.",
+            "types": [
+            ],
+            "tags": [
+                "Office Add-in",
+                "Outlook Add-in"
+            ],
+            "time": "5min to run",
+            "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "nodejs-typescript-policies",
+            "shortId": "nodejs-ts-policies",
+            "onboardDate": "2024-09-24",
+            "title": "Policies Graph connector",
+            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph.",
+            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content.",
+            "types": [
+                "Microsoft Graph Connector"
+            ],
+            "tags": [
+              "TS",
+              "Graph Connector",
+              "Azure Function",
+              "Copilot for Microsoft 365"
+            ],
+            "time": "10 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/search-results.png",
+            "gifPath": "assets/search-results.png",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "pnp",
+                "repository": "graph-connectors-samples",
+                "ref": "main",
+                "dir": "samples/nodejs-typescript-policies"
+            }
+        },
+        {
+            "id": "da-ristorante-api",
+            "shortId": "da-ristorante-api",
+            "onboardDate": "2025-01-22",
+            "title": "Browse the menu and place an order at a local Italian restaurant using Microsoft 365 Copilot",
+            "shortDescription": "This sample demonstrates how to build a declarative agent for Microsoft 365 Copilot that allows you to browse a menu of a local Italian restaurant and place an order.",
+            "fullDescription": "This sample demonstrates how to build a declarative agent for Microsoft 365 Copilot that allows you to browse a menu of a local Italian restaurant and place an order. The agent uses an API plugin to connect to an anonymous API. The project contains an Azure Function that serves as the API.",
+            "types": [
+                "Declarative Agent"
+            ],
+            "tags": [
+              "TS",
+              "Declarative Agent",
+              "Azure Function",
+              "Copilot for Microsoft 365"
+            ],
+            "time": "2 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/screenshot-menu.png",
+            "gifPath": "assets/screenshot-menu.png",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "pnp",
+                "repository": "copilot-pro-dev-samples",
+                "ref": "main",
+                "dir": "samples/da-ristorante-api"
             }
         }
     ]
