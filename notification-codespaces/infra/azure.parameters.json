@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "resourceBaseName": {
-        "value": "notification${{RESOURCE_SUFFIX}}"
+        "value": "DMJv2${{RESOURCE_SUFFIX}}"
       },
       "webAppSKU": {
         "value": "B1"
       },
       "botDisplayName": {
-        "value": "notification-app"
+        "value": "DMJv2"
       }
     }
   }

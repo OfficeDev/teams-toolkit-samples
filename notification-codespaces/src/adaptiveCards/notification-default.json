@@ -1,36 +1,126 @@
 {
-  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
   "type": "AdaptiveCard",
-  "version": "1.4",
+  "version": "1.3",
   "body": [
     {
       "type": "TextBlock",
-      "text": "${title}",
-      "size": "Large",
-      "weight": "Bolder",
+      "text": "🚨 **Incident Notification**",
+      "weight": "bolder",
+      "size": "large",
+      "color": "attention",
       "wrap": true
     },
     {
       "type": "TextBlock",
-      "text": "${appName}",
-      "isSubtle": true,
-      "color": "Accent",
-      "weight": "Bolder",
-      "size": "Small",
-      "spacing": "None"
+      "text": "Incident Title: **${title}**",
+      "weight": "bolder",
+      "size": "medium",
+      "wrap": true
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Severity:", "value": "${severity}" },
+        { "title": "Category:", "value": "${category}" },
+        { "title": "Status:", "value": "${status}" },
+        { "title": "User Principal Name:", "value": "${userPrincipalName}" },
+        { "title": "Azure Tenant ID:", "value": "${azureTenantId}" },
+        { "title": "Azure Subscription ID:", "value": "${azureSubscriptionId}" },
+        { "title": "Sign-In IP:", "value": "${userLogonIp}" },
+        { "title": "Sign-In Location:", "value": "${userLogonLocation}" },
+        { "title": "Incident Created At:", "value": "${createdDateTime}" }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Incident Description:",
+      "weight": "bolder",
+      "size": "medium",
+      "wrap": true
     },
     {
       "type": "TextBlock",
       "text": "${description}",
-      "isSubtle": true,
-      "wrap": true
+      "wrap": true,
+      "spacing": "small"
+    },
+    {
+      "type": "ActionSet",
+      "actions": [
+        {
+          "type": "Action.OpenUrl",
+          "title": "View Incident",
+          "url": "${incidentWebUrl}"
+        },
+        {
+          "type": "Action.OpenUrl",
+          "title": "Resolve Incident",
+          "url": "https://resolve-incident-url/${id}"
+        },
+        {
+          "type": "Action.Submit",
+          "title": "Mark as False Positive",
+          "data": {
+            "action": "false_positive",
+            "alertId": "${id}"
+          }
+        },
+        {
+          "type": "Action.Submit",
+          "title": "Dismiss Alert",
+          "data": {
+            "action": "dismiss",
+            "alertId": "${id}"
+          }
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "React to this incident (1-5):",
+      "weight": "bolder",
+      "size": "medium",
+      "wrap": true,
+      "spacing": "medium"
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "userReaction",
+      "style": "compact",
+      "value": "1",
+      "choices": [
+        { "title": "1 - Very Low", "value": "1" },
+        { "title": "2 - Low", "value": "2" },
+        { "title": "3 - Neutral", "value": "3" },
+        { "title": "4 - High", "value": "4" },
+        { "title": "5 - Very High", "value": "5" }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Add a Comment (Optional):",
+      "weight": "bolder",
+      "size": "medium",
+      "wrap": true,
+      "spacing": "medium"
+    },
+    {
+      "type": "Input.Text",
+      "id": "userComment",
+      "placeholder": "Enter your comment here...",
+      "value": "${defaultComment}", 
+      "isMultiline": true,
+      "maxLength": 500
     }
   ],
   "actions": [
     {
-      "type": "Action.OpenUrl",
-      "title": "View Documentation",
-      "url": "${notificationUrl}"
+      "type": "Action.Submit",
+      "title": "Submit Feedback",
+      "data": {
+        "action": "submit_feedback",
+        "alertId": "${id}"
+      }
     }
   ]
 }

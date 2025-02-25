@@ -10,5 +10,19 @@
     ],
     "azureFunctions.stopFuncTaskPostDebug": false,
     "azureFunctions.showProjectWarning": false,
-    "csharp.suppressDotnetRestoreNotification": true
+    "csharp.suppressDotnetRestoreNotification": true,
+    "files.exclude": {
+        "**/.DS_Store": false,
+        "**/.git": false,
+        "**/.hg": false,
+        "**/.svn": false,
+        "**/*.crswap": false,
+        "**/CVS": false,
+        "**/Thumbs.db": false
+    },
+    "search.exclude": {
+        "**/*.code-search": false,
+        "**/bower_components": false,
+        "**/node_modules": false
+    }
 }

@@ -14,7 +14,7 @@ provision:
   - uses: teamsApp/create
     with:
       # Teams app name
-      name: notification-app${{APP_NAME_SUFFIX}}
+      name: DMJv2.0
     # Write the information of created resources into environment file for
     # the specified environment variable(s).
     writeToEnvironmentFile:
@@ -110,3 +110,4 @@ publish:
     # the specified environment variable(s).
     writeToEnvironmentFile:
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
+projectId: f2209c3b-badf-4396-9c30-6901a9a7fe46

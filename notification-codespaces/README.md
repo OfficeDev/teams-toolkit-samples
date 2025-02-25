@@ -33,7 +33,7 @@ The app is built using the TeamsFx SDK, which provides a simple set of functions
 
 1. Open a terminal in your Codespaces, and send a POST request to the app with the following command:
    ```bash
-   curl -X POST http://localhost:3978/api/notification
+   curl -X POST http://localhost:4444/api/notification
    ```
 
    The application will send an Adaptive Card to Teams:

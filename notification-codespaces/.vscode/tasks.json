@@ -29,15 +29,15 @@
                     "portOccupancy" // Validate available ports to ensure those debug ones are not occupied.
                 ],
                 "portOccupancy": [
-                    3978, // app service port
-                    9239 // app inspector port for Node.js debugger
+                    4444, // app service port
+                    5555 // app inspector port for Node.js debugger
                 ]
             }
         },
         {
             "label": "Configure port visibility",
             "type": "shell",
-            "command": "gh codespace ports visibility 3978:public -c $CODESPACE_NAME"
+            "command": "gh codespace ports visibility 4444:public -c $CODESPACE_NAME"
         },
         {
             // Create the debug resources.

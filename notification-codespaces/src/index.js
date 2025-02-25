@@ -3,6 +3,11 @@ const { notificationApp } = require("./internal/initialize");
 const ACData = require("adaptivecards-templating");
 const { TeamsBot } = require("./teamsBot");
 const express = require("express");
+// server.js
+const WebSocket = require('ws');
+
+// Create WebSocket server
+const wss = new WebSocket.Server({ port: 8080 });
 
 // Create express application.
 const expressApp = express();
@@ -18,7 +23,6 @@ const server = expressApp.listen(
   }
 );
 
-// HTTP trigger to send notification. You need to add authentication / authorization for this API. Refer https://aka.ms/teamsfx-notification for more details.
 expressApp.post("/api/notification", async (req, res) => {
   const pageSize = 100;
   let continuationToken = undefined;
@@ -31,91 +35,67 @@ expressApp.post("/api/notification", async (req, res) => {
     continuationToken = pagedData.continuationToken;
 
     for (const target of installations) {
+      // Prepare the alert data from the request body
+      const alertData = req.body.alert; // Assuming the alert data is sent in the request body
+      console.log(req.body.alert)
+      console.log("--------------\n"+alertData.title)
+      // Define an adaptive card template
+      const alertTemplate = new ACData.Template(notificationTemplate);
+
+      // Send the adaptive card to the target (Team, Group, Person)
       await target.sendAdaptiveCard(
-        new ACData.Template(notificationTemplate).expand({
+        alertTemplate.expand({
           $root: {
-            title: "New Event Occurred!",
-            appName: "Contoso App Notification",
-            description: `This is a sample http-triggered notification to ${target.type}`,
-            notificationUrl: "https://aka.ms/teamsfx-notification-new",
+            title: `Alert: ${alertData.title}`,
+            appName: "Security Alert Notification",
+            description: alertData.description || "No description provided",
+            severity: alertData.severity || "Unknown",
+            incidentUrl: alertData.incidentWebUrl || "Not available",
+            createdDateTime: alertData.createdDateTime || "Unknown",
+            userPrincipalName: alertData.userPrincipalName || "Unknown User",
+            azureTenantId: alertData.azureTenantId || "Unknown Tenant",
+            azureSubscriptionId: alertData.azureSubscriptionId || "Unknown Subscription",
+            status: alertData.status || "Unknown",
+            alertCategory: alertData.category || "Unknown",
+            userLogonIp: alertData.userLogonIp || "Not Available",
+            userLogonLocation: alertData.userLogonLocation || "Not Available",
+
+            // Additional fields can be added here as needed
+            incidentSeverity: alertData.severity || "Unknown",  // Example for severity, can be expanded further
+
+            // Buttons for actions
+            buttons: [
+              {
+                type: "Action.OpenUrl",
+                title: "View Incident",
+                url: alertData.incidentWebUrl || "https://default-url.com"
+              },
+              {
+                type: "Action.OpenUrl",
+                title: "Resolve Incident",
+                url: `https://resolve-incident-url/${alertData.id}`
+              },
+              {
+                type: "Action.Submit",
+                title: "Mark as False Positive",
+                data: { action: "false_positive", alertId: alertData.id }
+              },
+              {
+                type: "Action.Submit",
+                title: "Dismiss Alert",
+                data: { action: "dismiss", alertId: alertData.id }
+              }
+            ]
           },
         })
       );
 
-      /****** To distinguish different target types ******/
-      /** "Channel" means this bot is installed to a Team (default to notify General channel)
-        if (target.type === NotificationTargetType.Channel) {
-          // Directly notify the Team (to the default General channel)
-          await target.sendAdaptiveCard(...);
-
-          // List all channels in the Team then notify each channel
-          const channels = await target.channels();
-          for (const channel of channels) {
-            await channel.sendAdaptiveCard(...);
-          }
-
-          // List all members in the Team then notify each member
-          const pageSize = 100;
-          let continuationToken = undefined;
-          do {
-            const pagedData = await target.getPagedMembers(pageSize, continuationToken);
-            const members = pagedData.data;
-            continuationToken = pagedData.continuationToken;
-
-            for (const member of members) {
-              await member.sendAdaptiveCard(...);
-            }
-          } while (continuationToken);
-        }
-        **/
-
-      /** "Group" means this bot is installed to a Group Chat
-        if (target.type === NotificationTargetType.Group) {
-          // Directly notify the Group Chat
-          await target.sendAdaptiveCard(...);
-
-          // List all members in the Group Chat then notify each member
-          const pageSize = 100;
-          let continuationToken = undefined;
-          do {
-            const pagedData = await target.getPagedMembers(pageSize, continuationToken);
-            const members = pagedData.data;
-            continuationToken = pagedData.continuationToken;
-
-            for (const member of members) {
-              await member.sendAdaptiveCard(...);
-            }
-          } while (continuationToken);
-        }
-        **/
-
-      /** "Person" means this bot is installed as a Personal app
-        if (target.type === NotificationTargetType.Person) {
-          // Directly notify the individual person
-          await target.sendAdaptiveCard(...);
-        }
-        **/
     }
   } while (continuationToken);
 
-  /** You can also find someone and notify the individual person
-    const member = await notificationApp.notification.findMember(
-      async (m) => m.account.email === "someone@contoso.com"
-    );
-    await member?.sendAdaptiveCard(...);
-    **/
-
-  /** Or find multiple people and notify them
-    const members = await notificationApp.notification.findAllMembers(
-      async (m) => m.account.email?.startsWith("test")
-    );
-    for (const member of members) {
-      await member.sendAdaptiveCard(...);
-    }
-    **/
-
   res.json({});
 });
+
 
 // Bot Framework message handler.
 const teamsBot = new TeamsBot();
@@ -124,3 +104,46 @@ expressApp.post("/api/messages", async (req, res) => {
     await teamsBot.run(context);
   });
 });
+
+
+wss.on('connection', (ws) => {
+    console.log('Client connected');
+
+    // Send JSON data to client
+    const sendData = () => {
+        const jsonData = JSON.stringify({ message: 'Hello from server', timestamp: new Date() });
+        ws.send(jsonData);
+    };
+
+    // Ping the client every 5 seconds
+    const interval = setInterval(() => {
+        if (ws.readyState === WebSocket.OPEN) {
+            ws.ping();
+        }
+    }, 5000);
+
+    // Send initial data
+    sendData();
+
+    // Listen for messages from the client
+    ws.on('message', (message) => {
+        console.log('Received from client:', message);
+    });
+
+    // Handle pings and pongs
+    ws.on('pong', () => {
+        console.log('Received pong from client');
+    });
+
+    // Cleanup on disconnect
+    ws.on('close', () => {
+        console.log('Client disconnected');
+        clearInterval(interval);
+    });
+
+    ws.on('error', (error) => {
+        console.error('WebSocket error:', error);
+    });
+});
+
+console.log('WebSocket server is running on ws://localhost:8080');
