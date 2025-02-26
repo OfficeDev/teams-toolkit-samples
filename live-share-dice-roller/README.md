@@ -60,5 +60,5 @@ After you have completed the provision and deploy steps in `Deploy the app to Az
 1. Schedule a meeting for testing from calendar in Teams.
 2. Join the meeting and click the dice roller tab.
 3. That's it! You should now see dice-roller on the meeting stage.
-    ![image](https://user-images.githubusercontent.com/7799064/168399633-be29ec2b-55db-49ad-a90d-a1011baa8eaa.png)
+    ![image](./assets/demo.png)
 4. Your friends/colleagues invited to the meeting should be able to see your app on stage when they join the meeting.
