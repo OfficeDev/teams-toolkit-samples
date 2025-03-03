@@ -14,7 +14,7 @@ A bot interaction can be a quick question and answer, or it can be a complex con
 >
 > To run the Basic Bot template in your local dev machine, you will need:
 >
-> - [Node.js](https://nodejs.org/), supported versions: 16, 18
+> - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 > - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
 
 > For local debugging using Teams Toolkit CLI, you need to do some extra steps described in [Set up your Teams Toolkit CLI for local debugging](https://aka.ms/teamsfx-cli-debugging).
