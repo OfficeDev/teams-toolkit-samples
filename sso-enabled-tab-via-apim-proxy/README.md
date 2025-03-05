@@ -37,7 +37,7 @@ With this sample, you can achieve the SSO feature in your tab app using OBO (on-
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/), supported versions: 16, 18
+- [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/microsoft-365/dev-program)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
 > Please note that after you enrolled your developer tenant in Office 365 Target Release, it may take couple days for the enrollment to take effect.

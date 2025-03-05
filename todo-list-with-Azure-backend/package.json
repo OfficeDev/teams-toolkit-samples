@@ -4,7 +4,7 @@
     "description": "",
     "author": "",
     "engines": {
-        "node": "16 || 18"
+        "node": "18 || 20 || 22"
     },
     "scripts": {
         "dev:teamsfx": "concurrently \"npm run start:tabs\" \"npm run start:api\"",

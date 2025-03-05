@@ -4,7 +4,7 @@
   "description": "Microsoft Teams Toolkit Incoming Webhook Notification Sample",
   "author": "Microsoft",
   "engines": {
-    "node": "16 || 18"
+    "node": "18 || 20 || 22"
   },
   "license": "MIT",
   "main": "./lib/index.js",

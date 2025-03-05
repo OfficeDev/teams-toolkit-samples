@@ -26,5 +26,8 @@
         "buffer": "^6.0.3",
         "start-server-and-test": "^1.15.2",
         "vite": "^4.0.4"
+    },
+    "engines": {
+        "node": "18 || 20 || 22"
     }
 }
