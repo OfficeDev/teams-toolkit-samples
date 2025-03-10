@@ -20,7 +20,7 @@ An Incoming Webhook Sample provides an easy way to send adaptive cards in Micros
 - How to send Adaptive Cards in Teams.
 
 ## Prerequisite to use this sample
-- [Node.js](https://nodejs.org/), supported versions: 16, 18
+- [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - A [Teams Channel](https://docs.microsoft.com/en-us/microsoftteams/teams-channels-overview)
 
 ## Minimal path to awesome

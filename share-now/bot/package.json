@@ -6,7 +6,7 @@
     "license": "MIT",
     "main": "./lib/index.js",
     "engines": {
-        "node": "18 || 20"
+        "node": "18 || 20 || 22"
     },
     "scripts": {
         "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run dev",
