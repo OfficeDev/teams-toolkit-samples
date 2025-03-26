@@ -35,4 +35,4 @@ resource apimService 'Microsoft.ApiManagement/service@2024-05-01' = {
   }
 }
 
-output AZURE_OPENAI_ENDPOINT string = apimService.properties.gatewayUrl
+output gatewayUrl string = apimService.properties.gatewayUrl

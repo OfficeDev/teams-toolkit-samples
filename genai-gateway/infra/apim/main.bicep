@@ -39,21 +39,21 @@ module apimService './modules/apimService.bicep' = {
     apimPublisherName: apimPublisherName
   }
 }
-/*
-// module semanticCache './modules/semanticCache.bicep' = {
-//  name: 'Semantic-Cache-deployment'
-//  params: {
-//    resourceBaseName: resourceBaseName
-//    location: location
-//    azureOpenAIKey: azureOpenAIKey
-//    azureOpenAIEndpoint: azureOpenAIEndpoint
-//    embeddingsDeploymentName: embeddingsDeploymentName
-//  }
-//  dependsOn: [
-//    apimService // Ensure APIM service exists first since semanticCache references it
-//  ]
-// }
-*/
+
+module semanticCache './modules/semanticCache.bicep' = {
+  name: 'Semantic-Cache-deployment'
+  params: {
+    resourceBaseName: resourceBaseName
+    location: location
+    azureOpenAIKey: azureOpenAIKey
+    azureOpenAIEndpoint: azureOpenAIEndpoint
+    embeddingsDeploymentName: embeddingsDeploymentName
+  }
+  dependsOn: [
+    apimService // Ensure APIM service exists first since semanticCache references it
+  ]
+}
+
 module apiBackends './modules/apiBackends.bicep' = {
   name: 'Api-Backends-deployment'
   params: {
@@ -76,3 +76,7 @@ module emitTokenMetrics './modules/emitTokenMetrics.bicep' = {
     apimService // Ensure APIM service exists first since emitTokenMetrics references it
   ]
 }
+
+output AZURE_OPENAI_ENDPOINT string = apimService.outputs.gatewayUrl
+#disable-next-line outputs-should-not-contain-secrets
+output SECRET_AZURE_OPENAI_API_KEY string = apiBackends.outputs.subscriptionPrimaryKey

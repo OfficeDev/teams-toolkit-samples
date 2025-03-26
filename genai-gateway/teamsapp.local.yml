@@ -53,14 +53,6 @@ provision:
       # will skip the resource group selection prompt.
       resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}}
       templates:
-        # - path: ./infra/apimDeployment/azure.local.bicep # Relative path to this file
-        #   # Relative path to this yaml file.
-        #   # Placeholders will be replaced with corresponding environment
-        #   # variable before ARM deployment.
-        #   parameters: ./infra/apimDeployment/azure.local.parameters.json
-        #   # Required when deploying ARM template
-        #   deploymentName: Create-resources-for-bot
-
         # Deploy all APIM modules with a single main deployment
         - path: ./infra/apim/main.bicep
           parameters: ./infra/apim/main.parameters.json
