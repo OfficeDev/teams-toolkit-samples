@@ -40,26 +40,34 @@ module apimService './modules/apimService.bicep' = {
   }
 }
 
-module semanticCache './modules/semanticCache.bicep' = {
-  name: 'Semantic-Cache-deployment'
+module cognitiveService './modules/cognitiveService.bicep' = {
+  name: 'Cognitive-Service-deployment'
   params: {
     resourceBaseName: resourceBaseName
     location: location
-    azureOpenAIKey: azureOpenAIKey
-    azureOpenAIEndpoint: azureOpenAIEndpoint
-    embeddingsDeploymentName: embeddingsDeploymentName
   }
-  dependsOn: [
-    apimService // Ensure APIM service exists first since semanticCache references it
-  ]
+}
+
+module semanticCache './modules/semanticCache.bicep' = {
+ name: 'Semantic-Cache-deployment'
+ params: {
+   resourceBaseName: resourceBaseName
+   location: location
+   azureOpenAIKey: cognitiveService.outputs.azureOpenAIApiKey
+   azureOpenAIEndpoint: cognitiveService.outputs.azureOpenAIEndpoint
+   embeddingsDeploymentName: embeddingsDeploymentName
+ }
+ dependsOn: [
+   apimService // Ensure APIM service exists first since semanticCache references it
+ ]
 }
 
 module apiBackends './modules/apiBackends.bicep' = {
   name: 'Api-Backends-deployment'
   params: {
     resourceBaseName: resourceBaseName
-    azureOpenAIKey: azureOpenAIKey
-    azureOpenAIEndpoint: azureOpenAIEndpoint
+    azureOpenAIKey: cognitiveService.outputs.azureOpenAIApiKey
+    azureOpenAIEndpoint: cognitiveService.outputs.azureOpenAIEndpoint
   }
   dependsOn: [
     apimService // Ensure APIM service exists first since apiBackends references it
@@ -78,5 +86,6 @@ module emitTokenMetrics './modules/emitTokenMetrics.bicep' = {
 }
 
 output AZURE_OPENAI_ENDPOINT string = apimService.outputs.gatewayUrl
+
 #disable-next-line outputs-should-not-contain-secrets
 output SECRET_AZURE_OPENAI_API_KEY string = apiBackends.outputs.subscriptionPrimaryKey
