@@ -25,6 +25,7 @@ model = OpenAIModel(
         api_key=config.AZURE_OPENAI_API_KEY,
         default_model=config.AZURE_OPENAI_MODEL_DEPLOYMENT_NAME,
         endpoint=config.AZURE_OPENAI_ENDPOINT,
+        api_version='2025-01-01-preview'
     )
 )
     

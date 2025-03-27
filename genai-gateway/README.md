@@ -1,24 +1,30 @@
-# Overview of the Basic AI Chatbot template
+# Overview of the Basic AI Chatbot using APIM GenAI Gateway sample
 
-This app template is built on top of [Teams AI library](https://aka.ms/teams-ai-library).
-This template showcases a bot app that responds to user questions like an AI assistant. This enables your users to talk with the AI assistant in Teams to find information.
+This app sample is built on top of [Teams AI library](https://aka.ms/teams-ai-library).
+This sample showcases a bot app that responds to user questions like an AI assistant. This enables your users to talk with the AI assistant in Teams to find information.
 
 
-## Get started with the template
+## Get started with the sample
 
 > **Prerequisites**
 >
-> To run the template in your local dev machine, you will need:
+> To run the sample in your local dev machine, you will need:
 >
 > - [Python](https://www.python.org/), version 3.8 to 3.11.
 > - [Python extension](https://code.visualstudio.com/docs/languages/python), version v2024.0.1 or higher.
 > - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) latest version or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli).
-> - An account with [Azure OpenAI](https://aka.ms/oai/access).
+> - An Azure account and a subscription, **which you need to make sure your subscription has quota to create cognitive service in the location you selected.**
 > - A [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts).
+
+### In this sample
+1. A cognitive service with one gpt-4o model and one text-embedding-ada-002 model will be deployed.
+1. An API Management(APIM) service with GenAI Gateway features including token limit policy, emit token metric policy, backend load balancer and circuit breaker and semantic caching policy will be deployed and configured.
+1. A copilot agent bot will be created, which will connect the APIM service to call the Azure OpenAI API. You can chat with the agent bot in multiple platforms.
+
+> - To use your own existing Cognitive service, please comment the `# Create new Cognitive Services` part in [teamsapp.local.yml](./teamsapp.local.yml) and uncomment the `# Use existing Cognitive Services` part. And you need to fill in your Azure OpenAI key `SECRET_AZURE_OPENAI_API_KEY`, deployment name `AZURE_OPENAI_MODEL_DEPLOYMENT_NAME`, `AZURE_OPENAI_EMBEDDING_DEPLOYMENT` and endpoint `AZURE_OPENAI_ENDPOINT` in file [*env/.env.local.user*](./env/.env.local.user).
 
 ### Configurations
 1. Open the command box and enter `Python: Create Environment` to create and activate your desired virtual environment. Remember to select `src/requirements.txt` as dependencies to install when creating the virtual environment.
-1. In file *env/.env.local.user*, fill in your Azure OpenAI key `SECRET_AZURE_OPENAI_API_KEY`, deployment name `AZURE_OPENAI_MODEL_DEPLOYMENT_NAME` and endpoint `AZURE_OPENAI_ENDPOINT`.
 
 ### Conversation with bot
 1. Select the Teams Toolkit icon on the left in the VS Code toolbar.
@@ -33,7 +39,7 @@ This template showcases a bot app that responds to user questions like an AI ass
 
 ![ai chat bot](https://user-images.githubusercontent.com/7642967/258726187-8306610b-579e-4301-872b-1b5e85141eff.png)
 
-## What's included in the template
+## What's included in the sample
 
 | Folder       | Contents                                            |
 | - | - |
@@ -61,9 +67,9 @@ The following are Teams Toolkit specific project files. You can [visit a complet
 |`teamsapp.local.yml`|This overrides `teamsapp.yml` with actions that enable local execution and debugging.|
 |`teamsapp.testtool.yml`|This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool.|
 
-## Extend the template
+## Extend the sample
 
-You can follow [Build a Basic AI Chatbot in Teams](https://aka.ms/teamsfx-basic-ai-chatbot) to extend the Basic AI Chatbot template with more AI capabilities, like:
+You can follow [Build a Basic AI Chatbot in Teams](https://aka.ms/teamsfx-basic-ai-chatbot) to extend the Basic AI Chatbot sample with more AI capabilities, like:
 - [Customize prompt](https://aka.ms/teamsfx-basic-ai-chatbot#customize-prompt)
 - [Customize user input](https://aka.ms/teamsfx-basic-ai-chatbot#customize-user-input)
 - [Customize conversation history](https://aka.ms/teamsfx-basic-ai-chatbot#customize-conversation-history)

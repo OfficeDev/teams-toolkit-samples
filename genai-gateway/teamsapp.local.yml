@@ -41,21 +41,22 @@ provision:
 
   - uses: arm/deploy # Deploy given ARM templates parallelly.
     with:
-      # AZURE_SUBSCRIPTION_ID is a built-in environment variable,
-      # if its value is empty, TeamsFx will prompt you to select a subscription.
-      # Referencing other environment variables with empty values
-      # will skip the subscription selection prompt.
       subscriptionId: ${{AZURE_SUBSCRIPTION_ID}}
-      # AZURE_RESOURCE_GROUP_NAME is a built-in environment variable,
-      # if its value is empty, TeamsFx will prompt you to select or create one
-      # resource group.
-      # Referencing other environment variables with empty values
-      # will skip the resource group selection prompt.
+
       resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}}
+
+      # Use existing Cognitive Services
+      # templates:
+      #   # Deploy all APIM modules with a single main deployment
+      #   - path: ./infra/apim-useExistingCog/main.bicep
+      #     parameters: ./infra/apim-useExistingCog/main.parameters.json
+      #     deploymentName: Deploy-APIM-Resources
+
+      # Create new Cognitive Services
       templates:
         # Deploy all APIM modules with a single main deployment
-        - path: ./infra/apim/main.bicep
-          parameters: ./infra/apim/main.parameters.json
+        - path: ./infra/apim-createNewCog/main.bicep
+          parameters: ./infra/apim-createNewCog/main.parameters.json
           deploymentName: Deploy-APIM-Resources
 
       # Teams Toolkit will download this bicep CLI version from github for you,
