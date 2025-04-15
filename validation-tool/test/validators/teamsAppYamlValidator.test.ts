@@ -13,7 +13,7 @@ describe('validateTeamsAppYaml()', () => {
   });
 
   test('teamsapp.yml is valid', async () => {
-    const validYamlContent = await fs.readFile(path.join(__dirname, "../data/teamsapp-valid.yml"), "utf8");
+    const validYamlContent = await fs.readFile(path.join(__dirname, "../data/m365agents-valid.yml"), "utf8");
     mock({
       "testFolder": {
         "teamsapp.yml": validYamlContent,
@@ -37,7 +37,7 @@ describe('validateTeamsAppYaml()', () => {
   });
 
   test('teamsapp.yml has projectId', async () => {
-    const validYamlContent = await fs.readFile(path.join(__dirname, "../data/teamsapp-with-projectId.yml"), "utf8");
+    const validYamlContent = await fs.readFile(path.join(__dirname, "../data/m365agents-with-projectId.yml"), "utf8");
     mock({
       "testFolder": {
         "teamsapp.yml": validYamlContent,
@@ -52,7 +52,7 @@ describe('validateTeamsAppYaml()', () => {
   });
 
   test('teamsapp.yml has no sample tag', async () => {
-    const validYamlContent = await fs.readFile(path.join(__dirname, "../data/teamsapp-without-sampleTag.yml"), "utf8");
+    const validYamlContent = await fs.readFile(path.join(__dirname, "../data/m365agents-without-sampleTag.yml"), "utf8");
     mock({
       "testFolder": {
         "teamsapp.yml": validYamlContent,
@@ -67,7 +67,7 @@ describe('validateTeamsAppYaml()', () => {
   });
 
   test('teamsapp.yml is external sample tag', async () => {
-    const validYamlContent = await fs.readFile(path.join(__dirname, "../data/teamsapp-external-sample.yml"), "utf8");
+    const validYamlContent = await fs.readFile(path.join(__dirname, "../data/m365agents-external-sample.yml"), "utf8");
     mock({
       "testFolder": {
         "teamsapp.yml": validYamlContent,
@@ -83,7 +83,7 @@ describe('validateTeamsAppYaml()', () => {
   });
 
   test('teamsapp.yml has invalid actions', async () => {
-    const validYamlContent = await fs.readFile(path.join(__dirname, "../data/teamsapp-invalid-actions.yml"), "utf8");
+    const validYamlContent = await fs.readFile(path.join(__dirname, "../data/m365agents-invalid-actions.yml"), "utf8");
     mock({
       "testFolder": {
         "teamsapp.yml": validYamlContent,
