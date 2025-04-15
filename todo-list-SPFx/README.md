@@ -61,10 +61,10 @@ Debug the app with Teams workbench
 
 1. Clone the repo to your local workspace or directly download the source code.
 1. Open [./src/src/webparts/todoList/components/SharePointListManager.ts](./src/src/webparts/todoList/components/SharePointListManager.ts), navigate to line:17, set the `listname` variable to your SharePoint List name.
-1. Open the project in Visual Studio Code, click `Provision` in LIFECYCLE panel of Microsoft Microsoft 365 Agents Toolkit extension or open the command palette and select `Teams: Provision`. This step will create an app in Teams App Studio.
-1. Go back to Microsoft Microsoft 365 Agents Toolkit extension, click `Deploy` in LIFECYCLE panel or open the command palette and select `Teams: Deploy`.
+1. Open the project in Visual Studio Code, click `Provision` in LIFECYCLE panel of Microsoft 365 Agents Toolkit extension or open the command palette and select `Teams: Provision`. This step will create an app in Teams App Studio.
+1. Go back to Microsoft 365 Agents Toolkit extension, click `Deploy` in LIFECYCLE panel or open the command palette and select `Teams: Deploy`.
     > This step will build a SharePoint package (*.sppkg) under `sharepoint/solution` folder. The Microsoft 365 Agents Toolkit will automatically upload and deploy it to your tenant App Catalog site. Only tenant App Catalog site admin has permission to do it. If you are not the admin, you can create your test tenant following [Setup your Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant).
-1. Go back to Microsoft Microsoft 365 Agents Toolkit extension, in LIFECYCLE panel, click `Publish` or open the command palette and select `Teams: Publish`.
+1. Go back to Microsoft 365 Agents Toolkit extension, in LIFECYCLE panel, click `Publish` or open the command palette and select `Teams: Publish`.
 1. Check the published app in [Microsoft Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps) by searching "todoList" in the search box.
 ![TeamsAppAdminCenter](images/TeamsAppAdminCenter.png)
 1. Click the 'TodoList' app you just published and select `Publish` in the Publishing status.
