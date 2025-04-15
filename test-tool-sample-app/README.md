@@ -1,6 +1,6 @@
-# Teams App Test Tool Sample App
+# Microsoft 365 Agents playground Sample App
 
-This sample app comprehensively demonstrates the features supported by the Teams App Test Tool, which is a good starting point to try Teams App Test Tool.
+This sample app comprehensively demonstrates the features supported by the Microsoft 365 Agents playground, which is a good starting point to try Microsoft 365 Agents playground.
 
 The sample app includes common development scenarios when building Teams bot applications:
 * Send proactive notifications.
@@ -17,8 +17,8 @@ The sample app includes common development scenarios when building Teams bot app
 ### Run the app locally
 1. Clone the repo to your local workspace or directly download the source code.
 1. Open the project in Visual Studio Code.
-1. Open Debug View (`Ctrl+Shift+D`) and select "Debug in Test Tool (Preview)" in dropdown list.
-1. Press "F5" to launch the Teams App Test Tool.
+1. Open Debug View (`Ctrl+Shift+D`) and select "Debug in Microsoft 365 Agents playground (Preview)" in dropdown list.
+1. Press "F5" to launch the Microsoft 365 Agents playground.
 1. Type `help` command into input box. Bot will response the list of commands available in this sample.
 
 ![test-tool](https://aka.ms/emulator-hero-image)

@@ -1,7 +1,7 @@
 {
   "name": "test-tool-sample-app",
   "version": "1.0.0",
-  "description": "Microsoft Teams App Test Tool Sample App",
+  "description": "Microsoft Microsoft 365 Agents playground Sample App",
   "author": "Microsoft",
   "license": "MIT",
   "main": "./lib/index.js",

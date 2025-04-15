@@ -16,10 +16,10 @@ This app template implements action command that allows you to present your user
 > For local debugging using Teams Toolkit CLI, you need to do some extra steps described in [Set up your Teams Toolkit CLI for local debugging](https://aka.ms/teamsfx-cli-debugging).
 
 1. First, select the Teams Toolkit icon on the left in the VS Code toolbar.
-2. Press F5 to start debugging which launches your app in Teams App Test Tool using a web browser.
+2. Press F5 to start debugging which launches your app in Microsoft 365 Agents playground using a web browser.
 3. To trigger the action command, you can click the `+` under compose message area and select `Action Command`.
 
-**Congratulations**! You are running an application that can share information in rich format by creating an Adaptive Card in Teams App Test Tool.
+**Congratulations**! You are running an application that can share information in rich format by creating an Adaptive Card in Microsoft 365 Agents playground.
 
 ![action-ME](https://github.com/user-attachments/assets/b49b530f-9909-4557-b15a-fde9565fc40c)
 
@@ -46,7 +46,7 @@ The following are Teams Toolkit specific project files. You can [visit a complet
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `teamsapp.yml`       | This is the main Teams Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
 | `teamsapp.local.yml` | This overrides `teamsapp.yml` with actions that enable local execution and debugging.                                                     |
-| `teamsapp.testtool.yml`| This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool.                            |
+| `teamsapp.testtool.yml`| This overrides `teamsapp.yml` with actions that enable local execution and debugging in Microsoft 365 Agents playground.                            |
 
 ## Extend the template
 

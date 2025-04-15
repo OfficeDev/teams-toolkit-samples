@@ -19,16 +19,16 @@ The app template is built using the TeamsFx SDK, which provides a simple set of 
 > For local debugging using Teams Toolkit CLI, you need to do some extra steps described in [Set up your Teams Toolkit CLI for local debugging](https://aka.ms/teamsfx-cli-debugging).
 
 1. First, select the Teams Toolkit icon on the left in the VS Code toolbar.
-2. Press F5 to start debugging which launches your app in Teams App Test Tool using a web browser. Select `Debug in Test Tool`.
-3. The browser will pop up to open Teams App Test Tool.
+2. Press F5 to start debugging which launches your app in Microsoft 365 Agents playground using a web browser. Select `Debug in Microsoft 365 Agents playground`.
+3. The browser will pop up to open Microsoft 365 Agents playground.
 4. Send a POST request to `http://<endpoint>/api/notification` with your favorite tool (like `Postman`)
 
    - When your project is running locally, replace `<endpoint>` with `localhost:3978`
    - When your project is deployed to Azure App Service, replace `<endpoint>` with the url from Azure App Service
 
-The bot will send an Adaptive Card to Teams App Test Tool:
+The bot will send an Adaptive Card to Microsoft 365 Agents playground:
 
-![Notification Message in Test Tool](https://github.com/OfficeDev/TeamsFx/assets/9698542/43ee64f4-5554-4e0b-854f-f7e20672cb25)
+![Notification Message in Microsoft 365 Agents playground](https://github.com/OfficeDev/TeamsFx/assets/9698542/43ee64f4-5554-4e0b-854f-f7e20672cb25)
 
 ## What's included in the template
 
@@ -36,7 +36,7 @@ The bot will send an Adaptive Card to Teams App Test Tool:
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | `teamsapp.yml`          | Main project file describes your application configuration and defines the set of actions to run in each lifecycle stages        |
 | `teamsapp.local.yml`    | This overrides `teamsapp.yml` with actions that enable local execution and debugging                                             |
-| `teamsapp.testtool.yml` | This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool                      |
+| `teamsapp.testtool.yml` | This overrides `teamsapp.yml` with actions that enable local execution and debugging in Microsoft 365 Agents playground                      |
 | `env/`                  | Name / value pairs are stored in environment files and used by `teamsapp.yml` to customize the provisioning and deployment rules |
 | `.vscode/`              | VSCode files for debugging                                                                                                       |
 | `src/`                  | The source code for the notification Teams application                                                                           |
