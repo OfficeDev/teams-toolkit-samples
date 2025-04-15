@@ -31,7 +31,7 @@ Stocks Update Notifcation Bot is a an application that can be installed in diffe
 ### Run the app locally
 1. Clone the repo to your local workspace or directly download the source code.
 1. Open the project in Visual Studio.
-1. Right click to the project, select **Microsoft 365 Agents Toolkit > Prepare Teams App Dependencies**.
+1. Right click to the project, select **Microsoft 365 Agents Toolkit > Select Microsoft 365 Account**.
 1. Press "F5" to launch the bot 
 1. Sideloading your app to view into Microsoft Teams to view the Stocks Update Notification bot.
 

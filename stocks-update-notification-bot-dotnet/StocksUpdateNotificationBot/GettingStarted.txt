@@ -14,7 +14,7 @@ Quick Start
      The demo key will not update values, you can [sign up for a free key](https://www.alphavantage.co/support/#api-key) for the Alpha Vantage service and update the `TEAMSFX_API_ALPHAVANTAGE_API_KEY` setting with your own key.
 2. Download and install ngrok (https://ngrok.com/)
 3. Open a command prompt and run ngrok http 5130
-4. Right-click your project and select Microsoft 365 Agents Toolkit > Prepare Teams app dependencies
+4. Right-click your project and select Microsoft 365 Agents Toolkit > Select Microsoft 365 Account
 5. If prompted, sign in with an M365 account for the Teams organization you want 
 to install the app to
 6. Press F5, or select the Debug > Start Debugging menu in Visual Studio
