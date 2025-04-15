@@ -38,7 +38,7 @@ provision:
         - path: ./infra/apim.bicep # Relative path to this file
           parameters: ./infra/azure.parameters.local.json # Relative path to this file. Placeholders will be replaced with corresponding environment variable before ARM deployment.
           deploymentName: Create-resources-for-tab # Required when deploy ARM template
-      bicepCliVersion: v0.9.1 # Teams Toolkit will download this bicep CLI version from github for you, will use bicep CLI in PATH if you remove this config.
+      bicepCliVersion: v0.9.1 # Microsoft 365 Agents Toolkit will download this bicep CLI version from github for you, will use bicep CLI in PATH if you remove this config.
 
 
   - uses: script # Set TAB_DOMAIN and TAB_ENDPOINT for local launch

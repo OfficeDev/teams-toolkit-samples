@@ -14,7 +14,7 @@ const server = expressApp.listen(process.env.port || process.env.PORT || 3978, (
 // Register an API endpoint with `express`. Teams sends messages to your application
 // through this endpoint.
 //
-// The Teams Toolkit bot registration configures the bot with `/api/messages` as the
+// The Microsoft 365 Agents Toolkit bot registration configures the bot with `/api/messages` as the
 // Bot Framework endpoint. If you customize this route, update the Bot registration
 // in `/templates/provision/bot.bicep`.
 const teamsBot = new TeamsBot();

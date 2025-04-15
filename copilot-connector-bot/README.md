@@ -29,7 +29,7 @@ This sample app showcases how to build a Teams command bot that queries custom d
 - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - An Microsoft 365 account with admin permission. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Minimal path to awesome
 
@@ -53,7 +53,7 @@ This sample app showcases how to build a Teams command bot that queries custom d
 ### Preview the app in Teams
 
 1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
-1. Use Teams Toolkit to [publish your Teams app to your organization](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#publish-to-your-organization).
+1. Use Microsoft 365 Agents Toolkit to [publish your Teams app to your organization](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#publish-to-your-organization).
 
 #### Usage of this sample
 
@@ -77,8 +77,8 @@ This sample app showcases how to build a Teams command bot that queries custom d
 
 | Date         | Author | Comments                               |
 | ------------ | ------ | -------------------------------------- |
-| Sep 8, 2022  | junhan | update to support Teams Toolkit v4.0.0 |
-| Mar 21, 2023 | junhan | update to support Teams Toolkit v5.0.0 |
+| Sep 8, 2022  | junhan | update to support Microsoft 365 Agents Toolkit v4.0.0 |
+| Mar 21, 2023 | junhan | update to support Microsoft 365 Agents Toolkit v5.0.0 |
 
 ## Feedback
 

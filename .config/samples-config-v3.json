@@ -576,7 +576,7 @@
             "shortId": "large-notification",
             "onboardDate": "2023-10-17",
             "title": "Large Scale Notification Bot",
-            "shortDescription": "This sample demonstrates the architecture of a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant.",
+            "shortDescription": "This sample demonstrates the architecture of a Teams notification bot app created by Microsoft 365 Agents Toolkit to send individual chat messages to a large number of users in a tenant.",
             "fullDescription": "This project is a large-scale notification system for Microsoft Teams. It uses Azure Functions for serverless computing and Azure Service Bus for message handling. The system leverages Azure Table Storage for data persistence and Azure Bot Service for interaction with Teams. It also uses Bicep for infrastructure management. The project is structured to handle environment-specific configurations and includes scripts for various tasks like data mocking and app installation. The system is designed to handle large volumes of notifications efficiently and reliably.",
             "types": [
               "Bot"

@@ -23,7 +23,7 @@ export class HelloWorldCommandHandler implements TeamsFxBotCommandHandler {
     const cardJson = new ACData.Template(helloWorldCard).expand({
       $root: {
         title: "Your Hello World App is Running",
-        body: "Congratulations! Your Hello World App is running. Open the documentation below to learn more about how to build applications with the Teams Toolkit.",
+        body: "Congratulations! Your Hello World App is running. Open the documentation below to learn more about how to build applications with the Microsoft 365 Agents Toolkit.",
       },
     });
 

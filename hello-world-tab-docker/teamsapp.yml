@@ -41,7 +41,7 @@ provision:
         - path: infra/azure.bicep # Relative path to teamsfx folder
           parameters: infra/azure.parameters.json # Relative path to teamsfx folder. Placeholders will be replaced with corresponding environment variable before ARM deployment.
           deploymentName: Create-resources-for-tab # Required when deploy ARM template
-      bicepCliVersion: v0.9.1 # Teams Toolkit will download this bicep CLI version from github for you, will use bicep CLI in PATH if you remove this config.
+      bicepCliVersion: v0.9.1 # Microsoft 365 Agents Toolkit will download this bicep CLI version from github for you, will use bicep CLI in PATH if you remove this config.
 
   - uses: aadApp/update # Apply the AAD manifest to an existing AAD app. Will use the object id in manifest file to determine which AAD app to update.
     with:

@@ -23,7 +23,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 
 ## This sample illustrates
 
-- How to use Teams Toolkit to create a Teams tab app.
+- How to use Microsoft 365 Agents Toolkit to create a Teams tab app.
 - How to use TeamsFx SDK to call Azure Functions.
 - How to use TeamsFx SDK in Azure Function to call Graph to get user info.
 
@@ -31,7 +31,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 
 - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 # Note
 - This sample has adopted [On-Behalf-Of Flow](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) to implement SSO.
@@ -47,7 +47,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 - From VS Code:
     1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug in Teams (Edge)` or `Debug in Teams (Chrome)`.
 
-- From Teams Toolkit CLI:
+- From Microsoft 365 Agents Toolkit CLI:
     1. Run command: `teamsapp provision --env local` .
     1. Run command: `teamsapp deploy --env local` .
     1. Run command: `teamsapp preview --env local` .
@@ -59,7 +59,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
     1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
     1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 
-- From Teams Toolkit CLI:
+- From Microsoft 365 Agents Toolkit CLI:
     1. Run command: `teamsapp auth login azure`.
     1. Run command: `teamsapp provision --env dev`.
     1. Run command: `teamsapp deploy --env dev`.
@@ -69,7 +69,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 - From VS Code:
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 
-- From Teams Toolkit CLI:
+- From Microsoft 365 Agents Toolkit CLI:
     1. Run command: `teamsapp preview --env dev`.
 
 ### Run the app locally with proxy
@@ -82,8 +82,8 @@ In some scenarios, it is helpful to skip the login and authentication flow and t
 
 |Date| Author| Comments|
 |---|---|---|
-|May 18, 2022| hund030 | update to support Teams Toolkit v4.0.0|
-|Dec 8, 2022| hund030 | update to support Teams Toolkit v5.0.0|
+|May 18, 2022| hund030 | update to support Microsoft 365 Agents Toolkit v4.0.0|
+|Dec 8, 2022| hund030 | update to support Microsoft 365 Agents Toolkit v5.0.0|
 |Mar 11, 2024| xzf0587 | update to support proxy|
 
 ## Feedback

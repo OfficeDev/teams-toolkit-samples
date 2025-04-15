@@ -4,7 +4,7 @@
 >  
 > This warning will be removed when the samples are ready for production.
 > 
-This repository contains the sample applications for Microsoft Teams that appear in the Visual Studio Code and Visual Studio sample galleries within the Teams Toolkit extension.
+This repository contains the sample applications for Microsoft Teams that appear in the Visual Studio Code and Visual Studio sample galleries within the Microsoft 365 Agents Toolkit extension.
 
 ## Contributing
 

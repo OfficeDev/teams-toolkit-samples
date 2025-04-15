@@ -9,7 +9,7 @@ The sample app includes common development scenarios when building Teams bot app
 
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 16, 18
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) latest pre-release version.
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) latest pre-release version.
 
 ## Minimal path to awesome
 >Here are the instructions to run the sample in **Visual Studio Code**.

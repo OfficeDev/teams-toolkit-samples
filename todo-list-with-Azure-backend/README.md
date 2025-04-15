@@ -30,7 +30,7 @@ Todo List provides an easy way to manage to-do items in Teams Client. This app h
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
 ## Minimal path to awesome
@@ -62,10 +62,10 @@ To debug the project, you will need to configure an Azure SQL Database to be use
 
 ### Deploy the app to Azure
 
->Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using Teams Toolkit CLI tool, refer to [Try the Sample with Teams Toolkit CLI](cli.md)
+>Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using Microsoft 365 Agents Toolkit CLI tool, refer to [Try the Sample with Microsoft 365 Agents Toolkit CLI](cli.md)
 
 1. Clone the repo to your local workspace or directly download the source code.
-1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
+1. Download [Visual Studio Code](https://code.visualstudio.com) and install [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit).
 1. Open the project in Visual Studio Code.
 1. Open **env/.env.dev.user** file, set value for `SQL_USER_NAME` and `SQL_PASSWORD`
 1. Open the command palette and select `Teams: Provision`. You will be asked to input admin name and password of SQL. The toolkit will help you to provision Azure SQL.
@@ -101,8 +101,8 @@ To debug the project, you will need to configure an Azure SQL Database to be use
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-| Mar 10, 2022 | junhan | update to support Teams Toolkit v4.0.0 |
-| Mar 21, 2023 | junhan | update to support Teams Toolkit v5.0.0 |
+| Mar 10, 2022 | junhan | update to support Microsoft 365 Agents Toolkit v4.0.0 |
+| Mar 21, 2023 | junhan | update to support Microsoft 365 Agents Toolkit v5.0.0 |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

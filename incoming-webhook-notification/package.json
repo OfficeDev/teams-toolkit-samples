@@ -1,7 +1,7 @@
 {
   "name": "incoming-webhook-notification",
   "version": "1.0.0",
-  "description": "Microsoft Teams Toolkit Incoming Webhook Notification Sample",
+  "description": "Microsoft Microsoft 365 Agents Toolkit Incoming Webhook Notification Sample",
   "author": "Microsoft",
   "engines": {
     "node": "18 || 20 || 22"

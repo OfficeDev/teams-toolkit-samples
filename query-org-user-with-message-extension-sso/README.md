@@ -24,7 +24,7 @@ This is a simple search-based message extension app demonstrating how to integra
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Minimal path to awesome
 > Here are the instructions to run the sample in **Visual Studio Code**.
@@ -36,9 +36,9 @@ This is a simple search-based message extension app demonstrating how to integra
 
 ### Deploy the app to Azure
 Deploy your project to Azure by following these steps:
-1. Open Teams Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
-2. Open Teams Toolkit and click `Provision` in the `LIFECYCLE` section. Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Provision` command.
-3. Open the Teams Toolkit and click `Deploy` in the `LIFECYCLE` section. Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Deploy` command.
+1. Open Microsoft 365 Agents Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
+2. Open Microsoft 365 Agents Toolkit and click `Provision` in the `LIFECYCLE` section. Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Provision` command.
+3. Open the Microsoft 365 Agents Toolkit and click `Deploy` in the `LIFECYCLE` section. Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Deploy` command.
 > Note: Provision Azure cloud resources and deploy to Azure may cause charges to your Azure Subscription.
 ### Preview the app in Teams
 After you have completed the provision and deploy steps in `Deploy the app to Azure` section, you can preview your app in Teams client by following steps below:
@@ -79,7 +79,7 @@ This could be an intermittent issue, to mitigate, try to use a different Microso
 |Date| Author| Comments|
 |---|---|---|
 |Sep 20 2022| wenytang-ms | onboard |
-|Apr 3, 2023| wenytang-ms | update to support Teams Toolkit v5.0.0|
+|Apr 3, 2023| wenytang-ms | update to support Microsoft 365 Agents Toolkit v5.0.0|
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
