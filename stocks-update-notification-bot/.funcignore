@@ -17,6 +17,6 @@ tsconfig.json
 /appPackage/
 /infra/
 m365agents.yml
-teamsapp.*.yml
+m365agents.*.yml
 /env/
 /devTools/

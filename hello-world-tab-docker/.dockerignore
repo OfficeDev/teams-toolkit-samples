@@ -10,4 +10,4 @@ aad.manifest.json
 *.md
 compose*.yaml
 Dockerfile
-teamsapp*.yml
+m365agents*.yml

@@ -28,6 +28,6 @@ env
 infra
 aad.manifest.json
 cli.md
-teamsapp*.yaml
+m365agents*.yaml
 LICENSE
 README.md
