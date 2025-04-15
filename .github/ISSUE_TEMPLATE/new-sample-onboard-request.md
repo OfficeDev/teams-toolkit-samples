@@ -22,7 +22,7 @@ One or two sentences to introduce this sample.
 **Tags:**
 You can give your samples a set of tags so that users can easily locate your sample from a group of samples. Those tags can be:
 - the programming languages you used, e.g. "JS", "TS", "C#" etc.
-- the Teams app type, e.g. "Tab", "Bot", "Message Extension" etc.
+- the app type, e.g. "Tab", "Bot", "Message Extension" etc.
 - the highlighted technics you used, e.g. "React", "Azure Function", "Graph Toolkit", "Teams AI SDK", "Live Share SDK" etc.
 - the business scenarios of your sample, e.g. "Team Dashboard", "Productivity", "Notification", "Q&A" etc.
 You can customize the tag you used for your sample, the recommended number of tags is less than 5.
