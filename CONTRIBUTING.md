@@ -37,8 +37,8 @@ Some explaination of how to perform each step in above process:
       - thumbnail.png
       - sampleDemo.gif
   - README.md
-  - teamsapp.yml 
-  - teamsapp.local.yml
+  - m365agents.yml 
+  - m365agents.local.yml
 ```
 The thumbnail.png is a static screenshot of the sample illustrating what users will see after the app is running. The sampleDemo.gif is a dynamic and very short gif demonstrating major usage of the sample.
 > Suggested size of pic/gif is *1600x920/800x460* (If you have it with other sizes, please keep same image ratio for other sizes and don't forget to consider the resolution. Your gif or pics must fit the entire Teams client UI into the image.

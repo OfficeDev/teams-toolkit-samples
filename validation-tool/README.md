@@ -23,11 +23,11 @@ Following files are required:
   * env/
     * .env.dev
     * .env.local
-  * teamsapp.yml
-  * teamsapp.local.yml
+  * m365agents.yml
+  * m365agents.local.yml
   * README.md
 ### Teams App YAML
-The content of teamsapp.yml should follow these rules:
+The content of m365agents.yml should follow these rules:
 * There is no `projectId` defined.
 * "teamsApp/create", "teamsApp/zipAppPackage", "teamsApp/update" actions are defined in `provision` lifecycle.
 * `deploy` lifecycle is defined

@@ -28,7 +28,7 @@ if (shouldHookForProxy()) {
 }
 
 // Function extension will check the expiration time of the token, so set it to maximum timestamp.
-// The function extension will check the azp claim of the token, so set it to a valid value which should be contained in the ALLOWED_APP_IDS in teamsapp.local.yml.
+// The function extension will check the azp claim of the token, so set it to a valid value which should be contained in the ALLOWED_APP_IDS in m365agents.local.yml.
 function generateMockedAccessToken(): string {
   const header = {
     typ: "JWT",

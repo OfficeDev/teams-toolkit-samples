@@ -12,11 +12,11 @@ describe('validateTeamsAppYaml()', () => {
     mock.restore();
   });
 
-  test('teamsapp.yml is valid', async () => {
+  test('m365agents.yml is valid', async () => {
     const validYamlContent = await fs.readFile(path.join(__dirname, "../data/m365agents-valid.yml"), "utf8");
     mock({
       "testFolder": {
-        "teamsapp.yml": validYamlContent,
+        "m365agents.yml": validYamlContent,
       },
     });
 
@@ -26,7 +26,7 @@ describe('validateTeamsAppYaml()', () => {
     expect(result.passed.length).toBe(6);
   });
 
-  test('teamsapp.yml does not exist', async () => {
+  test('m365agents.yml does not exist', async () => {
     mock({
       "testFolder": {},
     });
@@ -36,11 +36,11 @@ describe('validateTeamsAppYaml()', () => {
     expect(result.passed.length).toBe(0);
   });
 
-  test('teamsapp.yml has projectId', async () => {
+  test('m365agents.yml has projectId', async () => {
     const validYamlContent = await fs.readFile(path.join(__dirname, "../data/m365agents-with-projectId.yml"), "utf8");
     mock({
       "testFolder": {
-        "teamsapp.yml": validYamlContent,
+        "m365agents.yml": validYamlContent,
       },
     });
 
@@ -48,14 +48,14 @@ describe('validateTeamsAppYaml()', () => {
     expect(result.name).toEqual("teamsapp.yaml");
     expect(result.failed.length).toBe(1);
     expect(result.passed.length).toBe(5);
-    expect(result.failed[0]).toEqual("Project should NOT have projectId in teamsapp.yml.");
+    expect(result.failed[0]).toEqual("Project should NOT have projectId in m365agents.yml.");
   });
 
-  test('teamsapp.yml has no sample tag', async () => {
+  test('m365agents.yml has no sample tag', async () => {
     const validYamlContent = await fs.readFile(path.join(__dirname, "../data/m365agents-without-sampleTag.yml"), "utf8");
     mock({
       "testFolder": {
-        "teamsapp.yml": validYamlContent,
+        "m365agents.yml": validYamlContent,
       },
     });
 
@@ -66,11 +66,11 @@ describe('validateTeamsAppYaml()', () => {
     expect(result.failed[0]).toEqual("Project should have sampleTag with format 'repo:name'.");
   });
 
-  test('teamsapp.yml is external sample tag', async () => {
+  test('m365agents.yml is external sample tag', async () => {
     const validYamlContent = await fs.readFile(path.join(__dirname, "../data/m365agents-external-sample.yml"), "utf8");
     mock({
       "testFolder": {
-        "teamsapp.yml": validYamlContent,
+        "m365agents.yml": validYamlContent,
       },
     });
 
@@ -82,11 +82,11 @@ describe('validateTeamsAppYaml()', () => {
     expect(result.warning[0]).toEqual("Project is an external sample.");
   });
 
-  test('teamsapp.yml has invalid actions', async () => {
+  test('m365agents.yml has invalid actions', async () => {
     const validYamlContent = await fs.readFile(path.join(__dirname, "../data/m365agents-invalid-actions.yml"), "utf8");
     mock({
       "testFolder": {
-        "teamsapp.yml": validYamlContent,
+        "m365agents.yml": validYamlContent,
       },
     });
 
@@ -96,6 +96,6 @@ describe('validateTeamsAppYaml()', () => {
     expect(result.passed.length).toBe(3);
     expect(result.failed[0]).toEqual("Project should have 'teamsApp/create' action which has TEAMS_APP_ID env variable.");
     expect(result.failed[1]).toEqual("Project should have 'teamsApp/update' action in provision stage.");
-    expect(result.failed[2]).toEqual("Project should have 'deploy' stage in teamsapp.yml.");
+    expect(result.failed[2]).toEqual("Project should have 'deploy' stage in m365agents.yml.");
   });
 });
