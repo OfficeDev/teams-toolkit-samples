@@ -2,11 +2,11 @@
   {
     "name": "officedev-teamsfx-samples-tab-graph-connector-app",
     "source": "officeDev",
-    "title": "Graph Connector App",
-    "shortDescription": "Showcases how to build custom Graph Connector.",
+    "title": "Copilot Connector App",
+    "shortDescription": "Showcases how to build custom Copilot Connector.",
     "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/graph-connector-app",
     "longDescription": [
-      "This sample app showcases how to build custom Graph Connector with Azure Functions and query data using Microsoft Graph Client and TeamsFx SDK."
+      "This sample app showcases how to build custom Copilot Connector with Azure Functions and query data using Microsoft Graph Client and TeamsFx SDK."
     ],
     "creationDateTime": "2022-04-18",
     "updateDateTime": "2023-10-24",
@@ -33,7 +33,7 @@
         "type": "image",
         "order": 100,
         "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/graph-connector-app/assets/thumbnail.png",
-        "alt": "Graph Connector App"
+        "alt": "Copilot Connector App"
       }
     ],
     "authors": [

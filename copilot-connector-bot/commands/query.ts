@@ -12,7 +12,7 @@ export class QueryCommand extends SSOCommand {
   }
 
   async query(context: TurnContext, text: string, ssoToken: string) {
-    await context.sendActivity("Querying data from Microsoft Graph connectors ...");
+    await context.sendActivity("Querying data from Microsoft Copilot Connectors ...");
 
     try {
       const graphQueryService = new GraphQueryService(ssoToken);
@@ -49,7 +49,7 @@ export class QueryCommand extends SSOCommand {
       }
     } catch (error) {
       if (error?.message && error.message.includes("No connection setting found")) {
-        return await context.sendActivity("No connection found! Please make sure Graph Connector is turned on in Microsoft Teams admin center and wait for connection is created.");
+        return await context.sendActivity("No connection found! Please make sure Copilot Connector is turned on in Microsoft Teams admin center and wait for connection is created.");
       }
       throw error;
     }
