@@ -21,7 +21,7 @@ This app template implements action command that allows you to present your user
 
 **Congratulations**! You are running an application that can share information in rich format by creating an Adaptive Card in Teams App Test Tool.
 
-![action-ME](https://github.com/OfficeDev/TeamsFx/assets/9698542/c0afbd89-7fbb-4e73-98a2-f018be4ca88c)
+![action-ME](https://github.com/user-attachments/assets/b49b530f-9909-4557-b15a-fde9565fc40c)
 
 ## What's included in the template
 
