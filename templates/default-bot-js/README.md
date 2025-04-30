@@ -26,7 +26,7 @@ A bot interaction can be a quick question and answer, or it can be a complex con
 
 **Congratulations**! You are running an application that can now interact with users in Teams App Test Tool:
 
-![basic bot](https://github.com/OfficeDev/TeamsFx/assets/9698542/bdf87809-7dd7-4926-bff0-4546ada25e4b)
+![basic bot](https://github.com/user-attachments/assets/eba76665-5210-403e-9c7c-da10e805fd32)
 
 ## What's included in the template
 

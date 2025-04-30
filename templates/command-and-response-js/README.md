@@ -25,7 +25,7 @@ The app template is built using the TeamsFx SDK, which provides a simple set of 
 
 The bot will respond to the `helloWorld` command with an Adaptive Card:
 
-![Command and Response in Test Tool](https://github.com/OfficeDev/TeamsFx/assets/9698542/2636fd91-ec7f-4740-a5ea-b272575b0b7c)
+![Command and Response in Test Tool](https://github.com/user-attachments/assets/c17a8565-7607-49a7-93e4-43eccf24da96)
 
 ## What's included in the template
 
