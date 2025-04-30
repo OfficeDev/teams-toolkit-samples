@@ -71,7 +71,7 @@ export async function connection(
     } else {
       context.error(e);
       let error =
-        "Failed to create a connection for Graph connector: " + e.toString();
+        "Failed to create a connection for Copilot Connector: " + e.toString();
       if (e?.statusCode === 401) {
         error +=
           " -- Please make sure you have done 'Admin Consent' with 'ExternalConnection.ReadWrite.OwnedBy' and 'ExternalItem.ReadWrite.All' application permissions for your AAD App";

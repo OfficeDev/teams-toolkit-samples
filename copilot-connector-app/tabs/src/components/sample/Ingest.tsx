@@ -84,7 +84,7 @@ export function Ingest() {
 
   return (
     <div>
-      <h2>2. Ingest Sample Data into Graph Connector</h2>
+      <h2>2. Ingest Sample Data into Copilot Connector</h2>
       <p>
         An Azure Functions app is running. Click below button to ingest data
         from the{" "}

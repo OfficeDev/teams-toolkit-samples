@@ -32,7 +32,7 @@ export function Welcome() {
             <Image src="hello.png" />
             <h1 className="center">Hello, {data.profile.displayName}!</h1>
             <p className="center">
-              Let's build your first custom Microsoft Graph connector.
+              Let's build your first custom Microsoft Copilot Connector.
             </p>
             <div className="sections">
               <Introduce />
@@ -44,7 +44,7 @@ export function Welcome() {
       )}
       {!loading && !data && (
         <div className="auth">
-          <h2>Welcome to Graph Connector App!</h2>
+          <h2>Welcome to Copilot Connector App!</h2>
           <Button appearance="primary" disabled={loading} onClick={reload}>
             Start
           </Button>
