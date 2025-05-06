@@ -46,7 +46,7 @@
                         },
                         {
                             "title": "query",
-                            "description": "Query data from Microsoft Copilot Connectors by calling Microsoft Graph API with SSO"
+                            "description": "Query data from Microsoft Copilot connectors by calling Microsoft Graph API with SSO"
                         }
                     ]
                 }

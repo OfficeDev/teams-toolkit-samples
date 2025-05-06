@@ -5,24 +5,24 @@ languages:
 products:
   - office-teams
   - office
-name: Copilot Connector Bot
+name: Copilot connector Bot
 urlFragment: officedev-teamsfx-samples-bot-graph-connector-bot
-description: This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Copilot Connector.
+description: This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Copilot connector.
 extensions:
   createdDate: "2023-11-07"
 ---
 
-# Getting Started with Copilot Connector Bot
+# Getting Started with Copilot connector Bot
 
-This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Copilot Connector.
+This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Copilot connector.
 
-![Copilot Connector Overview](images/graph-connector-bot-demo.gif)
+![Copilot connector Overview](images/graph-connector-bot-demo.gif)
 
 ## This sample illustrates
 
-- How to handle webhook notification when Copilot Connector is turned on or off in Teams Admin Center.
-- How to use Microsoft Graph API to integrate with Microsoft Copilot Connector.
-- How to use TeamsFx SDK to build bot to query data from Microsoft Copilot Connector.
+- How to handle webhook notification when Copilot connector is turned on or off in Teams Admin Center.
+- How to use Microsoft Graph API to integrate with Microsoft Copilot connector.
+- How to use TeamsFx SDK to build bot to query data from Microsoft Copilot connector.
 
 ## Prerequisite to use this sample
 
@@ -57,7 +57,7 @@ This sample app showcases how to build a Teams command bot that queries custom d
 
 #### Usage of this sample
 
-1. Navigate to 'Copilot Connector' section of the Teams app in [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and click 'Grant permissions'.
+1. Navigate to 'Copilot connector' section of the Teams app in [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and click 'Grant permissions'.
 
    ![Grant permissions](images/grant-permission.png)
 
@@ -67,11 +67,11 @@ This sample app showcases how to build a Teams command bot that queries custom d
 
    ![Connection ready](images/connection-ready.png)
 
-1. In Teams, type `query <query string>` in bot conversation to query data from Copilot Connector.
+1. In Teams, type `query <query string>` in bot conversation to query data from Copilot connector.
 
    ![Query](images/query.png)
 
-1. In 'Copilot Connector' section of Teams Admin Center, you could toggle the 'Connection status' to turn off Copilot Connector, then the connection will be deleted.
+1. In 'Copilot connector' section of Teams Admin Center, you could toggle the 'Connection status' to turn off Copilot connector, then the connection will be deleted.
 
 ## Version History
 

@@ -2,11 +2,11 @@
   {
     "name": "officedev-teamsfx-samples-bot-graph-connector-bot",
     "source": "officeDev",
-    "title": "Copilot Connector Bot",
-    "shortDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Copilot Connector.",
+    "title": "Copilot connector Bot",
+    "shortDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Copilot connector.",
     "url": "https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/graph-connector-bot",
     "longDescription": [
-      "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Copilot Connector."
+      "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Copilot connector."
     ],
     "creationDateTime": "2023-11-07",
     "updateDateTime": "2023-10-26",
@@ -33,7 +33,7 @@
         "type": "image",
         "order": 100,
         "url": "https://raw.githubusercontent.com/OfficeDev/TeamsFx-Samples/dev/graph-connector-bot/assets/thumbnail.png",
-        "alt": "Copilot Connector Bot"
+        "alt": "Copilot connector Bot"
       }
     ],
     "authors": [
