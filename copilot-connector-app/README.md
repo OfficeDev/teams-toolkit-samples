@@ -5,24 +5,24 @@ languages:
 products:
 - office-teams
 - office
-name: Copilot Connector App
+name: Copilot connector App
 urlFragment: officedev-teamsfx-samples-tab-graph-connector-app
-description: This sample app showcases how to build custom Copilot Connector with Azure Functions and query data using Microsoft Graph Client and TeamsFx SDK.
+description: This sample app showcases how to build custom Copilot connector with Azure Functions and query data using Microsoft Graph Client and TeamsFx SDK.
 extensions:
   createdDate: "2022-04-18"
 ---
-# Getting Started with Copilot Connector App
+# Getting Started with Copilot connector App
 
-This sample app showcases how to build custom Copilot Connector with Azure Functions and query data using Microsoft Graph Client and TeamsFx SDK.
+This sample app showcases how to build custom Copilot connector with Azure Functions and query data using Microsoft Graph Client and TeamsFx SDK.
 
-![Copilot Connector Overview](assets/sampleDemo.gif)
+![Copilot connector Overview](assets/sampleDemo.gif)
 
 > Note: This sample will only provision [single tenant](https://learn.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Azure Active Directory app. For multi-tenant support, please refer to this [wiki](https://aka.ms/teamsfx-multi-tenant).
 
 ## This sample illustrates
 - How to use TeamsFx to build frontend hosting on Azure for your tab app.
 - How to use TeamsFx to build backend hosting on Azure for your tab app.
-- How to use Microsoft Graph API to build a custom Copilot Connector.
+- How to use Microsoft Graph API to build a custom Copilot connector.
 
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
@@ -69,17 +69,17 @@ This sample app showcases how to build custom Copilot Connector with Azure Funct
 
         ![Admin Consent](images/admin-consent.png)
 
-1. You could try to ingest data into custom Copilot Connector.
+1. You could try to ingest data into custom Copilot connector.
 
     > **Note**: It may take about several minutes for the first time.
 
-    > In addition, you could go to [Microsoft 365 admin center](https://admin.microsoft.com/Adminportal/Home#/MicrosoftSearch/connectors) to see the status of custom Copilot Connector.
+    > In addition, you could go to [Microsoft 365 admin center](https://admin.microsoft.com/Adminportal/Home#/MicrosoftSearch/connectors) to see the status of custom Copilot connector.
 
     > If you meet with error of `400` status code, you could try to delete the connection in [Microsoft 365 admin center](https://admin.microsoft.com/Adminportal/Home#/MicrosoftSearch/connectors) and ingest data again.
 
     ![Ingest](images/ingest.png)
 
-1. You could try to query data from custom Copilot Connector.
+1. You could try to query data from custom Copilot connector.
 
     ![Query](images/query.png)
 

@@ -5,18 +5,18 @@
       "type": "TextBlock",
       "size": "Medium",
       "weight": "Bolder",
-      "text": "Your Copilot Connector Bot is Running"
+      "text": "Your Copilot connector Bot is Running"
     },
     {
       "type": "TextBlock",
-      "text": "Congratulations! Your Copilot Connector Bot is running. Click the documentation below to learn more about Microsoft Copilot Connectors and the Teams Toolkit.",
+      "text": "Congratulations! Your Copilot connector Bot is running. Click the documentation below to learn more about Microsoft Copilot connectors and the Teams Toolkit.",
       "wrap": true
     }
   ],
   "actions": [
     {
       "type": "Action.OpenUrl",
-      "title": "Microsoft Copilot Connectors Docs",
+      "title": "Microsoft Copilot connectors Docs",
       "url": "https://developer.microsoft.com/en-us/graph/connectors"
     },
     {

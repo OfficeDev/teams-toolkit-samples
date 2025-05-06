@@ -99,7 +99,7 @@ export function Query() {
   return (
     <div className="query page">
       <div className="section-margin">
-        <h2>3. Query Data from Copilot Connector</h2>
+        <h2>3. Query Data from Copilot connector</h2>
         <Input
           className="search"
           role="search"
