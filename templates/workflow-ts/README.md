@@ -28,11 +28,11 @@ The bot will respond by updating the existing Adaptive Card to show the workflow
 
 Here is a screen shot of the application running:
 
-![Responds to command](https://github.com/OfficeDev/TeamsFx/assets/9698542/94173beb-2fff-44fa-87dc-f686677da631)
+![Responds to command](https://github.com/user-attachments/assets/6425b143-44db-43b2-a42e-db28137cba68)
 
 When you click the `DoStuff` button, the above adaptive card will be updated to a new card as shown below:
 
-![Responds to card action](https://github.com/OfficeDev/TeamsFx/assets/9698542/521ff12d-726c-4087-825a-112547cad836)
+![Responds to card action](https://github.com/user-attachments/assets/929721b6-1be5-4ef8-bc91-2154363886e2)
 
 ## What's included in the template
 

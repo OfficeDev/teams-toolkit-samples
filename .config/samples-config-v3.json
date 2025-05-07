@@ -302,12 +302,12 @@
             "suggested": false
         },
         {
-            "id": "graph-connector-app",
-            "shortId": "graph-connector",
+            "id": "copilot-connector-app",
+            "shortId": "copilot-connector",
             "onboardDate": "2022-04-18",
-            "title": "Graph Connector App",
-            "shortDescription": "Showcases how to build custom Graph Connector",
-            "fullDescription": "This project is a Microsoft Teams application that provides a custom Graph Connector built with Azure Functions. The main user scenario involves querying data using the Microsoft Graph Client and TeamsFx SDK. The application can build both frontend and backend hosting on Azure for a Teams tab app, and it uses Single Sign-On (SSO) for authentication. It leverages the Microsoft Graph Toolkit for UI components related to Microsoft Graph. The application is dependent on Azure Functions for serverless computing and Azure Active Directory for identity services. It also uses the TeamsFx SDK to facilitate the development of Teams applications. The application is designed to be deployed on Azure, utilizing its cloud services for hosting and data management.",
+            "title": "Copilot connector App",
+            "shortDescription": "Showcases how to build custom Copilot connector",
+            "fullDescription": "This project is a Microsoft Teams application that provides a custom Copilot connector built with Azure Functions. The main user scenario involves querying data using the Microsoft Graph Client and TeamsFx SDK. The application can build both frontend and backend hosting on Azure for a Teams tab app, and it uses Single Sign-On (SSO) for authentication. It leverages the Microsoft Graph Toolkit for UI components related to Microsoft Graph. The application is dependent on Azure Functions for serverless computing and Azure Active Directory for identity services. It also uses the TeamsFx SDK to facilitate the development of Teams applications. The application is designed to be deployed on Azure, utilizing its cloud services for hosting and data management.",
             "types": [
                 "Tab"
             ],
@@ -315,7 +315,8 @@
                 "Tab",
                 "Azure Functions",
                 "TS",
-                "SSO"
+                "SSO",
+                "Copilot connector"
             ],
             "time": "10min to run",
             "configuration": "Manual configurations required",
@@ -594,19 +595,19 @@
             "suggested": true
         },
         {
-            "id": "graph-connector-bot",
-            "shortId": "graph-connector-bot",
+            "id": "copilot-connector-bot",
+            "shortId": "copilot-connector-bot",
             "onboardDate": "2023-11-07",
-            "title": "Graph Connector Bot",
-            "shortDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.",
-            "fullDescription": "This project is a Graph Connector Bot for Microsoft Teams. It uses Azure Bot Service and Azure Active Directory for bot registration and authentication. The bot leverages Adaptive Cards for interactive messaging. The project is configured with Azure Resource Manager templates for infrastructure setup. The Teams app package is built and validated using TeamsFx actions, and the app is published to the Teams Admin Center for review and approval. The project uses environment variables for configuration and supports multiple environments.",
+            "title": "Copilot connector Bot",
+            "shortDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Copilot connector.",
+            "fullDescription": "This project is a Copilot connector Bot for Microsoft Teams. It uses Azure Bot Service and Azure Active Directory for bot registration and authentication. The bot leverages Adaptive Cards for interactive messaging. The project is configured with Azure Resource Manager templates for infrastructure setup. The Teams app package is built and validated using TeamsFx actions, and the app is published to the Teams Admin Center for review and approval. The project uses environment variables for configuration and supports multiple environments.",
             "types": [
               "Bot"
             ],
             "tags": [
               "Bot",
               "TS",
-              "Microsoft Graph Connectors"
+              "Copilot connector"
             ],
             "time": "30min to run",
             "configuration": "Manual configurations required",
@@ -672,15 +673,15 @@
             "id": "gc-nodejs-typescript-food-catalog",
             "shortId": "gc-food-catalog",
             "onboardDate": "2023-11-15",
-            "title": "Ingest Custom API Data into Microsoft 365 with a Microsoft Graph Connector",
-            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph.",
-            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content on a schedule. It also includes the simplified admin experience which means that admins can toggle the connector on and off from the Microsoft Teams admin center.",
+            "title": "Ingest Custom API Data into Microsoft 365 with a Microsoft Copilot connector",
+            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph.",
+            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content on a schedule. It also includes the simplified admin experience which means that admins can toggle the connector on and off from the Microsoft Teams admin center.",
             "types": [
               "Tab"
             ],
             "tags": [
               "TS",
-              "Microsoft Graph Connectors",
+              "Copilot connector",
               "Azure Functions"
             ],
             "time": "5min to run",
@@ -840,15 +841,15 @@
             "id": "nodejs-typescript-policies",
             "shortId": "nodejs-ts-policies",
             "onboardDate": "2024-09-24",
-            "title": "Policies Graph connector",
-            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph.",
-            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content.",
+            "title": "Policies Copilot connector",
+            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph.",
+            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content.",
             "types": [
-                "Microsoft Graph Connector"
+                "Copilot connector"
             ],
             "tags": [
               "TS",
-              "Graph Connector",
+              "Copilot connector",
               "Azure Function",
               "Copilot for Microsoft 365"
             ],
