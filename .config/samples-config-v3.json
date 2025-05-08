@@ -674,8 +674,8 @@
             "shortId": "gc-food-catalog",
             "onboardDate": "2023-11-15",
             "title": "Ingest Custom API Data into Microsoft 365 with a Microsoft Copilot connector",
-            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph.",
-            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content on a schedule. It also includes the simplified admin experience which means that admins can toggle the connector on and off from the Microsoft Teams admin center.",
+            "shortDescription": "This sample project uses Microsoft 365 Agents Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph.",
+            "fullDescription": "This sample project uses Microsoft 365 Agents Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content on a schedule. It also includes the simplified admin experience which means that admins can toggle the connector on and off from the Microsoft Teams admin center.",
             "types": [
               "Tab"
             ],
@@ -842,8 +842,8 @@
             "shortId": "nodejs-ts-policies",
             "onboardDate": "2024-09-24",
             "title": "Policies Copilot connector",
-            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph.",
-            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content.",
+            "shortDescription": "This sample project uses Microsoft 365 Agents Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph.",
+            "fullDescription": "This sample project uses Microsoft 365 Agents Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Copilot connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content.",
             "types": [
                 "Copilot connector"
             ],
