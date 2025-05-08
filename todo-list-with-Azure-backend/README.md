@@ -101,8 +101,8 @@ To debug the project, you will need to configure an Azure SQL Database to be use
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-| Mar 10, 2022 | junhan | update to support Microsoft 365 Agents Toolkit v4.0.0 |
-| Mar 21, 2023 | junhan | update to support Microsoft 365 Agents Toolkit v5.0.0 |
+| Mar 10, 2022 | junhan | update to support Teams Toolkit v4.0.0 |
+| Mar 21, 2023 | junhan | update to support Teams Toolkit v5.0.0 |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

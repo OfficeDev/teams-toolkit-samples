@@ -88,7 +88,7 @@ After you have completed the provision and deploy steps in `Deploy the app to Az
 
 | Date         | Author   | Comments                               |
 | ------------ | -------- | -------------------------------------- |
-| Jan 8, 2024  | Hui Miao | Onboard sample in Microsoft 365 Agents Toolkit V5.0.0 |
+| Jan 8, 2024  | Hui Miao | Onboard sample in Teams Toolkit V5.0.0 |
 | Feb 27, 2024 | Hui      | Upgrade Azure Function V4              |
 
 ## Feedback

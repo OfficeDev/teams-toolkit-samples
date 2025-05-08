@@ -65,8 +65,8 @@ After you have completed the provision and deploy steps in `Deploy the app to Az
 
 | Date         | Author | Comments                               |
 | ------------ | ------ | -------------------------------------- |
-| Dec 15, 2022 | Kai    | update to support Microsoft 365 Agents Toolkit V4.2.0 |
-| Mar 16, 2023 | Kai    | update to support Microsoft 365 Agents Toolkit V5.0.0 |
+| Dec 15, 2022 | Kai    | update to support Teams Toolkit V4.2.0 |
+| Mar 16, 2023 | Kai    | update to support Teams Toolkit V5.0.0 |
 
 ## Feedback
 

@@ -94,8 +94,8 @@ To achieve full SSO experience, we will recommend you to implement OBO flow to p
 
 | Date         | Author  | Comments                               |
 | ------------ | ------- | -------------------------------------- |
-| Jul 17, 2022 | aycabas | update to support Microsoft 365 Agents Toolkit v4.0.0 |
-| Mar 17, 2023 | rentu   | update to support Microsoft 365 Agents Toolkit v5.0.0 |
+| Jul 17, 2022 | aycabas | update to support Teams Toolkit v4.0.0 |
+| Mar 17, 2023 | rentu   | update to support Teams Toolkit v5.0.0 |
 
 ## Feedback
 

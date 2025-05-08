@@ -82,8 +82,8 @@ In some scenarios, it is helpful to skip the login and authentication flow and t
 
 |Date| Author| Comments|
 |---|---|---|
-|May 18, 2022| hund030 | update to support Microsoft 365 Agents Toolkit v4.0.0|
-|Dec 8, 2022| hund030 | update to support Microsoft 365 Agents Toolkit v5.0.0|
+|May 18, 2022| hund030 | update to support Teams Toolkit v4.0.0|
+|Dec 8, 2022| hund030 | update to support Teams Toolkit v5.0.0|
 |Mar 11, 2024| xzf0587 | update to support proxy|
 
 ## Feedback

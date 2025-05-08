@@ -58,10 +58,10 @@ To trigger the message extension in Outlook:
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-| Nov 9, 2021 | swatDong | add to support Microsoft 365 Agents Toolkit v2.10.0 |
-| Apr 18, 2022 | kuojianlu | update to support Microsoft 365 Agents Toolkit v3.8.0 |
-| Oct 17, 2022 | swatDong | update to support Microsoft 365 Agents Toolkit v4.1.0 |
-| Mar 28, 2023 | kuojianlu | update to support Microsoft 365 Agents Toolkit v5.0.0 |
+| Nov 9, 2021 | swatDong | add to support Teams Toolkit v2.10.0 |
+| Apr 18, 2022 | kuojianlu | update to support Teams Toolkit v3.8.0 |
+| Oct 17, 2022 | swatDong | update to support Teams Toolkit v4.1.0 |
+| Mar 28, 2023 | kuojianlu | update to support Teams Toolkit v5.0.0 |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

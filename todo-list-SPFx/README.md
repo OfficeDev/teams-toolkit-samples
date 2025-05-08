@@ -100,8 +100,8 @@ Debug the app with Teams workbench
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-|Apr 21, 2022| huihuiwu | Update to support Microsoft 365 Agents Toolkit v4.0.0|
-|Mar 23, 2023| huihuiwu | Update to support Microsoft 365 Agents Toolkit v5.0.0|
+|Apr 21, 2022| huihuiwu | Update to support Teams Toolkit v4.0.0|
+|Mar 23, 2023| huihuiwu | Update to support Teams Toolkit v5.0.0|
 |Dec 5, 2023| yuqzho | Upgrade to SPFx 1.18.2 |
 
 ## Feedback

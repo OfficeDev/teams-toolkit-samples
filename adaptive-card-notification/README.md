@@ -106,8 +106,8 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 
 | Date         | Author      | Comments                               |
 | ------------ | ----------- | -------------------------------------- |
-| May 23, 2022 | XiaofuHuang | update to support Microsoft 365 Agents Toolkit V4.0.0 |
-| Dec 12, 2022 | XiaofuHuang | update to support Microsoft 365 Agents Toolkit v5.0.0 |
+| May 23, 2022 | XiaofuHuang | update to support Teams Toolkit V4.0.0 |
+| Dec 12, 2022 | XiaofuHuang | update to support Teams Toolkit v5.0.0 |
 
 ## Feedback
 

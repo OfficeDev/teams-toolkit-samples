@@ -41,7 +41,7 @@
 
 |Date| Author| Comments|
 |---|---|---|
-|Aug 09, 2023| huihuiwu | Onboard to Microsoft 365 Agents Toolkit |
+|Aug 09, 2023| huihuiwu | Onboard to Teams Toolkit |
 |Dec 5, 2023| yuqzho | Upgrade to SPFx 1.18.2 |
 
 ## Feedback

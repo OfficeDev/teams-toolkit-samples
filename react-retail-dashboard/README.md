@@ -50,7 +50,7 @@ You could set up your own back-end REST API project as Azure Function to use rea
 
 |Date| Author| Comments|
 |---|---|---|
-|Sep 15, 2023| huihuiwu | Onboard to Microsoft 365 Agents Toolkit|
+|Sep 15, 2023| huihuiwu | Onboard to Teams Toolkit|
 |Dec 5, 2023| yuqzho | Upgrade to SPFx 1.18.2|
 
 ## Feedback

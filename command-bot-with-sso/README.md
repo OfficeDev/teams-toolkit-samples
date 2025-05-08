@@ -74,8 +74,8 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 
 | Date         | Author | Comments                               |
 | ------------ | ------ | -------------------------------------- |
-| Sep 20, 2022 | rentu  | update to support Microsoft 365 Agents Toolkit v4.0.0 |
-| Mar 17, 2023 | rentu  | update to support Microsoft 365 Agents Toolkit v5.0.0 |
+| Sep 20, 2022 | rentu  | update to support Teams Toolkit v4.0.0 |
+| Mar 17, 2023 | rentu  | update to support Teams Toolkit v5.0.0 |
 
 ## Feedback
 

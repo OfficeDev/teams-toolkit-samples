@@ -66,7 +66,7 @@ Please follow this [document](https://aka.ms/teamsfx-add-sso) to add single sign
 
 |Date| Author| Comments|
 |---|---|---|
-|Dec 9, 2022| hund030 | Onboard sample in Microsoft 365 Agents Toolkit V5.0.0|
+|Dec 9, 2022| hund030 | Onboard sample in Teams Toolkit V5.0.0|
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

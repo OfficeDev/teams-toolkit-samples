@@ -102,7 +102,7 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
 
 |Date| Author| Comments|
 |---|---|---|
-|Feb 27, 2024| hund030 | onboard sample in Microsoft 365 Agents Toolkit V5.0.0|
+|Feb 27, 2024| hund030 | onboard sample in Teams Toolkit V5.0.0|
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

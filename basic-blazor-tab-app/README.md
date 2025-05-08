@@ -44,7 +44,7 @@ You can create and automatically configure cloud resources for hosting your app 
 ## Version History
 | Date         | Author        | Comments                               |
 | ------------ | ------------- | -------------------------------------- |
-| Jun 6, 2023  | ZhijieHuang   | Onboard sample in Microsoft 365 Agents Toolkit V5.0.0 |
+| Jun 6, 2023  | ZhijieHuang   | Onboard sample in Teams Toolkit V5.0.0 |
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!

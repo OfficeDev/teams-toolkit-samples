@@ -77,8 +77,8 @@ This sample app showcases how to build a Teams command bot that queries custom d
 
 | Date         | Author | Comments                               |
 | ------------ | ------ | -------------------------------------- |
-| Sep 8, 2022  | junhan | update to support Microsoft 365 Agents Toolkit v4.0.0 |
-| Mar 21, 2023 | junhan | update to support Microsoft 365 Agents Toolkit v5.0.0 |
+| Sep 8, 2022  | junhan | update to support Teams Toolkit v4.0.0 |
+| Mar 21, 2023 | junhan | update to support Teams Toolkit v5.0.0 |
 
 ## Feedback
 

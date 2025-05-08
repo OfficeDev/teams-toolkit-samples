@@ -81,8 +81,8 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
 
 | Date         | Author     | Comments                               |
 | ------------ | ---------- | -------------------------------------- |
-| Apr 19, 2022 | IvanJobs   | update to support Microsoft 365 Agents Toolkit v4.0.0 |
-| Dec 7, 2022  | yukun-dong | update to support Microsoft 365 Agents Toolkit v5.0.0 |
+| Apr 19, 2022 | IvanJobs   | update to support Teams Toolkit v4.0.0 |
+| Dec 7, 2022  | yukun-dong | update to support Teams Toolkit v5.0.0 |
 | Feb 22, 2024 | yukun-dong | update card to adaptive card           |
 
 ## Feedback
