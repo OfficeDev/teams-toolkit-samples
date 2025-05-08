@@ -29,7 +29,7 @@ _storage_emulator
 .localConfigs.playground
 .localConfigs
 .notification.localstore.json
-.notification.testtoolstore.json
+.notification.playgroundstore.json
 
 # production
 /build
