@@ -41,7 +41,7 @@ This sample app showcases how to build a Teams command bot that queries custom d
 1. Press "F5" to open a browser window and then select your package to view sample app.
 1. Find the Teams package in `build\appPackage\appPackage.local.zip`.
 1. Navigate to [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and upload the Teams package.
-   > **Note**: If you are testing in a new debug session again, you need to delete the existing Teams app in Teams Admin Center and upload a new one, since the tunnel endpoint will change when you start a new debug session.
+   > **Note**: If you are testing in a new debug session again, you need to delete the existing app in Teams Admin Center and upload a new one, since the tunnel endpoint will change when you start a new debug session.
 
 ### Deploy the app to Azure
 
@@ -53,11 +53,11 @@ This sample app showcases how to build a Teams command bot that queries custom d
 ### Preview the app in Teams
 
 1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
-1. Use Microsoft 365 Agents Toolkit to [publish your Teams app to your organization](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#publish-to-your-organization).
+1. Use Microsoft 365 Agents Toolkit to [publish your app to your organization](https://docs.microsoft.com/en-us/microsoftteams/platform/toolkit/publish#publish-to-your-organization).
 
 #### Usage of this sample
 
-1. Navigate to 'Copilot connector' section of the Teams app in [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and click 'Grant permissions'.
+1. Navigate to 'Copilot connector' section of the app in [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps), and click 'Grant permissions'.
 
    ![Grant permissions](images/grant-permission.png)
 
