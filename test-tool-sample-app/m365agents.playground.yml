@@ -22,6 +22,6 @@ deploy:
   # Generate runtime environment variables
   - uses: file/createOrUpdateEnvironmentFile
     with:
-      target: ./.localConfigs.testTool
+      target: ./.localConfigs.playground
       envs:
         TEAMSAPPTESTER_PORT: ${{TEAMSAPPTESTER_PORT}}
