@@ -1,7 +1,7 @@
 {
   "name": "sso-command-bot",
   "version": "1.0.0",
-  "description": "Microsoft Teams Toolkit Command and Response Bot Sample",
+  "description": "Microsoft 365 Agents Toolkit Command and Response Bot Sample",
   "author": "Microsoft",
   "license": "MIT",
   "engines": {

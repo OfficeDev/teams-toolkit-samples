@@ -1,7 +1,7 @@
-## Try sample with Teams Toolkit CLI
+## Try sample with Microsoft 365 Agents Toolkit CLI
 
 1. Install [Node.js](https://nodejs.org/en/download/) (use the latest v14 LTS release)
-1. To install the Teams Toolkit CLI, use the npm package manager:
+1. To install the Microsoft 365 Agents Toolkit CLI, use the npm package manager:
     ```
     npm install -g @microsoft/teamsapp-cli
     ```

@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.5/yaml.schema.json
+# Visit https://aka.ms/teamsfx-v5.0-guide for details on this file
+# Visit https://aka.ms/teamsfx-actions for details on actions
+version: v1.5
+
+additionalMetadata:
+  sampleTag: TeamsFx-Samples:hello-world-teams-tab-and-outlook-add-in
+
+environmentFolderPath: ./env
+
+# Triggered when 'teamsapp provision' is executed
+provision:
+  # Creates a Teams app
+  - uses: teamsApp/create
+    with:
+      # Teams app name
+      name: Contoso${{APP_NAME_SUFFIX}}
+    writeToEnvironmentFile:
+      # Write the information of created resources into environment file for the specified environment variable(s).
+      teamsAppId: TEAMS_APP_ID
+
+  - uses: arm/deploy # Deploy given ARM templates parallelly.
+    with:
+      subscriptionId: ${{AZURE_SUBSCRIPTION_ID}} # The AZURE_SUBSCRIPTION_ID is a built-in environment variable. TeamsFx will ask you select one subscription if its value is empty. You're free to reference other environment varialbe here, but TeamsFx will not ask you to select subscription if it's empty in this case.
+      resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}} # The AZURE_RESOURCE_GROUP_NAME is a built-in environment variable. TeamsFx will ask you to select or create one resource group if its value is empty. You're free to reference other environment varialbe here, but TeamsFx will not ask you to select or create resource grouop if it's empty in this case.
+      templates:
+        - path: ./infra/azure.bicep # Relative path to this file
+          parameters: ./infra/azure.parameters.json # Relative path to this file. Placeholders will be replaced with corresponding environment variable before ARM deployment.
+          deploymentName: Create-resources-for-tab-and-addin # Required when deploy ARM template
+      bicepCliVersion: v0.9.1 # Microsoft 365 Agents Toolkit will download this bicep CLI version from github for you, will use bicep CLI in PATH if you remove this config.
+
+  # Get the deployment token from Azure Static Web Apps
+  - uses: azureStaticWebApps/getDeploymentToken
+    with:
+      resourceId: ${{AZURE_STATIC_WEB_APPS_RESOURCE_ID}}
+    # Save deployment token to the environment file for the deployment action
+    writeToEnvironmentFile:
+      deploymentToken: SECRET_TAB_SWA_DEPLOYMENT_TOKEN
+
+  # - uses: teamsApp/validateManifest # Validate using manifest schema
+  #   with:
+  #     manifestPath: ./appPackage/manifest.json # Path to manifest template
+
+  # Build Teams app package with latest env value
+  - uses: teamsApp/zipAppPackage
+    with:
+      # Path to manifest template
+      manifestPath: ./appPackage/manifest.json
+      outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+      outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
+  # Apply the Teams app manifest to an existing Teams app in
+  # Developer Portal.
+  # Will use the app id in manifest file to determine which Teams app to update.
+  - uses: teamsApp/update
+    with:
+      # Relative path to this file. This is the path for built zip file.
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+# Triggered when 'teamsapp deploy' is executed
+deploy:
+  - name: npmInstall
+    uses: cli/runNpmCommand # Run npm command
+    with:
+      args: install
+
+  - name: buildTabAndAddin
+    uses: cli/runNpmCommand # Run npm command
+    with:
+      args: run build --if-present
+  # Deploy bits to Azure Static Web Apps
+  - uses: cli/runNpxCommand
+    name: deploy to Azure Static Web Apps
+    with:
+      args: '@azure/static-web-apps-cli deploy ./build -d
+        ${{SECRET_TAB_SWA_DEPLOYMENT_TOKEN}} --env production'
+
+# Triggered when 'teamsapp publish' is executed
+publish:
+  # - uses: teamsApp/validateManifest # Validate using manifest schema
+  #   with:
+  #     manifestPath: ./appPackage/manifest.json # Path to manifest template
+  - uses: teamsApp/zipAppPackage
+    with:
+      # Path to manifest template
+      manifestPath: ./appPackage/manifest.json
+      outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+      outputJsonPath: ./appPackage/build/manifest.${{TEAMSFX_ENV}}.json
+  # Apply the Teams app manifest to an existing Teams app in
+  # Developer Portal.
+  # Will use the app id in manifest file to determine which Teams app to update.
+  - uses: teamsApp/update
+    with:
+      # Relative path to this file. This is the path for built zip file.
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+  # Publish the app to
+  # Teams Admin Center (https://admin.teams.microsoft.com/policies/manage-apps)
+  # for review and approval
+  - uses: teamsApp/publishAppPackage
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+    writeToEnvironmentFile:
+      # Write the information of created resources into environment file for the specified environment variable(s).
+      publishedAppId: TEAMS_APP_PUBLISHED_APP_ID

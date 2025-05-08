@@ -229,7 +229,7 @@ configuration:
           primary: True
           secondary: False
       - addReply:
-          reply: Sorry for the inconvenience! Based on the info provided, the issue is caused by the API failure from Teams Developer Portal. We will inform you once we get any updates.
+          reply: Sorry for the inconvenience! Based on the info provided, the issue is caused by the API failure from Developer Portal. We will inform you once we get any updates.
       description: 
     - if:
       - payloadType: Issues

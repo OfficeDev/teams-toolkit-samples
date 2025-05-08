@@ -1,4 +1,4 @@
-// The teamsfx tasks defined in this file require Teams Toolkit version >= 5.0.0.
+// The teamsfx tasks defined in this file require Microsoft 365 Agents Toolkit version >= 5.0.0.
 // See https://aka.ms/teamsfx-tasks for details on how to customize each task.
 {
     "version": "2.0.0",

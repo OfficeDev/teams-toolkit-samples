@@ -47,9 +47,9 @@ export default async function validateTeamsAppYaml(projectDir: string): Promise<
     warning: [],
   };
 
-  const yamlFile = path.join(projectDir, "teamsapp.yml");
+  const yamlFile = path.join(projectDir, "m365agents.yml");
   if (!await fs.exists(yamlFile)) {
-    result.failed = [`teamsapp.yml does not exist.`];
+    result.failed = [`m365agents.yml does not exist.`];
     return result;
   }
   const fileContent = await fs.readFile(yamlFile, 'utf8');
@@ -58,9 +58,9 @@ export default async function validateTeamsAppYaml(projectDir: string): Promise<
   // Rule 1: projectId check
   const projectId = yamlData && yamlData.projectId;
   if (projectId && projectId !== "") {
-    result.failed.push(`Project should NOT have projectId in teamsapp.yml.`);
+    result.failed.push(`Project should NOT have projectId in m365agents.yml.`);
   } else {
-    result.passed.push(`Project has no projectId in teamsapp.yml.`);
+    result.passed.push(`Project has no projectId in m365agents.yml.`);
   }
 
   // Rule 2: lifecycle check
@@ -68,7 +68,7 @@ export default async function validateTeamsAppYaml(projectDir: string): Promise<
     const actions = yamlData[lifecycle.name] as any[];
     const failures: string[] = [];
     if (!actions) {
-      result.failed.push(`Project should have '${lifecycle.name}' stage in teamsapp.yml.`);
+      result.failed.push(`Project should have '${lifecycle.name}' stage in m365agents.yml.`);
       continue;
     }
     for (const actionName of lifecycle.actions) {

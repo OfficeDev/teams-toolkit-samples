@@ -27,12 +27,12 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 
 - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
 ## Minimal path to awesome
 
-> Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using Teams Toolkit CLI tool, refer to [Try the Sample with Teams Toolkit CLI](cli.md)
+> Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using Microsoft 365 Agents Toolkit CLI tool, refer to [Try the Sample with Microsoft 365 Agents Toolkit CLI](cli.md)
 
 ### Run the app locally
 
@@ -50,7 +50,7 @@ Adaptive Card Notification provides an easy way to send notification in Teams. T
 
 ### Deploy the app to Azure
 
-1. Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
+1. Open Microsoft 365 Agents Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
 1. Open the command palette and select `Teams: Provision`.
 1. Once provision is completed, open the command palette and select `Teams: Deploy`.
 

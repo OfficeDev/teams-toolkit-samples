@@ -14,7 +14,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 
 ## This sample illustrates
 
-- How to use Teams Toolkit to create a Teams bot app.
+- How to use Microsoft 365 Agents Toolkit to create a Teams bot app.
 - How to use Microsoft Graph to get User info and picture in Teams app.
 - How to use TeamsFx SDK to implementing SSO for Teams bot.
 
@@ -22,7 +22,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 
 - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Minimal path to awesome
 
@@ -35,7 +35,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
   1. Open Debug View (`Ctrl+Shift+D`) and select "Debug in Teams (Edge)" or "Debug in Teams (Chrome)" in dropdown list.
   1. Press "F5" to open a browser window and then select your package to view contact exporter sample app.
 
-- From Teams Toolkit CLI
+- From Microsoft 365 Agents Toolkit CLI
   1. Install [dev tunnel cli](https://aka.ms/teamsfx-install-dev-tunnel).
   1. Login with your M365 Account using the command `devtunnel user login`.
   1. Start your local tunnel service by running the command `devtunnel host -p 3978 --protocol http --allow-anonymous`.
@@ -58,7 +58,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
   1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
   1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
 
-- From Teams Toolkit CLI
+- From Microsoft 365 Agents Toolkit CLI
   1. Run command: `teamsapp auth login azure`.
   1. Run command: `teamsapp provision --env dev`.
   1. Run command: `teamsapp deploy --env dev`.
@@ -67,7 +67,7 @@ This is a simple command bot that implements single sign-on feature to retrieve 
 
 - From VSCode:
   1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.
-- From Teams Toolkit CLI:
+- From Microsoft 365 Agents Toolkit CLI:
   1. Run command: `teamsapp preview --env dev`.
 
 ## Version History

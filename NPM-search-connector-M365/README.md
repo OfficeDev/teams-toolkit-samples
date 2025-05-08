@@ -18,16 +18,16 @@ NPM Search Connector is a Message Extension that allows you to perform a quick s
 
 ## This sample illustrates
 - How to build message extension bot on Azure for your app.
-- How to use Teams Toolkit to build a message extension app that runs across Microsoft 365 including Teams and Outlook (Web)
+- How to use Microsoft 365 Agents Toolkit to build a message extension app that runs across Microsoft 365 including Teams and Outlook (Web)
 
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Minimal path to awesome
-> Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using Teams Toolkit CLI tool, refer to [Try the Sample with Teams Toolkit CLI](cli.md)
+> Here are the instructions to run the sample in **Visual Studio Code**. You can also try to run the app using Microsoft 365 Agents Toolkit CLI tool, refer to [Try the Sample with Microsoft 365 Agents Toolkit CLI](cli.md)
 
 ### Run the app locally
 1. Clone the repo to your local workspace or directly download the source code.

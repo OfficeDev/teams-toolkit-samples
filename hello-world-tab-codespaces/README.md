@@ -9,7 +9,7 @@ Hello World Tab shows you how to build a tab app without single sign on.
 ![Hello world Tab in Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/assets/images/teams-toolkit-v2/first-tab/tab-app-localdebug.png)
 
 ## This sample illustrates
-- How to use Teams Toolkit build a Teams tab app.
+- How to use Microsoft 365 Agents Toolkit build a Teams tab app.
 - How to use [Codespaces](https://github.com/features/codespaces) to run and preview a Tab app in Teams.
 
 ## Prerequisite to use this sample
@@ -23,7 +23,7 @@ Hello World Tab shows you how to build a tab app without single sign on.
 
     > Note: you can customize the creation options (e.g. region, machine type) according to your needs.
 
-1. Once your codespace is created, Select the Teams Toolkit icon on the left in the VS Code toolbar. And then select `Preview your Teams app (F5)` from Teams Toolkit or simply press `F5` to run and preview your application.
+1. Once your codespace is created, Select the Microsoft 365 Agents Toolkit icon on the left in the VS Code toolbar. And then select `Preview your Teams app (F5)` from Microsoft 365 Agents Toolkit or simply press `F5` to run and preview your application.
 
 1. When Teams Web Client is launched in the browser, select the `Add` button in the dialog to install your app to Teams.
 
@@ -36,7 +36,7 @@ Hello World Tab shows you how to build a tab app without single sign on.
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
     1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
     1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
-- From Teams Toolkit CLI:
+- From Microsoft 365 Agents Toolkit CLI:
     1. Run command: `teamsapp auth login azure`.
     1. Run command: `teamsapp provision --env dev`.
     1. Run command: `teamsapp deploy --env dev`.
@@ -44,7 +44,7 @@ Hello World Tab shows you how to build a tab app without single sign on.
 ### Preview the app in Teams
 - From VS Code: 
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Codespaces)` from the launch configuration drop-down.
-- From Teams Toolkit CLI:
+- From Microsoft 365 Agents Toolkit CLI:
     1. Run command: `teamsapp preview --env dev`.
 
 ## Version History

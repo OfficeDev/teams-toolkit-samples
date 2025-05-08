@@ -7,21 +7,21 @@ products:
   - office
 name: Large Scale Notification Bot
 urlFragment: officedev-teamsfx-samples-bot-large-scale-notification
-description: This sample demonstrates a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users.
+description: This sample demonstrates a Teams notification bot app created by Microsoft 365 Agents Toolkit to send individual chat messages to a large number of users.
 extensions:
   createdDate: "2023-10-17"
 ---
 
 # Overview of the Large Scale Notification Bot
 
-This sample demonstrates the architecture of a Teams notfication bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant. This app relies on Azure services such as [Durable Function](https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=csharp-inproc) and [Service Bus Queue](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions#queues) to handle high volume and speed of notification messaging.
+This sample demonstrates the architecture of a Teams notfication bot app created by Microsoft 365 Agents Toolkit to send individual chat messages to a large number of users in a tenant. This app relies on Azure services such as [Durable Function](https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=csharp-inproc) and [Service Bus Queue](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions#queues) to handle high volume and speed of notification messaging.
 
 # Minimal path to awesome
 
 ## Execute lifecycle commands
 
-1. To create the Azure resources and deploy the code to Azure Function, select `Provision` and `Deploy` from the Teams Toolkit sidebar.
-2. To publish your app to Teams, select `Publish` from the Teams Toolkit sidebar.
+1. To create the Azure resources and deploy the code to Azure Function, select `Provision` and `Deploy` from the Microsoft 365 Agents Toolkit sidebar.
+2. To publish your app to Teams, select `Publish` from the Microsoft 365 Agents Toolkit sidebar.
 
 ### Preview the app in Teams
 
@@ -57,7 +57,7 @@ Since there are usually at most 25 users in Microsoft 365 E3/E5 subscription in 
 2. Please ensure you are logged into the Azure account used for deploying the app.
 3. Run command in project root folder: `npx ts-node script/mockInstallationData.ts`.
 4. Update `storageTableName` in `src/internal/initialize.ts` to `installationMockTableName`.
-5. Deploy the code to Azure Function by selecting `Deploy` from the Teams Toolkit sidebar. Your app should now use the mock data.
+5. Deploy the code to Azure Function by selecting `Deploy` from the Microsoft 365 Agents Toolkit sidebar. Your app should now use the mock data.
 
 ## Note on Local Debugging
 
@@ -67,7 +67,7 @@ Local debugging is not supported for this project. Please ensure that all testin
 
 ### Azure Function
 
-This sample extends from the "Chat Notification Message" template created by Teams Toolkit. It makes Azure Function durable to send notifications in a long-running job.
+This sample extends from the "Chat Notification Message" template created by Microsoft 365 Agents Toolkit. It makes Azure Function durable to send notifications in a long-running job.
 Here's the functions used in this sample:
 
 | Function                    | Type          | Description                                                                                                                                         |

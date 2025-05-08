@@ -1,7 +1,7 @@
 {
   "name": "graph-connector-bot",
   "version": "1.0.0",
-  "description": "Microsoft Teams Toolkit graph-connector-bot sample",
+  "description": "Microsoft 365 Agents Toolkit graph-connector-bot sample",
   "author": "Microsoft",
   "license": "MIT",
   "engines": {
