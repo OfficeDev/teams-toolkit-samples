@@ -20,7 +20,7 @@ walkthrough of this example and how it works, check out the [tutorial documentat
 
 - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Run the app locally
 
@@ -36,11 +36,11 @@ walkthrough of this example and how it works, check out the [tutorial documentat
 
 Deploy your project to Azure by following these steps:
 
-- Open Teams Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
-- After you signed in, select a subscription under your account. The Teams Toolkit will use this subscription to provision Azure resources to host you app.
-- Open the Teams Toolkit and click `Provision` in the `LIFECYLE` section.
+- Open Microsoft 365 Agents Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
+- After you signed in, select a subscription under your account. The Microsoft 365 Agents Toolkit will use this subscription to provision Azure resources to host you app.
+- Open the Microsoft 365 Agents Toolkit and click `Provision` in the `LIFECYLE` section.
   - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Provision` command.
-- Open the Teams Toolkit and click `Deploy` in the `LIFECYLE` section.
+- Open the Microsoft 365 Agents Toolkit and click `Deploy` in the `LIFECYLE` section.
   - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Deploy` command.
 
 > Note: Provision Azure cloud resources and deploy to Azure may cause charges to your Azure Subscription.

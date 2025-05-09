@@ -11,15 +11,15 @@ the gif contains only major steps of using the app, keep the gif short.
 ## This sample illustrates
 [list what users can learn from this sample here]
 [examples:]
-- Use Teams Toolkit to create a Teams meeting app.
+- Use Microsoft 365 Agents Toolkit to create a Teams meeting app.
 - Use Microsoft Graph to get Microsoft 365 data in Teams app.
-- Use Teams Toolkit and Azure frontend hosting for Teams tab app.
+- Use Microsoft 365 Agents Toolkit and Azure frontend hosting for Teams tab app.
 - Use ...
 
 ## Prerequisite to use this sample
 - NodeJS version XX
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. You can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program).
-- [Teams Toolkit for VS Code](https://aka.ms/teams-toolkit) or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit for VS Code](https://aka.ms/teams-toolkit) or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Minimal path to awesome
 
@@ -50,7 +50,7 @@ You can use this section to describe the known issues of this sample.
 ## Version History
 |Date| Author| Comments|
 |---|---|---|
-|Dec 15, 2022| zhany | update to support Teams Toolkit V4.2.0|
+|Dec 15, 2022| zhany | update to support Microsoft 365 Agents Toolkit V4.2.0|
 |Jan 30, 2023| Zhany | update to support NodeJS 18|
 
 ## Feedback

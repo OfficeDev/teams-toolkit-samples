@@ -25,8 +25,8 @@ describe('validateFolderStructure()', () => {
           "outline.png": "test outline.png file",
         },
         "README.md": "test readme file",
-        "teamsapp.yml": "test teamsapp.yml file",
-        "teamsapp.local.yml": "test teamsapp.local.yml file",
+        "m365agents.yml": "test m365agents.yml file",
+        "m365agents.local.yml": "test m365agents.local.yml file",
       },
     });
 
@@ -46,8 +46,8 @@ describe('validateFolderStructure()', () => {
         },
         "env": "it should be a folder",
         "README.md": "test readme file",
-        "teamsapp.yml": "test teamsapp.yml file",
-        "teamsapp.local.yml": "test teamsapp.local.yml file",
+        "m365agents.yml": "test m365agents.yml file",
+        "m365agents.local.yml": "test m365agents.local.yml file",
       },
     });
 

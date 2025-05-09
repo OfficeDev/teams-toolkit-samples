@@ -18,7 +18,7 @@ export function AddSSO(props: Record<string, unknown>) {
           SSO support
         </a>
         ) and interact with Microsoft Graph for building rich and seamless user experience. With
-        Teams Toolkit, authentication is further simplified by automatic AAD app registration and
+        Microsoft 365 Agents Toolkit, authentication is further simplified by automatic AAD app registration and
         configuration.
       </p>
       <p>
@@ -34,7 +34,7 @@ export function AddSSO(props: Record<string, unknown>) {
         <a href={readmeUrl} target="_blank" rel="noreferrer">
           here
         </a>
-        ) to learn how to enable Authentication component with Teams Toolkit and code snippets.
+        ) to learn how to enable Authentication component with Microsoft 365 Agents Toolkit and code snippets.
       </p>
     </div>
   );

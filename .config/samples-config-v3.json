@@ -276,12 +276,12 @@
             "suggested": false
         },
         {
-            "id": "graph-connector-app",
-            "shortId": "graph-connector",
+            "id": "copilot-connector-app",
+            "shortId": "copilot-connector",
             "onboardDate": "2022-04-18",
-            "title": "Graph Connector App",
-            "shortDescription": "Showcases how to build custom Graph Connector",
-            "fullDescription": "This project is a Microsoft Teams application that provides a custom Graph Connector built with Azure Functions. The main user scenario involves querying data using the Microsoft Graph Client and TeamsFx SDK. The application can build both frontend and backend hosting on Azure for a Teams tab app, and it uses Single Sign-On (SSO) for authentication. It leverages the Microsoft Graph Toolkit for UI components related to Microsoft Graph. The application is dependent on Azure Functions for serverless computing and Azure Active Directory for identity services. It also uses the TeamsFx SDK to facilitate the development of Teams applications. The application is designed to be deployed on Azure, utilizing its cloud services for hosting and data management.",
+            "title": "Copilot connector App",
+            "shortDescription": "Showcases how to build custom Copilot connector",
+            "fullDescription": "This project is a Microsoft Teams application that provides a custom Copilot connector built with Azure Functions. The main user scenario involves querying data using the Microsoft Graph Client and TeamsFx SDK. The application can build both frontend and backend hosting on Azure for a Teams tab app, and it uses Single Sign-On (SSO) for authentication. It leverages the Microsoft Graph Toolkit for UI components related to Microsoft Graph. The application is dependent on Azure Functions for serverless computing and Azure Active Directory for identity services. It also uses the TeamsFx SDK to facilitate the development of Teams applications. The application is designed to be deployed on Azure, utilizing its cloud services for hosting and data management.",
             "types": [
                 "Tab"
             ],
@@ -289,7 +289,8 @@
                 "Tab",
                 "Azure Functions",
                 "TS",
-                "SSO"
+                "SSO",
+                "Copilot connector"
             ],
             "time": "10min to run",
             "configuration": "Manual configurations required",
@@ -497,7 +498,7 @@
             "shortId": "large-notification",
             "onboardDate": "2023-10-17",
             "title": "Large Scale Notification Bot",
-            "shortDescription": "This sample demonstrates the architecture of a Teams notification bot app created by Teams Toolkit to send individual chat messages to a large number of users in a tenant.",
+            "shortDescription": "This sample demonstrates the architecture of a Teams notification bot app created by Microsoft 365 Agents Toolkit to send individual chat messages to a large number of users in a tenant.",
             "fullDescription": "This project is a large-scale notification system for Microsoft Teams. It uses Azure Functions for serverless computing and Azure Service Bus for message handling. The system leverages Azure Table Storage for data persistence and Azure Bot Service for interaction with Teams. It also uses Bicep for infrastructure management. The project is structured to handle environment-specific configurations and includes scripts for various tasks like data mocking and app installation. The system is designed to handle large volumes of notifications efficiently and reliably.",
             "types": [
               "Bot"
@@ -516,19 +517,19 @@
             "suggested": true
         },
         {
-            "id": "graph-connector-bot",
-            "shortId": "graph-connector-bot",
+            "id": "copilot-connector-bot",
+            "shortId": "copilot-connector-bot",
             "onboardDate": "2023-11-07",
-            "title": "Graph Connector Bot",
-            "shortDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Graph connector.",
-            "fullDescription": "This project is a Graph Connector Bot for Microsoft Teams. It uses Azure Bot Service and Azure Active Directory for bot registration and authentication. The bot leverages Adaptive Cards for interactive messaging. The project is configured with Azure Resource Manager templates for infrastructure setup. The Teams app package is built and validated using TeamsFx actions, and the app is published to the Teams Admin Center for review and approval. The project uses environment variables for configuration and supports multiple environments.",
+            "title": "Copilot connector Bot",
+            "shortDescription": "This sample app showcases how to build a Teams command bot that queries custom data ingested into Microsoft Graph using Copilot connector.",
+            "fullDescription": "This project is a Copilot connector Bot for Microsoft Teams. It uses Azure Bot Service and Azure Active Directory for bot registration and authentication. The bot leverages Adaptive Cards for interactive messaging. The project is configured with Azure Resource Manager templates for infrastructure setup. The Teams app package is built and validated using TeamsFx actions, and the app is published to the Teams Admin Center for review and approval. The project uses environment variables for configuration and supports multiple environments.",
             "types": [
               "Bot"
             ],
             "tags": [
               "Bot",
               "TS",
-              "Microsoft Graph Connectors"
+              "Copilot connector"
             ],
             "time": "30min to run",
             "configuration": "Manual configurations required",

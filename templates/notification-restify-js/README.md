@@ -11,33 +11,33 @@ The app template is built using the TeamsFx SDK, which provides a simple set of 
 > To run the notification bot template in your local dev machine, you will need:
 >
 > - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
-> - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
+> - [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
 >
 > **Note**
 >
 > Your app can be installed into a team, or a group chat, or as personal app. See [Installation and Uninstallation](https://aka.ms/teamsfx-notification-new#customize-installation).
-> For local debugging using Teams Toolkit CLI, you need to do some extra steps described in [Set up your Teams Toolkit CLI for local debugging](https://aka.ms/teamsfx-cli-debugging).
+> For local debugging using Microsoft 365 Agents Toolkit CLI, you need to do some extra steps described in [Set up your Microsoft 365 Agents Toolkit CLI for local debugging](https://aka.ms/teamsfx-cli-debugging).
 
-1. First, select the Teams Toolkit icon on the left in the VS Code toolbar.
-2. Press F5 to start debugging which launches your app in Teams App Test Tool using a web browser. Select `Debug in Test Tool`.
-3. The browser will pop up to open Teams App Test Tool.
+1. First, select the Microsoft 365 Agents Toolkit icon on the left in the VS Code toolbar.
+2. Press F5 to start debugging which launches your app in Microsoft 365 Agents playground using a web browser. Select `Debug in Microsoft 365 Agents playground`.
+3. The browser will pop up to open Microsoft 365 Agents playground.
 4. Send a POST request to `http://<endpoint>/api/notification` with your favorite tool (like `Postman`)
 
    - When your project is running locally, replace `<endpoint>` with `localhost:3978`
    - When your project is deployed to Azure App Service, replace `<endpoint>` with the url from Azure App Service
 
-The bot will send an Adaptive Card to Teams App Test Tool:
+The bot will send an Adaptive Card to Microsoft 365 Agents playground:
 
-![Notification Message in Test Tool](https://github.com/OfficeDev/TeamsFx/assets/9698542/43ee64f4-5554-4e0b-854f-f7e20672cb25)
+![Notification Message in Microsoft 365 Agents playground](https://github.com/OfficeDev/TeamsFx/assets/9698542/43ee64f4-5554-4e0b-854f-f7e20672cb25)
 
 ## What's included in the template
 
 | Folder / File           | Contents                                                                                                                         |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `teamsapp.yml`          | Main project file describes your application configuration and defines the set of actions to run in each lifecycle stages        |
-| `teamsapp.local.yml`    | This overrides `teamsapp.yml` with actions that enable local execution and debugging                                             |
-| `teamsapp.testtool.yml` | This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool                      |
-| `env/`                  | Name / value pairs are stored in environment files and used by `teamsapp.yml` to customize the provisioning and deployment rules |
+| `m365agents.yml`          | Main project file describes your application configuration and defines the set of actions to run in each lifecycle stages        |
+| `m365agents.local.yml`    | This overrides `m365agents.yml` with actions that enable local execution and debugging                                             |
+| `m365agents.playground.yml` | This overrides `m365agents.yml` with actions that enable local execution and debugging in Microsoft 365 Agents playground                      |
+| `env/`                  | Name / value pairs are stored in environment files and used by `m365agents.yml` to customize the provisioning and deployment rules |
 | `.vscode/`              | VSCode files for debugging                                                                                                       |
 | `src/`                  | The source code for the notification Teams application                                                                           |
 | `appPackage/`           | Templates for the Teams application manifest                                                                                     |
@@ -61,7 +61,7 @@ There are few customizations you can make to extend the template to fit your bus
 
 ### Step 1: Customize the trigger point from event source
 
-By default Teams Toolkit scaffolds a single `express` entry point in `src/index.js`. When a HTTP request is sent to this entry point, the default implementation sends a hard-coded Adaptive Card to Teams. You can customize this behavior by customizing `src/index.js`. A typical implementation might make an API call to retrieve some events and/or data, and then send an Adaptive Card as appropriate.
+By default Microsoft 365 Agents Toolkit scaffolds a single `express` entry point in `src/index.js`. When a HTTP request is sent to this entry point, the default implementation sends a hard-coded Adaptive Card to Teams. You can customize this behavior by customizing `src/index.js`. A typical implementation might make an API call to retrieve some events and/or data, and then send an Adaptive Card as appropriate.
 
 You can also add additional triggers by:
 
@@ -112,7 +112,7 @@ Adaptive cards can be updated on user action to allow user progress through a se
 
 - [Manage multiple environments](https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-multi-env)
 - [Collaborate with others](https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-collaboration)
-- [Teams Toolkit Documentations](https://docs.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-fundamentals)
-- [Teams Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Documentations](https://docs.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-fundamentals)
+- [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
 - [TeamsFx SDK](https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-sdk)
-- [Teams Toolkit Samples](https://github.com/OfficeDev/TeamsFx-Samples)
+- [Microsoft 365 Agents Toolkit Samples](https://github.com/OfficeDev/TeamsFx-Samples)
