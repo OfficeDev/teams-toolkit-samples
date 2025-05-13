@@ -48,8 +48,8 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 
 ### Deploy the app to Azure
 1. Open Microsoft 365 Agents Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-1. Open the Microsoft 365 Agents Toolkit and click `Provision` from LIFECYCLE section or open the command palette and select: `Teams: Provision`.
-1. Open the Microsoft 365 Agents Toolkit and Click `Deploy` or open the command palette and select: `Teams: Deploy`.
+1. Open the Microsoft 365 Agents Toolkit and click `Provision` from LIFECYCLE section or open the command palette and select: `Microsoft 365 Agents: Provision`.
+1. Open the Microsoft 365 Agents Toolkit and Click `Deploy` or open the command palette and select: `Microsoft 365 Agents: Deploy`.
 > Note: Provisioning and deployment may incur charges to your Azure Subscription.
 
 ### Preview the app in Teams

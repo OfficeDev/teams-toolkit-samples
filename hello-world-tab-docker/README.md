@@ -67,23 +67,23 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
     1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug in Teams (Edge)` or `Debug in Teams (Chrome)`.
 
 - From Microsoft 365 Agents Toolkit CLI:
-    1. Run command: `teamsapp provision --env local` .
+    1. Run command: `atk provision --env local` .
     1. Run command: `docker compose -f ./docker-compose.yml up -d` .
-    1. Run command: `teamsapp preview --open-only` .
+    1. Run command: `atk preview --open-only` .
 
 ### Deploy the app to Azure
 
 - From VS Code:
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision` .
+    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Microsoft 365 Agents: Provision` .
     1. Login Azure CLI with commands: `az login` and `az account set -s <subscription-id>` .
-    1. Click `Deploy` or open the command palette and select: `Teams: Deploy` .
+    1. Click `Deploy` or open the command palette and select: `Microsoft 365 Agents: Deploy` .
 
 - From Microsoft 365 Agents Toolkit CLI:
-    1. Run command: `teamsapp auth login azure` .
-    1. Run command: `teamsapp provision --env dev` .
+    1. Run command: `atk auth login azure` .
+    1. Run command: `atk provision --env dev` .
     1. Run command: `az login` .
-    1. Run command: `teamsapp deploy --env dev` .
+    1. Run command: `atk deploy --env dev` .
 
 ### Preview the app in Teams
 
@@ -91,7 +91,7 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 
 - From Microsoft 365 Agents Toolkit CLI:
-    1. Run command: `teamsapp preview --env dev`.
+    1. Run command: `atk preview --env dev`.
 
 ## Further reading
 
