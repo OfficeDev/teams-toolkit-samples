@@ -64,30 +64,30 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
       BOT_DOMAIN=sample-id-3978.devtunnels.ms
       BOT_ENDPOINT=https://sample-id-3978.devtunnels.ms
       ```
-  1.  Run command: `teamsapp provision --env local` .
+  1.  Run command: `atk provision --env local` .
   1.  Run command: `docker build -t sso-bot ./` .
   1.  Run command: `docker run -p 3978:80 --env-file .localConfigs sso-bot` .
-  1.  Run command: `teamsapp preview --open-only` .
+  1.  Run command: `atk preview --open-only` .
 
 ### Deploy the app to Azure
 
 - From VS Code:
   1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-  1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
+  1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Microsoft 365 Agents: Provision`.
   1. Login Azure CLI with commands: `az login` and `az account set -s <subscription-id>`.
-  1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
+  1. Click `Deploy` or open the command palette and select: `Microsoft 365 Agents: Deploy`.
 - From Microsoft 365 Agents Toolkit CLI:
-  1. Run command: `teamsapp account login azure` .
-  1. Run command: `teamsapp provision --env dev` .
+  1. Run command: `atk account login azure` .
+  1. Run command: `atk provision --env dev` .
   1. Run command: `az login` .
-  1. Run command: `teamsapp deploy --env dev` .
+  1. Run command: `atk deploy --env dev` .
 
 ### Preview the app in Teams
 
 - From VS Code:
   1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 - From Microsoft 365 Agents Toolkit CLI:
-  1. Run command: `teamsapp preview --env dev`.
+  1. Run command: `atk preview --env dev`.
 
 ## Further reading
 

@@ -48,21 +48,21 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
     1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug in Teams (Edge)` or `Debug in Teams (Chrome)`.
 
 - From Microsoft 365 Agents Toolkit CLI:
-    1. Run command: `teamsapp provision --env local` .
-    1. Run command: `teamsapp deploy --env local` .
-    1. Run command: `teamsapp preview --env local` .
+    1. Run command: `atk provision --env local` .
+    1. Run command: `atk deploy --env local` .
+    1. Run command: `atk preview --env local` .
 
 ### Deploy the app to Azure
 
 - From VS Code:
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
-    1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
+    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Microsoft 365 Agents: Provision`.
+    1. Click `Deploy` or open the command palette and select: `Microsoft 365 Agents: Deploy`.
 
 - From Microsoft 365 Agents Toolkit CLI:
-    1. Run command: `teamsapp auth login azure`.
-    1. Run command: `teamsapp provision --env dev`.
-    1. Run command: `teamsapp deploy --env dev`.
+    1. Run command: `atk auth login azure`.
+    1. Run command: `atk provision --env dev`.
+    1. Run command: `atk deploy --env dev`.
 
 ### Preview the app in Teams
 
@@ -70,7 +70,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 
 - From Microsoft 365 Agents Toolkit CLI:
-    1. Run command: `teamsapp preview --env dev`.
+    1. Run command: `atk preview --env dev`.
 
 ### Run the app locally with proxy
 In some scenarios, it is helpful to skip the login and authentication flow and then provide mocked Graph API responses for development and test purpose. This sample provides a new way to debug it with proxy for mocking Graph API responses. You can customize the desired Graph API responses.

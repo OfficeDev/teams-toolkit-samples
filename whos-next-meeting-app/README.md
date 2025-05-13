@@ -73,9 +73,9 @@ Deploy your project to Azure by following these steps:
 - Open Microsoft 365 Agents Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
 - After you signed in, select a subscription under your account. The Microsoft 365 Agents Toolkit will use this subscription to provision Azure resources to host you app.
 - Open the Microsoft 365 Agents Toolkit and click `Provision` in the `LIFECYCLE` section.
-  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Provision` command.
+  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Microsoft 365 Agents: Provision` command.
 - Open the Microsoft 365 Agents Toolkit and click `Deploy` in the `LIFECYCLE` section.
-  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Deploy` command.
+  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Microsoft 365 Agents: Deploy` command.
 
 > Note: Provisioning Azure cloud resources and deploying to Azure may cause charges to your Azure Subscription.
 

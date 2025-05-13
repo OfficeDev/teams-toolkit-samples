@@ -56,8 +56,8 @@ You may add any extra properties or permissions you require to this file. See th
 
 To check that your manifest file is valid:
 
-- From Visual Studio Code: open the command palette and select: `Teams: Validate Application` and select `Validate using manifest schema`.
-- From Microsoft 365 Agents Toolkit CLI: run command `teamsapp validate` in your project directory.
+- From Visual Studio Code: open the command palette and select: `Microsoft 365 Agents: Validate Application` and select `Validate using manifest schema`.
+- From Microsoft 365 Agents Toolkit CLI: run command `atk validate` in your project directory.
 
 ## Version History
 
