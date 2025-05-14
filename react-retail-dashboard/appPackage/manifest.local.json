@@ -26,7 +26,7 @@
         {
             "entityId": "1bd3087c-9df4-4798-93d0-53ed4ed13631",
             "name": "RetailDashboard",
-            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/TeamsWorkBench.aspx%3FcomponentId=1bd3087c-9df4-4798-93d0-53ed4ed13631%26teams%26personal%26forceLocale={locale}%26loadSPFX%3Dtrue%26debugManifestsFile%3Dhttps%3A%2F%2Flocalhost%3A4321%2Ftemp%2Fmanifests.js",
+            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/TeamsWorkBench.aspx%3FcomponentId=1bd3087c-9df4-4798-93d0-53ed4ed13631%26teams%26personal%26forceLocale={locale}%26loadSPFX%3Dtrue%26debugManifestsFile%3Dhttps%3A%2F%2Flocalhost%3A4321%2Ftemp%2Fbuild%2Fmanifests.js",
             "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
             "scopes": [
                 "personal"
@@ -35,7 +35,7 @@
         {
             "entityId": "c44223d6-61ae-484f-ac33-3850a6ec989a",
             "name": "RetailHome",
-            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/TeamsWorkBench.aspx%3FcomponentId=c44223d6-61ae-484f-ac33-3850a6ec989a%26teams%26personal%26forceLocale={locale}%26loadSPFX%3Dtrue%26debugManifestsFile%3Dhttps%3A%2F%2Flocalhost%3A4321%2Ftemp%2Fmanifests.js",
+            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/TeamsWorkBench.aspx%3FcomponentId=c44223d6-61ae-484f-ac33-3850a6ec989a%26teams%26personal%26forceLocale={locale}%26loadSPFX%3Dtrue%26debugManifestsFile%3Dhttps%3A%2F%2Flocalhost%3A4321%2Ftemp%2Fbuild%2Fmanifests.js",
             "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
             "scopes": [
                 "personal"

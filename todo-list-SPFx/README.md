@@ -24,7 +24,7 @@ extensions:
 - How to deploy your app to SharePoint App Catalog and sync the solution to Teams App Catalog.
 
 ## Prerequisite to use this sample
-* [Set up SharePoint Framework development environment](https://aka.ms/teamsfx-spfx-dev-environment-setup)（Recommend to use SPFx v1.18.2）
+* [Set up SharePoint Framework development environment](https://aka.ms/teamsfx-spfx-dev-environment-setup)（Recommend to use SPFx v1.21.1）
 * An Microsoft 365 account. Get your own free Microsoft 365 tenant from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
 * Use the team site in SharePoint to create a List.
     - Navigate to the [SharePoint team site](https://support.microsoft.com/en-us/office/create-a-team-site-in-sharepoint-ef10c1e7-15f3-42a3-98aa-b5972711777d), in `Home` tab, click `New` and select `List`.
@@ -103,6 +103,7 @@ Debug the app with Teams workbench
 |Apr 21, 2022| huihuiwu | Update to support Teams Toolkit v4.0.0|
 |Mar 23, 2023| huihuiwu | Update to support Teams Toolkit v5.0.0|
 |Dec 5, 2023| yuqzho | Upgrade to SPFx 1.18.2 |
+|May 14, 2025| huihuiwu | Upgrade to SPFx 1.21.1|
 
 ## Feedback
 We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
