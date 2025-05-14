@@ -52,6 +52,7 @@ You could set up your own back-end REST API project as Azure Function to use rea
 |---|---|---|
 |Sep 15, 2023| huihuiwu | Onboard to Teams Toolkit|
 |Dec 5, 2023| yuqzho | Upgrade to SPFx 1.18.2|
+|May 14, 2025| huihuiwu | Upgrade to SPFx 1.21.1|
 
 ## Feedback
 

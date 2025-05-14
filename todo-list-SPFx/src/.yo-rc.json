@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": true,
-    "version": "1.18.2",
+    "version": "1.21.1",
     "libraryName": "todo-list-sp-fx",
     "libraryId": "c314487b-f51c-474d-823e-a2c3ec82b1ff",
     "environment": "spo",
@@ -14,7 +14,7 @@
     "componentType": "webpart",
     "template": "react",
     "sdkVersions": {
-      "@microsoft/teams-js": "2.12.0"
+      "@microsoft/teams-js": "2.24.0"
     }
   }
 }
