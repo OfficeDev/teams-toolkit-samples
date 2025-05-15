@@ -1,18 +1,24 @@
 # TeamsFx files
 env/.env.*.user
 env/.env.local
-env/.env.testtool
-.env
+env/.env.sandbox
+
+.localConfigs
+.localConfigs.testTool
+.notification.localstore.json
+.notification.testtoolstore.json
 appPackage/build
 
-# python virtual environment
-.venv/
-__pycache__/
-
-# others
-.deployment/
+# dependencies
 node_modules/
-devTools/*.log
+
+# misc
+.env
+.deployment
+.DS_Store
+
+# build
+lib/
 
 # Dev tool directories
 /devTools/
