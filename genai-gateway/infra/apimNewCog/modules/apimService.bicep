@@ -14,7 +14,7 @@ param location string = resourceGroup().location
   'Standardv2'
   'Premium'
 ])
-param apimSku string = 'Developer'
+param apimSku string = 'Basicv2'
 
 @description('The email address of the owner of the service')
 param apimPublisherEmail string = 'noreply@microsoft.com'
@@ -35,4 +35,4 @@ resource apimService 'Microsoft.ApiManagement/service@2024-05-01' = {
   }
 }
 
-output AZURE_OPENAI_ENDPOINT string = apimService.properties.gatewayUrl
+output gatewayUrl string = apimService.properties.gatewayUrl

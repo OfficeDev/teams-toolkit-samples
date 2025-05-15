@@ -106,4 +106,4 @@ resource apimSubscription 'Microsoft.ApiManagement/service/subscriptions@2023-05
 }
 
 #disable-next-line outputs-should-not-contain-secrets
-output SECRET_AZURE_OPENAI_API_KEY string = apimSubscription.listSecrets().primaryKey
+output subscriptionPrimaryKey string = apimSubscription.listSecrets().primaryKey

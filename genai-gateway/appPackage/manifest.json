@@ -1,6 +1,6 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.19",
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/vdevPreview/MicrosoftTeams.schema.json",
+    "manifestVersion": "devPreview",
     "version": "1.0.0",
     "id": "${{TEAMS_APP_ID}}",
     "developer": {
@@ -14,7 +14,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "genai-gateway-sample${{APP_NAME_SUFFIX}}",
+        "short": "genai-gw-${{APP_NAME_SUFFIX}}",
         "full": "full name for genai-gateway-sample"
     },
     "description": {
@@ -22,10 +22,19 @@
         "full": "full description for genai-gateway-sample"
     },
     "accentColor": "#FFFFFF",
+    "copilotAgents": {
+        "customEngineAgents": [
+            {
+                "type": "bot",
+                "id": "${{BOT_ID}}"
+            }
+        ]
+    },
     "bots": [
         {
             "botId": "${{BOT_ID}}",
             "scopes": [
+                "copilot",
                 "personal",
                 "team",
                 "groupChat"
@@ -35,16 +44,13 @@
             "commandLists": [
                 {
                     "scopes": [
+                        "copilot",
                         "personal"
                     ],
                     "commands": [
                         {
-                            "title": "How can you help me?",
-                            "description": "How can you help me?"
-                        },
-                        {
-                            "title": "How to develop TeamsToolkit app?",
-                            "description": "How can I develop apps with Teams Toolkit?"
+                            "title": "What can you do?",
+                            "description": "What can you do for me?"
                         }
                     ]
                 }

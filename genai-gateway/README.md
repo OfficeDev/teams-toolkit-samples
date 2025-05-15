@@ -1,24 +1,28 @@
-# Overview of the Basic AI Chatbot template
+# Overview of the Basic AI Chatbot using APIM GenAI Gateway sample
 
-This app template is built on top of [Teams AI library](https://aka.ms/teams-ai-library).
-This template showcases a bot app that responds to user questions like an AI assistant. This enables your users to talk with the AI assistant in Teams to find information.
+This app sample is built on top of [Teams AI library](https://aka.ms/teams-ai-library).
+This sample showcases a bot app that responds to user questions like an AI assistant. This enables your users to talk with the AI assistant in Teams to find information.
 
 
-## Get started with the template
+## Get started with the sample
 
 > **Prerequisites**
 >
-> To run the template in your local dev machine, you will need:
+> To run the sample in your local dev machine, you will need:
 >
-> - [Python](https://www.python.org/), version 3.8 to 3.11.
-> - [Python extension](https://code.visualstudio.com/docs/languages/python), version v2024.0.1 or higher.
 > - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) latest version or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli).
-> - An account with [Azure OpenAI](https://aka.ms/oai/access).
+> - An Azure account and a subscription, **which you need to make sure your subscription has quota to create cognitive service in the location you selected.**
 > - A [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts).
 
-### Configurations
-1. Open the command box and enter `Python: Create Environment` to create and activate your desired virtual environment. Remember to select `src/requirements.txt` as dependencies to install when creating the virtual environment.
-1. In file *env/.env.local.user*, fill in your Azure OpenAI key `SECRET_AZURE_OPENAI_API_KEY`, deployment name `AZURE_OPENAI_MODEL_DEPLOYMENT_NAME` and endpoint `AZURE_OPENAI_ENDPOINT`.
+### In this sample
+1. A cognitive service with one gpt-4o model and one text-embedding-ada-002 model will be deployed.
+1. An API Management(APIM) service with GenAI Gateway features including token limit policy, emit token metric policy, backend load balancer and circuit breaker and semantic caching policy will be deployed and configured.
+1. A copilot agent bot will be created, which will connect the APIM service to call the Azure OpenAI API. You can chat with the agent bot in multiple platforms.
+
+### Configuration for deployment
+1. In [./infra/apimNewCog/modules/apimService.bicep](./infra/apimNewCog/modules/apimService.bicep), you can choose your prefered pricing tier of APIM service by setting `apimSku`.
+> - You can use the [pricing calculator](https://azure.microsoft.com/en-us/pricing/calculator/) to calculate and estimate the price of the deployment in your pricing tier.
+You can search for `API Management` and `Azure OpenAI Service` to add APIM service and Cognitive service used in this sample to the calculator.
 
 ### Conversation with bot
 1. Select the Teams Toolkit icon on the left in the VS Code toolbar.
@@ -32,52 +36,3 @@ This template showcases a bot app that responds to user questions like an AI ass
 > For local debugging using Teams Toolkit CLI, you need to do some extra steps described in [Set up your Teams Toolkit CLI for local debugging](https://aka.ms/teamsfx-cli-debugging).
 
 ![ai chat bot](https://user-images.githubusercontent.com/7642967/258726187-8306610b-579e-4301-872b-1b5e85141eff.png)
-
-## What's included in the template
-
-| Folder       | Contents                                            |
-| - | - |
-| `.vscode`    | VSCode files for debugging                          |
-| `appPackage` | Templates for the Teams application manifest        |
-| `env`        | Environment files                                   |
-| `infra`      | Templates for provisioning Azure resources          |
-| `src`        | The source code for the application                 |
-
-The following files can be customized and demonstrate an example implementation to get you started.
-
-| File                                 | Contents                                           |
-| - | - |
-|`src/app.py`| Hosts an aiohttp api server and exports an app module.|
-|`src/bot.py`| Handles business logics for the Basic AI Chatbot.|
-|`src/config.py`| Defines the environment variables.|
-|`src/prompts/chat/skprompt.txt`| Defines the prompt.|
-|`src/prompts/chat/config.json`| Configures the prompt.|
-
-The following are Teams Toolkit specific project files. You can [visit a complete guide on Github](https://github.com/OfficeDev/TeamsFx/wiki/Teams-Toolkit-Visual-Studio-Code-v5-Guide#overview) to understand how Teams Toolkit works.
-
-| File                                 | Contents                                           |
-| - | - |
-|`teamsapp.yml`|This is the main Teams Toolkit project file. The project file defines two primary things:  Properties and configuration Stage definitions. |
-|`teamsapp.local.yml`|This overrides `teamsapp.yml` with actions that enable local execution and debugging.|
-|`teamsapp.testtool.yml`|This overrides `teamsapp.yml` with actions that enable local execution and debugging in Teams App Test Tool.|
-
-## Extend the template
-
-You can follow [Build a Basic AI Chatbot in Teams](https://aka.ms/teamsfx-basic-ai-chatbot) to extend the Basic AI Chatbot template with more AI capabilities, like:
-- [Customize prompt](https://aka.ms/teamsfx-basic-ai-chatbot#customize-prompt)
-- [Customize user input](https://aka.ms/teamsfx-basic-ai-chatbot#customize-user-input)
-- [Customize conversation history](https://aka.ms/teamsfx-basic-ai-chatbot#customize-conversation-history)
-- [Customize model type](https://aka.ms/teamsfx-basic-ai-chatbot#customize-model-type)
-- [Customize model parameters](https://aka.ms/teamsfx-basic-ai-chatbot#customize-model-parameters)
-- [Handle messages with image](https://aka.ms/teamsfx-basic-ai-chatbot#handle-messages-with-image)
-
-## Additional information and references
-
-- [Teams Toolkit Documentations](https://docs.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-fundamentals)
-- [Teams Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
-- [Teams Toolkit Samples](https://github.com/OfficeDev/TeamsFx-Samples)
-
-## Known issue
-- If you use `Debug in Test Tool` to local debug, you might get an error `InternalServiceError: connect ECONNREFUSED 127.0.0.1:3978` in Test Tool console log or error message `Error: Cannot connect to your app,
-please make sure your app is running or restart your app` in log panel of Test Tool web page. You can wait for Python launch console ready and then refresh the front end web page.
-- When you use `Launch Remote in Teams` to remote debug after deployment, you might loose interaction with your bot. This is because the remote service needs to restart. Please wait for several minutes to retry it. 

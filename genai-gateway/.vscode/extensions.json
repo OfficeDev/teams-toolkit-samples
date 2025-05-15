@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "TeamsDevApp.ms-teams-vscode-extension",
-    "ms-python.python"
+    "TeamsDevApp.ms-teams-vscode-extension"
   ]
 }
