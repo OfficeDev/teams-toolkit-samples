@@ -20,7 +20,7 @@ jobs:
           echo It's not allowed to run CD on other branch except release.
           exit 1
       
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: fetch latest tag
         uses: actions-ecosystem/action-get-latest-tag@v1
