@@ -2,12 +2,12 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": false,
-    "nodeVersion": "16.18.1",
+    "nodeVersion": "22.15.0",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
-      "@microsoft/teams-js": "2.12.0"
+      "@microsoft/teams-js": "2.24.0"
     },
-    "version": "1.18.2",
+    "version": "1.21.1",
     "libraryName": "react-retail-dashboard",
     "libraryId": "178b568a-1f65-4343-bdc0-2df1f77f54ef",
     "environment": "spo",
