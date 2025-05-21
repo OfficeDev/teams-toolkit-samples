@@ -1,11 +1,11 @@
 ## Minimal path to awesome
-1. Install Teams Toolkit CLI using the npm package manager:
+1. Install Microsoft 365 Agents Toolkit CLI using the npm package manager:
     ```
-    npm install -g @microsoft/teamsapp-cli
+    npm install -g @microsoft/m365agentstoolkit-cli
     ```
 1. Create npm-search-connector-m365 project.
     ```
-    teamsapp new sample npm-search-connector-m365 --interactive false
+    atk new sample npm-search-connector-m365 --interactive false
     ```
 1. For local env, start your local tunnel service.
     1. Install [dev tunnel cli](https://aka.ms/teamsfx-install-dev-tunnel).
@@ -18,10 +18,10 @@
        ```
 1. Provision.
     ```
-    teamsapp provision --env <env>
+    atk provision --env <env>
     ```
 1. Deploy.
     ```
-    teamsapp deploy --env <env>
+    atk deploy --env <env>
     ```
-1. Execute `teamsapp preview --env <env> --m365-host <m365-host>` in your project directory to launch your application, where `m365-host` is `teams` or `outlook`.
+1. Execute `atk preview --env <env> --m365-host <m365-host>` in your project directory to launch your application, where `m365-host` is `teams` or `outlook`.

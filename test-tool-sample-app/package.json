@@ -1,14 +1,14 @@
 {
   "name": "test-tool-sample-app",
   "version": "1.0.0",
-  "description": "Microsoft Teams App Test Tool Sample App",
+  "description": "Microsoft Microsoft 365 Agents playground Sample App",
   "author": "Microsoft",
   "license": "MIT",
   "main": "./lib/index.js",
   "scripts": {
     "dev:teamsfx": "env-cmd --silent -f .localConfigs npm run dev",
-    "dev:teamsfx:testtool": "env-cmd --silent -f .localConfigs.testTool npm run dev",
-    "dev:teamsfx:launch-testtool": "env-cmd --silent -f ./env/.env.testtool teamsapptester start",
+    "dev:teamsfx:testtool": "env-cmd --silent -f .localConfigs.playground npm run dev",
+    "dev:teamsfx:launch-testtool": "env-cmd --silent -f ./env/.env.playground teamsapptester start",
     "dev": "nodemon --watch ./src --exec node --inspect=9241 --signal SIGINT -r ts-node/register ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

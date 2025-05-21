@@ -1,20 +1,20 @@
-## Try the Sample with Teams Toolkit CLI
+## Try the Sample with Microsoft 365 Agents Toolkit CLI
 1. Install [Node.js](https://nodejs.org/en/download/) (use the latest v14 LTS release)
-1. To install the Teams Toolkit CLI, use the npm package manager:
+1. To install the Microsoft 365 Agents Toolkit CLI, use the npm package manager:
     ```
-    npm install -g @microsoft/teamsapp-cli
+    npm install -g @microsoft/m365agentstoolkit-cli
     ```
 1. Create todo-list project.
     ```
-    teamsapp new sample todo-list-with-Azure-backend --interactive false
+    atk new sample todo-list-with-Azure-backend --interactive false
     ```
 1. Provision the project to azure. You will be asked to input admin name and password of SQL.
     ```
-    teamsapp provision
+    atk provision
     ```
 1. Deploy.
     ```
-    teamsapp deploy
+    atk deploy
     ```
 1. Open **env/.env.dev** file, you could get the database name in `PROVISIONOUTPUT__AZURESQLOUTPUT__DATABASENAME` output. In Azure portal, find the database and use [query editor](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal) with below query to create tables:
     ```sql

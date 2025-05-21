@@ -58,12 +58,12 @@ REACT_APP_FLUID_REMOTE_PRIMARY_KEY=(your primary key)
 REACT_APP_FLUID_REMOTE_ENDPOINT=(your endpoint URL)
 ~~~
 
-- Open Teams Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
-- After you signed in, select a subscription under your account. The Teams Toolkit will use this subscription to provision Azure resources to host you app.
-- Open the Teams Toolkit and click `Provision` in the `LIFECYCLE` section.
-  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Provision` command.
-- Open the Teams Toolkit and click `Deploy` in the `LIFECYCLE` section.
-  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Deploy` command.
+- Open Microsoft 365 Agents Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
+- After you signed in, select a subscription under your account. The Microsoft 365 Agents Toolkit will use this subscription to provision Azure resources to host you app.
+- Open the Microsoft 365 Agents Toolkit and click `Provision` in the `LIFECYCLE` section.
+  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Microsoft 365 Agents: Provision` command.
+- Open the Microsoft 365 Agents Toolkit and click `Deploy` in the `LIFECYCLE` section.
+  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Microsoft 365 Agents: Deploy` command.
 
 > Note: Provision Azure cloud resources and deploy to Azure may cause charges to your Azure Subscription.
 

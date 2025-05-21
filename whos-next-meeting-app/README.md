@@ -16,22 +16,22 @@ This application illustrates the use of Teams Live Share SDK and the Fluid Frame
 🚀So [Bob German](https://github.com/BobGerman) and [Rabia Williams](https://github.com/rabwill) decided to take the necessary step, cloud 🥑 style, to create a meeting app called "Who's next" which will help choose attendees from a meeting.
 👀 Here is a quick look of how the app works!
 
-⚙️They used [Teams Toolkit](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/teams-toolkit-fundamentals?pivots=visual-studio-code), a VS Code extension to create their base teams app from a sample meeting app available in the toolkit itself.
+⚙️They used [Microsoft 365 Agents Toolkit](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/teams-toolkit-fundamentals?pivots=visual-studio-code), a VS Code extension to create their base teams app from a sample meeting app available in the toolkit itself.
 Then they used [Fluid Framework](https://fluidframework.com/docs/) to synchronize the view for each attendee.
 
 ⚠️ If you can upload a Teams app, you can run this. It doesn't require any Azure AD permission or other administrative consent.
 
 ## Prerequisites
 
-- [NodeJS](https://nodejs.org/en/) version as required by Teams Toolkit (v14 or v16 at the time of this sample)
+- [NodeJS](https://nodejs.org/en/) version as required by Microsoft 365 Agents Toolkit (v14 or v16 at the time of this sample)
 - A Microsoft 365 tenant in which you have permission to upload Teams apps. Please don't develop in production; you can get a free Microsoft 365 developer tenant by joining the [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit)
 
 ## Version history
 
 Version|Date|Author|Comments
 -------|----|----|--------
-1.2|February 7, 2023|Bob German|Updates for Teams Toolkit samples repository
+1.2|February 7, 2023|Bob German|Updates for Microsoft 365 Agents Toolkit samples repository
 1.1|January 25, 2023|Bob German|Update to use [Live Share SDK](https://learn.microsoft.com/microsoftteams/platform/apps-in-teams-meetings/teams-live-share-overview)
 1.0|November 21, 2022|Bob German and Rabia Williams|Initial release
 
@@ -43,7 +43,7 @@ Version|Date|Author|Comments
 
 ## This demo illustrates
 
-- Use of Teams Toolkit to create a simple meeting tab application
+- Use of Microsoft 365 Agents Toolkit to create a simple meeting tab application
 - Use of Live Share SDK to obtain a Fluid framework container
 - Use of Fluid framework to synchronize the contents of a meeting tab among meeting attendees
 
@@ -56,7 +56,7 @@ Follow the instructions to [create a meeting in Microsoft Teams](https://support
 ### Run the app locally
 
 - Clone or download the repository to your local machine
-- Ensure Teams Toolkit and a supported version of node are installed
+- Ensure Microsoft 365 Agents Toolkit and a supported version of node are installed
 - Within the "whos-next-meeting" folder, run `npm install` to install the developer and server-side dependencies
 - In Visual Studio Code: Start debugging the project by hitting the `F5` key in your keyboard.
   - Alternatively open the `Run and Debug Activity` panel(Ctrl+Shift+D) in Visual Studio Code and click the `Run and Debug` green arrow button.
@@ -70,12 +70,12 @@ Follow the instructions to [create a meeting in Microsoft Teams](https://support
 
 Deploy your project to Azure by following these steps:
 
-- Open Teams Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
-- After you signed in, select a subscription under your account. The Teams Toolkit will use this subscription to provision Azure resources to host you app.
-- Open the Teams Toolkit and click `Provision` in the `LIFECYCLE` section.
-  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Provision` command.
-- Open the Teams Toolkit and click `Deploy` in the `LIFECYCLE` section.
-  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Teams: Deploy` command.
+- Open Microsoft 365 Agents Toolkit in Visual Studio Code, and sign in your Azure account by clicking the `Sign in to Azure` in the `ACCOUNTS` section from sidebar.
+- After you signed in, select a subscription under your account. The Microsoft 365 Agents Toolkit will use this subscription to provision Azure resources to host you app.
+- Open the Microsoft 365 Agents Toolkit and click `Provision` in the `LIFECYCLE` section.
+  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Microsoft 365 Agents: Provision` command.
+- Open the Microsoft 365 Agents Toolkit and click `Deploy` in the `LIFECYCLE` section.
+  - Alternatively open the command palette(Ctrl+Shift+P) and type: `Microsoft 365 Agents: Deploy` command.
 
 > Note: Provisioning Azure cloud resources and deploying to Azure may cause charges to your Azure Subscription.
 

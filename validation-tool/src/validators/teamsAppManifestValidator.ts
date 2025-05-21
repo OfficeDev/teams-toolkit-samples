@@ -44,11 +44,11 @@ export default async function validateTeamsAppManifest(projectDir: string): Prom
     result.passed.push(`id is referencing placeholder from env: \${{TEAMS_APP_ID}}.`);
   }
   if (jsonData.manifestVersion === MANIFEST_VERSION) {
-    result.passed.push(`Manifest version is aligned with Teams Toolkit.`);
+    result.passed.push(`Manifest version is aligned with Microsoft 365 Agents Toolkit.`);
   } else if (jsonData.manifestVersion === MANIFEST_PREVIEW_VERSION) {
     result.warning.push(`Manifest version(${MANIFEST_PREVIEW_VERSION}) is using preview version.`);
   } else {
-    result.failed.push(`Manifest version(${jsonData.manifestVersion}) is NOT aligned with Teams Toolkit(${MANIFEST_VERSION}).`);
+    result.failed.push(`Manifest version(${jsonData.manifestVersion}) is NOT aligned with Microsoft 365 Agents Toolkit(${MANIFEST_VERSION}).`);
   }
   return result;
 }

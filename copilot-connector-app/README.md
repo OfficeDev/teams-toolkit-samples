@@ -28,7 +28,7 @@ This sample app showcases how to build custom Copilot connector with Azure Funct
 - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Minimal path to awesome
 
@@ -40,8 +40,8 @@ This sample app showcases how to build custom Copilot connector with Azure Funct
 
 ### Deploy the app to Azure
 > If you don't have an Azure subscription, create [a free account](https://azure.microsoft.com/en-us/free/) before you begin
-1. Open the command palette and select `Teams: Provision`. You will be asked to select Azure resource group to provision the sample.
-1. Once provision is completed, open the command palette and select `Teams: Deploy`.
+1. Open the command palette and select `Microsoft 365 Agents: Provision`. You will be asked to select Azure resource group to provision the sample.
+1. Once provision is completed, open the command palette and select `Microsoft 365 Agents: Deploy`.
 
 ### Launch the app in Teams
 1. Once deployment is completed, you can preview the APP running in Azure. In Visual Studio Code, open `Run and Debug` and select `Launch Remote (Edge)` or `Launch Remote (Chrome)` in the dropdown list and Press `F5` or green arrow button to open a browser.

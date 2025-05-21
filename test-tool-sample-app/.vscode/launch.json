@@ -16,11 +16,11 @@
     ],
     "compounds": [
         {
-            "name": "Debug in Test Tool (Preview)",
+            "name": "Debug in Microsoft 365 Agents playground (Preview)",
             "configurations": [
                 "Attach to Local Service"
             ],
-            "preLaunchTask": "Start Teams App (Test Tool)",
+            "preLaunchTask": "Start Teams App (Microsoft 365 Agents playground)",
             "presentation": {
                 "group": "1-local",
                 "order": 1

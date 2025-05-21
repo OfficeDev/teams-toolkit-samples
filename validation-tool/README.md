@@ -1,8 +1,8 @@
 # TeamsFx Sample Validation Tool
 
-TeamsFx sample validator is a command line tool that can help to validate whether a sample is compatible with Teams Toolkit. It checks the project content like folder structure, Teams manifest, demo gif file, etc.
+TeamsFx sample validator is a command line tool that can help to validate whether a sample is compatible with Microsoft 365 Agents Toolkit. It checks the project content like folder structure, Teams manifest, demo gif file, etc.
 
-If you want to contribute to the sample gallery of Teams Toolkit, this tool can help you do a quick validation in local environment. Passing all of the validation is a mandatory requirement for sample onboarding process.
+If you want to contribute to the sample gallery of Microsoft 365 Agents Toolkit, this tool can help you do a quick validation in local environment. Passing all of the validation is a mandatory requirement for sample onboarding process.
 
 ## How to Use
 
@@ -23,11 +23,11 @@ Following files are required:
   * env/
     * .env.dev
     * .env.local
-  * teamsapp.yml
-  * teamsapp.local.yml
+  * m365agents.yml
+  * m365agents.local.yml
   * README.md
 ### Teams App YAML
-The content of teamsapp.yml should follow these rules:
+The content of m365agents.yml should follow these rules:
 * There is no `projectId` defined.
 * "teamsApp/create", "teamsApp/zipAppPackage", "teamsApp/update" actions are defined in `provision` lifecycle.
 * `deploy` lifecycle is defined
@@ -37,7 +37,7 @@ The content of teamsapp.yml should follow these rules:
 ### Teams App Manifest
 The content of appPackage/manifest.json should follow these rules:
 * `id` is referencing placeholder from env, which is `${{TEAMS_APP_ID}}`
-* Manifest version should be latest to align with Teams Toolkit
+* Manifest version should be latest to align with Microsoft 365 Agents Toolkit
 ### Demo GIF
 The default path is 'assets/sampleDemo.gif', if the sample is not using this path, validator will show a warning message.
 The size of sample gif file should be 1600x920/800x460 or other size that has same ratio.

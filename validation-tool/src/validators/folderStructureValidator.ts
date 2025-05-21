@@ -13,8 +13,8 @@ const requiredFiles = [
   "appPackage/outline.png",
   "env/.env.dev",
   // "env/.env.local",
-  "teamsapp.yml",
-  "teamsapp.local.yml",
+  "m365agents.yml",
+  "m365agents.local.yml",
   "README.md",
 ];
 

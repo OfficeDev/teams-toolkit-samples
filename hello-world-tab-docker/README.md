@@ -22,7 +22,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 
 ## This sample illustrates
 
-- How to use Teams Toolkit to create a Teams tab app.
+- How to use Microsoft 365 Agents Toolkit to create a Teams tab app.
 - How to use TeamsFx SDK to call Azure Functions.
 - How to use TeamsFx SDK in Azure Function to call Graph to get user info.
 - How to develop Teams tab app in Docker.
@@ -31,7 +31,7 @@ Hello World Tab with Backend shows you how to build a tab app with an Azure Func
 
 - [Docker Engine](https://docs.docker.com/engine/install/)
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 - [Azure Cli](https://learn.microsoft.com/cli/azure/install-azure-cli) for Azure Container Apps deployment
 
 # Note
@@ -47,7 +47,7 @@ Teams applications can be developed and run locally using containerization, whic
 
 ### How to containerize
 
-This sample demonstrate how to containerize a Teams App and integrate the Docker container into Teams Toolkit development lifecycle, which can serve as reference for your containerization process.
+This sample demonstrate how to containerize a Teams App and integrate the Docker container into Microsoft 365 Agents Toolkit development lifecycle, which can serve as reference for your containerization process.
 
 - **Write a Dockerfile**: Create a Dockerfile that specifies the build instructions for your container image. Refer to this [Dockerfile example](./Dockerfile)
 
@@ -57,7 +57,7 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
 
 - **Provision Infrastructure**: Automate the provisioning of Azure Container Apps and Azure Container Registry using Bicep templates. Refer to this [Azure Bicep example](./infra/azure.bicep).
 
-- **Build and Deploy to ACA**: Using Azure CLI, build and push the Docker image to Azure Container Registry, then deploy it to Azure Container Apps. Refer to the deployment scripts in this [teamsapp.yml example](./teamsapp.yml).
+- **Build and Deploy to ACA**: Using Azure CLI, build and push the Docker image to Azure Container Registry, then deploy it to Azure Container Apps. Refer to the deployment scripts in this [m365agents.yml example](./m365agents.yml).
 
 ## Minimal path to awesome
 
@@ -66,32 +66,32 @@ This sample demonstrate how to containerize a Teams App and integrate the Docker
 - From VS Code:
     1. hit `F5` to start debugging. Alternatively open the `Run and Debug Activity` Panel and select `Debug in Teams (Edge)` or `Debug in Teams (Chrome)`.
 
-- From Teams Toolkit CLI:
-    1. Run command: `teamsapp provision --env local` .
+- From Microsoft 365 Agents Toolkit CLI:
+    1. Run command: `atk provision --env local` .
     1. Run command: `docker compose -f ./docker-compose.yml up -d` .
-    1. Run command: `teamsapp preview --open-only` .
+    1. Run command: `atk preview --open-only` .
 
 ### Deploy the app to Azure
 
 - From VS Code:
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision` .
+    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Microsoft 365 Agents: Provision` .
     1. Login Azure CLI with commands: `az login` and `az account set -s <subscription-id>` .
-    1. Click `Deploy` or open the command palette and select: `Teams: Deploy` .
+    1. Click `Deploy` or open the command palette and select: `Microsoft 365 Agents: Deploy` .
 
-- From Teams Toolkit CLI:
-    1. Run command: `teamsapp auth login azure` .
-    1. Run command: `teamsapp provision --env dev` .
+- From Microsoft 365 Agents Toolkit CLI:
+    1. Run command: `atk auth login azure` .
+    1. Run command: `atk provision --env dev` .
     1. Run command: `az login` .
-    1. Run command: `teamsapp deploy --env dev` .
+    1. Run command: `atk deploy --env dev` .
 
 ### Preview the app in Teams
 
 - From VS Code:
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Edge)` or `Launch Remote (Chrome)` from the launch configuration drop-down.
 
-- From Teams Toolkit CLI:
-    1. Run command: `teamsapp preview --env dev`.
+- From Microsoft 365 Agents Toolkit CLI:
+    1. Run command: `atk preview --env dev`.
 
 ## Further reading
 

@@ -18,7 +18,7 @@ To give you an overview of the process to contribute to our samples repo, you wi
 > The purple blocks are things you will need to do.
 > The green blocks are what we will take care of.
 
-Before your start, you might want to know whether you will need to commit your source code to our repo. In most of cases, your Teams sample source code will need to be commited to our repo, especially when you are an individual contributor. In some special cases if you are our partner team who maintains Teams samples repo as well, your source code can reside in your own open source repo. We will refer to your repo and expose your sample to Teams Toolkit sample gallery.
+Before your start, you might want to know whether you will need to commit your source code to our repo. In most of cases, your Teams sample source code will need to be commited to our repo, especially when you are an individual contributor. In some special cases if you are our partner team who maintains Teams samples repo as well, your source code can reside in your own open source repo. We will refer to your repo and expose your sample to Microsoft 365 Agents Toolkit sample gallery.
 
 Some explaination of how to perform each step in above process:
 1. Submit your source code by creating a pull request to our repo (target `dev` branch by default), a typical project is in below structure. Make sure you have the `thumbnail.png` and `README.md` files included in your source code. 
@@ -37,8 +37,8 @@ Some explaination of how to perform each step in above process:
       - thumbnail.png
       - sampleDemo.gif
   - README.md
-  - teamsapp.yml 
-  - teamsapp.local.yml
+  - m365agents.yml 
+  - m365agents.local.yml
 ```
 The thumbnail.png is a static screenshot of the sample illustrating what users will see after the app is running. The sampleDemo.gif is a dynamic and very short gif demonstrating major usage of the sample.
 > Suggested size of pic/gif is *1600x920/800x460* (If you have it with other sizes, please keep same image ratio for other sizes and don't forget to consider the resolution. Your gif or pics must fit the entire Teams client UI into the image.
@@ -51,9 +51,9 @@ The README.md file basically describe what's the sample, how to run it and so on
 
 ## Responsibility statement for contributors
 
- The sample contributors are responsible for maintaining and updating the samples so that ensure the smooth experience in Teams Toolkit. 
+ The sample contributors are responsible for maintaining and updating the samples so that ensure the smooth experience in Microsoft 365 Agents Toolkit. 
 
-- Upgrade the sample to new version when there's breaking change in new Teams Toolkit releases.
+- Upgrade the sample to new version when there's breaking change in new Microsoft 365 Agents Toolkit releases.
 - Fix bugs that are related to sample business logic.
 
 If the sample cannot pass our test or required to be upgraded, an email will be sent to sample contributor as maintainance notification. In case the sample is losing maintainance, there is a chance that we will remove the sample from our sample gallery.

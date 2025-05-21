@@ -7,7 +7,7 @@ Search based message extensions allow you to query your service and post that in
 ![npm-search-msgext](https://user-images.githubusercontent.com/10163840/229014306-bfed97bf-dc99-4be1-8523-2c09eed70cc1.gif)
 
 ## This sample illustrates
-- How to use Teams Toolkit build a search based message extension.
+- How to use Microsoft 365 Agents Toolkit build a search based message extension.
 - How to use [Codespaces](https://github.com/features/codespaces) to run and preview a message extension.
 
 ## Prerequisite to use this sample
@@ -21,7 +21,7 @@ Search based message extensions allow you to query your service and post that in
 
     > Note: you can customize the creation options (e.g. region, machine type) according to your needs.
 
-1. Once your codespace is created, Select the Teams Toolkit icon on the left in the VS Code toolbar. And then select `Preview your Teams app (F5)` from Teams Toolkit or simply press `F5` to run and preview your application.
+1. Once your codespace is created, Select the Microsoft 365 Agents Toolkit icon on the left in the VS Code toolbar. And then select `Preview your Teams app (F5)` from Microsoft 365 Agents Toolkit or simply press `F5` to run and preview your application.
 
 1. When Teams Web Client is launched in the browser, select the `Add` button in the dialog to install your app to Teams.
 
@@ -32,18 +32,18 @@ Search based message extensions allow you to query your service and post that in
 ### Deploy the app to Azure
 - From VS Code: 
     1. Sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Teams: Provision`.
-    1. Click `Deploy` or open the command palette and select: `Teams: Deploy`.
-- From Teams Toolkit CLI:
-    1. Run command: `teamsapp auth login azure`.
-    1. Run command: `teamsapp provision --env dev`.
-    1. Run command: `teamsapp deploy --env dev`.
+    1. Click `Provision` from `LIFECYCLE` section or open the command palette and select: `Microsoft 365 Agents: Provision`.
+    1. Click `Deploy` or open the command palette and select: `Microsoft 365 Agents: Deploy`.
+- From Microsoft 365 Agents Toolkit CLI:
+    1. Run command: `atk auth login azure`.
+    1. Run command: `atk provision --env dev`.
+    1. Run command: `atk deploy --env dev`.
 
 ### Preview the app in Teams
 - From VS Code: 
     1. Open the `Run and Debug Activity` Panel. Select `Launch Remote (Codespaces)` from the launch configuration drop-down.
-- From Teams Toolkit CLI:
-    1. Run command: `teamsapp preview --env dev`.
+- From Microsoft 365 Agents Toolkit CLI:
+    1. Run command: `atk preview --env dev`.
 
 ## Version History
 |Date| Author| Comments|

@@ -20,13 +20,13 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 ![Stocks Update Notification Bot](assets/sampleDemo.png)
 
 ## This sample illustrates
-- How to launch and debug an app using "F5" using Teams Toolkit for Visual Studio.
+- How to launch and debug an app using "F5" using Microsoft 365 Agents Toolkit for Visual Studio.
 - How to use a bot in different contexts
 
 ## Prerequisite to use this sample
 - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
 - A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 
 ## Minimal path to awesome
@@ -47,9 +47,9 @@ The Stocks Update Notification bot shows you how to request data on a pretermine
 1. Start debugging the project by hitting the `F5` key in Visual Studio Code.
 
 ### Deploy the app to Azure
-1. Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-1. Open the Teams Toolkit and click `Provision` from LIFECYCLE section or open the command palette and select: `Teams: Provision`.
-1. Open the Teams Toolkit and Click `Deploy` or open the command palette and select: `Teams: Deploy`.
+1. Open Microsoft 365 Agents Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
+1. Open the Microsoft 365 Agents Toolkit and click `Provision` from LIFECYCLE section or open the command palette and select: `Microsoft 365 Agents: Provision`.
+1. Open the Microsoft 365 Agents Toolkit and Click `Deploy` or open the command palette and select: `Microsoft 365 Agents: Deploy`.
 > Note: Provisioning and deployment may incur charges to your Azure Subscription.
 
 ### Preview the app in Teams

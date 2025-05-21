@@ -23,7 +23,7 @@ With this sample, you can achieve the SSO feature in your tab app using OBO (on-
 
 ## This sample illustrates
 
-- How to use Teams Toolkit to create a Teams tab app.
+- How to use Microsoft 365 Agents Toolkit to create a Teams tab app.
 - How to use integrate APIM in TeamsFx projects.
 - How to implement SSO in Teams Tab app.
 - How to use APIM as proxy of Graph Toolkit, use SSO token to call Graph and get user login info.
@@ -41,7 +41,7 @@ With this sample, you can achieve the SSO feature in your tab app using OBO (on-
 - An M365 account. If you do not have M365 account, apply one from [M365 developer program](https://developer.microsoft.com/microsoft-365/dev-program)
 - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
 > Please note that after you enrolled your developer tenant in Office 365 Target Release, it may take couple days for the enrollment to take effect.
-- [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli)
+- [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teams-toolkit-cli)
 
 ## Getting Started
 
@@ -50,7 +50,7 @@ You can follow the steps [here](https://aka.ms/teamsfx-sso-tab-via-apim) for how
 ## References
 
 * [Extend a Teams personal tabs across Microsoft 365](https://docs.microsoft.com/microsoftteams/platform/m365-apps/extend-m365-teams-personal-tab?tabs=manifest-teams-toolkit)
-* [Teams Toolkit Documentations](https://docs.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-fundamentals)
-* [Teams Toolkit CLI](https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-cli)
+* [Microsoft 365 Agents Toolkit Documentations](https://docs.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-fundamentals)
+* [Microsoft 365 Agents Toolkit CLI](https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-cli)
 * [TeamsFx SDK](https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-sdk)
-* [Teams Toolkit Samples](https://github.com/OfficeDev/TeamsFx-Samples)
+* [Microsoft 365 Agents Toolkit Samples](https://github.com/OfficeDev/TeamsFx-Samples)
