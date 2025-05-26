@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@microsoft/microsoft-graph-client": "^3.0.1",
-    "@microsoft/teamsfx": "^3.0.0-alpha",
+    "@microsoft/teams-ai": "^1.7.3",
     "botbuilder": "^4.23.1",
     "botbuilder-dialogs": "^4.23.1",
     "isomorphic-fetch": "^3.0.0",
