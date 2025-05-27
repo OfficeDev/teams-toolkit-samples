@@ -1,9 +1,10 @@
 import { ResponseType, Client } from "@microsoft/microsoft-graph-client";
 import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
-import { CardFactory, TurnContext } from "botbuilder";
-import { OnBehalfOfUserCredential } from "@microsoft/teamsfx";
+import { CardFactory, TurnContext } from "@microsoft/agents-hosting";
+import { OnBehalfOfUserCredential } from "../sso/onBehalfOfUserCredential";
 import { SSOCommand } from "./SSOCommand";
 import oboAuthConfig from "../authConfig";
+import { Activity } from "@microsoft/agents-activity";
 
 export class ShowUserProfile implements SSOCommand {
   commandMessage = "show";
@@ -68,7 +69,7 @@ export class ShowUserProfile implements SSOCommand {
         "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
         version: "1.4"
       });
-      await context.sendActivity({ attachments: [card] });
+      await context.sendActivity(Activity.fromObject({ attachments: [card], type: "message" }));
     } else {
       await context.sendActivity(
         "Could not retrieve profile information from Microsoft Graph."

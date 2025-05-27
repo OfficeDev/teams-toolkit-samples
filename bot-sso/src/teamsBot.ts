@@ -1,12 +1,14 @@
 import {
-  TeamsActivityHandler,
   TurnContext,
-  SigninStateVerificationQuery,
   MemoryStorage,
   ConversationState,
   UserState,
-  StatePropertyAccessor,
-} from "botbuilder";
+  AgentStatePropertyAccessor,
+} from "@microsoft/agents-hosting";
+import {
+  SigninStateVerificationQuery,
+  TeamsActivityHandler,
+} from "@microsoft/agents-hosting-teams";
 import { SSODialog } from "./ssoDialog";
 import { SSOCommandMap } from "./commands/SSOCommandMap";
 
@@ -14,8 +16,7 @@ export class TeamsBot extends TeamsActivityHandler {
   conversationState: ConversationState;
   userState: UserState;
   dialog: SSODialog;
-  dialogState: StatePropertyAccessor;
-
+  dialogState: AgentStatePropertyAccessor;
   constructor() {
     super();
 
@@ -30,14 +31,16 @@ export class TeamsBot extends TeamsActivityHandler {
     this.dialog = new SSODialog(new MemoryStorage());
     this.dialogState = this.conversationState.createProperty("DialogState");
 
+    this.onSignInInvoke(async (context, next) => {
+      await this.dialog.run(context, this.dialogState);
+    });
+
     this.onMessage(async (context, next) => {
       console.log("Running with Message Activity.");
 
       let txt = context.activity.text;
       // remove the mention of this bot
-      const removedMentionText = TurnContext.removeRecipientMention(
-        context.activity
-      );
+      const removedMentionText = context.activity.removeRecipientMention();
       if (removedMentionText) {
         // Remove the line break
         txt = removedMentionText.toLowerCase().replace(/\n|\r/g, "").trim();
@@ -85,10 +88,6 @@ export class TeamsBot extends TeamsActivityHandler {
     context: TurnContext,
     query: SigninStateVerificationQuery
   ) {
-    await this.dialog.run(context, this.dialogState);
-  }
-
-  async onSignInInvoke(context: TurnContext) {
     await this.dialog.run(context, this.dialogState);
   }
 }

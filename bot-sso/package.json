@@ -22,9 +22,13 @@
   },
   "dependencies": {
     "@microsoft/microsoft-graph-client": "^3.0.1",
-    "@microsoft/teamsfx": "^3.0.0-alpha",
-    "botbuilder": "^4.23.1",
-    "botbuilder-dialogs": "^4.23.1",
+    "@microsoft/agents-activity": "^0.4.1",
+    "@microsoft/agents-hosting": "^0.4.1",
+    "@microsoft/agents-hosting-dialogs": "^0.4.1",
+    "@microsoft/agents-hosting-teams": "^0.4.1",
+    "jwt-decode": "^4.0.0",
+    "@azure/identity": "^4.4.1",
+    "@azure/msal-node": "^2.14.0",
     "isomorphic-fetch": "^3.0.0",
     "express": "^5.0.1",
     "uuid": "^9.0.1"

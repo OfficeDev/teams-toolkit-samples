@@ -4,17 +4,19 @@ import {
   DialogTurnStatus,
   WaterfallDialog,
   ComponentDialog,
-} from "botbuilder-dialogs";
+} from "@microsoft/agents-hosting-dialogs";
 import {
-  Activity,
-  ActivityTypes,
-  StatePropertyAccessor,
+  AgentStatePropertyAccessor,
   Storage,
-  tokenExchangeOperationName,
   TurnContext,
-} from "botbuilder";
+} from "@microsoft/agents-hosting";
+import {  
+  Activity,
+  ActivityTypes
+} from "@microsoft/agents-activity";
+import { tokenExchangeOperationName } from "@microsoft/agents-hosting-teams";
 import "isomorphic-fetch";
-import { TeamsBotSsoPrompt } from "@microsoft/teamsfx";
+import { TeamsBotSsoPrompt } from "./sso/teamsBotSsoPrompt";
 import oboAuthConfig from "./authConfig";
 import config from "./config";
 import { SSOCommandMap } from "./commands/SSOCommandMap";
@@ -64,7 +66,7 @@ export class SSODialog extends ComponentDialog {
    * If no dialog is active, it will start the default dialog.
    * @param {*} dialogContext
    */
-  async run(context: TurnContext, dialogState: StatePropertyAccessor) {
+  async run(context: TurnContext, dialogState: AgentStatePropertyAccessor) {
     const dialogSet = new DialogSet(dialogState);
     dialogSet.add(this);
 
@@ -121,7 +123,7 @@ export class SSODialog extends ComponentDialog {
   // this requires a distributed storage to ensure only one token exchange is processed.
   async shouldDedup(context: TurnContext): Promise<boolean> {
     const storeItem = {
-      eTag: context.activity.value.id,
+      eTag: (context.activity.value as any).id,
     };
 
     const key = this.getStorageKey(context);
@@ -154,7 +156,7 @@ export class SSODialog extends ComponentDialog {
         "TokenExchangeState can only be used with Invokes of signin/tokenExchange."
       );
     }
-    const value = activity.value;
+    const value = activity.value as any;
     if (!value || !value.id) {
       throw new Error(
         "Invalid signin/tokenExchange. Missing activity.value.id."
@@ -165,7 +167,7 @@ export class SSODialog extends ComponentDialog {
 
   private getActivityText(activity: Activity): string {
     let text = activity.text;
-    const removedMentionText = TurnContext.removeRecipientMention(activity);
+    const removedMentionText = activity.removeRecipientMention();
     if (removedMentionText) {
       text = removedMentionText
         .toLowerCase()
