@@ -95,17 +95,23 @@ export interface TeamsBotSsoPromptTokenResponse {
  * needed and their access token will be passed as an argument to the callers next waterfall step:
  *
  * ```JavaScript
- * const { ConversationState, MemoryStorage } = require('botbuilder');
- * const { DialogSet, WaterfallDialog } = require('botbuilder-dialogs');
- * const { TeamsBotSsoPrompt } = require('@microsoft/teamsfx');
+ * const { ConversationState, MemoryStorage } = require('@microsoft/agents-hosting');
+ * const { DialogSet, WaterfallDialog } = require('@microsoft/agents-hosting-dialogs');
  *
  * const convoState = new ConversationState(new MemoryStorage());
  * const dialogState = convoState.createProperty('dialogState');
  * const dialogs = new DialogSet(dialogState);
  *
- * dialogs.add(new TeamsBotSsoPrompt('TeamsBotSsoPrompt', {
- *    scopes: ["User.Read"],
- * }));
+ * const dialog = new TeamsBotSsoPrompt(
+ *     authConfig,
+ *     initialLoginEndpoint,
+ *     "TeamsBotSsoPrompt",
+ *     {
+ *       scopes: ["User.Read"],
+ *       endOnInvalidMessage: true,
+ *     }
+ *   );
+ * dialogs.add(dialog);
  *
  * dialogs.add(new WaterfallDialog('taskNeedingLogin', [
  *      async (step) => {
