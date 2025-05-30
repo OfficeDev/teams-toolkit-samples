@@ -16,7 +16,7 @@ extensions:
 
 A bot, chatbot, or conversational bot is an app that responds to simple commands sent in chat and replies in meaningful ways. Examples of bots in everyday use include: bots that notify about build failures, bots that provide information about the weather or bus schedules, or provide travel information. A bot interaction can be a quick question and answer, or it can be a complex conversation. Being a cloud application, a bot can provide valuable and secure access to cloud services and corporate resources.
 
-This is a sample chatbot application demonstrating Single Sign-on using `botbuilder` and Teams Framework that can respond to a `show` message.
+This is a sample chatbot application demonstrating Single Sign-on using `Microsoft 365 Agents SDK` and Teams Framework that can respond to a `show` message.
 
 ![Bot SSO Overview](assets/sampleDemo.gif)
 
@@ -24,7 +24,7 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
 
 - Use Microsoft 365 Agents Toolkit to create a Teams bot app.
 - Use Microsoft Graph to get User info and picture in Teams app.
-- Use TeamsFx SDK to implementing SSO for Teams bot.
+- Implementing SSO for Teams bot.
 
 ## Prerequisite to use this sample
 
@@ -84,6 +84,7 @@ This is a sample chatbot application demonstrating Single Sign-on using `botbuil
 | Apr 19, 2022 | IvanJobs   | update to support Teams Toolkit v4.0.0 |
 | Dec 7, 2022  | yukun-dong | update to support Teams Toolkit v5.0.0 |
 | Feb 22, 2024 | yukun-dong | update card to adaptive card           |
+| May 28, 2025 | nliu       | update sdk                             |       
 
 ## Feedback
 

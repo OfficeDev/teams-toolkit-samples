@@ -1,7 +1,6 @@
-import { OnBehalfOfCredentialAuthConfig } from "@microsoft/teamsfx";
 import config from "./config";
 
-const oboAuthConfig: OnBehalfOfCredentialAuthConfig = {
+const oboAuthConfig: any = {
   authorityHost: config.authorityHost,
   clientId: config.clientId,
   tenantId: config.tenantId,
