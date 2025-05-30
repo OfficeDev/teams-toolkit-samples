@@ -1,7 +1,7 @@
 import { ResponseType, Client } from "@microsoft/microsoft-graph-client";
 import { TokenCredentialAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials";
 import { CardFactory, TurnContext } from "@microsoft/agents-hosting";
-import { OnBehalfOfUserCredential } from "../sso/onBehalfOfUserCredential";
+import { OnBehalfOfCredential } from "@azure/identity";
 import { SSOCommand } from "./SSOCommand";
 import oboAuthConfig from "../authConfig";
 import { Activity } from "@microsoft/agents-activity";
@@ -15,7 +15,7 @@ export class ShowUserProfile implements SSOCommand {
     );
 
     // Call Microsoft Graph half of user
-    const oboCredential = new OnBehalfOfUserCredential(ssoToken, oboAuthConfig);
+    const oboCredential = new OnBehalfOfCredential({...oboAuthConfig, userAssertionToken: ssoToken });
 
     // Create an instance of the TokenCredentialAuthenticationProvider by passing the tokenCredential instance and options to the constructor
     const authProvider = new TokenCredentialAuthenticationProvider(

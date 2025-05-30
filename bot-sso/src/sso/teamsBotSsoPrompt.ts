@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-import { AccessToken } from "@azure/identity";
+import { AccessToken, OnBehalfOfCredential } from "@azure/identity";
 import {
   CardFactory,
   MessageFactory,
@@ -30,7 +30,6 @@ import {
 import { Activity, ActivityTypes, Channels, ActionTypes } from "@microsoft/agents-activity";
 import { v4 as uuidv4 } from "uuid";
 import { jwtDecode } from "jwt-decode";
-import { OnBehalfOfUserCredential } from "./onBehalfOfUserCredential";
 
 const invokeResponseType = "invokeResponse";
 
@@ -366,7 +365,7 @@ export class TeamsBotSsoPrompt extends Dialog {
         );
       } else {
         const ssoToken = context.activity.value.token;
-        const credential = new OnBehalfOfUserCredential(ssoToken, this.authConfig);
+        const credential = new OnBehalfOfCredential({...this.authConfig, userAssertionToken: ssoToken });
         let exchangedToken: AccessToken | null;
         try {
           exchangedToken = await credential.getToken(this.settings.scopes);
