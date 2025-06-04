@@ -6,28 +6,19 @@ import send from "send";
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 import {
-  CloudAdapter,
-  ConfigurationServiceClientCredentialFactory,
-  ConfigurationBotFrameworkAuthentication,
   TurnContext,
-} from "botbuilder";
+  loadAuthConfigFromEnv,
+  AuthConfiguration,
+} from "@microsoft/agents-hosting";
+import { TeamsCloudAdapter } from "@microsoft/agents-hosting-teams";
 
 // This bot's main dialog.
 import { TeamsBot } from "./teamsBot";
-import config from "./config";
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
-const credentialsFactory = new ConfigurationServiceClientCredentialFactory(
-  config
-);
-
-const botFrameworkAuthentication = new ConfigurationBotFrameworkAuthentication(
-  {},
-  credentialsFactory
-);
-
-const adapter = new CloudAdapter(botFrameworkAuthentication);
+const authConfig: AuthConfiguration = loadAuthConfigFromEnv();
+const adapter = new TeamsCloudAdapter(authConfig);
 
 // Catch-all for errors.
 const onTurnErrorHandler = async (context: TurnContext, error: Error) => {

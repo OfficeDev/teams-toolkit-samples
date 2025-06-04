@@ -73,8 +73,8 @@ resource webAppSettings 'Microsoft.Web/sites/config@2021-02-01' = {
   properties: {
     WEBSITE_NODE_DEFAULT_VERSION: '~18'
     WEBSITE_RUN_FROM_PACKAGE: '1'
-    BOT_ID: identity.properties.clientId
-    BOT_TENANT_ID: identity.properties.tenantId
+    clientId: identity.properties.clientId
+    tenantId: identity.properties.tenantId
     BOT_TYPE: 'UserAssignedMsi'
     BOT_DOMAIN: webApp.properties.defaultHostName
     AAD_APP_CLIENT_ID: aadAppClientId
