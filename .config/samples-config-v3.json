@@ -172,6 +172,32 @@
             "suggested": false
         },
         {
+            "id": "bot-proactive-messaging-teamsfx",
+            "shortId": "proactive-messaging",
+            "onboardDate": "2022-08-01",
+            "title": "Proactive Messaging",
+            "shortDescription": "Demonstrates how to send proactive messages to users.",
+            "fullDescription": "This Teams application is a proactive messaging bot that enables users to receive notifications and messages proactively. The bot can send messages to all users who have previously interacted with it, and it can be triggered via a dedicated endpoint. The bot is built using the Bot Framework SDK and is written in JavaScript. The bot is hosted on Azure and uses Azure Active Directory for identity management.",
+            "types": [
+                "Bot"
+            ],
+            "tags": [
+                "Bot",
+                "JS"
+            ],
+            "time": "5min to run",
+            "configuration": "Ready for debug",
+            "thumbnailPath": "images/thumbnail.png",
+            "gifPath": "images/send-proactive-messages.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/bot-proactive-messaging-teamsfx"
+            }
+        },
+        {
             "id": "adaptive-card-notification",
             "shortId": "ac-notification",
             "onboardDate": "2022-03-28",
@@ -386,6 +412,31 @@
             "suggested": false
         },
         {
+            "id": "outlook-add-in-set-signature",
+            "shortId": "signature-outlook",
+            "onboardDate": "2023-05-04",
+            "title": "Set signature using Outlook add-in",
+            "shortDescription": "An Outlook add-in that sets signature for the user",
+            "fullDescription": "An Outlook add-in that sets signature for the user",
+            "types": [
+                "Tab"
+            ],
+            "tags": [
+                "Outlook Add-in"
+            ],
+            "time": "5min to run",
+            "configuration": "Ready for debug",
+            "thumbnailPath": "assets/outlook-set-signature-overview.png",
+            "gifPath": "assets/outlook-set-signature-overview.png",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Office-Add-in-samples",
+                "ref": "main",
+                "dir": "Samples/outlook-set-signature"
+            }
+        },
+        {
             "id": "developer-assist-dashboard",
             "shortId": "dev-assist-dashboard",
             "onboardDate": "2023-03-07",
@@ -427,6 +478,33 @@
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
+        },
+        {
+            "id": "teams-chef-bot",
+            "shortId": "chef-bot",
+            "onboardDate": "2023-06-25",
+            "title": "Teams Chef Bot",
+            "shortDescription": "Demonstrates how to build bot with Microsoft Teams AI Library.",
+            "fullDescription": "This project, Teams Chef, is a conversational bot designed to guide junior developers in Microsoft Teams app development. It uses the Teams AI Library and the gpt-3.5-turbo model to facilitate interactions. The bot leverages Retrieval Augmented Generation (RAG) and a local Vector Database, Vectra, for contextual information retrieval. Semantic Search is employed to find relevant information from its index, which includes Getting Started docs and the source code for the Teams AI Library. The bot is configured for Azure deployment, with infrastructure defined using Bicep.",
+            "types": [
+                "Bot"
+            ],
+            "tags": [
+                "Bot",
+                "TS",
+                "Teams AI Library"
+            ],
+            "time": "5min to run",
+            "configuration": "Ready for debug",
+            "thumbnailPath": "assets/TeamsChef003.png",
+            "gifPath": "assets/TeamsChef003.png",
+            "suggested": true,
+            "downloadUrlInfo": {
+                "owner": "microsoft",
+                "repository": "teams-ai",
+                "ref": "main",
+                "dir": "js/samples/04.ai-apps/a.teamsChefBot"
+            }
         },
         {
             "id": "spfx-productivity-dashboard",
@@ -538,6 +616,114 @@
             "suggested": false
         },
         {
+            "id": "bot-conversation-python",
+            "shortId": "bot-conversation-py",
+            "onboardDate": "2023-11-08",
+            "title": "Teams Conversation Bot using Python",
+            "shortDescription": "This sample shows how to incorporate basic conversational flow into a Teams application.",
+            "fullDescription": "This bot has been created using Bot Framework. This sample shows how to incorporate basic conversational flow into a Teams application. It also illustrates a few of the Teams specific calls you can make from your bot.",
+            "types": [
+              "Bot"
+            ],
+            "tags": [
+              "Python",
+              "Bot",
+              "Bot Framework"
+            ],
+            "time": "5min to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "Images/2.welcome.png",
+            "gifPath": "Images/BotConversation.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/bot-conversation/python"
+            }
+        },
+        {
+            "id": "msgext-search-python",
+            "shortId": "msgext-search-py",
+            "onboardDate": "2023-11-08",
+            "title": "Teams Messaging Extensions Search using Python",
+            "shortDescription": "This sample illustrates how to build a Search-based Messaging Extension.",
+            "fullDescription": "There are two basic types of Messaging Extension in Teams: Search-based and Action-based. This sample illustrates how to build a Search-based Messaging Extension.",
+            "types": [
+              "Bot"
+            ],
+            "tags": [
+              "Python",
+              "Message extension",
+              "Bot Framework"
+            ],
+            "time": "5min to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "Images/5.Select_result.png",
+            "gifPath": "Images/msgext-search.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/msgext-search/python"
+            }
+        },
+        {
+            "id": "gc-nodejs-typescript-food-catalog",
+            "shortId": "gc-food-catalog",
+            "onboardDate": "2023-11-15",
+            "title": "Ingest Custom API Data into Microsoft 365 with a Microsoft Graph Connector",
+            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph.",
+            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content on a schedule. It also includes the simplified admin experience which means that admins can toggle the connector on and off from the Microsoft Teams admin center.",
+            "types": [
+              "Tab"
+            ],
+            "tags": [
+              "TS",
+              "Microsoft Graph Connectors",
+              "Azure Functions"
+            ],
+            "time": "5min to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "assets/ttk_thumb.png",
+            "gifPath": "assets/ttk.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "pnp",
+                "repository": "graph-connectors-samples",
+                "ref": "main",
+                "dir": "samples/nodejs-typescript-food-catalog"
+            }
+        },
+        {
+            "id": "reddit-link-unfurling",
+            "shortId": "reddit-link-unfurling",
+            "onboardDate": "2023-12-12",
+            "title": "Format Reddit Link into Adaptive Card",
+            "shortDescription": "This sample application showcases how to build a Teams application (Link Unfurling, a type of Message Extension) that can format the Reddit link into an Adaptive Card when a user pastes a Reddit link into the compose message area.",
+            "fullDescription": "This sample application showcases how to build a Teams application (Link Unfurling, a type of Message Extension) that can format the Reddit link into an Adaptive Card when a user pastes a Reddit link into the compose message area.",
+            "types": [
+              "Message Extension"
+            ],
+            "tags": [
+              "Message Extension",
+              "JS",
+              "Link Unfurling"
+            ],
+            "time": "10 mins to run",
+            "configuration": "Manual configurations required",
+            "thumbnailPath": "doc/image/link.png",
+            "gifPath": "doc/image/link.png",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/msgext-link-unfurling-reddit/nodejs"
+            }
+        },
+        {
             "id": "intelligent-data-chart-generator",
             "shortId": "data-chart-generator",
             "onboardDate": "2024-01-31",
@@ -605,6 +791,34 @@
             "suggested": false
         },
         {
+            "id": "graph-rsc-helper",
+            "shortId": "graph-rsc-helper",
+            "onboardDate": "2024-04-02",
+            "title": "Graph RSC Helper",
+            "shortDescription": "This sample demonstrates how to use Resource Specific Consent to call Graph API in Microsoft teams channel and group chat. You can observe the real API response with the scope installed.",
+            "fullDescription": "This sample demonstrates how to use Resource Specific Consent (RSC) to call Graph API in Microsoft Teams channel and group chat. It shows how to configure RSC permissions in the manifest and use them to call Microsoft Graph, allowing you to observe the real API response with the scope installed. The sample includes features such as RSC permissions, Graph, and Tab App in team channel and group chat. Prerequisites include NodeJS and a M365 developer account.",
+            "types": [
+              "Tab"
+            ],
+            "tags": [
+              "TS",
+              "Tab",
+              "RSC Permissions",
+              "Graph"
+            ],
+            "time": "5 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "Images/Overview.png",
+            "gifPath": "Images/graphrschelper.gif",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "OfficeDev",
+                "repository": "Microsoft-Teams-Samples",
+                "ref": "main",
+                "dir": "samples/graph-rsc-helper/nodeJs"
+            }
+        },
+        {
             "id": "hello-world-office-addin",
             "shortId": "helloworld-office-wxpo",
             "onboardDate": "2024-12-06",
@@ -622,6 +836,62 @@
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/thumbnail.png",
             "suggested": false
+        },
+        {
+            "id": "nodejs-typescript-policies",
+            "shortId": "nodejs-ts-policies",
+            "onboardDate": "2024-09-24",
+            "title": "Policies Graph connector",
+            "shortDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph.",
+            "fullDescription": "This sample project uses Teams Toolkit for Visual Studio Code to simplify the process of creating a Microsoft Graph connector that ingests data from a custom API to Microsoft Graph. It provides an end to end example of creating the connector, ingesting content and refreshing the ingested content.",
+            "types": [
+                "Microsoft Graph Connector"
+            ],
+            "tags": [
+              "TS",
+              "Graph Connector",
+              "Azure Function",
+              "Copilot for Microsoft 365"
+            ],
+            "time": "10 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/search-results.png",
+            "gifPath": "assets/search-results.png",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "pnp",
+                "repository": "graph-connectors-samples",
+                "ref": "main",
+                "dir": "samples/nodejs-typescript-policies"
+            }
+        },
+        {
+            "id": "da-ristorante-api",
+            "shortId": "da-ristorante-api",
+            "onboardDate": "2025-01-22",
+            "title": "Browse the menu and place an order at a local Italian restaurant using Microsoft 365 Copilot",
+            "shortDescription": "This sample demonstrates how to build a declarative agent for Microsoft 365 Copilot that allows you to browse a menu of a local Italian restaurant and place an order.",
+            "fullDescription": "This sample demonstrates how to build a declarative agent for Microsoft 365 Copilot that allows you to browse a menu of a local Italian restaurant and place an order. The agent uses an API plugin to connect to an anonymous API. The project contains an Azure Function that serves as the API.",
+            "types": [
+                "Declarative Agent"
+            ],
+            "tags": [
+              "TS",
+              "Declarative Agent",
+              "Azure Function",
+              "Copilot for Microsoft 365"
+            ],
+            "time": "2 mins to run",
+            "configuration": "Ready for local debug",
+            "thumbnailPath": "assets/screenshot-menu.png",
+            "gifPath": "assets/screenshot-menu.png",
+            "suggested": false,
+            "downloadUrlInfo": {
+                "owner": "pnp",
+                "repository": "copilot-pro-dev-samples",
+                "ref": "main",
+                "dir": "samples/da-ristorante-api"
+            }
         }
     ]
 }
