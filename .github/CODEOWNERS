@@ -25,21 +25,21 @@
 /hello-world-tab-codespaces @kimizhu @dooriya @qinezh
 /hello-world-tab-docker @eriolchan @hund030 @Yimin-Jin
 /hello-world-tab-with-backend @adashen @SLdragon @KennethBWSong
-/hello-world-teams-tab-and-outlook-add-in @MSFT-yiz @jayzhang @HuihuiWu-Microsoft
+/hello-world-teams-tab-and-outlook-add-in @wh-alice @jayzhang @HuihuiWu-Microsoft
 /incoming-webhook-notification @kimizhu @dooriya @swatDong @XiaofuHuang
 /notification-codespaces @kimizhu @dooriya @qinezh
 /query-org-user-with-message-extension-sso @adashen @wenytang-ms
 /share-now @adashen @xzf0587
 /stocks-update-notification-bot @kimizhu @dooriya @swatDong @XiaofuHuang
 /stocks-update-notification-bot-dotnet @kimizhu @dooriya @swatDong @XiaofuHuang
-/todo-list-SPFx @MSFT-yiz @HuihuiWu-Microsoft @yuqizhou77
+/todo-list-SPFx @wh-alice @HuihuiWu-Microsoft @yuqizhou77
 /team-central-dashboard @eriolchan @huimiu @hund030 @JerryYangKai
 /todo-list-with-Azure-backend @adashen @formulahendry
 /todo-list-with-Azure-backend-M365 @kimizhu @swatDong @kuojianlu
 /developer-assist-dashboard @eriolchan @huimiu @hund030 @JerryYangKai
-/whos-next-meeting-app @MSFT-yiz @HuihuiWu-Microsoft @tecton
-/teams-chef-bot @MSFT-yiz @HuihuiWu-Microsoft @tecton
-/spfx-productivity-dashboard @MSFT-yiz @HuihuiWu-Microsoft @yuqizhou77
-/react-retail-dashboard @MSFT-yiz @HuihuiWu-Microsoft @tecton @yuqizhou77
-/.config/samples-config-v3.json @HuihuiWu-Microsoft @wenytang-ms @tecton @MSFT-yiz @KennethBWSong @LongOddCode
+/whos-next-meeting-app @wh-alice @HuihuiWu-Microsoft @tecton
+/teams-chef-bot @wh-alice @HuihuiWu-Microsoft @tecton
+/spfx-productivity-dashboard @wh-alice @HuihuiWu-Microsoft @yuqizhou77
+/react-retail-dashboard @wh-alice @HuihuiWu-Microsoft @tecton @yuqizhou77
+/.config/samples-config-v3.json @HuihuiWu-Microsoft @wenytang-ms @tecton @wh-alice @KennethBWSong @LongOddCode
 /.github/workflows/cd.yml @adashen @LongOddCode @Siglud @qinezh @wenytang-ms
