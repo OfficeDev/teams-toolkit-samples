@@ -16,16 +16,6 @@ param location string = resourceGroup().location
 ])
 param apimSku string = 'Developer'
 
-@description('SKU for the Content Safety service')
-@allowed([
-  'F0'  // Free tier
-  'S0'  // Standard tier
-])
-param contentSafetySku string = 'S0'
-
-@description('Whether to enable Content Safety integration')
-param enableContentSafety bool = true
-
 @description('The email address of the owner of the service')
 param apimPublisherEmail string = 'noreply@microsoft.com'
 
@@ -33,6 +23,9 @@ param apimPublisherEmail string = 'noreply@microsoft.com'
 param apimPublisherName string = 'Microsoft'
 
 param embeddingsDeploymentName string = 'text-embedding-ada-002'
+
+param azureOpenAIApiKey string
+param azureOpenAIEndpoint string
 
 module apimService './modules/apimService.bicep' = {
   name: 'Apim-Service-deployment'
@@ -45,33 +38,13 @@ module apimService './modules/apimService.bicep' = {
   }
 }
 
-module contentSafety './modules/contentSafety.bicep' = if (enableContentSafety) {
-  name: 'Content-Safety-deployment'
-  params: {
-    resourceBaseName: resourceBaseName
-    location: location
-    contentSafetySku: contentSafetySku
-  }
-  dependsOn: [
-    apimService // Ensure APIM service exists first since contentSafety references it
-  ]
-}
-
-module cognitiveService './modules/cognitiveService.bicep' = {
-  name: 'Cognitive-Service-deployment'
-  params: {
-    resourceBaseName: resourceBaseName
-    location: location
-  }
-}
-
 module semanticCache './modules/semanticCache.bicep' = {
  name: 'Semantic-Cache-deployment'
  params: {
    resourceBaseName: resourceBaseName
    location: location
-   azureOpenAIKey: cognitiveService.outputs.azureOpenAIApiKey
-   azureOpenAIEndpoint: cognitiveService.outputs.azureOpenAIEndpoint
+   azureOpenAIKey: azureOpenAIApiKey
+   azureOpenAIEndpoint: azureOpenAIEndpoint
    embeddingsDeploymentName: embeddingsDeploymentName
  }
  dependsOn: [
@@ -83,8 +56,8 @@ module apiBackends './modules/apiBackends.bicep' = {
   name: 'Api-Backends-deployment'
   params: {
     resourceBaseName: resourceBaseName
-    azureOpenAIKey: cognitiveService.outputs.azureOpenAIApiKey
-    azureOpenAIEndpoint: cognitiveService.outputs.azureOpenAIEndpoint
+    azureOpenAIKey: azureOpenAIApiKey
+    azureOpenAIEndpoint: azureOpenAIEndpoint
   }
   dependsOn: [
     apimService // Ensure APIM service exists first since apiBackends references it
@@ -106,5 +79,3 @@ output AZURE_OPENAI_ENDPOINT string = apimService.outputs.gatewayUrl
 
 #disable-next-line outputs-should-not-contain-secrets
 output SECRET_AZURE_OPENAI_API_KEY string = apiBackends.outputs.subscriptionPrimaryKey
-
-output AZURE_OPENAI_DEPLOYMENT_NAME string = cognitiveService.outputs.azureDeploymentName

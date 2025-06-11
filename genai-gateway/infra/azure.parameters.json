@@ -5,20 +5,23 @@
     "resourceBaseName": {
       "value": "bot${{RESOURCE_SUFFIX}}"
     },
-    "azureOpenAIKey": {
+    "azureOpenaiKey": {
       "value": "${{SECRET_AZURE_OPENAI_API_KEY}}"
     },
-    "azureOpenAIDeploymentName" : {
+    "azureOpenaiModelDeploymentName" : {
       "value": "${{AZURE_OPENAI_DEPLOYMENT_NAME}}"
     },
-    "azureOpenAIEndpoint" : {
+    "azureOpenaiEndpoint" : {
       "value": "${{AZURE_OPENAI_ENDPOINT}}"
     },
     "webAppSKU": {
       "value": "B1"
     },
     "botDisplayName": {
-      "value": "genai-gateway-sample"
+      "value": "rag-custom"
+    },
+    "linuxFxVersion": {
+      "value": "PYTHON|3.11"
     }
   }
 }

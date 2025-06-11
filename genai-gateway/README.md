@@ -10,19 +10,22 @@ This sample showcases a bot app that responds to user questions like an AI assis
 >
 > To run the sample in your local dev machine, you will need:
 >
+> - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22.
 > - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) latest version or [Teams Toolkit CLI](https://aka.ms/teams-toolkit-cli).
 > - An Azure account and a subscription, **which you need to make sure your subscription has quota to create cognitive service in the location you selected.**
 > - A [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts).
 
 ### In this sample
 1. A cognitive service with one gpt-4o model and one text-embedding-ada-002 model will be deployed.
-1. An API Management(APIM) service with GenAI Gateway features including token limit policy, emit token metric policy, backend load balancer and circuit breaker and semantic caching policy will be deployed and configured.
+1. An API Management(APIM) service with **GenAI Gateway** features including token limit policy, emit token metric policy, backend load balancer, circuit breaker, semantic caching policy and content safety policy will be deployed and configured.
 1. A copilot agent bot will be created, which will connect the APIM service to call the Azure OpenAI API. You can chat with the agent bot in multiple platforms.
 
 ### Configuration for deployment
 1. In [./infra/apimNewCog/modules/apimService.bicep](./infra/apimNewCog/modules/apimService.bicep), you can choose your prefered pricing tier of APIM service by setting `apimSku`.
 > - You can use the [pricing calculator](https://azure.microsoft.com/en-us/pricing/calculator/) to calculate and estimate the price of the deployment in your pricing tier.
 You can search for `API Management` and `Azure OpenAI Service` to add APIM service and Cognitive service used in this sample to the calculator.
+
+2. In [./infra/apimNewCog/main.bicep](./infra/apimNewCog/main.bicep), you can set `param enableContentSafety bool = false` to disable [content safety check](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview).
 
 ### Conversation with bot
 1. Select the Teams Toolkit icon on the left in the VS Code toolbar.
@@ -34,5 +37,3 @@ You can search for `API Management` and `Azure OpenAI Service` to add APIM servi
 **Congratulations**! You are running an application that can now interact with users in Teams:
 
 > For local debugging using Teams Toolkit CLI, you need to do some extra steps described in [Set up your Teams Toolkit CLI for local debugging](https://aka.ms/teamsfx-cli-debugging).
-
-![ai chat bot](https://user-images.githubusercontent.com/7642967/258726187-8306610b-579e-4301-872b-1b5e85141eff.png)

@@ -23,16 +23,6 @@
             <dimension name="API ID" value="@(context.Api.Id)" />
             <dimension name="User ID" value="@(context.Request.Headers.GetValueOrDefault("x-user-id", "N/A"))" />
         </azure-openai-emit-token-metric>
-
-        <!-- Content Safety Integration -->
-        <llm-content-safety backend-id="content-safety-backend" shield-prompt="true">
-            <categories output-type="EightSeverityLevels">
-                <category name="Hate" threshold="4" />
-                <category name="Violence" threshold="4" />
-                <category name="Sexual" threshold="4" />
-                <category name="SelfHarm" threshold="4" />
-            </categories>
-        </llm-content-safety>
     </inbound>
     <backend>
         <base />
