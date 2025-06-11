@@ -21,11 +21,11 @@ This sample showcases a bot app that responds to user questions like an AI assis
 1. A copilot agent bot will be created, which will connect the APIM service to call the Azure OpenAI API. You can chat with the agent bot in multiple platforms.
 
 ### Configuration for deployment
-1. In [./infra/apimNewCog/modules/apimService.bicep](./infra/apimNewCog/modules/apimService.bicep), you can choose your prefered pricing tier of APIM service by setting `apimSku`.
+1. In [./infra/apim-create-new-cognitive-service/modules/apimService.bicep](./infra/apim-create-new-cognitive-service/modules/apimService.bicep), you can choose your prefered pricing tier of APIM service by setting `apimSku`.
 > - You can use the [pricing calculator](https://azure.microsoft.com/en-us/pricing/calculator/) to calculate and estimate the price of the deployment in your pricing tier.
 You can search for `API Management` and `Azure OpenAI Service` to add APIM service and Cognitive service used in this sample to the calculator.
 
-2. In [./infra/apimNewCog/main.bicep](./infra/apimNewCog/main.bicep), you can set `param enableContentSafety bool = false` to disable [content safety check](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview).
+2. In [./infra/apim-create-new-cognitive-service/main.bicep](./infra/apim-create-new-cognitive-service/main.bicep), you can set `param enableContentSafety bool = false` to disable [content safety check](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview).
 
 ### Conversation with bot
 1. Select the Teams Toolkit icon on the left in the VS Code toolbar.

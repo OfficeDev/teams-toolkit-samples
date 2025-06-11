@@ -45,8 +45,8 @@ provision:
       resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}}
       templates:
         # Deploy all APIM modules with a single main deployment using a new cognitive service
-        - path: ./infra/apimNewCog/main.bicep
-          parameters: ./infra/apimNewCog/main.parameters.json
+        - path: ./infra/apim-create-new-cognitive-service/main.bicep
+          parameters: ./infra/apim-create-new-cognitive-service/main.parameters.json
           deploymentName: Deploy-APIM-Resources-With-New-Cognitive-Service
         
         # Deploy all APIM modules with a single main deployment using an existing cognitive service
