@@ -65,15 +65,7 @@ provision:
       # Relative path to this file. This is the path for built zip file.
       appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
 
-  # Get the deployment token from Azure Static Web Apps
-  - uses: azureStaticWebApps/getDeploymentToken
-    with:
-      resourceId: ${{AZURE_STATIC_WEB_APPS_RESOURCE_ID}}
-    # Save deployment token to the environment file for the deployment action
-    writeToEnvironmentFile:
-      deploymentToken: SECRET_TAB_SWA_DEPLOYMENT_TOKEN
-
-    # Triggered when 'teamsapp deploy' is executed
+# Triggered when 'teamsapp deploy' is executed
 deploy:
   # Run npm command
   - uses: cli/runNpmCommand
@@ -83,7 +75,11 @@ deploy:
   - uses: cli/runNpmCommand
     with:
       args: run build
-    # Deploy bits to Azure Static Web Apps
+  # Get the deployment token from Azure Static Web Apps
+  - uses: azureStaticWebApps/getDeploymentToken
+    with:
+      resourceId: ${{AZURE_STATIC_WEB_APPS_RESOURCE_ID}}
+  # Deploy bits to Azure Static Web Apps
   - uses: cli/runNpxCommand
     name: deploy to Azure Static Web Apps
     with:
