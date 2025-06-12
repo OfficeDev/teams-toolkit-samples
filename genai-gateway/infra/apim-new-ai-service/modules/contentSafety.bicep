@@ -61,6 +61,17 @@ resource contentSafetyBackend 'Microsoft.ApiManagement/service/backends@2024-05-
   }
 }
 
+// // Example of what's missing - role assignment for managed identity
+// resource roleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+//   name: guid(apimService.id, contentSafety.id, 'Cognitive Services User')
+//   scope: contentSafety
+//   properties: {
+//     roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'a97b65f3-24c7-4388-baec-2e87135dc908') // Cognitive Services User
+//     principalId: apimService.identity.principalId
+//     principalType: 'ServicePrincipal'
+//   }
+// }
+
 // Output the details needed for integration
 @description('The resource ID of the Content Safety service')
 output contentSafetyId string = contentSafety.id
