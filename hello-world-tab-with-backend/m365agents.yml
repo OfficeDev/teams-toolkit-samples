@@ -1,5 +1,5 @@
-# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.5/yaml.schema.json
-version: v1.5
+# yaml-language-server: $schema=https://aka.ms/m365-agents-toolkits/v1.9/yaml.schema.json
+version: v1.9
 
 additionalMetadata:
   sampleTag: TeamsFx-Samples:hello-world-tab-with-backend
@@ -41,14 +41,6 @@ provision:
           deploymentName: Create-resources-for-tab # Required when deploy ARM template
       bicepCliVersion: v0.9.1 # Microsoft 365 Agents Toolkit will download this bicep CLI version from github for you, will use bicep CLI in PATH if you remove this config.
 
-  # Get the deployment token from Azure Static Web Apps
-  - uses: azureStaticWebApps/getDeploymentToken
-    with:
-      resourceId: ${{AZURE_STATIC_WEB_APPS_RESOURCE_ID}}
-    # Save deployment token to the environment file for the deployment action
-    writeToEnvironmentFile:
-      deploymentToken: SECRET_TAB_SWA_DEPLOYMENT_TOKEN
-
   - uses: aadApp/update # Apply the AAD manifest to an existing AAD app. Will use the object id in manifest file to determine which AAD app to update.
     with:
       manifestPath: aad.manifest.json # Relative path to teamsfx folder. Environment variables in manifest will be replaced before apply to AAD app
@@ -87,6 +79,10 @@ deploy:
       REACT_APP_FUNC_ENDPOINT: ${{API_FUNCTION_ENDPOINT}}
     with:
       args: run build --if-present
+  # Get the deployment token from Azure Static Web Apps
+  - uses: azureStaticWebApps/getDeploymentToken
+    with:
+      resourceId: ${{AZURE_STATIC_WEB_APPS_RESOURCE_ID}}
   # Deploy bits to Azure Static Web Apps
   - uses: cli/runNpxCommand
     name: deploy to Azure Static Web Apps
